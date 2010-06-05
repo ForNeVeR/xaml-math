@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+// Atom representing other atom vertically centered with respect to axis.
+internal class VerticalCenteredAtom : Atom
+{
+    public VerticalCenteredAtom(Atom atom)
+    {
+        this.Atom = atom;
+    }
+
+    public Atom Atom
+    {
+        get;
+        private set;
+    }
+
+    public override Box CreateBox(TexEnvironment environment)
+    {
+        var box = this.Atom.CreateBox(environment);
+        
+        // Centre box relative to horizontal axis.
+        var totalHeight = box.Height + box.Depth;
+        var axis = environment.TexFont.GetAxisHeight(environment.Style);
+        box.Shift = -(totalHeight / 2) - axis;
+
+        return new HorizontalBox(box);
+    }
+}

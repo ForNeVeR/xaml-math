@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfMath", "WpfMath\WpfMath.csproj", "{010A34F1-1F3E-4528-99B4-95054DD45729}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfMath.Example", "WpfMath.Example\WpfMath.Example.csproj", "{FB56A927-25E4-4EC9-BA36-3A843C606B34}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{010A34F1-1F3E-4528-99B4-95054DD45729}.Debug|x86.ActiveCfg = Debug|x86
+		{010A34F1-1F3E-4528-99B4-95054DD45729}.Debug|x86.Build.0 = Debug|x86
+		{010A34F1-1F3E-4528-99B4-95054DD45729}.Release|x86.ActiveCfg = Release|x86
+		{010A34F1-1F3E-4528-99B4-95054DD45729}.Release|x86.Build.0 = Release|x86
+		{FB56A927-25E4-4EC9-BA36-3A843C606B34}.Debug|x86.ActiveCfg = Debug|x86
+		{FB56A927-25E4-4EC9-BA36-3A843C606B34}.Debug|x86.Build.0 = Debug|x86
+		{FB56A927-25E4-4EC9-BA36-3A843C606B34}.Release|x86.ActiveCfg = Release|x86
+		{FB56A927-25E4-4EC9-BA36-3A843C606B34}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,8 @@
+~*
+*.log
+*.suo
+*.user
+bin/
+obj/
+Output/
+./TestResults/

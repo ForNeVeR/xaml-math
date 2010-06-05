@@ -1,0 +1,1619 @@
+<?xml version='1.0'?>
+
+<TeXFont>
+
+  <!-- general parameters used in the TeX algorithms, specific for the computer modern font family -->
+
+  <Parameters num1="0.676508" num2="0.393732" num3="0.443731" denom1="0.685951" denom2="0.344841"
+	sup1="0.412892" sup2="0.362892" sup3="0.288889" sub1="0.15" sub2="0.247217" supdrop="0.386108"
+	subdrop="0.05" axisheight="0.25" defaultrulethickness="0.039999" bigopspacing1="0.111112"
+	bigopspacing2="0.166667" bigopspacing3="0.2" bigopspacing4="0.6" bigopspacing5="0.1" />
+
+  <!-- general settings -->
+
+  <GeneralSettings mufontid="3" spacefontid="1" scriptfactor="0.7" scriptscriptfactor="0.5" />
+
+  <!-- the mappings for the text styles defined in "FormulaSettings.xml" -->
+
+  <TextStyleMappings>
+    <TextStyleMapping name="mathrm">
+      <MapRange code="numbers" fontId="1" start="48"/>
+      <MapRange code="capitals" fontId="1" start="65"/>
+      <MapRange code="small" fontId="1" start="97"/>
+    </TextStyleMapping>
+    <TextStyleMapping name="mathit">
+      <MapRange code="numbers" fontId="0" start="48"/>
+      <MapRange code="capitals" fontId="0" start="65"/>
+      <MapRange code="small" fontId="0" start="97"/>
+    </TextStyleMapping>
+    <TextStyleMapping name="mathcal">
+      <MapRange code="capitals" fontId="3" start="65"/>
+    </TextStyleMapping>
+  </TextStyleMappings>
+
+  <!-- the default text style mappings, used when no text style is specified or when a specific mapping 
+for a text style is not defined (e.g. "numbers" and "small" in "mathcal") -->
+
+  <DefaultTextStyleMapping>
+    <MapStyle code="numbers" textStyle="mathrm"/>
+    <MapStyle code="capitals" textStyle="mathit"/>
+    <MapStyle code="small" textStyle="mathit"/>
+  </DefaultTextStyleMapping>
+
+  <!-- the mappings for the symbols defined in "TeXSymbols.xml" -->
+
+  <SymbolMappings>
+
+    <!-- miscellaneous symbols -->
+
+    <SymbolMapping name="comma" ch="59" fontId="0"/>
+    <SymbolMapping name="ldotp" ch="58" fontId="0"/>
+    <SymbolMapping name="cdotp" ch="162" fontId="3"/>
+    <SymbolMapping name="normaldot" ch="58" fontId="0"/>
+    <SymbolMapping name="slash" ch="61" fontId="0"/>
+
+    <!-- this symbol is not defined in "TeXSymbols.xml", because it's not meant to be used as a symbol. Use "surd" instead. -->
+    <SymbolMapping name="sqrt" ch="112" fontId="2"/>
+
+    <SymbolMapping name="semicolon" ch="59" fontId="1"/>
+    <SymbolMapping name="faculty" ch="33" fontId="1"/>
+    <SymbolMapping name="question" ch="63" fontId="1"/>
+
+    <!-- math accents -->
+
+    <SymbolMapping name="acute" ch="182" fontId="1"/>
+    <SymbolMapping name="grave" ch="181" fontId="1"/>
+    <SymbolMapping name="ddot" ch="196" fontId="1"/>
+    <SymbolMapping name="tilde" ch="126" fontId="1"/>
+    <SymbolMapping name="bar" ch="185" fontId="1"/>
+    <SymbolMapping name="breve" ch="184" fontId="1"/>
+    <SymbolMapping name="check" ch="183" fontId="1"/>
+    <SymbolMapping name="hat" ch="94" fontId="1"/>
+    <SymbolMapping name="vec" ch="126" fontId="0"/>
+    <SymbolMapping name="dot" ch="95" fontId="1"/>
+    <SymbolMapping name="widehat" ch="98" fontId="2"/>
+    <SymbolMapping name="widetilde" ch="101" fontId="2"/>
+
+    <!-- delimiters that can change size -->
+
+    <SymbolMapping name="lbrace" ch="102" fontId="3"/>
+    <SymbolMapping name="rbrace" ch="103" fontId="3"/>
+    <SymbolMapping name="lbrack" ch="40" fontId="1"/>
+    <SymbolMapping name="rbrack" ch="41" fontId="1"/>
+    <SymbolMapping name="rsqbrack" ch="93" fontId="1"/>
+    <SymbolMapping name="lsqbrack" ch="91" fontId="1"/>
+    <SymbolMapping name="langle" ch="104" fontId="3"/>
+    <SymbolMapping name="rangle" ch="105" fontId="3"/>
+    <SymbolMapping name="lfloor" ch="98" fontId="3"/>
+    <SymbolMapping name="rfloor" ch="99" fontId="3"/>
+    <SymbolMapping name="lceil" ch="100" fontId="3"/>
+    <SymbolMapping name="rceil" ch="101" fontId="3"/>
+    <SymbolMapping name="uparrow" ch="34" fontId="3"/>
+    <SymbolMapping name="Uparrow" ch="42" fontId="3"/>
+    <SymbolMapping name="downarrow" ch="35" fontId="3"/>
+    <SymbolMapping name="Downarrow" ch="43" fontId="3"/>
+    <SymbolMapping name="updownarrow" ch="108" fontId="3"/>
+    <SymbolMapping name="Updownarrow" ch="109" fontId="3"/>
+    <SymbolMapping name="vert" ch="106" fontId="3"/>
+    <SymbolMapping name="Vert" ch="107" fontId="3"/>
+    <SymbolMapping name="slashdel" ch="47" fontId="1"/>
+
+    <!-- lowercase Greek letters -->
+
+    <SymbolMapping name="alpha" ch="174" fontId="0"/>
+    <SymbolMapping name="beta" ch="175" fontId="0"/>
+    <SymbolMapping name="gamma" ch="176" fontId="0"/>
+    <SymbolMapping name="delta" ch="177" fontId="0"/>
+    <SymbolMapping name="epsilon" ch="178" fontId="0"/>
+    <SymbolMapping name="varepsilon" ch="34" fontId="0"/>
+    <SymbolMapping name="zeta" ch="179" fontId="0"/>
+    <SymbolMapping name="eta" ch="180" fontId="0"/>
+    <SymbolMapping name="theta" ch="181" fontId="0"/>
+    <SymbolMapping name="vartheta" ch="35" fontId="0"/>
+    <SymbolMapping name="iota" ch="182" fontId="0"/>
+    <SymbolMapping name="kappa" ch="183" fontId="0"/>
+    <SymbolMapping name="lambda" ch="184" fontId="0"/>
+    <SymbolMapping name="mu" ch="185" fontId="0"/>
+    <SymbolMapping name="nu" ch="186" fontId="0"/>
+    <SymbolMapping name="xi" ch="187" fontId="0"/>
+
+    <!-- omicron = letter 'o' -->
+    <SymbolMapping name="omicron" ch="111" fontId="0"/>
+
+    <SymbolMapping name="pi" ch="188" fontId="0"/>
+    <SymbolMapping name="varpi" ch="36" fontId="0"/>
+    <SymbolMapping name="rho" ch="189" fontId="0"/>
+    <SymbolMapping name="varrho" ch="37" fontId="0"/>
+    <SymbolMapping name="sigma" ch="190" fontId="0"/>
+    <SymbolMapping name="varsigma" ch="38" fontId="0"/>
+    <SymbolMapping name="tau" ch="191" fontId="0"/>
+    <SymbolMapping name="upsilon" ch="192" fontId="0"/>
+    <SymbolMapping name="phi" ch="193" fontId="0"/>
+    <SymbolMapping name="varphi" ch="39" fontId="0"/>
+    <SymbolMapping name="chi" ch="194" fontId="0"/>
+    <SymbolMapping name="psi" ch="195" fontId="0"/>
+    <SymbolMapping name="omega" ch="33" fontId="0"/>
+
+    <!-- uppercase Greek letters -->
+
+    <SymbolMapping name="Gamma" ch="161" fontId="1"/>
+    <SymbolMapping name="Delta" ch="162" fontId="1"/>
+    <SymbolMapping name="Theta" ch="163" fontId="1"/>
+    <SymbolMapping name="Lambda" ch="164" fontId="1"/>
+    <SymbolMapping name="Xi" ch="165" fontId="1"/>
+    <SymbolMapping name="Pi" ch="166" fontId="1"/>
+    <SymbolMapping name="Sigma" ch="167" fontId="1"/>
+    <SymbolMapping name="Upsilon" ch="168" fontId="1"/>
+    <SymbolMapping name="Phi" ch="169" fontId="1"/>
+    <SymbolMapping name="Psi" ch="170" fontId="1"/>
+    <SymbolMapping name="Omega" ch="173" fontId="1"/>
+
+    <!-- miscellaneous symbols of type "ord" -->
+
+    <SymbolMapping name="aleph" ch="64" fontId="3"/>
+    <SymbolMapping name="imath" ch="123" fontId="0"/>
+    <SymbolMapping name="jmath" ch="124" fontId="0"/>
+    <SymbolMapping name="ell" ch="96" fontId="0"/>
+    <SymbolMapping name="wp" ch="125" fontId="0"/>
+    <SymbolMapping name="Re" ch="60" fontId="3"/>
+    <SymbolMapping name="Im" ch="61" fontId="3"/>
+    <SymbolMapping name="partial" ch="64" fontId="0"/>
+    <SymbolMapping name="infty" ch="49" fontId="3"/>
+    <SymbolMapping name="prime" ch="48" fontId="3"/>
+    <SymbolMapping name="emptyset" ch="59" fontId="3"/>
+    <SymbolMapping name="nabla" ch="114" fontId="3"/>
+    <SymbolMapping name="surdsign" ch="112" fontId="3"/>
+    <SymbolMapping name="top" ch="62" fontId="3"/>
+    <SymbolMapping name="bot" ch="63" fontId="3"/>
+    <SymbolMapping name="|" ch="107" fontId="3"/>
+    <SymbolMapping name="triangle" ch="52" fontId="3"/>
+    <SymbolMapping name="backslash" ch="110" fontId="3"/>
+    <SymbolMapping name="forall" ch="56" fontId="3"/>
+    <SymbolMapping name="exists" ch="57" fontId="3"/>
+    <SymbolMapping name="neg" ch="58" fontId="3"/>
+    <SymbolMapping name="lnot" ch="58" fontId="3"/>
+    <SymbolMapping name="flat" ch="91" fontId="0"/>
+    <SymbolMapping name="natural" ch="92" fontId="0"/>
+    <SymbolMapping name="sharp" ch="93" fontId="0"/>
+    <SymbolMapping name="clubsuit" ch="124" fontId="3"/>
+    <SymbolMapping name="diamondsuit" ch="125" fontId="3"/>
+    <SymbolMapping name="heartsuit" ch="126" fontId="3"/>
+    <SymbolMapping name="spadesuit" ch="127" fontId="3"/>
+    <SymbolMapping name="lacc" ch="102" fontId="3"/>
+    <SymbolMapping name="racc" ch="103" fontId="3"/>
+
+    <!-- "large" operators -->
+
+    <SymbolMapping name="bigcap" ch="84" fontId="2"/>
+    <SymbolMapping name="bigcup" ch="83" fontId="2"/>
+    <SymbolMapping name="bigodot" ch="74" fontId="2"/>
+    <SymbolMapping name="bigoplus" ch ="76" fontId="2"/>
+    <SymbolMapping name="bigotimes" ch="78" fontId="2"/>
+    <SymbolMapping name="bigsqcup" ch="70" fontId="2"/>
+    <SymbolMapping name="biguplus" ch="85" fontId="2"/>
+    <SymbolMapping name="bigvee" ch="87" fontId="2"/>
+    <SymbolMapping name="bigwedge" ch="86" fontId="2"/>
+    <SymbolMapping name="coprod" ch="96" fontId="2"/>
+    <SymbolMapping name="int" ch="82" fontId="2"/>
+    <SymbolMapping name="oint" ch="72" fontId="2"/>
+    <SymbolMapping name="sum" ch="80" fontId="2"/>
+    <SymbolMapping name="prod" ch="81" fontId="2"/>
+    <SymbolMapping name="smallint" ch="115" fontId="3"/>
+
+    <!-- binary operations -->
+
+    <SymbolMapping name="minus" ch="161" fontId="3"/>
+    <SymbolMapping name="plus" ch="43" fontId="1"/>
+    <SymbolMapping name="pm" ch="167" fontId="3"/>
+    <SymbolMapping name="mp" ch="168" fontId="3"/>
+    <SymbolMapping name="setminus" ch="110" fontId="3"/>
+    <SymbolMapping name="cdot" ch="162" fontId="3"/>
+    <SymbolMapping name="times" ch="163" fontId="3"/>
+    <SymbolMapping name="ast" ch="164" fontId="3"/>
+    <SymbolMapping name="star" ch="63" fontId="0"/>
+    <SymbolMapping name="diamond" ch="166" fontId="3"/>
+    <SymbolMapping name="circ" ch="177" fontId="3"/>
+    <SymbolMapping name="bullet" ch="178" fontId="3"/>
+    <SymbolMapping name="div" ch="165" fontId="3"/>
+    <SymbolMapping name="cap" ch="92" fontId="3"/>
+    <SymbolMapping name="cup" ch="91" fontId="3"/>
+    <SymbolMapping name="uplus" ch="93" fontId="3"/>
+    <SymbolMapping name="sqcap" ch="117" fontId="3"/>
+    <SymbolMapping name="sqcup" ch="116" fontId="3"/>
+    <SymbolMapping name="triangleleft" ch="47" fontId="0"/>
+    <SymbolMapping name="triangleright" ch="46" fontId="0"/>
+    <SymbolMapping name="wr" ch="111" fontId="3"/>
+    <SymbolMapping name="bigcirc" ch="176" fontId="3"/>
+    <SymbolMapping name="bigtriangleup" ch="52" fontId="3"/>
+    <SymbolMapping name="bigtriangledown" ch="53" fontId="3"/>
+    <SymbolMapping name="vee" ch="95" fontId="3"/>
+    <SymbolMapping name="lor" ch="95" fontId="3"/>
+    <SymbolMapping name="wedge" ch="94" fontId="3"/>
+    <SymbolMapping name="land" ch="94" fontId="3"/>
+    <SymbolMapping name="oplus" ch="169" fontId="3"/>
+    <SymbolMapping name="ominus" ch="170" fontId="3"/>
+    <SymbolMapping name="otimes" ch="173" fontId="3"/>
+    <SymbolMapping name="oslash" ch="174" fontId="3"/>
+    <SymbolMapping name="odot" ch="175" fontId="3"/>
+    <SymbolMapping name="dagger" ch="121" fontId="3"/>
+    <SymbolMapping name="ddagger" ch="122" fontId="3"/>
+    <SymbolMapping name="amalg" ch="113" fontId="3"/>
+
+    <!-- relations -->
+
+    <SymbolMapping name="equals" ch="61" fontId="1"/>
+    <SymbolMapping name="gt" ch="62" fontId="0"/>
+    <SymbolMapping name="lt" ch="60" fontId="0"/>
+    <SymbolMapping name="leq" ch="183" fontId="3"/>
+    <SymbolMapping name="le" ch="183" fontId="3"/>
+    <SymbolMapping name="prec" ch="193" fontId="3"/>
+    <SymbolMapping name="preceq" ch="185" fontId="3"/>
+    <SymbolMapping name="ll" ch="191" fontId="3"/>
+    <SymbolMapping name="subset" ch="189" fontId="3"/>
+    <SymbolMapping name="subseteq" ch="181" fontId="3"/>
+    <SymbolMapping name="sqsubseteq" ch="118" fontId="3"/>
+    <SymbolMapping name="in" ch="50" fontId="3"/>
+    <SymbolMapping name="vdash" ch="96" fontId="3"/>
+    <SymbolMapping name="smile" ch="94" fontId="0"/>
+    <SymbolMapping name="frown" ch="95" fontId="0"/>
+    <SymbolMapping name="geq" ch="184" fontId="3"/>
+    <SymbolMapping name="ge" ch="184" fontId="3"/>
+    <SymbolMapping name="succ" ch="194" fontId="3"/>
+    <SymbolMapping name="succeq" ch="186" fontId="3"/>
+    <SymbolMapping name="gg" ch="192" fontId="3"/>
+    <SymbolMapping name="supset" ch="190" fontId="3"/>
+    <SymbolMapping name="supseteq" ch="182" fontId="3"/>
+    <SymbolMapping name="sqsupseteq" ch="119" fontId="3"/>
+    <SymbolMapping name="ni" ch="51" fontId="3"/>
+    <SymbolMapping name="owns" ch="51" fontId="3"/>
+    <SymbolMapping name="dashv" ch="97" fontId="3"/>
+    <SymbolMapping name="mid" ch="106" fontId="3"/>
+    <SymbolMapping name="parallel" ch="107" fontId="3"/>
+    <SymbolMapping name="equiv" ch="180" fontId="3"/>
+    <SymbolMapping name="sim" ch="187" fontId="3"/>
+    <SymbolMapping name="simeq" ch="39" fontId="3"/>
+    <SymbolMapping name="asymp" ch="179" fontId="3"/>
+    <SymbolMapping name="approx" ch="188" fontId="3"/>
+    <SymbolMapping name="propto" ch="47" fontId="3"/>
+    <SymbolMapping name="perp" ch="63" fontId="3"/>
+
+    <!-- special relation symbol with "width=0" (to overlap other relational symbols) -->
+    <SymbolMapping name="not" ch="54" fontId="3"/>
+
+    <!-- arrows = pointing relations -->
+
+    <SymbolMapping name="colon" ch="58" fontId="1"/>
+    <SymbolMapping name="nearrow" ch="37" fontId="3"/>
+    <SymbolMapping name="searrow" ch="38" fontId="3"/>
+    <SymbolMapping name="swarrow" ch="46" fontId="3"/>
+    <SymbolMapping name="nwarrow" ch="45" fontId="3"/>
+    <SymbolMapping name="leftarrow" ch="195" fontId="3"/>
+    <SymbolMapping name="gets" ch="195" fontId="3"/>
+    <SymbolMapping name="Leftarrow" ch="40" fontId="3"/>
+    <SymbolMapping name="rightarrow" ch="33" fontId="3"/>
+    <SymbolMapping name="to" ch="33" fontId="3"/>
+    <SymbolMapping name="Rightarrow" ch="41" fontId="3"/>
+    <SymbolMapping name="leftrightarrow" ch="36" fontId="3"/>
+    <SymbolMapping name="Leftrightarrow" ch="44" fontId="3"/>
+    <SymbolMapping name="leftharpoonup" ch="40" fontId="0"/>
+    <SymbolMapping name="leftharpoondown" ch="41" fontId="0"/>
+    <SymbolMapping name="rightharpoonup" ch="42" fontId="0"/>
+    <SymbolMapping name="rightharpoondown" ch="43" fontId="0"/>
+
+  </SymbolMappings>
+
+  <!-- font descriptions -->
+
+  <FontDescriptions>
+
+    <Font name="cmmi10.ttf" id="0" space="0.0" xHeight="0.430555" skewChar="196" quad="1.000003">
+      <Char code="161" width="0.615278" height="0.683332" italic="0.13889">
+        <Kern code="61" val="-0.055555"/>
+        <Kern code="59" val="-0.111112"/>
+        <Kern code="58" val="-0.111112"/>
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="162" width="0.833336" height="0.683332" >
+        <Kern code="196" val="0.166672"/>
+      </Char>
+      <Char code="163" width="0.762776" height="0.683332" italic="0.027779" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="164" width="0.694446" height="0.683332" >
+        <Kern code="196" val="0.166672"/>
+      </Char>
+      <Char code="165" width="0.742363" height="0.683332" italic="0.075694" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="166" width="0.831251" height="0.683332" italic="0.081248" >
+        <Kern code="61" val="-0.055555"/>
+        <Kern code="59" val="-0.055555"/>
+        <Kern code="58" val="-0.055555"/>
+        <Kern code="196" val="0.055557"/>
+      </Char>
+      <Char code="167" width="0.779863" height="0.683332" italic="0.057638" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="168" width="0.583333" height="0.683332" italic="0.13889" >
+        <Kern code="61" val="-0.055555"/>
+        <Kern code="59" val="-0.111112"/>
+        <Kern code="58" val="-0.111112"/>
+        <Kern code="196" val="0.055557"/>
+      </Char>
+      <Char code="169" width="0.666667" height="0.683332" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="170" width="0.612223" height="0.683332" italic="0.110001" >
+        <Kern code="61" val="-0.055555"/>
+        <Kern code="59" val="-0.055555"/>
+        <Kern code="58" val="-0.055555"/>
+        <Kern code="196" val="0.055557"/>
+      </Char>
+      <Char code="173" width="0.772398" height="0.683332" italic="0.050173" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="174" width="0.639702" height="0.430555" italic="0.003702" >
+        <Kern code="196" val="0.027779"/>
+      </Char>
+      <Char code="175" width="0.565626" height="0.694445" depth="0.194445" italic="0.052778" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="176" width="0.517731" height="0.430555" depth="0.194445" italic="0.055555" />
+      <Char code="177" width="0.444445" height="0.694445" italic="0.037847" >
+        <Kern code="59" val="-0.055555"/>
+        <Kern code="58" val="-0.055555"/>
+        <Kern code="196" val="0.055557"/>
+      </Char>
+      <Char code="178" width="0.405904" height="0.430555" >
+        <Kern code="196" val="0.055557"/>
+      </Char>
+      <Char code="179" width="0.437502" height="0.694445" depth="0.194445" italic="0.073784" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="180" width="0.4965315" height="0.430555" depth="0.194445" italic="0.035879" >
+        <Kern code="196" val="0.055557"/>
+      </Char>
+      <Char code="181" width="0.469444" height="0.694445" italic="0.027779" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="182" width="0.353937" height="0.430555" >
+        <Kern code="196" val="0.055557"/>
+      </Char>
+      <Char code="183" width="0.5761595" height="0.430555" />
+      <Char code="184" width="0.583336" height="0.694445" />
+      <Char code="185" width="0.60255" height="0.430555" depth="0.194445" >
+        <Kern code="196" val="0.027779"/>
+      </Char>
+      <Char code="186" width="0.493983" height="0.430555" italic="0.063658" >
+        <Kern code="59" val="-0.055555"/>
+        <Kern code="58" val="-0.055555"/>
+        <Kern code="196" val="0.027779"/>
+      </Char>
+      <Char code="187" width="0.437502" height="0.694445" depth="0.194445" italic="0.046007" >
+        <Kern code="196" val="0.1111145"/>
+      </Char>
+      <Char code="188" width="0.570027" height="0.430555" italic="0.035879" />
+      <Char code="189" width="0.517015" height="0.430555" depth="0.194445" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="190" width="0.571414" height="0.430555" italic="0.035879" >
+        <Kern code="59" val="-0.055555"/>
+        <Kern code="58" val="-0.055555"/>
+      </Char>
+      <Char code="191" width="0.437155" height="0.430555" italic="0.113195" >
+        <Kern code="59" val="-0.055555"/>
+        <Kern code="58" val="-0.055555"/>
+        <Kern code="196" val="0.027779"/>
+      </Char>
+      <Char code="192" width="0.54028" height="0.430555" italic="0.035879" >
+        <Kern code="196" val="0.027779"/>
+      </Char>
+      <Char code="193" width="0.595835" height="0.694445" depth="0.194445" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="194" width="0.625692" height="0.430555" depth="0.194445" >
+        <Kern code="196" val="0.055557"/>
+      </Char>
+      <Char code="195" width="0.651392" height="0.694445" depth="0.194445" italic="0.035879" >
+        <Kern code="196" val="0.1111145"/>
+      </Char>
+      <Char code="33" width="0.622455" height="0.430555" italic="0.035879" />
+      <Char code="34" width="0.466318" height="0.430555" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="35" width="0.59144" height="0.694445" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="36" width="0.82813" height="0.430555" italic="0.027779" />
+      <Char code="37" width="0.517015" height="0.430555" depth="0.194445" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="38" width="0.362848" height="0.430555" depth="0.097223" italic="0.07986" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="39" width="0.654167" height="0.430555" depth="0.194445" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="40" width="1.000003" height="0.366875" depth="-0.133125" />
+      <Char code="41" width="1.000003" height="0.366875" depth="-0.133125" />
+      <Char code="42" width="1.000003" height="0.366875" depth="-0.133125" />
+      <Char code="43" width="1.000003" height="0.366875" depth="-0.133125" />
+      <Char code="44" width="0.277779" height="0.463748" depth="-0.036252" />
+      <Char code="45" width="0.277779" height="0.463748" depth="-0.036252" />
+      <Char code="46" width="0.500002" height="0.465279" depth="-0.034721" />
+      <Char code="47" width="0.500002" height="0.465279" depth="-0.034721" />
+      <Char code="48" width="0.500002" height="0.430555" />
+      <Char code="49" width="0.500002" height="0.430555" />
+      <Char code="50" width="0.500002" height="0.430555" />
+      <Char code="51" width="0.500002" height="0.430555" depth="0.194445" />
+      <Char code="52" width="0.500002" height="0.430555" depth="0.194445" />
+      <Char code="53" width="0.500002" height="0.430555" depth="0.194445" />
+      <Char code="54" width="0.500002" height="0.644444" />
+      <Char code="55" width="0.500002" height="0.430555" depth="0.194445" />
+      <Char code="56" width="0.500002" height="0.644444" />
+      <Char code="57" width="0.500002" height="0.430555" depth="0.194445" />
+      <Char code="58" width="0.277779" height="0.105556" />
+      <Char code="59" width="0.277779" height="0.105556" depth="0.194445" />
+      <Char code="60" width="0.777781" height="0.539098" depth="0.039098" />
+      <Char code="61" width="0.500002" height="0.75" depth="0.25" >
+        <Kern code="162" val="-0.055555"/>
+        <Kern code="65" val="-0.055555"/>
+        <Kern code="77" val="-0.055555"/>
+        <Kern code="78" val="-0.055555"/>
+        <Kern code="89" val="0.055555"/>
+        <Kern code="90" val="-0.055555"/>
+      </Char>
+      <Char code="62" width="0.777781" height="0.539098" depth="0.039098" />
+      <Char code="63" width="0.500002" height="0.465279" depth="-0.034721" />
+      <Char code="64" width="0.530904" height="0.694445" italic="0.055555" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="65" width="0.750002" height="0.683332" >
+        <Kern code="196" val="0.138893"/>
+      </Char>
+      <Char code="66" width="0.75851" height="0.683332" italic="0.050173" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="67" width="0.714722" height="0.683332" italic="0.0715275" >
+        <Kern code="61" val="-0.027779"/>
+        <Kern code="59" val="-0.055555"/>
+        <Kern code="58" val="-0.055555"/>
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="68" width="0.827917" height="0.683332" italic="0.027779" >
+        <Kern code="196" val="0.055557"/>
+      </Char>
+      <Char code="69" width="0.738195" height="0.683332" italic="0.057638" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="70" width="0.643057" height="0.683332" italic="0.13889" >
+        <Kern code="61" val="-0.055555"/>
+        <Kern code="59" val="-0.111112"/>
+        <Kern code="58" val="-0.111112"/>
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="71" width="0.786249" height="0.683332" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="72" width="0.831251" height="0.683332" italic="0.081248" >
+        <Kern code="61" val="-0.055555"/>
+        <Kern code="59" val="-0.055555"/>
+        <Kern code="58" val="-0.055555"/>
+        <Kern code="196" val="0.055557"/>
+      </Char>
+      <Char code="73" width="0.439585" height="0.683332" italic="0.078471" >
+        <Kern code="196" val="0.1111145"/>
+      </Char>
+      <Char code="74" width="0.554514" height="0.683332" italic="0.096181" >
+        <Kern code="61" val="-0.055555"/>
+        <Kern code="59" val="-0.111112"/>
+        <Kern code="58" val="-0.111112"/>
+        <Kern code="196" val="0.166672"/>
+      </Char>
+      <Char code="75" width="0.849307" height="0.683332" italic="0.0715275" >
+        <Kern code="61" val="-0.055555"/>
+        <Kern code="59" val="-0.055555"/>
+        <Kern code="58" val="-0.055555"/>
+        <Kern code="196" val="0.055557"/>
+      </Char>
+      <Char code="76" width="0.680557" height="0.683332" >
+        <Kern code="196" val="0.027779"/>
+      </Char>
+      <Char code="77" width="0.97014" height="0.683332" italic="0.109027" >
+        <Kern code="61" val="-0.055555"/>
+        <Kern code="59" val="-0.055555"/>
+        <Kern code="58" val="-0.055555"/>
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="78" width="0.8034725" height="0.683332" italic="0.109027" >
+        <!--<Kern code="61" val="-0.083334"/>-->
+        <Kern code="61" val="-0.027779"/>
+        <Kern code="59" val="-0.055555"/>
+        <Kern code="58" val="-0.055555"/>
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="79" width="0.762776" height="0.683332" italic="0.027779" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="80" width="0.642014" height="0.683332" italic="0.13889" >
+        <Kern code="61" val="-0.055555"/>
+        <Kern code="59" val="-0.111112"/>
+        <Kern code="58" val="-0.111112"/>
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="81" width="0.790555" height="0.683332" depth="0.194445" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="82" width="0.75929" height="0.683332" italic="0.007726" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="83" width="0.613195" height="0.683332" italic="0.057638" >
+        <Kern code="61" val="-0.055555"/>
+        <Kern code="59" val="-0.055555"/>
+        <Kern code="58" val="-0.055555"/>
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="84" width="0.584376" height="0.683332" italic="0.13889" >
+        <Kern code="61" val="-0.027779"/>
+        <Kern code="59" val="-0.055555"/>
+        <Kern code="58" val="-0.055555"/>
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="85" width="0.682777" height="0.683332" italic="0.109027" >
+        <Kern code="59" val="-0.111112"/>
+        <Kern code="58" val="-0.111112"/>
+        <Kern code="61" val="-0.055555"/>
+        <Kern code="196" val="0.027779"/>
+      </Char>
+      <Char code="86" width="0.583334" height="0.683332" italic="0.222223" >
+        <Kern code="59" val="-0.166667"/>
+        <Kern code="58" val="-0.166667"/>
+        <Kern code="61" val="-0.111112"/>
+      </Char>
+      <Char code="87" width="0.944446" height="0.683332" italic="0.13889" >
+        <Kern code="59" val="-0.166667"/>
+        <Kern code="58" val="-0.166667"/>
+        <Kern code="61" val="-0.111112"/>
+      </Char>
+      <Char code="88" width="0.828474" height="0.683332" italic="0.078471" >
+        <!--<Kern code="61" val="-0.083334"/>-->
+        <Kern code="61" val="-0.027779"/>
+        <Kern code="59" val="-0.055555"/>
+        <Kern code="58" val="-0.055555"/>
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="89" width="0.580557" height="0.683332" italic="0.222223" >
+        <Kern code="59" val="-0.166667"/>
+        <Kern code="58" val="-0.166667"/>
+        <Kern code="61" val="-0.111112"/>
+      </Char>
+      <Char code="90" width="0.68264" height="0.683332" italic="0.0715275" >
+        <Kern code="61" val="-0.055555"/>
+        <Kern code="59" val="-0.055555"/>
+        <Kern code="58" val="-0.055555"/>
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="91" width="0.38889" height="0.75" />
+      <Char code="92" width="0.38889" height="0.694445" depth="0.194445" />
+      <Char code="93" width="0.38889" height="0.694445" depth="0.194445" />
+      <Char code="94" width="1.000003" height="0.35764" depth="-0.14236" />
+      <Char code="95" width="1.000003" height="0.35764" depth="-0.14236" />
+      <Char code="96" width="0.41667" height="0.694445" >
+        <Kern code="196" val="0.1111145"/>
+      </Char>
+      <Char code="97" width="0.52859" height="0.430555" />
+      <Char code="98" width="0.429167" height="0.694445" />
+      <Char code="99" width="0.432756" height="0.430555" >
+        <Kern code="196" val="0.055557"/>
+      </Char>
+      <Char code="100" width="0.520488" height="0.694445" >
+        <Kern code="89" val="0.055555"/>
+        <Kern code="90" val="-0.055555"/>
+        <Kern code="106" val="-0.111112"/>
+        <Kern code="102" val="-0.166667"/>
+        <Kern code="196" val="0.166672"/>
+      </Char>
+      <Char code="101" width="0.465627" height="0.430555" >
+        <Kern code="196" val="0.055557"/>
+      </Char>
+      <Char code="102" width="0.489586" height="0.694445" depth="0.194445" italic="0.10764" >
+        <Kern code="59" val="-0.055555"/>
+        <Kern code="58" val="-0.055555"/>
+        <Kern code="196" val="0.166672"/>
+      </Char>
+      <Char code="103" width="0.476969" height="0.430555" depth="0.194445" italic="0.035879" >
+        <Kern code="196" val="0.027779"/>
+      </Char>
+      <Char code="104" width="0.5761595" height="0.694445" >
+        <Kern code="196" val="-0.027779"/>
+      </Char>
+      <Char code="105" width="0.344513" height="0.659525" />
+      <Char code="106" width="0.411807" height="0.659525" depth="0.194445" italic="0.057243" >
+        <Kern code="59" val="-0.055555"/>
+        <Kern code="58" val="-0.055555"/>
+      </Char>
+      <Char code="107" width="0.520604" height="0.694445" italic="0.031481" />
+      <Char code="108" width="0.29838" height="0.694445" italic="0.019678" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="109" width="0.878014" height="0.430555" />
+      <Char code="110" width="0.600235" height="0.430555" />
+      <Char code="111" width="0.484723" height="0.430555" >
+        <Kern code="196" val="0.055557"/>
+      </Char>
+      <Char code="112" width="0.503126" height="0.430555" depth="0.194445" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="113" width="0.446414" height="0.430555" depth="0.194445" italic="0.035879" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="114" width="0.4511595" height="0.430555" italic="0.027779" >
+        <Kern code="59" val="-0.055555"/>
+        <Kern code="58" val="-0.055555"/>
+        <Kern code="196" val="0.055557"/>
+      </Char>
+      <Char code="115" width="0.46875" height="0.430555" >
+        <Kern code="196" val="0.055557"/>
+      </Char>
+      <Char code="116" width="0.361113" height="0.61508" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="117" width="0.572458" height="0.430555" >
+        <Kern code="196" val="0.027779"/>
+      </Char>
+      <Char code="118" width="0.484724" height="0.430555" italic="0.035879" >
+        <Kern code="196" val="0.027779"/>
+      </Char>
+      <Char code="119" width="0.715918" height="0.430555" italic="0.026909" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="120" width="0.571528" height="0.430555" >
+        <Kern code="196" val="0.027779"/>
+      </Char>
+      <Char code="121" width="0.490282" height="0.430555" depth="0.194445" italic="0.035879" >
+        <Kern code="196" val="0.055557"/>
+      </Char>
+      <Char code="122" width="0.46505" height="0.430555" italic="0.043981" >
+        <Kern code="196" val="0.055557"/>
+      </Char>
+      <Char code="123" width="0.322456" height="0.430555" >
+        <Kern code="196" val="0.027779"/>
+      </Char>
+      <Char code="124" width="0.38403" height="0.430555" depth="0.194445" >
+        <Kern code="196" val="0.083336"/>
+      </Char>
+      <Char code="125" width="0.636459" height="0.430555" depth="0.194445" >
+        <Kern code="196" val="0.1111145"/>
+      </Char>
+      <Char code="126" width="0.500002" height="0.714444" italic="0.153819" />
+      <Char code="196" width="0.277779" height="0.694445" italic="0.399462" />
+    </Font>
+
+    <Font name="cmr10.ttf" id="1" space="0.333334" xHeight="0.430555" quad="1.000003">
+      <Char code="161" width="0.625002" height="0.683332" />
+      <Char code="162" width="0.833336" height="0.683332" />
+      <Char code="163" width="0.777781" height="0.683332" />
+      <Char code="164" width="0.694446" height="0.683332" />
+      <Char code="165" width="0.666669" height="0.683332" />
+      <Char code="166" width="0.750002" height="0.683332" />
+      <Char code="167" width="0.722224" height="0.683332" />
+      <Char code="168" width="0.777781" height="0.683332" />
+      <Char code="169" width="0.722224" height="0.683332" />
+      <Char code="170" width="0.777781" height="0.683332" />
+      <Char code="173" width="0.722224" height="0.683332" />
+      <Char code="174" width="0.583336" height="0.694445" italic="0.077779" >
+        <Lig code="105" ligCode="177"/>
+        <Lig code="108" ligCode="178"/>
+        <Kern code="39" val="0.077779"/>
+        <Kern code="63" val="0.077779"/>
+        <Kern code="33" val="0.077779"/>
+        <Kern code="41" val="0.077779"/>
+        <Kern code="93" val="0.077779"/>
+      </Char>
+      <Char code="175" width="0.555557" height="0.694445" />
+      <Char code="176" width="0.555557" height="0.694445" />
+      <Char code="177" width="0.833336" height="0.694445" />
+      <Char code="178" width="0.833336" height="0.694445" />
+      <Char code="179" width="0.277779" height="0.430555" />
+      <Char code="180" width="0.305557" height="0.430555" depth="0.194445" />
+      <Char code="181" width="0.500002" height="0.694445" />
+      <Char code="182" width="0.500002" height="0.694445" />
+      <Char code="183" width="0.500002" height="0.628473" />
+      <Char code="184" width="0.500002" height="0.694445" />
+      <Char code="185" width="0.500002" height="0.567777" />
+      <Char code="186" width="0.750002" height="0.694445" />
+      <Char code="187" width="0.444446" depth="0.170138" />
+      <Char code="188" width="0.500003" height="0.694445" />
+      <Char code="189" width="0.722224" height="0.430555" />
+      <Char code="190" width="0.777781" height="0.430555" />
+      <Char code="191" width="0.500002" height="0.527779" depth="0.097223" />
+      <Char code="192" width="0.902781" height="0.683332" />
+      <Char code="193" width="1.013891" height="0.683332" />
+      <Char code="194" width="0.777781" height="0.731944" depth="0.048612" />
+      <Char code="195" width="0.277779" height="0.430555" >
+        <Kern code="108" val="-0.277779"/>
+        <Kern code="76" val="-0.319446"/>
+      </Char>
+      <Char code="33" width="0.277779" height="0.694445" >
+        <Lig code="96" ligCode="60"/>
+      </Char>
+      <Char code="34" width="0.500002" height="0.694445" />
+      <Char code="35" width="0.833336" height="0.694445" depth="0.194443" />
+      <Char code="36" width="0.500002" height="0.75" depth="0.055555" />
+      <Char code="37" width="0.833336" height="0.75" depth="0.055555" />
+      <Char code="38" width="0.777781" height="0.694445" />
+      <Char code="39" width="0.277779" height="0.694445" >
+        <Lig code="39" ligCode="34"/>
+        <Kern code="63" val="0.111112"/>
+        <Kern code="33" val="0.111112"/>
+      </Char>
+      <Char code="40" width="0.38889" height="0.75" depth="0.25" >
+        <NextLarger fontId="2" code="161"/>
+      </Char>
+      <Char code="41" width="0.38889" height="0.75" depth="0.25" >
+        <NextLarger fontId="2" code="162"/>
+      </Char>
+      <Char code="42" width="0.500002" height="0.75" />
+      <Char code="43" width="0.777781" height="0.583334" depth="0.083334" />
+      <Char code="44" width="0.277779" height="0.105556" depth="0.194445" />
+      <Char code="45" width="0.333334" height="0.430555" >
+        <Lig code="45" ligCode="123"/>
+      </Char>
+      <Char code="46" width="0.277779" height="0.105556" />
+      <Char code="47" width="0.500002" height="0.75" depth="0.25" >
+        <NextLarger fontId="2" code="177"/>
+      </Char>
+      <Char code="48" width="0.500002" height="0.644444" />
+      <Char code="49" width="0.500002" height="0.644444" />
+      <Char code="50" width="0.500002" height="0.644444" />
+      <Char code="51" width="0.500002" height="0.644444" />
+      <Char code="52" width="0.500002" height="0.644444" />
+      <Char code="53" width="0.500002" height="0.644444" />
+      <Char code="54" width="0.500002" height="0.644444" />
+      <Char code="55" width="0.500002" height="0.644444" />
+      <Char code="56" width="0.500002" height="0.644444" />
+      <Char code="57" width="0.500002" height="0.644444" />
+      <Char code="58" width="0.277779" height="0.430555" />
+      <Char code="59" width="0.277779" height="0.430555" depth="0.194445" />
+      <Char code="60" width="0.277779" height="0.5" depth="0.194445" />
+      <Char code="61" width="0.777781" height="0.366875" depth="-0.133125" />
+      <Char code="62" width="0.472224" height="0.5" depth="0.194445" />
+      <Char code="63" width="0.472224" height="0.694445" >
+        <Lig code="96" ligCode="62"/>
+      </Char>
+      <Char code="64" width="0.777781" height="0.694445" />
+      <Char code="65" width="0.750002" height="0.683332" >
+        <Kern code="116" val="-0.027779"/>
+        <Kern code="67" val="-0.027779"/>
+        <Kern code="79" val="-0.027779"/>
+        <Kern code="71" val="-0.027779"/>
+        <Kern code="85" val="-0.027779"/>
+        <Kern code="81" val="-0.027779"/>
+        <Kern code="84" val="-0.083334"/>
+        <Kern code="89" val="-0.083334"/>
+        <Kern code="86" val="-0.111112"/>
+        <Kern code="87" val="-0.111112"/>
+      </Char>
+      <Char code="66" width="0.708336" height="0.683332" />
+      <Char code="67" width="0.722224" height="0.683332" />
+      <Char code="68" width="0.763891" height="0.683332" >
+        <Kern code="88" val="-0.027779"/>
+        <Kern code="87" val="-0.027779"/>
+        <Kern code="65" val="-0.027779"/>
+        <Kern code="86" val="-0.027779"/>
+        <Kern code="89" val="-0.027779"/>
+      </Char>
+      <Char code="69" width="0.680557" height="0.683332" />
+      <Char code="70" width="0.652781" height="0.683332" >
+        <Kern code="111" val="-0.083334"/>
+        <Kern code="101" val="-0.083334"/>
+        <Kern code="117" val="-0.083334"/>
+        <Kern code="114" val="-0.083334"/>
+        <Kern code="97" val="-0.083334"/>
+        <Kern code="65" val="-0.111112"/>
+        <Kern code="79" val="-0.027779"/>
+        <Kern code="67" val="-0.027779"/>
+        <Kern code="71" val="-0.027779"/>
+        <Kern code="81" val="-0.027779"/>
+      </Char>
+      <Char code="71" width="0.784724" height="0.683332" />
+      <Char code="72" width="0.750002" height="0.683332" />
+      <Char code="73" width="0.361112" height="0.683332" >
+        <Kern code="73" val="0.027779"/>
+      </Char>
+      <Char code="74" width="0.51389" height="0.683332" />
+      <Char code="75" width="0.777781" height="0.683332" >
+        <Kern code="79" val="-0.027779"/>
+        <Kern code="67" val="-0.027779"/>
+        <Kern code="71" val="-0.027779"/>
+        <Kern code="81" val="-0.027779"/>
+      </Char>
+      <Char code="76" width="0.625002" height="0.683332" >
+        <Kern code="84" val="-0.083334"/>
+        <Kern code="89" val="-0.083334"/>
+        <Kern code="86" val="-0.111112"/>
+        <Kern code="87" val="-0.111112"/>
+      </Char>
+      <Char code="77" width="0.916669" height="0.683332" />
+      <Char code="78" width="0.750002" height="0.683332" />
+      <Char code="79" width="0.777781" height="0.683332" >
+        <Kern code="88" val="-0.027779"/>
+        <Kern code="87" val="-0.027779"/>
+        <Kern code="65" val="-0.027779"/>
+        <Kern code="86" val="-0.027779"/>
+        <Kern code="89" val="-0.027779"/>
+      </Char>
+      <Char code="80" width="0.680557" height="0.683332" >
+        <Kern code="65" val="-0.083334"/>
+        <Kern code="111" val="-0.027779"/>
+        <Kern code="101" val="-0.027779"/>
+        <Kern code="97" val="-0.027779"/>
+        <Kern code="46" val="-0.083334"/>
+        <Kern code="44" val="-0.083334"/>
+      </Char>
+      <Char code="81" width="0.777781" height="0.683332" depth="0.194445" />
+      <Char code="82" width="0.736113" height="0.683332" >
+        <Kern code="116" val="-0.027779"/>
+        <Kern code="67" val="-0.027779"/>
+        <Kern code="79" val="-0.027779"/>
+        <Kern code="71" val="-0.027779"/>
+        <Kern code="85" val="-0.027779"/>
+        <Kern code="81" val="-0.027779"/>
+        <Kern code="84" val="-0.083334"/>
+        <Kern code="89" val="-0.083334"/>
+        <Kern code="86" val="-0.111112"/>
+        <Kern code="87" val="-0.111112"/>
+      </Char>
+      <Char code="83" width="0.555557" height="0.683332" />
+      <Char code="84" width="0.722224" height="0.683332" >
+        <Kern code="121" val="-0.027779"/>
+        <Kern code="101" val="-0.083334"/>
+        <Kern code="111" val="-0.083334"/>
+        <Kern code="114" val="-0.083334"/>
+        <Kern code="97" val="-0.083334"/>
+        <Kern code="65" val="-0.083334"/>
+        <Kern code="117" val="-0.083334"/>
+      </Char>
+      <Char code="85" width="0.750002" height="0.683332" />
+      <Char code="86" width="0.750002" height="0.683332" italic="0.013888" >
+        <Kern code="111" val="-0.083334"/>
+        <Kern code="101" val="-0.083334"/>
+        <Kern code="117" val="-0.083334"/>
+        <Kern code="114" val="-0.083334"/>
+        <Kern code="97" val="-0.083334"/>
+        <Kern code="65" val="-0.111112"/>
+        <Kern code="79" val="-0.027779"/>
+        <Kern code="67" val="-0.027779"/>
+        <Kern code="71" val="-0.027779"/>
+        <Kern code="81" val="-0.027779"/>
+      </Char>
+      <Char code="87" width="1.027781" height="0.683332" italic="0.013888" >
+        <Kern code="111" val="-0.083334"/>
+        <Kern code="101" val="-0.083334"/>
+        <Kern code="117" val="-0.083334"/>
+        <Kern code="114" val="-0.083334"/>
+        <Kern code="97" val="-0.083334"/>
+        <Kern code="65" val="-0.111112"/>
+        <Kern code="79" val="-0.027779"/>
+        <Kern code="67" val="-0.027779"/>
+        <Kern code="71" val="-0.027779"/>
+        <Kern code="81" val="-0.027779"/>
+      </Char>
+      <Char code="88" width="0.750002" height="0.683332" >
+        <Kern code="79" val="-0.027779"/>
+        <Kern code="67" val="-0.027779"/>
+        <Kern code="71" val="-0.027779"/>
+        <Kern code="81" val="-0.027779"/>
+      </Char>
+      <Char code="89" width="0.750002" height="0.683332" italic="0.025" >
+        <Kern code="101" val="-0.083334"/>
+        <Kern code="111" val="-0.083334"/>
+        <Kern code="114" val="-0.083334"/>
+        <Kern code="97" val="-0.083334"/>
+        <Kern code="65" val="-0.083334"/>
+        <Kern code="117" val="-0.083334"/>
+      </Char>
+      <Char code="90" width="0.611113" height="0.683332" />
+      <Char code="91" width="0.277779" height="0.75" depth="0.25" >
+        <NextLarger fontId="2" code="163"/>
+      </Char>
+      <Char code="92" width="0.500002" height="0.694445" />
+      <Char code="93" width="0.277779" height="0.75" depth="0.25" >
+        <NextLarger fontId="2" code="164"/>
+      </Char>
+      <Char code="94" width="0.500002" height="0.694445" />
+      <Char code="95" width="0.277779" height="0.667859" />
+      <Char code="96" width="0.277779" height="0.694445" >
+        <Lig code="96" ligCode="92"/>
+      </Char>
+      <Char code="97" width="0.500002" height="0.430555" >
+        <Kern code="118" val="-0.027779"/>
+        <Kern code="106" val="0.055555"/>
+        <Kern code="121" val="-0.027779"/>
+        <Kern code="119" val="-0.027779"/>
+      </Char>
+      <Char code="98" width="0.555557" height="0.694445" >
+        <Kern code="101" val="0.027779"/>
+        <Kern code="111" val="0.027779"/>
+        <Kern code="120" val="-0.027779"/>
+        <Kern code="100" val="0.027779"/>
+        <Kern code="99" val="0.027779"/>
+        <Kern code="113" val="0.027779"/>
+        <Kern code="118" val="-0.027779"/>
+        <Kern code="106" val="0.055555"/>
+        <Kern code="121" val="-0.027779"/>
+        <Kern code="119" val="-0.027779"/>
+      </Char>
+      <Char code="99" width="0.444446" height="0.430555" >
+        <Kern code="104" val="-0.027779"/>
+        <Kern code="107" val="-0.027779"/>
+      </Char>
+      <Char code="100" width="0.555557" height="0.694445" />
+      <Char code="101" width="0.444446" height="0.430555" />
+      <Char code="102" width="0.305557" height="0.694445" italic="0.077779" >
+        <Lig code="105" ligCode="175"/>
+        <Lig code="102" ligCode="174"/>
+        <Lig code="108" ligCode="176"/>
+        <Kern code="39" val="0.077779"/>
+        <Kern code="63" val="0.077779"/>
+        <Kern code="33" val="0.077779"/>
+        <Kern code="41" val="0.077779"/>
+        <Kern code="93" val="0.077779"/>
+      </Char>
+      <Char code="103" width="0.500002" height="0.430555" depth="0.194445" italic="0.013888" >
+        <Kern code="106" val="0.027779"/>
+      </Char>
+      <Char code="104" width="0.555557" height="0.694445" >
+        <Kern code="116" val="-0.027779"/>
+        <Kern code="117" val="-0.027779"/>
+        <Kern code="98" val="-0.027779"/>
+        <Kern code="121" val="-0.027779"/>
+        <Kern code="118" val="-0.027779"/>
+        <Kern code="119" val="-0.027779"/>
+      </Char>
+      <Char code="105" width="0.277779" height="0.667859" />
+      <Char code="106" width="0.305557" height="0.667859" depth="0.194445" />
+      <Char code="107" width="0.527781" height="0.694445" >
+        <!--<Kern code="97" val="-0.055555"/>-->
+        <Kern code="101" val="-0.027779"/>
+        <Kern code="97" val="-0.027779"/>
+        <Kern code="111" val="-0.027779"/>
+        <Kern code="99" val="-0.027779"/>
+      </Char>
+      <Char code="108" width="0.277779" height="0.694445" />
+      <Char code="109" width="0.833336" height="0.430555" >
+        <Kern code="116" val="-0.027779"/>
+        <Kern code="117" val="-0.027779"/>
+        <Kern code="98" val="-0.027779"/>
+        <Kern code="121" val="-0.027779"/>
+        <Kern code="118" val="-0.027779"/>
+        <Kern code="119" val="-0.027779"/>
+      </Char>
+      <Char code="110" width="0.555557" height="0.430555" >
+        <Kern code="116" val="-0.027779"/>
+        <Kern code="117" val="-0.027779"/>
+        <Kern code="98" val="-0.027779"/>
+        <Kern code="121" val="-0.027779"/>
+        <Kern code="118" val="-0.027779"/>
+        <Kern code="119" val="-0.027779"/>
+      </Char>
+      <Char code="111" width="0.500002" height="0.430555" >
+        <Kern code="101" val="0.027779"/>
+        <Kern code="111" val="0.027779"/>
+        <Kern code="120" val="-0.027779"/>
+        <Kern code="100" val="0.027779"/>
+        <Kern code="99" val="0.027779"/>
+        <Kern code="113" val="0.027779"/>
+        <Kern code="118" val="-0.027779"/>
+        <Kern code="106" val="0.055555"/>
+        <Kern code="121" val="-0.027779"/>
+        <Kern code="119" val="-0.027779"/>
+      </Char>
+      <Char code="112" width="0.555557" height="0.430555" depth="0.194445" >
+        <Kern code="101" val="0.027779"/>
+        <Kern code="111" val="0.027779"/>
+        <Kern code="120" val="-0.027779"/>
+        <Kern code="100" val="0.027779"/>
+        <Kern code="99" val="0.027779"/>
+        <Kern code="113" val="0.027779"/>
+        <Kern code="118" val="-0.027779"/>
+        <Kern code="106" val="0.055555"/>
+        <Kern code="121" val="-0.027779"/>
+        <Kern code="119" val="-0.027779"/>
+      </Char>
+      <Char code="113" width="0.527779" height="0.430555" depth="0.194445" />
+      <Char code="114" width="0.391668" height="0.430555" />
+      <Char code="115" width="0.394445" height="0.430555" />
+      <Char code="116" width="0.38889" height="0.61508" >
+        <Kern code="121" val="-0.027779"/>
+        <Kern code="119" val="-0.027779"/>
+      </Char>
+      <Char code="117" width="0.555557" height="0.430555" >
+        <Kern code="119" val="-0.027779"/>
+      </Char>
+      <Char code="118" width="0.527781" height="0.430555" italic="0.013888" >
+        <!--<Kern code="97" val="-0.055555"/>-->
+        <Kern code="101" val="-0.027779"/>
+        <Kern code="97" val="-0.027779"/>
+        <Kern code="111" val="-0.027779"/>
+        <Kern code="99" val="-0.027779"/>
+      </Char>
+      <Char code="119" width="0.722224" height="0.430555" italic="0.013888" >
+        <Kern code="101" val="-0.027779"/>
+        <Kern code="97" val="-0.027779"/>
+        <Kern code="111" val="-0.027779"/>
+        <Kern code="99" val="-0.027779"/>
+      </Char>
+      <Char code="120" width="0.527781" height="0.430555" />
+      <Char code="121" width="0.527781" height="0.430555" depth="0.194445" italic="0.013888" >
+        <Kern code="111" val="-0.027779"/>
+        <Kern code="101" val="-0.027779"/>
+        <Kern code="97" val="-0.027779"/>
+        <Kern code="46" val="-0.083334"/>
+        <Kern code="44" val="-0.083334"/>
+      </Char>
+      <Char code="122" width="0.444446" height="0.430555" />
+      <Char code="123" width="0.500002" height="0.430555" italic="0.027779" >
+        <Lig code="45" ligCode="124"/>
+      </Char>
+      <Char code="124" width="1.000003" height="0.430555" italic="0.027779" />
+      <Char code="125" width="0.500002" height="0.694445" />
+      <Char code="126" width="0.500002" height="0.667859" />
+      <Char code="196" width="0.500002" height="0.667859" />
+    </Font>
+
+    <Font name="cmex10.ttf" id="2" space="0.0" xHeight="0.430555" quad="1.000003">
+      <Char code="161" width="0.458336" height="0.039999" depth="1.160013" >
+        <NextLarger fontId="2" code="179"/>
+      </Char>
+      <Char code="162" width="0.458336" height="0.039999" depth="1.160013" >
+        <NextLarger fontId="2" code="180"/>
+      </Char>
+      <Char code="163" width="0.416669" height="0.039999" depth="1.160013" >
+        <NextLarger fontId="2" code="104"/>
+      </Char>
+      <Char code="164" width="0.416669" height="0.039999" depth="1.160013" >
+        <NextLarger fontId="2" code="105"/>
+      </Char>
+      <Char code="165" width="0.472224" height="0.039999" depth="1.160013" >
+        <NextLarger fontId="2" code="106"/>
+      </Char>
+      <Char code="166" width="0.472224" height="0.039999" depth="1.160013" >
+        <NextLarger fontId="2" code="107"/>
+      </Char>
+      <Char code="167" width="0.472224" height="0.039999" depth="1.160013" >
+        <NextLarger fontId="2" code="108"/>
+      </Char>
+      <Char code="168" width="0.472224" height="0.039999" depth="1.160013" >
+        <NextLarger fontId="2" code="109"/>
+      </Char>
+      <Char code="169" width="0.583336" height="0.039999" depth="1.160013" >
+        <NextLarger fontId="2" code="110"/>
+      </Char>
+      <Char code="170" width="0.583336" height="0.039999" depth="1.160013" >
+        <NextLarger fontId="2" code="111"/>
+      </Char>
+      <Char code="173" width="0.472224" height="0.039999" depth="1.160013" >
+        <NextLarger fontId="2" code="68"/>
+      </Char>
+      <Char code="174" width="0.472224" height="0.039999" depth="1.160013" >
+        <NextLarger fontId="2" code="69"/>
+      </Char>
+      <Char code="175" width="0.333334" depth="0.600006" >
+        <Extension rep="175" />
+      </Char>
+      <Char code="176" width="0.555557" depth="0.600006" >
+        <Extension rep="176" />
+      </Char>
+      <Char code="177" width="0.577779" height="0.039999" depth="1.160013" >
+        <NextLarger fontId="2" code="46"/>
+      </Char>
+      <Char code="178" width="0.577779" height="0.039999" depth="1.160013" >
+        <NextLarger fontId="2" code="47"/>
+      </Char>
+      <Char code="179" width="0.597224" height="0.039999" depth="1.760019" >
+        <NextLarger fontId="2" code="181"/>
+      </Char>
+      <Char code="180" width="0.597224" height="0.039999" depth="1.760019" >
+        <NextLarger fontId="2" code="182"/>
+      </Char>
+      <Char code="181" width="0.7361145" height="0.039999" depth="2.360025" >
+        <NextLarger fontId="2" code="195"/>
+      </Char>
+      <Char code="182" width="0.7361145" height="0.039999" depth="2.360025" >
+        <NextLarger fontId="2" code="33"/>
+      </Char>
+      <Char code="183" width="0.527781" height="0.039999" depth="2.360025" >
+        <NextLarger fontId="2" code="34"/>
+      </Char>
+      <Char code="184" width="0.527781" height="0.039999" depth="2.360025" >
+        <NextLarger fontId="2" code="35"/>
+      </Char>
+      <Char code="185" width="0.583336" height="0.039999" depth="2.360025" >
+        <NextLarger fontId="2" code="36"/>
+      </Char>
+      <Char code="186" width="0.583336" height="0.039999" depth="2.360025" >
+        <NextLarger fontId="2" code="37"/>
+      </Char>
+      <Char code="187" width="0.583336" height="0.039999" depth="2.360025" >
+        <NextLarger fontId="2" code="38"/>
+      </Char>
+      <Char code="188" width="0.583336" height="0.039999" depth="2.360025" >
+        <NextLarger fontId="2" code="39"/>
+      </Char>
+      <Char code="189" width="0.750002" height="0.039999" depth="2.360025" >
+        <NextLarger fontId="2" code="40"/>
+      </Char>
+      <Char code="190" width="0.750002" height="0.039999" depth="2.360025" >
+        <NextLarger fontId="2" code="41"/>
+      </Char>
+      <Char code="191" width="0.750002" height="0.039999" depth="2.360025" >
+        <NextLarger fontId="2" code="42"/>
+      </Char>
+      <Char code="192" width="0.750002" height="0.039999" depth="2.360025" >
+        <NextLarger fontId="2" code="43"/>
+      </Char>
+      <Char code="193" width="1.044447" height="0.039999" depth="2.360025" >
+        <NextLarger fontId="2" code="44"/>
+      </Char>
+      <Char code="194" width="1.044447" height="0.039999" depth="2.360025" >
+        <NextLarger fontId="2" code="45"/>
+      </Char>
+      <Char code="195" width="0.79167" height="0.039999" depth="2.9600315" >
+        <NextLarger fontId="2" code="48"/>
+      </Char>
+      <Char code="33" width="0.79167" height="0.039999" depth="2.9600315" >
+        <NextLarger fontId="2" code="49"/>
+      </Char>
+      <Char code="34" width="0.583336" height="0.039999" depth="2.9600315" >
+        <NextLarger fontId="2" code="50"/>
+      </Char>
+      <Char code="35" width="0.583336" height="0.039999" depth="2.9600315" >
+        <NextLarger fontId="2" code="51"/>
+      </Char>
+      <Char code="36" width="0.638891" height="0.039999" depth="2.9600315" >
+        <NextLarger fontId="2" code="52"/>
+      </Char>
+      <Char code="37" width="0.638891" height="0.039999" depth="2.9600315" >
+        <NextLarger fontId="2" code="53"/>
+      </Char>
+      <Char code="38" width="0.638891" height="0.039999" depth="2.9600315" >
+        <NextLarger fontId="2" code="54"/>
+      </Char>
+      <Char code="39" width="0.638891" height="0.039999" depth="2.9600315" >
+        <NextLarger fontId="2" code="55"/>
+      </Char>
+      <Char code="40" width="0.80556" height="0.039999" depth="2.9600315" >
+        <NextLarger fontId="2" code="56"/>
+      </Char>
+      <Char code="41" width="0.80556" height="0.039999" depth="2.9600315" >
+        <NextLarger fontId="2" code="57"/>
+      </Char>
+      <Char code="42" width="0.80556" height="0.039999" depth="2.9600315" />
+      <Char code="43" width="0.80556" height="0.039999" depth="2.9600315" />
+      <Char code="44" width="1.2777815" height="0.039999" depth="2.9600315" />
+      <Char code="45" width="1.2777815" height="0.039999" depth="2.9600315" />
+      <Char code="46" width="0.811114" height="0.039999" depth="1.760019" >
+        <NextLarger fontId="2" code="193"/>
+      </Char>
+      <Char code="47" width="0.811114" height="0.039999" depth="1.760019" >
+        <NextLarger fontId="2" code="194"/>
+      </Char>
+      <Char code="48" width="0.875003" height="0.039999" depth="1.760019" >
+        <Extension top="48" bot="64" rep="66" />
+      </Char>
+      <Char code="49" width="0.875003" height="0.039999" depth="1.760019" >
+        <Extension top="49" bot="65" rep="67" />
+      </Char>
+      <Char code="50" width="0.666669" height="0.039999" depth="1.760019" >
+        <Extension top="50" bot="52" rep="54" />
+      </Char>
+      <Char code="51" width="0.666669" height="0.039999" depth="1.760019" >
+        <Extension top="51" bot="53" rep="55" />
+      </Char>
+      <Char code="52" width="0.666669" height="0.039999" depth="1.760019" >
+        <Extension bot="52" rep="54" />
+      </Char>
+      <Char code="53" width="0.666669" height="0.039999" depth="1.760019" >
+        <Extension bot="53" rep="55" />
+      </Char>
+      <Char code="54" width="0.666669" depth="0.600006" >
+        <Extension top="50" rep="54" />
+      </Char>
+      <Char code="55" width="0.666669" depth="0.600006" >
+        <Extension top="51" rep="55" />
+      </Char>
+      <Char code="56" width="0.888891" depth="0.900009" >
+        <Extension top="56" mid="60" bot="58" rep="62" />
+      </Char>
+      <Char code="57" width="0.888891" depth="0.900009" >
+        <Extension top="57" mid="61" bot="59" rep="62" />
+      </Char>
+      <Char code="58" width="0.888891" depth="0.900009" >
+        <Extension top="56" bot="58" rep="62" />
+      </Char>
+      <Char code="59" width="0.888891" depth="0.900009" >
+        <Extension top="57" bot="59" rep="62" />
+      </Char>
+      <Char code="60" width="0.888891" depth="1.800018" >
+        <Extension rep="63" />
+      </Char>
+      <Char code="61" width="0.888891" depth="1.800018" >
+        <Extension rep="119" />
+      </Char>
+      <Char code="62" width="0.888891" depth="0.300003" >
+        <Extension rep="62" />
+      </Char>
+      <Char code="63" width="0.666669" depth="0.600006" >
+        <Extension top="120" bot="121" rep="63" />
+      </Char>
+      <Char code="64" width="0.875003" height="0.039999" depth="1.760019" >
+        <Extension top="56" bot="59" rep="62" />
+      </Char>
+      <Char code="65" width="0.875003" height="0.039999" depth="1.760019" >
+        <Extension top="57" bot="58" rep="62" />
+      </Char>
+      <Char code="66" width="0.875003" depth="0.600006" >
+        <Extension rep="66" />
+      </Char>
+      <Char code="67" width="0.875003" depth="0.600006" >
+        <Extension rep="67" />
+      </Char>
+      <Char code="68" width="0.611113" height="0.039999" depth="1.760019" >
+        <NextLarger fontId="2" code="191"/>
+      </Char>
+      <Char code="69" width="0.611113" height="0.039999" depth="1.760019" >
+        <NextLarger fontId="2" code="192"/>
+      </Char>
+      <Char code="70" width="0.833336" depth="1.000013" >
+        <NextLarger fontId="2" code="71"/>
+      </Char>
+      <Char code="71" width="1.1111145" height="0.100001" depth="1.500012" />
+      <Char code="72" width="0.472223" depth="1.111122" italic="0.194446" >
+        <NextLarger fontId="2" code="73"/>
+      </Char>
+      <Char code="73" width="0.555557" depth="2.222246" italic="0.444446" />
+      <Char code="74" width="1.1111145" depth="1.000013" >
+        <NextLarger fontId="2" code="75"/>
+      </Char>
+      <Char code="75" width="1.511116" height="0.100001" depth="1.500012" />
+      <Char code="76" width="1.1111145" depth="1.000013" >
+        <NextLarger fontId="2" code="77"/>
+      </Char>
+      <Char code="77" width="1.511116" height="0.100001" depth="1.500012" />
+      <Char code="78" width="1.1111145" depth="1.000013" >
+        <NextLarger fontId="2" code="79"/>
+      </Char>
+      <Char code="79" width="1.511116" height="0.100001" depth="1.500012" />
+      <Char code="80" width="1.055559" depth="1.000013" >
+        <NextLarger fontId="2" code="88"/>
+      </Char>
+      <Char code="81" width="0.9444475" depth="1.000013" >
+        <NextLarger fontId="2" code="89"/>
+      </Char>
+      <Char code="82" width="0.472223" depth="1.111122" italic="0.194446" >
+        <NextLarger fontId="2" code="90"/>
+      </Char>
+      <Char code="83" width="0.833336" depth="1.000013" >
+        <NextLarger fontId="2" code="91"/>
+      </Char>
+      <Char code="84" width="0.833336" depth="1.000013" >
+        <NextLarger fontId="2" code="92"/>
+      </Char>
+      <Char code="85" width="0.833336" depth="1.000013" >
+        <NextLarger fontId="2" code="93"/>
+      </Char>
+      <Char code="86" width="0.833336" depth="1.000013" >
+        <NextLarger fontId="2" code="94"/>
+      </Char>
+      <Char code="87" width="0.833336" depth="1.000013" >
+        <NextLarger fontId="2" code="95"/>
+      </Char>
+      <Char code="88" width="1.444448" height="0.100001" depth="1.500012" />
+      <Char code="89" width="1.2777815" height="0.100001" depth="1.500012" />
+      <Char code="90" width="0.555557" depth="2.222246" italic="0.444446" />
+      <Char code="91" width="1.1111145" height="0.100001" depth="1.500012" />
+      <Char code="92" width="1.1111145" height="0.100001" depth="1.500012" />
+      <Char code="93" width="1.1111145" height="0.100001" depth="1.500012" />
+      <Char code="94" width="1.1111145" height="0.100001" depth="1.500012" />
+      <Char code="95" width="1.1111145" height="0.100001" depth="1.500012" />
+      <Char code="96" width="0.9444475" depth="1.000013" >
+        <NextLarger fontId="2" code="97"/>
+      </Char>
+      <Char code="97" width="1.2777815" height="0.100001" depth="1.500012" />
+      <Char code="98" width="0.555557" height="0.722223" >
+        <NextLarger fontId="2" code="99"/>
+      </Char>
+      <Char code="99" width="1.000003" height="0.75" >
+        <NextLarger fontId="2" code="100"/>
+      </Char>
+      <Char code="100" width="1.444448" height="0.75" />
+      <Char code="101" width="0.555557" height="0.722223" >
+        <NextLarger fontId="2" code="102"/>
+      </Char>
+      <Char code="102" width="1.000003" height="0.75" >
+        <NextLarger fontId="2" code="103"/>
+      </Char>
+      <Char code="103" width="1.444448" height="0.75" />
+      <Char code="104" width="0.472224" height="0.039999" depth="1.760019" >
+        <NextLarger fontId="2" code="183"/>
+      </Char>
+      <Char code="105" width="0.472224" height="0.039999" depth="1.760019" >
+        <NextLarger fontId="2" code="184"/>
+      </Char>
+      <Char code="106" width="0.527781" height="0.039999" depth="1.760019" >
+        <NextLarger fontId="2" code="185"/>
+      </Char>
+      <Char code="107" width="0.527781" height="0.039999" depth="1.760019" >
+        <NextLarger fontId="2" code="186"/>
+      </Char>
+      <Char code="108" width="0.527781" height="0.039999" depth="1.760019" >
+        <NextLarger fontId="2" code="187"/>
+      </Char>
+      <Char code="109" width="0.527781" height="0.039999" depth="1.760019" >
+        <NextLarger fontId="2" code="188"/>
+      </Char>
+      <Char code="110" width="0.666669" height="0.039999" depth="1.760019" >
+        <NextLarger fontId="2" code="189"/>
+      </Char>
+      <Char code="111" width="0.666669" height="0.039999" depth="1.760019" >
+        <NextLarger fontId="2" code="190"/>
+      </Char>
+      <Char code="112" width="1.000003" height="0.039999" depth="1.160013" >
+        <NextLarger fontId="2" code="113"/>
+      </Char>
+      <Char code="113" width="1.000003" height="0.039999" depth="1.760019" >
+        <NextLarger fontId="2" code="114"/>
+      </Char>
+      <Char code="114" width="1.000003" height="0.039999" depth="2.360025" >
+        <NextLarger fontId="2" code="115"/>
+      </Char>
+      <Char code="115" width="1.000003" height="0.039999" depth="2.9600315" >
+        <NextLarger fontId="2" code="116"/>
+      </Char>
+      <Char code="116" width="1.055559" depth="1.800018" >
+        <Extension top="118" bot="116" rep="117" />
+      </Char>
+      <Char code="117" width="1.055559" depth="0.600006" />
+      <Char code="118" width="1.055559" height="0.039999" depth="0.560007" />
+      <Char code="119" width="0.777781" depth="0.600006" >
+        <Extension top="126" bot="196" rep="119" />
+      </Char>
+      <Char code="120" width="0.666669" depth="0.600006" >
+        <Extension top="120" rep="63" />
+      </Char>
+      <Char code="121" width="0.666669" depth="0.600006" >
+        <Extension bot="121" rep="63" />
+      </Char>
+      <Char code="122" width="0.450005" height="0.119998" />
+      <Char code="123" width="0.450005" height="0.119998" />
+      <Char code="124" width="0.450005" height="0.119998" />
+      <Char code="125" width="0.450005" height="0.119998" />
+      <Char code="126" width="0.777781" depth="0.600006" >
+        <Extension top="126" rep="119" />
+      </Char>
+      <Char code="196" width="0.777781" depth="0.600006" >
+        <Extension bot="196" rep="119" />
+      </Char>
+    </Font>
+
+    <Font name="cmsy10.ttf" id="3" space="0.0" xHeight="0.430555" skewChar="48" quad="1.000003" >
+      <Char code="161" width="0.777781" height="0.583334" depth="0.083334" />
+      <Char code="162" width="0.277779" height="0.444446" depth="-0.055554" />
+      <Char code="163" width="0.777781" height="0.583334" depth="0.083334" />
+      <Char code="164" width="0.500002" height="0.465279" depth="-0.034721" />
+      <Char code="165" width="0.777781" height="0.583334" depth="0.083334" />
+      <Char code="166" width="0.500002" height="0.444446" depth="-0.055554" />
+      <Char code="167" width="0.777781" height="0.583334" depth="0.083334" />
+      <Char code="168" width="0.777781" height="0.583334" depth="0.083334" />
+      <Char code="169" width="0.777781" height="0.583334" depth="0.083334" />
+      <Char code="170" width="0.777781" height="0.583334" depth="0.083334" />
+      <Char code="173" width="0.777781" height="0.583334" depth="0.083334" />
+      <Char code="174" width="0.777781" height="0.583334" depth="0.083334" />
+      <Char code="175" width="0.777781" height="0.583334" depth="0.083334" />
+      <Char code="176" width="1.000003" height="0.694445" depth="0.194445" />
+      <Char code="177" width="0.500002" height="0.444446" depth="-0.055554" />
+      <Char code="178" width="0.500002" height="0.444446" depth="-0.055554" />
+      <Char code="179" width="0.777781" height="0.463748" depth="-0.036252" />
+      <Char code="180" width="0.777781" height="0.463748" depth="-0.036252" />
+      <Char code="181" width="0.777781" height="0.635971" depth="0.135971" />
+      <Char code="182" width="0.777781" height="0.635971" depth="0.135971" />
+      <Char code="183" width="0.777781" height="0.635971" depth="0.135971" />
+      <Char code="184" width="0.777781" height="0.635971" depth="0.135971" />
+      <Char code="185" width="0.777781" height="0.635971" depth="0.135971" />
+      <Char code="186" width="0.777781" height="0.635971" depth="0.135971" />
+      <Char code="187" width="0.777781" height="0.366875" depth="-0.133125" />
+      <Char code="188" width="0.777781" height="0.483122" depth="-0.016878" />
+      <Char code="189" width="0.777781" height="0.539098" depth="0.039098" />
+      <Char code="190" width="0.777781" height="0.539098" depth="0.039098" />
+      <Char code="191" width="1.000003" height="0.539098" depth="0.039098" />
+      <Char code="192" width="1.000003" height="0.539098" depth="0.039098" />
+      <Char code="193" width="0.777781" height="0.539098" depth="0.039098" />
+      <Char code="194" width="0.777781" height="0.539098" depth="0.039098" />
+      <Char code="195" width="1.000003" height="0.366875" depth="-0.133125" />
+      <Char code="33" width="1.000003" height="0.366875" depth="-0.133125" />
+      <Char code="34" width="0.500002" height="0.694445" depth="0.194443" >
+        <NextLarger fontId="2" code="120"/>
+      </Char>
+      <Char code="35" width="0.500002" height="0.694445" depth="0.194443" >
+        <NextLarger fontId="2" code="121"/>
+      </Char>
+      <Char code="36" width="1.000003" height="0.366875" depth="-0.133125" />
+      <Char code="37" width="1.000003" height="0.694445" depth="0.194443" />
+      <Char code="38" width="1.000003" height="0.694445" depth="0.194443" />
+      <Char code="39" width="0.777781" height="0.463748" depth="-0.036252" />
+      <Char code="40" width="1.000003" height="0.366875" depth="-0.133125" />
+      <Char code="41" width="1.000003" height="0.366875" depth="-0.133125" />
+      <Char code="42" width="0.611113" height="0.694445" depth="0.194443" >
+        <NextLarger fontId="2" code="126"/>
+      </Char>
+      <Char code="43" width="0.611113" height="0.694445" depth="0.194443" >
+        <NextLarger fontId="2" code="196"/>
+      </Char>
+      <Char code="44" width="1.000003" height="0.366875" depth="-0.133125" />
+      <Char code="45" width="1.000003" height="0.694445" depth="0.194443" />
+      <Char code="46" width="1.000003" height="0.694445" depth="0.194443" />
+      <Char code="47" width="0.777781" height="0.430555" />
+      <Char code="48" width="0.275" height="0.555557" />
+      <Char code="49" width="1.000003" height="0.430555" />
+      <Char code="50" width="0.666669" height="0.539098" depth="0.039098" />
+      <Char code="51" width="0.666669" height="0.539098" depth="0.039098" />
+      <Char code="52" width="0.888891" height="0.694445" depth="0.194445" />
+      <Char code="53" width="0.888891" height="0.694445" depth="0.194445" />
+      <Char code="54" width="0.0" height="0.694445" depth="0.194443" />
+      <Char code="55" width="0.0" height="0.366875" depth="-0.133125" />
+      <Char code="56" width="0.555557" height="0.694445" />
+      <Char code="57" width="0.555557" height="0.694445" />
+      <Char code="58" width="0.666669" height="0.430555" />
+      <Char code="59" width="0.500002" height="0.75" depth="0.055555" />
+      <Char code="60" width="0.722224" height="0.694445" />
+      <Char code="61" width="0.722224" height="0.694445" />
+      <Char code="62" width="0.777781" height="0.694445" />
+      <Char code="63" width="0.777781" height="0.694445" />
+      <Char code="64" width="0.611113" height="0.694445" />
+      <Char code="65" width="0.798471" height="0.683332" >
+        <Kern code="48" val="0.19445"/>
+      </Char>
+      <Char code="66" width="0.65681" height="0.683332" italic="0.030413" >
+        <Kern code="48" val="0.138893"/>
+      </Char>
+      <Char code="67" width="0.526529" height="0.683332" italic="0.058336" >
+        <Kern code="48" val="0.138893"/>
+      </Char>
+      <Char code="68" width="0.771393" height="0.683332" italic="0.027779" >
+        <Kern code="48" val="0.083336"/>
+      </Char>
+      <Char code="69" width="0.5277815" height="0.683332" italic="0.089441" >
+        <Kern code="48" val="0.1111145"/>
+      </Char>
+      <Char code="70" width="0.718748" height="0.683332" italic="0.099306" >
+        <Kern code="48" val="0.1111145"/>
+      </Char>
+      <Char code="71" width="0.594866" height="0.683332" depth="0.097223" italic="0.059303" >
+        <Kern code="48" val="0.1111145"/>
+      </Char>
+      <Char code="72" width="0.844518" height="0.683332" italic="0.009654" >
+        <Kern code="48" val="0.1111145"/>
+      </Char>
+      <Char code="73" width="0.544516" height="0.683332" italic="0.073822" >
+        <Kern code="48" val="0.027779"/>
+      </Char>
+      <Char code="74" width="0.67778" height="0.683332" depth="0.097223" italic="0.184721" >
+        <Kern code="48" val="0.166672"/>
+      </Char>
+      <Char code="75" width="0.7619505" height="0.683332" italic="0.014445" >
+        <Kern code="48" val="0.055557"/>
+      </Char>
+      <Char code="76" width="0.689725" height="0.683332" >
+        <Kern code="48" val="0.138893"/>
+      </Char>
+      <Char code="77" width="1.2009" height="0.683332" >
+        <Kern code="48" val="0.138893"/>
+      </Char>
+      <Char code="78" width="0.820491" height="0.683332" italic="0.14736" >
+        <Kern code="48" val="0.083336"/>
+      </Char>
+      <Char code="79" width="0.796114" height="0.683332" italic="0.027779" >
+        <Kern code="48" val="0.1111145"/>
+      </Char>
+      <Char code="80" width="0.6955595" height="0.683332" italic="0.082222" >
+        <Kern code="48" val="0.083336"/>
+      </Char>
+      <Char code="81" width="0.81667" height="0.683332" depth="0.097223" >
+        <Kern code="48" val="0.1111145"/>
+      </Char>
+      <Char code="82" width="0.847504" height="0.683332" >
+        <Kern code="48" val="0.083336"/>
+      </Char>
+      <Char code="83" width="0.605558" height="0.683332" italic="0.074995" >
+        <Kern code="48" val="0.138893"/>
+      </Char>
+      <Char code="84" width="0.544644" height="0.683332" italic="0.254168" >
+        <Kern code="48" val="0.027779"/>
+      </Char>
+      <Char code="85" width="0.625832" height="0.683332" italic="0.099306" >
+        <Kern code="48" val="0.083336"/>
+      </Char>
+      <Char code="86" width="0.6127825" height="0.683332" italic="0.082222" >
+        <Kern code="48" val="0.027779"/>
+      </Char>
+      <Char code="87" width="0.987783" height="0.683332" italic="0.082222" >
+        <Kern code="48" val="0.083336"/>
+      </Char>
+      <Char code="88" width="0.713297" height="0.683332" italic="0.146428" >
+        <Kern code="48" val="0.138893"/>
+      </Char>
+      <Char code="89" width="0.668337" height="0.683332" depth="0.097223" italic="0.082222" >
+        <Kern code="48" val="0.083336"/>
+      </Char>
+      <Char code="90" width="0.724726" height="0.683332" italic="0.079443" >
+        <Kern code="48" val="0.138893"/>
+      </Char>
+      <Char code="91" width="0.666669" height="0.555557" />
+      <Char code="92" width="0.666669" height="0.555557" />
+      <Char code="93" width="0.666669" height="0.555557" />
+      <Char code="94" width="0.666669" height="0.555557" />
+      <Char code="95" width="0.666669" height="0.555557" />
+      <Char code="96" width="0.611113" height="0.694445" />
+      <Char code="97" width="0.611113" height="0.694445" />
+      <Char code="98" width="0.444446" height="0.75" depth="0.25" >
+        <NextLarger fontId="2" code="165"/>
+      </Char>
+      <Char code="99" width="0.444446" height="0.75" depth="0.25" >
+        <NextLarger fontId="2" code="166"/>
+      </Char>
+      <Char code="100" width="0.444446" height="0.75" depth="0.25" >
+        <NextLarger fontId="2" code="167"/>
+      </Char>
+      <Char code="101" width="0.444446" height="0.75" depth="0.25" >
+        <NextLarger fontId="2" code="168"/>
+      </Char>
+      <Char code="102" width="0.500002" height="0.75" depth="0.25" >
+        <NextLarger fontId="2" code="169"/>
+      </Char>
+      <Char code="103" width="0.500002" height="0.75" depth="0.25" >
+        <NextLarger fontId="2" code="170"/>
+      </Char>
+      <Char code="104" width="0.38889" height="0.75" depth="0.25" >
+        <NextLarger fontId="2" code="173"/>
+      </Char>
+      <Char code="105" width="0.38889" height="0.75" depth="0.25" >
+        <NextLarger fontId="2" code="174"/>
+      </Char>
+      <Char code="106" width="0.277779" height="0.75" depth="0.25" >
+        <NextLarger fontId="2" code="175"/>
+      </Char>
+      <Char code="107" width="0.500002" height="0.75" depth="0.25" >
+        <NextLarger fontId="2" code="176"/>
+      </Char>
+      <Char code="108" width="0.500002" height="0.75" depth="0.25" >
+        <NextLarger fontId="2" code="63"/>
+      </Char>
+      <Char code="109" width="0.611113" height="0.75" depth="0.25" >
+        <NextLarger fontId="2" code="119"/>
+      </Char>
+      <Char code="110" width="0.500002" height="0.75" depth="0.25" >
+        <NextLarger fontId="2" code="178"/>
+      </Char>
+      <Char code="111" width="0.277779" height="0.694445" depth="0.194443" />
+      <Char code="112" width="0.833336" height="0.039999" depth="0.960001" />
+      <Char code="113" width="0.750002" height="0.683332" />
+      <Char code="114" width="0.833336" height="0.683332" />
+      <Char code="115" width="0.416669" height="0.694445" depth="0.194445" italic="0.111112" />
+      <Char code="116" width="0.666669" height="0.555557" />
+      <Char code="117" width="0.666669" height="0.555557" />
+      <Char code="118" width="0.777781" height="0.635971" depth="0.135971" />
+      <Char code="119" width="0.777781" height="0.635971" depth="0.135971" />
+      <Char code="120" width="0.4444475" height="0.694445" depth="0.194445" />
+      <Char code="121" width="0.444446" height="0.694445" depth="0.194445" />
+      <Char code="122" width="0.444446" height="0.694445" depth="0.194445" />
+      <Char code="123" width="0.611113" height="0.694445" depth="0.194445" />
+      <Char code="124" width="0.777781" height="0.694445" depth="0.129629" />
+      <Char code="125" width="0.777781" height="0.694445" depth="0.129629" />
+      <Char code="126" width="0.777781" height="0.694445" depth="0.129629" />
+      <Char code="127" width="0.777781" height="0.694445" depth="0.129629" />
+    </Font>
+
+  </FontDescriptions>
+
+</TeXFont>

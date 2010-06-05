@@ -1,0 +1,171 @@
+<?xml version='1.0'?>
+
+<PredefinedFormulas enabled="true">
+
+  <!-- Composed TeX symbols -->
+
+  <Formula name="ne" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\not\equals" />
+    </CreateFormula>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="neq" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\not\equals" />
+    </CreateFormula>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="hbar" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\bar" />
+    </CreateFormula>
+    <MethodInvocation name="AddStrut" formula="f">
+      <Argument type="Unit" value="Mu" />
+      <Argument type="double" value="-9" />
+      <Argument type="double" value="0" />
+      <Argument type="double" value="0" />
+    </MethodInvocation>
+    <MethodInvocation name="Add" formula="f">
+      <Argument type="string" value="h" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="surd" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\surdsign" />
+    </CreateFormula>
+    <MethodInvocation name="CenterOnAxis" formula="f" />
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="ldots" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\ldotp\ldotp\ldotp" />
+    </CreateFormula>
+    <MethodInvocation name="SetFixedTypes" formula="f">
+      <Argument type="AtomType" value="Inner" />
+      <Argument type="AtomType" value="Inner" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="cdots" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\cdotp\cdotp\cdotp" />
+    </CreateFormula>
+    <MethodInvocation name="SetFixedTypes" formula="f">
+      <Argument type="AtomType" value="Inner" />
+      <Argument type="AtomType" value="Inner" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="bowtie" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\triangleright" />
+    </CreateFormula>
+    <MethodInvocation name="SetFixedTypes" formula="f">
+      <Argument type="AtomType" value="Relation" />
+      <Argument type="AtomType" value="Ordinary" />
+    </MethodInvocation>
+    <CreateFormula name="g">
+      <Argument type="string" value="\triangleleft" />
+    </CreateFormula>
+    <MethodInvocation name="SetFixedTypes" formula="g">
+      <Argument type="AtomType" value="Ordinary" />
+      <Argument type="AtomType" value="Relation" />
+    </MethodInvocation>
+    <MethodInvocation name="AddStrut" formula="f">
+      <Argument type="Unit" value="Mu" />
+      <Argument type="double" value="-1.8" />
+      <Argument type="double" value="0" />
+      <Argument type="double" value="0" />
+    </MethodInvocation>
+    <MethodInvocation name="Add" formula="f">
+      <Argument type="Formula" value="g" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="models" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\vert" />
+    </CreateFormula>
+    <MethodInvocation name="SetFixedTypes" formula="f">
+      <Argument type="AtomType" value="Relation" />
+      <Argument type="AtomType" value="Ordinary" />
+    </MethodInvocation>
+    <CreateFormula name="g">
+      <Argument type="string" value="\equals" />
+    </CreateFormula>
+    <MethodInvocation name="SetFixedTypes" formula="g">
+      <Argument type="AtomType" value="Ordinary" />
+      <Argument type="AtomType" value="Relation" />
+    </MethodInvocation>
+    <MethodInvocation name="AddStrut" formula="f">
+      <Argument type="Unit" value="Mu" />
+      <Argument type="double" value="-3.5" />
+      <Argument type="double" value="0" />
+      <Argument type="double" value="0" />
+    </MethodInvocation>
+    <MethodInvocation name="Add" formula="f">
+      <Argument type="Formula" value="g" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="doteq" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\equals" />
+    </CreateFormula>
+    <MethodInvocation name="PutOver" formula="f">
+      <Argument type="string" value="\ldotp" />
+      <Argument type="Unit" value="Mu" />
+      <Argument type="double" value="2" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <MethodInvocation name="SetFixedTypes" formula="f">
+      <Argument type="AtomType" value="Relation" />
+      <Argument type="AtomType" value="Relation" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="cong" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\equals" />
+    </CreateFormula>
+    <MethodInvocation name="PutOver" formula="f">
+      <Argument type="string" value="\sim" />
+      <Argument type="Unit" value="Mu" />
+      <Argument type="double" value="1" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <MethodInvocation name="SetFixedTypes" formula="f">
+      <Argument type="AtomType" value="Relation" />
+      <Argument type="AtomType" value="Relation" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <!-- Macros -->
+
+  <Formula name="left" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\left" />
+    </CreateFormula>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="right" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\right" />
+    </CreateFormula>
+    <Return name="f" />
+  </Formula>
+
+</PredefinedFormulas>

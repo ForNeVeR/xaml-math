@@ -1,0 +1,57 @@
+<?xml version='1.0'?>
+
+<!-- All the symbols that appear here, must be defined in TexSymbols.xml. -->
+<FormulaSettings>
+
+  <!-- different textstyles that used by the parser -->
+
+  <TextStyles>
+    <TextStyle name="mathrm"/>
+    <TextStyle name="mathit"/>
+    <TextStyle name="mathcal"/>
+  </TextStyles>
+
+  <!-- non-alphanumeric character-to-symbol-mappings -->
+
+  <CharacterToSymbolMappings>
+    <Map char="+" symbol="plus"/>
+    <Map char="-" symbol="minus"/>
+    <Map char="/" symbol="slash"/>
+    <Map char="*" symbol="ast"/>
+    <Map char="(" symbol="lbrack"/>
+    <Map char="." symbol="normaldot"/>
+    <Map char=";" symbol="semicolon"/>
+    <Map char="&gt;" symbol="gt"/>
+    <Map char="{" symbol="lbrace"/>
+    <Map char="!" symbol="faculty"/>
+    <Map char=")" symbol="rbrack"/>
+    <Map char="," symbol="comma"/>
+    <Map char="&lt;" symbol="lt"/>
+    <Map char="?" symbol="question"/>
+    <Map char="]" symbol="rsqbrack"/>
+    <Map char="|" symbol="vert"/>
+    <Map char=":" symbol="colon"/>
+    <Map char="=" symbol="equals"/>
+    <Map char="[" symbol="lsqbrack"/>
+    <Map char="}" symbol="rbrace"/>
+  </CharacterToSymbolMappings>
+
+  <!-- character-to-delimiter-mappings
+
+These are used in the method "embrace(char,char)" from the class "Formula".
+The symbolnames must be defined in "TeXSymbols.xml" as delimiters (del="true")!! -->
+
+  <CharacterToDelimiterMappings>
+    <Map char="(" symbol="lbrack"/>
+    <Map char=")" symbol="rbrack"/>
+    <Map char="[" symbol="lsqbrack"/>
+    <Map char="]" symbol="rsqbrack"/>
+    <Map char="{" symbol="lbrace"/>
+    <Map char="}" symbol="rbrace"/>
+    <Map char="&lt;" symbol="langle"/>
+    <Map char="&gt;" symbol="rangle"/>
+    <Map char="|" symbol="vert"/>
+    <Map char="/" symbol="slashdel"/>
+    <Map char="\" symbol="backslash"/>
+  </CharacterToDelimiterMappings>
+</FormulaSettings>
