@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-// Box representing other box with horizontal rule above it.
-internal class OverBar : VerticalBox
+namespace WpfMath
 {
-    public OverBar(Box box, double kern, double thickness)
-        : base()
+    // Box representing other box with horizontal rule above it.
+    internal class OverBar : WpfMath.VerticalBox
     {
-        Add(new StrutBox(0, thickness, 0, 0));
-        Add(new HorizontalRule(thickness, box.Width, 0));
-        Add(new StrutBox(0, kern, 0, 0));
-        Add(box);
+        public OverBar(Box box, double kern, double thickness)
+            : base()
+        {
+            Add(new WpfMath.StrutBox(0, thickness, 0, 0));
+            Add(new WpfMath.HorizontalRule(thickness, box.Width, 0));
+            Add(new WpfMath.StrutBox(0, kern, 0, 0));
+            Add(box);
+        }
     }
 }

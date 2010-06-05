@@ -3,89 +3,93 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-// Atom representing radical (nth-root) construction.
-internal class Radical : Atom
+namespace WpfMath
 {
-    private const string sqrtSymbol = "sqrt";
 
-    private const double scale = 0.55;
-
-    public Radical(Atom baseAtom, Atom degreeAtom = null)
-        : base()
+    // Atom representing radical (nth-root) construction.
+    internal class Radical : Atom
     {
-        this.BaseAtom = baseAtom;
-        this.DegreeAtom = degreeAtom;
-    }
+        private const string sqrtSymbol = "sqrt";
 
-    public Atom BaseAtom
-    {
-        get;
-        private set;
-    }
+        private const double scale = 0.55;
 
-    public Atom DegreeAtom
-    {
-        get;
-        private set;
-    }
+        public Radical(Atom baseAtom, Atom degreeAtom = null)
+            : base()
+        {
+            this.BaseAtom = baseAtom;
+            this.DegreeAtom = degreeAtom;
+        }
 
-    public override Box CreateBox(TexEnvironment environment)
-    {
-        var texFont = environment.TexFont;
-        var style = environment.Style;
+        public Atom BaseAtom
+        {
+            get;
+            private set;
+        }
 
-        // Calculate minimum clearance amount.
-        double clearance;
-        var defaultRuleThickness = texFont.GetDefaultLineThickness(style);
-        if (style < TexStyle.Text)
-            clearance = texFont.GetXHeight(style, texFont.GetCharInfo(sqrtSymbol, style).FontId);
-        else
-            clearance = defaultRuleThickness;
-        clearance = defaultRuleThickness + Math.Abs(clearance) / 4;
+        public Atom DegreeAtom
+        {
+            get;
+            private set;
+        }
 
-        // Create box for base atom, in cramped style.
-        var baseBox = this.BaseAtom.CreateBox(environment.GetCrampedStyle());
+        public override Box CreateBox(WpfMath.TexEnvironment environment)
+        {
+            var texFont = environment.TexFont;
+            var style = environment.Style;
 
-        // Create box for radical sign.
-        var totalHeight = baseBox.Height + baseBox.Depth;
-        var radicalSignBox = DelimiterFactory.CreateBox(sqrtSymbol, totalHeight + clearance + defaultRuleThickness,
-            environment);
+            // Calculate minimum clearance amount.
+            double clearance;
+            var defaultRuleThickness = texFont.GetDefaultLineThickness(style);
+            if (style < TexStyle.Text)
+                clearance = texFont.GetXHeight(style, texFont.GetCharInfo(sqrtSymbol, style).FontId);
+            else
+                clearance = defaultRuleThickness;
+            clearance = defaultRuleThickness + Math.Abs(clearance) / 4;
 
-        // Add half of excess height to clearance.
-        var delta = radicalSignBox.Depth - (totalHeight + clearance);
-        clearance += delta / 2;
+            // Create box for base atom, in cramped style.
+            var baseBox = this.BaseAtom.CreateBox(environment.GetCrampedStyle());
 
-        // Create box for square-root containing base box.
-        radicalSignBox.Shift = -(baseBox.Height + clearance);
-        var overBar = new OverBar(baseBox, clearance, radicalSignBox.Height);
-        overBar.Shift = -(baseBox.Height + clearance + defaultRuleThickness);
-        var radicalContainerBox = new HorizontalBox(radicalSignBox);
-        radicalContainerBox.Add(overBar);
+            // Create box for radical sign.
+            var totalHeight = baseBox.Height + baseBox.Depth;
+            var radicalSignBox = DelimiterFactory.CreateBox(sqrtSymbol, totalHeight + clearance + defaultRuleThickness,
+                environment);
 
-        // If atom is simple radical, just return square-root box.
-        if (this.DegreeAtom == null)
-            return radicalContainerBox;
+            // Add half of excess height to clearance.
+            var delta = radicalSignBox.Depth - (totalHeight + clearance);
+            clearance += delta / 2;
 
-        // Atom is complex radical (nth-root).
+            // Create box for square-root containing base box.
+            radicalSignBox.Shift = -(baseBox.Height + clearance);
+            var overBar = new WpfMath.OverBar(baseBox, clearance, radicalSignBox.Height);
+            overBar.Shift = -(baseBox.Height + clearance + defaultRuleThickness);
+            var radicalContainerBox = new WpfMath.HorizontalBox(radicalSignBox);
+            radicalContainerBox.Add(overBar);
 
-        // Create box for root atom.
-        var rootBox = this.DegreeAtom.CreateBox(environment.GetRootStyle());
-        var bottomShift = scale * (radicalContainerBox.Height + radicalContainerBox.Depth);
-        rootBox.Shift = radicalContainerBox.Depth - rootBox.Depth - bottomShift;
+            // If atom is simple radical, just return square-root box.
+            if (this.DegreeAtom == null)
+                return radicalContainerBox;
 
-        // Create result box.
-        var resultBox = new HorizontalBox();
+            // Atom is complex radical (nth-root).
 
-        // Add box for negative kern.
-        var negativeKern = new SpaceAtom(TexUnit.Mu, -10, 0, 0).CreateBox(environment);
-        var xPos = rootBox.Width + negativeKern.Width;
-        if (xPos < 0)
-            resultBox.Add(new StrutBox(-xPos, 0, 0, 0));
+            // Create box for root atom.
+            var rootBox = this.DegreeAtom.CreateBox(environment.GetRootStyle());
+            var bottomShift = scale * (radicalContainerBox.Height + radicalContainerBox.Depth);
+            rootBox.Shift = radicalContainerBox.Depth - rootBox.Depth - bottomShift;
 
-        resultBox.Add(rootBox);
-        resultBox.Add(negativeKern);
-        resultBox.Add(radicalContainerBox);
+            // Create result box.
+            var resultBox = new WpfMath.HorizontalBox();
 
-        return resultBox;
+            // Add box for negative kern.
+            var negativeKern = new WpfMath.SpaceAtom(TexUnit.Mu, -10, 0, 0).CreateBox(environment);
+            var xPos = rootBox.Width + negativeKern.Width;
+            if (xPos < 0)
+                resultBox.Add(new WpfMath.StrutBox(-xPos, 0, 0, 0));
+
+            resultBox.Add(rootBox);
+            resultBox.Add(negativeKern);
+            resultBox.Add(radicalContainerBox);
+
+            return resultBox;
+        }
     }
 }

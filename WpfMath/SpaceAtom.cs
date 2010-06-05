@@ -3,96 +3,99 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-// Atom representing whitespace.
-internal class SpaceAtom : Atom
+namespace WpfMath
 {
-    // Collection of unit conversion functions.
-    private static UnitConversion[] unitConversions = new UnitConversion[]
+    // Atom representing whitespace.
+    internal class SpaceAtom : Atom
+    {
+        // Collection of unit conversion functions.
+        private static UnitConversion[] unitConversions = new UnitConversion[]
+		        {
+		            new UnitConversion(e => e.TexFont.GetXHeight(e.Style, e.LastFontId)),
+		            
+		            new UnitConversion(e => e.TexFont.GetXHeight(e.Style, e.LastFontId)),
+
+		            new UnitConversion(e => 1.0 / e.TexFont.Size),
+
+		            new UnitConversion(e => WpfMath.TexFontUtilities.PixelsPerPoint / e.TexFont.Size),
+
+		            new UnitConversion(e => (12 * WpfMath.TexFontUtilities.PixelsPerPoint) / e.TexFont.Size),
+
+		            new UnitConversion(e =>
+		                {
+		                    var texFont = e.TexFont;
+		                    return texFont.GetQuad(texFont.GetMuFontId(), e.Style) / 18;
+		                }),
+		        };
+
+        private delegate double UnitConversion(WpfMath.TexEnvironment environment);
+
+        public static void CheckUnit(TexUnit unit)
         {
-            new UnitConversion(e => e.TexFont.GetXHeight(e.Style, e.LastFontId)),
-            
-            new UnitConversion(e => e.TexFont.GetXHeight(e.Style, e.LastFontId)),
+            if ((int)unit < 0 || (int)unit >= unitConversions.Length)
+                throw new InvalidOperationException("No conversion for this unit exists.");
+        }
 
-            new UnitConversion(e => 1.0 / e.TexFont.Size),
+        // True to represent hard space (actual space character).
+        private bool isHardSpace;
 
-            new UnitConversion(e => TexFontUtilities.PixelsPerPoint / e.TexFont.Size),
+        private double width;
+        private double height;
+        private double depth;
 
-            new UnitConversion(e => (12 * TexFontUtilities.PixelsPerPoint) / e.TexFont.Size),
+        private TexUnit widthUnit;
+        private TexUnit heightUnit;
+        private TexUnit depthUnit;
 
-            new UnitConversion(e =>
-                {
-                    var texFont = e.TexFont;
-                    return texFont.GetQuad(texFont.GetMuFontId(), e.Style) / 18;
-                }),
-        };
+        public SpaceAtom(TexUnit widthUnit, double width, TexUnit heightUnit, double height,
+            TexUnit depthUnit, double depth)
+            : base()
+        {
+            CheckUnit(widthUnit);
+            CheckUnit(heightUnit);
+            CheckUnit(depthUnit);
 
-    private delegate double UnitConversion(TexEnvironment environment);
+            this.isHardSpace = false;
+            this.widthUnit = widthUnit;
+            this.heightUnit = heightUnit;
+            this.depthUnit = depthUnit;
+            this.width = width;
+            this.height = height;
+            this.depth = depth;
+        }
 
-    public static void CheckUnit(TexUnit unit)
-    {
-        if ((int)unit < 0 || (int)unit >= unitConversions.Length)
-            throw new InvalidOperationException("No conversion for this unit exists.");
-    }
+        public SpaceAtom(TexUnit unit, double width, double height, double depth)
+            : base()
+        {
+            CheckUnit(unit);
 
-    // True to represent hard space (actual space character).
-    private bool isHardSpace;
+            this.isHardSpace = false;
+            this.widthUnit = unit;
+            this.heightUnit = unit;
+            this.depthUnit = unit;
+            this.width = width;
+            this.height = height;
+            this.depth = depth;
+        }
 
-    private double width;
-    private double height;
-    private double depth;
+        public SpaceAtom()
+            : base()
+        {
+            this.isHardSpace = true;
+        }
 
-    private TexUnit widthUnit;
-    private TexUnit heightUnit;
-    private TexUnit depthUnit;
+        public override Box CreateBox(WpfMath.TexEnvironment environment)
+        {
+            if (isHardSpace)
+                return new WpfMath.StrutBox(environment.TexFont.GetSpace(environment.Style), 0, 0, 0);
+            else
+                return new WpfMath.StrutBox(width * GetConversionFactor(widthUnit, environment), height * GetConversionFactor(
+                    heightUnit, environment), depth * GetConversionFactor(depthUnit, environment), 0);
+        }
 
-    public SpaceAtom(TexUnit widthUnit, double width, TexUnit heightUnit, double height,
-        TexUnit depthUnit, double depth)
-        : base()
-    {
-        CheckUnit(widthUnit);
-        CheckUnit(heightUnit);
-        CheckUnit(depthUnit);
-
-        this.isHardSpace = false;
-        this.widthUnit = widthUnit;
-        this.heightUnit = heightUnit;
-        this.depthUnit = depthUnit;
-        this.width = width;
-        this.height = height;
-        this.depth = depth;
-    }
-
-    public SpaceAtom(TexUnit unit, double width, double height, double depth)
-        : base()
-    {
-        CheckUnit(unit);
-
-        this.isHardSpace = false;
-        this.widthUnit = unit;
-        this.heightUnit = unit;
-        this.depthUnit = unit;
-        this.width = width;
-        this.height = height;
-        this.depth = depth;
-    }
-
-    public SpaceAtom()
-        : base()
-    {
-        this.isHardSpace = true;
-    }
-
-    public override Box CreateBox(TexEnvironment environment)
-    {
-        if (isHardSpace)
-            return new StrutBox(environment.TexFont.GetSpace(environment.Style), 0, 0, 0);
-        else
-            return new StrutBox(width * GetConversionFactor(widthUnit, environment), height * GetConversionFactor(
-                heightUnit, environment), depth * GetConversionFactor(depthUnit, environment), 0);
-    }
-
-    private double GetConversionFactor(TexUnit unit, TexEnvironment environment)
-    {
-        return unitConversions[(int)unit](environment);
+        private double GetConversionFactor(TexUnit unit, WpfMath.TexEnvironment environment)
+        {
+            return unitConversions[(int)unit](environment);
+        }
     }
 }

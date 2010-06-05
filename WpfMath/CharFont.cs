@@ -3,24 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-// Single character together with specific font.
-internal class CharFont
+namespace WpfMath
 {
-    public CharFont(char character, int fontId)
+    // Single character together with specific font.
+    internal class CharFont
     {
-        this.Character = character;
-        this.FontId = fontId;
-    }
+        public CharFont(char character, int fontId)
+        {
+            this.Character = character;
+            this.FontId = fontId;
+        }
 
-    public char Character
-    {
-        get;
-        private set;
-    }
+        public char Character
+        {
+            get;
+            private set;
+        }
 
-    public int FontId
-    {
-        get;
-        private set;
+        public int FontId
+        {
+            get;
+            private set;
+        }
     }
 }

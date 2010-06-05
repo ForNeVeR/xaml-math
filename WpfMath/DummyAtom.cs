@@ -3,76 +3,79 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-// Dummy atom representing atom whose type can change or which can be replaced by a ligature.
-internal class DummyAtom : Atom
+namespace WpfMath
 {
-    public DummyAtom(Atom atom)
+    // Dummy atom representing atom whose type can change or which can be replaced by a ligature.
+    internal class DummyAtom : Atom
     {
-        this.Type = TexAtomType.None;
-        this.Atom = atom;
-        this.IsTextSymbol = false;
-    }
-
-    public DummyAtom PreviousAtom
-    {
-        set
+        public DummyAtom(Atom atom)
         {
-            if (this.Atom is IRow)
-                ((IRow)this.Atom).PreviousAtom = value;
+            this.Type = TexAtomType.None;
+            this.Atom = atom;
+            this.IsTextSymbol = false;
         }
-    }
 
-    public Atom Atom
-    {
-        get;
-        private set;
-    }
+        public DummyAtom PreviousAtom
+        {
+            set
+            {
+                if (this.Atom is WpfMath.IRow)
+                    ((WpfMath.IRow)this.Atom).PreviousAtom = value;
+            }
+        }
 
-    public bool IsTextSymbol
-    {
-        get;
-        set;
-    }
+        public Atom Atom
+        {
+            get;
+            private set;
+        }
 
-    public bool IsCharSymbol
-    {
-        get { return this.Atom is CharSymbol; }
-    }
+        public bool IsTextSymbol
+        {
+            get;
+            set;
+        }
 
-    public bool IsKern
-    {
-        get { return this.Atom is SpaceAtom; }
-    }
+        public bool IsCharSymbol
+        {
+            get { return this.Atom is CharSymbol; }
+        }
 
-    public void SetLigature(FixedCharAtom ligatureAtom)
-    {
-        this.Atom = ligatureAtom;
-        this.Type = TexAtomType.None;
-        this.IsTextSymbol = false;
-    }
+        public bool IsKern
+        {
+            get { return this.Atom is WpfMath.SpaceAtom; }
+        }
 
-    public CharFont GetCharFont(ITeXFont texFont)
-    {
-        return ((CharSymbol)this.Atom).GetCharFont(texFont);
-    }
+        public void SetLigature(FixedCharAtom ligatureAtom)
+        {
+            this.Atom = ligatureAtom;
+            this.Type = TexAtomType.None;
+            this.IsTextSymbol = false;
+        }
 
-    public override Box CreateBox(TexEnvironment environment)
-    {
-        if (this.IsTextSymbol)
-            ((CharSymbol)this.Atom).IsTextSymbol = true;
-        var resultBox = this.Atom.CreateBox(environment);
-        if (this.IsTextSymbol)
-            ((CharSymbol)this.Atom).IsTextSymbol = false;
-        return resultBox;
-    }
+        public WpfMath.CharFont GetCharFont(WpfMath.ITeXFont texFont)
+        {
+            return ((CharSymbol)this.Atom).GetCharFont(texFont);
+        }
 
-    public override TexAtomType GetLeftType()
-    {
-        return this.Type == TexAtomType.None ? this.Atom.GetLeftType() : this.Type;
-    }
+        public override Box CreateBox(WpfMath.TexEnvironment environment)
+        {
+            if (this.IsTextSymbol)
+                ((CharSymbol)this.Atom).IsTextSymbol = true;
+            var resultBox = this.Atom.CreateBox(environment);
+            if (this.IsTextSymbol)
+                ((CharSymbol)this.Atom).IsTextSymbol = false;
+            return resultBox;
+        }
 
-    public override TexAtomType GetRightType()
-    {
-        return this.Type == TexAtomType.None ? this.Atom.GetRightType() : this.Type;
+        public override TexAtomType GetLeftType()
+        {
+            return this.Type == TexAtomType.None ? this.Atom.GetLeftType() : this.Type;
+        }
+
+        public override TexAtomType GetRightType()
+        {
+            return this.Type == TexAtomType.None ? this.Atom.GetRightType() : this.Type;
+        }
     }
 }

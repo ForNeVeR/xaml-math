@@ -3,53 +3,56 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-// Atom representing other atom that is not rendered.
-internal class PhantomAtom : Atom, IRow
+namespace WpfMath
 {
-    private bool useWidth;
-    private bool useHeight;
-    private bool useDepth;
-
-    public PhantomAtom(Atom baseAtom)
-        : this(baseAtom, true, true, true)
+    // Atom representing other atom that is not rendered.
+    internal class PhantomAtom : Atom, WpfMath.IRow
     {
-    }
+        private bool useWidth;
+        private bool useHeight;
+        private bool useDepth;
 
-    public PhantomAtom(Atom baseAtom, bool useWidth, bool useHeight, bool useDepth)
-        : base()
-    {
-        this.RowAtom = baseAtom == null ? new RowAtom() : new RowAtom(baseAtom);
-        this.useWidth = useWidth;
-        this.useHeight = useHeight;
-        this.useDepth = useDepth;
-    }
+        public PhantomAtom(Atom baseAtom)
+            : this(baseAtom, true, true, true)
+        {
+        }
 
-    public DummyAtom PreviousAtom
-    {
-        get { return this.RowAtom.PreviousAtom; }
-        set { this.RowAtom.PreviousAtom = value; }
-    }
+        public PhantomAtom(Atom baseAtom, bool useWidth, bool useHeight, bool useDepth)
+            : base()
+        {
+            this.RowAtom = baseAtom == null ? new WpfMath.RowAtom() : new WpfMath.RowAtom(baseAtom);
+            this.useWidth = useWidth;
+            this.useHeight = useHeight;
+            this.useDepth = useDepth;
+        }
 
-    public RowAtom RowAtom
-    {
-        get;
-        private set;
-    }
+        public DummyAtom PreviousAtom
+        {
+            get { return this.RowAtom.PreviousAtom; }
+            set { this.RowAtom.PreviousAtom = value; }
+        }
 
-    public override Box CreateBox(TexEnvironment environment)
-    {
-        var resultBox = this.RowAtom.CreateBox(environment);
-        return new StrutBox((this.useWidth ? resultBox.Width : 0), (this.useHeight ? resultBox.Height : 0),
-            (this.useDepth ? resultBox.Depth : 0), resultBox.Shift);
-    }
+        public WpfMath.RowAtom RowAtom
+        {
+            get;
+            private set;
+        }
 
-    public override TexAtomType GetLeftType()
-    {
-        return this.RowAtom.GetLeftType();
-    }
+        public override Box CreateBox(WpfMath.TexEnvironment environment)
+        {
+            var resultBox = this.RowAtom.CreateBox(environment);
+            return new WpfMath.StrutBox((this.useWidth ? resultBox.Width : 0), (this.useHeight ? resultBox.Height : 0),
+                (this.useDepth ? resultBox.Depth : 0), resultBox.Shift);
+        }
 
-    public override TexAtomType GetRightType()
-    {
-        return this.RowAtom.GetRightType();
+        public override TexAtomType GetLeftType()
+        {
+            return this.RowAtom.GetLeftType();
+        }
+
+        public override TexAtomType GetRightType()
+        {
+            return this.RowAtom.GetRightType();
+        }
     }
 }

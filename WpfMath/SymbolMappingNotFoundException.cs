@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class SymbolMappingNotFoundException : Exception
+namespace WpfMath
 {
-    internal SymbolMappingNotFoundException(string symbolName)
-        : base(string.Format("Cannot find mapping for the symbol with name '{0}'.", symbolName))
+    public class SymbolMappingNotFoundException : Exception
     {
+        internal SymbolMappingNotFoundException(string symbolName)
+            : base(string.Format("Cannot find mapping for the symbol with name '{0}'.", symbolName))
+        {
+        }
     }
 }

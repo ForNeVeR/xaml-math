@@ -3,31 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-// Atom (smallest unit) of TexFormula.
-internal abstract class Atom
+namespace WpfMath
 {
-    public Atom()
+    // Atom (smallest unit) of TexFormula.
+    internal abstract class Atom
     {
-        this.Type = TexAtomType.Ordinary;
-    }
+        public Atom()
+        {
+            this.Type = TexAtomType.Ordinary;
+        }
 
-    public TexAtomType Type
-    {
-        get;
-        set;
-    }
+        public TexAtomType Type
+        {
+            get;
+            set;
+        }
 
-    public abstract Box CreateBox(TexEnvironment environment);
+        public abstract Box CreateBox(WpfMath.TexEnvironment environment);
 
-    // Gets type of leftmost child item.
-    public virtual TexAtomType GetLeftType()
-    {
-        return this.Type;
-    }
+        // Gets type of leftmost child item.
+        public virtual TexAtomType GetLeftType()
+        {
+            return this.Type;
+        }
 
-    // Gets type of leftmost child item.
-    public virtual TexAtomType GetRightType()
-    {
-        return this.Type;
+        // Gets type of leftmost child item.
+        public virtual TexAtomType GetRightType()
+        {
+            return this.Type;
+        }
     }
 }

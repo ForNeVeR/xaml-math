@@ -3,80 +3,83 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-// Font that specifies how TexFormula objects are rendered.
-internal interface ITeXFont
+namespace WpfMath
 {
-    double Size { get; }
+    // Font that specifies how TexFormula objects are rendered.
+    internal interface ITeXFont
+    {
+        double Size { get; }
 
-    ITeXFont DeriveFont(double newSize);
+        ITeXFont DeriveFont(double newSize);
 
-    ExtensionChar GetExtension(CharInfo charInfo, TexStyle style);
+        ExtensionChar GetExtension(WpfMath.CharInfo charInfo, TexStyle style);
 
-    CharFont GetLigature(CharFont leftChar, CharFont rightChar);
+        WpfMath.CharFont GetLigature(WpfMath.CharFont leftChar, WpfMath.CharFont rightChar);
 
-    CharInfo GetNextLargerCharInfo(CharInfo charInfo, TexStyle style);
+        WpfMath.CharInfo GetNextLargerCharInfo(WpfMath.CharInfo charInfo, TexStyle style);
 
-    CharInfo GetDefaultCharInfo(char character, TexStyle style);
+        WpfMath.CharInfo GetDefaultCharInfo(char character, TexStyle style);
 
-    CharInfo GetCharInfo(char character, string textStyle, TexStyle style);
+        WpfMath.CharInfo GetCharInfo(char character, string textStyle, TexStyle style);
 
-    CharInfo GetCharInfo(CharFont charFont, TexStyle style);
+        WpfMath.CharInfo GetCharInfo(WpfMath.CharFont charFont, TexStyle style);
 
-    CharInfo GetCharInfo(string name, TexStyle style);
+        WpfMath.CharInfo GetCharInfo(string name, TexStyle style);
 
-    double GetKern(CharFont leftChar, CharFont rightChar, TexStyle style);
+        double GetKern(WpfMath.CharFont leftChar, WpfMath.CharFont rightChar, TexStyle style);
 
-    double GetQuad(int fontId, TexStyle style);
+        double GetQuad(int fontId, TexStyle style);
 
-    double GetSkew(CharFont charFont, TexStyle style);
+        double GetSkew(WpfMath.CharFont charFont, TexStyle style);
 
-    bool HasSpace(int fontId);
+        bool HasSpace(int fontId);
 
-    bool HasNextLarger(CharInfo charInfo);
+        bool HasNextLarger(WpfMath.CharInfo charInfo);
 
-    bool IsExtensionChar(CharInfo charInfo);
+        bool IsExtensionChar(WpfMath.CharInfo charInfo);
 
-    int GetMuFontId();
+        int GetMuFontId();
 
-    double GetXHeight(TexStyle style, int fontId);
+        double GetXHeight(TexStyle style, int fontId);
 
-    double GetSpace(TexStyle style);
+        double GetSpace(TexStyle style);
 
-    double GetAxisHeight(TexStyle style);
+        double GetAxisHeight(TexStyle style);
 
-    double GetBigOpSpacing1(TexStyle style);
+        double GetBigOpSpacing1(TexStyle style);
 
-    double GetBigOpSpacing2(TexStyle style);
+        double GetBigOpSpacing2(TexStyle style);
 
-    double GetBigOpSpacing3(TexStyle style);
+        double GetBigOpSpacing3(TexStyle style);
 
-    double GetBigOpSpacing4(TexStyle style);
+        double GetBigOpSpacing4(TexStyle style);
 
-    double GetBigOpSpacing5(TexStyle style);
+        double GetBigOpSpacing5(TexStyle style);
 
-    double GetSub1(TexStyle style);
+        double GetSub1(TexStyle style);
 
-    double GetSub2(TexStyle style);
+        double GetSub2(TexStyle style);
 
-    double GetSubDrop(TexStyle style);
+        double GetSubDrop(TexStyle style);
 
-    double GetSup1(TexStyle style);
+        double GetSup1(TexStyle style);
 
-    double GetSup2(TexStyle style);
+        double GetSup2(TexStyle style);
 
-    double GetSup3(TexStyle style);
+        double GetSup3(TexStyle style);
 
-    double GetSupDrop(TexStyle style);
+        double GetSupDrop(TexStyle style);
 
-    double GetNum1(TexStyle style);
+        double GetNum1(TexStyle style);
 
-    double GetNum2(TexStyle style);
+        double GetNum2(TexStyle style);
 
-    double GetNum3(TexStyle style);
+        double GetNum3(TexStyle style);
 
-    double GetDenom1(TexStyle style);
+        double GetDenom1(TexStyle style);
 
-    double GetDenom2(TexStyle style);
+        double GetDenom2(TexStyle style);
 
-    double GetDefaultLineThickness(TexStyle style);
+        double GetDefaultLineThickness(TexStyle style);
+    }
 }

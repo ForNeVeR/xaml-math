@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-// Atom representing single character that can be marked as text symbol.
-internal abstract class CharSymbol : Atom
+namespace WpfMath
 {
-    public CharSymbol()
+    // Atom representing single character that can be marked as text symbol.
+    internal abstract class CharSymbol : Atom
     {
-        this.IsTextSymbol = false;
-    }
+        public CharSymbol()
+        {
+            this.IsTextSymbol = false;
+        }
 
-    public bool IsTextSymbol
-    {
-        get;
-        set;
-    }
+        public bool IsTextSymbol
+        {
+            get;
+            set;
+        }
 
-    public abstract CharFont GetCharFont(ITeXFont texFont);
+        public abstract WpfMath.CharFont GetCharFont(WpfMath.ITeXFont texFont);
+    }
 }

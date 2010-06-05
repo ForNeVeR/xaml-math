@@ -5,30 +5,33 @@ using System.Text;
 using System.Windows;
 using System.Windows.Media;
 
-// Box representing whitespace.
-internal class StrutBox : Box
+namespace WpfMath
 {
-    private static readonly StrutBox emptyStrutBox = new StrutBox(0, 0, 0, 0);
-
-    public static StrutBox Empty
+    // Box representing whitespace.
+    internal class StrutBox : Box
     {
-        get { return emptyStrutBox; }
-    }
+        private static readonly StrutBox emptyStrutBox = new StrutBox(0, 0, 0, 0);
 
-    public StrutBox(double width, double height, double depth, double shift)
-    {
-        this.Width = width;
-        this.Height = height;
-        this.Depth = depth;
-        this.Shift = shift;
-    }
+        public static StrutBox Empty
+        {
+            get { return emptyStrutBox; }
+        }
 
-    public override void Draw(DrawingContext drawingContext, double scale, double x, double y)
-    {
-    }
+        public StrutBox(double width, double height, double depth, double shift)
+        {
+            this.Width = width;
+            this.Height = height;
+            this.Depth = depth;
+            this.Shift = shift;
+        }
 
-    public override int GetLastFontId()
-    {
-        return TexFontUtilities.NoFontId;
+        public override void Draw(DrawingContext drawingContext, double scale, double x, double y)
+        {
+        }
+
+        public override int GetLastFontId()
+        {
+            return WpfMath.TexFontUtilities.NoFontId;
+        }
     }
 }

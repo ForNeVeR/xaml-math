@@ -5,34 +5,37 @@ using System.Text;
 using System.Windows;
 using System.Windows.Media;
 
-// Box representing glue.
-internal class GlueBox : Box
+namespace WpfMath
 {
-    public GlueBox(double space, double stretch, double shrink)
+    // Box representing glue.
+    internal class GlueBox : Box
     {
-        this.Width = space;
-        this.Stretch = stretch;
-        this.Shrink = shrink;
-    }
+        public GlueBox(double space, double stretch, double shrink)
+        {
+            this.Width = space;
+            this.Stretch = stretch;
+            this.Shrink = shrink;
+        }
 
-    public double Stretch
-    {
-        get;
-        private set;
-    }
+        public double Stretch
+        {
+            get;
+            private set;
+        }
 
-    public double Shrink
-    {
-        get;
-        private set;
-    }
+        public double Shrink
+        {
+            get;
+            private set;
+        }
 
-    public override void Draw(DrawingContext drawingContext, double scale, double x, double y)
-    {
-    }
+        public override void Draw(DrawingContext drawingContext, double scale, double x, double y)
+        {
+        }
 
-    public override int GetLastFontId()
-    {
-        return TexFontUtilities.NoFontId;
+        public override int GetLastFontId()
+        {
+            return WpfMath.TexFontUtilities.NoFontId;
+        }
     }
 }

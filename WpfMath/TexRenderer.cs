@@ -1,48 +1,67 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
-public class TexRenderer
+namespace WpfMath
 {
-    internal TexRenderer(Box box, double scale)
+    public class TexRenderer
     {
-        this.Box = box;
-        this.Scale = scale;
-    }
-
-    public Box Box
-    {
-        get;
-        set;
-    }
-
-    public double Scale
-    {
-        get;
-        private set;
-    }
-
-    public Size RenderSize
-    {
-        get
+        internal TexRenderer(Box box, double scale)
         {
-            return new Size(this.Box.Width * this.Scale, this.Box.TotalHeight * this.Scale);
+            this.Box = box;
+            this.Scale = scale;
         }
-    }
 
-    public double Baseline
-    {
-        get
+        public Box Box
         {
-            return this.Box.Height / this.Box.TotalHeight * this.Scale;
+            get;
+            set;
         }
-    }
 
-    public void Render(DrawingContext drawingContext, double x, double y)
-    {
-        this.Box.Draw(drawingContext, this.Scale, x / this.Scale, y / this.Scale + this.Box.Height);
+        public double Scale
+        {
+            get;
+            private set;
+        }
+
+        public Size RenderSize
+        {
+            get
+            {
+                return new Size(this.Box.Width * this.Scale, this.Box.TotalHeight * this.Scale);
+            }
+        }
+
+        public double Baseline
+        {
+            get
+            {
+                return this.Box.Height / this.Box.TotalHeight * this.Scale;
+            }
+        }
+
+        public BitmapSource RenderToBitmap(double x, double y)
+        {
+            var visual = new DrawingVisual();
+            using (var drawingContext = visual.RenderOpen())
+                this.Render(drawingContext, 0, 0);
+
+            var width = (int)Math.Ceiling(this.RenderSize.Width);
+            var height = (int)Math.Ceiling(this.RenderSize.Height);
+            var bitmap = new RenderTargetBitmap(width, height, 96, 96, PixelFormats.Default);
+            bitmap.Render(visual);
+
+            return bitmap;
+        }
+
+        public void Render(DrawingContext drawingContext, double x, double y)
+        {
+            this.Box.Draw(drawingContext, this.Scale, x / this.Scale, y / this.Scale + this.Box.Height);
+        }
     }
 }
