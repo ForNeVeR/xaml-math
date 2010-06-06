@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows;
+using System.Reflection;
 
 namespace WpfMath
 {
@@ -59,6 +61,17 @@ namespace WpfMath
 
         public static void Initialize()
         {
+            //
+            // If start application isn't WPF, pack isn't registered by defaultTexFontParser
+            //
+            if (Application.ResourceAssembly == null)
+            {
+                Application.ResourceAssembly = Assembly.GetExecutingAssembly();
+                if (!UriParser.IsKnownScheme("pack"))
+                    UriParser.Register(new GenericUriParser(GenericUriParserOptions.GenericAuthority), "pack", -1);
+            }
+
+
             commands = new HashSet<string>();
             commands.Add("frac");
             commands.Add("sqrt");
