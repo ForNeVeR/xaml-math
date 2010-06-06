@@ -108,26 +108,17 @@ namespace WpfMath
 
         public double GetKern(char leftChar, char rightChar, double factor)
         {
-            try
-            {
-                return this.kerns[Tuple.Create(leftChar, rightChar)] * factor;
-            }
-            catch (KeyNotFoundException)
-            {
-                return 0;
-            }
+            Tuple<char, char> tpl = Tuple.Create(leftChar, rightChar);
+            double kern = 0;
+            kerns.TryGetValue(tpl, out kern);
+            return kern * factor;
         }
 
         public WpfMath.CharFont GetLigature(char left, char right)
         {
-            try
-            {
-                return new WpfMath.CharFont(this.ligatures[Tuple.Create(left, right)], this.FontId);
-            }
-            catch (KeyNotFoundException)
-            {
-                return null;
-            }
+            Tuple<char, char> tpl = Tuple.Create(left, right);
+            char ch;
+            return this.ligatures.TryGetValue(tpl, out ch) ? new WpfMath.CharFont(ch, this.FontId) : null;
         }
 
         public WpfMath.CharFont GetNextLarger(char character)
