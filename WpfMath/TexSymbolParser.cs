@@ -37,8 +37,10 @@ namespace WpfMath
 
         public TexSymbolParser()
         {
-            var doc = XDocument.Load(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName));
+            // for 3.5
+            var doc = XDocument.Load(new System.IO.StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)));
             this.rootElement = doc.Root;
+            
         }
 
         public IDictionary<string, WpfMath.SymbolAtom> GetSymbols()

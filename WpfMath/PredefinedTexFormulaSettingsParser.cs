@@ -34,7 +34,7 @@ namespace WpfMath
 
         public TexPredefinedFormulaSettingsParser()
         {
-            var doc = XDocument.Load(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName));
+            var doc = XDocument.Load(new System.IO.StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)));
             this.rootElement = doc.Root;
         }
 
@@ -56,7 +56,7 @@ namespace WpfMath
             return mappings;
         }
 
-        public ISet<string> GetTextStyles()
+        public HashSet<string> GetTextStyles()
         {
             var result = new HashSet<string>();
 

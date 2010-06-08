@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{010A34F1-1F3E-4528-99B4-95054DD45729}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WpfMath</RootNamespace>
+    <AssemblyName>WpfMath</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PlatformTarget>x86</PlatformTarget>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccentedAtom.cs" />
+    <Compile Include="Atom.cs" />
+    <Compile Include="BigOperatorAtom.cs" />
+    <Compile Include="Box.cs" />
+    <Compile Include="CharAtom.cs" />
+    <Compile Include="CharBox.cs" />
+    <Compile Include="CharFont.cs" />
+    <Compile Include="CharInfo.cs" />
+    <Compile Include="CharSymbol.cs" />
+    <Compile Include="BigDelimeterAtom.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="StyledAtom.cs" />
+    <Compile Include="DefaultTexFont.cs" />
+    <Compile Include="DefaultTexFontParser.cs" />
+    <Compile Include="DelimiterFactory.cs" />
+    <Compile Include="DelimiterMappingNotFoundException.cs" />
+    <Compile Include="DummyAtom.cs" />
+    <Compile Include="ExtensionChar.cs" />
+    <Compile Include="FencedAtom.cs" />
+    <Compile Include="FixedCharAtom.cs" />
+    <Compile Include="FormulaNotFoundException.cs" />
+    <Compile Include="FractionAtom.cs" />
+    <Compile Include="Glue.cs" />
+    <Compile Include="GlueBox.cs" />
+    <Compile Include="GlueSettingsParser.cs" />
+    <Compile Include="HorizontalBox.cs" />
+    <Compile Include="HorizontalRule.cs" />
+    <Compile Include="IRow.cs" />
+    <Compile Include="ITeXFont.cs" />
+    <Compile Include="OverBar.cs" />
+    <Compile Include="OverlinedAtom.cs" />
+    <Compile Include="OverUnderBox.cs" />
+    <Compile Include="OverUnderDelimiter.cs" />
+    <Compile Include="PhantomAtom.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Radical.cs" />
+    <Compile Include="RowAtom.cs" />
+    <Compile Include="ScriptsAtom.cs" />
+    <Compile Include="SpaceAtom.cs" />
+    <Compile Include="StrutBox.cs" />
+    <Compile Include="SymbolAtom.cs" />
+    <Compile Include="SymbolMappingNotFoundException.cs" />
+    <Compile Include="SymbolNotFoundException.cs" />
+    <Compile Include="TexEnums.cs" />
+    <Compile Include="TexEnvironment.cs" />
+    <Compile Include="TexExpressionVisitor.cs" />
+    <Compile Include="TexFontInfo.cs" />
+    <Compile Include="TexFontMetrics.cs" />
+    <Compile Include="TexFontUtilities.cs" />
+    <Compile Include="TexFormula.cs" />
+    <Compile Include="TexFormulaHelper.cs" />
+    <Compile Include="TexFormulaParser.cs" />
+    <Compile Include="TexParseException.cs" />
+    <Compile Include="PredefinedTexFormulasParser.cs" />
+    <Compile Include="PredefinedTexFormulaSettingsParser.cs" />
+    <Compile Include="TexRenderer.cs" />
+    <Compile Include="TexSymbolParser.cs" />
+    <Compile Include="TextStyleMappingNotFoundException.cs" />
+    <Compile Include="TexUtilities.cs" />
+    <Compile Include="TypedAtom.cs" />
+    <Compile Include="UnderlinedAtom.cs" />
+    <Compile Include="UnderOverAtom.cs" />
+    <Compile Include="VerticalBox.cs" />
+    <Compile Include="VerticalCenteredAtom.cs" />
+    <Compile Include="XmlUtilities.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+    <Resource Include="Fonts\cmex10.ttf" />
+    <Resource Include="Fonts\cmmi10.ttf" />
+    <Resource Include="Fonts\cmr10.ttf" />
+    <Resource Include="Fonts\cmsy10.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\DefaultTexFont.xml" />
+    <EmbeddedResource Include="Data\GlueSettings.xml" />
+    <EmbeddedResource Include="Data\PredefinedTexFormulas.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\TexFormulaSettings.xml" />
+    <EmbeddedResource Include="Data\TexSymbols.xml" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DotNet35To40Bridge\DotNet35To40Bridge.csproj">
+      <Project>{4ABA3F07-4E62-42DA-B547-EEA4E6FDC962}</Project>
+      <Name>DotNet35To40Bridge</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

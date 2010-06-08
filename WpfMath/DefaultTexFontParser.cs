@@ -50,7 +50,7 @@ namespace WpfMath
 
         public DefaultTexFontParser()
         {
-            var doc = XDocument.Load(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName));
+            var doc = XDocument.Load(new System.IO.StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)));
             this.rootElement = doc.Root;
             ParseTextStyleMappings();
         }

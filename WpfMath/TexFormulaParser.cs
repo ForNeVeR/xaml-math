@@ -7,6 +7,7 @@ using System.Reflection;
 
 namespace WpfMath
 {
+
     // TODO: Put all error strings into resources.
     public class TexFormulaParser
     {
@@ -23,10 +24,10 @@ namespace WpfMath
         private const char primeChar = '\'';
 
         // Information used for parsing
-        private static ISet<string> commands;
+        private static HashSet<string> commands;
         private static IList<string> symbols;
         private static IList<string> delimeters;
-        private static ISet<string> textStyles;
+        private static HashSet<string> textStyles;
         private static IDictionary<string, TexFormula> predefinedFormulas;
 
         private static readonly string[][] delimiterNames =
@@ -133,6 +134,11 @@ namespace WpfMath
         {
             if (!isInitialized)
                 throw new InvalidOperationException("Parser has not yet been initialized.");
+        }
+
+        public TexFormula Convert(System.Linq.Expressions.Expression value)
+        {
+            return new TexExpressionVisitor(value, this).Formula;
         }
 
         public TexFormula Parse(string value)
