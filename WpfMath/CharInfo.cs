@@ -10,7 +10,7 @@ namespace WpfMath
     // Single character togeter with information about font and metrics.
     internal class CharInfo
     {
-        public CharInfo(char character, GlyphTypeface font, double size, int fontId, WpfMath.TexFontMetrics metrics)
+        public CharInfo(char character, GlyphTypeface font, double size, int fontId, TexFontMetrics metrics)
         {
             this.Character = character;
             this.Font = font;
@@ -37,7 +37,7 @@ namespace WpfMath
             set;
         }
 
-        public WpfMath.TexFontMetrics Metrics
+        public TexFontMetrics Metrics
         {
             get;
             set;
@@ -49,9 +49,9 @@ namespace WpfMath
             set;
         }
 
-        public WpfMath.CharFont GetCharacterFont()
+        public CharFont GetCharacterFont()
         {
-            return new WpfMath.CharFont(this.Character, this.FontId);
+            return new CharFont(this.Character, this.FontId);
         }
     }
 }

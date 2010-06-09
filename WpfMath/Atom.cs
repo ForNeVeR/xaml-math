@@ -19,7 +19,7 @@ namespace WpfMath
             set;
         }
 
-        public abstract Box CreateBox(WpfMath.TexEnvironment environment);
+        public abstract Box CreateBox(TexEnvironment environment);
 
         // Gets type of leftmost child item.
         public virtual TexAtomType GetLeftType()

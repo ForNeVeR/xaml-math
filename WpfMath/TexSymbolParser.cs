@@ -10,7 +10,7 @@ namespace WpfMath
     // Parse definitions of symbols from XML files.
     internal class TexSymbolParser
     {
-        private static readonly string resourceName = WpfMath.TexUtilities.ResourcesDataDirectory + "TexSymbols.xml";
+        private static readonly string resourceName = TexUtilities.ResourcesDataDirectory + "TexSymbols.xml";
 
         private static IDictionary<string, TexAtomType> typeMappings;
 
@@ -41,9 +41,9 @@ namespace WpfMath
             this.rootElement = doc.Root;
         }
 
-        public IDictionary<string, WpfMath.SymbolAtom> GetSymbols()
+        public IDictionary<string, SymbolAtom> GetSymbols()
         {
-            var result = new Dictionary<string, WpfMath.SymbolAtom>();
+            var result = new Dictionary<string, SymbolAtom>();
 
             foreach (var symbolElement in rootElement.Elements("Symbol"))
             {
@@ -51,7 +51,7 @@ namespace WpfMath
                 var symbolType = symbolElement.AttributeValue("type");
                 var symbolIsDelimeter = symbolElement.AttributeBooleanValue("del", false);
 
-                result.Add(symbolName, new WpfMath.SymbolAtom(symbolName, (TexAtomType)typeMappings[symbolType],
+                result.Add(symbolName, new SymbolAtom(symbolName, (TexAtomType)typeMappings[symbolType],
                     symbolIsDelimeter));
             }
 

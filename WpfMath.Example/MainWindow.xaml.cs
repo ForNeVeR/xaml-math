@@ -25,6 +25,7 @@ namespace WpfMath.Example
 
         private void renderButton_Click(object sender, RoutedEventArgs e)
         {
+            // Create formula object from input text.
             TexFormula formula = null;
             try
             {
@@ -42,7 +43,8 @@ namespace WpfMath.Example
             finally
             {
             }
-
+            
+            // Render formula to visual.
             var visual = new DrawingVisual();
             var renderer = formula.GetRenderer(TexStyle.Display, 20d);
             var formulaSize = renderer.RenderSize;

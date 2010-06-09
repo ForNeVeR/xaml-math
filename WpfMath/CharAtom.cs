@@ -27,13 +27,13 @@ namespace WpfMath
             private set;
         }
 
-        public override Box CreateBox(WpfMath.TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             var charInfo = GetCharInfo(environment.TexFont, environment.Style);
             return new CharBox(environment, charInfo);
         }
 
-        private WpfMath.CharInfo GetCharInfo(WpfMath.ITeXFont texFont, TexStyle style)
+        private CharInfo GetCharInfo(ITeXFont texFont, TexStyle style)
         {
             if (this.TextStyle == null)
                 return texFont.GetDefaultCharInfo(this.Character, style);
@@ -41,7 +41,7 @@ namespace WpfMath
                 return texFont.GetCharInfo(this.Character, this.TextStyle, style);
         }
 
-        public override WpfMath.CharFont GetCharFont(WpfMath.ITeXFont texFont)
+        public override CharFont GetCharFont(ITeXFont texFont)
         {
             // Style is irrelevant here.
             return GetCharInfo(texFont, TexStyle.Display).GetCharacterFont();

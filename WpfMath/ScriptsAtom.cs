@@ -8,7 +8,7 @@ namespace WpfMath
     // Atom representing scripts to attach to other atom.
     internal class ScriptsAtom : Atom
     {
-        private static readonly WpfMath.SpaceAtom scriptSpaceAtom = new WpfMath.SpaceAtom(TexUnit.Point, 0.5, 0, 0);
+        private static readonly SpaceAtom scriptSpaceAtom = new SpaceAtom(TexUnit.Point, 0.5, 0, 0);
 
         public ScriptsAtom(Atom baseAtom, Atom subscriptAtom, Atom superscriptAtom)
             : base()
@@ -36,22 +36,22 @@ namespace WpfMath
             private set;
         }
 
-        public override Box CreateBox(WpfMath.TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             var texFont = environment.TexFont;
             var style = environment.Style;
 
             // Create box for base atom.
-            var baseBox = (this.BaseAtom == null ? WpfMath.StrutBox.Empty : this.BaseAtom.CreateBox(environment));
+            var baseBox = (this.BaseAtom == null ? StrutBox.Empty : this.BaseAtom.CreateBox(environment));
             if (this.SubscriptAtom == null && this.SuperscriptAtom == null)
                 return baseBox;
 
             // Create result box.
-            var resultBox = new WpfMath.HorizontalBox(baseBox);
+            var resultBox = new HorizontalBox(baseBox);
 
             // Get last font used or default Mu font.
             int lastFontId = baseBox.GetLastFontId();
-            if (lastFontId == WpfMath.TexFontUtilities.NoFontId)
+            if (lastFontId == TexFontUtilities.NoFontId)
                 lastFontId = texFont.GetMuFontId();
 
             var subscriptStyle = environment.GetSubscriptStyle();
@@ -67,20 +67,20 @@ namespace WpfMath
                 shiftUp = accentedBox.Height - texFont.GetSupDrop(superscriptStyle.Style);
                 shiftDown = accentedBox.Depth + texFont.GetSubDrop(subscriptStyle.Style);
             }
-            else if (this.BaseAtom is WpfMath.SymbolAtom && this.BaseAtom.Type == TexAtomType.BigOperator)
+            else if (this.BaseAtom is SymbolAtom && this.BaseAtom.Type == TexAtomType.BigOperator)
             {
-                var charInfo = texFont.GetCharInfo(((WpfMath.SymbolAtom)this.BaseAtom).Name, style);
+                var charInfo = texFont.GetCharInfo(((SymbolAtom)this.BaseAtom).Name, style);
                 if (style < TexStyle.Text && texFont.HasNextLarger(charInfo))
                     charInfo = texFont.GetNextLargerCharInfo(charInfo, style);
                 var charBox = new CharBox(environment, charInfo);
 
                 charBox.Shift = -(charBox.Height + charBox.Depth) / 2 - environment.TexFont.GetAxisHeight(
                     environment.Style);
-                resultBox = new WpfMath.HorizontalBox(charBox);
+                resultBox = new HorizontalBox(charBox);
 
                 delta = charInfo.Metrics.Italic;
-                if (delta > WpfMath.TexUtilities.FloatPrecision && this.SubscriptAtom == null)
-                    resultBox.Add(new WpfMath.StrutBox(delta, 0, 0, 0));
+                if (delta > TexUtilities.FloatPrecision && this.SubscriptAtom == null)
+                    resultBox.Add(new StrutBox(delta, 0, 0, 0));
 
                 shiftUp = resultBox.Height - texFont.GetSupDrop(superscriptStyle.Style);
                 shiftDown = resultBox.Depth + texFont.GetSubDrop(subscriptStyle.Style);
@@ -90,9 +90,9 @@ namespace WpfMath
                 var charFont = ((CharSymbol)this.BaseAtom).GetCharFont(texFont);
                 if (!((CharSymbol)this.BaseAtom).IsTextSymbol || !texFont.HasSpace(charFont.FontId))
                     delta = texFont.GetCharInfo(charFont, style).Metrics.Italic;
-                if (delta > WpfMath.TexUtilities.FloatPrecision && SubscriptAtom == null)
+                if (delta > TexUtilities.FloatPrecision && SubscriptAtom == null)
                 {
-                    resultBox.Add(new WpfMath.StrutBox(delta, 0, 0, 0));
+                    resultBox.Add(new StrutBox(delta, 0, 0, 0));
                     delta = 0;
                 }
 
@@ -114,7 +114,7 @@ namespace WpfMath
             {
                 // Create box for superscript atom.
                 superscriptBox = this.SuperscriptAtom.CreateBox(superscriptStyle);
-                superscriptContainerBox = new WpfMath.HorizontalBox(superscriptBox);
+                superscriptContainerBox = new HorizontalBox(superscriptBox);
 
                 // Add box for script space.
                 superscriptContainerBox.Add(scriptSpaceAtom.CreateBox(environment));
@@ -135,7 +135,7 @@ namespace WpfMath
             {
                 // Create box for subscript atom.
                 subscriptBox = this.SubscriptAtom.CreateBox(subscriptStyle);
-                subscriptContainerBox = new WpfMath.HorizontalBox(subscriptBox);
+                subscriptContainerBox = new HorizontalBox(subscriptBox);
 
                 // Add box for script space.
                 subscriptContainerBox.Add(scriptSpaceAtom.CreateBox(environment));
@@ -180,10 +180,10 @@ namespace WpfMath
             scriptsInterSpace = shiftUp - superscriptBox.Depth + shiftDown - subscriptBox.Height;
 
             // Create box containing both superscript and subscript.
-            var scriptsBox = new WpfMath.VerticalBox();
+            var scriptsBox = new VerticalBox();
             superscriptContainerBox.Shift = delta;
             scriptsBox.Add(superscriptContainerBox);
-            scriptsBox.Add(new WpfMath.StrutBox(0, scriptsInterSpace, 0, 0));
+            scriptsBox.Add(new StrutBox(0, scriptsInterSpace, 0, 0));
             scriptsBox.Add(subscriptContainerBox);
             scriptsBox.Height = shiftUp + superscriptBox.Height;
             scriptsBox.Depth = shiftDown + subscriptBox.Depth;

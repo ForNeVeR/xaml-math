@@ -11,7 +11,7 @@ namespace WpfMath
     // Parses settings for predefined formulas from XML file.
     internal class TexPredefinedFormulaSettingsParser
     {
-        private static readonly string resourceName = WpfMath.TexUtilities.ResourcesDataDirectory + "TexFormulaSettings.xml";
+        private static readonly string resourceName = TexUtilities.ResourcesDataDirectory + "TexFormulaSettings.xml";
 
         static TexPredefinedFormulaSettingsParser()
         {
@@ -40,7 +40,7 @@ namespace WpfMath
 
         public IList<string> GetSymbolMappings()
         {
-            var mappings = new string[WpfMath.TexFontInfo.charCodesCount];
+            var mappings = new string[TexFontInfo.charCodesCount];
             var charToSymbol = rootElement.Element("CharacterToSymbolMappings");
             if (charToSymbol != null)
                 AddToMap(charToSymbol.Elements("Map"), mappings);
@@ -49,7 +49,7 @@ namespace WpfMath
 
         public IList<string> GetDelimiterMappings()
         {
-            var mappings = new string[WpfMath.TexFontInfo.charCodesCount];
+            var mappings = new string[TexFontInfo.charCodesCount];
             var charToDelimiter = rootElement.Element("CharacterToDelimiterMappings");
             if (charToDelimiter != null)
                 AddToMap(charToDelimiter.Elements("Map"), mappings);

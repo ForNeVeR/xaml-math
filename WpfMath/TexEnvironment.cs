@@ -11,14 +11,14 @@ namespace WpfMath
     internal class TexEnvironment
     {
         // ID of font that was last used.
-        private int lastFontId = WpfMath.TexFontUtilities.NoFontId;
+        private int lastFontId = TexFontUtilities.NoFontId;
 
-        public TexEnvironment(TexStyle style, WpfMath.ITeXFont texFont)
+        public TexEnvironment(TexStyle style, ITeXFont texFont)
             : this(style, texFont, null, null)
         {
         }
 
-        private TexEnvironment(TexStyle style, WpfMath.ITeXFont texFont, Brush background, Brush foreground)
+        private TexEnvironment(TexStyle style, ITeXFont texFont, Brush background, Brush foreground)
         {
             if (style == TexStyle.Display || style == TexStyle.Text ||
                 style == TexStyle.Script || style == TexStyle.ScriptScript)
@@ -37,7 +37,7 @@ namespace WpfMath
             private set;
         }
 
-        public WpfMath.ITeXFont TexFont
+        public ITeXFont TexFont
         {
             get;
             private set;
@@ -57,7 +57,7 @@ namespace WpfMath
 
         public int LastFontId
         {
-            get { return this.lastFontId == WpfMath.TexFontUtilities.NoFontId ? this.TexFont.GetMuFontId() : this.lastFontId; }
+            get { return this.lastFontId == TexFontUtilities.NoFontId ? this.TexFont.GetMuFontId() : this.lastFontId; }
             set { this.lastFontId = value; }
         }
 

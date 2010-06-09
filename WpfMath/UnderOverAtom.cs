@@ -10,8 +10,8 @@ namespace WpfMath
     {
         private static Box ChangeWidth(Box box, double maxWidth)
         {
-            if (box != null && Math.Abs(maxWidth - box.Width) > WpfMath.TexUtilities.FloatPrecision)
-                return new WpfMath.HorizontalBox(box, maxWidth, TexAlignment.Center);
+            if (box != null && Math.Abs(maxWidth - box.Width) > TexUtilities.FloatPrecision)
+                return new HorizontalBox(box, maxWidth, TexAlignment.Center);
             else
                 return box;
         }
@@ -19,7 +19,7 @@ namespace WpfMath
         public UnderOverAtom(Atom baseAtom, Atom underOver, TexUnit underOverUnit, double underOverSpace,
             bool underOverScriptSize, bool over)
         {
-            WpfMath.SpaceAtom.CheckUnit(underOverUnit);
+            SpaceAtom.CheckUnit(underOverUnit);
 
             this.BaseAtom = baseAtom;
 
@@ -50,8 +50,8 @@ namespace WpfMath
         public UnderOverAtom(Atom baseAtom, Atom under, TexUnit underUnit, double underSpace, bool underScriptSize,
             Atom over, TexUnit overUnit, double overSpace, bool overScriptSize)
         {
-            WpfMath.SpaceAtom.CheckUnit(underUnit);
-            WpfMath.SpaceAtom.CheckUnit(overUnit);
+            SpaceAtom.CheckUnit(underUnit);
+            SpaceAtom.CheckUnit(overUnit);
 
             this.BaseAtom = baseAtom;
             this.UnderAtom = under;
@@ -119,10 +119,10 @@ namespace WpfMath
             set;
         }
 
-        public override Box CreateBox(WpfMath.TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             // Create box for base atom.
-            var baseBox = this.BaseAtom == null ? WpfMath.StrutBox.Empty : this.BaseAtom.CreateBox(environment);
+            var baseBox = this.BaseAtom == null ? StrutBox.Empty : this.BaseAtom.CreateBox(environment);
 
             // Create boxes for over and under atoms.
             Box overBox = null, underBox = null;
@@ -141,7 +141,7 @@ namespace WpfMath
             }
 
             // Create result box.
-            var resultBox = new WpfMath.VerticalBox();
+            var resultBox = new VerticalBox();
 
             environment.LastFontId = baseBox.GetLastFontId();
 
@@ -149,7 +149,7 @@ namespace WpfMath
             if (this.OverAtom != null)
             {
                 resultBox.Add(ChangeWidth(overBox, maxWidth));
-                resultBox.Add(new WpfMath.SpaceAtom(OverSpaceUnit, 0, OverSpace, 0).CreateBox(environment));
+                resultBox.Add(new SpaceAtom(OverSpaceUnit, 0, OverSpace, 0).CreateBox(environment));
             }
 
             // Add box for base atom.
@@ -160,7 +160,7 @@ namespace WpfMath
             // Create and add box for under atom.
             if (this.UnderAtom != null)
             {
-                resultBox.Add(new WpfMath.SpaceAtom(OverSpaceUnit, 0, UnderSpace, 0).CreateBox(environment));
+                resultBox.Add(new SpaceAtom(OverSpaceUnit, 0, UnderSpace, 0).CreateBox(environment));
                 resultBox.Add(ChangeWidth(underBox, maxWidth));
             }
 

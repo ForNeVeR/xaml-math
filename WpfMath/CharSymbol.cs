@@ -19,6 +19,6 @@ namespace WpfMath
             set;
         }
 
-        public abstract WpfMath.CharFont GetCharFont(WpfMath.ITeXFont texFont);
+        public abstract CharFont GetCharFont(ITeXFont texFont);
     }
 }

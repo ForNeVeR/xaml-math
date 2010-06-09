@@ -12,7 +12,7 @@ namespace WpfMath
     // Parses information for DefaultTeXFont settings from XML file.
     internal class DefaultTexFontParser
     {
-        private static readonly string resourceName = WpfMath.TexUtilities.ResourcesDataDirectory + "DefaultTexFont.xml";
+        private static readonly string resourceName = TexUtilities.ResourcesDataDirectory + "DefaultTexFont.xml";
 
         private const int fontIdCount = 4;
         private const string fontsDirectory = "Fonts/";
@@ -44,7 +44,7 @@ namespace WpfMath
             charChildParsers.Add("Extension", new ExtensionParser());
         }
 
-        private IDictionary<string, WpfMath.CharFont[]> parsedTextStyles;
+        private IDictionary<string, CharFont[]> parsedTextStyles;
 
         private XElement rootElement;
 
@@ -55,9 +55,9 @@ namespace WpfMath
             ParseTextStyleMappings();
         }
 
-        public WpfMath.TexFontInfo[] GetFontDescriptions()
+        public TexFontInfo[] GetFontDescriptions()
         {
-            var result = new WpfMath.TexFontInfo[fontIdCount];
+            var result = new TexFontInfo[fontIdCount];
 
             var fontDescriptions = rootElement.Element("FontDescriptions");
             if (fontDescriptions != null)
@@ -72,7 +72,7 @@ namespace WpfMath
                     var skewChar = fontElement.AttributeInt32Value("skewChar", -1);
 
                     var font = CreateFont(fontName);
-                    var fontInfo = new WpfMath.TexFontInfo(fontId, font, xHeight, space, quad);
+                    var fontInfo = new TexFontInfo(fontId, font, xHeight, space, quad);
                     if (skewChar != -1)
                         fontInfo.SkewCharacter = (char)skewChar;
 
@@ -88,15 +88,15 @@ namespace WpfMath
             return result;
         }
 
-        private static void ProcessCharElement(XElement charElement, WpfMath.TexFontInfo fontInfo)
+        private static void ProcessCharElement(XElement charElement, TexFontInfo fontInfo)
         {
             var character = (char)charElement.AttributeInt32Value("code");
 
             var metrics = new double[4];
-            metrics[WpfMath.TexFontUtilities.MetricsWidth] = charElement.AttributeDoubleValue("width", 0d);
-            metrics[WpfMath.TexFontUtilities.MetricsHeight] = charElement.AttributeDoubleValue("height", 0d);
-            metrics[WpfMath.TexFontUtilities.MetricsDepth] = charElement.AttributeDoubleValue("depth", 0d);
-            metrics[WpfMath.TexFontUtilities.MetricsItalic] = charElement.AttributeDoubleValue("italic", 0d);
+            metrics[TexFontUtilities.MetricsWidth] = charElement.AttributeDoubleValue("width", 0d);
+            metrics[TexFontUtilities.MetricsHeight] = charElement.AttributeDoubleValue("height", 0d);
+            metrics[TexFontUtilities.MetricsDepth] = charElement.AttributeDoubleValue("depth", 0d);
+            metrics[TexFontUtilities.MetricsItalic] = charElement.AttributeDoubleValue("italic", 0d);
             fontInfo.SetMetrics(character, metrics);
 
             foreach (var childElement in charElement.Elements())
@@ -108,9 +108,9 @@ namespace WpfMath
             }
         }
 
-        public IDictionary<string, WpfMath.CharFont> GetSymbolMappings()
+        public IDictionary<string, CharFont> GetSymbolMappings()
         {
-            var result = new Dictionary<string, WpfMath.CharFont>();
+            var result = new Dictionary<string, CharFont>();
 
             var symbolMappingsElement = rootElement.Element("SymbolMappings");
             if (symbolMappingsElement == null)
@@ -122,7 +122,7 @@ namespace WpfMath
                 var character = mappingElement.AttributeInt32Value("ch");
                 var fontId = mappingElement.AttributeInt32Value("fontId");
 
-                result.Add(symbolName, new WpfMath.CharFont((char)character, fontId));
+                result.Add(symbolName, new CharFont((char)character, fontId));
             }
 
             if (!result.ContainsKey("sqrt"))
@@ -188,14 +188,14 @@ namespace WpfMath
             return result;
         }
 
-        public IDictionary<string, WpfMath.CharFont[]> GetTextStyleMappings()
+        public IDictionary<string, CharFont[]> GetTextStyleMappings()
         {
             return parsedTextStyles;
         }
 
         private void ParseTextStyleMappings()
         {
-            this.parsedTextStyles = new Dictionary<string, WpfMath.CharFont[]>();
+            this.parsedTextStyles = new Dictionary<string, CharFont[]>();
 
             var textStyleMappings = rootElement.Element("TextStyleMappings");
             if (textStyleMappings == null)
@@ -204,7 +204,7 @@ namespace WpfMath
             foreach (var mappingElement in textStyleMappings.Elements("TextStyleMapping"))
             {
                 var textStyleName = mappingElement.AttributeValue("name");
-                var charFonts = new WpfMath.CharFont[3];
+                var charFonts = new CharFont[3];
                 foreach (var mapRangeElement in mappingElement.Elements("MapRange"))
                 {
                     var fontId = mapRangeElement.AttributeInt32Value("fontId");
@@ -212,7 +212,7 @@ namespace WpfMath
                     var code = mapRangeElement.AttributeValue("code");
                     var codeMapping = rangeTypeMappings[code];
 
-                    charFonts[(int)codeMapping] = new WpfMath.CharFont((char)character, fontId);
+                    charFonts[(int)codeMapping] = new CharFont((char)character, fontId);
                 }
                 this.parsedTextStyles.Add(textStyleName, charFonts);
             }
@@ -231,15 +231,15 @@ namespace WpfMath
             {
             }
 
-            public void Parse(XElement element, char character, WpfMath.TexFontInfo fontInfo)
+            public void Parse(XElement element, char character, TexFontInfo fontInfo)
             {
                 var extensionChars = new int[4];
-                extensionChars[WpfMath.TexFontUtilities.ExtensionRepeat] = element.AttributeInt32Value("rep");
-                extensionChars[WpfMath.TexFontUtilities.ExtensionTop] = element.AttributeInt32Value("top",
+                extensionChars[TexFontUtilities.ExtensionRepeat] = element.AttributeInt32Value("rep");
+                extensionChars[TexFontUtilities.ExtensionTop] = element.AttributeInt32Value("top",
                     (int)TexCharKind.None);
-                extensionChars[WpfMath.TexFontUtilities.ExtensionMiddle] = element.AttributeInt32Value("mid",
+                extensionChars[TexFontUtilities.ExtensionMiddle] = element.AttributeInt32Value("mid",
                     (int)TexCharKind.None);
-                extensionChars[WpfMath.TexFontUtilities.ExtensionBottom] = element.AttributeInt32Value("bot",
+                extensionChars[TexFontUtilities.ExtensionBottom] = element.AttributeInt32Value("bot",
                     (int)TexCharKind.None);
 
                 fontInfo.SetExtensions(character, extensionChars);
@@ -252,7 +252,7 @@ namespace WpfMath
             {
             }
 
-            public void Parse(XElement element, char character, WpfMath.TexFontInfo fontInfo)
+            public void Parse(XElement element, char character, TexFontInfo fontInfo)
             {
                 fontInfo.AddKern(character, (char)element.AttributeInt32Value("code"),
                     element.AttributeDoubleValue("val"));
@@ -265,7 +265,7 @@ namespace WpfMath
             {
             }
 
-            public void Parse(XElement element, char character, WpfMath.TexFontInfo fontInfo)
+            public void Parse(XElement element, char character, TexFontInfo fontInfo)
             {
                 fontInfo.AddLigature(character, (char)element.AttributeInt32Value("code"),
                     (char)element.AttributeInt32Value("ligCode"));
@@ -278,7 +278,7 @@ namespace WpfMath
             {
             }
 
-            public void Parse(XElement element, char character, WpfMath.TexFontInfo fontInfo)
+            public void Parse(XElement element, char character, TexFontInfo fontInfo)
             {
                 fontInfo.SetNextLarger(character, (char)element.AttributeInt32Value("code"),
                     element.AttributeInt32Value("fontId"));
@@ -287,7 +287,7 @@ namespace WpfMath
 
         public interface ICharChildParser
         {
-            void Parse(XElement element, char character, WpfMath.TexFontInfo fontInfo);
+            void Parse(XElement element, char character, TexFontInfo fontInfo);
         }
     }
 }

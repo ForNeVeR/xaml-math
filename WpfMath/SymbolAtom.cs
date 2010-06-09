@@ -17,7 +17,7 @@ namespace WpfMath
 
         static SymbolAtom()
         {
-            var symbolParser = new WpfMath.TexSymbolParser();
+            var symbolParser = new TexSymbolParser();
             symbols = symbolParser.GetSymbols();
 
             validSymbolTypes = new BitArray(16);
@@ -73,12 +73,12 @@ namespace WpfMath
             private set;
         }
 
-        public override Box CreateBox(WpfMath.TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             return new CharBox(environment, environment.TexFont.GetCharInfo(this.Name, environment.Style));
         }
 
-        public override WpfMath.CharFont GetCharFont(WpfMath.ITeXFont texFont)
+        public override CharFont GetCharFont(ITeXFont texFont)
         {
             // Style is irrelevant here.
             return texFont.GetCharInfo(Name, TexStyle.Display).GetCharacterFont();

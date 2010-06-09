@@ -60,7 +60,7 @@ namespace WpfMath
 
         protected FractionAtom(Atom numerator, Atom denominator, bool useDefaultThickness, TexUnit unit, double thickness)
         {
-            WpfMath.SpaceAtom.CheckUnit(unit);
+            SpaceAtom.CheckUnit(unit);
 
             this.Type = TexAtomType.Inner;
             this.Numerator = numerator;
@@ -84,7 +84,7 @@ namespace WpfMath
             private set;
         }
 
-        public override Box CreateBox(WpfMath.TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             var texFont = environment.TexFont;
             var style = environment.Style;
@@ -96,18 +96,18 @@ namespace WpfMath
                 lineHeight = this.lineRelativeThickness.HasValue ? this.lineRelativeThickness.Value * defaultLineThickness :
                     defaultLineThickness;
             else
-                lineHeight = new WpfMath.SpaceAtom(this.lineThicknessUnit, 0, this.lineThickness, 0).CreateBox(environment).Height;
+                lineHeight = new SpaceAtom(this.lineThicknessUnit, 0, this.lineThickness, 0).CreateBox(environment).Height;
 
             // Create boxes for numerator and demoninator atoms, and make them of equal width.
-            var numeratorBox = this.Numerator == null ? WpfMath.StrutBox.Empty :
+            var numeratorBox = this.Numerator == null ? StrutBox.Empty :
                 this.Numerator.CreateBox(environment.GetNumeratorStyle());
-            var denominatorBox = this.Denominator == null ? WpfMath.StrutBox.Empty :
+            var denominatorBox = this.Denominator == null ? StrutBox.Empty :
                 this.Denominator.CreateBox(environment.GetDenominatorStyle());
 
             if (numeratorBox.Width < denominatorBox.Width)
-                numeratorBox = new WpfMath.HorizontalBox(numeratorBox, denominatorBox.Width, numeratorAlignment);
+                numeratorBox = new HorizontalBox(numeratorBox, denominatorBox.Width, numeratorAlignment);
             else
-                denominatorBox = new WpfMath.HorizontalBox(denominatorBox, numeratorBox.Width, denominatorAlignment);
+                denominatorBox = new HorizontalBox(denominatorBox, numeratorBox.Width, denominatorAlignment);
 
             // Calculate preliminary shift-up and shift-down amounts.
             double shiftUp, shiftDown;
@@ -126,7 +126,7 @@ namespace WpfMath
             }
 
             // Create result box.
-            var resultBox = new WpfMath.VerticalBox();
+            var resultBox = new VerticalBox();
 
             // add box for numerator.
             resultBox.Add(numeratorBox);
@@ -162,9 +162,9 @@ namespace WpfMath
                     kern2 += delta2;
                 }
 
-                resultBox.Add(new WpfMath.StrutBox(0, kern1, 0, 0));
-                resultBox.Add(new WpfMath.HorizontalRule(lineHeight, numeratorBox.Width, 0));
-                resultBox.Add(new WpfMath.StrutBox(0, kern2, 0, 0));
+                resultBox.Add(new StrutBox(0, kern1, 0, 0));
+                resultBox.Add(new HorizontalRule(lineHeight, numeratorBox.Width, 0));
+                resultBox.Add(new StrutBox(0, kern2, 0, 0));
             }
             else
             {
@@ -187,7 +187,7 @@ namespace WpfMath
                     kern += 2 * delta;
                 }
 
-                resultBox.Add(new WpfMath.StrutBox(0, kern, 0, 0));
+                resultBox.Add(new StrutBox(0, kern, 0, 0));
             }
 
             // add box for denominator.

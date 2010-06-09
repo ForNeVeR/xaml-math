@@ -18,7 +18,7 @@ namespace WpfMath
             var extraWidth = width - box.Width;
             if (alignment == TexAlignment.Center)
             {
-                var strutBox = new WpfMath.StrutBox(extraWidth / 2, 0, 0, 0);
+                var strutBox = new StrutBox(extraWidth / 2, 0, 0, 0);
                 Add(strutBox);
                 Add(box);
                 Add(strutBox);
@@ -26,11 +26,11 @@ namespace WpfMath
             else if (alignment == TexAlignment.Left)
             {
                 Add(box);
-                Add(new WpfMath.StrutBox(extraWidth, 0, 0, 0));
+                Add(new StrutBox(extraWidth, 0, 0, 0));
             }
             else if (alignment == TexAlignment.Right)
             {
-                Add(new WpfMath.StrutBox(extraWidth, 0, 0, 0));
+                Add(new StrutBox(extraWidth, 0, 0, 0));
                 Add(box);
             }
         }
@@ -75,11 +75,11 @@ namespace WpfMath
 
         public override int GetLastFontId()
         {
-            var fontId = WpfMath.TexFontUtilities.NoFontId;
+            var fontId = TexFontUtilities.NoFontId;
             foreach (var child in this.Children)
             {
                 fontId = child.GetLastFontId();
-                if (fontId == WpfMath.TexFontUtilities.NoFontId)
+                if (fontId == TexFontUtilities.NoFontId)
                     break;
             }
             return fontId;

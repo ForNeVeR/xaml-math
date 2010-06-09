@@ -19,7 +19,7 @@ namespace WpfMath
             Add(box);
             if (alignment == TexAlignment.Center)
             {
-                var strutBox = new WpfMath.StrutBox(0, rest / 2, 0, 0);
+                var strutBox = new StrutBox(0, rest / 2, 0, 0);
                 base.Add(0, strutBox);
                 this.Height += rest / 2;
                 this.Depth += rest / 2;
@@ -28,12 +28,12 @@ namespace WpfMath
             else if (alignment == TexAlignment.Top)
             {
                 this.Depth += rest;
-                base.Add(new WpfMath.StrutBox(0, rest, 0, 0));
+                base.Add(new StrutBox(0, rest, 0, 0));
             }
             else if (alignment == TexAlignment.Bottom)
             {
                 this.Height += rest;
-                base.Add(0, new WpfMath.StrutBox(0, rest, 0, 0));
+                base.Add(0, new StrutBox(0, rest, 0, 0));
             }
         }
 
@@ -96,11 +96,11 @@ namespace WpfMath
 
         public override int GetLastFontId()
         {
-            var fontId = WpfMath.TexFontUtilities.NoFontId;
+            var fontId = TexFontUtilities.NoFontId;
             foreach (var child in this.Children)
             {
                 fontId = child.GetLastFontId();
-                if (fontId == WpfMath.TexFontUtilities.NoFontId)
+                if (fontId == TexFontUtilities.NoFontId)
                     break;
             }
             return fontId;

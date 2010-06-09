@@ -6,7 +6,7 @@ using System.Linq;
 namespace WpfMath
 {
     // Atom representing horizontal row of other atoms, separated by glue.
-    internal class RowAtom : Atom, WpfMath.IRow
+    internal class RowAtom : Atom, IRow
     {
         // Set of atom types that make previous atom of BinaryOperator type change to Ordinary type.
         private static BitArray binaryOperatorChangeSet;
@@ -100,12 +100,12 @@ namespace WpfMath
             }
         }
 
-        public override Box CreateBox(WpfMath.TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             var texFont = environment.TexFont;
 
             // Create result box.
-            var resultBox = new WpfMath.HorizontalBox(environment.Foreground, environment.Background);
+            var resultBox = new HorizontalBox(environment.Foreground, environment.Background);
 
             // Create and add box for each atom in row.
             for (int i = 0; i < this.Elements.Count; i++)
@@ -152,8 +152,8 @@ namespace WpfMath
                 environment.LastFontId = curBox.GetLastFontId();
 
                 // Insert kern, if required.
-                if (kern > WpfMath.TexUtilities.FloatPrecision)
-                    resultBox.Add(new WpfMath.StrutBox(0, kern, 0, 0));
+                if (kern > TexUtilities.FloatPrecision)
+                    resultBox.Add(new StrutBox(0, kern, 0, 0));
 
                 if (!curAtom.IsKern)
                     this.PreviousAtom = curAtom;
