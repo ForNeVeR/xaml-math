@@ -20,7 +20,7 @@ namespace WpfMath
             if (formulaList.Count == 1)
                 Add(formulaList[0]);
             else
-                this.RootAtom = new WpfMath.RowAtom(formulaList);
+                this.RootAtom = new RowAtom(formulaList);
         }
 
         public TexFormula(TexFormula formula)
@@ -46,10 +46,10 @@ namespace WpfMath
             set;
         }
 
-        public WpfMath.TexRenderer GetRenderer(TexStyle style, double scale)
+        public TexRenderer GetRenderer(TexStyle style, double scale)
         {
-            var environment = new WpfMath.TexEnvironment(style, new DefaultTexFont(scale));
-            return new WpfMath.TexRenderer(CreateBox(environment), scale);
+            var environment = new TexEnvironment(style, new DefaultTexFont(scale));
+            return new TexRenderer(CreateBox(environment), scale);
         }
 
 
@@ -58,8 +58,8 @@ namespace WpfMath
             Debug.Assert(formula != null);
             Debug.Assert(formula.RootAtom != null);
 
-            if (formula.RootAtom is WpfMath.RowAtom)
-                Add(new WpfMath.RowAtom(formula.RootAtom));
+            if (formula.RootAtom is RowAtom)
+                Add(new RowAtom(formula.RootAtom));
             else
                 Add(formula.RootAtom);
         }
@@ -73,42 +73,42 @@ namespace WpfMath
             }
             else
             {
-                if (!(this.RootAtom is WpfMath.RowAtom))
-                    this.RootAtom = new WpfMath.RowAtom(RootAtom);
-                ((WpfMath.RowAtom)RootAtom).Add(atom);
+                if (!(this.RootAtom is RowAtom))
+                    this.RootAtom = new RowAtom(RootAtom);
+                ((RowAtom)RootAtom).Add(atom);
             }
         }
 
         public void SetForeground(Brush brush)
         {
-            if (this.RootAtom is WpfMath.StyledAtom)
+            if (this.RootAtom is StyledAtom)
             {
-                this.RootAtom = ((WpfMath.StyledAtom)this.RootAtom).Clone();
-                ((WpfMath.StyledAtom)this.RootAtom).Foreground = brush;
+                this.RootAtom = ((StyledAtom)this.RootAtom).Clone();
+                ((StyledAtom)this.RootAtom).Foreground = brush;
             }
             else
             {
-                this.RootAtom = new WpfMath.StyledAtom(this.RootAtom, null, brush);
+                this.RootAtom = new StyledAtom(this.RootAtom, null, brush);
             }
         }
 
         public void SetBackground(Brush brush)
         {
-            if (this.RootAtom is WpfMath.StyledAtom)
+            if (this.RootAtom is StyledAtom)
             {
-                this.RootAtom = ((WpfMath.StyledAtom)this.RootAtom).Clone();
-                ((WpfMath.StyledAtom)this.RootAtom).Background = brush;
+                this.RootAtom = ((StyledAtom)this.RootAtom).Clone();
+                ((StyledAtom)this.RootAtom).Background = brush;
             }
             else
             {
-                this.RootAtom = new WpfMath.StyledAtom(this.RootAtom, brush, null);
+                this.RootAtom = new StyledAtom(this.RootAtom, brush, null);
             }
         }
 
-        internal Box CreateBox(WpfMath.TexEnvironment environment)
+        internal Box CreateBox(TexEnvironment environment)
         {
             if (this.RootAtom == null)
-                return WpfMath.StrutBox.Empty;
+                return StrutBox.Empty;
             else
                 return this.RootAtom.CreateBox(environment);
         }

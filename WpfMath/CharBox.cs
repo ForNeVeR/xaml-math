@@ -10,7 +10,7 @@ namespace WpfMath
     // Box representing single character.
     internal class CharBox : Box
     {
-        public CharBox(WpfMath.TexEnvironment environment, WpfMath.CharInfo charInfo)
+        public CharBox(TexEnvironment environment, CharInfo charInfo)
             : base(environment)
         {
             this.Character = charInfo;
@@ -19,7 +19,7 @@ namespace WpfMath
             this.Depth = charInfo.Metrics.Depth;
         }
 
-        public WpfMath.CharInfo Character
+        public CharInfo Character
         {
             get;
             private set;

@@ -15,7 +15,7 @@ namespace WpfMath
         private readonly double[][] metrics;
         private readonly IDictionary<Tuple<char, char>, char> ligatures;
         private readonly IDictionary<Tuple<char, char>, double> kerns;
-        private readonly WpfMath.CharFont[] nextLarger;
+        private readonly CharFont[] nextLarger;
         private readonly int[][] extensions;
 
         public TexFontInfo(int fontId, GlyphTypeface font, double xHeight, double space, double quad)
@@ -23,7 +23,7 @@ namespace WpfMath
             this.metrics = new double[charCodesCount][];
             this.ligatures = new Dictionary<Tuple<char, char>, char>();
             this.kerns = new Dictionary<Tuple<char, char>, double>();
-            this.nextLarger = new WpfMath.CharFont[charCodesCount];
+            this.nextLarger = new CharFont[charCodesCount];
             this.extensions = new int[charCodesCount][];
 
             this.FontId = fontId;
@@ -83,7 +83,7 @@ namespace WpfMath
 
         public bool HasSpace()
         {
-            return this.Space > WpfMath.TexUtilities.FloatPrecision;
+            return this.Space > TexUtilities.FloatPrecision;
         }
 
         public void SetExtensions(char character, int[] extensions)
@@ -98,7 +98,7 @@ namespace WpfMath
 
         public void SetNextLarger(char character, char largerCharacter, int largerFont)
         {
-            this.nextLarger[character] = new WpfMath.CharFont(largerCharacter, largerFont);
+            this.nextLarger[character] = new CharFont(largerCharacter, largerFont);
         }
 
         public int[] GetExtension(char character)
@@ -114,14 +114,14 @@ namespace WpfMath
             return kern * factor;
         }
 
-        public WpfMath.CharFont GetLigature(char left, char right)
+        public CharFont GetLigature(char left, char right)
         {
             Tuple<char, char> tpl = Tuple.Create(left, right);
             char ch;
-            return this.ligatures.TryGetValue(tpl, out ch) ? new WpfMath.CharFont(ch, this.FontId) : null;
+            return this.ligatures.TryGetValue(tpl, out ch) ? new CharFont(ch, this.FontId) : null;
         }
 
-        public WpfMath.CharFont GetNextLarger(char character)
+        public CharFont GetNextLarger(char character)
         {
             return this.nextLarger[character];
         }

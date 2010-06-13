@@ -35,7 +35,7 @@ namespace WpfMath
 
         public override int GetLastFontId()
         {
-            return WpfMath.TexFontUtilities.NoFontId;
+            return TexFontUtilities.NoFontId;
         }
     }
 }

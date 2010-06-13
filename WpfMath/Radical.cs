@@ -32,7 +32,7 @@ namespace WpfMath
             private set;
         }
 
-        public override Box CreateBox(WpfMath.TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             var texFont = environment.TexFont;
             var style = environment.Style;
@@ -60,9 +60,9 @@ namespace WpfMath
 
             // Create box for square-root containing base box.
             radicalSignBox.Shift = -(baseBox.Height + clearance);
-            var overBar = new WpfMath.OverBar(baseBox, clearance, radicalSignBox.Height);
+            var overBar = new OverBar(baseBox, clearance, radicalSignBox.Height);
             overBar.Shift = -(baseBox.Height + clearance + defaultRuleThickness);
-            var radicalContainerBox = new WpfMath.HorizontalBox(radicalSignBox);
+            var radicalContainerBox = new HorizontalBox(radicalSignBox);
             radicalContainerBox.Add(overBar);
 
             // If atom is simple radical, just return square-root box.
@@ -77,13 +77,13 @@ namespace WpfMath
             rootBox.Shift = radicalContainerBox.Depth - rootBox.Depth - bottomShift;
 
             // Create result box.
-            var resultBox = new WpfMath.HorizontalBox();
+            var resultBox = new HorizontalBox();
 
             // Add box for negative kern.
-            var negativeKern = new WpfMath.SpaceAtom(TexUnit.Mu, -10, 0, 0).CreateBox(environment);
+            var negativeKern = new SpaceAtom(TexUnit.Mu, -10, 0, 0).CreateBox(environment);
             var xPos = rootBox.Width + negativeKern.Width;
             if (xPos < 0)
-                resultBox.Add(new WpfMath.StrutBox(-xPos, 0, 0, 0));
+                resultBox.Add(new StrutBox(-xPos, 0, 0, 0));
 
             resultBox.Add(rootBox);
             resultBox.Add(negativeKern);

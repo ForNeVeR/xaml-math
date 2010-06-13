@@ -6,7 +6,7 @@ using System.Text;
 namespace WpfMath
 {
     // Atom representing other atom that is not rendered.
-    internal class PhantomAtom : Atom, WpfMath.IRow
+    internal class PhantomAtom : Atom, IRow
     {
         private bool useWidth;
         private bool useHeight;
@@ -20,7 +20,7 @@ namespace WpfMath
         public PhantomAtom(Atom baseAtom, bool useWidth, bool useHeight, bool useDepth)
             : base()
         {
-            this.RowAtom = baseAtom == null ? new WpfMath.RowAtom() : new WpfMath.RowAtom(baseAtom);
+            this.RowAtom = baseAtom == null ? new RowAtom() : new RowAtom(baseAtom);
             this.useWidth = useWidth;
             this.useHeight = useHeight;
             this.useDepth = useDepth;
@@ -32,16 +32,16 @@ namespace WpfMath
             set { this.RowAtom.PreviousAtom = value; }
         }
 
-        public WpfMath.RowAtom RowAtom
+        public RowAtom RowAtom
         {
             get;
             private set;
         }
 
-        public override Box CreateBox(WpfMath.TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             var resultBox = this.RowAtom.CreateBox(environment);
-            return new WpfMath.StrutBox((this.useWidth ? resultBox.Width : 0), (this.useHeight ? resultBox.Height : 0),
+            return new StrutBox((this.useWidth ? resultBox.Width : 0), (this.useHeight ? resultBox.Height : 0),
                 (this.useDepth ? resultBox.Depth : 0), resultBox.Shift);
         }
 

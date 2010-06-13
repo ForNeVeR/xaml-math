@@ -11,7 +11,7 @@ namespace WpfMath
     // Parses information about glue settings from XML file.
     internal class GlueSettingsParser
     {
-        private static readonly string resourceName = WpfMath.TexUtilities.ResourcesDataDirectory + "GlueSettings.xml";
+        private static readonly string resourceName = TexUtilities.ResourcesDataDirectory + "GlueSettings.xml";
 
         private static IDictionary<string, TexAtomType> typeMappings;
         private static IDictionary<string, TexStyle> styleMappings;

@@ -33,7 +33,7 @@ namespace WpfMath
             private set;
         }
 
-        public override Box CreateBox(WpfMath.TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             return this.Atom.CreateBox(environment);
         }

@@ -21,14 +21,14 @@ namespace WpfMath
             private set;
         }
 
-        public override Box CreateBox(WpfMath.TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             // Create box for base atom, in cramped style.
-            var baseBox = this.BaseAtom == null ? WpfMath.StrutBox.Empty : this.BaseAtom.CreateBox(environment.GetCrampedStyle());
+            var baseBox = this.BaseAtom == null ? StrutBox.Empty : this.BaseAtom.CreateBox(environment.GetCrampedStyle());
 
             // Create result box.
             var defaultLineThickness = environment.TexFont.GetDefaultLineThickness(environment.Style);
-            var resultBox = new WpfMath.OverBar(baseBox, 3 * defaultLineThickness, defaultLineThickness);
+            var resultBox = new OverBar(baseBox, 3 * defaultLineThickness, defaultLineThickness);
 
             // Adjust height and depth of result box.
             resultBox.Height = baseBox.Height + 5 * defaultLineThickness;

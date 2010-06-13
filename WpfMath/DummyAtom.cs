@@ -19,8 +19,8 @@ namespace WpfMath
         {
             set
             {
-                if (this.Atom is WpfMath.IRow)
-                    ((WpfMath.IRow)this.Atom).PreviousAtom = value;
+                if (this.Atom is IRow)
+                    ((IRow)this.Atom).PreviousAtom = value;
             }
         }
 
@@ -43,7 +43,7 @@ namespace WpfMath
 
         public bool IsKern
         {
-            get { return this.Atom is WpfMath.SpaceAtom; }
+            get { return this.Atom is SpaceAtom; }
         }
 
         public void SetLigature(FixedCharAtom ligatureAtom)
@@ -53,12 +53,12 @@ namespace WpfMath
             this.IsTextSymbol = false;
         }
 
-        public WpfMath.CharFont GetCharFont(WpfMath.ITeXFont texFont)
+        public CharFont GetCharFont(ITeXFont texFont)
         {
             return ((CharSymbol)this.Atom).GetCharFont(texFont);
         }
 
-        public override Box CreateBox(WpfMath.TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             if (this.IsTextSymbol)
                 ((CharSymbol)this.Atom).IsTextSymbol = true;

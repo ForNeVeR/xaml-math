@@ -9,6 +9,7 @@ namespace WpfMath
 {
 
     // TODO: Put all error strings into resources.
+    // TODO: Use TextReader for lexing.
     public class TexFormulaParser
     {
         // Special characters for parsing
@@ -31,19 +32,19 @@ namespace WpfMath
         private static IDictionary<string, TexFormula> predefinedFormulas;
 
         private static readonly string[][] delimiterNames =
-    {
-        new[] { "lbrace", "rbrace" },
-        new[] { "lsqbrack", "rsqbrack" },
-        new[] { "lbrack", "rbrack" },
-        new[] { "downarrow", "downarrow" },
-        new[] { "uparrow", "uparrow" },
-        new[] { "updownarrow", "updownarrow" },
-        new[] { "Downarrow", "Downarrow" },
-        new[] { "Uparrow", "Uparrow" },
-        new[] { "Updownarrow", "Updownarrow" },
-        new[] { "vert", "vert" },
-        new[] { "Vert", "Vert" }
-    };
+        {
+            new[] { "lbrace", "rbrace" },
+            new[] { "lsqbrack", "rsqbrack" },
+            new[] { "lbrack", "rbrack" },
+            new[] { "downarrow", "downarrow" },
+            new[] { "uparrow", "uparrow" },
+            new[] { "updownarrow", "updownarrow" },
+            new[] { "Downarrow", "Downarrow" },
+            new[] { "Uparrow", "Uparrow" },
+            new[] { "Updownarrow", "Updownarrow" },
+            new[] { "vert", "vert" },
+            new[] { "Vert", "Vert" }
+        };
 
         // True if parser has been initialized.
         private static bool isInitialized;
@@ -241,9 +242,11 @@ namespace WpfMath
                 case "frac":
                     // Command is fraction.
 
-                    var numeratorFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar));
+                    var numeratorFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar,
+                        rightGroupChar));
                     SkipWhiteSpace(value, ref position);
-                    var denominatorFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar));
+                    var denominatorFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar,
+                        rightGroupChar));
                     if (numeratorFormula.RootAtom == null || denominatorFormula.RootAtom == null)
                         throw new TexParseException("Both numerator and denominator of a fraction can't be empty!");
 
@@ -259,7 +262,8 @@ namespace WpfMath
                     if (value[position] == leftBracketChar)
                     {
                         // Degree of radical- is specified.
-                        degreeFormula = Parse(ReadGroup(formula, value, ref position, leftBracketChar, rightBracketChar));
+                        degreeFormula = Parse(ReadGroup(formula, value, ref position, leftBracketChar,
+                            rightBracketChar));
                         SkipWhiteSpace(value, ref position);
                     }
 

@@ -14,7 +14,7 @@ namespace WpfMath
         private List<Box> children;
         private ReadOnlyCollection<Box> childrenReadOnly;
 
-        internal Box(WpfMath.TexEnvironment environment)
+        internal Box(TexEnvironment environment)
             : this(environment.Foreground, environment.Background)
         {
         }

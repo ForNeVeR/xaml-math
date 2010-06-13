@@ -11,8 +11,8 @@ namespace WpfMath
         private static Box ChangeWidth(Box box, double maxWidth)
         {
             // Centre specified box in new box of specified width, if necessary.
-            if (Math.Abs(maxWidth - box.Width) > WpfMath.TexUtilities.FloatPrecision)
-                return new WpfMath.HorizontalBox(box, maxWidth, TexAlignment.Center);
+            if (Math.Abs(maxWidth - box.Width) > TexUtilities.FloatPrecision)
+                return new HorizontalBox(box, maxWidth, TexAlignment.Center);
             else
                 return box;
         }
@@ -59,7 +59,7 @@ namespace WpfMath
             private set;
         }
 
-        public override Box CreateBox(WpfMath.TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             var texFont = environment.TexFont;
             var style = environment.Style;
@@ -67,30 +67,30 @@ namespace WpfMath
             if ((this.UseVerticalLimits.HasValue && !UseVerticalLimits.Value) ||
                 (!this.UseVerticalLimits.HasValue && style >= TexStyle.Text))
                 // Attach atoms for limits as scripts.
-                return new WpfMath.ScriptsAtom(this.BaseAtom, this.LowerLimitAtom, this.UpperLimitAtom).CreateBox(environment);
+                return new ScriptsAtom(this.BaseAtom, this.LowerLimitAtom, this.UpperLimitAtom).CreateBox(environment);
 
             // Create box for base atom.
             Box baseBox;
             double delta;
 
-            if (this.BaseAtom is WpfMath.SymbolAtom && this.BaseAtom.Type == TexAtomType.BigOperator)
+            if (this.BaseAtom is SymbolAtom && this.BaseAtom.Type == TexAtomType.BigOperator)
             {
                 // Find character of best scale for operator symbol.
-                var opChar = texFont.GetCharInfo(((WpfMath.SymbolAtom)this.BaseAtom).Name, style);
+                var opChar = texFont.GetCharInfo(((SymbolAtom)this.BaseAtom).Name, style);
                 if (style < TexStyle.Text && texFont.HasNextLarger(opChar))
                     opChar = texFont.GetNextLargerCharInfo(opChar, style);
                 var charBox = new CharBox(environment, opChar);
                 charBox.Shift = -(charBox.Height + charBox.Depth) / 2 -
                     environment.TexFont.GetAxisHeight(environment.Style);
-                baseBox = new WpfMath.HorizontalBox(charBox);
+                baseBox = new HorizontalBox(charBox);
 
                 delta = opChar.Metrics.Italic;
-                if (delta > WpfMath.TexUtilities.FloatPrecision)
-                    baseBox.Add(new WpfMath.StrutBox(delta, 0, 0, 0));
+                if (delta > TexUtilities.FloatPrecision)
+                    baseBox.Add(new StrutBox(delta, 0, 0, 0));
             }
             else
             {
-                baseBox = new WpfMath.HorizontalBox(this.BaseAtom == null ? WpfMath.StrutBox.Empty : BaseAtom.CreateBox(environment));
+                baseBox = new HorizontalBox(this.BaseAtom == null ? StrutBox.Empty : BaseAtom.CreateBox(environment));
                 delta = 0;
             }
 
@@ -110,19 +110,19 @@ namespace WpfMath
             if (lowerLimitBox != null)
                 lowerLimitBox = ChangeWidth(lowerLimitBox, maxWidth);
 
-            var resultBox = new WpfMath.VerticalBox();
+            var resultBox = new VerticalBox();
             var opSpacing5 = texFont.GetBigOpSpacing5(style);
             var kern = 0d;
 
             // Create and add box for upper limit.
             if (UpperLimitAtom != null)
             {
-                resultBox.Add(new WpfMath.StrutBox(0, opSpacing5, 0, 0));
+                resultBox.Add(new StrutBox(0, opSpacing5, 0, 0));
                 upperLimitBox.Shift = delta / 2;
                 resultBox.Add(upperLimitBox);
                 kern = Math.Max(texFont.GetBigOpSpacing1(style), texFont.GetBigOpSpacing3(style) -
                     upperLimitBox.Depth);
-                resultBox.Add(new WpfMath.StrutBox(0, kern, 0, 0));
+                resultBox.Add(new StrutBox(0, kern, 0, 0));
             }
 
             // Add box for base atom.
@@ -131,11 +131,11 @@ namespace WpfMath
             // Create and add box for lower limit.
             if (LowerLimitAtom != null)
             {
-                resultBox.Add(new WpfMath.StrutBox(0, Math.Max(texFont.GetBigOpSpacing2(style), texFont.GetBigOpSpacing4(style) -
+                resultBox.Add(new StrutBox(0, Math.Max(texFont.GetBigOpSpacing2(style), texFont.GetBigOpSpacing4(style) -
                     lowerLimitBox.Height), 0, 0));
                 lowerLimitBox.Shift = -delta / 2;
                 resultBox.Add(lowerLimitBox);
-                resultBox.Add(new WpfMath.StrutBox(0, opSpacing5, 0, 0));
+                resultBox.Add(new StrutBox(0, opSpacing5, 0, 0));
             }
 
             // Adjust height and depth of result box.

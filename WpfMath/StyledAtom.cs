@@ -8,11 +8,11 @@ using System.Windows.Media;
 namespace WpfMath
 {
     // Atom specifying graphical style.
-    internal class StyledAtom : Atom, WpfMath.IRow
+    internal class StyledAtom : Atom, IRow
     {
         public StyledAtom(Atom atom, Brush backgroundColor, Brush foregroundColor)
         {
-            this.RowAtom = new WpfMath.RowAtom(atom);
+            this.RowAtom = new RowAtom(atom);
             this.Background = backgroundColor;
             this.Foreground = foregroundColor;
         }
@@ -24,7 +24,7 @@ namespace WpfMath
         }
 
         // RowAtom to which colors are applied.
-        public WpfMath.RowAtom RowAtom
+        public RowAtom RowAtom
         {
             get;
             private set;
@@ -42,7 +42,7 @@ namespace WpfMath
             set;
         }
 
-        public override Box CreateBox(WpfMath.TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             var newEnvironment = environment.Clone();
             if (this.Background != null)

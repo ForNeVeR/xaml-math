@@ -19,7 +19,7 @@ namespace WpfMath
             private set;
         }
 
-        public override Box CreateBox(WpfMath.TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             var box = this.Atom.CreateBox(environment);
 
@@ -28,7 +28,7 @@ namespace WpfMath
             var axis = environment.TexFont.GetAxisHeight(environment.Style);
             box.Shift = -(totalHeight / 2) - axis;
 
-            return new WpfMath.HorizontalBox(box);
+            return new HorizontalBox(box);
         }
     }
 }

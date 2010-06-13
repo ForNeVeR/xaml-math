@@ -13,12 +13,12 @@ namespace WpfMath
 
         static Glue()
         {
-            var parser = new WpfMath.GlueSettingsParser();
+            var parser = new GlueSettingsParser();
             glueTypes = parser.GetGlueTypes();
             glueRules = parser.GetGlueRules();
         }
 
-        public static Box CreateBox(TexAtomType leftAtomType, TexAtomType rightAtomType, WpfMath.TexEnvironment environment)
+        public static Box CreateBox(TexAtomType leftAtomType, TexAtomType rightAtomType, TexEnvironment environment)
         {
             leftAtomType = leftAtomType > TexAtomType.Inner ? TexAtomType.Ordinary : leftAtomType;
             rightAtomType = rightAtomType > TexAtomType.Inner ? TexAtomType.Ordinary : rightAtomType;
@@ -58,11 +58,11 @@ namespace WpfMath
             private set;
         }
 
-        private Box CreateBox(WpfMath.TexEnvironment environment)
+        private Box CreateBox(TexEnvironment environment)
         {
             var texFont = environment.TexFont;
             var quad = texFont.GetQuad(texFont.GetMuFontId(), environment.Style);
-            return new WpfMath.GlueBox((this.Space / 18.0f) * quad, (this.Stretch / 18.0f) * quad, (this.Shrink / 18.0f) * quad);
+            return new GlueBox((this.Space / 18.0f) * quad, (this.Stretch / 18.0f) * quad, (this.Shrink / 18.0f) * quad);
         }
     }
 }

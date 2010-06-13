@@ -12,31 +12,31 @@ namespace WpfMath
 
         ITeXFont DeriveFont(double newSize);
 
-        ExtensionChar GetExtension(WpfMath.CharInfo charInfo, TexStyle style);
+        ExtensionChar GetExtension(CharInfo charInfo, TexStyle style);
 
-        WpfMath.CharFont GetLigature(WpfMath.CharFont leftChar, WpfMath.CharFont rightChar);
+        CharFont GetLigature(CharFont leftChar, CharFont rightChar);
 
-        WpfMath.CharInfo GetNextLargerCharInfo(WpfMath.CharInfo charInfo, TexStyle style);
+        CharInfo GetNextLargerCharInfo(CharInfo charInfo, TexStyle style);
 
-        WpfMath.CharInfo GetDefaultCharInfo(char character, TexStyle style);
+        CharInfo GetDefaultCharInfo(char character, TexStyle style);
 
-        WpfMath.CharInfo GetCharInfo(char character, string textStyle, TexStyle style);
+        CharInfo GetCharInfo(char character, string textStyle, TexStyle style);
 
-        WpfMath.CharInfo GetCharInfo(WpfMath.CharFont charFont, TexStyle style);
+        CharInfo GetCharInfo(CharFont charFont, TexStyle style);
 
-        WpfMath.CharInfo GetCharInfo(string name, TexStyle style);
+        CharInfo GetCharInfo(string name, TexStyle style);
 
-        double GetKern(WpfMath.CharFont leftChar, WpfMath.CharFont rightChar, TexStyle style);
+        double GetKern(CharFont leftChar, CharFont rightChar, TexStyle style);
 
         double GetQuad(int fontId, TexStyle style);
 
-        double GetSkew(WpfMath.CharFont charFont, TexStyle style);
+        double GetSkew(CharFont charFont, TexStyle style);
 
         bool HasSpace(int fontId);
 
-        bool HasNextLarger(WpfMath.CharInfo charInfo);
+        bool HasNextLarger(CharInfo charInfo);
 
-        bool IsExtensionChar(WpfMath.CharInfo charInfo);
+        bool IsExtensionChar(CharInfo charInfo);
 
         int GetMuFontId();
 

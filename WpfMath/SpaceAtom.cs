@@ -17,9 +17,9 @@ namespace WpfMath
 
 		            new UnitConversion(e => 1.0 / e.TexFont.Size),
 
-		            new UnitConversion(e => WpfMath.TexFontUtilities.PixelsPerPoint / e.TexFont.Size),
+		            new UnitConversion(e => TexFontUtilities.PixelsPerPoint / e.TexFont.Size),
 
-		            new UnitConversion(e => (12 * WpfMath.TexFontUtilities.PixelsPerPoint) / e.TexFont.Size),
+		            new UnitConversion(e => (12 * TexFontUtilities.PixelsPerPoint) / e.TexFont.Size),
 
 		            new UnitConversion(e =>
 		                {
@@ -28,7 +28,7 @@ namespace WpfMath
 		                }),
 		        };
 
-        private delegate double UnitConversion(WpfMath.TexEnvironment environment);
+        private delegate double UnitConversion(TexEnvironment environment);
 
         public static void CheckUnit(TexUnit unit)
         {
@@ -84,16 +84,16 @@ namespace WpfMath
             this.isHardSpace = true;
         }
 
-        public override Box CreateBox(WpfMath.TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             if (isHardSpace)
-                return new WpfMath.StrutBox(environment.TexFont.GetSpace(environment.Style), 0, 0, 0);
+                return new StrutBox(environment.TexFont.GetSpace(environment.Style), 0, 0, 0);
             else
-                return new WpfMath.StrutBox(width * GetConversionFactor(widthUnit, environment), height * GetConversionFactor(
+                return new StrutBox(width * GetConversionFactor(widthUnit, environment), height * GetConversionFactor(
                     heightUnit, environment), depth * GetConversionFactor(depthUnit, environment), 0);
         }
 
-        private double GetConversionFactor(TexUnit unit, WpfMath.TexEnvironment environment)
+        private double GetConversionFactor(TexUnit unit, TexEnvironment environment)
         {
             return unitConversions[(int)unit](environment);
         }

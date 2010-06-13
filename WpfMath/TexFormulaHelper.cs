@@ -23,12 +23,12 @@ namespace WpfMath
 
         public void SetFixedTypes(TexAtomType leftType, TexAtomType rightType)
         {
-            this.Formula.RootAtom = new WpfMath.TypedAtom(this.Formula.RootAtom, leftType, rightType);
+            this.Formula.RootAtom = new TypedAtom(this.Formula.RootAtom, leftType, rightType);
         }
 
         public void CenterOnAxis()
         {
-            this.Formula.RootAtom = new WpfMath.VerticalCenteredAtom(this.Formula.RootAtom);
+            this.Formula.RootAtom = new VerticalCenteredAtom(this.Formula.RootAtom);
         }
 
         public void AddAccent(string formula, string accentName)
@@ -264,7 +264,7 @@ namespace WpfMath
 
         public void PutOver(TexFormula overFormula, TexUnit overUnit, double overSpace, bool overScriptSize)
         {
-            this.Formula.RootAtom = new WpfMath.UnderOverAtom(this.Formula.RootAtom,
+            this.Formula.RootAtom = new UnderOverAtom(this.Formula.RootAtom,
                 overFormula == null ? null : overFormula.RootAtom, overUnit, overSpace, overScriptSize, true);
         }
 
@@ -281,7 +281,7 @@ namespace WpfMath
 
         public void PutUnder(TexFormula underFormula, TexUnit underUnit, double underSpace, bool underScriptSize)
         {
-            this.Formula.RootAtom = new WpfMath.UnderOverAtom(this.Formula.RootAtom,
+            this.Formula.RootAtom = new UnderOverAtom(this.Formula.RootAtom,
                 underFormula == null ? null : underFormula.RootAtom, underUnit, underSpace, underScriptSize, false);
         }
 
@@ -295,7 +295,7 @@ namespace WpfMath
         public void PutUnderAndOver(TexFormula underFormula, TexUnit underUnit, double underSpace, bool underScriptSize,
             TexFormula over, TexUnit overUnit, double overSpace, bool overScriptSize)
         {
-            this.Formula.RootAtom = new WpfMath.UnderOverAtom(this.Formula.RootAtom, underFormula == null ?
+            this.Formula.RootAtom = new UnderOverAtom(this.Formula.RootAtom, underFormula == null ?
                 null : underFormula.RootAtom, underUnit, underSpace, underScriptSize, over == null ? null : over.RootAtom,
                 overUnit, overSpace, overScriptSize);
         }

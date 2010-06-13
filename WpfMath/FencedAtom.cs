@@ -17,9 +17,9 @@ namespace WpfMath
             box.Shift = -(totalHeight / 2 - box.Height) - axis;
         }
 
-        public FencedAtom(Atom baseAtom, WpfMath.SymbolAtom leftDelimeter, WpfMath.SymbolAtom rightDelimeter)
+        public FencedAtom(Atom baseAtom, SymbolAtom leftDelimeter, SymbolAtom rightDelimeter)
         {
-            this.BaseAtom = baseAtom ?? new WpfMath.RowAtom();
+            this.BaseAtom = baseAtom ?? new RowAtom();
             this.LeftDelimeter = leftDelimeter;
             this.RightDelimeter = rightDelimeter;
         }
@@ -30,19 +30,19 @@ namespace WpfMath
             private set;
         }
 
-        private WpfMath.SymbolAtom LeftDelimeter
+        private SymbolAtom LeftDelimeter
         {
             get;
             set;
         }
 
-        private WpfMath.SymbolAtom RightDelimeter
+        private SymbolAtom RightDelimeter
         {
             get;
             set;
         }
 
-        public override Box CreateBox(WpfMath.TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             var texFont = environment.TexFont;
             var style = environment.Style;
@@ -51,7 +51,7 @@ namespace WpfMath
             var baseBox = this.BaseAtom.CreateBox(environment);
 
             // Create result box.
-            var resultBox = new WpfMath.HorizontalBox();
+            var resultBox = new HorizontalBox();
             var axis = texFont.GetAxisHeight(style);
             var delta = Math.Max(baseBox.Height - axis, baseBox.Depth + axis);
             var minHeight = Math.Max((delta / 500) * delimeterFactor, 2 * delta - delimeterShortfall);
@@ -65,14 +65,14 @@ namespace WpfMath
             }
 
             // add glueElement between left delimeter and base Atom, unless base Atom is whitespace.
-            if (!(this.BaseAtom is WpfMath.SpaceAtom))
+            if (!(this.BaseAtom is SpaceAtom))
                 resultBox.Add(Glue.CreateBox(TexAtomType.Opening, this.BaseAtom.GetLeftType(), environment));
 
             // add box for base Atom.
             resultBox.Add(baseBox);
 
             // add glueElement between right delimeter and base Atom, unless base Atom is whitespace.
-            if (!(this.BaseAtom is WpfMath.SpaceAtom))
+            if (!(this.BaseAtom is SpaceAtom))
                 resultBox.Add(Glue.CreateBox(this.BaseAtom.GetRightType(), TexAtomType.Closing, environment));
 
             // Create and add box for right delimeter.

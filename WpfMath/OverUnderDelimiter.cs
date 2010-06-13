@@ -16,13 +16,13 @@ namespace WpfMath
             return maxWidth;
         }
 
-        public OverUnderDelimiter(Atom baseAtom, Atom script, WpfMath.SymbolAtom symbol, TexUnit kernUnit, double kern, bool over)
+        public OverUnderDelimiter(Atom baseAtom, Atom script, SymbolAtom symbol, TexUnit kernUnit, double kern, bool over)
         {
             this.Type = TexAtomType.Inner;
             this.BaseAtom = baseAtom;
             this.Script = script;
             this.Symbol = symbol;
-            this.Kern = new WpfMath.SpaceAtom(kernUnit, 0, kern, 0);
+            this.Kern = new SpaceAtom(kernUnit, 0, kern, 0);
             this.Over = over;
         }
 
@@ -38,14 +38,14 @@ namespace WpfMath
             set;
         }
 
-        private WpfMath.SymbolAtom Symbol
+        private SymbolAtom Symbol
         {
             get;
             set;
         }
 
         // Kern between delimeter symbol and script.
-        private WpfMath.SpaceAtom Kern
+        private SpaceAtom Kern
         {
             get;
             set;
@@ -58,24 +58,24 @@ namespace WpfMath
             set;
         }
 
-        public override Box CreateBox(WpfMath.TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             // Create boxes for base, delimeter, and script atoms.
-            var baseBox = this.BaseAtom == null ? WpfMath.StrutBox.Empty : this.BaseAtom.CreateBox(environment);
+            var baseBox = this.BaseAtom == null ? StrutBox.Empty : this.BaseAtom.CreateBox(environment);
             var delimeterBox = DelimiterFactory.CreateBox(this.Symbol.Name, baseBox.Width, environment);
             var scriptBox = this.Script == null ? null : this.Script.CreateBox(this.Over ?
                 environment.GetSuperscriptStyle() : environment.GetSubscriptStyle());
 
             // Create centered horizontal box if any box is smaller than maximum width.
             var maxWidth = GetMaxWidth(baseBox, delimeterBox, scriptBox);
-            if (Math.Abs(maxWidth - baseBox.Width) > WpfMath.TexUtilities.FloatPrecision)
-                baseBox = new WpfMath.HorizontalBox(baseBox, maxWidth, TexAlignment.Center);
-            if (Math.Abs(maxWidth - delimeterBox.Height - delimeterBox.Depth) > WpfMath.TexUtilities.FloatPrecision)
-                delimeterBox = new WpfMath.VerticalBox(delimeterBox, maxWidth, TexAlignment.Center);
-            if (scriptBox != null && Math.Abs(maxWidth - scriptBox.Width) > WpfMath.TexUtilities.FloatPrecision)
-                scriptBox = new WpfMath.HorizontalBox(scriptBox, maxWidth, TexAlignment.Center);
+            if (Math.Abs(maxWidth - baseBox.Width) > TexUtilities.FloatPrecision)
+                baseBox = new HorizontalBox(baseBox, maxWidth, TexAlignment.Center);
+            if (Math.Abs(maxWidth - delimeterBox.Height - delimeterBox.Depth) > TexUtilities.FloatPrecision)
+                delimeterBox = new VerticalBox(delimeterBox, maxWidth, TexAlignment.Center);
+            if (scriptBox != null && Math.Abs(maxWidth - scriptBox.Width) > TexUtilities.FloatPrecision)
+                scriptBox = new HorizontalBox(scriptBox, maxWidth, TexAlignment.Center);
 
-            return new WpfMath.OverUnderBox(baseBox, delimeterBox, scriptBox, this.Kern.CreateBox(environment).Height, this.Over);
+            return new OverUnderBox(baseBox, delimeterBox, scriptBox, this.Kern.CreateBox(environment).Height, this.Over);
         }
     }
 }
