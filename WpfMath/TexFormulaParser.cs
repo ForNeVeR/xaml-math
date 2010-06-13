@@ -136,10 +136,10 @@ namespace WpfMath
                 throw new InvalidOperationException("Parser has not yet been initialized.");
         }
 
-        public TexFormula Convert(System.Linq.Expressions.Expression value)
-        {
-            return new TexExpressionVisitor(value, this).Formula;
-        }
+        //public TexFormula Convert(System.Linq.Expressions.Expression value)
+        //{
+        //    return new TexExpressionVisitor(value, this).Formula;
+        //}
 
         public TexFormula Parse(string value)
         {

@@ -20,9 +20,20 @@ namespace WpfMath
         }
         protected override System.Linq.Expressions.Expression VisitConstant(ConstantExpression c)
         {
-            var atom = new CharAtom(c.ToString()[0], Formula.TextStyle);
-            Formula.Add(atom);
+            foreach (var atom in c.ToString().Select(ch => new CharAtom(ch,Formula.TextStyle)))
+            {
+                Formula.Add(atom);	
+            }
             return base.VisitConstant(c);
+        }
+
+        protected override System.Linq.Expressions.Expression VisitParameter(ParameterExpression p)
+        {
+            foreach (var atom in p.Name.Select(ch => new CharAtom(ch, Formula.TextStyle)))
+            {
+                Formula.Add(atom);
+            }
+            return base.VisitParameter(p);
         }
 
         public TexFormula Formula { get; private set; }

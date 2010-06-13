@@ -61,6 +61,7 @@
     <Compile Include="CharInfo.cs" />
     <Compile Include="CharSymbol.cs" />
     <Compile Include="BigDelimeterAtom.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="StyledAtom.cs" />
     <Compile Include="DefaultTexFont.cs" />
     <Compile Include="DefaultTexFontParser.cs" />
