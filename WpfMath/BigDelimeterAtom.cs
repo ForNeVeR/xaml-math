@@ -8,13 +8,13 @@ namespace WpfMath
     // Atom representing big delimeter (e.g. brackets).
     internal class BigDelimeterAtom : Atom
     {
-        public BigDelimeterAtom(Atom delimeterAtom, int size)
+        public BigDelimeterAtom(SymbolAtom delimeterAtom, int size)
         {
             this.DelimeterAtom = delimeterAtom;
             this.Size = size;
         }
 
-        public Atom DelimeterAtom
+        public SymbolAtom DelimeterAtom
         {
             get;
             private set;
