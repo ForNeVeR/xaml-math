@@ -159,6 +159,8 @@ namespace WpfMath
         public CharInfo GetCharInfo(CharFont charFont, TexStyle style)
         {
             var size = GetSizeFactor(style);
+            if (charFont.Character == '(' || charFont.Character == ')' || charFont.Character == '|')
+                size = 1.8;
             var fontInfo = fontInfoList[charFont.FontId];
             return new CharInfo(charFont.Character, fontInfo.Font, size, charFont.FontId, GetMetrics(charFont, size));
         }
