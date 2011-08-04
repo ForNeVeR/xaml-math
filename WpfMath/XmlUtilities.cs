@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
@@ -29,7 +30,7 @@ namespace WpfMath
                     return defaultValue.Value;
                 throw new InvalidOperationException();
             }
-            return int.Parse(attribute.Value);
+            return int.Parse(attribute.Value, CultureInfo.InvariantCulture);
         }
 
         public static double AttributeDoubleValue(this XElement element, string attributeName, double? defaultValue = null)
@@ -41,7 +42,7 @@ namespace WpfMath
                     return defaultValue.Value;
                 throw new InvalidOperationException();
             }
-            return double.Parse(attribute.Value);
+            return double.Parse(attribute.Value, CultureInfo.InvariantCulture);
         }
 
         public static string AttributeValue(this XElement element, string attributeName, string defaultValue = null)
