@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<package>
+    <metadata>
+        <id>WpfMath</id>
+        <version>0.1.0</version>
+        <title>WPF-Math</title>
+        <authors>Alex Regueiro, wpf-math contributors</authors>
+        <owners>ForNeVeR</owners>
+        <licenseUrl>https://github.com/ForNeVeR/wpf-math/blob/b44ded1cb7ad176a3c1180e9886e5531ca449b52/License.md</licenseUrl>
+        <projectUrl>https://github.com/ForNeVeR/wpf-math</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Tools for rendering mathematical expressions on-the-fly using the Windows Presentation Foundation.</description>
+        <releaseNotes>Initial release.</releaseNotes>
+        <copyright>Copyright © Alex Regueiro 2010; Copyright © wpf-math contributors 2017</copyright>
+        <tags>wpf latex formula</tags>
+    </metadata>
+    <files>
+        <file src="WpfMath\bin\Release\WpfMath.*" target="lib/net40"/>
+    </files>
+</package>

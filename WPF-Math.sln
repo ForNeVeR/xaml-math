@@ -13,6 +13,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		License.md = License.md
 		Readme.md = Readme.md
+		WpfMath.nuspec = WpfMath.nuspec
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{853A4436-C44F-4A61-878D-1B85CE43DB31}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\nuget-pack.ps1 = scripts\nuget-pack.ps1
 	EndProjectSection
 EndProject
 Global
@@ -32,5 +38,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{853A4436-C44F-4A61-878D-1B85CE43DB31} = {D9341AA3-BF7C-4CC1-8E11-82258967B82F}
 	EndGlobalSection
 EndGlobal
