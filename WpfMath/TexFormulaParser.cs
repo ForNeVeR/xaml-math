@@ -322,7 +322,16 @@ namespace WpfMath
             {
                 // Symbol was found.
 
-                formula.Add(AttachScripts(formula, value, ref position, symbolAtom));
+                if (symbolAtom.Type == TexAtomType.Accent)
+                {
+                    TexFormulaHelper helper = new TexFormulaHelper(formula);
+                    TexFormula accentFormula = ReadScript(formula, value, ref position);
+                    helper.AddAccent(accentFormula, symbolAtom.Name);
+                }
+                else
+                {
+                    formula.Add(AttachScripts(formula, value, ref position, symbolAtom));
+                }
             }
             else if (predefinedFormula != null)
             {
