@@ -46,6 +46,7 @@ for a text style is not defined (e.g. "numbers" and "small" in "mathcal") -->
 
     <!-- miscellaneous symbols -->
 
+    <SymbolMapping name="%" ch="37" fontId="1"/>
     <SymbolMapping name="comma" ch="59" fontId="0"/>
     <SymbolMapping name="ldotp" ch="58" fontId="0"/>
     <SymbolMapping name="cdotp" ch="162" fontId="3"/>
