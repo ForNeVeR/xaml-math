@@ -73,6 +73,16 @@ namespace WpfMath
             }
         }
 
+        public override void RenderGeometry(GeometryGroup geometry, double scale, double x, double y)
+        {
+            var curX = x;
+            foreach (var box in this.Children)
+            {
+                box.RenderGeometry(geometry, scale, curX, y + box.Shift);
+                curX += box.Width;
+            }
+        }
+
         public override int GetLastFontId()
         {
             var fontId = TexFontUtilities.NoFontId;

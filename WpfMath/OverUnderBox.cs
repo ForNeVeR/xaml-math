@@ -102,6 +102,44 @@ namespace WpfMath
 
         }
 
+        public override void RenderGeometry(GeometryGroup geometry, double scale, double x, double y)
+        {
+            GeometryGroup group = new GeometryGroup();
+            if (this.Over)
+            {
+                // Draw delimeter and script boxes over base box.
+                var centerY = y - this.BaseBox.Height - this.DelimeterBox.Width;
+                var translationX = x + this.DelimeterBox.Width / 2;
+                var translationY = centerY + this.DelimeterBox.Width / 2;
+
+                group.Transform.Value.Translate(translationX * scale, translationY * scale);
+                group.Transform.Value.Rotate(90);
+
+                this.DelimeterBox.RenderGeometry(group, scale, -this.DelimeterBox.Width / 2,
+                    -this.DelimeterBox.Depth + this.DelimeterBox.Width / 2);
+
+                // Draw script box as superscript.
+                if (this.ScriptBox != null)
+                    this.ScriptBox.RenderGeometry(geometry, scale, x, centerY - this.Kern - this.ScriptBox.Depth);
+            }
+            else
+            {
+                // Draw delimeter and script boxes under base box.
+                var centerY = y + this.BaseBox.Depth + this.DelimeterBox.Width;
+                var translationX = x + this.DelimeterBox.Width / 2;
+                var translationY = centerY - this.DelimeterBox.Width / 2;
+
+                group.Transform.Value.Translate(translationX * scale, translationY * scale);
+                group.Transform.Value.Rotate(90);
+                this.DelimeterBox.RenderGeometry(group, scale, -this.DelimeterBox.Width / 2,
+                    -this.DelimeterBox.Depth + this.DelimeterBox.Width / 2);
+
+                // Draw script box as subscript.
+                if (this.ScriptBox != null)
+                    this.ScriptBox.RenderGeometry(geometry, scale, x, centerY + this.Kern + this.ScriptBox.Height);
+            }
+        }
+
         public override int GetLastFontId()
         {
             return TexFontUtilities.NoFontId;

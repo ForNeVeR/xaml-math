@@ -45,6 +45,13 @@ namespace WpfMath
             }
         }
 
+        public Geometry RenderToGeometry(double x, double y)
+        {
+            GeometryGroup geometry = new GeometryGroup();
+            Box.RenderGeometry(geometry, this.Scale, x / this.Scale, y / this.Scale + this.Box.Height);
+            return geometry;
+        }
+
         public BitmapSource RenderToBitmap(double x, double y)
         {
             var visual = new DrawingVisual();

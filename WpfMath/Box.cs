@@ -88,6 +88,11 @@ namespace WpfMath
             }
         }
 
+        public virtual void RenderGeometry(GeometryGroup geometry, double scale, double x, double y)
+        {
+
+        }
+
         public virtual void Add(Box box)
         {
             this.children.Add(box);

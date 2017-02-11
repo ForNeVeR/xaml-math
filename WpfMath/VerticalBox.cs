@@ -94,6 +94,17 @@ namespace WpfMath
             }
         }
 
+        public override void RenderGeometry(GeometryGroup geometry, double scale, double x, double y)
+        {
+            var curY = y - Height;
+            foreach (var child in this.Children)
+            {
+                curY += child.Height;
+                child.RenderGeometry(geometry, scale, x + child.Shift - leftMostPos, curY);
+                curY += child.Depth;
+            }
+        }
+
         public override int GetLastFontId()
         {
             var fontId = TexFontUtilities.NoFontId;

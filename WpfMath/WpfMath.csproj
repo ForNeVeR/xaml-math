@@ -99,6 +99,7 @@
     <Compile Include="ScriptsAtom.cs" />
     <Compile Include="SpaceAtom.cs" />
     <Compile Include="StrutBox.cs" />
+    <Compile Include="SVGConverter.cs" />
     <Compile Include="SymbolAtom.cs" />
     <Compile Include="SymbolMappingNotFoundException.cs" />
     <Compile Include="SymbolNotFoundException.cs" />
@@ -145,7 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Data\PredefinedColors.xml">
-	  <SubType>Designer</SubType>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

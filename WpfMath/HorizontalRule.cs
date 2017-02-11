@@ -25,6 +25,13 @@ namespace WpfMath
                 x * scale, (y - this.Height) * scale, this.Width * scale, this.Height * scale));
         }
 
+        public override void RenderGeometry(GeometryGroup geometry, double scale, double x, double y)
+        {
+            RectangleGeometry rectangleGeometry = new RectangleGeometry(new Rect(
+                x * scale, (y - this.Height) * scale, this.Width * scale, this.Height * scale));
+            geometry.Children.Add(rectangleGeometry);
+        }
+
         public override int GetLastFontId()
         {
             return TexFontUtilities.NoFontId;
