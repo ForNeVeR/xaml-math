@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,27 +24,29 @@ namespace WpfMath.Example
             InitializeComponent();
         }
 
-        private void renderButton_Click(object sender, RoutedEventArgs e)
+        private TexFormula parseFormula(string input)
         {
             // Create formula object from input text.
             TexFormula formula = null;
             try
             {
-                formula = this.formulaParser.Parse(this.inputTextBox.Text);
+                formula = this.formulaParser.Parse(input);
             }
-#if !DEBUG
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred while parsing the given input:" + Environment.NewLine +
                     Environment.NewLine + ex.Message, "WPF-Math Example", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
-                return;
-            }
-#endif
-            finally
-            {
-            }
-            
+            return formula;
+        }
+
+        private void renderButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Create formula object from input text.
+            var formula = parseFormula(this.inputTextBox.Text);
+            if (formula == null) return;
+
             // Render formula to visual.
             var visual = new DrawingVisual();
             var renderer = formula.GetRenderer(TexStyle.Display, 20d);
@@ -55,6 +58,37 @@ namespace WpfMath.Example
             }
 
             this.formulaContainerElement.Visual = visual;
+        }
+
+        private void saveButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Create formula object from input text.
+            var formula = parseFormula(this.inputTextBox.Text);
+            if (formula == null) return;
+
+            // Render formula to geometry.         
+            var renderer = formula.GetRenderer(TexStyle.Display, 20d);
+            var geometry = renderer.RenderToGeometry(0, 1);
+
+            // Save file
+            SaveFileDialog saveFileDialog = new SaveFileDialog()
+            {
+                Filter = "SVG Files (*.svg)|*.svg"
+            };
+            var result = saveFileDialog.ShowDialog();
+            if (result == false) return;
+
+            var filename = saveFileDialog.FileName;
+            switch (saveFileDialog.FilterIndex)
+            {
+                case 1:
+                    var converter = new SVGConverter();
+                    var svgText = converter.ConvertGeometry(geometry);
+                    System.IO.File.WriteAllText(filename, svgText);
+                    break;
+                default:
+                    return;
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

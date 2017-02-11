@@ -24,8 +24,15 @@
 
         <DockPanel Margin="10" Grid.Row="0" Grid.Column="0">
 
-            <Button Name="renderButton" Margin="10,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Stretch" Content="_Render" IsDefault="True" Click="renderButton_Click" DockPanel.Dock="Right"/>
-
+            <Grid DockPanel.Dock="Right">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Name="renderButton" Grid.Column="0" Margin="10,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Stretch" Content="_Render" IsDefault="True" Click="renderButton_Click"/>
+                <Button Name="saveButton" Grid.Column="1" Margin="10,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Stretch" Content="_Save" Click="saveButton_Click"/>
+            </Grid>
+                
             <TextBox Name="inputTextBox" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
         </DockPanel>
