@@ -27,6 +27,8 @@ namespace WpfMath
 
         public override void Draw(DrawingContext drawingContext, double scale, double x, double y)
         {
+            base.Draw(drawingContext, scale, x, y);
+
             // Draw character at given position.
             var typeface = this.Character.Font;
             var glyphIndex = typeface.CharacterToGlyphMap[this.Character.Character];
