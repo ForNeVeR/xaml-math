@@ -124,7 +124,6 @@
     <Compile Include="XmlUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
     <Resource Include="Fonts\cmex10.ttf" />
     <Resource Include="Fonts\cmmi10.ttf" />
     <Resource Include="Fonts\cmr10.ttf" />
