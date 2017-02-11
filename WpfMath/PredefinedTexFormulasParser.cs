@@ -41,7 +41,7 @@ namespace WpfMath
             actionParsers.Add("MethodInvocation", new MethodInvocationParser());
             actionParsers.Add("Return", new ReturnParser());
 
-            argValueParsers.Add("TeXFormula", new TeXFormulaValueParser());
+            argValueParsers.Add("Formula", new TeXFormulaValueParser());
             argValueParsers.Add("string", new StringValueParser());
             argValueParsers.Add("double", new DoubleValueParser());
             argValueParsers.Add("int", new IntValueParser());
@@ -95,7 +95,7 @@ namespace WpfMath
             var rootEnabled = rootElement.AttributeBooleanValue("enabled", true);
             if (rootEnabled)
             {
-                foreach (var formulaElement in rootElement.Elements("TeXFormula"))
+                foreach (var formulaElement in rootElement.Elements("Formula"))
                 {
                     var enabled = formulaElement.AttributeBooleanValue("enabled", true);
                     if (enabled)
