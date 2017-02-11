@@ -60,7 +60,7 @@ namespace WpfMath
 
             // Create box for square-root containing base box.
             radicalSignBox.Shift = -(baseBox.Height + clearance);
-            var overBar = new OverBar(baseBox, clearance, radicalSignBox.Height);
+            var overBar = new OverBar(environment, baseBox, clearance, radicalSignBox.Height);
             overBar.Shift = -(baseBox.Height + clearance + defaultRuleThickness);
             var radicalContainerBox = new HorizontalBox(radicalSignBox);
             radicalContainerBox.Add(overBar);

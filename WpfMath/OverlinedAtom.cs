@@ -28,7 +28,7 @@ namespace WpfMath
 
             // Create result box.
             var defaultLineThickness = environment.TexFont.GetDefaultLineThickness(environment.Style);
-            var resultBox = new OverBar(baseBox, 3 * defaultLineThickness, defaultLineThickness);
+            var resultBox = new OverBar(environment, baseBox, 3 * defaultLineThickness, defaultLineThickness);
 
             // Adjust height and depth of result box.
             resultBox.Height = baseBox.Height + 5 * defaultLineThickness;

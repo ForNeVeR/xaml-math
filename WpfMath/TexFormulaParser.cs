@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Reflection;
+using System.Windows.Media;
 
 namespace WpfMath
 {
@@ -30,6 +31,7 @@ namespace WpfMath
         private static IList<string> delimeters;
         private static HashSet<string> textStyles;
         private static IDictionary<string, TexFormula> predefinedFormulas;
+        private static IDictionary<string, Color> predefinedColors;
 
         private static readonly string[][] delimiterNames =
         {
@@ -54,6 +56,7 @@ namespace WpfMath
             isInitialized = false;
 
             predefinedFormulas = new Dictionary<string, TexFormula>();
+            predefinedColors = new Dictionary<string, Color>();
         }
 
         internal static string[][] DelimiterNames
@@ -77,11 +80,16 @@ namespace WpfMath
             commands = new HashSet<string>();
             commands.Add("frac");
             commands.Add("sqrt");
+            commands.Add("color");
+            commands.Add("colorbox");
 
             var formulaSettingsParser = new TexPredefinedFormulaSettingsParser();
             symbols = formulaSettingsParser.GetSymbolMappings();
             delimeters = formulaSettingsParser.GetDelimiterMappings();
             textStyles = formulaSettingsParser.GetTextStyles();
+
+            var colorParser = new PredefinedColorParser();
+            colorParser.Parse(predefinedColors);
 
             isInitialized = true;
 
@@ -269,6 +277,39 @@ namespace WpfMath
 
                     return new Radical(Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar))
                         .RootAtom, degreeFormula == null ? null : degreeFormula.RootAtom);
+                case "color":
+                    {
+                        var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+                        string remainingString = value.Substring(position);
+                        var remaining = Parse(remainingString);
+                        position = value.Length;
+                        Color color;
+                        if (predefinedColors.TryGetValue(colorName, out color))
+                        {
+                            return new StyledAtom(remaining.RootAtom, null, new SolidColorBrush(color));
+                        }
+                        else
+                        {
+                            //TODO: Throw exception or default to black?
+                            throw new TexParseException(String.Format("Color {0} not found", colorName));
+                        }
+                    }
+                case "colorbox":
+                    {
+                        var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+                        string remainingString = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+                        var remaining = Parse(remainingString);
+                        Color color;
+                        if (predefinedColors.TryGetValue(colorName, out color))
+                        {
+                            return new StyledAtom(remaining.RootAtom, new SolidColorBrush(color), null);
+                        }
+                        else
+                        {
+                            //TODO: Throw exception or default to black?
+                            throw new TexParseException(String.Format("Color {0} not found", colorName));
+                        }
+                    }
             }
 
             throw new TexParseException("Invalid command.");

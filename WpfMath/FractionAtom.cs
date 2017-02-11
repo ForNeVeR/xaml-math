@@ -163,7 +163,7 @@ namespace WpfMath
                 }
 
                 resultBox.Add(new StrutBox(0, kern1, 0, 0));
-                resultBox.Add(new HorizontalRule(lineHeight, numeratorBox.Width, 0));
+                resultBox.Add(new HorizontalRule(environment, lineHeight, numeratorBox.Width, 0));
                 resultBox.Add(new StrutBox(0, kern2, 0, 0));
             }
             else

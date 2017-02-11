@@ -10,16 +10,18 @@ namespace WpfMath
     // Box representing horizontal line.
     internal class HorizontalRule : Box
     {
-        public HorizontalRule(double thickness, double width, double shift)
+        public HorizontalRule(TexEnvironment environment, double thickness, double width, double shift)
         {
             this.Width = width;
             this.Height = thickness;
             this.Shift = shift;
+            this.Foreground = environment.Foreground;
+            this.Background = environment.Background;	//Not strictly necessary
         }
 
         public override void Draw(DrawingContext drawingContext, double scale, double x, double y)
         {
-            drawingContext.DrawRectangle(Brushes.Black, null, new Rect(
+            drawingContext.DrawRectangle(this.Foreground ?? Brushes.Black, null, new Rect(
                 x * scale, (y - this.Height) * scale, this.Width * scale, this.Height * scale));
         }
 
