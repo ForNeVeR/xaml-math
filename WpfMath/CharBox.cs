@@ -38,6 +38,8 @@ namespace WpfMath
 
         public override void Draw(DrawingContext drawingContext, double scale, double x, double y)
         {
+            base.Draw(drawingContext, scale, x, y);
+
             GlyphRun glyphRun = GetGlyphRun(scale, x, y);
 
             // Draw character at given position.
