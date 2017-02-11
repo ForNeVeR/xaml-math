@@ -131,7 +131,9 @@
     <Resource Include="Fonts\cmsy10.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Data\DefaultTexFont.xml" />
+    <EmbeddedResource Include="Data\DefaultTexFont.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Data\GlueSettings.xml" />
     <EmbeddedResource Include="Data\PredefinedTexFormulas.xml">
       <SubType>Designer</SubType>

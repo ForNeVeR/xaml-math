@@ -1,6 +1,98 @@
 <?xml version='1.0'?>
 
 <PredefinedFormulas enabled="true">
+  
+  <!-- White space and their short form notation -->
+
+  <Formula name="thinspace" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddStrut" formula="f">
+      <Argument type="Unit" value="Mu" />
+      <Argument type="double" value="3" />
+      <Argument type="double" value="0" />
+      <Argument type="double" value="0" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+  <Formula name="," enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\thinspace" />
+    </CreateFormula>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="medspace" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddStrut" formula="f">
+      <Argument type="Unit" value="Mu" />
+      <Argument type="double" value="4" />
+      <Argument type="double" value="0" />
+      <Argument type="double" value="0" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+  <Formula name=":" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\medspace" />
+    </CreateFormula>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="thickspace" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddStrut" formula="f">
+      <Argument type="Unit" value="Mu" />
+      <Argument type="double" value="5" />
+      <Argument type="double" value="0" />
+      <Argument type="double" value="0" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+  <Formula name=";" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\thickspace" />
+    </CreateFormula>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="negthinspace" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddStrut" formula="f">
+      <Argument type="Unit" value="Mu" />
+      <Argument type="double" value="-3" />
+      <Argument type="double" value="0" />
+      <Argument type="double" value="0" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+  <Formula name="!" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\negthinspace" />
+    </CreateFormula>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="negmedspace" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddStrut" formula="f">
+      <Argument type="Unit" value="Mu" />
+      <Argument type="double" value="-4" />
+      <Argument type="double" value="0" />
+      <Argument type="double" value="0" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="negthickspace" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddStrut" formula="f">
+      <Argument type="Unit" value="Mu" />
+      <Argument type="double" value="-5" />
+      <Argument type="double" value="0" />
+      <Argument type="double" value="0" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
 
   <!-- Composed TeX symbols -->
 

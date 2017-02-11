@@ -4,6 +4,7 @@
 
   <!-- miscellaneous symbols -->
 
+  <Symbol name="%" type="ord"/>
   <Symbol name="comma" type="punct"/>
   <Symbol name="ldotp" type="punct"/>
   <Symbol name="cdotp" type="punct"/>

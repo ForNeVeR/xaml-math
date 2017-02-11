@@ -321,8 +321,9 @@ namespace WpfMath
                 var isEnd = position == value.Length - 1;
                 if (!char.IsLetter(ch) || isEnd)
                 {
-                    // Escape sequence has ended.
-                    if (isEnd)
+                    // Escape sequence has ended
+                    // Or it's a symbol. Assuming in this case it will only be a single char.
+                    if (isEnd || result.Length == 0)
                     {
                         result.Append(ch);
                         position++;

@@ -164,9 +164,17 @@ namespace WpfMath
                 var argTypes = GetArgumentTypes(args);
                 var argValues = GetArgumentValues(this.TempFormulas, args);
 
-                Debug.Assert(argValues.Length == 1);
-                var parser = new TexFormulaParser();
-                var formula = parser.Parse((string)argValues[0]);
+                Debug.Assert(argValues.Length == 1 || argValues.Length == 0);
+                TexFormula formula = null;
+                if (argValues.Length == 1)
+                {
+                    var parser = new TexFormulaParser();
+                    formula = parser.Parse((string)argValues[0]);
+                }
+                else
+                {
+                    formula = new TexFormula();
+                }
 
                 this.TempFormulas.Add(name, formula);
             }
