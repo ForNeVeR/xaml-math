@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Reflection;
@@ -8,7 +7,6 @@ using System.Windows.Media;
 
 namespace WpfMath
 {
-
     // TODO: Put all error strings into resources.
     // TODO: Use TextReader for lexing.
     public class TexFormulaParser
@@ -290,7 +288,6 @@ namespace WpfMath
                         }
                         else
                         {
-                            //TODO: Throw exception or default to black?
                             throw new TexParseException(String.Format("Color {0} not found", colorName));
                         }
                     }
@@ -306,7 +303,6 @@ namespace WpfMath
                         }
                         else
                         {
-                            //TODO: Throw exception or default to black?
                             throw new TexParseException(String.Format("Color {0} not found", colorName));
                         }
                     }
