@@ -1,4 +1,4 @@
-WPF-Math [![Build status][badge-appveyor]][appveyor]
+WPF-Math [![Build status][badge-appveyor]][appveyor] [![NuGet][badge-nuget]][nuget]
 ========
 
 WPF-Math is a library to render LaTeX formulae in a WPF environment.
@@ -28,5 +28,7 @@ GitHub][github].
 [github]: https://github.com/ForNeVeR/wpf-math
 [jmathtex]: http://jmathtex.sourceforge.net/
 [launchpad]: https://launchpad.net/wpf-math
+[nuget]: https://www.nuget.org/packages/WpfMath/
 
 [badge-appveyor]: https://ci.appveyor.com/api/projects/status/b26m3rpfcgb91gdg/branch/master?svg=true
+[badge-nuget]: https://img.shields.io/nuget/v/WpfMath.svg
