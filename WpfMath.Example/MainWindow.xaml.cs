@@ -24,7 +24,7 @@ namespace WpfMath.Example
             InitializeComponent();
         }
 
-        private TexFormula parseFormula(string input)
+        private TexFormula ParseFormula(string input)
         {
             // Create formula object from input text.
             TexFormula formula = null;
@@ -44,7 +44,7 @@ namespace WpfMath.Example
         private void renderButton_Click(object sender, RoutedEventArgs e)
         {
             // Create formula object from input text.
-            var formula = parseFormula(this.inputTextBox.Text);
+            var formula = ParseFormula(this.inputTextBox.Text);
             if (formula == null) return;
 
             // Render formula to visual.
@@ -63,7 +63,7 @@ namespace WpfMath.Example
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
             // Create formula object from input text.
-            var formula = parseFormula(this.inputTextBox.Text);
+            var formula = ParseFormula(this.inputTextBox.Text);
             if (formula == null) return;
 
             // Render formula to geometry.         
@@ -84,12 +84,24 @@ namespace WpfMath.Example
                 case 1:
                     var converter = new SVGConverter();
                     var svgText = converter.ConvertGeometry(geometry);
-                    System.IO.File.WriteAllText(filename, svgText);
+                    var fileText = AddSVGHeader(svgText);
+                    System.IO.File.WriteAllText(filename, fileText);
                     break;
                 default:
                     return;
             }
         }
+
+        private string AddSVGHeader(string svgText)
+        {
+            var builder = new StringBuilder();
+            builder.AppendLine("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>")
+                .AppendLine("<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" >")
+                .AppendLine(svgText)
+                .AppendLine("</svg>");
+
+            return builder.ToString();
+        } 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
