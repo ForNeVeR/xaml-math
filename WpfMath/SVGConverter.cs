@@ -27,9 +27,9 @@ namespace WpfMath
             m_nestedLevel++;
             if (!group.Transform.Value.IsIdentity)
             {
-                svgString.AppendFormat(CultureInfo.InvariantCulture, "<g matrix({0} {1} {2} {3} {4} {5} {6})>"
-                    , group.Transform.Value.M11, group.Transform.Value.M12, group.Transform.Value.OffsetX
-                    , group.Transform.Value.M21, group.Transform.Value.M22, group.Transform.Value.OffsetY);
+                svgString.AppendFormat(CultureInfo.InvariantCulture, "<g transform=\"matrix({0} {1} {2} {3} {4} {5})\">"
+                    , group.Transform.Value.M11, group.Transform.Value.M12
+                    , group.Transform.Value.M21, group.Transform.Value.M22, group.Transform.Value.OffsetX, group.Transform.Value.OffsetY);
             }
             foreach (Geometry geometry in group.Children)
             {
