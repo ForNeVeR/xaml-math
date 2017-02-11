@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -202,7 +203,7 @@ namespace WpfMath
 
             public override object Parse(string value, string type)
             {
-                return double.Parse(value);
+                return double.Parse(value, CultureInfo.InvariantCulture);
             }
         }
 
@@ -242,7 +243,7 @@ namespace WpfMath
 
             public override object Parse(string value, string type)
             {
-                return int.Parse(value);
+                return int.Parse(value, CultureInfo.InvariantCulture);
             }
         }
 
