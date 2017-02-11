@@ -30,7 +30,7 @@ namespace WpfMath
                     return defaultValue.Value;
                 throw new InvalidOperationException();
             }
-            return int.Parse(attribute.Value);
+            return int.Parse(attribute.Value, CultureInfo.InvariantCulture);
         }
 
         public static double AttributeDoubleValue(this XElement element, string attributeName, double? defaultValue = null)
