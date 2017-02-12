@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -62,33 +63,44 @@ namespace WpfMath.Example
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
-            // Create formula object from input text.
-            var formula = ParseFormula(this.inputTextBox.Text);
-            if (formula == null) return;
-
-            // Render formula to geometry.         
-            var renderer = formula.GetRenderer(TexStyle.Display, 20d);
-            var geometry = renderer.RenderToGeometry(0, 1);
-
-            // Save file
+            // Choose file
             SaveFileDialog saveFileDialog = new SaveFileDialog()
             {
-                Filter = "SVG Files (*.svg)|*.svg"
+                Filter = "SVG Files (*.svg)|*.svg|PNG Files (*.png)|*.png"
             };
             var result = saveFileDialog.ShowDialog();
             if (result == false) return;
 
+            // Create formula object from input text.
+            var formula = ParseFormula(this.inputTextBox.Text);
+            if (formula == null) return;        
+            var renderer = formula.GetRenderer(TexStyle.Display, 20d);
+
+            // Open stream
             var filename = saveFileDialog.FileName;
-            switch (saveFileDialog.FilterIndex)
+            using (var stream = new FileStream(filename, FileMode.Create))
             {
-                case 1:
-                    var converter = new SVGConverter();
-                    var svgText = converter.ConvertGeometry(geometry);
-                    var fileText = AddSVGHeader(svgText);
-                    System.IO.File.WriteAllText(filename, fileText);
-                    break;
-                default:
-                    return;
+                switch (saveFileDialog.FilterIndex)
+                {
+                    case 1:
+                        var geometry = renderer.RenderToGeometry(0, 0);
+                        var converter = new SVGConverter();
+                        var svgPathText = converter.ConvertGeometry(geometry);
+                        var svgText = AddSVGHeader(svgPathText);
+                        var writer = new StreamWriter(stream);
+                        writer.WriteLine(svgText);
+                        break;
+                    case 2:
+                        var bitmap = renderer.RenderToBitmap(0, 0);
+                        var encoder = new PngBitmapEncoder
+                        {
+                            Frames = { BitmapFrame.Create(bitmap) }
+                        };
+                        encoder.Save(stream);
+                        break;
+                    default:
+                        return;
+                }
             }
         }
 
