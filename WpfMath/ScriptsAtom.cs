@@ -152,7 +152,7 @@ namespace WpfMath
             // Check if only subscript is set.
             if (superscriptBox == null)
             {
-                subscriptBox.Shift = Math.Max(Math.Max(shiftDown, texFont.GetSub1(style)), subscriptBox.Height - 4 *
+                subscriptContainerBox.Shift = Math.Max(Math.Max(shiftDown, texFont.GetSub1(style)), subscriptBox.Height - 4 *
                     Math.Abs(texFont.GetXHeight(style, lastFontId)) / 5);
                 resultBox.Add(subscriptContainerBox);
                 return resultBox;
