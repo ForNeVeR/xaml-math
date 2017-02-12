@@ -33,7 +33,7 @@ namespace WpfMath
         {
             get
             {
-                return new Size(this.Box.Width * this.Scale, this.Box.TotalHeight * this.Scale);
+                return new Size(this.Box.TotalWidth * this.Scale, this.Box.TotalHeight * this.Scale);
             }
         }
 

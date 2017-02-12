@@ -59,6 +59,7 @@ namespace WpfMath
             this.Width = Math.Max(this.Width, childBoxesTotalWidth);
             this.Height = Math.Max((this.Children.Count == 0 ? double.NegativeInfinity : Height), box.Height - box.Shift);
             this.Depth = Math.Max((this.Children.Count == 0 ? double.NegativeInfinity : Depth), box.Depth + box.Shift);
+            this.Italic = Math.Max((this.Children.Count == 0 ? double.NegativeInfinity : Italic), box.Italic);
         }
 
         public override void Draw(DrawingContext drawingContext, double scale, double x, double y)

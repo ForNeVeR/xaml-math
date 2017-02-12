@@ -54,6 +54,17 @@ namespace WpfMath
             get { return this.Height + this.Depth; }
         }
 
+        public double TotalWidth
+        {
+            get { return this.Width + this.Italic; }
+        }
+
+        public double Italic
+        {
+            get;
+            set;
+        }
+
         public double Width
         {
             get;
@@ -84,7 +95,7 @@ namespace WpfMath
             {
                 // Fill background of box with color.
                 drawingContext.DrawRectangle(this.Background, null, new Rect(x * scale, (y - Height) * scale,
-                    this.Width * scale, (this.Height + this.Depth) * scale));
+                    (this.Width + this.Italic) * scale, (this.Height + this.Depth) * scale));
             }
         }
 

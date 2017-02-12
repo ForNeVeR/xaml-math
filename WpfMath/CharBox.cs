@@ -17,6 +17,7 @@ namespace WpfMath
             this.Width = charInfo.Metrics.Width;
             this.Height = charInfo.Metrics.Height;
             this.Depth = charInfo.Metrics.Depth;
+            this.Italic = charInfo.Metrics.Italic;
         }
 
         public CharInfo Character
