@@ -3,9 +3,9 @@
 <package>
     <metadata>
         <id>WpfMath</id>
-        <version>0.1.0</version>
+        <version>0.2.0</version>
         <title>WPF-Math</title>
-        <authors>Alex Regueiro, wpf-math contributors</authors>
+        <authors>ForNeVeR</authors>
         <owners>ForNeVeR</owners>
         <licenseUrl>https://github.com/ForNeVeR/wpf-math/blob/b44ded1cb7ad176a3c1180e9886e5531ca449b52/License.md</licenseUrl>
         <projectUrl>https://github.com/ForNeVeR/wpf-math</projectUrl>
