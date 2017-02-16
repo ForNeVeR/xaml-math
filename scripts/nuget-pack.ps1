@@ -6,7 +6,7 @@ param (
 
 $ErrorActionPreference = 'Stop'
 
-& $msbuild /m "$SourceDirectory/WPF-Math.sln" /p:Configuration=Release /p:Platform="Any CPU" '/t:Clean;Rebuild'
+& $msbuild /m "$SourceDirectory/WpfMath.sln" /p:Configuration=Release /p:Platform="Any CPU" '/t:Clean;Rebuild'
 if (-not $?) {
     throw "msbuild returned error code: $LASTEXITCODE"
 }
