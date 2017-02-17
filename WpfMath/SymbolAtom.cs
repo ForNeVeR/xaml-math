@@ -43,6 +43,11 @@ namespace WpfMath
             }
         }
 
+        public static bool TryGetAtom(string name, out SymbolAtom atom)
+        {
+            return symbols.TryGetValue(name, out atom);            
+        }
+
         public SymbolAtom(SymbolAtom symbolAtom, TexAtomType type)
             : base()
         {

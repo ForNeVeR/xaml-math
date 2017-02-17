@@ -338,25 +338,8 @@ namespace WpfMath
             var command = result.ToString();
 
             SymbolAtom symbolAtom = null;
-            TexFormula predefinedFormula = null;
-
-            try
-            {
-                symbolAtom = SymbolAtom.GetAtom(command);
-            }
-            catch (SymbolNotFoundException)
-            {
-            }
-
-            try
-            {
-                predefinedFormula = GetFormula(command);
-            }
-            catch (FormulaNotFoundException)
-            {
-            }
-
-            if (symbolAtom != null)
+            TexFormula predefinedFormula = null;            
+            if (SymbolAtom.TryGetAtom(command, out symbolAtom))
             {
                 // Symbol was found.
 
@@ -371,7 +354,7 @@ namespace WpfMath
                     formula.Add(AttachScripts(formula, value, ref position, symbolAtom));
                 }
             }
-            else if (predefinedFormula != null)
+            else if (predefinedFormulas.TryGetValue(command, out predefinedFormula))
             {
                 // Predefined formula was found.
 
