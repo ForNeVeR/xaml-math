@@ -244,20 +244,4 @@
     <Return name="f" />
   </Formula>
 
-  <!-- Macros -->
-
-  <Formula name="left" enabled="false">
-    <CreateFormula name="f">
-      <Argument type="string" value="\left" />
-    </CreateFormula>
-    <Return name="f" />
-  </Formula>
-
-  <Formula name="right" enabled="false">
-    <CreateFormula name="f">
-      <Argument type="string" value="\right" />
-    </CreateFormula>
-    <Return name="f" />
-  </Formula>
-
 </PredefinedFormulas>
