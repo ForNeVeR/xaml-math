@@ -2,10 +2,16 @@
 
 open WpfMath
 
-let formula (atoms : Atom seq) : TexFormula =
-    let root = RowAtom()
-    root.Elements.AddRange(atoms)
+let formula (root : Atom) : TexFormula =
     TexFormula(RootAtom = root)
 
 let char (c : char) : CharAtom = CharAtom(c)
-let plus : SymbolAtom = SymbolAtom("plus", TexAtomType.BinaryOperator, false)
+let symbol (name : string) : SymbolAtom = SymbolAtom(name, TexAtomType.BinaryOperator, false)
+let row (children : Atom seq) : RowAtom =
+    let result = RowAtom()
+    result.Elements.AddRange(children)
+    result
+let fenced left body right : FencedAtom = FencedAtom(body, left, right)
+
+let openBrace (name : string) : SymbolAtom = SymbolAtom(name, TexAtomType.Opening, true)
+let closeBrace (name : string) : SymbolAtom = SymbolAtom(name, TexAtomType.Closing, true)

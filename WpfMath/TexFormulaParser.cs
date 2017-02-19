@@ -161,18 +161,32 @@ namespace WpfMath
         private DelimiterInfo ParseUntilDelimiter(string value, ref int position)
         {
             var embeddedFormula = Parse(value, ref position, true);
-            var body = embeddedFormula.RootAtom as RowAtom;
-            var lastAtom = embeddedFormula.RootAtom as SymbolAtom ?? body.Elements.LastOrDefault();
+            var bodyRow = embeddedFormula.RootAtom as RowAtom;
+            var lastAtom = embeddedFormula.RootAtom as SymbolAtom ?? bodyRow.Elements.LastOrDefault();
             var lastDelimiter = lastAtom as SymbolAtom;
             if (lastDelimiter == null || !lastDelimiter.IsDelimeter || lastDelimiter.Type != TexAtomType.Closing)
                 throw new TexParseException($"Cannot find closing delimiter; got {lastDelimiter} instead");
 
-            var bodyAtom = new RowAtom();
-            if (body != null)
+            Atom bodyAtom;
+            if (bodyRow == null)
             {
-                bodyAtom.Elements.AddRange(body.Elements.Take(body.Elements.Count - 1));
+                bodyAtom = new RowAtom();
             }
-
+            else if (bodyRow.Elements.Count > 2)
+            {
+                var row = new RowAtom();
+                row.Elements.AddRange(bodyRow.Elements.Take(bodyRow.Elements.Count - 1));
+                bodyAtom = row;
+            }
+            else if (bodyRow.Elements.Count == 2)
+            {
+                bodyAtom = bodyRow.Elements[0];
+            }
+            else
+            {
+                throw new NotSupportedException($"Cannot convert {bodyRow} to fenced atom body");
+            }
+            
             return new DelimiterInfo(bodyAtom, lastDelimiter);
         }
 
@@ -297,9 +311,14 @@ namespace WpfMath
                             throw new TexParseException("`left` command should be passed a delimiter");
                     
                         var delimiter = value[position];
+                        ++position;
+
                         var internals = ParseUntilDelimiter(value, ref position);
 
-                        var opening = SymbolAtom.GetAtom("lbrack"); // TODO[F]: Get proper symbol based on `delimiter`
+                        var opening = GetDelimiterSymbol(GetDelimeterMapping(delimiter));
+                        if (opening == null)
+                            throw new TexParseException($"Cannot find delimiter named {delimiter}");
+
                         var closing = internals.ClosingDelimiter;
                         return new FencedAtom(internals.Body, opening, closing);
                     }
@@ -314,7 +333,13 @@ namespace WpfMath
                             throw new TexParseException("`right` command should be passed a delimiter");
                     
                         var delimiter = value[position];
-                        return SymbolAtom.GetAtom("rbrack"); // TODO[F]: Get proper symbol based on `delimiter`
+                        ++position;
+
+                        var closing = GetDelimiterSymbol(GetDelimeterMapping(delimiter));
+                        if (closing == null)
+                            throw new TexParseException($"Cannot find delimiter named {delimiter}");
+
+                        return closing;
                     }
 
                 case "sqrt":
