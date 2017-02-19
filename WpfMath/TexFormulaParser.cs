@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Reflection;
@@ -74,12 +75,15 @@ namespace WpfMath
                     UriParser.Register(new GenericUriParser(GenericUriParserOptions.GenericAuthority), "pack", -1);
             }
 
-
-            commands = new HashSet<string>();
-            commands.Add("frac");
-            commands.Add("sqrt");
-            commands.Add("color");
-            commands.Add("colorbox");
+            commands = new HashSet<string>
+            {
+                "frac",
+                "left",
+                "right",
+                "sqrt",
+                "color",
+                "colorbox"
+            };
 
             var formulaSettingsParser = new TexPredefinedFormulaSettingsParser();
             symbols = formulaSettingsParser.GetSymbolMappings();
@@ -150,8 +154,31 @@ namespace WpfMath
 
         public TexFormula Parse(string value)
         {
-            var formula = new TexFormula();
             var position = 0;
+            return Parse(value, ref position, false);
+        }
+
+        private DelimiterInfo ParseUntilDelimiter(string value, ref int position)
+        {
+            var embeddedFormula = Parse(value, ref position, true);
+            var body = embeddedFormula.RootAtom as RowAtom;
+            var lastAtom = embeddedFormula.RootAtom as SymbolAtom ?? body.Elements.LastOrDefault();
+            var lastDelimiter = lastAtom as SymbolAtom;
+            if (lastDelimiter == null || !lastDelimiter.IsDelimeter || lastDelimiter.Type != TexAtomType.Closing)
+                throw new TexParseException($"Cannot find closing delimiter; got {lastDelimiter} instead");
+
+            var bodyAtom = new RowAtom();
+            if (body != null)
+            {
+                bodyAtom.Elements.AddRange(body.Elements.Take(body.Elements.Count - 1));
+            }
+
+            return new DelimiterInfo(bodyAtom, lastDelimiter);
+        }
+
+        private TexFormula Parse(string value, ref int position, bool allowClosingDelimiter)
+        {
+            var formula = new TexFormula();
             while (position < value.Length)
             {
                 char ch = value[position];
@@ -161,7 +188,7 @@ namespace WpfMath
                 }
                 else if (ch == escapeChar)
                 {
-                    ProcessEscapeSequence(formula, value, ref position);
+                    ProcessEscapeSequence(formula, value, ref position, allowClosingDelimiter);
                 }
                 else if (ch == leftGroupChar)
                 {
@@ -239,7 +266,12 @@ namespace WpfMath
             }
         }
 
-        private Atom ProcessCommand(TexFormula formula, string value, ref int position, string command)
+        private Atom ProcessCommand(
+            TexFormula formula,
+            string value,
+            ref int position,
+            string command, 
+            bool allowClosingDelimiter)
         {
             SkipWhiteSpace(value, ref position);
 
@@ -257,6 +289,34 @@ namespace WpfMath
                         throw new TexParseException("Both numerator and denominator of a fraction can't be empty!");
 
                     return new FractionAtom(numeratorFormula.RootAtom, denominatorFormula.RootAtom, true);
+
+                case "left":
+                    { 
+                        SkipWhiteSpace(value, ref position);
+                        if (position == value.Length)
+                            throw new TexParseException("`left` command should be passed a delimiter");
+                    
+                        var delimiter = value[position];
+                        var internals = ParseUntilDelimiter(value, ref position);
+
+                        var opening = SymbolAtom.GetAtom("lbrack"); // TODO[F]: Get proper symbol based on `delimiter`
+                        var closing = internals.ClosingDelimiter;
+                        return new FencedAtom(internals.Body, opening, closing);
+                    }
+
+                case "right":
+                    { 
+                        if (!allowClosingDelimiter)
+                            throw new TexParseException("`right` command is not allowed without `left`");
+
+                        SkipWhiteSpace(value, ref position);
+                        if (position == value.Length)
+                            throw new TexParseException("`right` command should be passed a delimiter");
+                    
+                        var delimiter = value[position];
+                        return SymbolAtom.GetAtom("rbrack"); // TODO[F]: Get proper symbol based on `delimiter`
+                    }
+
                 case "sqrt":
                     // Command is radical.
 
@@ -311,7 +371,11 @@ namespace WpfMath
             throw new TexParseException("Invalid command.");
         }
 
-        private void ProcessEscapeSequence(TexFormula formula, string value, ref int position)
+        private void ProcessEscapeSequence(
+            TexFormula formula,
+            string value,
+            ref int position,
+            bool allowClosingDelimiter)
         {
             var result = new StringBuilder();
             position++;
@@ -323,7 +387,7 @@ namespace WpfMath
                 {
                     // Escape sequence has ended
                     // Or it's a symbol. Assuming in this case it will only be a single char.
-                    if (isEnd || result.Length == 0)
+                    if ((isEnd && char.IsLetter(ch)) || result.Length == 0)
                     {
                         result.Append(ch);
                         position++;
@@ -378,9 +442,12 @@ namespace WpfMath
             else if (commands.Contains(command))
             {
                 // Command was found.
-
-                formula.Add(AttachScripts(formula, value, ref position, ProcessCommand(formula, value, ref position,
-                    command)));
+                formula.Add(
+                    AttachScripts(
+                        formula,
+                        value,
+                        ref position,
+                        ProcessCommand(formula, value, ref position, command, allowClosingDelimiter)));
             }
             else
             {
