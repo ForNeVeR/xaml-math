@@ -40,3 +40,11 @@ type ParserTests() =
         assertParseResult
         <| @"\left(2+2\right)"
         <| (formula <| fenced (openBrace "lbrack") ``2+2`` (closeBrace "rbrack"))
+
+    [<Fact>]
+    let ``Expression after the braces should be parsed`` () =
+        assertParseResult
+        <| @"\left(2+2\right) + 1"
+        <| (formula <| row [ fenced (openBrace "lbrack") ``2+2`` (closeBrace "rbrack")
+                             symbol "plus"
+                             char '1' ])

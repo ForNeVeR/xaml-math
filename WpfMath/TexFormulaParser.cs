@@ -193,7 +193,8 @@ namespace WpfMath
         private TexFormula Parse(string value, ref int position, bool allowClosingDelimiter)
         {
             var formula = new TexFormula();
-            while (position < value.Length)
+            var closedDelimiter = false;
+            while (position < value.Length && !(allowClosingDelimiter && closedDelimiter))
             {
                 char ch = value[position];
                 if (IsWhiteSpace(ch))
@@ -202,7 +203,7 @@ namespace WpfMath
                 }
                 else if (ch == escapeChar)
                 {
-                    ProcessEscapeSequence(formula, value, ref position, allowClosingDelimiter);
+                    ProcessEscapeSequence(formula, value, ref position, allowClosingDelimiter, ref closedDelimiter);
                 }
                 else if (ch == leftGroupChar)
                 {
@@ -285,7 +286,8 @@ namespace WpfMath
             string value,
             ref int position,
             string command, 
-            bool allowClosingDelimiter)
+            bool allowClosingDelimiter,
+            ref bool closedDelimiter)
         {
             SkipWhiteSpace(value, ref position);
 
@@ -339,6 +341,7 @@ namespace WpfMath
                         if (closing == null)
                             throw new TexParseException($"Cannot find delimiter named {delimiter}");
 
+                        closedDelimiter = true;
                         return closing;
                     }
 
@@ -400,7 +403,8 @@ namespace WpfMath
             TexFormula formula,
             string value,
             ref int position,
-            bool allowClosingDelimiter)
+            bool allowClosingDelimiter,
+            ref bool closedDelimiter)
         {
             var result = new StringBuilder();
             position++;
@@ -472,7 +476,13 @@ namespace WpfMath
                         formula,
                         value,
                         ref position,
-                        ProcessCommand(formula, value, ref position, command, allowClosingDelimiter)));
+                        ProcessCommand(
+                            formula,
+                            value,
+                            ref position, 
+                            command,
+                            allowClosingDelimiter, 
+                            ref closedDelimiter)));
             }
             else
             {
