@@ -32,6 +32,12 @@ namespace WpfMath.Controls
             private set { SetValue(ErrorsProperty, value); }
         }
 
+        public ControlTemplate ErrorTemplate
+        {
+            get { return (ControlTemplate)GetValue(ErrorTemplateProperty); }
+            set { SetValue(ErrorTemplateProperty, value); }
+        }
+
         public static readonly DependencyProperty FormulaProperty = DependencyProperty.Register(
             "Formula", typeof(string), typeof(FormulaControl), 
             new PropertyMetadata("", OnFormulaChanged, CoerceFormula));
@@ -44,9 +50,14 @@ namespace WpfMath.Controls
             "Errors", typeof(ObservableCollection<Exception>), typeof(FormulaControl),
             new PropertyMetadata(new ObservableCollection<Exception>()));
 
+        public static readonly DependencyProperty ErrorTemplateProperty = DependencyProperty.Register(
+            "ErrorTemplate", typeof(ControlTemplate), typeof(FormulaControl),
+            new PropertyMetadata(new ControlTemplate()));
+
         public FormulaControl()
         {
             InitializeComponent();
+            ErrorTemplate = Resources["DefaultErrorTemplate"] as ControlTemplate;
         }
 
         private void Render()
