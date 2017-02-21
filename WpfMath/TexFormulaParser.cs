@@ -56,6 +56,8 @@ namespace WpfMath
 
             predefinedFormulas = new Dictionary<string, TexFormula>();
             predefinedColors = new Dictionary<string, Color>();
+
+            Initialize();
         }
 
         internal static string[][] DelimiterNames
@@ -95,10 +97,10 @@ namespace WpfMath
             var colorParser = new PredefinedColorParser();
             colorParser.Parse(predefinedColors);
 
-            isInitialized = true;
-
             var predefinedFormulasParser = new TexPredefinedFormulaParser();
             predefinedFormulasParser.Parse(predefinedFormulas);
+
+            isInitialized = true;
         }
 
         internal static TexFormula GetFormula(string name)
@@ -143,11 +145,7 @@ namespace WpfMath
             return ch == ' ' || ch == '\t' || ch == '\n' || ch == '\r';
         }
 
-        public TexFormulaParser()
-        {
-            if (!isInitialized)
-                Initialize();
-        }
+        public TexFormulaParser() { }
 
         //public TexFormula Convert(System.Linq.Expressions.Expression value)
         //{
