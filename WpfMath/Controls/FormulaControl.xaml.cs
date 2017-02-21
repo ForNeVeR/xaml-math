@@ -20,6 +20,12 @@ namespace WpfMath.Controls
             set { SetValue(FormulaProperty, value); }
         }
 
+        public double Scale
+        {
+            get { return (double)GetValue(ScaleProperty); }
+            set { SetValue(ScaleProperty, value); }
+        }
+
         public bool HasError
         {
             get { return (bool)GetValue(HasErrorProperty); }
@@ -41,6 +47,10 @@ namespace WpfMath.Controls
         public static readonly DependencyProperty FormulaProperty = DependencyProperty.Register(
             "Formula", typeof(string), typeof(FormulaControl), 
             new PropertyMetadata("", OnFormulaChanged, CoerceFormula));
+
+        public static readonly DependencyProperty ScaleProperty = DependencyProperty.Register(
+            "Scale", typeof(double), typeof(FormulaControl),
+            new PropertyMetadata(7d, OnScaleChanged));
 
         public static readonly DependencyProperty HasErrorProperty = DependencyProperty.Register(
             "HasError", typeof(bool), typeof(FormulaControl),
@@ -71,8 +81,7 @@ namespace WpfMath.Controls
 
             // Render formula to visual.
             var visual = new DrawingVisual();
-            var renderer = texFormula.GetRenderer(TexStyle.Display, 20d);
-            var formulaSize = renderer.RenderSize;
+            var renderer = texFormula.GetRenderer(TexStyle.Display, Scale);
 
             using (var drawingContext = visual.RenderOpen())
             {
@@ -103,7 +112,13 @@ namespace WpfMath.Controls
 
         private static void OnFormulaChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var control = (FormulaControl) d;
+            var control = (FormulaControl)d;
+            control.Render();
+        }
+
+        private static void OnScaleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = (FormulaControl)d;
             control.Render();
         }
     }
