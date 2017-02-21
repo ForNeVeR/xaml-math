@@ -573,8 +573,8 @@ namespace WpfMath
             if (IsSymbol(character))
             {
                 // Character is symbol.
-                var symbolName = symbols[character];
-                if (symbolName == null)
+                var symbolName = symbols.ElementAtOrDefault(character);
+                if (symbolName == null || symbolName == "")
                     throw new TexParseException("Unknown character : '" + character.ToString() + "'");
 
                 try
