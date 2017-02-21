@@ -161,6 +161,9 @@ namespace WpfMath
         private DelimiterInfo ParseUntilDelimiter(string value, ref int position)
         {
             var embeddedFormula = Parse(value, ref position, true);
+            if (embeddedFormula.RootAtom == null)
+                throw new TexParseException($"Cannot find closing delimiter");
+
             var bodyRow = embeddedFormula.RootAtom as RowAtom;
             var lastAtom = embeddedFormula.RootAtom as SymbolAtom ?? bodyRow.Elements.LastOrDefault();
             var lastDelimiter = lastAtom as SymbolAtom;
