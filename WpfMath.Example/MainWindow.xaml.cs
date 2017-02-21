@@ -1,18 +1,9 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WpfMath.Example
 {
@@ -42,25 +33,6 @@ namespace WpfMath.Example
             return formula;
         }
 
-        private void renderButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Create formula object from input text.
-            var formula = ParseFormula(this.inputTextBox.Text);
-            if (formula == null) return;
-
-            // Render formula to visual.
-            var visual = new DrawingVisual();
-            var renderer = formula.GetRenderer(TexStyle.Display, 20d);
-            var formulaSize = renderer.RenderSize;
-
-            using (var drawingContext = visual.RenderOpen())
-            {
-                renderer.Render(drawingContext, 0, 1);
-            }
-
-            this.formulaContainerElement.Visual = visual;
-        }
-
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
             // Choose file
@@ -72,9 +44,9 @@ namespace WpfMath.Example
             if (result == false) return;
 
             // Create formula object from input text.
-            var formula = ParseFormula(this.inputTextBox.Text);
+            var formula = ParseFormula(inputTextBox.Text);
             if (formula == null) return;        
-            var renderer = formula.GetRenderer(TexStyle.Display, 20d);
+            var renderer = formula.GetRenderer(TexStyle.Display, this.formula.Scale);
 
             // Open stream
             var filename = saveFileDialog.FileName;

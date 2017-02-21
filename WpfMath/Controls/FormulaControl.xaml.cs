@@ -50,7 +50,7 @@ namespace WpfMath.Controls
 
         public static readonly DependencyProperty ScaleProperty = DependencyProperty.Register(
             "Scale", typeof(double), typeof(FormulaControl),
-            new PropertyMetadata(7d, OnScaleChanged));
+            new PropertyMetadata(20d, OnScaleChanged));
 
         public static readonly DependencyProperty HasErrorProperty = DependencyProperty.Register(
             "HasError", typeof(bool), typeof(FormulaControl),
