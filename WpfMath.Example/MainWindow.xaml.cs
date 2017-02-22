@@ -89,7 +89,6 @@ namespace WpfMath.Example
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            TexFormulaParser.Initialize();
             this.formulaParser = new TexFormulaParser();
 
             var testFormula1 = "\\int_0^{\\infty}{x^{2n} e^{-a x^2} dx} = \\frac{2n-1}{2a} \\int_0^{\\infty}{x^{2(n-1)} e^{-a x^2} dx} = \\frac{(2n-1)!!}{2^{n+1}} \\sqrt{\\frac{\\pi}{a^{2n+1}}}";

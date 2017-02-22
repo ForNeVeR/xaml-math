@@ -7,8 +7,6 @@ open WpfMath
 open WpfMath.Tests.Utils
 
 type ParserTests() =
-    static do TexFormulaParser.Initialize()
-
     let assertParseResult formula expected =
         let parser = TexFormulaParser()
         let result = parser.Parse(formula)

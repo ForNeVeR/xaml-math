@@ -47,13 +47,8 @@ namespace WpfMath
             new[] { "Vert", "Vert" }
         };
 
-        // True if parser has been initialized.
-        private static bool isInitialized;
-
         static TexFormulaParser()
         {
-            isInitialized = false;
-
             predefinedFormulas = new Dictionary<string, TexFormula>();
             predefinedColors = new Dictionary<string, Color>();
 
@@ -65,10 +60,8 @@ namespace WpfMath
             get { return delimiterNames; }
         }
 
-        public static void Initialize()
+        private static void Initialize()
         {
-            if (isInitialized) return;
-
             //
             // If start application isn't WPF, pack isn't registered by defaultTexFontParser
             //
@@ -99,8 +92,6 @@ namespace WpfMath
 
             var predefinedFormulasParser = new TexPredefinedFormulaParser();
             predefinedFormulasParser.Parse(predefinedFormulas);
-
-            isInitialized = true;
         }
 
         internal static TexFormula GetFormula(string name)
@@ -145,8 +136,6 @@ namespace WpfMath
             return ch == ' ' || ch == '\t' || ch == '\n' || ch == '\r';
         }
 
-        public TexFormulaParser() { }
-
         //public TexFormula Convert(System.Linq.Expressions.Expression value)
         //{
         //    return new TexExpressionVisitor(value, this).Formula;
@@ -162,7 +151,7 @@ namespace WpfMath
         {
             var embeddedFormula = Parse(value, ref position, true);
             if (embeddedFormula.RootAtom == null)
-                throw new TexParseException($"Cannot find closing delimiter");
+                throw new TexParseException("Cannot find closing delimiter");
 
             var bodyRow = embeddedFormula.RootAtom as RowAtom;
             var lastAtom = embeddedFormula.RootAtom as SymbolAtom ?? bodyRow.Elements.LastOrDefault();
@@ -575,7 +564,7 @@ namespace WpfMath
             {
                 // Character is symbol.
                 var symbolName = symbols.ElementAtOrDefault(character);
-                if (symbolName == null || symbolName == "")
+                if (string.IsNullOrEmpty(symbolName))
                     throw new TexParseException("Unknown character : '" + character.ToString() + "'");
 
                 try
