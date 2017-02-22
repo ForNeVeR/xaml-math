@@ -17,7 +17,8 @@
     </UserControl.Resources>
     
     <UserControl.Style>
-        <Style TargetType="UserControl">            
+        <Style TargetType="UserControl">
+            <Setter Property="local:FormulaControl.ErrorTemplate" Value="{StaticResource DefaultErrorTemplate}"/>
             <Style.Triggers>
                 <DataTrigger Binding="{Binding HasError, RelativeSource={RelativeSource Self}}" Value="True">
                     <Setter Property="Template" Value="{Binding ErrorTemplate, RelativeSource={RelativeSource Self}}"/>

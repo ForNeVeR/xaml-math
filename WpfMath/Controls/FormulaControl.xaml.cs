@@ -50,7 +50,7 @@ namespace WpfMath.Controls
 
         public static readonly DependencyProperty ScaleProperty = DependencyProperty.Register(
             "Scale", typeof(double), typeof(FormulaControl),
-            new PropertyMetadata(20d, OnScaleChanged));
+            new PropertyMetadata(20d, OnScaleChanged, CoerceScaleValue));
 
         public static readonly DependencyProperty HasErrorProperty = DependencyProperty.Register(
             "HasError", typeof(bool), typeof(FormulaControl),
@@ -67,7 +67,6 @@ namespace WpfMath.Controls
         public FormulaControl()
         {
             InitializeComponent();
-            ErrorTemplate = Resources["DefaultErrorTemplate"] as ControlTemplate;
         }
 
         private void Render()
@@ -108,6 +107,12 @@ namespace WpfMath.Controls
                 control.texFormula = null;
                 return "";
             }
+        }
+
+        private static object CoerceScaleValue(DependencyObject d, object baseValue)
+        {
+            var val = (double)baseValue;
+            return val < 1d ? 1d : val;
         }
 
         private static void OnFormulaChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
