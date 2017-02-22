@@ -46,3 +46,9 @@ type ParserTests() =
         <| (formula <| row [ fenced (openBrace "lbrack") ``2+2`` (closeBrace "rbrack")
                              symbol "plus"
                              char '1' ])
+
+    [<Fact>]
+    let ``Expression with symbols from unsupported charset should throw exn`` () =
+        let parser = TexFormulaParser()
+        let methodcall = (fun () -> parser.Parse("абвгд") |> ignore)
+        Assert.Throws<TexParseException>(methodcall)
