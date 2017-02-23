@@ -33,7 +33,7 @@ GitHub][github].
 
 [example]: WpfMath.Example/
 
-[alex-regueiro]: mailto:alexreg@gmail.com
+[alex-regueiro]: https://github.com/alexreg
 [appveyor]: https://ci.appveyor.com/project/ForNeVeR/wpf-math/branch/master
 [github]: https://github.com/ForNeVeR/wpf-math
 [jmathtex]: http://jmathtex.sourceforge.net/
