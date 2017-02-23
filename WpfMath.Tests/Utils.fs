@@ -6,6 +6,7 @@ let formula (root : Atom) : TexFormula =
     TexFormula(RootAtom = root)
 
 let char (c : char) : CharAtom = CharAtom(c)
+let styledChar(c : char, style:string) : CharAtom = CharAtom(c, style)
 let symbol (name : string) : SymbolAtom = SymbolAtom(name, TexAtomType.BinaryOperator, false)
 let row (children : Atom seq) : RowAtom =
     let result = RowAtom()
