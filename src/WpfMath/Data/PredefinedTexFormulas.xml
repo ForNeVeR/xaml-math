@@ -245,12 +245,19 @@
   </Formula>
 
   <Formula name="lim" enabled="true">
-    <CreateFormula name="f">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
       <Argument type="string" value="\mathrm{lim}" />
-    </CreateFormula>
-    <MethodInvocation name="SetFixedTypes" formula="f">
-      <Argument type="AtomType" value="BigOperator" />
-      <Argument type="AtomType" value="BigOperator" />
+      <Argument type="bool" value="true" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="sin" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{sin}" />
+      <Argument type="bool" value="false" />
     </MethodInvocation>
     <Return name="f" />
   </Formula>

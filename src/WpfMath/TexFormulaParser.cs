@@ -550,12 +550,23 @@ namespace WpfMath
                 return atom;
 
             // Check whether to return Big Operator or Scripts.
+            var subscriptAtom = subscriptFormula == null ? null : subscriptFormula.RootAtom;
+            var superscriptAtom = superscriptFormula == null ? null : superscriptFormula.RootAtom;
             if (atom.GetRightType() == TexAtomType.BigOperator)
-                return new BigOperatorAtom(atom, subscriptFormula == null ? null : subscriptFormula.RootAtom,
-                    superscriptFormula == null ? null : superscriptFormula.RootAtom);
+            {
+                if (atom is BigOperatorAtom)
+                {
+                    var typedAtom = (BigOperatorAtom)atom;
+                    return new BigOperatorAtom(typedAtom, subscriptAtom, superscriptAtom,
+                        typedAtom.UseVerticalLimits);
+                }
+
+                return new BigOperatorAtom(atom, subscriptAtom, superscriptAtom);
+            }
             else
-                return new ScriptsAtom(atom, subscriptFormula == null ? null : subscriptFormula.RootAtom,
-                    superscriptFormula == null ? null : superscriptFormula.RootAtom);
+            {
+                return new ScriptsAtom(atom, subscriptAtom, superscriptAtom);
+            }
         }
 
         private Atom ConvertCharacter(TexFormula formula, string value, ref int position, char character)

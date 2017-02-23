@@ -147,6 +147,11 @@ namespace WpfMath
                 formulaParser.Parse(upperLimitFormula), useVerticalLimits);
         }
 
+        public void AddOperator(string operatorFormula, bool useVerticalLimits)
+        {
+            AddOperator(formulaParser.Parse(operatorFormula), null, null, useVerticalLimits);
+        }
+
         public void AddOperator(TexFormula operatorFormula, TexFormula lowerLimitFormula, TexFormula upperLimitFormula)
         {
             Add(new BigOperatorAtom(operatorFormula == null ? null : operatorFormula.RootAtom,
