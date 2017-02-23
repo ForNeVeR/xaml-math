@@ -141,15 +141,15 @@ namespace WpfMath
         //    return new TexExpressionVisitor(value, this).Formula;
         //}
 
-        public TexFormula Parse(string value)
+        public TexFormula Parse(string value, string textStyle = null)
         {
             var position = 0;
-            return Parse(value, ref position, false);
+            return Parse(value, ref position, false, textStyle);
         }
 
-        private DelimiterInfo ParseUntilDelimiter(string value, ref int position)
+        private DelimiterInfo ParseUntilDelimiter(string value, ref int position, string textStyle)
         {
-            var embeddedFormula = Parse(value, ref position, true);
+            var embeddedFormula = Parse(value, ref position, true, textStyle);
             if (embeddedFormula.RootAtom == null)
                 throw new TexParseException("Cannot find closing delimiter");
 
@@ -182,9 +182,9 @@ namespace WpfMath
             return new DelimiterInfo(bodyAtom, lastDelimiter);
         }
 
-        private TexFormula Parse(string value, ref int position, bool allowClosingDelimiter)
+        private TexFormula Parse(string value, ref int position, bool allowClosingDelimiter, string textStyle)
         {
-            var formula = new TexFormula();
+            var formula = new TexFormula() { TextStyle = textStyle };
             var closedDelimiter = false;
             while (position < value.Length && !(allowClosingDelimiter && closedDelimiter))
             {
@@ -200,7 +200,7 @@ namespace WpfMath
                 else if (ch == leftGroupChar)
                 {
                     formula.Add(AttachScripts(formula, value, ref position, Parse(ReadGroup(formula, value, ref position,
-                        leftGroupChar, rightGroupChar)).RootAtom));
+                        leftGroupChar, rightGroupChar), textStyle).RootAtom));
                 }
                 else if (ch == rightGroupChar)
                 {
@@ -264,12 +264,12 @@ namespace WpfMath
             var ch = value[position];
             if (ch == leftGroupChar)
             {
-                return Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar));
+                return Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
             }
             else
             {
                 position++;
-                return Parse(ch.ToString());
+                return Parse(ch.ToString(), formula.TextStyle);
             }
         }
 
@@ -289,10 +289,10 @@ namespace WpfMath
                     // Command is fraction.
 
                     var numeratorFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar,
-                        rightGroupChar));
+                        rightGroupChar), formula.TextStyle);
                     SkipWhiteSpace(value, ref position);
                     var denominatorFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar,
-                        rightGroupChar));
+                        rightGroupChar), formula.TextStyle);
                     if (numeratorFormula.RootAtom == null || denominatorFormula.RootAtom == null)
                         throw new TexParseException("Both numerator and denominator of a fraction can't be empty!");
 
@@ -307,7 +307,7 @@ namespace WpfMath
                         var delimiter = value[position];
                         ++position;
 
-                        var internals = ParseUntilDelimiter(value, ref position);
+                        var internals = ParseUntilDelimiter(value, ref position, formula.TextStyle);
 
                         var opening = GetDelimiterSymbol(GetDelimeterMapping(delimiter));
                         if (opening == null)
@@ -349,17 +349,17 @@ namespace WpfMath
                     {
                         // Degree of radical- is specified.
                         degreeFormula = Parse(ReadGroup(formula, value, ref position, leftBracketChar,
-                            rightBracketChar));
+                            rightBracketChar), formula.TextStyle);
                         SkipWhiteSpace(value, ref position);
                     }
 
-                    return new Radical(Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar))
+                    return new Radical(Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle)
                         .RootAtom, degreeFormula == null ? null : degreeFormula.RootAtom);
                 case "color":
                     {
                         var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
                         string remainingString = value.Substring(position);
-                        var remaining = Parse(remainingString);
+                        var remaining = Parse(remainingString, formula.TextStyle);
                         position = value.Length;
                         Color color;
                         if (predefinedColors.TryGetValue(colorName, out color))
@@ -375,7 +375,7 @@ namespace WpfMath
                     {
                         var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
                         string remainingString = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
-                        var remaining = Parse(remainingString);
+                        var remaining = Parse(remainingString, formula.TextStyle);
                         Color color;
                         if (predefinedColors.TryGetValue(colorName, out color))
                         {
@@ -456,8 +456,7 @@ namespace WpfMath
                 // Text style was found.
 
                 SkipWhiteSpace(value, ref position);
-                var styledFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar));
-                styledFormula.TextStyle = command;
+                var styledFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), command);
                 formula.Add(AttachScripts(formula, value, ref position, styledFormula.RootAtom));
             }
             else if (commands.Contains(command))
