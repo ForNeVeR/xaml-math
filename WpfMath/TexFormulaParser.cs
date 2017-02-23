@@ -457,6 +457,8 @@ namespace WpfMath
 
                 SkipWhiteSpace(value, ref position);
                 var styledFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), command);
+                if (styledFormula.RootAtom == null)
+                    throw new TexParseException("Styled text can't be empty!");
                 formula.Add(AttachScripts(formula, value, ref position, styledFormula.RootAtom));
             }
             else if (commands.Contains(command))
