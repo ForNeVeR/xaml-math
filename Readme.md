@@ -15,7 +15,8 @@ like that:
 </Window>
 ```
 
-For a more detailed sample, check out the [example project][example].
+For a more detailed sample, check out the [example project][example]. It shows
+the usage of data binding and some advanced concepts:
 
 ![Example screenshot](docs/example-screenshot.png)
 
