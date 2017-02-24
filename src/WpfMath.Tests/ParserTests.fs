@@ -21,6 +21,8 @@ type ParserTests() =
 
     let ``2+2`` = row [char '2'; symbol "plus"; char '2']
     let ``\mathrm{2+2}`` = row [styledChar('2', rmStyle); symbol "plus"; styledChar('2', rmStyle)]
+    let ``\lim`` = row [styledChar('l', rmStyle); styledChar('i', rmStyle); styledChar('m', rmStyle)]
+    let ``\sin`` = row [styledChar('s', rmStyle); styledChar('i', rmStyle); styledChar('n', rmStyle)]
 
     [<Fact>]
     let ``2+2 should be parsed properly`` () =
@@ -90,3 +92,30 @@ type ParserTests() =
         let parser = TexFormulaParser()
         let methodcall = (fun () -> parser.Parse(@"\mathrm{}") |> ignore)
         Assert.Throws<TexParseException>(methodcall)
+
+    [<Fact>]
+    let ``\lim should be parsed properly`` () =
+        assertParseResult
+        <| @"\lim_{n} x"
+        <| (formula <| row [
+                        opWithScripts ``\lim`` (char 'n') null (System.Nullable true);
+                        char 'x'
+                            ])
+
+    [<Fact>]
+    let ``{\lim} x should be parsed properly`` () =
+        assertParseResult
+        <| @"{\lim} x"
+        <| (formula <| row [
+                        group (op ``\lim`` (System.Nullable true));
+                        char 'x'
+                            ])
+
+    [<Fact>]
+    let ``\sin should be parsed properly`` () =
+        assertParseResult
+        <| @"\sin^{n} x"
+        <| (formula <| row [
+                        opWithScripts ``\sin`` null (char 'n') (System.Nullable false);
+                        char 'x'
+                            ])
