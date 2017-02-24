@@ -16,6 +16,6 @@
         <tags>wpf latex formula</tags>
     </metadata>
     <files>
-        <file src="WpfMath\bin\Release\WpfMath.*" target="lib/net40"/>
+        <file src="bin\Release\WpfMath.???" target="lib/net40"/>
     </files>
 </package>
