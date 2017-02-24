@@ -401,4 +401,139 @@
     <Return name="f" />
   </Formula>
   
+  <Formula name="arg" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{arg}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+  
+  <Formula name="deg" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{deg}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+  
+  <Formula name="det" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{det}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+  
+  <Formula name="dim" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{dim}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+  
+  <Formula name="gcd" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{gcd}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+  
+  <Formula name="hom" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{hom}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+  
+  <Formula name="inf" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{inf}" />
+      <Argument type="bool" value="true" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+  
+  <Formula name="ker" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{ker}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+  
+  <Formula name="lg" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{lg}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+  
+  <Formula name="liminf" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{lim\,inf}" />
+      <Argument type="bool" value="true" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="limsup" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{lim\,sup}" />
+      <Argument type="bool" value="true" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+  
+  <Formula name="max" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{max}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="min" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{min}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="Pr" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{Pr}" />
+      <Argument type="bool" value="true" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+ <Formula name="sup" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{sup}" />
+      <Argument type="bool" value="true" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
 </PredefinedFormulas>
