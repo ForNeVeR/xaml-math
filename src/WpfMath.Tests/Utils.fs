@@ -12,6 +12,7 @@ let opWithScripts (baseAtom : Atom) (subscript : Atom) (superscript : Atom) (use
             : BigOperatorAtom = BigOperatorAtom(baseAtom, subscript, superscript, useVertScripts)
 let group (groupedAtom: Atom) : TypedAtom = TypedAtom(groupedAtom, TexAtomType.Ordinary, TexAtomType.Ordinary)
 let symbol (name : string) : SymbolAtom = SymbolAtom(name, TexAtomType.BinaryOperator, false)
+let symbolOp (name : string) : SymbolAtom = SymbolAtom(name, TexAtomType.BigOperator, false)
 let row (children : Atom seq) : RowAtom =
     let result = RowAtom()
     result.Elements.AddRange(children)

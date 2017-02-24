@@ -119,3 +119,12 @@ type ParserTests() =
                         opWithScripts ``\sin`` null (char 'n') (System.Nullable false);
                         char 'x'
                             ])
+
+    [<Fact>]
+    let ``\int f should be parser properly`` () =
+        assertParseResult
+        <| @"\int f"
+        <| (formula <| row [
+                        op (symbolOp "int") (System.Nullable ())
+                        char 'f'
+                            ])
