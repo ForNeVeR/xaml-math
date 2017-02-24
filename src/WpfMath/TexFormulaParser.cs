@@ -199,8 +199,10 @@ namespace WpfMath
                 }
                 else if (ch == leftGroupChar)
                 {
-                    formula.Add(AttachScripts(formula, value, ref position, Parse(ReadGroup(formula, value, ref position,
-                        leftGroupChar, rightGroupChar), textStyle).RootAtom));
+                    var groupValue = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+                    var parsedGroup = Parse(groupValue, textStyle);
+                    var groupAtom = new TypedAtom(parsedGroup.RootAtom, TexAtomType.Ordinary, TexAtomType.Ordinary);
+                    formula.Add(AttachScripts(formula, value, ref position, groupAtom));
                 }
                 else if (ch == rightGroupChar)
                 {
