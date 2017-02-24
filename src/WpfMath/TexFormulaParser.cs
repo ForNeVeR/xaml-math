@@ -552,8 +552,8 @@ namespace WpfMath
                 return atom;
 
             // Check whether to return Big Operator or Scripts.
-            var subscriptAtom = subscriptFormula == null ? null : subscriptFormula.RootAtom;
-            var superscriptAtom = superscriptFormula == null ? null : superscriptFormula.RootAtom;
+            var subscriptAtom = subscriptFormula?.RootAtom;
+            var superscriptAtom = superscriptFormula?.RootAtom;
             if (atom.GetRightType() == TexAtomType.BigOperator)
             {
                 if (atom is BigOperatorAtom)
