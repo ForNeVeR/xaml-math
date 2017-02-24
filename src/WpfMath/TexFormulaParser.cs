@@ -559,7 +559,7 @@ namespace WpfMath
                 if (atom is BigOperatorAtom)
                 {
                     var typedAtom = (BigOperatorAtom)atom;
-                    return new BigOperatorAtom(typedAtom, subscriptAtom, superscriptAtom,
+                    return new BigOperatorAtom(typedAtom.BaseAtom, subscriptAtom, superscriptAtom,
                         typedAtom.UseVerticalLimits);
                 }
 
