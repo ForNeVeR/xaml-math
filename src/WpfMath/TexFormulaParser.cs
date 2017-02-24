@@ -436,6 +436,11 @@ namespace WpfMath
                     TexFormula accentFormula = ReadScript(formula, value, ref position);
                     helper.AddAccent(accentFormula, symbolAtom.Name);
                 }
+                else if (symbolAtom.Type == TexAtomType.BigOperator)
+                {
+                    var opAtom = new BigOperatorAtom(symbolAtom, null, null);
+                    formula.Add(AttachScripts(formula, value, ref position, opAtom));
+                }
                 else
                 {
                     formula.Add(AttachScripts(formula, value, ref position, symbolAtom));
