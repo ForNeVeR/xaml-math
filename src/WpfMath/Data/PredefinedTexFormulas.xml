@@ -535,5 +535,79 @@
     </MethodInvocation>
     <Return name="f" />
   </Formula>
+  
+  <!-- Localized Trigonometric Functions (Ru) -->
+
+  <Formula name="tg" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{tg}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="cosec" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{cosec}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+  
+  <Formula name="ctg" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{ctg}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="arctg" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{arctg}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="ch" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{ch}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="sh" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{sh}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="th" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{th}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="cth" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{cth}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
 
 </PredefinedFormulas>
