@@ -244,4 +244,15 @@
     <Return name="f" />
   </Formula>
 
+  <Formula name="lim" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\mathrm{lim}" />
+    </CreateFormula>
+    <MethodInvocation name="SetFixedTypes" formula="f">
+      <Argument type="AtomType" value="BigOperator" />
+      <Argument type="AtomType" value="BigOperator" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
 </PredefinedFormulas>
