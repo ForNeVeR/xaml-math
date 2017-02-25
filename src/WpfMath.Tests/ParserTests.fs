@@ -128,3 +128,9 @@ type ParserTests() =
                         op (symbolOp "int") (System.Nullable ())
                         char 'f'
                             ])
+
+    [<Fact>]
+    let ``{} should be parsed properly`` () =
+        assertParseResult
+        <| @"{}"
+        <| (formula <| group (row []))
