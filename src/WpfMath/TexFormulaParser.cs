@@ -201,7 +201,8 @@ namespace WpfMath
                 {
                     var groupValue = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
                     var parsedGroup = Parse(groupValue, textStyle);
-                    var groupAtom = new TypedAtom(parsedGroup.RootAtom, TexAtomType.Ordinary, TexAtomType.Ordinary);
+                    var innerGroupAtom = parsedGroup.RootAtom ?? new RowAtom();
+                    var groupAtom = new TypedAtom(innerGroupAtom, TexAtomType.Ordinary, TexAtomType.Ordinary);
                     formula.Add(AttachScripts(formula, value, ref position, groupAtom));
                 }
                 else if (ch == rightGroupChar)
