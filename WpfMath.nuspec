@@ -10,9 +10,9 @@
         <licenseUrl>https://github.com/ForNeVeR/wpf-math/blob/b44ded1cb7ad176a3c1180e9886e5531ca449b52/License.md</licenseUrl>
         <projectUrl>https://github.com/ForNeVeR/wpf-math</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Tools for rendering mathematical expressions on-the-fly using the Windows Presentation Foundation.</description>
+        <description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the WPF framework.</description>
         <releaseNotes>Extensible delimiter support; new formula control; new math functions; bug fixes.</releaseNotes>
-        <copyright>Copyright © Alex Regueiro 2010; Copyright © wpf-math contributors 2017</copyright>
+        <copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2017</copyright>
         <tags>wpf latex formula</tags>
     </metadata>
     <files>
