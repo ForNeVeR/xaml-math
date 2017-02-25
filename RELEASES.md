@@ -1,5 +1,5 @@
-WPF-Math release notes
-======================
+Release Notes
+=============
 
 ## 0.3.0 (2017-02-24)
 
@@ -17,10 +17,9 @@ Fixed issues:
 Merged all the patches from the Launchpad repository (see #3 for a full list).
 The most interesting ones are:
 
-- fix for the culture-dependent number parsing in `XmlUtils`
-- addition of SVG rendering code
+- Fix for culture-dependent number parsing in `XmlUtils`
+- Addition of SVG rendering functionality
 
 ## 0.1.0 (2017-02-11)
 
-That was initial published version. It completely consisted of the original code
-(i.e. from Launchpad era).
+This was the initial published version. It consisted entirely of the original code from the Launchpad projectsite.

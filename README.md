@@ -1,13 +1,12 @@
 WPF-Math [![Build status][badge-appveyor]][appveyor] [![NuGet][badge-nuget]][nuget]
 ========
 
-WPF-Math is a library to render LaTeX formulae in a WPF environment.
+*WPF-Math* is a .NET library for rendering mathematical formulae using the LaTeX typsetting style, for the WPF framework.
 
-Getting started
+Getting Started
 ---------------
 
-The simplest way of using WPF-Math is to render a static formula in a XAML file
-like that:
+The simplest way of using *WPF-Math* is to render a static formula in a XAML file as follows.
 
 ```xml
 <Window ... xmlns:controls="clr-namespace:WpfMath.Controls;assembly=WpfMath">
@@ -15,21 +14,14 @@ like that:
 </Window>
 ```
 
-For a more detailed sample, check out the [example project][example]. It shows
-the usage of data binding and some advanced concepts:
+For a more detailed sample, check out the [example project][example]. It shows the usage of data binding and some advanced concepts.
 
-![Example screenshot](docs/example-screenshot.png)
+![Screenshot of example project](docs/example-screenshot.png)
 
 History
 -------
 
-The library was originally ported from the [JMathTex project][jmathtex],
-copyright 2004-2007 Universiteit Gent. The port was originally called WPF-TeX
-and lead by [Alex Regueiro][alex-regueiro].
-
-Later it was accessible as [WPF-Math on Launchpad][launchpad], but has no
-commits from 2010, until it was ported to [its current location on
-GitHub][github].
+The library was originally ported from the [JMathTex project][jmathtex], copyright 2004-2007 Universiteit Gent. The port was originally named *WPF-TeX* and was written and maintained by [Alex Regueiro][alex-regueiro]. It was later available as [*WPF-Math* on Launchpad][launchpad], but was unmaintained from 2011 until it was revived in [its current form][github].
 
 [example]: WpfMath.Example/
 
