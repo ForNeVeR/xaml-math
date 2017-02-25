@@ -11,6 +11,12 @@ namespace WpfMath
 {
     public class TexRenderer
     {
+        internal static double RoundToWholePixels(double v, double scale)
+        {
+            var x = Math.Round(v * scale, MidpointRounding.AwayFromZero);
+            return x / scale;
+        }
+
         internal TexRenderer(Box box, double scale)
         {
             this.Box = box;
@@ -68,7 +74,7 @@ namespace WpfMath
 
         public void Render(DrawingContext drawingContext, double x, double y)
         {
-            this.Box.Draw(drawingContext, this.Scale, x / this.Scale, y / this.Scale + this.Box.Height);
+            this.Box.Draw(drawingContext, this.Scale, 0, Box.Height); // x / this.Scale, 0.5 + y / this.Scale + this.Box.Height);
         }
     }
 }

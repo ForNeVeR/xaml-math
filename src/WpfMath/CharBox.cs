@@ -39,6 +39,9 @@ namespace WpfMath
 
         public override void Draw(DrawingContext drawingContext, double scale, double x, double y)
         {
+            x = TexRenderer.RoundToWholePixels(x, scale);
+            y = TexRenderer.RoundToWholePixels(y, scale);
+
             base.Draw(drawingContext, scale, x, y);
 
             GlyphRun glyphRun = GetGlyphRun(scale, x, y);
