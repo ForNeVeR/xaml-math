@@ -41,6 +41,12 @@ type ParserTests() =
         <| (formula <| fenced (openBrace lResult) (char 'a') (closeBrace rResult))
 
     [<Fact>]
+    let ``Unmatched delimiters should work`` () =
+        assertParseResult
+        <| @"\left)a\right|"
+        <| (formula <| fenced (closeBrace "rbrack") (char 'a') (SymbolAtom("vert", TexAtomType.Ordinary, true)))
+
+    [<Fact>]
     let ``Expression in braces should be parsed`` () =
         assertParseResult
         <| @"\left(2+2\right)"
@@ -73,14 +79,14 @@ type ParserTests() =
         <| (formula <| row [ fenced (openBrace "lbrack") ``\mathrm{2+2}`` (closeBrace "rbrack")
                              symbol "plus"
                              char '1' ])
-    
+
     [<Fact>]
     let ``\mathit should be parsed properly`` () =
         assertParseResult
         <| @"\mathit{sin}"
         <| (formula <| row [styledChar('s', itStyle); styledChar('i', itStyle); styledChar('n', itStyle)])
 
-    
+
     [<Fact>]
     let ``\mathrm should be parsed properly`` () =
         assertParseResult
