@@ -244,6 +244,44 @@
     <Return name="f" />
   </Formula>
 
+  <!-- Multiple Integrals -->
+  
+  <Formula name="iint" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="{\int}\negmedspace{\int}" />
+      <Argument type="bool" value="true" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>  
+  
+  <Formula name="iiint" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="{\iint}\negmedspace{\int}" />
+      <Argument type="bool" value="true" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>  
+
+  <Formula name="iiiint" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="{\iiint}\negmedspace{\int}" />
+      <Argument type="bool" value="true" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+  
+  <Formula name="idotsint" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="{\int}\cdots{\int}" />
+      <Argument type="bool" value="true" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula> 
+  
   <!-- Trigonometric Functions -->
 
   <Formula name="cos" enabled="true">
