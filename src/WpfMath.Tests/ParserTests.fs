@@ -43,9 +43,10 @@ type ParserTests() =
     [<Theory>]
     [<InlineData(".", ")", true, false)>]
     [<InlineData("(", ".", false, true)>]
-    let ``Empty delimiters should work`` (left : string, right : string, isLeftNull : bool, isRightNull : bool) =
-        let leftBrace = if isLeftNull then null else (openBrace "lbrack")
-        let rightBrace = if isRightNull then null else (closeBrace "rbrack")
+    let ``Empty delimiters should work`` (left : string, right : string, isLeftEmpty : bool, isRightEmpty : bool) =
+        let empty = brace SymbolAtom.EmptyDelimiterName TexAtomType.Ordinary
+        let leftBrace = if isLeftEmpty then empty else (openBrace "lbrack")
+        let rightBrace = if isRightEmpty then empty else (closeBrace "rbrack")
 
         assertParseResult
         <| sprintf @"\left%sa\right%s" left right
@@ -55,7 +56,7 @@ type ParserTests() =
     let ``Unmatched delimiters should work`` () =
         assertParseResult
         <| @"\left)a\right|"
-        <| (formula <| fenced (closeBrace "rbrack") (char 'a') (SymbolAtom("vert", TexAtomType.Ordinary, true)))
+        <| (formula <| fenced (closeBrace "rbrack") (char 'a') (brace "vert" TexAtomType.Ordinary))
 
     [<Fact>]
     let ``Expression in braces should be parsed`` () =

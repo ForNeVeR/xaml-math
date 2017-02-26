@@ -317,7 +317,7 @@ namespace WpfMath
                             throw new TexParseException($"Cannot find delimiter named {delimiter}");
 
                         var closing = internals.ClosingDelimiter;
-                        return TexFormulaHelper.PrepareFencedAtom(internals.Body, opening, closing);
+                        return new FencedAtom(internals.Body, opening, closing);
                     }
 
                 case "right":

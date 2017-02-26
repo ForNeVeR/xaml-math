@@ -64,11 +64,8 @@ namespace WpfMath
 
         public void AddEmbraced(TexFormula formula, string leftSymbol, string rightSymbol)
         {
-            Add(
-                PrepareFencedAtom(
-                    formula?.RootAtom,
-                    TexFormulaParser.GetDelimiterSymbol(leftSymbol),
-                    TexFormulaParser.GetDelimiterSymbol(rightSymbol)));
+            Add(new FencedAtom(formula == null ? null : formula.RootAtom, TexFormulaParser.GetDelimiterSymbol(leftSymbol),
+                TexFormulaParser.GetDelimiterSymbol(rightSymbol)));
         }
 
         public void AddFraction(string numerator, string denominator, bool drawLine)
@@ -306,20 +303,6 @@ namespace WpfMath
             this.Formula.RootAtom = new UnderOverAtom(this.Formula.RootAtom, underFormula == null ?
                 null : underFormula.RootAtom, underUnit, underSpace, underScriptSize, over == null ? null : over.RootAtom,
                 overUnit, overSpace, overScriptSize);
-        }
-
-        internal static FencedAtom PrepareFencedAtom(
-            Atom baseAtom,
-            SymbolAtom leftDelimiter,
-            SymbolAtom rightDelimiter)
-        {
-            if (leftDelimiter.Name == SymbolAtom.EmptyDelimiterName)
-                leftDelimiter = null;
-
-            if (rightDelimiter.Name == SymbolAtom.EmptyDelimiterName)
-                rightDelimiter = null;
-
-            return new FencedAtom(baseAtom, leftDelimiter, rightDelimiter);
         }
     }
 }

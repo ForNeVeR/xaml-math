@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace WpfMath
 {
@@ -57,7 +54,7 @@ namespace WpfMath
             var minHeight = Math.Max((delta / 500) * delimeterFactor, 2 * delta - delimeterShortfall);
 
             // Create and add box for left delimeter.
-            if (LeftDelimeter != null)
+            if (LeftDelimeter != null && LeftDelimeter.Name != SymbolAtom.EmptyDelimiterName)
             {
                 var leftDelimeterBox = DelimiterFactory.CreateBox(this.LeftDelimeter.Name, minHeight, environment);
                 CentreBox(leftDelimeterBox, axis);
@@ -76,7 +73,7 @@ namespace WpfMath
                 resultBox.Add(Glue.CreateBox(this.BaseAtom.GetRightType(), TexAtomType.Closing, environment));
 
             // Create and add box for right delimeter.
-            if (this.RightDelimeter != null)
+            if (RightDelimeter != null && RightDelimeter.Name != SymbolAtom.EmptyDelimiterName)
             {
                 var rightDelimeterBox = DelimiterFactory.CreateBox(this.RightDelimeter.Name, minHeight, environment);
                 CentreBox(rightDelimeterBox, axis);
