@@ -156,7 +156,7 @@ namespace WpfMath
             var bodyRow = embeddedFormula.RootAtom as RowAtom;
             var lastAtom = embeddedFormula.RootAtom as SymbolAtom ?? bodyRow.Elements.LastOrDefault();
             var lastDelimiter = lastAtom as SymbolAtom;
-            if (lastDelimiter == null || !lastDelimiter.IsDelimeter || lastDelimiter.Type != TexAtomType.Closing)
+            if (lastDelimiter == null || !lastDelimiter.IsDelimeter)
                 throw new TexParseException($"Cannot find closing delimiter; got {lastDelimiter} instead");
 
             Atom bodyAtom;
@@ -178,7 +178,7 @@ namespace WpfMath
             {
                 throw new NotSupportedException($"Cannot convert {bodyRow} to fenced atom body");
             }
-            
+
             return new DelimiterInfo(bodyAtom, lastDelimiter);
         }
 
@@ -280,7 +280,7 @@ namespace WpfMath
             TexFormula formula,
             string value,
             ref int position,
-            string command, 
+            string command,
             bool allowClosingDelimiter,
             ref bool closedDelimiter)
         {
@@ -302,11 +302,11 @@ namespace WpfMath
                     return new FractionAtom(numeratorFormula.RootAtom, denominatorFormula.RootAtom, true);
 
                 case "left":
-                    { 
+                    {
                         SkipWhiteSpace(value, ref position);
                         if (position == value.Length)
                             throw new TexParseException("`left` command should be passed a delimiter");
-                    
+
                         var delimiter = value[position];
                         ++position;
 
@@ -321,14 +321,14 @@ namespace WpfMath
                     }
 
                 case "right":
-                    { 
+                    {
                         if (!allowClosingDelimiter)
                             throw new TexParseException("`right` command is not allowed without `left`");
 
                         SkipWhiteSpace(value, ref position);
                         if (position == value.Length)
                             throw new TexParseException("`right` command should be passed a delimiter");
-                    
+
                         var delimiter = value[position];
                         ++position;
 
@@ -426,7 +426,7 @@ namespace WpfMath
             var command = result.ToString();
 
             SymbolAtom symbolAtom = null;
-            TexFormula predefinedFormula = null;            
+            TexFormula predefinedFormula = null;
             if (SymbolAtom.TryGetAtom(command, out symbolAtom))
             {
                 // Symbol was found.
@@ -480,9 +480,9 @@ namespace WpfMath
                         ProcessCommand(
                             formula,
                             value,
-                            ref position, 
+                            ref position,
                             command,
-                            allowClosingDelimiter, 
+                            allowClosingDelimiter,
                             ref closedDelimiter)));
             }
             else
