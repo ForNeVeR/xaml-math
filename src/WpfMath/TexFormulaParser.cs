@@ -120,6 +120,9 @@ namespace WpfMath
 
         internal static SymbolAtom GetDelimiterSymbol(string name)
         {
+            if (name == null)
+                return null;
+
             var result = SymbolAtom.GetAtom(name);
             if (!result.IsDelimeter)
                 return null;

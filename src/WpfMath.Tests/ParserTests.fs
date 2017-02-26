@@ -59,6 +59,11 @@ type ParserTests() =
         <| (formula <| fenced (closeBrace "rbrack") (char 'a') (brace "vert" TexAtomType.Ordinary))
 
     [<Fact>]
+    let ``Non-existing delimiter should throw exception`` () =
+        let markup = @"\left x\right)"
+        Assert.Throws<TexParseException>(fun () -> TexFormulaParser().Parse(markup) |> ignore)
+
+    [<Fact>]
     let ``Expression in braces should be parsed`` () =
         assertParseResult
         <| @"\left(2+2\right)"
