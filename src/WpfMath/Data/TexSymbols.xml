@@ -2,6 +2,9 @@
 
 <TeXSymbols>
 
+  <!-- special -->
+  <Symbol name="_emptyDelimiter" type="ord" del="true"/>
+
   <!-- miscellaneous symbols -->
 
   <Symbol name="%" type="ord"/>

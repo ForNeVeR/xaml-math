@@ -1,14 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace WpfMath
 {
     // Atom representing symbol (non-alphanumeric character).
     internal class SymbolAtom : CharSymbol
     {
+        /// <summary>
+        /// Special name of empty delimiter symbol that shouldn't be rendered.
+        /// </summary>
+        internal const string EmptyDelimiterName = "_emptyDelimiter";
+
         // Dictionary of definitions of all symbols, keyed by name.
         private static IDictionary<string, SymbolAtom> symbols;
 
@@ -45,7 +48,7 @@ namespace WpfMath
 
         public static bool TryGetAtom(string name, out SymbolAtom atom)
         {
-            return symbols.TryGetValue(name, out atom);            
+            return symbols.TryGetValue(name, out atom);
         }
 
         public SymbolAtom(SymbolAtom symbolAtom, TexAtomType type)

@@ -154,7 +154,7 @@ namespace WpfMath
                 throw new TexParseException("Cannot find closing delimiter");
 
             var bodyRow = embeddedFormula.RootAtom as RowAtom;
-            var lastAtom = embeddedFormula.RootAtom as SymbolAtom ?? bodyRow.Elements.LastOrDefault();
+            var lastAtom = bodyRow?.Elements.LastOrDefault() ?? embeddedFormula.RootAtom;
             var lastDelimiter = lastAtom as SymbolAtom;
             if (lastDelimiter == null || !lastDelimiter.IsDelimeter)
                 throw new TexParseException($"Cannot find closing delimiter; got {lastDelimiter} instead");
@@ -317,7 +317,7 @@ namespace WpfMath
                             throw new TexParseException($"Cannot find delimiter named {delimiter}");
 
                         var closing = internals.ClosingDelimiter;
-                        return new FencedAtom(internals.Body, opening, closing);
+                        return TexFormulaHelper.PrepareFencedAtom(internals.Body, opening, closing);
                     }
 
                 case "right":

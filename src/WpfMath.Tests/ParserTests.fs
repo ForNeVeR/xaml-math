@@ -40,6 +40,17 @@ type ParserTests() =
         <| sprintf @"\left%sa\right%s" left right
         <| (formula <| fenced (openBrace lResult) (char 'a') (closeBrace rResult))
 
+    [<Theory>]
+    [<InlineData(".", ")", true, false)>]
+    [<InlineData("(", ".", false, true)>]
+    let ``Empty delimiters should work`` (left : string, right : string, isLeftNull : bool, isRightNull : bool) =
+        let leftBrace = if isLeftNull then null else (openBrace "lbrack")
+        let rightBrace = if isRightNull then null else (closeBrace "rbrack")
+
+        assertParseResult
+        <| sprintf @"\left%sa\right%s" left right
+        <| (formula <| fenced leftBrace (char 'a') rightBrace)
+
     [<Fact>]
     let ``Unmatched delimiters should work`` () =
         assertParseResult

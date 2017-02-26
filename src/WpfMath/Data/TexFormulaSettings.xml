@@ -39,9 +39,10 @@
   <!-- character-to-delimiter-mappings
 
 These are used in the method "embrace(char,char)" from the class "Formula".
-The symbolnames must be defined in "TeXSymbols.xml" as delimiters (del="true")!! -->
+The symbolnames must be defined in "TexSymbols.xml" as delimiters (del="true")!! -->
 
   <CharacterToDelimiterMappings>
+    <Map char="." symbol="_emptyDelimiter"/>
     <Map char="(" symbol="lbrack"/>
     <Map char=")" symbol="rbrack"/>
     <Map char="[" symbol="lsqbrack"/>
