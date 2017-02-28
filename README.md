@@ -23,7 +23,16 @@ History
 
 The library was originally ported from the [JMathTex project][jmathtex], copyright 2004-2007 Universiteit Gent. The port was originally named *WPF-TeX* and was written and maintained by [Alex Regueiro][alex-regueiro]. It was later available as [*WPF-Math* on Launchpad][launchpad], but was unmaintained from 2011 until it was revived in [its current form][github].
 
+License Notes
+-------------
+
+The project code is licensed under the terms of [MIT license][license]. The
+original resourses from JMathTeX (all the `*.xml` files) are redistributed under
+the terms of [GNU GPL v2][gpl].
+
 [example]: WpfMath.Example/
+[gpl]: GPLv2.txt
+[license]: LICENSE.md
 
 [alex-regueiro]: https://github.com/alexreg
 [appveyor]: https://ci.appveyor.com/project/ForNeVeR/wpf-math/branch/master
