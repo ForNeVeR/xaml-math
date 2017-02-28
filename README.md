@@ -27,8 +27,9 @@ License Notes
 -------------
 
 The project code is licensed under the terms of [MIT license][license]. The
-original resourses from JMathTeX (all the `*.xml` files) are redistributed under
-the terms of [GNU GPL v2][gpl].
+original resourses from JMathTeX (`DefaultTexFont.xml`, `GlueSettings.xml`,
+`PredefinedTexFormulas.xml`, `TexFormulaSettings.xml`, `TexSymbols.xml`) are
+redistributed under the terms of [GNU GPL v2][gpl].
 
 [example]: WpfMath.Example/
 [gpl]: GPLv2.txt
