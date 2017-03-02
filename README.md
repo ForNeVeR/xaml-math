@@ -26,13 +26,10 @@ The library was originally ported from the [JMathTex project][jmathtex], copyrig
 License Notes
 -------------
 
-The project code is licensed under the terms of [MIT license][license]. The
-original resourses from JMathTeX (`DefaultTexFont.xml`, `GlueSettings.xml`,
-`PredefinedTexFormulas.xml`, `TexFormulaSettings.xml`, `TexSymbols.xml`) are
-redistributed under the terms of [GNU GPL v2][gpl].
+The project code is licensed under the terms of [MIT license][license]. The original resourses from [JMathTeX][jmathtex] (`DefaultTexFont.xml`, `GlueSettings.xml`, `PredefinedTexFormulas.xml`, `TexFormulaSettings.xml`, `TexSymbols.xml`) are taken from the [GPLv2-distributed][gpl] [JMathTeX][jmathtex], but JMathTeX authors have granted permission to redistribute these resourses under the MIT license.
 
 [example]: WpfMath.Example/
-[gpl]: GPLv2.txt
+[gpl]: docs/JMathTeX-license.txt
 [license]: LICENSE.md
 
 [alex-regueiro]: https://github.com/alexreg

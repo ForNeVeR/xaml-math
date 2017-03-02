@@ -1,8 +1,8 @@
 <?xml version='1.0'?>
 <!--
-  TeXFormulaSettings.xml
+  TexFormulaSettings.xml
   =========================================================================
-  This file is part of the JMathTeX Library - http://jmathtex.sourceforge.net
+  This file was originally a part of the JMathTeX Library - http://jmathtex.sourceforge.net
 
   Copyright (C) 2004-2007 Universiteit Gent
 
@@ -26,6 +26,8 @@
   Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
   02110-1301, USA.
 
+  Authors of JMathTeX library have granted permission to redistribute the XML
+  files under the MIT license.
 -->
 
 <!-- All the symbols that appear here, must be defined in TexSymbols.xml. -->

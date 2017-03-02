@@ -25,6 +25,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{853A
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WpfMath.Tests", "src\WpfMath.Tests\WpfMath.Tests.fsproj", "{F19E5FB1-EE6B-4A48-A522-41F30676BE41}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{39669369-C4F6-4AC6-9D35-B4B6086FF172}"
+	ProjectSection(SolutionItems) = preProject
+		docs\example-screenshot.png = docs\example-screenshot.png
+		docs\JMathTeX-license.txt = docs\JMathTeX-license.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,5 +55,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{853A4436-C44F-4A61-878D-1B85CE43DB31} = {D9341AA3-BF7C-4CC1-8E11-82258967B82F}
+		{39669369-C4F6-4AC6-9D35-B4B6086FF172} = {D9341AA3-BF7C-4CC1-8E11-82258967B82F}
 	EndGlobalSection
 EndGlobal
