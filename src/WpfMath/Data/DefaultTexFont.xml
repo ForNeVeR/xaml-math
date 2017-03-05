@@ -1405,8 +1405,8 @@ for a text style is not defined (e.g. "numbers" and "small" in "mathcal") -->
       <Char code="116" width="1.055559" depth="1.800018" >
         <Extension top="118" bot="116" rep="117" />
       </Char>
-      <Char code="117" width="1.055559" depth="0.600006" />
-      <Char code="118" width="1.055559" height="0.039999" depth="0.560007" />
+      <Char code="117" width="1.055559" depth="0.590006" />
+      <Char code="118" width="1.055559" height="0.039999" depth="0.550007" />
       <Char code="119" width="0.777781" depth="0.600006" >
         <Extension top="126" bot="196" rep="119" />
       </Char>
