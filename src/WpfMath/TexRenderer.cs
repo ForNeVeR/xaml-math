@@ -68,7 +68,7 @@ namespace WpfMath
 
         public void Render(DrawingContext drawingContext, double x, double y)
         {
-            var geometry = new GeometryGroup();
+            var geometry = new GeometryGroup() { FillRule = FillRule.Nonzero };
             Box.RenderGeometry(geometry, Scale, x / Scale, y / Scale + Box.Height);
             drawingContext.DrawGeometry(Brushes.Black, null, geometry);
         }
