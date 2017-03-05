@@ -28,7 +28,7 @@ License Notes
 
 The project code is licensed under the terms of [MIT license][license]. The original resourses from [JMathTeX][jmathtex] (`DefaultTexFont.xml`, `GlueSettings.xml`, `PredefinedTexFormulas.xml`, `TexFormulaSettings.xml`, `TexSymbols.xml`) are taken from the [GPLv2-distributed][gpl] [JMathTeX][jmathtex], but JMathTeX authors have granted permission to redistribute these resourses under the MIT license.
 
-The [fonts][] cmex10.ttf, cmmi10.ttf, cmr10.ttf, and cmsy10.ttf and cmtt10.ttf are under [Knuth License][knuth-license].
+The [fonts][] `cmex10.ttf`, `cmmi10.ttf`, `cmr10.ttf`, and `cmsy10.ttf` and `cmtt10.ttf` are under the [Knuth License][knuth-license].
 
 [example]: WpfMath.Example/
 [fonts]: src/WpfMath/Fonts/
