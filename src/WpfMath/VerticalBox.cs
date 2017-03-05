@@ -81,21 +81,10 @@ namespace WpfMath
             this.Width = rightMostPos - leftMostPos;
         }
 
-        public override void Draw(DrawingContext drawingContext, double scale, double x, double y)
-        {
-            base.Draw(drawingContext, scale, x, y);
-
-            var curY = y - Height;
-            foreach (var child in this.Children)
-            {
-                curY += child.Height;
-                child.Draw(drawingContext, scale, x + child.Shift - leftMostPos, curY);
-                curY += child.Depth;
-            }
-        }
-
         public override void RenderGeometry(GeometryGroup geometry, double scale, double x, double y)
         {
+            base.RenderGeometry(geometry, scale, x, y);
+
             var curY = y - Height;
             foreach (var child in this.Children)
             {

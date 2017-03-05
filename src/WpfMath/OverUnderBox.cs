@@ -59,52 +59,12 @@ namespace WpfMath
             private set;
         }
 
-        public override void Draw(DrawingContext drawingContext, double scale, double x, double y)
-        {
-            this.BaseBox.Draw(drawingContext, scale, x, y);
-
-            if (this.Over)
-            {
-                // Draw delimeter and script boxes over base box.
-                var centerY = y - this.BaseBox.Height - this.DelimeterBox.Width;
-                var translationX = x + this.DelimeterBox.Width / 2;
-                var translationY = centerY + this.DelimeterBox.Width / 2;
-
-                drawingContext.PushTransform(new TranslateTransform(translationX * scale, translationY * scale));
-                drawingContext.PushTransform(new RotateTransform(90));
-                this.DelimeterBox.Draw(drawingContext, scale, -this.DelimeterBox.Width / 2,
-                    -this.DelimeterBox.Depth + this.DelimeterBox.Width / 2);
-                drawingContext.Pop();
-                drawingContext.Pop();
-
-                // Draw script box as superscript.
-                if (this.ScriptBox != null)
-                    this.ScriptBox.Draw(drawingContext, scale, x, centerY - this.Kern - this.ScriptBox.Depth);
-            }
-            else
-            {
-                // Draw delimeter and script boxes under base box.
-                var centerY = y + this.BaseBox.Depth + this.DelimeterBox.Width;
-                var translationX = x + this.DelimeterBox.Width / 2;
-                var translationY = centerY - this.DelimeterBox.Width / 2;
-
-                drawingContext.PushTransform(new TranslateTransform(translationX * scale, translationY * scale));
-                drawingContext.PushTransform(new RotateTransform(90));
-                this.DelimeterBox.Draw(drawingContext, scale, -this.DelimeterBox.Width / 2,
-                    -this.DelimeterBox.Depth + this.DelimeterBox.Width / 2);
-                drawingContext.Pop();
-                drawingContext.Pop();
-
-                // Draw script box as subscript.
-                if (this.ScriptBox != null)
-                    this.ScriptBox.Draw(drawingContext, scale, x, centerY + this.Kern + this.ScriptBox.Height);
-            }
-
-        }
-
+      
         public override void RenderGeometry(GeometryGroup geometry, double scale, double x, double y)
         {
-            GeometryGroup group = new GeometryGroup();
+            base.RenderGeometry(geometry, scale, x, y);
+
+            var group = new GeometryGroup();
             if (this.Over)
             {
                 // Draw delimeter and script boxes over base box.

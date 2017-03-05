@@ -29,10 +29,6 @@ namespace WpfMath
             private set;
         }
 
-        public override void Draw(DrawingContext drawingContext, double scale, double x, double y)
-        {
-        }
-
         public override int GetLastFontId()
         {
             return TexFontUtilities.NoFontId;
