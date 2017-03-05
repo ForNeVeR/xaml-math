@@ -37,23 +37,14 @@ namespace WpfMath
 
         }
 
-        public override void Draw(DrawingContext drawingContext, double scale, double x, double y)
-        {
-            base.Draw(drawingContext, scale, x, y);
-
-            GlyphRun glyphRun = GetGlyphRun(scale, x, y);
-
-            // Draw character at given position.
-            drawingContext.DrawGlyphRun(this.Foreground ?? Brushes.Black, glyphRun);
-        }
-
         public override void RenderGeometry(GeometryGroup geometry, double scale, double x, double y)
         {
+            base.RenderGeometry(geometry, scale, x, y);
+
             GlyphRun glyphRun = GetGlyphRun(scale, x, y);
 
             GeometryGroup geoGroup = glyphRun.BuildGeometry() as GeometryGroup;
-            PathGeometry pg = geoGroup.GetFlattenedPathGeometry();
-            geometry.Children.Add(pg);
+            geometry.Children.Add(geoGroup);
         }
 
         public override int GetLastFontId()

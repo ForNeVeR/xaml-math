@@ -89,16 +89,6 @@ namespace WpfMath
             set;
         }
 
-        public virtual void Draw(DrawingContext drawingContext, double scale, double x, double y)
-        {
-            if (this.Background != null)
-            {
-                // Fill background of box with color.
-                drawingContext.DrawRectangle(this.Background, null, new Rect(x * scale, (y - Height) * scale,
-                    (this.Width + this.Italic) * scale, (this.Height + this.Depth) * scale));
-            }
-        }
-
         public virtual void RenderGeometry(GeometryGroup geometry, double scale, double x, double y)
         {
 
