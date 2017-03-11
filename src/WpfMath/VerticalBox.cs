@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
+﻿using System;
 using System.Windows.Media;
 
 namespace WpfMath
@@ -89,8 +85,18 @@ namespace WpfMath
             foreach (var child in this.Children)
             {
                 curY += child.Height;
+
+                var guidelines = new GuidelineSet
+                {
+                    GuidelinesX = { (x + child.Shift - leftMostPos) * scale, x * scale },
+                    GuidelinesY = { curY * scale, (curY + child.Depth) * scale }
+                };
+                drawingContext.PushGuidelineSet(guidelines);
+
                 child.Draw(drawingContext, scale, x + child.Shift - leftMostPos, curY);
                 curY += child.Depth;
+
+                drawingContext.Pop();
             }
         }
 
