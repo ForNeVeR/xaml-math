@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -11,6 +7,12 @@ namespace WpfMath
 {
     public class TexRenderer
     {
+        internal static double RoundToWholePixels(double v, double scale)
+        {
+            var x = Math.Round(v * scale, MidpointRounding.AwayFromZero);
+            return x / scale;
+        }
+
         internal TexRenderer(Box box, double scale)
         {
             this.Box = box;
@@ -56,7 +58,7 @@ namespace WpfMath
         {
             var visual = new DrawingVisual();
             using (var drawingContext = visual.RenderOpen())
-                this.Render(drawingContext, 0, 0);
+                this.Render(drawingContext);
 
             var width = (int)Math.Ceiling(this.RenderSize.Width);
             var height = (int)Math.Ceiling(this.RenderSize.Height);
@@ -66,9 +68,9 @@ namespace WpfMath
             return bitmap;
         }
 
-        public void Render(DrawingContext drawingContext, double x, double y)
+        public void Render(DrawingContext drawingContext)
         {
-            this.Box.Draw(drawingContext, this.Scale, x / this.Scale, y / this.Scale + this.Box.Height);
+            this.Box.Draw(drawingContext, this.Scale, 0, Box.Height);
         }
     }
 }

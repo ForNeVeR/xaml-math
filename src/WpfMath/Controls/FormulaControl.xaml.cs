@@ -12,7 +12,7 @@ namespace WpfMath.Controls
     public partial class FormulaControl : UserControl
     {
         private static TexFormulaParser formulaParser = new TexFormulaParser();
-        private TexFormula texFormula; 
+        private TexFormula texFormula;
 
         public string Formula
         {
@@ -45,7 +45,7 @@ namespace WpfMath.Controls
         }
 
         public static readonly DependencyProperty FormulaProperty = DependencyProperty.Register(
-            "Formula", typeof(string), typeof(FormulaControl), 
+            "Formula", typeof(string), typeof(FormulaControl),
             new PropertyMetadata("", OnFormulaChanged, CoerceFormula));
 
         public static readonly DependencyProperty ScaleProperty = DependencyProperty.Register(
@@ -84,7 +84,7 @@ namespace WpfMath.Controls
 
             using (var drawingContext = visual.RenderOpen())
             {
-                renderer.Render(drawingContext, 0, 0);
+                renderer.Render(drawingContext);
             }
             formulaContainerElement.Visual = visual;
         }

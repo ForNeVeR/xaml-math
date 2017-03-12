@@ -79,6 +79,9 @@ namespace WpfMath
 
         public override void Draw(DrawingContext drawingContext, double scale, double x, double y)
         {
+            x = TexRenderer.RoundToWholePixels(x, scale);
+            y = TexRenderer.RoundToWholePixels(y, scale);
+
             base.Draw(drawingContext, scale, x, y);
 
             var curY = y - Height;

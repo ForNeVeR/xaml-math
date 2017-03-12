@@ -61,6 +61,9 @@ namespace WpfMath
 
         public override void Draw(DrawingContext drawingContext, double scale, double x, double y)
         {
+            x = TexRenderer.RoundToWholePixels(x, scale);
+            y = TexRenderer.RoundToWholePixels(y, scale);
+
             this.BaseBox.Draw(drawingContext, scale, x, y);
 
             if (this.Over)

@@ -21,6 +21,9 @@ namespace WpfMath
 
         public override void Draw(DrawingContext drawingContext, double scale, double x, double y)
         {
+            x = TexRenderer.RoundToWholePixels(x, scale);
+            y = TexRenderer.RoundToWholePixels(y, scale);
+
             drawingContext.DrawRectangle(this.Foreground ?? Brushes.Black, null, new Rect(
                 x * scale, (y - this.Height) * scale, this.Width * scale, this.Height * scale));
         }
