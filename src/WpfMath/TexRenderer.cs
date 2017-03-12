@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -68,7 +64,7 @@ namespace WpfMath
 
         public void Render(DrawingContext drawingContext, double x, double y)
         {
-            this.Box.Draw(drawingContext, this.Scale, x / this.Scale, y / this.Scale + this.Box.Height);
+            Box.DrawWithGuidelines(drawingContext, Scale, x / Scale, y / Scale + Box.Height);
         }
     }
 }

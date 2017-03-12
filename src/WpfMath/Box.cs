@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Media;
 
@@ -89,15 +86,26 @@ namespace WpfMath
             set;
         }
 
-        public virtual void Draw(DrawingContext drawingContext, double scale, double x, double y)
+        /// <summary>
+        /// Draws the box into a <see cref="DrawingContext"/> while providing guidelines for WPF render to snap
+        /// the box boundaries onto the device pixel grid.
+        /// </summary>
+        public void DrawWithGuidelines(DrawingContext drawingContext, double scale, double x, double y)
         {
-            if (this.Background != null)
+            var guidelines = new GuidelineSet
             {
-                // Fill background of box with color.
-                drawingContext.DrawRectangle(this.Background, null, new Rect(x * scale, (y - Height) * scale,
-                    (this.Width + this.Italic) * scale, (this.Height + this.Depth) * scale));
-            }
+                GuidelinesX = { scale * x, scale * (x + TotalWidth) },
+                GuidelinesY = { scale * y, scale * (y + TotalHeight) }
+            };
+            drawingContext.PushGuidelineSet(guidelines);
+
+            DrawBackground(drawingContext, scale, x, y);
+            Draw(drawingContext, scale, x, y);
+
+            drawingContext.Pop();
         }
+
+        public abstract void Draw(DrawingContext drawingContext, double scale, double x, double y);
 
         public virtual void RenderGeometry(GeometryGroup geometry, double scale, double x, double y)
         {
@@ -115,5 +123,19 @@ namespace WpfMath
         }
 
         public abstract int GetLastFontId();
+
+        private void DrawBackground(DrawingContext drawingContext, double scale, double x, double y)
+        {
+            if (Background != null)
+            {
+                // Fill background of box with color:
+                drawingContext.DrawRectangle(
+                    Background,
+                    null, 
+                    new Rect(scale * x, scale * (y - Height),
+                    scale * TotalWidth,
+                    scale * TotalHeight));
+            }
+        }
     }
 }

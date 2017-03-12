@@ -60,22 +60,11 @@ namespace WpfMath
 
         public override void Draw(DrawingContext drawingContext, double scale, double x, double y)
         {
-            base.Draw(drawingContext, scale, x, y);
-
             var curX = x;
-            foreach (var box in this.Children)
+            foreach (var box in Children)
             {
-                var guidelines = new GuidelineSet
-                {
-                    GuidelinesX = { curX * scale, (curX + box.TotalWidth) * scale },
-                    GuidelinesY = { (y + box.Shift) * scale, (y + box.TotalHeight) * scale }
-                };
-                drawingContext.PushGuidelineSet(guidelines);
-
-                box.Draw(drawingContext, scale, curX, y + box.Shift);
+                box.DrawWithGuidelines(drawingContext, scale, curX, y + box.Shift);
                 curX += box.Width;
-
-                drawingContext.Pop();
             }
         }
 
