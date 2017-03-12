@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 
 namespace WpfMath
 {
@@ -61,7 +56,7 @@ namespace WpfMath
 
         public override void Draw(DrawingContext drawingContext, double scale, double x, double y)
         {
-            this.BaseBox.Draw(drawingContext, scale, x, y);
+            this.BaseBox.DrawWithGuidelines(drawingContext, scale, x, y);
 
             if (this.Over)
             {
@@ -72,14 +67,14 @@ namespace WpfMath
 
                 drawingContext.PushTransform(new TranslateTransform(translationX * scale, translationY * scale));
                 drawingContext.PushTransform(new RotateTransform(90));
-                this.DelimeterBox.Draw(drawingContext, scale, -this.DelimeterBox.Width / 2,
+                this.DelimeterBox.DrawWithGuidelines(drawingContext, scale, -this.DelimeterBox.Width / 2,
                     -this.DelimeterBox.Depth + this.DelimeterBox.Width / 2);
                 drawingContext.Pop();
                 drawingContext.Pop();
 
                 // Draw script box as superscript.
                 if (this.ScriptBox != null)
-                    this.ScriptBox.Draw(drawingContext, scale, x, centerY - this.Kern - this.ScriptBox.Depth);
+                    this.ScriptBox.DrawWithGuidelines(drawingContext, scale, x, centerY - this.Kern - this.ScriptBox.Depth);
             }
             else
             {
@@ -90,14 +85,13 @@ namespace WpfMath
 
                 drawingContext.PushTransform(new TranslateTransform(translationX * scale, translationY * scale));
                 drawingContext.PushTransform(new RotateTransform(90));
-                this.DelimeterBox.Draw(drawingContext, scale, -this.DelimeterBox.Width / 2,
+                this.DelimeterBox.DrawWithGuidelines(drawingContext, scale, -this.DelimeterBox.Width / 2,
                     -this.DelimeterBox.Depth + this.DelimeterBox.Width / 2);
                 drawingContext.Pop();
                 drawingContext.Pop();
 
                 // Draw script box as subscript.
-                if (this.ScriptBox != null)
-                    this.ScriptBox.Draw(drawingContext, scale, x, centerY + this.Kern + this.ScriptBox.Height);
+                ScriptBox?.DrawWithGuidelines(drawingContext, scale, x, centerY + Kern + ScriptBox.Height);
             }
 
         }
