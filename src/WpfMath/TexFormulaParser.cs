@@ -475,18 +475,23 @@ namespace WpfMath
             else if (commands.Contains(command))
             {
                 // Command was found.
-                formula.Add(
-                    AttachScripts(
-                        formula,
-                        value,
-                        ref position,
-                        ProcessCommand(
+                var commandAtom = ProcessCommand(
                             formula,
                             value,
                             ref position,
                             command,
                             allowClosingDelimiter,
-                            ref closedDelimiter)));
+                            ref closedDelimiter);
+
+                commandAtom = allowClosingDelimiter ?
+                                    commandAtom :
+                                    AttachScripts(
+                                        formula,
+                                        value,
+                                        ref position,
+                                        commandAtom);
+
+                formula.Add(commandAtom);
             }
             else
             {
