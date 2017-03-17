@@ -157,3 +157,9 @@ type ParserTests() =
         assertParseResult
         <| @"{}"
         <| (formula <| group (row []))
+
+    [<Fact>]
+    let ``Delimiter with scripts should be parsed properly`` () =
+        assertParseResult
+        <| @"\left(2+2\right)_a^b"
+        <| (formula <| scripts (fenced (openBrace "lbrack") ``2+2`` (closeBrace "rbrack")) (char 'a') (char 'b'))
