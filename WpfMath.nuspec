@@ -1,9 +1,9 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 
 <package>
     <metadata>
         <id>WpfMath</id>
-        <version>0.3.0</version>
+        <version>0.3.1</version>
         <title>WPF-Math</title>
         <authors>ForNeVeR</authors>
         <owners>ForNeVeR</owners>
@@ -11,7 +11,7 @@
         <projectUrl>https://github.com/ForNeVeR/wpf-math</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the WPF framework.</description>
-        <releaseNotes>Extensible delimiter support; new formula control; new math functions; bug fixes.</releaseNotes>
+        <releaseNotes>Bug fixes, improved render quality.</releaseNotes>
         <copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2017</copyright>
         <tags>wpf latex formula</tags>
     </metadata>

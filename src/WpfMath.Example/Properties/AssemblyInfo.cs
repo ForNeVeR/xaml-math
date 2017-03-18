@@ -8,4 +8,4 @@ using System.Windows;
 [assembly: AssemblyCopyright("Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2017")]
 [assembly: ComVisible(false)]
 [assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
-[assembly: AssemblyVersion("0.3.0.*")]
+[assembly: AssemblyVersion("0.3.1.*")]
