@@ -61,6 +61,7 @@ namespace WpfMath.Example
                         var svgText = AddSVGHeader(svgPathText);
                         var writer = new StreamWriter(stream);
                         writer.WriteLine(svgText);
+                        writer.Flush();
                         break;
                     case 2:
                         var bitmap = renderer.RenderToBitmap(0, 0);

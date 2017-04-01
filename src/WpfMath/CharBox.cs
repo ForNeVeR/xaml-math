@@ -46,8 +46,7 @@ namespace WpfMath
             GlyphRun glyphRun = GetGlyphRun(scale, x, y);
 
             GeometryGroup geoGroup = glyphRun.BuildGeometry() as GeometryGroup;
-            PathGeometry pg = geoGroup.GetFlattenedPathGeometry();
-            geometry.Children.Add(pg);
+            geometry.Children.Add(geoGroup);
         }
 
         public override int GetLastFontId()

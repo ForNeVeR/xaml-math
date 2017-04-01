@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Media;
 using System.Globalization;
+using System.Diagnostics;
 
 namespace WpfMath
 {
@@ -48,6 +49,10 @@ namespace WpfMath
                     RectangleGeometry rectangle = (RectangleGeometry)geometry;
                     AddGeometry(svgString, rectangle);
                 }
+                else
+                {
+                    Debug.Assert(false);
+                }
             }
             if (!group.Transform.Value.IsIdentity)
             {
@@ -63,21 +68,67 @@ namespace WpfMath
             svgString.Append("<path d=\"");
             foreach (PathFigure pf in path.Figures)
             {
+                svgString.Append("M ");
+                svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", pf.StartPoint.X);
+                svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", pf.StartPoint.Y);
+
+
                 foreach (PathSegment ps in pf.Segments)
                 {
-                    PolyLineSegment seg = ps as PolyLineSegment;
-                    svgString.Append("M ");
-                    svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[0].X);
-                    svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[0].Y);
-                    for (int i = 1; i < seg.Points.Count; ++i)
+                    if(ps is PolyLineSegment)
                     {
-                        svgString.Append("L ");
-                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i].X);
-                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i].Y);
+                        PolyLineSegment seg = ps as PolyLineSegment;
+                        for (int i = 0; i < seg.Points.Count; ++i)
+                        {
+                            svgString.Append("L ");
+                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i].X);
+                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i].Y);
+                        }
                     }
-                    svgString.Append("Z ");
+                    else if(ps is PolyBezierSegment)
+                    {
+                        PolyBezierSegment seg = ps as PolyBezierSegment;
+                        for (int i = 0; i < seg.Points.Count; i+=3)
+                        {
+                            var point = seg.Points[i];
+                            svgString.Append("C ");
+                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i].X);
+                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i].Y);
+
+                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i+1].X);
+                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i+1].Y);
+
+                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i+2].X);
+                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i+2].Y);
+                        }
+                    }
+                    else if (ps is LineSegment)
+                    {
+                        LineSegment seg = ps as LineSegment;
+                        svgString.Append("L ");
+                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Point.X);
+                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Point.Y);
+                    }
+                    else if(ps is BezierSegment)
+                    {
+                        BezierSegment seg = ps as BezierSegment;
+                        svgString.Append("C ");
+                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Point1.X);
+                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Point1.Y);
+
+                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Point2.X);
+                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Point2.Y);
+
+                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Point3.X);
+                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Point3.Y);
+                    }
+                    else
+                    {
+                        Debug.Assert(false);        //If asserted, implement segment type
+                    }
                 }
             }
+            svgString.Append("Z ");
             svgString.Append("\" fill = \"black\" />");
             svgString.Append(Environment.NewLine);
         }
