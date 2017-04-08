@@ -59,8 +59,8 @@ namespace WpfMath.Example
                         var converter = new SVGConverter();
                         var svgPathText = converter.ConvertGeometry(geometry);
                         var svgText = AddSVGHeader(svgPathText);
-                        var writer = new StreamWriter(stream);
-                        writer.WriteLine(svgText);
+                        using (var writer = new StreamWriter(stream))
+                            writer.WriteLine(svgText);
                         break;
                     case 2:
                         var bitmap = renderer.RenderToBitmap(0, 0);
