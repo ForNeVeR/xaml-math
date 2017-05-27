@@ -22,8 +22,7 @@ let row (children : Atom seq) : RowAtom =
 let fenced left body right : FencedAtom = FencedAtom(body, left, right)
 let styledString (style : string) (text : string) : RowAtom =
     text
-    |> Seq.map (fun c -> styledChar (c, style))
-    |> Seq.cast
+    |> Seq.map (fun c -> styledChar (c, style) :> Atom)
     |> row
 
 let brace (name : string) (braceType : TexAtomType) : SymbolAtom = SymbolAtom(name, braceType, true)
