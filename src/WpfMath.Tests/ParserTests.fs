@@ -15,6 +15,7 @@ type ParserTests() =
             .ExposeInternalsOf<FencedAtom>()
             .Assert()
 
+    let textStyle = "text"
     let rmStyle = "mathrm"
     let itStyle = "mathit"
     let calStyle = "mathcal"
@@ -82,6 +83,12 @@ type ParserTests() =
         let parser = TexFormulaParser()
         let methodcall = (fun () -> parser.Parse("абвгд") |> ignore)
         Assert.Throws<TexParseException>(methodcall)
+
+    [<Fact>]
+    let ``\text command should be supported`` () =
+        assertParseResult
+        <| @"\text{test}"
+        <| (formula <| styledString textStyle "test")
 
     [<Fact>]
     let ``\mathrm should be parsed properly`` () =

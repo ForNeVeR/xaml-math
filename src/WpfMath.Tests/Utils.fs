@@ -20,6 +20,11 @@ let row (children : Atom seq) : RowAtom =
     result.Elements.AddRange(children)
     result
 let fenced left body right : FencedAtom = FencedAtom(body, left, right)
+let styledString (style : string) (text : string) : RowAtom =
+    text
+    |> Seq.map (fun c -> styledChar (c, style))
+    |> Seq.cast
+    |> row
 
 let brace (name : string) (braceType : TexAtomType) : SymbolAtom = SymbolAtom(name, braceType, true)
 let openBrace (name : string) : SymbolAtom = brace name TexAtomType.Opening

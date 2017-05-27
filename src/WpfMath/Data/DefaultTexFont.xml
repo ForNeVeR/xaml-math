@@ -46,6 +46,11 @@
   <!-- the mappings for the text styles defined in "FormulaSettings.xml" -->
 
   <TextStyleMappings>
+    <TextStyleMapping name="text">
+      <MapRange code="numbers" fontId="1" start="48"/>
+      <MapRange code="capitals" fontId="1" start="65"/>
+      <MapRange code="small" fontId="1" start="97"/>
+    </TextStyleMapping>
     <TextStyleMapping name="mathrm">
       <MapRange code="numbers" fontId="1" start="48"/>
       <MapRange code="capitals" fontId="1" start="65"/>

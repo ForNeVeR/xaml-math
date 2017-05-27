@@ -36,6 +36,7 @@
   <!-- different textstyles that used by the parser -->
 
   <TextStyles>
+    <TextStyle name="text"/>
     <TextStyle name="mathrm"/>
     <TextStyle name="mathit"/>
     <TextStyle name="mathcal"/>
