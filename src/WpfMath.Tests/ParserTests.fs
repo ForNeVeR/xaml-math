@@ -98,6 +98,13 @@ type ParserTests() =
         <| (formula <| row [textChar 'a'; space; textChar 'b'; space; textChar 'c'])
 
     [<Fact>]
+    let ``\text should support Cyrillic`` () =
+        let textChar c = styledChar (c, textStyle)
+        assertParseResult
+        <| @"\text{абв}"
+        <| (formula <| styledString textStyle "абв")
+
+    [<Fact>]
     let ``\mathrm should be parsed properly`` () =
         assertParseResult
         <| @"\mathrm{sin}"

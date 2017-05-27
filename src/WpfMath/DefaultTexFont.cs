@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -117,12 +117,12 @@ namespace WpfMath
         {
             TexCharKind charKind;
             int charIndexOffset;
-            if (character >= '0' && character <= '9')
+            if (char.IsDigit(character))
             {
                 charKind = TexCharKind.Numbers;
                 charIndexOffset = character - '0';
             }
-            else if (character >= 'a' && character <= 'z')
+            else if (char.IsLetter(character) && char.IsLower(character))
             {
                 charKind = TexCharKind.Small;
                 charIndexOffset = character - 'a';

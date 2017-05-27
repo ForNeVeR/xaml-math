@@ -131,7 +131,7 @@ namespace WpfMath
 
         private static bool IsSymbol(char c)
         {
-            return !((c >= '0' && c <= '9') || (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
+            return !char.IsLetterOrDigit(c);
         }
 
         private static bool IsWhiteSpace(char ch)
