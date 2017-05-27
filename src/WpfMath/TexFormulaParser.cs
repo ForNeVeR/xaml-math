@@ -139,10 +139,7 @@ namespace WpfMath
             return ch == ' ' || ch == '\t' || ch == '\n' || ch == '\r';
         }
 
-        //public TexFormula Convert(System.Linq.Expressions.Expression value)
-        //{
-        //    return new TexExpressionVisitor(value, this).Formula;
-        //}
+        private static bool ShouldSkipWhiteSpace(string style) => style != "text";
 
         public TexFormula Parse(string value, string textStyle = null)
         {
@@ -189,11 +186,17 @@ namespace WpfMath
         {
             var formula = new TexFormula() { TextStyle = textStyle };
             var closedDelimiter = false;
+            var skipWhiteSpace = ShouldSkipWhiteSpace(textStyle);
             while (position < value.Length && !(allowClosingDelimiter && closedDelimiter))
             {
                 char ch = value[position];
                 if (IsWhiteSpace(ch))
                 {
+                    if (!skipWhiteSpace)
+                    {
+                        formula.Add(new SpaceAtom());
+                    }
+
                     position++;
                 }
                 else if (ch == escapeChar)
@@ -224,8 +227,12 @@ namespace WpfMath
                 }
                 else
                 {
-                    var scriptsAtom = AttachScripts(formula, value, ref position,
-                        ConvertCharacter(formula, value, ref position, ch));
+                    var scriptsAtom = AttachScripts(
+                        formula,
+                        value,
+                        ref position,
+                        ConvertCharacter(formula, value, ref position, ch),
+                        skipWhiteSpace);
                     formula.Add(scriptsAtom);
                 }
             }
@@ -501,9 +508,12 @@ namespace WpfMath
 
         }
 
-        private Atom AttachScripts(TexFormula formula, string value, ref int position, Atom atom)
+        private Atom AttachScripts(TexFormula formula, string value, ref int position, Atom atom, bool skipWhiteSpace = true)
         {
-            SkipWhiteSpace(value, ref position);
+            if (skipWhiteSpace)
+            {
+                SkipWhiteSpace(value, ref position);
+            }
 
             if (position == value.Length)
                 return atom;

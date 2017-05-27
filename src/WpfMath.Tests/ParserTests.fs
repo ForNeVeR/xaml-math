@@ -91,6 +91,13 @@ type ParserTests() =
         <| (formula <| styledString textStyle "test")
 
     [<Fact>]
+    let ``Spaces in \text shouldn't be ignored`` () =
+        let textChar c = styledChar (c, textStyle)
+        assertParseResult
+        <| @"\text{a b c}"
+        <| (formula <| row [textChar 'a'; space; textChar 'b'; space; textChar 'c'])
+
+    [<Fact>]
     let ``\mathrm should be parsed properly`` () =
         assertParseResult
         <| @"\mathrm{sin}"

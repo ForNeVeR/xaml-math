@@ -5,6 +5,7 @@ open WpfMath
 let formula (root : Atom) : TexFormula =
     TexFormula(RootAtom = root)
 
+let space = SpaceAtom()
 let char (c : char) : CharAtom = CharAtom(c)
 let styledChar (c : char, style:string) : CharAtom = CharAtom(c, style)
 let op (baseAtom : Atom) (useVertScripts : System.Nullable<bool>)  : BigOperatorAtom = BigOperatorAtom(baseAtom, null, null, useVertScripts)
