@@ -1,7 +1,8 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Media;
 
 namespace WpfMath
 {
@@ -29,6 +30,14 @@ namespace WpfMath
 
         public override Box CreateBox(TexEnvironment environment)
         {
+            if (TextStyle == "text") // TODO[F]: Extract to constant
+            {
+                var fontFamily = Fonts.SystemFontFamilies.First(ff => ff.ToString() == "Arial"); // TODO[F]: Should be configurable
+                var font = new SystemFont(environment.TexFont.Size, fontFamily);
+
+                environment = environment.WithFont(font);
+            }
+
             var charInfo = GetCharInfo(environment.TexFont, environment.Style);
             return new CharBox(environment, charInfo);
         }

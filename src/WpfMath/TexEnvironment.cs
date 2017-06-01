@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 
 namespace WpfMath
 {
@@ -106,6 +101,13 @@ namespace WpfMath
         public TexEnvironment Clone()
         {
             return new TexEnvironment(this.Style, this.TexFont, this.Background, this.Foreground);
+        }
+
+        public TexEnvironment WithFont(ITeXFont font)
+        {
+            var env = Clone();
+            env.TexFont = font;
+            return env;
         }
 
         public void Reset()
