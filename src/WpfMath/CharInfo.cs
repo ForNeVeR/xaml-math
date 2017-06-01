@@ -1,21 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 
 namespace WpfMath
 {
     // Single character togeter with information about font and metrics.
     internal class CharInfo
     {
-        public CharInfo(char character, GlyphTypeface font, double size, int fontId, TexFontMetrics metrics)
+        public CharInfo(char character, GlyphTypeface font, double size, int? fontId, TexFontMetrics metrics)
         {
             this.Character = character;
             this.Font = font;
             this.Size = size;
-            this.FontId = fontId;
+            this.FontId = fontId ?? -1; // TODO[F]: Fix it properly.
             this.Metrics = metrics;
         }
 

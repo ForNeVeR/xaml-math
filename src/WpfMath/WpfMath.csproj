@@ -108,6 +108,7 @@
     <Compile Include="SymbolAtom.cs" />
     <Compile Include="SymbolMappingNotFoundException.cs" />
     <Compile Include="SymbolNotFoundException.cs" />
+    <Compile Include="SystemFont.cs" />
     <Compile Include="TexEnums.cs" />
     <Compile Include="TexEnvironment.cs" />
     <Compile Include="TexFontInfo.cs" />
