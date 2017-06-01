@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Globalization;
+using System.Linq;
+using System.Windows;
 using System.Windows.Media;
 
 namespace WpfMath
@@ -48,7 +51,7 @@ namespace WpfMath
                 throw new Exception("Cannot get typeface"); // TODO[F]: Base class for exception; explain the error more
             }
 
-            var metrics = GetFontMetrics();
+            var metrics = GetFontMetrics(character, typeface);
             return new CharInfo(character, glyphTypeface, Size, null, metrics);
         }
 
@@ -202,7 +205,17 @@ namespace WpfMath
             throw new NotImplementedException();
         }
 
-        private TexFontMetrics GetFontMetrics() => throw new NotImplementedException();
-        private Typeface GetTypeface() => throw new NotImplementedException();
+        private TexFontMetrics GetFontMetrics(char c, Typeface typeface)
+        {
+            var formattedText = new FormattedText(c.ToString(),
+                CultureInfo.CurrentUICulture,
+                FlowDirection.LeftToRight,
+                typeface,
+                Size,
+                Brushes.Black);
+            return new TexFontMetrics(formattedText.Width, formattedText.Height, 0.0, formattedText.Width, 1.0);
+        }
+
+        private Typeface GetTypeface() => new Typeface(_fontFamily, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal); // TODO[F]: Put into lazy field
     }
 }
