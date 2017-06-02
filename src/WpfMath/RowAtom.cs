@@ -1,5 +1,4 @@
-using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -121,16 +120,17 @@ namespace WpfMath
                 var kern = 0d;
                 if (hasNextAtom && curAtom.GetRightType() == TexAtomType.Ordinary && curAtom.IsCharSymbol)
                 {
-                    if (nextAtom is CharSymbol && ligatureKernChangeSet[(int)nextAtom.GetLeftType()])
+                    if (nextAtom is CharSymbol cs && ligatureKernChangeSet[(int)nextAtom.GetLeftType()])
                     {
+                        var font = cs.OverrideFont(texFont);
                         curAtom.IsTextSymbol = true;
-                        var leftAtomCharFont = curAtom.GetCharFont(texFont);
-                        var rightAtomCharFont = ((CharSymbol)nextAtom).GetCharFont(texFont);
-                        var ligatureCharFont = texFont.GetLigature(leftAtomCharFont, rightAtomCharFont);
+                        var leftAtomCharFont = curAtom.GetCharFont(font);
+                        var rightAtomCharFont = cs.GetCharFont(font);
+                        var ligatureCharFont = font.GetLigature(leftAtomCharFont, rightAtomCharFont);
                         if (ligatureCharFont == null)
                         {
                             // Atom should be kerned.
-                            kern = texFont.GetKern(leftAtomCharFont, rightAtomCharFont, environment.Style);
+                            kern = font.GetKern(leftAtomCharFont, rightAtomCharFont, environment.Style);
                         }
                         else
                         {

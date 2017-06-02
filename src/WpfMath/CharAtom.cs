@@ -30,16 +30,22 @@ namespace WpfMath
 
         public override Box CreateBox(TexEnvironment environment)
         {
-            if (TextStyle == "text") // TODO[F]: Extract to constant
-            {
-                var fontFamily = Fonts.SystemFontFamilies.First(ff => ff.ToString() == "Arial"); // TODO[F]: Should be configurable
-                var font = new SystemFont(environment.TexFont.Size, fontFamily);
-
-                environment = environment.WithFont(font);
-            }
-
+            environment = environment.WithFont(OverrideFont(environment.TexFont));
             var charInfo = GetCharInfo(environment.TexFont, environment.Style);
             return new CharBox(environment, charInfo);
+        }
+
+        public override ITeXFont OverrideFont(ITeXFont defaultFont)
+        {
+            if (TextStyle != "text") // TODO[F]: Extract to constant
+            {
+                return defaultFont;
+            }
+
+            var fontFamily = Fonts.SystemFontFamilies.First(ff => ff.ToString() == "Arial"); // TODO[F]: Should be configurable
+            var font = new SystemFont(defaultFont.Size, fontFamily);
+
+            return font;
         }
 
         private CharInfo GetCharInfo(ITeXFont texFont, TexStyle style)

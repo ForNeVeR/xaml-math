@@ -105,6 +105,11 @@ namespace WpfMath
 
         public TexEnvironment WithFont(ITeXFont font)
         {
+            if (font == TexFont)
+            {
+                return this;
+            }
+
             var env = Clone();
             env.TexFont = font;
             return env;

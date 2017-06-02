@@ -28,10 +28,7 @@ namespace WpfMath
             throw new NotImplementedException();
         }
 
-        public CharFont GetLigature(CharFont leftChar, CharFont rightChar)
-        {
-            throw new NotImplementedException();
-        }
+        public CharFont GetLigature(CharFont leftChar, CharFont rightChar) => null;
 
         public CharInfo GetNextLargerCharInfo(CharInfo charInfo, TexStyle style)
         {
@@ -65,10 +62,7 @@ namespace WpfMath
             throw new NotImplementedException();
         }
 
-        public double GetKern(CharFont leftChar, CharFont rightChar, TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public double GetKern(CharFont leftChar, CharFont rightChar, TexStyle style) => 0.0;
 
         public double GetQuad(int fontId, TexStyle style)
         {
