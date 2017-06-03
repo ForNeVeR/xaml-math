@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 
@@ -49,7 +48,7 @@ namespace WpfMath
             }
 
             var metrics = GetFontMetrics(character, typeface);
-            return new CharInfo(character, glyphTypeface, Size, null, metrics);
+            return new CharInfo(character, glyphTypeface, 1.0, null, metrics);
         }
 
         public CharInfo GetCharInfo(CharFont charFont, TexStyle style)
@@ -205,7 +204,7 @@ namespace WpfMath
                 CultureInfo.CurrentUICulture,
                 FlowDirection.LeftToRight,
                 typeface,
-                Size,
+                1.0,
                 Brushes.Black);
             return new TexFontMetrics(formattedText.Width, formattedText.Height, 0.0, formattedText.Width, 1.0);
         }
