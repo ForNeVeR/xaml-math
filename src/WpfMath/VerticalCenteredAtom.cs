@@ -25,7 +25,7 @@ namespace WpfMath
 
             // Centre box relative to horizontal axis.
             var totalHeight = box.Height + box.Depth;
-            var axis = environment.TexFont.GetAxisHeight(environment.Style);
+            var axis = environment.MathFont.GetAxisHeight(environment.Style);
             box.Shift = -(totalHeight / 2) - axis;
 
             return new HorizontalBox(box);

@@ -26,6 +26,12 @@ namespace WpfMath.Controls
             set { SetValue(ScaleProperty, value); }
         }
 
+        public string SystemTextFontName
+        {
+            get => (string)GetValue(SystemTextFontNameProperty);
+            set => SetValue(SystemTextFontNameProperty, value);
+        }
+
         public bool HasError
         {
             get { return (bool)GetValue(HasErrorProperty); }
@@ -46,11 +52,15 @@ namespace WpfMath.Controls
 
         public static readonly DependencyProperty FormulaProperty = DependencyProperty.Register(
             "Formula", typeof(string), typeof(FormulaControl), 
-            new PropertyMetadata("", OnFormulaChanged, CoerceFormula));
+            new PropertyMetadata("", OnRenderSettingsChanged, CoerceFormula));
 
         public static readonly DependencyProperty ScaleProperty = DependencyProperty.Register(
             "Scale", typeof(double), typeof(FormulaControl),
-            new PropertyMetadata(20d, OnScaleChanged, CoerceScaleValue));
+            new PropertyMetadata(20d, OnRenderSettingsChanged, CoerceScaleValue));
+
+        public static readonly DependencyProperty SystemTextFontNameProperty = DependencyProperty.Register(
+            nameof(SystemTextFontName), typeof(string), typeof(FormulaControl),
+            new PropertyMetadata("Arial", OnRenderSettingsChanged, CoerceScaleValue));
 
         public static readonly DependencyProperty HasErrorProperty = DependencyProperty.Register(
             "HasError", typeof(bool), typeof(FormulaControl),
@@ -80,7 +90,7 @@ namespace WpfMath.Controls
 
             // Render formula to visual.
             var visual = new DrawingVisual();
-            var renderer = texFormula.GetRenderer(TexStyle.Display, Scale);
+            var renderer = texFormula.GetRenderer(TexStyle.Display, Scale, SystemTextFontName);
 
             using (var drawingContext = visual.RenderOpen())
             {
@@ -115,13 +125,7 @@ namespace WpfMath.Controls
             return val < 1d ? 1d : val;
         }
 
-        private static void OnFormulaChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var control = (FormulaControl)d;
-            control.Render();
-        }
-
-        private static void OnScaleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnRenderSettingsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var control = (FormulaControl)d;
             control.Render();

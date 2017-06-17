@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Windows;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace WpfMath
 {
@@ -46,12 +41,13 @@ namespace WpfMath
             set;
         }
 
-        public TexRenderer GetRenderer(TexStyle style, double scale)
+        public TexRenderer GetRenderer(TexStyle style, double scale, string systemTextFontName)
         {
-            var environment = new TexEnvironment(style, new DefaultTexFont(scale));
+            var mathFont = new DefaultTexFont(scale);
+            var textFont = systemTextFontName == null ? (ITeXFont)mathFont : GetSystemFont(systemTextFontName, scale);
+            var environment = new TexEnvironment(style, mathFont, textFont);
             return new TexRenderer(CreateBox(environment), scale);
         }
-
 
         public void Add(TexFormula formula)
         {
@@ -111,6 +107,12 @@ namespace WpfMath
                 return StrutBox.Empty;
             else
                 return this.RootAtom.CreateBox(environment);
+        }
+
+        private SystemFont GetSystemFont(string fontName, double size)
+        {
+            var fontFamily = Fonts.SystemFontFamilies.First(ff => ff.ToString() == fontName);
+            return new SystemFont(size, fontFamily);
         }
     }
 }

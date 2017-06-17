@@ -61,7 +61,7 @@ namespace WpfMath
 
         public override Box CreateBox(TexEnvironment environment)
         {
-            var texFont = environment.TexFont;
+            var texFont = environment.MathFont;
             var style = environment.Style;
 
             if ((this.UseVerticalLimits.HasValue && !UseVerticalLimits.Value) ||
@@ -81,7 +81,7 @@ namespace WpfMath
                     opChar = texFont.GetNextLargerCharInfo(opChar, style);
                 var charBox = new CharBox(environment, opChar);
                 charBox.Shift = -(charBox.Height + charBox.Depth) / 2 -
-                    environment.TexFont.GetAxisHeight(environment.Style);
+                    environment.MathFont.GetAxisHeight(environment.Style);
                 baseBox = new HorizontalBox(charBox);
 
                 delta = opChar.Metrics.Italic;

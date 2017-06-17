@@ -31,7 +31,7 @@ namespace WpfMath
             // TODO
             var resultBox = (Box)null; // DelimiterFactory.CreateBox(this.DelimeterAtom, this.Size, environment);
             resultBox.Shift = -(resultBox.Height + resultBox.Depth) / 2 -
-                environment.TexFont.GetAxisHeight(environment.Style);
+                environment.MathFont.GetAxisHeight(environment.Style);
             return resultBox;
         }
     }

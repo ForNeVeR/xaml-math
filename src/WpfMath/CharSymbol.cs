@@ -15,7 +15,7 @@
         }
 
         /// <summary>Returns the preferred font to render this character.</summary>
-        public virtual ITeXFont OverrideFont(ITeXFont defaultFont) => defaultFont;
+        public virtual ITeXFont GetStyledFont(TexEnvironment environment) => environment.MathFont;
         public abstract CharFont GetCharFont(ITeXFont texFont);
     }
 }

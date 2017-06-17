@@ -22,7 +22,7 @@ namespace WpfMath
 
         public override Box CreateBox(TexEnvironment environment)
         {
-            var defaultLineThickness = environment.TexFont.GetDefaultLineThickness(environment.Style);
+            var defaultLineThickness = environment.MathFont.GetDefaultLineThickness(environment.Style);
 
             // Create box for base atom.
             var baseBox = this.BaseAtom == null ? StrutBox.Empty : this.BaseAtom.CreateBox(environment);

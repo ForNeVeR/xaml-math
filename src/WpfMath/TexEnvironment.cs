@@ -8,12 +8,12 @@ namespace WpfMath
         // ID of font that was last used.
         private int lastFontId = TexFontUtilities.NoFontId;
 
-        public TexEnvironment(TexStyle style, ITeXFont texFont)
-            : this(style, texFont, null, null)
+        public TexEnvironment(TexStyle style, ITeXFont mathFont, ITeXFont textFont)
+            : this(style, mathFont, textFont, null, null)
         {
         }
 
-        private TexEnvironment(TexStyle style, ITeXFont texFont, Brush background, Brush foreground)
+        private TexEnvironment(TexStyle style, ITeXFont mathFont, ITeXFont textFont, Brush background, Brush foreground)
         {
             if (style == TexStyle.Display || style == TexStyle.Text ||
                 style == TexStyle.Script || style == TexStyle.ScriptScript)
@@ -21,7 +21,8 @@ namespace WpfMath
             else
                 this.Style = TexStyle.Display;
 
-            this.TexFont = texFont;
+            this.MathFont = mathFont;
+            TextFont = textFont;
             this.Background = background;
             this.Foreground = foreground;
         }
@@ -32,11 +33,13 @@ namespace WpfMath
             private set;
         }
 
-        public ITeXFont TexFont
+        public ITeXFont MathFont
         {
             get;
             private set;
         }
+
+        public ITeXFont TextFont { get; }
 
         public Brush Background
         {
@@ -52,7 +55,7 @@ namespace WpfMath
 
         public int LastFontId
         {
-            get { return this.lastFontId == TexFontUtilities.NoFontId ? this.TexFont.GetMuFontId() : this.lastFontId; }
+            get { return this.lastFontId == TexFontUtilities.NoFontId ? this.MathFont.GetMuFontId() : this.lastFontId; }
             set { this.lastFontId = value; }
         }
 
@@ -100,19 +103,7 @@ namespace WpfMath
 
         public TexEnvironment Clone()
         {
-            return new TexEnvironment(this.Style, this.TexFont, this.Background, this.Foreground);
-        }
-
-        public TexEnvironment WithFont(ITeXFont font)
-        {
-            if (font == TexFont)
-            {
-                return this;
-            }
-
-            var env = Clone();
-            env.TexFont = font;
-            return env;
+            return new TexEnvironment(Style, MathFont, TextFont, Background, Foreground);
         }
 
         public void Reset()

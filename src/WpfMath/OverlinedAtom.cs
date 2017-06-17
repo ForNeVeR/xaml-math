@@ -27,7 +27,7 @@ namespace WpfMath
             var baseBox = this.BaseAtom == null ? StrutBox.Empty : this.BaseAtom.CreateBox(environment.GetCrampedStyle());
 
             // Create result box.
-            var defaultLineThickness = environment.TexFont.GetDefaultLineThickness(environment.Style);
+            var defaultLineThickness = environment.MathFont.GetDefaultLineThickness(environment.Style);
             var resultBox = new OverBar(environment, baseBox, 3 * defaultLineThickness, defaultLineThickness);
 
             // Adjust height and depth of result box.

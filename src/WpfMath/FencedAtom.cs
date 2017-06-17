@@ -41,7 +41,7 @@ namespace WpfMath
 
         public override Box CreateBox(TexEnvironment environment)
         {
-            var texFont = environment.TexFont;
+            var texFont = environment.MathFont;
             var style = environment.Style;
 
             // Create box for base atom.

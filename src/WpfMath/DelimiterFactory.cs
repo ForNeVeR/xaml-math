@@ -10,7 +10,7 @@ namespace WpfMath
     {
         public static Box CreateBox(string symbol, double minHeight, TexEnvironment environment)
         {
-            var texFont = environment.TexFont;
+            var texFont = environment.MathFont;
             var style = environment.Style;
             var charInfo = texFont.GetCharInfo(symbol, style);
 

@@ -38,7 +38,7 @@ namespace WpfMath
 
         public override Box CreateBox(TexEnvironment environment)
         {
-            var texFont = environment.TexFont;
+            var texFont = environment.MathFont;
             var style = environment.Style;
 
             // Create box for base atom.
@@ -74,7 +74,7 @@ namespace WpfMath
                     charInfo = texFont.GetNextLargerCharInfo(charInfo, style);
                 var charBox = new CharBox(environment, charInfo);
 
-                charBox.Shift = -(charBox.Height + charBox.Depth) / 2 - environment.TexFont.GetAxisHeight(
+                charBox.Shift = -(charBox.Height + charBox.Depth) / 2 - environment.MathFont.GetAxisHeight(
                     environment.Style);
                 resultBox = new HorizontalBox(charBox);
 

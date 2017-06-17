@@ -60,7 +60,7 @@ namespace WpfMath
 
         private Box CreateBox(TexEnvironment environment)
         {
-            var texFont = environment.TexFont;
+            var texFont = environment.MathFont;
             var quad = texFont.GetQuad(texFont.GetMuFontId(), environment.Style);
             return new GlueBox((this.Space / 18.0f) * quad, (this.Stretch / 18.0f) * quad, (this.Shrink / 18.0f) * quad);
         }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Media;
-
-namespace WpfMath
+﻿namespace WpfMath
 {
     // Atom representing single character in specific text style.
     internal class CharAtom : CharSymbol
@@ -30,23 +24,13 @@ namespace WpfMath
 
         public override Box CreateBox(TexEnvironment environment)
         {
-            environment = environment.WithFont(OverrideFont(environment.TexFont));
-            var charInfo = GetCharInfo(environment.TexFont, environment.Style);
+            var font = GetStyledFont(environment);
+            var charInfo = GetCharInfo(font, environment.Style);
             return new CharBox(environment, charInfo);
         }
 
-        public override ITeXFont OverrideFont(ITeXFont defaultFont)
-        {
-            if (TextStyle != "text") // TODO[F]: Extract to constant
-            {
-                return defaultFont;
-            }
-
-            var fontFamily = Fonts.SystemFontFamilies.First(ff => ff.ToString() == "Arial"); // TODO[F]: Should be configurable
-            var font = new SystemFont(defaultFont.Size, fontFamily);
-
-            return font;
-        }
+        public override ITeXFont GetStyledFont(TexEnvironment environment) =>
+            TextStyle == TexUtilities.TextStyleName ? environment.TextFont : base.GetStyledFont(environment);
 
         private CharInfo GetCharInfo(ITeXFont texFont, TexStyle style)
         {

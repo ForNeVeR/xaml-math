@@ -101,8 +101,6 @@ namespace WpfMath
 
         public override Box CreateBox(TexEnvironment environment)
         {
-            var texFont = environment.TexFont;
-
             // Create result box.
             var resultBox = new HorizontalBox(environment.Foreground, environment.Background);
 
@@ -122,7 +120,7 @@ namespace WpfMath
                 {
                     if (nextAtom is CharSymbol cs && ligatureKernChangeSet[(int)nextAtom.GetLeftType()])
                     {
-                        var font = cs.OverrideFont(texFont);
+                        var font = cs.GetStyledFont(environment);
                         curAtom.IsTextSymbol = true;
                         var leftAtomCharFont = curAtom.GetCharFont(font);
                         var rightAtomCharFont = cs.GetCharFont(font);

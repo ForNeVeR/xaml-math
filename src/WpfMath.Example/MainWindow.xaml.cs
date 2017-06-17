@@ -46,7 +46,7 @@ namespace WpfMath.Example
             // Create formula object from input text.
             var formula = ParseFormula(inputTextBox.Text);
             if (formula == null) return;        
-            var renderer = formula.GetRenderer(TexStyle.Display, this.formula.Scale);
+            var renderer = formula.GetRenderer(TexStyle.Display, this.formula.Scale, "Arial");
 
             // Open stream
             var filename = saveFileDialog.FileName;

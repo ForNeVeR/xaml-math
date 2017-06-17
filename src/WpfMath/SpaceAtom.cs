@@ -11,19 +11,19 @@ namespace WpfMath
         // Collection of unit conversion functions.
         private static UnitConversion[] unitConversions = new UnitConversion[]
 		        {
-		            new UnitConversion(e => e.TexFont.GetXHeight(e.Style, e.LastFontId)),
+		            new UnitConversion(e => e.MathFont.GetXHeight(e.Style, e.LastFontId)),
 		            
-		            new UnitConversion(e => e.TexFont.GetXHeight(e.Style, e.LastFontId)),
+		            new UnitConversion(e => e.MathFont.GetXHeight(e.Style, e.LastFontId)),
 
-		            new UnitConversion(e => 1.0 / e.TexFont.Size),
+		            new UnitConversion(e => 1.0 / e.MathFont.Size),
 
-		            new UnitConversion(e => TexFontUtilities.PixelsPerPoint / e.TexFont.Size),
+		            new UnitConversion(e => TexFontUtilities.PixelsPerPoint / e.MathFont.Size),
 
-		            new UnitConversion(e => (12 * TexFontUtilities.PixelsPerPoint) / e.TexFont.Size),
+		            new UnitConversion(e => (12 * TexFontUtilities.PixelsPerPoint) / e.MathFont.Size),
 
 		            new UnitConversion(e =>
 		                {
-		                    var texFont = e.TexFont;
+		                    var texFont = e.MathFont;
 		                    return texFont.GetQuad(texFont.GetMuFontId(), e.Style) / 18;
 		                }),
 		        };
@@ -87,7 +87,7 @@ namespace WpfMath
         public override Box CreateBox(TexEnvironment environment)
         {
             if (isHardSpace)
-                return new StrutBox(environment.TexFont.GetSpace(environment.Style), 0, 0, 0);
+                return new StrutBox(environment.MathFont.GetSpace(environment.Style), 0, 0, 0);
             else
                 return new StrutBox(width * GetConversionFactor(widthUnit, environment), height * GetConversionFactor(
                     heightUnit, environment), depth * GetConversionFactor(depthUnit, environment), 0);

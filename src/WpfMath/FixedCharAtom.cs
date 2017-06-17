@@ -26,7 +26,7 @@ namespace WpfMath
 
         public override Box CreateBox(TexEnvironment environment)
         {
-            var charInfo = environment.TexFont.GetCharInfo(this.CharFont, environment.Style);
+            var charInfo = environment.MathFont.GetCharInfo(this.CharFont, environment.Style);
             return new CharBox(environment, charInfo);
         }
     }
