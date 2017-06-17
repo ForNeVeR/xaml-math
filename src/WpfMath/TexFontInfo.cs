@@ -1,9 +1,7 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
 using System.Windows.Media;
+using WpfMath.Exceptions;
 
 namespace WpfMath
 {
@@ -143,6 +141,12 @@ namespace WpfMath
 
         public double[] GetMetrics(char character)
         {
+            if (metrics.Length <= character)
+            {
+                throw new TexCharacterMappingNotFoundException(
+                    $"Cannot determine metrics for '{character}' character in font {FontId}");
+            }
+
             return this.metrics[character];
         }
     }

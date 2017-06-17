@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using WpfMath.Exceptions;
 
 namespace WpfMath.Controls
 {
@@ -110,11 +111,9 @@ namespace WpfMath.Controls
                 control.texFormula = formulaParser.Parse(formula);
                 return baseValue;
             }
-            catch (TexParseException e)
+            catch (TexException e)
             {
-                control.Errors.Add(e);
-                control.HasError = true;
-                control.texFormula = null;
+                control.SetError(e);
                 return "";
             }
         }
@@ -128,7 +127,21 @@ namespace WpfMath.Controls
         private static void OnRenderSettingsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var control = (FormulaControl)d;
-            control.Render();
+            try
+            {
+                control.Render();
+            }
+            catch (TexException exception)
+            {
+                control.SetError(exception);
+            }
+        }
+
+        private void SetError(TexException exception)
+        {
+            Errors.Add(exception);
+            HasError = true;
+            texFormula = null;
         }
     }
 }

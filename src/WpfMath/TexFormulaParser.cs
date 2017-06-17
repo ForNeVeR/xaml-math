@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows;
 using System.Reflection;
 using System.Windows.Media;
+using WpfMath.Exceptions;
 
 namespace WpfMath
 {

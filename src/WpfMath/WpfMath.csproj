@@ -68,6 +68,8 @@
       <DependentUpon>FormulaControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\VisualContainerElement.cs" />
+    <Compile Include="Exceptions\TexCharacterMappingNotFoundException.cs" />
+    <Compile Include="Exceptions\TexException.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="PredefinedColorParser.cs" />
     <Compile Include="StyledAtom.cs" />
@@ -117,12 +119,12 @@
     <Compile Include="TexFormula.cs" />
     <Compile Include="TexFormulaHelper.cs" />
     <Compile Include="TexFormulaParser.cs" />
-    <Compile Include="TexParseException.cs" />
+    <Compile Include="Exceptions\TexParseException.cs" />
     <Compile Include="PredefinedTexFormulasParser.cs" />
     <Compile Include="PredefinedTexFormulaSettingsParser.cs" />
     <Compile Include="TexRenderer.cs" />
     <Compile Include="TexSymbolParser.cs" />
-    <Compile Include="TextStyleMappingNotFoundException.cs" />
+    <Compile Include="Exceptions\TextStyleMappingNotFoundException.cs" />
     <Compile Include="TexUtilities.cs" />
     <Compile Include="TypedAtom.cs" />
     <Compile Include="UnderlinedAtom.cs" />
