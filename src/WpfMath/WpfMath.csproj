@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="Controls\VisualContainerElement.cs" />
     <Compile Include="Exceptions\TexCharacterMappingNotFoundException.cs" />
+    <Compile Include="Exceptions\TexNotSupportedException.cs" />
     <Compile Include="Exceptions\TexException.cs" />
     <Compile Include="Exceptions\TypeFaceNotFoundException.cs" />
     <Compile Include="Extensions.cs" />

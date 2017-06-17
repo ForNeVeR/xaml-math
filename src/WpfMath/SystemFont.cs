@@ -1,5 +1,4 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Windows;
 using System.Windows.Media;
 using WpfMath.Exceptions;
@@ -18,27 +17,17 @@ namespace WpfMath
 
         public double Size { get; }
 
-        public ITeXFont DeriveFont(double newSize)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ExtensionChar GetExtension(CharInfo charInfo, TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public ITeXFont DeriveFont(double newSize) => throw MethodNotSupported(nameof(DeriveFont));
+        public ExtensionChar GetExtension(CharInfo charInfo, TexStyle style) =>
+            throw MethodNotSupported(nameof(GetExtension));
 
         public CharFont GetLigature(CharFont leftChar, CharFont rightChar) => null;
 
-        public CharInfo GetNextLargerCharInfo(CharInfo charInfo, TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public CharInfo GetNextLargerCharInfo(CharInfo charInfo, TexStyle style) => 
+            throw MethodNotSupported(nameof(GetNextLargerCharInfo));
 
-        public CharInfo GetDefaultCharInfo(char character, TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public CharInfo GetDefaultCharInfo(char character, TexStyle style) =>
+            throw MethodNotSupported(nameof(GetDefaultCharInfo));
 
         public CharInfo GetCharInfo(char character, string textStyle, TexStyle style)
         {
@@ -52,151 +41,71 @@ namespace WpfMath
             return new CharInfo(character, glyphTypeface, 1.0, TexFontUtilities.NoFontId, metrics);
         }
 
-        public CharInfo GetCharInfo(CharFont charFont, TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public CharInfo GetCharInfo(CharFont charFont, TexStyle style) =>
+            throw MethodNotSupported(nameof(GetCharInfo));
 
-        public CharInfo GetCharInfo(string name, TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public CharInfo GetCharInfo(string name, TexStyle style) => throw MethodNotSupported(nameof(GetCharInfo));
 
         public double GetKern(CharFont leftChar, CharFont rightChar, TexStyle style) => 0.0;
 
-        public double GetQuad(int fontId, TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public double GetQuad(int fontId, TexStyle style) => throw MethodNotSupported(nameof(GetQuad));
 
-        public double GetSkew(CharFont charFont, TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public double GetSkew(CharFont charFont, TexStyle style) => throw MethodNotSupported(nameof(GetSkew));
 
-        public bool HasSpace(int fontId)
-        {
-            throw new NotImplementedException();
-        }
+        public bool HasSpace(int fontId) => throw MethodNotSupported(nameof(HasSpace));
 
-        public bool HasNextLarger(CharInfo charInfo)
-        {
-            throw new NotImplementedException();
-        }
+        public bool HasNextLarger(CharInfo charInfo) => throw MethodNotSupported(nameof(HasNextLarger));
 
-        public bool IsExtensionChar(CharInfo charInfo)
-        {
-            throw new NotImplementedException();
-        }
+        public bool IsExtensionChar(CharInfo charInfo) => throw MethodNotSupported(nameof(IsExtensionChar));
 
-        public int GetMuFontId()
-        {
-            throw new NotImplementedException();
-        }
+        public int GetMuFontId() => throw MethodNotSupported(nameof(GetMuFontId));
 
-        public double GetXHeight(TexStyle style, int fontId)
-        {
-            throw new NotImplementedException();
-        }
+        public double GetXHeight(TexStyle style, int fontId) => throw MethodNotSupported(nameof(GetXHeight));
 
-        public double GetSpace(TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public double GetSpace(TexStyle style) => throw MethodNotSupported(nameof(GetSpace));
 
-        public double GetAxisHeight(TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public double GetAxisHeight(TexStyle style) => throw MethodNotSupported(nameof(GetAxisHeight));
 
-        public double GetBigOpSpacing1(TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public double GetBigOpSpacing1(TexStyle style) => throw MethodNotSupported(nameof(GetBigOpSpacing1));
 
-        public double GetBigOpSpacing2(TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public double GetBigOpSpacing2(TexStyle style) => throw MethodNotSupported(nameof(GetBigOpSpacing2));
 
-        public double GetBigOpSpacing3(TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public double GetBigOpSpacing3(TexStyle style) => throw MethodNotSupported(nameof(GetBigOpSpacing3));
 
-        public double GetBigOpSpacing4(TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public double GetBigOpSpacing4(TexStyle style) => throw MethodNotSupported(nameof(GetBigOpSpacing4));
 
-        public double GetBigOpSpacing5(TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public double GetBigOpSpacing5(TexStyle style) => throw MethodNotSupported(nameof(GetBigOpSpacing5));
 
-        public double GetSub1(TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public double GetSub1(TexStyle style) => throw MethodNotSupported(nameof(GetSub1));
 
-        public double GetSub2(TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public double GetSub2(TexStyle style) => throw MethodNotSupported(nameof(GetSub2));
 
-        public double GetSubDrop(TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public double GetSubDrop(TexStyle style) => throw MethodNotSupported(nameof(GetSubDrop));
 
-        public double GetSup1(TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public double GetSup1(TexStyle style) => throw MethodNotSupported(nameof(GetSup1));
 
-        public double GetSup2(TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public double GetSup2(TexStyle style) => throw MethodNotSupported(nameof(GetSup2));
 
-        public double GetSup3(TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public double GetSup3(TexStyle style) => throw MethodNotSupported(nameof(GetSup3));
 
-        public double GetSupDrop(TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public double GetSupDrop(TexStyle style) => throw MethodNotSupported(nameof(GetSupDrop));
 
-        public double GetNum1(TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public double GetNum1(TexStyle style) => throw MethodNotSupported(nameof(GetNum1));
 
-        public double GetNum2(TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public double GetNum2(TexStyle style) => throw MethodNotSupported(nameof(GetNum2));
 
-        public double GetNum3(TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public double GetNum3(TexStyle style) => throw MethodNotSupported(nameof(GetNum3));
 
-        public double GetDenom1(TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public double GetDenom1(TexStyle style) => throw MethodNotSupported(nameof(GetDenom1));
 
-        public double GetDenom2(TexStyle style)
-        {
-            throw new NotImplementedException();
-        }
+        public double GetDenom2(TexStyle style) => throw MethodNotSupported(nameof(GetDenom2));
 
-        public double GetDefaultLineThickness(TexStyle style)
+        public double GetDefaultLineThickness(TexStyle style) => throw MethodNotSupported(nameof(GetDefaultLineThickness));
+
+        private static TexNotSupportedException MethodNotSupported(string callerMethod)
         {
-            throw new NotImplementedException();
+            return new TexNotSupportedException(
+                $"Call of method {callerMethod} on {nameof(SystemFont)} is not supported");
         }
 
         private TexFontMetrics GetFontMetrics(char c, Typeface typeface)
