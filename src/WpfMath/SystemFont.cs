@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Windows;
 using System.Windows.Media;
+using WpfMath.Exceptions;
 
 namespace WpfMath
 {
@@ -44,11 +45,11 @@ namespace WpfMath
             var typeface = GetTypeface();
             if (!typeface.TryGetGlyphTypeface(out var glyphTypeface))
             {
-                throw new Exception("Cannot get typeface"); // TODO[F]: Base class for exception; explain the error more
+                throw new TypeFaceNotFoundException($"Glyph typeface for font {_fontFamily.BaseUri} was not found");
             }
 
             var metrics = GetFontMetrics(character, typeface);
-            return new CharInfo(character, glyphTypeface, 1.0, null, metrics);
+            return new CharInfo(character, glyphTypeface, 1.0, TexFontUtilities.NoFontId, metrics);
         }
 
         public CharInfo GetCharInfo(CharFont charFont, TexStyle style)

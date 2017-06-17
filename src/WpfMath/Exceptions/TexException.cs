@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
 namespace WpfMath.Exceptions
 {
@@ -14,10 +13,6 @@ namespace WpfMath.Exceptions
         }
 
         public TexException(string message, Exception innerException) : base(message, innerException)
-        {
-        }
-
-        protected TexException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
     }
