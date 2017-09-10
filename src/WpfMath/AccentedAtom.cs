@@ -44,14 +44,24 @@ namespace WpfMath
 
         public override Box CreateBox(TexEnvironment environment)
         {
+            CharSymbol GetBaseChar()
+            {
+                var baseAtom = BaseAtom;
+                while (baseAtom is AccentedAtom a)
+                {
+                    baseAtom = a.BaseAtom;
+                }
+
+                return baseAtom as CharSymbol;
+            }
+
             var texFont = environment.MathFont;
             var style = environment.Style;
 
             // Create box for base atom.
             var baseBox = this.BaseAtom == null ? StrutBox.Empty : this.BaseAtom.CreateBox(environment.GetCrampedStyle());
-            var skew = 0d;
-            if (this.BaseAtom is CharSymbol)
-                skew = texFont.GetSkew(((CharSymbol)this.BaseAtom).GetCharFont(texFont), style);
+            var baseCharFont = GetBaseChar()?.GetCharFont(texFont);
+            var skew = baseCharFont == null ? 0.0 : texFont.GetSkew(baseCharFont, style);
 
             // Find character of best scale for accent symbol.
             var accentChar = texFont.GetCharInfo(AccentAtom.Name, style);
