@@ -1,6 +1,19 @@
 Release Notes
 =============
 
+## 0.4 (2017-09-11)
+
+Fixed issues:
+
+- [#80: force streamwriter to flush buffers][pull-80]
+- [#88: Bar alignment][issue-88]
+
+New features:
+
+- [#79: SVG: Added support for curves and removed flattening of the geometry][pull-79]
+- [#82: Support UTF8][issue-82]
+- [#84: Add \text{} command][issue-84]
+
 ## 0.3.1 (2017-03-18)
 
 Bug fixes, improved render quality.
@@ -40,8 +53,13 @@ This was the initial published version. It consisted entirely of the original co
 [issue-14]: https://github.com/ForNeVeR/wpf-math/issues/14
 [issue-50]: https://github.com/ForNeVeR/wpf-math/issues/50
 [issue-62]: https://github.com/ForNeVeR/wpf-math/issues/62
+[issue-82]: https://github.com/ForNeVeR/wpf-math/issues/82
+[issue-84]: https://github.com/ForNeVeR/wpf-math/issues/84
+[issue-88]: https://github.com/ForNeVeR/wpf-math/issues/84
 [pull-53]: https://github.com/ForNeVeR/wpf-math/pull/53
 [pull-54]: https://github.com/ForNeVeR/wpf-math/pull/54
 [pull-58]: https://github.com/ForNeVeR/wpf-math/pull/58
 [pull-71]: https://github.com/ForNeVeR/wpf-math/pull/71
 [pull-74]: https://github.com/ForNeVeR/wpf-math/pull/74
+[pull-79]: https://github.com/ForNeVeR/wpf-math/pull/79
+[pull-80]: https://github.com/ForNeVeR/wpf-math/pull/80
