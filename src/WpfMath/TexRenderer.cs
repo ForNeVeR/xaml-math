@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using WpfMath.Rendering;
 
 namespace WpfMath
 {
@@ -64,7 +65,8 @@ namespace WpfMath
 
         public void Render(DrawingContext drawingContext, double x, double y)
         {
-            Box.DrawWithGuidelines(drawingContext, Scale, x / Scale, y / Scale + Box.Height);
+            var renderer = new WpfElementRenderer(drawingContext, Scale);
+            Box.RenderTo(renderer, x / Scale, y / Scale + Box.Height);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Windows.Media;
+using WpfMath.Rendering;
 
 namespace WpfMath
 {
@@ -131,6 +132,59 @@ namespace WpfMath
                 // Draw script box as subscript.
                 if (this.ScriptBox != null)
                     this.ScriptBox.RenderGeometry(geometry, scale, x, centerY + this.Kern + this.ScriptBox.Height);
+            }
+        }
+
+        public override void RenderTo(IElementRenderer renderer, double x, double y)
+        {
+            BaseBox.RenderTo(renderer, x, y);
+
+            if (Over)
+            {
+                // Draw delimeter and script boxes over base box.
+                var centerY = y - BaseBox.Height - DelimeterBox.Width;
+                var translationX = x + DelimeterBox.Width / 2;
+                var translationY = centerY + DelimeterBox.Width / 2;
+
+                var transforms = new Transform[]
+                {
+                    new TranslateTransform(translationX, translationY),
+                    new RotateTransform(90)
+                };
+
+                renderer.RenderTransformed(
+                    DelimeterBox,
+                    transforms,
+                    -DelimeterBox.Width / 2,
+                    -DelimeterBox.Depth + DelimeterBox.Width / 2);
+
+                // Draw script box as superscript.
+                ScriptBox?.RenderTo(renderer, x, centerY - Kern - ScriptBox.Depth);
+            }
+            else
+            {
+                // TODO[F]: It seems like this could be generalized with the block above. The only differences are
+                // translationY and the ScriptBox's Y position?
+
+                // Draw delimeter and script boxes under base box.
+                var centerY = y + BaseBox.Depth + DelimeterBox.Width;
+                var translationX = x + DelimeterBox.Width / 2;
+                var translationY = centerY - DelimeterBox.Width / 2;
+
+                var transforms = new Transform[]
+                {
+                    new TranslateTransform(translationX, translationY),
+                    new RotateTransform(90)
+                };
+
+                renderer.RenderTransformed(
+                    DelimeterBox,
+                    transforms,
+                    -DelimeterBox.Width / 2,
+                    -DelimeterBox.Depth + DelimeterBox.Width / 2);
+
+                // Draw script box as subscript.
+                ScriptBox?.RenderTo(renderer, x, centerY + Kern + ScriptBox.Height);
             }
         }
 

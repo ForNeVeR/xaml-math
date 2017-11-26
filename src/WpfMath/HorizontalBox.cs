@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Media;
+using WpfMath.Rendering;
 
 namespace WpfMath
 {
@@ -74,6 +75,16 @@ namespace WpfMath
             foreach (var box in this.Children)
             {
                 box.RenderGeometry(geometry, scale, curX, y + box.Shift);
+                curX += box.Width;
+            }
+        }
+
+        public override void RenderTo(IElementRenderer renderer, double x, double y)
+        {
+            var curX = x;
+            foreach (var box in Children)
+            {
+                box.RenderTo(renderer, curX, y + box.Shift);
                 curX += box.Width;
             }
         }

@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
 using System.Windows.Media;
+using WpfMath.Rendering;
 
 namespace WpfMath
 {
@@ -26,6 +22,14 @@ namespace WpfMath
         }
 
         public override void Draw(DrawingContext drawingContext, double scale, double x, double y)
+        {
+        }
+
+        public override void RenderGeometry(GeometryGroup geometry, double scale, double x, double y)
+        {
+        }
+
+        public override void RenderTo(IElementRenderer renderer, double x, double y)
         {
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Media;
+using WpfMath.Rendering;
 
 namespace WpfMath
 {
@@ -107,10 +108,10 @@ namespace WpfMath
 
         public abstract void Draw(DrawingContext drawingContext, double scale, double x, double y);
 
-        public virtual void RenderGeometry(GeometryGroup geometry, double scale, double x, double y)
-        {
+        public abstract void RenderGeometry(GeometryGroup geometry, double scale, double x, double y);
 
-        }
+        // TODO[F]: Make it call DrawWithGuidelines before every render.
+        public abstract void RenderTo(IElementRenderer renderer, double x, double y);
 
         public virtual void Add(Box box)
         {
@@ -131,7 +132,7 @@ namespace WpfMath
                 // Fill background of box with color:
                 drawingContext.DrawRectangle(
                     Background,
-                    null, 
+                    null,
                     new Rect(scale * x, scale * (y - Height),
                     scale * TotalWidth,
                     scale * TotalHeight));

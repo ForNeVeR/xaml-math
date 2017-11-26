@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Media;
+using WpfMath.Rendering;
 
 namespace WpfMath
 {
@@ -47,6 +48,12 @@ namespace WpfMath
 
             GeometryGroup geoGroup = glyphRun.BuildGeometry() as GeometryGroup;
             geometry.Children.Add(geoGroup);
+        }
+
+        public override void RenderTo(IElementRenderer renderer, double x, double y)
+        {
+            var color = Foreground ?? Brushes.Black;
+            renderer.RenderGlyphRun(scale => GetGlyphRun(scale, x, y), x, y, color);
         }
 
         public override int GetLastFontId()
