@@ -66,7 +66,7 @@ namespace WpfMath
         public void Render(DrawingContext drawingContext, double x, double y)
         {
             var renderer = new WpfElementRenderer(drawingContext, Scale);
-            Box.RenderTo(renderer, x / Scale, y / Scale + Box.Height);
+            renderer.RenderElement(Box, x / Scale, y / Scale + Box.Height);
         }
     }
 }

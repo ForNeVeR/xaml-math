@@ -55,48 +55,6 @@ namespace WpfMath
             private set;
         }
 
-        public override void Draw(DrawingContext drawingContext, double scale, double x, double y)
-        {
-            this.BaseBox.DrawWithGuidelines(drawingContext, scale, x, y);
-
-            if (this.Over)
-            {
-                // Draw delimeter and script boxes over base box.
-                var centerY = y - this.BaseBox.Height - this.DelimeterBox.Width;
-                var translationX = x + this.DelimeterBox.Width / 2;
-                var translationY = centerY + this.DelimeterBox.Width / 2;
-
-                drawingContext.PushTransform(new TranslateTransform(translationX * scale, translationY * scale));
-                drawingContext.PushTransform(new RotateTransform(90));
-                this.DelimeterBox.DrawWithGuidelines(drawingContext, scale, -this.DelimeterBox.Width / 2,
-                    -this.DelimeterBox.Depth + this.DelimeterBox.Width / 2);
-                drawingContext.Pop();
-                drawingContext.Pop();
-
-                // Draw script box as superscript.
-                if (this.ScriptBox != null)
-                    this.ScriptBox.DrawWithGuidelines(drawingContext, scale, x, centerY - this.Kern - this.ScriptBox.Depth);
-            }
-            else
-            {
-                // Draw delimeter and script boxes under base box.
-                var centerY = y + this.BaseBox.Depth + this.DelimeterBox.Width;
-                var translationX = x + this.DelimeterBox.Width / 2;
-                var translationY = centerY - this.DelimeterBox.Width / 2;
-
-                drawingContext.PushTransform(new TranslateTransform(translationX * scale, translationY * scale));
-                drawingContext.PushTransform(new RotateTransform(90));
-                this.DelimeterBox.DrawWithGuidelines(drawingContext, scale, -this.DelimeterBox.Width / 2,
-                    -this.DelimeterBox.Depth + this.DelimeterBox.Width / 2);
-                drawingContext.Pop();
-                drawingContext.Pop();
-
-                // Draw script box as subscript.
-                ScriptBox?.DrawWithGuidelines(drawingContext, scale, x, centerY + Kern + ScriptBox.Height);
-            }
-
-        }
-
         public override void RenderGeometry(GeometryGroup geometry, double scale, double x, double y)
         {
             GeometryGroup group = new GeometryGroup();
@@ -137,7 +95,7 @@ namespace WpfMath
 
         public override void RenderTo(IElementRenderer renderer, double x, double y)
         {
-            BaseBox.RenderTo(renderer, x, y);
+            renderer.RenderElement(BaseBox, x, y);
 
             if (Over)
             {
@@ -159,7 +117,10 @@ namespace WpfMath
                     -DelimeterBox.Depth + DelimeterBox.Width / 2);
 
                 // Draw script box as superscript.
-                ScriptBox?.RenderTo(renderer, x, centerY - Kern - ScriptBox.Depth);
+                if (ScriptBox != null)
+                {
+                    renderer.RenderElement(ScriptBox, x, centerY - Kern - ScriptBox.Depth);
+                }
             }
             else
             {
@@ -184,7 +145,10 @@ namespace WpfMath
                     -DelimeterBox.Depth + DelimeterBox.Width / 2);
 
                 // Draw script box as subscript.
-                ScriptBox?.RenderTo(renderer, x, centerY + Kern + ScriptBox.Height);
+                if (ScriptBox != null)
+                {
+                    renderer.RenderElement(ScriptBox, x, centerY + Kern + ScriptBox.Height);
+                }
             }
         }
 

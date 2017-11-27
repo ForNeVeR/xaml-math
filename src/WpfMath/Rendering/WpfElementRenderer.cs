@@ -17,6 +17,17 @@ namespace WpfMath.Rendering
             _scale = scale;
         }
 
+        public void RenderElement(Box box, double x, double y)
+        {
+            var guidelines = GenerateGuidelines(box, x, y);
+            _drawingContext.PushGuidelineSet(guidelines);
+
+            RenderBackground(box, x, y);
+            box.RenderTo(this, x, y);
+
+            _drawingContext.Pop();
+        }
+
         public void RenderGlyphRun(Func<double, GlyphRun> scaledGlyphFactory, double x, double y, Brush foreground)
         {
             var glyphRun = scaledGlyphFactory(_scale);
@@ -37,13 +48,36 @@ namespace WpfMath.Rendering
                 _drawingContext.PushTransform(transform);
             }
 
-            box.RenderTo(this, x, y);
+            RenderElement(box, x, y);
 
             for (var i = 0; i < scaledTransforms.Count; ++i)
             {
                 _drawingContext.Pop();
             }
         }
+
+        private void RenderBackground(Box box, double x, double y)
+        {
+            if (box.Background != null)
+            {
+                // Fill background of box with color:
+                _drawingContext.DrawRectangle(
+                    box.Background,
+                    null,
+                    new Rect(_scale * x, _scale * (y - box.Height),
+                        _scale * box.TotalWidth,
+                        _scale * box.TotalHeight));
+            }
+        }
+
+        /// <summary>
+        /// Genetates the guidelines for WPF render to snap the box boundaries onto the device pixel grid.
+        /// </summary>
+        private GuidelineSet GenerateGuidelines(Box box, double x, double y) => new GuidelineSet
+        {
+            GuidelinesX = {_scale * x, _scale * (x + box.TotalWidth)},
+            GuidelinesY = {_scale * y, _scale * (y + box.TotalHeight)}
+        };
 
         private Rect ScaleRectangle(Rect rectangle) =>
             new Rect(rectangle.X * _scale, rectangle.Y * _scale, rectangle.Width * _scale, rectangle.Height * _scale);

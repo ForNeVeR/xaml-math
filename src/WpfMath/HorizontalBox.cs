@@ -59,16 +59,6 @@ namespace WpfMath
             this.Italic = Math.Max((this.Children.Count == 0 ? double.NegativeInfinity : Italic), box.Italic);
         }
 
-        public override void Draw(DrawingContext drawingContext, double scale, double x, double y)
-        {
-            var curX = x;
-            foreach (var box in Children)
-            {
-                box.DrawWithGuidelines(drawingContext, scale, curX, y + box.Shift);
-                curX += box.Width;
-            }
-        }
-
         public override void RenderGeometry(GeometryGroup geometry, double scale, double x, double y)
         {
             var curX = x;
@@ -84,7 +74,7 @@ namespace WpfMath
             var curX = x;
             foreach (var box in Children)
             {
-                box.RenderTo(renderer, curX, y + box.Shift);
+                renderer.RenderElement(box, curX, y + box.Shift);
                 curX += box.Width;
             }
         }

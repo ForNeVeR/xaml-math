@@ -20,12 +20,6 @@ namespace WpfMath
             this.Background = environment.Background;	//Not strictly necessary
         }
 
-        public override void Draw(DrawingContext drawingContext, double scale, double x, double y)
-        {
-            drawingContext.DrawRectangle(this.Foreground ?? Brushes.Black, null, new Rect(
-                x * scale, (y - this.Height) * scale, this.Width * scale, this.Height * scale));
-        }
-
         public override void RenderGeometry(GeometryGroup geometry, double scale, double x, double y)
         {
             RectangleGeometry rectangleGeometry = new RectangleGeometry(new Rect(
