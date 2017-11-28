@@ -66,34 +66,26 @@ namespace WpfMath
                 var translationX = x + DelimeterBox.Width / 2;
                 var translationY = centerY + DelimeterBox.Width / 2;
 
-                var transforms = new Transform[]
-                {
-                    new TranslateTransform(translationX, translationY),
-                    new RotateTransform(90)
-                };
-
-                renderer.RenderTransformed(
-                    DelimeterBox,
-                    transforms,
-                    -DelimeterBox.Width / 2,
-                    -DelimeterBox.Depth + DelimeterBox.Width / 2);
+                RenderDelimiter(centerY, translationX, translationY);
 
                 // Draw script box as superscript.
-                if (ScriptBox != null)
-                {
-                    renderer.RenderElement(ScriptBox, x, centerY - Kern - ScriptBox.Depth);
-                }
+                RenderScriptBox(centerY - Kern - ScriptBox.Depth);
             }
             else
             {
-                // TODO[F]: It seems like this could be generalized with the block above. The only differences are
-                // translationY and the ScriptBox's Y position?
-
                 // Draw delimeter and script boxes under base box.
                 var centerY = y + BaseBox.Depth + DelimeterBox.Width;
                 var translationX = x + DelimeterBox.Width / 2;
                 var translationY = centerY - DelimeterBox.Width / 2;
 
+                RenderDelimiter(centerY, translationX, translationY);
+
+                // Draw script box as subscript.
+                RenderScriptBox(centerY + Kern + ScriptBox.Height);
+            }
+
+            void RenderDelimiter(double centerY, double translationX, double translationY)
+            {
                 var transforms = new Transform[]
                 {
                     new TranslateTransform(translationX, translationY),
@@ -105,11 +97,13 @@ namespace WpfMath
                     transforms,
                     -DelimeterBox.Width / 2,
                     -DelimeterBox.Depth + DelimeterBox.Width / 2);
+            }
 
-                // Draw script box as subscript.
+            void RenderScriptBox(double yPosition)
+            {
                 if (ScriptBox != null)
                 {
-                    renderer.RenderElement(ScriptBox, x, centerY + Kern + ScriptBox.Height);
+                    renderer.RenderElement(ScriptBox, x, yPosition);
                 }
             }
         }
