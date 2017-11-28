@@ -36,13 +36,13 @@ namespace WpfMath.Rendering
 
         public void RenderRectangle(Rect rectangle, Brush foreground)
         {
-            var scaledRectangle = ScaleRectangle(rectangle);
+            var scaledRectangle = GeometryHelper.ScaleRectangle(_scale, rectangle);
             _drawingContext.DrawRectangle(foreground, null, scaledRectangle);
         }
 
         public void RenderTransformed(Box box, Transform[] transforms, double x, double y)
         {
-            var scaledTransforms = transforms.Select(ScaleTransform).ToList();
+            var scaledTransforms = transforms.Select(t => GeometryHelper.ScaleTransform(_scale, t)).ToList();
             foreach (var transform in scaledTransforms)
             {
                 _drawingContext.PushTransform(transform);
@@ -78,19 +78,5 @@ namespace WpfMath.Rendering
             GuidelinesX = {_scale * x, _scale * (x + box.TotalWidth)},
             GuidelinesY = {_scale * y, _scale * (y + box.TotalHeight)}
         };
-
-        private Rect ScaleRectangle(Rect rectangle) =>
-            new Rect(rectangle.X * _scale, rectangle.Y * _scale, rectangle.Width * _scale, rectangle.Height * _scale);
-
-        private Transform ScaleTransform(Transform transform)
-        {
-            switch (transform)
-            {
-                case TranslateTransform tt:
-                    return new TranslateTransform(tt.X * _scale, tt.Y * _scale);
-                default:
-                    return transform;
-            }
-        }
     }
 }

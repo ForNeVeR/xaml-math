@@ -42,10 +42,14 @@ namespace WpfMath
             }
         }
 
+        public void RenderFormulaTo(IElementRenderer renderer, double x, double y) =>
+            renderer.RenderElement(Box, x / Scale, y / Scale + Box.Height);
+
         public Geometry RenderToGeometry(double x, double y)
         {
-            GeometryGroup geometry = new GeometryGroup();
-            Box.RenderGeometry(geometry, this.Scale, x / this.Scale, y / this.Scale + this.Box.Height);
+            var geometry = new GeometryGroup();
+            var renderer = new GeometryRenderer(Scale, geometry);
+            RenderFormulaTo(renderer, x, y);
             return geometry;
         }
 
@@ -63,10 +67,7 @@ namespace WpfMath
             return bitmap;
         }
 
-        public void Render(DrawingContext drawingContext, double x, double y)
-        {
-            var renderer = new WpfElementRenderer(drawingContext, Scale);
-            renderer.RenderElement(Box, x / Scale, y / Scale + Box.Height);
-        }
+        public void Render(DrawingContext drawingContext, double x, double y) =>
+            RenderFormulaTo(new WpfElementRenderer(drawingContext, Scale), x, y);
     }
 }

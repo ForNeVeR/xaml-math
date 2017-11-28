@@ -12,6 +12,9 @@ namespace WpfMath.Rendering
         /// <param name="x">An X coordinate of the top left corner.</param>
         /// <param name="y">An Y coordinate of the top left corner.</param>
         /// <remarks>Should be called for every element of the formula (including nested ones).</remarks>
+        /// <remarks>
+        /// Usually this method should call <see cref="Box.RenderTo"/> with optional code common for all elements.
+        /// </remarks>
         void RenderElement(Box box, double x, double y);
 
         /// <summary>Renders a glyph run (e.g. a character).</summary>

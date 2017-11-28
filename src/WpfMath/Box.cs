@@ -86,9 +86,6 @@ namespace WpfMath
             set;
         }
 
-        // TODO[F]: Remove this method and replace with GeometryRenderer.
-        public abstract void RenderGeometry(GeometryGroup geometry, double scale, double x, double y);
-
         public abstract void RenderTo(IElementRenderer renderer, double x, double y);
 
         public virtual void Add(Box box)

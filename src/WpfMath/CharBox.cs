@@ -31,15 +31,6 @@ namespace WpfMath
                 new ushort[] { glyphIndex }, new Point(x * scale, y * scale),
                 new double[] { typeface.AdvanceWidths[glyphIndex] }, null, null, null, null, null, null);
             return glyphRun;
-
-        }
-
-        public override void RenderGeometry(GeometryGroup geometry, double scale, double x, double y)
-        {
-            GlyphRun glyphRun = GetGlyphRun(scale, x, y);
-
-            GeometryGroup geoGroup = glyphRun.BuildGeometry() as GeometryGroup;
-            geometry.Children.Add(geoGroup);
         }
 
         public override void RenderTo(IElementRenderer renderer, double x, double y)

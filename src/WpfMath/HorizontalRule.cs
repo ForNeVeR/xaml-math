@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Media;
 using WpfMath.Rendering;
@@ -18,13 +14,6 @@ namespace WpfMath
             this.Shift = shift;
             this.Foreground = environment.Foreground;
             this.Background = environment.Background;	//Not strictly necessary
-        }
-
-        public override void RenderGeometry(GeometryGroup geometry, double scale, double x, double y)
-        {
-            RectangleGeometry rectangleGeometry = new RectangleGeometry(new Rect(
-                x * scale, (y - this.Height) * scale, this.Width * scale, this.Height * scale));
-            geometry.Children.Add(rectangleGeometry);
         }
 
         public override void RenderTo(IElementRenderer renderer, double x, double y)

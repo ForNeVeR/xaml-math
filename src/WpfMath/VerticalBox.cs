@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Media;
 using WpfMath.Rendering;
 
 namespace WpfMath
@@ -76,17 +75,6 @@ namespace WpfMath
             this.leftMostPos = Math.Min(leftMostPos, box.Shift);
             this.rightMostPos = Math.Max(rightMostPos, box.Shift + (box.Width > 0 ? box.Width : 0));
             this.Width = rightMostPos - leftMostPos;
-        }
-
-        public override void RenderGeometry(GeometryGroup geometry, double scale, double x, double y)
-        {
-            var curY = y - Height;
-            foreach (var child in this.Children)
-            {
-                curY += child.Height;
-                child.RenderGeometry(geometry, scale, x + child.Shift - leftMostPos, curY);
-                curY += child.Depth;
-            }
         }
 
         public override void RenderTo(IElementRenderer renderer, double x, double y)

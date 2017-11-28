@@ -1,4 +1,3 @@
-using System.Windows.Media;
 using WpfMath.Rendering;
 
 namespace WpfMath
@@ -23,10 +22,6 @@ namespace WpfMath
         {
             get;
             private set;
-        }
-
-        public override void RenderGeometry(GeometryGroup geometry, double scale, double x, double y)
-        {
         }
 
         public override void RenderTo(IElementRenderer renderer, double x, double y)

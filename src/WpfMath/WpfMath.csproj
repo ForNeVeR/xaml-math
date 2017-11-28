@@ -74,6 +74,8 @@
     <Compile Include="Exceptions\TypeFaceNotFoundException.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="PredefinedColorParser.cs" />
+    <Compile Include="Rendering\GeometryHelper.cs" />
+    <Compile Include="Rendering\GeometryRenderer.cs" />
     <Compile Include="Rendering\IElementRenderer.cs" />
     <Compile Include="Rendering\WpfElementRenderer.cs" />
     <Compile Include="StyledAtom.cs" />
