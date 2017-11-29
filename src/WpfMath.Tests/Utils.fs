@@ -1,6 +1,16 @@
 ﻿module WpfMath.Tests.Utils
 
+open System
+open System.Windows
+
 open WpfMath
+
+let initializeFontResourceLoading =
+    let monitor = obj()
+    fun () ->
+        lock monitor (fun () ->
+            if not(UriParser.IsKnownScheme "pack")
+            then new Application() |> ignore)
 
 let formula (root : Atom) : TexFormula =
     TexFormula(RootAtom = root)
@@ -11,7 +21,7 @@ let styledChar (c : char, style:string) : CharAtom = CharAtom(c, style)
 let op (baseAtom : Atom) (useVertScripts : System.Nullable<bool>)  : BigOperatorAtom = BigOperatorAtom(baseAtom, null, null, useVertScripts)
 let opWithScripts (baseAtom : Atom) (subscript : Atom) (superscript : Atom) (useVertScripts : System.Nullable<bool>)
             : BigOperatorAtom = BigOperatorAtom(baseAtom, subscript, superscript, useVertScripts)
-let scripts (baseAtom : Atom) (subscript : Atom) (superscript : Atom) 
+let scripts (baseAtom : Atom) (subscript : Atom) (superscript : Atom)
             : ScriptsAtom = ScriptsAtom(baseAtom, subscript, superscript)
 let group (groupedAtom: Atom) : TypedAtom = TypedAtom(groupedAtom, TexAtomType.Ordinary, TexAtomType.Ordinary)
 let symbol (name : string) : SymbolAtom = SymbolAtom(name, TexAtomType.BinaryOperator, false)

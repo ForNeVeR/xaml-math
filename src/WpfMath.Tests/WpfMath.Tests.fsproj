@@ -53,10 +53,14 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
+    <Content Include="App.config" />
     <Content Include="packages.config" />
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Utils.fs" />
     <Compile Include="BoxTests.fs" />
+    <Compile Include="CharBoxTests.fs" />
+    <Compile Include="HorizontalBoxTests.fs" />
+    <Compile Include="HorizontalRuleTests.fs" />
     <Compile Include="ParserTests.fs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,14 +68,20 @@
       <HintPath>..\..\packages\DeepEqual.1.6.0.0\lib\net40\DeepEqual.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="FSharp.Core">
-      <HintPath>..\..\packages\FSharp.Core.4.0.0.1\lib\net40\FSharp.Core.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Foq, Version=1.7.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\Foq.1.7.3\lib\net45\Foq.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.Core, Version=4.4.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\..\packages\FSharp.Core.4.2.3\lib\net45\FSharp.Core.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Windows.Presentation" />
+    <Reference Include="WindowsBase" />
     <Reference Include="xunit.abstractions">
       <HintPath>..\..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
       <Private>True</Private>
@@ -95,6 +105,9 @@
       <Project>{010a34f1-1f3e-4528-99b4-95054dd45729}</Project>
       <Private>True</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
