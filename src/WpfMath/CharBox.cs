@@ -23,7 +23,7 @@ namespace WpfMath
             private set;
         }
 
-        private GlyphRun GetGlyphRun(double scale, double x, double y)
+        internal GlyphRun GetGlyphRun(double scale, double x, double y)
         {
             var typeface = this.Character.Font;
             var glyphIndex = typeface.CharacterToGlyphMap[this.Character.Character];

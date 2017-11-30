@@ -9,7 +9,7 @@ open WpfMath.Tests.Utils
 
 type BoxTests() =
     [<Fact>]
-    let ``AccentedAtom should have a skew according to the char`` () =
+    member __.``AccentedAtom should have a skew according to the char``() =
         let parser = TexFormulaParser()
         let result = parser.Parse @"\bar{\bar{x}}"
         let topAtom = result.RootAtom :?> AccentedAtom

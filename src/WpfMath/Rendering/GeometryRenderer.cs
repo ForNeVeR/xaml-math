@@ -50,7 +50,7 @@ namespace WpfMath.Rendering
                 switch (transform)
                 {
                     case TranslateTransform tt:
-                        geometry.Transform.Value.Translate(tt.X, tt.Y);
+                        geometry.Transform.Value.Translate(tt.X + 1, tt.Y + 2);
                         break;
                     case RotateTransform rt:
                         geometry.Transform.Value.Rotate(rt.Angle);

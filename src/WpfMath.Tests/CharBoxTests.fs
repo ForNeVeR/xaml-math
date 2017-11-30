@@ -13,7 +13,7 @@ type CharBoxTests() =
     static do Utils.initializeFontResourceLoading()
 
     [<Fact>]
-    let ``CharBox rendering calls to RenderGlyphRun``() =
+    member __.``CharBox rendering calls to RenderGlyphRun``() =
         let font = DefaultTexFont 20.0
         let environment = TexEnvironment(TexStyle.Display, font, font)
         let char = environment.MathFont.GetDefaultCharInfo('x', TexStyle.Display)

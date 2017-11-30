@@ -59,8 +59,11 @@
     <Compile Include="Utils.fs" />
     <Compile Include="BoxTests.fs" />
     <Compile Include="CharBoxTests.fs" />
+    <Compile Include="GeometryHelperTests.fs" />
+    <Compile Include="GeometryRendererTests.fs" />
     <Compile Include="HorizontalBoxTests.fs" />
     <Compile Include="HorizontalRuleTests.fs" />
+    <Compile Include="OverUnderBoxTests.fs" />
     <Compile Include="ParserTests.fs" />
   </ItemGroup>
   <ItemGroup>

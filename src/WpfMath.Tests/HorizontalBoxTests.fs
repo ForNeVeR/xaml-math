@@ -10,10 +10,8 @@ open WpfMath
 open WpfMath.Rendering
 
 type HorizontalBoxTests() =
-    static do Utils.initializeFontResourceLoading()
-
     [<Fact>]
-    let ``HorizontalBox rendering calls to RenderElement for each child``() =
+    member __.``HorizontalBox rendering calls to RenderElement for each child``() =
         let x = 0.5
         let y = 1.0
 
