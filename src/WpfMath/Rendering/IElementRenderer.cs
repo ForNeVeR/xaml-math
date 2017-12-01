@@ -23,6 +23,7 @@ namespace WpfMath.Rendering
         /// <param name="x">An X coordinate of the top left corner.</param>
         /// <param name="y">An Y coordinate of the top left corner.</param>
         /// <param name="foreground">Glyph foreground color.</param>
+        // TODO[F]: Scale the GlyphRun in the implementations, replace the factory with the initial (unscaled) GlyphRun
         void RenderGlyphRun(Func<double, GlyphRun> scaledGlyphFactory, double x, double y, Brush foreground);
 
         /// <summary>Renders a rectangle.</summary>
