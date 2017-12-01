@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
+using WpfMath.Rendering.Transformations;
 
 namespace WpfMath.Rendering
 {
@@ -33,31 +34,33 @@ namespace WpfMath.Rendering
             _geometry.Children.Add(rectangleGeometry);
         }
 
-        public void RenderTransformed(Box box, Transform[] transforms, double x, double y)
+        public void RenderTransformed(Box box, Transformation[] transforms, double x, double y)
         {
             var group = new GeometryGroup();
-            var scaledTransforms = transforms.Select(t => GeometryHelper.ScaleTransform(_scale, t));
-            ApplyTransforms(scaledTransforms, group);
+            var scaledTransforms = transforms.Select(t => t.Scale(_scale));
+            ApplyTransformations(scaledTransforms, group);
             var nestedRenderer = new GeometryRenderer(_scale, group);
             nestedRenderer.RenderElement(box, x, y);
             _geometry.Children.Add(group);
         }
 
-        private static void ApplyTransforms(IEnumerable<Transform> transforms, GeometryGroup geometry)
+        private static void ApplyTransformations(IEnumerable<Transformation> transformations, GeometryGroup geometry)
         {
-            foreach (var transform in transforms)
+            foreach (var transformation in transformations)
             {
-                switch (transform)
+                switch (transformation.Kind)
                 {
-                    case TranslateTransform tt:
-                        geometry.Transform.Value.Translate(tt.X + 1, tt.Y + 2);
+                    case TransformationKind.Translate:
+                        var tt = (Transformation.Translate) transformation;
+                        geometry.Transform.Value.Translate(tt.X, tt.Y);
                         break;
-                    case RotateTransform rt:
-                        geometry.Transform.Value.Rotate(rt.Angle);
+                    case TransformationKind.Rotate:
+                        var rt = (Transformation.Rotate) transformation;
+                        geometry.Transform.Value.Rotate(rt.RotationDegrees);
                         break;
                     default:
-                        throw new Exception(
-                            $"Unknown transform type for {nameof(GeometryRenderer)}: {transform.GetType()}");
+                        throw new NotSupportedException(
+                            $"Unknown {nameof(Transformation)} kind: {transformation.Kind}");
                 }
             }
         }

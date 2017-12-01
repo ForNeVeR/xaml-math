@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Media;
+using WpfMath.Rendering.Transformations;
 
 namespace WpfMath.Rendering
 {
@@ -34,6 +35,6 @@ namespace WpfMath.Rendering
         /// <param name="transforms">A transform array.</param>
         /// <param name="x">An X coordinate of the top left corner.</param>
         /// <param name="y">An Y coordinate of the top left corner.</param>
-        void RenderTransformed(Box box, Transform[] transforms, double x, double y);
+        void RenderTransformed(Box box, Transformation[] transforms, double x, double y);
     }
 }

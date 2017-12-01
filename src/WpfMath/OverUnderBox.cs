@@ -1,5 +1,6 @@
 ﻿using System.Windows.Media;
 using WpfMath.Rendering;
+using WpfMath.Rendering.Transformations;
 
 namespace WpfMath
 {
@@ -66,7 +67,7 @@ namespace WpfMath
                 var translationX = x + DelimeterBox.Width / 2;
                 var translationY = centerY + DelimeterBox.Width / 2;
 
-                RenderDelimiter(centerY, translationX, translationY);
+                RenderDelimiter(translationX, translationY);
 
                 // Draw script box as superscript.
                 RenderScriptBox(centerY - Kern - ScriptBox.Depth);
@@ -78,23 +79,23 @@ namespace WpfMath
                 var translationX = x + DelimeterBox.Width / 2;
                 var translationY = centerY - DelimeterBox.Width / 2;
 
-                RenderDelimiter(centerY, translationX, translationY);
+                RenderDelimiter(translationX, translationY);
 
                 // Draw script box as subscript.
                 RenderScriptBox(centerY + Kern + ScriptBox.Height);
             }
 
-            void RenderDelimiter(double centerY, double translationX, double translationY)
+            void RenderDelimiter(double translationX, double translationY)
             {
-                var transforms = new Transform[]
+                var transformations = new Transformation[]
                 {
-                    new TranslateTransform(translationX, translationY),
-                    new RotateTransform(90)
+                    new Transformation.Translate(translationX, translationY),
+                    new Transformation.Rotate(90)
                 };
 
                 renderer.RenderTransformed(
                     DelimeterBox,
-                    transforms,
+                    transformations,
                     -DelimeterBox.Width / 2,
                     -DelimeterBox.Depth + DelimeterBox.Width / 2);
             }

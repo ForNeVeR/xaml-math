@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
+using WpfMath.Rendering.Transformations;
 
 namespace WpfMath.Rendering
 {
@@ -40,17 +41,17 @@ namespace WpfMath.Rendering
             _drawingContext.DrawRectangle(foreground, null, scaledRectangle);
         }
 
-        public void RenderTransformed(Box box, Transform[] transforms, double x, double y)
+        public void RenderTransformed(Box box, Transformation[] transforms, double x, double y)
         {
-            var scaledTransforms = transforms.Select(t => GeometryHelper.ScaleTransform(_scale, t)).ToList();
-            foreach (var transform in scaledTransforms)
+            var scaledTransformations = transforms.Select(t => t.Scale(_scale)).ToList();
+            foreach (var transformation in scaledTransformations)
             {
-                _drawingContext.PushTransform(transform);
+                _drawingContext.PushTransform(ToTransform(transformation));
             }
 
             RenderElement(box, x, y);
 
-            for (var i = 0; i < scaledTransforms.Count; ++i)
+            for (var i = 0; i < scaledTransformations.Count; ++i)
             {
                 _drawingContext.Pop();
             }
@@ -67,6 +68,21 @@ namespace WpfMath.Rendering
                     new Rect(_scale * x, _scale * (y - box.Height),
                         _scale * box.TotalWidth,
                         _scale * box.TotalHeight));
+            }
+        }
+
+        private static Transform ToTransform(Transformation transformation)
+        {
+            switch (transformation.Kind)
+            {
+                case TransformationKind.Translate:
+                    var tt = (Transformation.Translate) transformation;
+                    return new TranslateTransform(tt.X, tt.Y);
+                case TransformationKind.Rotate:
+                    var rt = (Transformation.Rotate) transformation;
+                    return new RotateTransform(rt.RotationDegrees);
+                default:
+                    throw new NotSupportedException($"Unknown {nameof(Transformation)} kind: {transformation.Kind}");
             }
         }
 

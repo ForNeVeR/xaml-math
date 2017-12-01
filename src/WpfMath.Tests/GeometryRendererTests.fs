@@ -9,6 +9,7 @@ open Xunit
 
 open WpfMath
 open WpfMath.Rendering
+open WpfMath.Rendering.Transformations
 
 type GeometryRendererTests() =
     static do Utils.initializeFontResourceLoading()
@@ -44,5 +45,5 @@ type GeometryRendererTests() =
 
     [<Fact>]
     member __.``GeometryRenderer.RenderTransformed adds a GeometryGroup``() : unit =
-        renderer.RenderTransformed(HorizontalBox(), [| TranslateTransform(1.0, 1.0) |], 0.0, 0.0)
+        renderer.RenderTransformed(HorizontalBox(), [| Transformation.Translate(1.0, 1.0) |], 0.0, 0.0)
         Assert.IsType<GeometryGroup>(Seq.exactlyOne geometry.Children) |> ignore

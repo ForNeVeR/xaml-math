@@ -77,6 +77,8 @@
     <Compile Include="Rendering\GeometryHelper.cs" />
     <Compile Include="Rendering\GeometryRenderer.cs" />
     <Compile Include="Rendering\IElementRenderer.cs" />
+    <Compile Include="Rendering\Transformations\Transformation.cs" />
+    <Compile Include="Rendering\Transformations\TransformationKind.cs" />
     <Compile Include="Rendering\WpfElementRenderer.cs" />
     <Compile Include="StyledAtom.cs" />
     <Compile Include="DefaultTexFont.cs" />
