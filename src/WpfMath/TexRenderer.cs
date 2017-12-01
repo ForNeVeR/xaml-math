@@ -48,7 +48,7 @@ namespace WpfMath
         public Geometry RenderToGeometry(double x, double y)
         {
             var geometry = new GeometryGroup();
-            var renderer = new GeometryRenderer(Scale, geometry);
+            var renderer = new GeometryElementRenderer(geometry, Scale);
             RenderFormulaTo(renderer, x, y);
             return geometry;
         }

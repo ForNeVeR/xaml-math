@@ -8,15 +8,15 @@ using WpfMath.Rendering.Transformations;
 namespace WpfMath.Rendering
 {
     /// <summary>A renderer that renders the elements to a provided <see cref="GeometryGroup"/> instance.</summary>
-    public class GeometryRenderer : IElementRenderer
+    public class GeometryElementRenderer : IElementRenderer
     {
-        private readonly double _scale;
         private readonly GeometryGroup _geometry;
+        private readonly double _scale;
 
-        public GeometryRenderer(double scale, GeometryGroup geometry)
+        public GeometryElementRenderer(GeometryGroup geometry, double scale)
         {
-            _scale = scale;
             _geometry = geometry;
+            _scale = scale;
         }
 
         public void RenderElement(Box box, double x, double y) => box.RenderTo(this, x, y);
@@ -39,7 +39,7 @@ namespace WpfMath.Rendering
             var group = new GeometryGroup();
             var scaledTransforms = transforms.Select(t => t.Scale(_scale));
             ApplyTransformations(scaledTransforms, group);
-            var nestedRenderer = new GeometryRenderer(_scale, group);
+            var nestedRenderer = new GeometryElementRenderer(group, _scale);
             nestedRenderer.RenderElement(box, x, y);
             _geometry.Children.Add(group);
         }

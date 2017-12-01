@@ -75,7 +75,7 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="PredefinedColorParser.cs" />
     <Compile Include="Rendering\GeometryHelper.cs" />
-    <Compile Include="Rendering\GeometryRenderer.cs" />
+    <Compile Include="Rendering\GeometryElementRenderer.cs" />
     <Compile Include="Rendering\IElementRenderer.cs" />
     <Compile Include="Rendering\Transformations\Transformation.cs" />
     <Compile Include="Rendering\Transformations\TransformationKind.cs" />
