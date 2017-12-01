@@ -10,6 +10,8 @@ open WpfMath
 open WpfMath.Rendering
 
 type HorizontalRuleTests() =
+    static do Utils.initializeFontResourceLoading()
+
     [<Fact>]
     member __.``HorizontalRule rendering calls to RenderRect``() =
         let font = DefaultTexFont 20.0
