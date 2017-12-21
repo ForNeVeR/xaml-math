@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
+using Avalonia;
+using Avalonia.Media;
+using Avalonia.Media.Imaging;
+using Avalonia.Platform;
+using Avalonia.Rendering;
+using Avalonia.VisualTree;
+using WpfMath.Avalonia;
 
 namespace WpfMath
 {
@@ -47,20 +52,28 @@ namespace WpfMath
             Box.RenderGeometry(geometry, this.Scale, x / this.Scale, y / this.Scale + this.Box.Height);
             return geometry;
         }
+        
+        //recover this later
 
-        public BitmapSource RenderToBitmap(double x, double y)
-        {
-            var visual = new DrawingVisual();
-            using (var drawingContext = visual.RenderOpen())
-                this.Render(drawingContext, 0, 0);
+        //public IBitmap RenderToBitmap(double x, double y)
+        //{
+            
+        //    var visual = new Visual(); // it's not clear what do i need to use as IVisual
+        //    visual.Render();
+        //    var renderer = new ImmediateRenderer(visual);
+        //    var context = new DrawingContext(renderer.);
+           
+            
+        //    using (var drawingContext = visual.
+        //        this.Render(drawingContext, 0, 0);
 
-            var width = (int)Math.Ceiling(this.RenderSize.Width);
-            var height = (int)Math.Ceiling(this.RenderSize.Height);
-            var bitmap = new RenderTargetBitmap(width, height, 96, 96, PixelFormats.Default);
-            bitmap.Render(visual);
+        //    var width = (int)Math.Ceiling(this.RenderSize.Width);
+        //    var height = (int)Math.Ceiling(this.RenderSize.Height);
+        //    var bitmap = new RenderTargetBitmap(width, height);
+        //    bitmap.Render(visual);
 
-            return bitmap;
-        }
+        //    return bitmap;
+        //}
 
         public void Render(DrawingContext drawingContext, double x, double y)
         {

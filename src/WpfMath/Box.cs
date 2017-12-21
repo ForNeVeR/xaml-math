@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows;
-using System.Windows.Media;
+using Avalonia;
+using Avalonia.Media;
+using WpfMath.Avalonia;
+
 
 namespace WpfMath
 {
@@ -92,17 +94,19 @@ namespace WpfMath
         /// </summary>
         public void DrawWithGuidelines(DrawingContext drawingContext, double scale, double x, double y)
         {
-            var guidelines = new GuidelineSet
-            {
-                GuidelinesX = { scale * x, scale * (x + TotalWidth) },
-                GuidelinesY = { scale * y, scale * (y + TotalHeight) }
-            };
-            drawingContext.PushGuidelineSet(guidelines);
+            //TODO: need to restore guidelines!!
+           
+//            var guidelines = new GuidelineSet
+//            {
+//                GuidelinesX = { scale * x, scale * (x + TotalWidth) },
+//                GuidelinesY = { scale * y, scale * (y + TotalHeight) }
+//            };
+//            drawingContext.PushGuidelineSet(guidelines);
 
             DrawBackground(drawingContext, scale, x, y);
             Draw(drawingContext, scale, x, y);
 
-            drawingContext.Pop();
+//            drawingContext.Pop();
         }
 
         public abstract void Draw(DrawingContext drawingContext, double scale, double x, double y);
@@ -128,10 +132,11 @@ namespace WpfMath
         {
             if (Background != null)
             {
+                //TODO: creating pen every time
+                var pen = new Pen(Background);
                 // Fill background of box with color:
                 drawingContext.DrawRectangle(
-                    Background,
-                    null, 
+                    pen,
                     new Rect(scale * x, scale * (y - Height),
                     scale * TotalWidth,
                     scale * TotalHeight));

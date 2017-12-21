@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaMath", "src\WpfMath\AvaloniaMath.csproj", "{7CAD197E-2BDC-4F1A-9A74-FDADB223C92C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaMath.Example", "src\WpfMath.Example\AvaloniaMath.Example.csproj", "{FEDBA64C-56F1-4FE7-B13A-81C4EF94910A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7CAD197E-2BDC-4F1A-9A74-FDADB223C92C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CAD197E-2BDC-4F1A-9A74-FDADB223C92C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CAD197E-2BDC-4F1A-9A74-FDADB223C92C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CAD197E-2BDC-4F1A-9A74-FDADB223C92C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEDBA64C-56F1-4FE7-B13A-81C4EF94910A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEDBA64C-56F1-4FE7-B13A-81C4EF94910A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEDBA64C-56F1-4FE7-B13A-81C4EF94910A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEDBA64C-56F1-4FE7-B13A-81C4EF94910A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {77E7F0FB-2C13-4B52-A0C9-95135ADC8AC6}
+	EndGlobalSection
+EndGlobal

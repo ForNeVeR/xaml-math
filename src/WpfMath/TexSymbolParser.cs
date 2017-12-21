@@ -38,7 +38,8 @@ namespace WpfMath
         public TexSymbolParser()
         {
             // for 3.5
-            var doc = XDocument.Load(new System.IO.StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)));
+            var assembly = typeof(GlueBox).GetTypeInfo().Assembly;
+            var doc = XDocument.Load(new System.IO.StreamReader(assembly.GetManifestResourceStream(resourceName)));
             this.rootElement = doc.Root;
             
         }

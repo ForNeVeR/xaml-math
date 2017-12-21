@@ -1,15 +1,16 @@
 ﻿using System.Globalization;
 using System.Windows;
-using System.Windows.Media;
+using Avalonia.Media;
+using Avalonia.Skia;
 using WpfMath.Exceptions;
 
 namespace WpfMath
 {
     internal class SystemFont : ITeXFont
     {
-        private readonly FontFamily _fontFamily;
+        private readonly string _fontFamily;
 
-        public SystemFont(double size, FontFamily fontFamily)
+        public SystemFont(double size, string fontFamily)
         {
             _fontFamily = fontFamily;
             Size = size;
@@ -32,13 +33,13 @@ namespace WpfMath
         public CharInfo GetCharInfo(char character, string textStyle, TexStyle style)
         {
             var typeface = GetTypeface();
-            if (!typeface.TryGetGlyphTypeface(out var glyphTypeface))
-            {
-                throw new TypeFaceNotFoundException($"Glyph typeface for font {_fontFamily.BaseUri} was not found");
-            }
+            //if (!typeface.TryGetGlyphTypeface(out var glyphTypeface))
+            //{
+            //    throw new TypeFaceNotFoundException($"Glyph typeface for font {_fontFamily.BaseUri} was not found");
+            //}
 
             var metrics = GetFontMetrics(character, typeface);
-            return new CharInfo(character, glyphTypeface, 1.0, TexFontUtilities.NoFontId, metrics);
+            return new CharInfo(character, typeface, 1.0, TexFontUtilities.NoFontId, metrics);
         }
 
         public CharInfo GetCharInfo(CharFont charFont, TexStyle style) =>
@@ -110,15 +111,26 @@ namespace WpfMath
 
         private TexFontMetrics GetFontMetrics(char c, Typeface typeface)
         {
-            var formattedText = new FormattedText(c.ToString(),
-                CultureInfo.CurrentUICulture,
-                FlowDirection.LeftToRight,
-                typeface,
-                1.0,
-                Brushes.Black);
-            return new TexFontMetrics(formattedText.Width, formattedText.Height, 0.0, formattedText.Width, 1.0);
+
+            var formattedText = new FormattedText()
+            {
+                Text = c.ToString(),
+                Typeface = typeface,
+            };
+            
+//            c.ToString(),
+//                CultureInfo.CurrentUICulture,
+//                FlowDirection.LeftToRight,
+//                typeface,
+//                1.0,
+//                Brushes.Black);
+            return new TexFontMetrics(formattedText.Constraint.Width, formattedText.Constraint.Height, 0.0, formattedText.Constraint.Width, 1.0);
         }
 
-        private Typeface GetTypeface() => new Typeface(_fontFamily, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal); // TODO[F]: Put into lazy field
+        private Typeface GetTypeface()
+        {
+            var face = new Typeface(_fontFamily, 12);
+            return face;
+        }
     }
 }

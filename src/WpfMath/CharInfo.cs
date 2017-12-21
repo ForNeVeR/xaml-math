@@ -1,11 +1,12 @@
-﻿using System.Windows.Media;
+﻿using Avalonia;
+using Avalonia.Media;
 
 namespace WpfMath
 {
     // Single character togeter with information about font and metrics.
     internal class CharInfo
     {
-        public CharInfo(char character, GlyphTypeface font, double size, int fontId, TexFontMetrics metrics)
+        public CharInfo(char character, Typeface font, double size, int fontId, TexFontMetrics metrics)
         {
             this.Character = character;
             this.Font = font;
@@ -20,7 +21,7 @@ namespace WpfMath
             set;
         }
 
-        public GlyphTypeface Font
+        public Typeface Font
         {
             get;
             set;

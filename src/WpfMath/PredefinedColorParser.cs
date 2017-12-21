@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Windows.Media;
+using Avalonia;
+using Avalonia.Media;
 using System.Xml.Linq;
 using System.Reflection;
 
@@ -15,7 +16,8 @@ namespace WpfMath
 
         public PredefinedColorParser()
         {
-            var doc = XDocument.Load(new System.IO.StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)));
+            var assembly = typeof(GlueBox).GetTypeInfo().Assembly;
+            var doc = XDocument.Load(new System.IO.StreamReader(assembly.GetManifestResourceStream(resourceName)));
             this.rootElement = doc.Root;
         }
 

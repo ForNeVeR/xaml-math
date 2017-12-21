@@ -1,0 +1,6 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:pages="clr-namespace:ControlCatalog.Pages;assembly=Example"
+        xmlns:controls="clr-namespace:AvaloniaMath.Controls;assembly=AvaloniaMath"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <controls:FormulaControl Formula="\int" />
+</UserControl>

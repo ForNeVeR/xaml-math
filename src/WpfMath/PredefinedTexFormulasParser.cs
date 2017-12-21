@@ -5,9 +5,8 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Windows;
-using System.Windows.Media;
 using System.Xml.Linq;
+using Avalonia.Media;
 
 namespace WpfMath
 {
@@ -87,7 +86,8 @@ namespace WpfMath
 
         public TexPredefinedFormulaParser()
         {
-            var doc = XDocument.Load(new System.IO.StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)));
+            var assembly = typeof(GlueBox).GetTypeInfo().Assembly;
+            var doc = XDocument.Load(new System.IO.StreamReader(assembly.GetManifestResourceStream(resourceName)));
             this.rootElement = doc.Root;
         }
 
@@ -145,7 +145,7 @@ namespace WpfMath
                 var argValues = GetArgumentValues(this.TempFormulas, args);
 
                 var helper = new TexFormulaHelper(formula);
-                typeof(TexFormulaHelper).GetMethod(methodName, argTypes).Invoke(helper, argValues);
+                typeof(TexFormulaHelper).GetRuntimeMethod(methodName, argTypes).Invoke(helper, argValues);
             }
         }
 
@@ -295,7 +295,7 @@ namespace WpfMath
 
             public override object Parse(string value, string type)
             {
-                return typeof(Color).GetField(value).GetValue(null);
+                return typeof(Color).GetRuntimeField(value).GetValue(null);
             }
         }
 

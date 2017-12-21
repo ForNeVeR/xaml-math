@@ -1,24 +1,48 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
+using Avalonia.Controls;
+using Avalonia.Markup.Xaml;
+using Avalonia;
+using Avalonia.Data;
+using Avalonia.Markup.Xaml.Templates;
+using Avalonia.Media;
+using WpfMath;
 using WpfMath.Exceptions;
 
-namespace WpfMath.Controls
+namespace AvaloniaMath.Controls
 {
     /// <summary>
-    /// Interaction logic for FormulaControl.xaml
+    /// Interaction logic for <see cref="FormulaControl"/> xaml.
     /// </summary>
-    public partial class FormulaControl : UserControl
+    public class FormulaControl : UserControl
     {
         private static TexFormulaParser formulaParser = new TexFormulaParser();
-        private TexFormula texFormula; 
+        private TexFormula texFormula;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FormulaControl"/> class.
+        /// </summary>
+        public FormulaControl()
+        {
+            this.InitializeComponent();
+        }
+
+        /// <summary>
+        /// Initialize the Xaml components.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            AvaloniaXamlLoader.Load(this);
+        }
 
         public string Formula
         {
             get { return (string)GetValue(FormulaProperty); }
-            set { SetValue(FormulaProperty, value); }
+            set
+            {
+                SetValue(FormulaProperty, value);
+                RenderSettingsChanged();
+            }
         }
 
         public double Scale
@@ -29,8 +53,12 @@ namespace WpfMath.Controls
 
         public string SystemTextFontName
         {
-            get => (string)GetValue(SystemTextFontNameProperty);
-            set => SetValue(SystemTextFontNameProperty, value);
+            get { return (string) GetValue(SystemTextFontNameProperty); }
+            set
+            {
+                SetValue(SystemTextFontNameProperty, value);
+                RenderSettingsChanged();
+            }
         }
 
         public bool HasError
@@ -51,63 +79,55 @@ namespace WpfMath.Controls
             set { SetValue(ErrorTemplateProperty, value); }
         }
 
-        public static readonly DependencyProperty FormulaProperty = DependencyProperty.Register(
-            "Formula", typeof(string), typeof(FormulaControl), 
-            new PropertyMetadata("", OnRenderSettingsChanged, CoerceFormula));
+        public static readonly StyledProperty<string> FormulaProperty =
+            AvaloniaProperty.Register<FormulaControl, string>(
+                "Formula", "", false, BindingMode.OneWay, CoerceFormula);
 
-        public static readonly DependencyProperty ScaleProperty = DependencyProperty.Register(
-            "Scale", typeof(double), typeof(FormulaControl),
-            new PropertyMetadata(20d, OnRenderSettingsChanged, CoerceScaleValue));
+        public static readonly StyledProperty<double> ScaleProperty = AvaloniaProperty.Register<FormulaControl,double> (
+            "Scale", 20d,false,BindingMode.Default, CoerceScaleValue);
 
-        public static readonly DependencyProperty SystemTextFontNameProperty = DependencyProperty.Register(
-            nameof(SystemTextFontName), typeof(string), typeof(FormulaControl),
-            new PropertyMetadata("Arial", OnRenderSettingsChanged, CoerceScaleValue));
+        public static readonly AvaloniaProperty<string> SystemTextFontNameProperty =
+            AvaloniaProperty.Register<FormulaControl, string>(
+                nameof(SystemTextFontName), "Arial", false, BindingMode.Default);
 
-        public static readonly DependencyProperty HasErrorProperty = DependencyProperty.Register(
-            "HasError", typeof(bool), typeof(FormulaControl),
-            new PropertyMetadata(false));
+        public static readonly AvaloniaProperty HasErrorProperty = AvaloniaProperty.Register<FormulaControl,bool>("HasError");
 
-        public static readonly DependencyProperty ErrorsProperty = DependencyProperty.Register(
-            "Errors", typeof(ObservableCollection<Exception>), typeof(FormulaControl),
-            new PropertyMetadata(new ObservableCollection<Exception>()));
+        public static readonly AvaloniaProperty ErrorsProperty = AvaloniaProperty.Register<FormulaControl,ObservableCollection<Exception>>(
+            "Errors");
 
-        public static readonly DependencyProperty ErrorTemplateProperty = DependencyProperty.Register(
-            "ErrorTemplate", typeof(ControlTemplate), typeof(FormulaControl),
-            new PropertyMetadata(new ControlTemplate()));
+        public static readonly AvaloniaProperty ErrorTemplateProperty = AvaloniaProperty.Register<FormulaControl,ControlTemplate> 
+        ("ErrorTemplate");
 
-        public FormulaControl()
+        public override void Render(DrawingContext context)
         {
-            InitializeComponent();
-        }
+            base.Render(context);
 
-        private void Render()
-        {
-            // Create formula object from input text.
-            if (texFormula == null)
-            {
-                formulaContainerElement.Visual = null;
-                return;
-            }
-
-            // Render formula to visual.
-            var visual = new DrawingVisual();
             var renderer = texFormula.GetRenderer(TexStyle.Display, Scale, SystemTextFontName);
 
-            using (var drawingContext = visual.RenderOpen())
-            {
-                renderer.Render(drawingContext, 0, 0);
-            }
-            formulaContainerElement.Visual = visual;
+         //   var container = this.FindControl<VisualContainerElement>("formulaContainerElement");
+            renderer.Render(context, 0, 0);
         }
 
-        private static object CoerceFormula(DependencyObject d, object baseValue)
+        private void Render1()
+        {
+            // Create formula object from input text.
+            //if (texFormula == null)
+            //{
+            //    formulaContainerElement.Visual = null;
+            //    return;
+            //}
+
+
+        }
+
+        private static string CoerceFormula(AvaloniaObject d, string baseValue)
         {
             var control = (FormulaControl)d;
-            var formula = (string)baseValue;
+            var formula = baseValue;
             try
             {
                 control.HasError = false;
-                control.Errors.Clear();
+               // control.Errors.Clear();
                 control.texFormula = formulaParser.Parse(formula);
                 return baseValue;
             }
@@ -118,22 +138,21 @@ namespace WpfMath.Controls
             }
         }
 
-        private static object CoerceScaleValue(DependencyObject d, object baseValue)
+        private static double CoerceScaleValue(AvaloniaObject d, double baseValue)
         {
-            var val = (double)baseValue;
+            var val = baseValue;
             return val < 1d ? 1d : val;
         }
 
-        private static void OnRenderSettingsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private void RenderSettingsChanged()
         {
-            var control = (FormulaControl)d;
             try
             {
-                control.Render();
+                Render1();
             }
             catch (TexException exception)
             {
-                control.SetError(exception);
+                SetError(exception);
             }
         }
 

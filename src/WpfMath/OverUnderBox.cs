@@ -1,4 +1,8 @@
-﻿using System.Windows.Media;
+﻿using System;
+using Avalonia;
+using Avalonia.Controls.PanAndZoom;
+using Avalonia.Media;
+using WpfMath.Avalonia;
 
 namespace WpfMath
 {
@@ -64,13 +68,18 @@ namespace WpfMath
                 var centerY = y - this.BaseBox.Height - this.DelimeterBox.Width;
                 var translationX = x + this.DelimeterBox.Width / 2;
                 var translationY = centerY + this.DelimeterBox.Width / 2;
+                var transform = new TranslateTransform(translationX * scale, translationY * scale);
+                var rt = MatrixHelper.Rotation(Math.PI/2); //90 degrees
+                var pt = MatrixHelper.TransformPoint(rt, new Point(translationX * scale, translationY * scale));
 
-                drawingContext.PushTransform(new TranslateTransform(translationX * scale, translationY * scale));
-                drawingContext.PushTransform(new RotateTransform(90));
-                this.DelimeterBox.DrawWithGuidelines(drawingContext, scale, -this.DelimeterBox.Width / 2,
-                    -this.DelimeterBox.Depth + this.DelimeterBox.Width / 2);
-                drawingContext.Pop();
-                drawingContext.Pop();
+                //todo: восстанови, что тут должно куда вращаться
+                //хоть в исходниках впфных ковыряй, хоть что
+
+                using (var d = drawingContext.PushPreTransform(rt))
+                {
+                    this.DelimeterBox.DrawWithGuidelines(drawingContext, scale, -this.DelimeterBox.Width / 2,
+                        -this.DelimeterBox.Depth + this.DelimeterBox.Width / 2);
+                }
 
                 // Draw script box as superscript.
                 if (this.ScriptBox != null)
@@ -83,12 +92,17 @@ namespace WpfMath
                 var translationX = x + this.DelimeterBox.Width / 2;
                 var translationY = centerY - this.DelimeterBox.Width / 2;
 
-                drawingContext.PushTransform(new TranslateTransform(translationX * scale, translationY * scale));
-                drawingContext.PushTransform(new RotateTransform(90));
-                this.DelimeterBox.DrawWithGuidelines(drawingContext, scale, -this.DelimeterBox.Width / 2,
-                    -this.DelimeterBox.Depth + this.DelimeterBox.Width / 2);
-                drawingContext.Pop();
-                drawingContext.Pop();
+                var rt = MatrixHelper.Rotation(Math.PI / 2); //90 degrees
+                var pt = MatrixHelper.TransformPoint(rt, new Point(translationX * scale, translationY * scale));
+
+                //todo: восстанови, что тут должно куда вращаться
+                //хоть в исходниках впфных ковыряй, хоть что
+
+                using (var d = drawingContext.PushPreTransform(rt))
+                {
+                    this.DelimeterBox.DrawWithGuidelines(drawingContext, scale, -this.DelimeterBox.Width / 2,
+                        -this.DelimeterBox.Depth + this.DelimeterBox.Width / 2);
+                }
 
                 // Draw script box as subscript.
                 ScriptBox?.DrawWithGuidelines(drawingContext, scale, x, centerY + Kern + ScriptBox.Height);
@@ -98,40 +112,44 @@ namespace WpfMath
 
         public override void RenderGeometry(GeometryGroup geometry, double scale, double x, double y)
         {
-            GeometryGroup group = new GeometryGroup();
-            if (this.Over)
-            {
-                // Draw delimeter and script boxes over base box.
-                var centerY = y - this.BaseBox.Height - this.DelimeterBox.Width;
-                var translationX = x + this.DelimeterBox.Width / 2;
-                var translationY = centerY + this.DelimeterBox.Width / 2;
+            //just like code above
 
-                group.Transform.Value.Translate(translationX * scale, translationY * scale);
-                group.Transform.Value.Rotate(90);
+            //GeometryGroup group = new GeometryGroup();
+            //if (this.Over)
+            //{
+            //    // Draw delimeter and script boxes over base box.
+            //    var centerY = y - this.BaseBox.Height - this.DelimeterBox.Width;
+            //    var translationX = x + this.DelimeterBox.Width / 2;
+            //    var translationY = centerY + this.DelimeterBox.Width / 2;
 
-                this.DelimeterBox.RenderGeometry(group, scale, -this.DelimeterBox.Width / 2,
-                    -this.DelimeterBox.Depth + this.DelimeterBox.Width / 2);
+            //    var transform = new TranslateTransform(translationX * scale, translationY * scale);
+            //    var matrix = group.Transform
+            //    group.Transform.Value.Translate(translationX * scale, translationY * scale);
+            //    group.Transform.Value.Rotate(90);
 
-                // Draw script box as superscript.
-                if (this.ScriptBox != null)
-                    this.ScriptBox.RenderGeometry(geometry, scale, x, centerY - this.Kern - this.ScriptBox.Depth);
-            }
-            else
-            {
-                // Draw delimeter and script boxes under base box.
-                var centerY = y + this.BaseBox.Depth + this.DelimeterBox.Width;
-                var translationX = x + this.DelimeterBox.Width / 2;
-                var translationY = centerY - this.DelimeterBox.Width / 2;
+            //    this.DelimeterBox.RenderGeometry(group, scale, -this.DelimeterBox.Width / 2,
+            //        -this.DelimeterBox.Depth + this.DelimeterBox.Width / 2);
 
-                group.Transform.Value.Translate(translationX * scale, translationY * scale);
-                group.Transform.Value.Rotate(90);
-                this.DelimeterBox.RenderGeometry(group, scale, -this.DelimeterBox.Width / 2,
-                    -this.DelimeterBox.Depth + this.DelimeterBox.Width / 2);
+            //    // Draw script box as superscript.
+            //    if (this.ScriptBox != null)
+            //        this.ScriptBox.RenderGeometry(geometry, scale, x, centerY - this.Kern - this.ScriptBox.Depth);
+            //}
+            //else
+            //{
+            //    // Draw delimeter and script boxes under base box.
+            //    var centerY = y + this.BaseBox.Depth + this.DelimeterBox.Width;
+            //    var translationX = x + this.DelimeterBox.Width / 2;
+            //    var translationY = centerY - this.DelimeterBox.Width / 2;
 
-                // Draw script box as subscript.
-                if (this.ScriptBox != null)
-                    this.ScriptBox.RenderGeometry(geometry, scale, x, centerY + this.Kern + this.ScriptBox.Height);
-            }
+            //    group.Transform.Value.Translate(translationX * scale, translationY * scale);
+            //    group.Transform.Value.Rotate(90);
+            //    this.DelimeterBox.RenderGeometry(group, scale, -this.DelimeterBox.Width / 2,
+            //        -this.DelimeterBox.Depth + this.DelimeterBox.Width / 2);
+
+            //    // Draw script box as subscript.
+            //    if (this.ScriptBox != null)
+            //        this.ScriptBox.RenderGeometry(geometry, scale, x, centerY + this.Kern + this.ScriptBox.Height);
+            //}
         }
 
         public override int GetLastFontId()

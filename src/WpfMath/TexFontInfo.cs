@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Media;
+using Avalonia.Media;
 using WpfMath.Exceptions;
 
 namespace WpfMath
@@ -16,7 +16,7 @@ namespace WpfMath
         private readonly CharFont[] nextLarger;
         private readonly int[][] extensions;
 
-        public TexFontInfo(int fontId, GlyphTypeface font, double xHeight, double space, double quad)
+        public TexFontInfo(int fontId, Typeface font, double xHeight, double space, double quad)
         {
             this.metrics = new double[charCodesCount][];
             this.ligatures = new Dictionary<Tuple<char, char>, char>();
@@ -38,7 +38,7 @@ namespace WpfMath
             private set;
         }
 
-        public GlyphTypeface Font
+        public Typeface Font
         {
             get;
             private set;

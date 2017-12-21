@@ -1,5 +1,7 @@
 ﻿using System;
-using System.Windows.Media;
+using Avalonia;
+using Avalonia.Media;
+using WpfMath.Avalonia;
 
 namespace WpfMath
 {
@@ -70,12 +72,14 @@ namespace WpfMath
 
         public override void RenderGeometry(GeometryGroup geometry, double scale, double x, double y)
         {
-            var curX = x;
-            foreach (var box in this.Children)
-            {
-                box.RenderGeometry(geometry, scale, curX, y + box.Shift);
-                curX += box.Width;
-            }
+
+            //todo: movi recover all RenderGeometry overridables
+            //var curX = x;
+            //foreach (var box in this.Children)
+            //{
+            //    box.RenderGeometry(geometry, scale, curX, y + box.Shift);
+            //    curX += box.Width;
+            //}
         }
 
         public override int GetLastFontId()

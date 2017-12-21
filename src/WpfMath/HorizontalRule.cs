@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
-using System.Windows.Media;
+using Avalonia;
+using Avalonia.Media;
+using WpfMath.Avalonia;
 
 namespace WpfMath
 {
@@ -21,7 +23,10 @@ namespace WpfMath
 
         public override void Draw(DrawingContext drawingContext, double scale, double x, double y)
         {
-            drawingContext.DrawRectangle(this.Foreground ?? Brushes.Black, null, new Rect(
+            var brush = (IBrush) this.Foreground ?? Brushes.Black;
+            var pen = new Pen(brush);
+            
+            drawingContext.DrawRectangle(pen, new Rect(
                 x * scale, (y - this.Height) * scale, this.Width * scale, this.Height * scale));
         }
 

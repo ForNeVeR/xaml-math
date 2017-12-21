@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Windows;
 using System.Reflection;
-using System.Windows.Media;
+using Avalonia;
+using Avalonia.Media;
 using WpfMath.Exceptions;
 
 namespace WpfMath
@@ -66,12 +66,12 @@ namespace WpfMath
             //
             // If start application isn't WPF, pack isn't registered by defaultTexFontParser
             //
-            if (Application.ResourceAssembly == null)
-            {
-                Application.ResourceAssembly = Assembly.GetExecutingAssembly();
-                if (!UriParser.IsKnownScheme("pack"))
-                    UriParser.Register(new GenericUriParser(GenericUriParserOptions.GenericAuthority), "pack", -1);
-            }
+            //if (Application.ResourceAssembly == null)
+            //{
+            //    Application.ResourceAssembly = Assembly.GetExecutingAssembly();
+            //    if (!UriParser.IsKnownScheme("pack"))
+            //        UriParser.Register(new GenericUriParser(GenericUriParserOptions.GenericAuthority), "pack", -1);
+            //}
 
             commands = new HashSet<string>
             {

@@ -4,7 +4,8 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Text;
 using System.Windows;
-using System.Windows.Media;
+using Avalonia;
+using Avalonia.Media;
 using System.Xml.Linq;
 
 namespace WpfMath
@@ -50,7 +51,8 @@ namespace WpfMath
 
         public DefaultTexFontParser()
         {
-            var doc = XDocument.Load(new System.IO.StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)));
+            var assembly = typeof(GlueBox).GetTypeInfo().Assembly;
+            var doc = XDocument.Load(new System.IO.StreamReader(assembly.GetManifestResourceStream(resourceName)));
             this.rootElement = doc.Root;
             ParseTextStyleMappings();
         }
@@ -218,11 +220,22 @@ namespace WpfMath
             }
         }
 
-        private GlyphTypeface CreateFont(string name)
+        private Typeface CreateFont(string name)
         {
             // Load font from embedded resource.
-            var fontUri = new Uri(string.Format("pack://application:,,,/WpfMath;component/{0}{1}", fontsDirectory, name));
-            return new GlyphTypeface(fontUri);
+            //   var fontUri = new Uri(string.Format("pack://application:,,,/WpfMath;component/{0}{1}", fontsDirectory, name));
+            //todo:recover
+            //SKTypeface typeface;
+            //using (var asset = Assets.Open("Fonts/CONSOLA.TTF"))
+            //{
+            //    var fontStream = new MemoryStream();
+            //    asset.CopyTo(fontStream);
+            //    fontStream.Flush();
+            //    fontStream.Position = 0;
+            //    typeface = SKTypeface.FromStream(fontStream);
+            //}
+
+            return new Typeface("arial", 12); //;fontUri);
         }
 
         public class ExtensionParser : ICharChildParser

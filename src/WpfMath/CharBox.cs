@@ -1,5 +1,8 @@
 ﻿using System.Windows;
-using System.Windows.Media;
+using Avalonia;
+using Avalonia.Media;
+using WpfMath.Avalonia;
+using AM = Avalonia.Media; 
 
 namespace WpfMath
 {
@@ -22,31 +25,67 @@ namespace WpfMath
             private set;
         }
 
-        private GlyphRun GetGlyphRun(double scale, double x, double y)
+        private void GetGlyphRun(DrawingContext gfx, IBrush brush, double scale, double x, double y)
         {
-            var typeface = this.Character.Font;
-            var glyphIndex = typeface.CharacterToGlyphMap[this.Character.Character];
-            var glyphRun = new GlyphRun(typeface, 0, false, this.Character.Size * scale,
-                new ushort[] { glyphIndex }, new Point(x * scale, y * scale),
-                new double[] { typeface.AdvanceWidths[glyphIndex] }, null, null, null, null, null, null);
-            return glyphRun;
+            var fontStyle = FontStyle.Normal;
+            var fontWeight = FontWeight.Normal;
 
+            if (Character.Font.Style.HasFlag(FontStyle.Italic))
+            {
+                fontStyle |= FontStyle.Italic;
+            }
+
+            if (Character.Font.Weight.HasFlag(FontWeight.Bold))
+            {
+                fontWeight |= FontWeight.Bold;
+            }
+
+            // TODO: Implement font decoration after Avalonia adds support.
+            /*
+            Underline;
+            Strikethrough;
+            */
+
+            if (Character.Font.FontSize >= 0.0)
+            {
+                var tf = new Typeface(
+                    Character.Font.FontFamilyName,
+                    Character.Font.FontSize * scale,
+                    fontStyle,
+                    fontWeight);
+
+                var ft = new FormattedText
+                {
+                    Typeface = tf,
+                    Text = Character.Character.ToString(),
+                    TextAlignment = TextAlignment.Left,
+                    Wrapping = TextWrapping.NoWrap
+                };
+
+                var origin = new Point(x, y);
+
+                gfx.DrawText(brush, origin, ft);
+            }
         }
 
         public override void Draw(DrawingContext drawingContext, double scale, double x, double y)
         {
-            GlyphRun glyphRun = GetGlyphRun(scale, x, y);
+            var brush = (IBrush) this.Foreground ?? Brushes.Black;
+            //GlyphRun glyphRun = 
+                GetGlyphRun(drawingContext, brush, scale, x, y);
 
             // Draw character at given position.
-            drawingContext.DrawGlyphRun(this.Foreground ?? Brushes.Black, glyphRun);
+            //drawingContext.DrawGlyphRun(, glyphRun);
         }
 
         public override void RenderGeometry(GeometryGroup geometry, double scale, double x, double y)
         {
+            /* movi - restore this later
             GlyphRun glyphRun = GetGlyphRun(scale, x, y);
 
             GeometryGroup geoGroup = glyphRun.BuildGeometry() as GeometryGroup;
             geometry.Children.Add(geoGroup);
+            */
         }
 
         public override int GetLastFontId()

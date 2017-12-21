@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Windows.Media;
+using Avalonia.Media;
 
 namespace WpfMath
 {
@@ -111,7 +111,8 @@ namespace WpfMath
 
         private SystemFont GetSystemFont(string fontName, double size)
         {
-            var fontFamily = Fonts.SystemFontFamilies.First(ff => ff.ToString() == fontName);
+        //    var fontFamily = Fonts.SystemFontFamilies.First(ff => ff.ToString() == fontName);
+            var fontFamily = "calibri";
             return new SystemFont(size, fontFamily);
         }
     }

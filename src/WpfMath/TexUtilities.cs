@@ -2,7 +2,7 @@
 {
     internal static class TexUtilities
     {
-        public static readonly string ResourcesDataDirectory = "WpfMath.Data.";
+        public static readonly string ResourcesDataDirectory = "AvaloniaMath.Data.";
 
         public const double FloatPrecision = 0.0000001;
 

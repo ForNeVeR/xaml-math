@@ -1,4 +1,5 @@
-﻿using System.Windows.Media;
+﻿using Avalonia;
+using Avalonia.Media;
 
 namespace WpfMath
 {
