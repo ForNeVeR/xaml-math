@@ -1,0 +1,643 @@
+<?xml version='1.0'?>
+<!--
+  PredefinedTexFormulas.xml
+  =========================================================================
+  This file was originally a part of the JMathTeX Library - http://jmathtex.sourceforge.net
+
+  Copyright (C) 2004-2007 Universiteit Gent
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or (at
+  your option) any later version.
+
+  This program is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  General Public License for more details.
+
+  A copy of the GNU General Public License can be found in the file
+  LICENSE.txt provided with the source distribution of this program (see
+  the META-INF directory in the source jar). This license can also be
+  found on the GNU website at http://www.gnu.org/licenses/gpl.html.
+
+  If you did not receive a copy of the GNU General Public License along
+  with this program, contact the lead developer, or write to the Free
+  Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  02110-1301, USA.
+
+  Authors of JMathTeX library have granted permission to redistribute the XML
+  files under the MIT license.
+-->
+
+<PredefinedFormulas enabled="true">
+
+  <!-- White space and their short form notation -->
+
+  <Formula name="thinspace" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddStrut" formula="f">
+      <Argument type="Unit" value="Mu" />
+      <Argument type="double" value="3" />
+      <Argument type="double" value="0" />
+      <Argument type="double" value="0" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+  <Formula name="," enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\thinspace" />
+    </CreateFormula>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="medspace" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddStrut" formula="f">
+      <Argument type="Unit" value="Mu" />
+      <Argument type="double" value="4" />
+      <Argument type="double" value="0" />
+      <Argument type="double" value="0" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+  <Formula name=":" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\medspace" />
+    </CreateFormula>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="thickspace" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddStrut" formula="f">
+      <Argument type="Unit" value="Mu" />
+      <Argument type="double" value="5" />
+      <Argument type="double" value="0" />
+      <Argument type="double" value="0" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+  <Formula name=";" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\thickspace" />
+    </CreateFormula>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="negthinspace" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddStrut" formula="f">
+      <Argument type="Unit" value="Mu" />
+      <Argument type="double" value="-3" />
+      <Argument type="double" value="0" />
+      <Argument type="double" value="0" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+  <Formula name="!" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\negthinspace" />
+    </CreateFormula>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="negmedspace" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddStrut" formula="f">
+      <Argument type="Unit" value="Mu" />
+      <Argument type="double" value="-4" />
+      <Argument type="double" value="0" />
+      <Argument type="double" value="0" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="negthickspace" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddStrut" formula="f">
+      <Argument type="Unit" value="Mu" />
+      <Argument type="double" value="-5" />
+      <Argument type="double" value="0" />
+      <Argument type="double" value="0" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <!-- Composed TeX symbols -->
+
+  <Formula name="ne" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\not\equals" />
+    </CreateFormula>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="neq" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\not\equals" />
+    </CreateFormula>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="hbar" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\bar{}" />
+    </CreateFormula>
+    <MethodInvocation name="AddStrut" formula="f">
+      <Argument type="Unit" value="Mu" />
+      <Argument type="double" value="-9" />
+      <Argument type="double" value="0" />
+      <Argument type="double" value="0" />
+    </MethodInvocation>
+    <MethodInvocation name="Add" formula="f">
+      <Argument type="string" value="h" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="surd" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\surdsign" />
+    </CreateFormula>
+    <MethodInvocation name="CenterOnAxis" formula="f" />
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="ldots" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\ldotp\ldotp\ldotp" />
+    </CreateFormula>
+    <MethodInvocation name="SetFixedTypes" formula="f">
+      <Argument type="AtomType" value="Inner" />
+      <Argument type="AtomType" value="Inner" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="cdots" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\cdotp\cdotp\cdotp" />
+    </CreateFormula>
+    <MethodInvocation name="SetFixedTypes" formula="f">
+      <Argument type="AtomType" value="Inner" />
+      <Argument type="AtomType" value="Inner" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="bowtie" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\triangleright" />
+    </CreateFormula>
+    <MethodInvocation name="SetFixedTypes" formula="f">
+      <Argument type="AtomType" value="Relation" />
+      <Argument type="AtomType" value="Ordinary" />
+    </MethodInvocation>
+    <CreateFormula name="g">
+      <Argument type="string" value="\triangleleft" />
+    </CreateFormula>
+    <MethodInvocation name="SetFixedTypes" formula="g">
+      <Argument type="AtomType" value="Ordinary" />
+      <Argument type="AtomType" value="Relation" />
+    </MethodInvocation>
+    <MethodInvocation name="AddStrut" formula="f">
+      <Argument type="Unit" value="Mu" />
+      <Argument type="double" value="-1.8" />
+      <Argument type="double" value="0" />
+      <Argument type="double" value="0" />
+    </MethodInvocation>
+    <MethodInvocation name="Add" formula="f">
+      <Argument type="Formula" value="g" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="models" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\vert" />
+    </CreateFormula>
+    <MethodInvocation name="SetFixedTypes" formula="f">
+      <Argument type="AtomType" value="Relation" />
+      <Argument type="AtomType" value="Ordinary" />
+    </MethodInvocation>
+    <CreateFormula name="g">
+      <Argument type="string" value="\equals" />
+    </CreateFormula>
+    <MethodInvocation name="SetFixedTypes" formula="g">
+      <Argument type="AtomType" value="Ordinary" />
+      <Argument type="AtomType" value="Relation" />
+    </MethodInvocation>
+    <MethodInvocation name="AddStrut" formula="f">
+      <Argument type="Unit" value="Mu" />
+      <Argument type="double" value="-3.5" />
+      <Argument type="double" value="0" />
+      <Argument type="double" value="0" />
+    </MethodInvocation>
+    <MethodInvocation name="Add" formula="f">
+      <Argument type="Formula" value="g" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="doteq" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\equals" />
+    </CreateFormula>
+    <MethodInvocation name="PutOver" formula="f">
+      <Argument type="string" value="\ldotp" />
+      <Argument type="Unit" value="Mu" />
+      <Argument type="double" value="2" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <MethodInvocation name="SetFixedTypes" formula="f">
+      <Argument type="AtomType" value="Relation" />
+      <Argument type="AtomType" value="Relation" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="cong" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\equals" />
+    </CreateFormula>
+    <MethodInvocation name="PutOver" formula="f">
+      <Argument type="string" value="\sim" />
+      <Argument type="Unit" value="Mu" />
+      <Argument type="double" value="1" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <MethodInvocation name="SetFixedTypes" formula="f">
+      <Argument type="AtomType" value="Relation" />
+      <Argument type="AtomType" value="Relation" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <!-- Trigonometric Functions -->
+
+  <Formula name="cos" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{cos}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="sin" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{sin}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="tan" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{tan}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="sec" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{sec}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="csc" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{csc}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="cot" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{cot}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="arccos" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{arccos}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="arcsin" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{arcsin}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="arctan" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{arctan}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="cosh" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{cosh}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="sinh" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{sinh}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="tanh" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{tanh}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="coth" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{coth}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <!-- Other Functions -->
+
+  <Formula name="lim" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{lim}" />
+      <Argument type="bool" value="true" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="log" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{log}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="ln" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{ln}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="exp" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{exp}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="arg" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{arg}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="deg" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{deg}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="det" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{det}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="dim" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{dim}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="gcd" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{gcd}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="hom" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{hom}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="inf" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{inf}" />
+      <Argument type="bool" value="true" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="ker" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{ker}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="lg" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{lg}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="liminf" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{lim\,inf}" />
+      <Argument type="bool" value="true" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="limsup" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{lim\,sup}" />
+      <Argument type="bool" value="true" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="max" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{max}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="min" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{min}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="Pr" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{Pr}" />
+      <Argument type="bool" value="true" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+ <Formula name="sup" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{sup}" />
+      <Argument type="bool" value="true" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <!-- Localized Trigonometric Functions (Ru) -->
+
+  <Formula name="tg" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{tg}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="cosec" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{cosec}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="ctg" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{ctg}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="arctg" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{arctg}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="ch" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{ch}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="sh" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{sh}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="th" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{th}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <Formula name="cth" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{cth}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+</PredefinedFormulas>

@@ -1,0 +1,6 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:example="clr-namespace:AvaloniaMath.Example"
+        MinWidth="500" MinHeight="300"
+        Title="Avalonia Math Example">
+       <example:MainView />
+</Window>

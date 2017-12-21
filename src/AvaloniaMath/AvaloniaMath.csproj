@@ -1,0 +1,70 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+      <TargetFramework>netstandard2.0</TargetFramework>
+      <EnableDefaultCompileItems>False</EnableDefaultCompileItems>
+      <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+      <DebugSymbols>true</DebugSymbols>
+      <DebugType>full</DebugType>
+      <Optimize>false</Optimize>
+      <OutputPath>bin\Debug\</OutputPath>
+      <DefineConstants>DEBUG;TRACE</DefineConstants>
+      <ErrorReport>prompt</ErrorReport>
+      <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+      <DebugType>pdbonly</DebugType>
+      <Optimize>true</Optimize>
+      <OutputPath>bin\Release\</OutputPath>
+      <DefineConstants>TRACE</DefineConstants>
+      <ErrorReport>prompt</ErrorReport>
+      <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+  <Import Project=".\build\Default.targets" />
+  <Import Project=".\build\NETCore.props" />
+  <Import Project=".\build\NuGet.props" />
+  <Import Project=".\build\Base.props" />
+  <Import Project=".\build\Autofac.props" />
+  <Import Project=".\build\Rx.props" />
+  <Import Project=".\build\Avalonia.props" />
+  <Import Project=".\build\Avalonia.Desktop.props" />
+  <Import Project=".\build\SkiaSharp.props" />
+  <Import Project=".\build\SharpDX.props" />
+
+  <ItemGroup>
+    <Compile Include="**\*.cs" Exclude="obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="**\*.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="**\*.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Data\DefaultTexFont.xml" />
+    <None Remove="Data\GlueSettings.xml" />
+    <None Remove="Data\PredefinedColors.xml" />
+    <None Remove="Data\PredefinedTexFormulas.xml" />
+    <None Remove="Data\TexFormulaSettings.xml" />
+    <None Remove="Data\TexSymbols.xml" />
+    <None Remove="Fonts\cmex10.ttf" />
+    <None Remove="Fonts\cmmi10.ttf" />
+    <None Remove="Fonts\cmr10.ttf" />
+    <None Remove="Fonts\cmsy10.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\DefaultTexFont.xml" />
+    <EmbeddedResource Include="Data\GlueSettings.xml" />
+    <EmbeddedResource Include="Data\PredefinedColors.xml" />
+    <EmbeddedResource Include="Data\PredefinedTexFormulas.xml" />
+    <EmbeddedResource Include="Data\TexFormulaSettings.xml" />
+    <EmbeddedResource Include="Data\TexSymbols.xml" />
+    <EmbeddedResource Include="Fonts\cmex10.ttf" />
+    <EmbeddedResource Include="Fonts\cmmi10.ttf" />
+    <EmbeddedResource Include="Fonts\cmr10.ttf" />
+    <EmbeddedResource Include="Fonts\cmsy10.ttf" />
+  </ItemGroup>
+</Project>
