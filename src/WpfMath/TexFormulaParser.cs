@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -366,9 +366,10 @@ namespace WpfMath
                             rightBracketChar), formula.TextStyle);
                         SkipWhiteSpace(value, ref position);
                     }
-
-                    return new Radical(Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle)
-                        .RootAtom, degreeFormula == null ? null : degreeFormula.RootAtom);
+                    TexFormula sqrtFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
+                    if (sqrtFormula.RootAtom == null)
+                        throw new TexParseException("The radicand of a square root can't be empty!");
+                    return new Radical(sqrtFormula.RootAtom, degreeFormula == null ? null : degreeFormula.RootAtom);
                 case "color":
                     {
                         var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
