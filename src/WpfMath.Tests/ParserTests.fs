@@ -1,5 +1,7 @@
 ﻿module WpfMath.Tests.ParserTests
 
+open System
+
 open DeepEqual.Syntax
 open Xunit
 
@@ -14,6 +16,10 @@ let assertParseResult formula expected =
         .ExposeInternalsOf<TexFormula>()
         .ExposeInternalsOf<FencedAtom>()
         .Assert()
+
+let assertParseThrows<'ex when 'ex :> exn> formula =
+    let parser = TexFormulaParser()
+    Assert.Throws<'ex>(Func<obj>(fun () -> upcast parser.Parse(formula)))
 
 let textStyle = "text"
 let rmStyle = "mathrm"
@@ -178,3 +184,7 @@ let ``Delimiter with scripts should be parsed properly`` () =
     assertParseResult
     <| @"\left(2+2\right)_a^b"
     <| (formula <| scripts (fenced (openBrace "lbrack") ``2+2`` (closeBrace "rbrack")) (char 'a') (char 'b'))
+
+[<Fact>]
+let ``\sqrt{} should throw a TexParseException``() =
+    assertParseThrows<TexParseException> @"\sqrt{}"

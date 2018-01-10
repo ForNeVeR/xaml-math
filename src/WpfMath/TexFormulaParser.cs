@@ -366,10 +366,17 @@ namespace WpfMath
                             rightBracketChar), formula.TextStyle);
                         SkipWhiteSpace(value, ref position);
                     }
-                    TexFormula sqrtFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
+
+                    var sqrtFormula = Parse(
+                        ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar),
+                        formula.TextStyle);
+
                     if (sqrtFormula.RootAtom == null)
+                    {
                         throw new TexParseException("The radicand of a square root can't be empty!");
-                    return new Radical(sqrtFormula.RootAtom, degreeFormula == null ? null : degreeFormula.RootAtom);
+                    }
+
+                    return new Radical(sqrtFormula.RootAtom, degreeFormula?.RootAtom);
                 case "color":
                     {
                         var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
