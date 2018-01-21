@@ -1,4 +1,4 @@
-﻿module WpfMath.Tests.ParserTests
+module WpfMath.Tests.ParserTests
 
 open System
 
@@ -188,3 +188,7 @@ let ``Delimiter with scripts should be parsed properly`` () =
 [<Fact>]
 let ``\sqrt{} should throw a TexParseException``() =
     assertParseThrows<TexParseException> @"\sqrt{}"
+
+[<Fact>]
+let ``"\sum_" should throw a TexParseException``() =
+    assertParseThrows<TexParseException> @"\sum_ "

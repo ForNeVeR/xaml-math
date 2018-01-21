@@ -271,10 +271,10 @@ namespace WpfMath
 
         private TexFormula ReadScript(TexFormula formula, string value, ref int position)
         {
+            SkipWhiteSpace(value, ref position);
             if (position == value.Length)
                 throw new TexParseException("illegal end, missing script!");
 
-            SkipWhiteSpace(value, ref position);
             var ch = value[position];
             if (ch == leftGroupChar)
             {
