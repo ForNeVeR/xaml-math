@@ -141,7 +141,7 @@ namespace WpfMath
 
         public double[] GetMetrics(char character)
         {
-            if (metrics.Length <= character)
+            if (metrics.Length <= character || metrics[character] == null)
             {
                 throw new TexCharacterMappingNotFoundException(
                     $"Cannot determine metrics for '{character}' character in font {FontId}");
