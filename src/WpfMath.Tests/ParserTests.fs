@@ -190,5 +190,5 @@ let ``\sqrt{} should throw a TexParseException``() =
     assertParseThrows<TexParseException> @"\sqrt{}"
 
 [<Fact>]
-let ``"\sum_" should throw a TexParseException``() =
+let ``"\sum_ " should throw a TexParseException``() =
     assertParseThrows<TexParseException> @"\sum_ "
