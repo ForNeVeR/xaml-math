@@ -1,4 +1,4 @@
-module WpfMath.Tests.ParserTests
+﻿module WpfMath.Tests.ParserTests
 
 open System
 
