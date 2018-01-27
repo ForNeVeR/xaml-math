@@ -18,6 +18,11 @@ For a more detailed sample, check out the [example project][example]. It shows t
 
 ![Screenshot of example project](docs/example-screenshot.png)
 
+Documentation
+-------------
+
+- [How to prepare `DefaultTexFont.xml` from the font file][docs-prepare-font]
+
 History
 -------
 
@@ -30,6 +35,7 @@ The project code is licensed under the terms of [MIT license][license]. The orig
 
 The [fonts][] `cmex10.ttf`, `cmmi10.ttf`, `cmr10.ttf`, and `cmsy10.ttf` and `cmtt10.ttf` are under the [Knuth License][knuth-license].
 
+[docs-prepare-font]: docs/prepare-font.md
 [example]: WpfMath.Example/
 [fonts]: src/WpfMath/Fonts/
 [gpl]: docs/JMathTeX-license.txt
