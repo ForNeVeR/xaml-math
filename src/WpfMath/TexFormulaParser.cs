@@ -140,7 +140,7 @@ namespace WpfMath
             return ch == ' ' || ch == '\t' || ch == '\n' || ch == '\r';
         }
 
-        private static bool ShouldSkipWhiteSpace(string style) => style != "text";
+        private static bool ShouldSkipWhiteSpace(string style) => style != TexUtilities.TextStyleName;
 
         public TexFormula Parse(string value, string textStyle = null)
         {
@@ -232,7 +232,7 @@ namespace WpfMath
                         formula,
                         value,
                         ref position,
-                        ConvertCharacter(formula, value, ref position, ch),
+                        ConvertCharacter(formula, ref position, ch),
                         skipWhiteSpace);
                     formula.Add(scriptsAtom);
                 }
@@ -604,15 +604,15 @@ namespace WpfMath
             }
         }
 
-        private Atom ConvertCharacter(TexFormula formula, string value, ref int position, char character)
+        private Atom ConvertCharacter(TexFormula formula, ref int position, char character)
         {
             position++;
-            if (IsSymbol(character))
+            if (IsSymbol(character) && formula.TextStyle != TexUtilities.TextStyleName)
             {
                 // Character is symbol.
                 var symbolName = symbols.ElementAtOrDefault(character);
                 if (string.IsNullOrEmpty(symbolName))
-                    throw new TexParseException("Unknown character : '" + character.ToString() + "'");
+                    throw new TexParseException($"Unknown character : '{character}'");
 
                 try
                 {
@@ -626,9 +626,8 @@ namespace WpfMath
                             + (string)symbolName + "'!", e);
                 }
             }
-            else
+            else // Character is alpha-numeric or should be rendered as text.
             {
-                // Character is alpha-numeric.
                 return new CharAtom(character, formula.TextStyle);
             }
         }

@@ -185,6 +185,11 @@ let ``Delimiter with scripts should be parsed properly`` () =
     <| @"\left(2+2\right)_a^b"
     <| (formula <| scripts (fenced (openBrace "lbrack") ``2+2`` (closeBrace "rbrack")) (char 'a') (char 'b'))
 
+let ``\text doesn't create any SymbolAtoms``() =
+    assertParseResult
+    <| @"\text{2+2}"
+    <| (formula <| row [char '2'; char '+'; char '2'])
+
 [<Fact>]
 let ``\sqrt{} should throw a TexParseException``() =
     assertParseThrows<TexParseException> @"\sqrt{}"
