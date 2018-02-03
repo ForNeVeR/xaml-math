@@ -50,6 +50,8 @@ namespace WpfMath
             this.Size = size;
         }
 
+        public bool SupportsMetrics => true;
+
         public double Size
         {
             get;

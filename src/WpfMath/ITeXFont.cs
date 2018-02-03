@@ -1,13 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace WpfMath
 {
     // Font that specifies how TexFormula objects are rendered.
     internal interface ITeXFont
     {
+        /// <summary>Whether the font supports <see cref="CharInfo"/>.</summary>
+        bool SupportsMetrics { get; }
+
         double Size { get; }
 
         ITeXFont DeriveFont(double newSize);

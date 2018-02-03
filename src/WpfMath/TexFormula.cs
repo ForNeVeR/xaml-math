@@ -109,7 +109,7 @@ namespace WpfMath
                 return this.RootAtom.CreateBox(environment);
         }
 
-        private SystemFont GetSystemFont(string fontName, double size)
+        internal static SystemFont GetSystemFont(string fontName, double size)
         {
             var fontFamily = Fonts.SystemFontFamilies.First(ff => ff.ToString() == fontName);
             return new SystemFont(size, fontFamily);

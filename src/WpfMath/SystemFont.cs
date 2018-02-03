@@ -15,6 +15,8 @@ namespace WpfMath
             Size = size;
         }
 
+        public bool SupportsMetrics => false;
+
         public double Size { get; }
 
         public ITeXFont DeriveFont(double newSize) => throw MethodNotSupported(nameof(DeriveFont));
@@ -23,7 +25,7 @@ namespace WpfMath
 
         public CharFont GetLigature(CharFont leftChar, CharFont rightChar) => null;
 
-        public CharInfo GetNextLargerCharInfo(CharInfo charInfo, TexStyle style) => 
+        public CharInfo GetNextLargerCharInfo(CharInfo charInfo, TexStyle style) =>
             throw MethodNotSupported(nameof(GetNextLargerCharInfo));
 
         public CharInfo GetDefaultCharInfo(char character, TexStyle style) =>

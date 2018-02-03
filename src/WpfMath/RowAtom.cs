@@ -122,19 +122,22 @@ namespace WpfMath
                     {
                         var font = cs.GetStyledFont(environment);
                         curAtom.IsTextSymbol = true;
-                        var leftAtomCharFont = curAtom.GetCharFont(font);
-                        var rightAtomCharFont = cs.GetCharFont(font);
-                        var ligatureCharFont = font.GetLigature(leftAtomCharFont, rightAtomCharFont);
-                        if (ligatureCharFont == null)
+                        if (font.SupportsMetrics)
                         {
-                            // Atom should be kerned.
-                            kern = font.GetKern(leftAtomCharFont, rightAtomCharFont, environment.Style);
-                        }
-                        else
-                        {
-                            // Atom is part of ligature.
-                            curAtom.SetLigature(new FixedCharAtom(ligatureCharFont));
-                            i++;
+                            var leftAtomCharFont = curAtom.GetCharFont(font);
+                            var rightAtomCharFont = cs.GetCharFont(font);
+                            var ligatureCharFont = font.GetLigature(leftAtomCharFont, rightAtomCharFont);
+                            if (ligatureCharFont == null)
+                            {
+                                // Atom should be kerned.
+                                kern = font.GetKern(leftAtomCharFont, rightAtomCharFont, environment.Style);
+                            }
+                            else
+                            {
+                                // Atom is part of ligature.
+                                curAtom.SetLigature(new FixedCharAtom(ligatureCharFont));
+                                i++;
+                            }
                         }
                     }
                 }
