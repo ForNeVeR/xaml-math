@@ -27,6 +27,7 @@ namespace WpfMath
 
         // Information used for parsing
         private static HashSet<string> commands;
+
         private static IList<string> symbols;
         private static IList<string> delimeters;
         private static HashSet<string> textStyles;
@@ -145,10 +146,16 @@ namespace WpfMath
         public TexFormula Parse(string value, string textStyle = null)
         {
             var position = 0;
-            return Parse(value, ref position, false, textStyle);
+            return Parse(new StringSpan(value, 0, value.Length), ref position, false, textStyle);
         }
 
-        private DelimiterInfo ParseUntilDelimiter(string value, ref int position, string textStyle)
+        private TexFormula Parse(StringSpan value, string textStyle = null)
+        {
+            int localPostion = 0;
+            return Parse(value, ref localPostion, false, textStyle);
+        }
+
+        private DelimiterInfo ParseUntilDelimiter(StringSpan value, ref int position, string textStyle)
         {
             var embeddedFormula = Parse(value, ref position, true, textStyle);
             if (embeddedFormula.RootAtom == null)
@@ -183,7 +190,7 @@ namespace WpfMath
             return new DelimiterInfo(bodyAtom, lastDelimiter);
         }
 
-        private TexFormula Parse(string value, ref int position, bool allowClosingDelimiter, string textStyle)
+        private TexFormula Parse(StringSpan value, ref int position, bool allowClosingDelimiter, string textStyle)
         {
             var formula = new TexFormula() { TextStyle = textStyle };
             var closedDelimiter = false;
@@ -241,21 +248,20 @@ namespace WpfMath
             return formula;
         }
 
-        private string ReadGroup(TexFormula formula, string value, ref int position, char openChar, char closeChar)
+        private StringSpan ReadGroup(TexFormula formula, StringSpan value, ref int position, char openChar, char closeChar)
         {
             if (position == value.Length || value[position] != openChar)
                 throw new TexParseException("missing '" + openChar + "'!");
 
-            var result = new StringBuilder();
             var group = 0;
             position++;
+            var start = position;
             while (position < value.Length && !(value[position] == closeChar && group == 0))
             {
                 if (value[position] == openChar)
                     group++;
                 else if (value[position] == closeChar)
                     group--;
-                result.Append(value[position]);
                 position++;
             }
 
@@ -266,10 +272,10 @@ namespace WpfMath
             }
 
             position++;
-            return result.ToString();
+            return new StringSpan(value, start, position - start - 1);
         }
 
-        private TexFormula ReadScript(TexFormula formula, string value, ref int position)
+        private TexFormula ReadScript(TexFormula formula, StringSpan value, ref int position)
         {
             SkipWhiteSpace(value, ref position);
             if (position == value.Length)
@@ -289,7 +295,7 @@ namespace WpfMath
 
         private Atom ProcessCommand(
             TexFormula formula,
-            string value,
+            StringSpan value,
             ref int position,
             string command,
             bool allowClosingDelimiter,
@@ -369,7 +375,7 @@ namespace WpfMath
 
                     var sqrtFormula = Parse(
                         ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar),
-                        formula.TextStyle);
+                            formula.TextStyle);
 
                     if (sqrtFormula.RootAtom == null)
                     {
@@ -377,14 +383,15 @@ namespace WpfMath
                     }
 
                     return new Radical(sqrtFormula.RootAtom, degreeFormula?.RootAtom);
+
                 case "color":
                     {
                         var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
-                        string remainingString = value.Substring(position);
+                        var remainingString = value.Substring(position);
                         var remaining = Parse(remainingString, formula.TextStyle);
                         position = value.Length;
                         Color color;
-                        if (predefinedColors.TryGetValue(colorName, out color))
+                        if (predefinedColors.TryGetValue(colorName.ToString(), out color))
                         {
                             return new StyledAtom(remaining.RootAtom, null, new SolidColorBrush(color));
                         }
@@ -396,10 +403,10 @@ namespace WpfMath
                 case "colorbox":
                     {
                         var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
-                        string remainingString = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+                        var remainingString = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
                         var remaining = Parse(remainingString, formula.TextStyle);
                         Color color;
-                        if (predefinedColors.TryGetValue(colorName, out color))
+                        if (predefinedColors.TryGetValue(colorName.ToString(), out color))
                         {
                             return new StyledAtom(remaining.RootAtom, new SolidColorBrush(color), null);
                         }
@@ -415,13 +422,13 @@ namespace WpfMath
 
         private void ProcessEscapeSequence(
             TexFormula formula,
-            string value,
+            StringSpan value,
             ref int position,
             bool allowClosingDelimiter,
             ref bool closedDelimiter)
         {
-            var result = new StringBuilder();
             position++;
+            var start = position;
             while (position < value.Length)
             {
                 var ch = value[position];
@@ -430,19 +437,17 @@ namespace WpfMath
                 {
                     // Escape sequence has ended
                     // Or it's a symbol. Assuming in this case it will only be a single char.
-                    if ((isEnd && char.IsLetter(ch)) || result.Length == 0)
+                    if ((isEnd && char.IsLetter(ch)) || position - start == 0)
                     {
-                        result.Append(ch);
                         position++;
                     }
                     break;
                 }
 
-                result.Append(ch);
                 position++;
             }
 
-            var command = result.ToString();
+            var command = new StringSpan(value, start, position - start).ToString();
 
             SymbolAtom symbolAtom = null;
             TexFormula predefinedFormula = null;
@@ -514,10 +519,9 @@ namespace WpfMath
                 // Escape sequence is invalid.
                 throw new TexParseException("Unknown symbol or command or predefined TeXFormula: '" + command + "'");
             }
-
         }
 
-        private Atom AttachScripts(TexFormula formula, string value, ref int position, Atom atom, bool skipWhiteSpace = true)
+        private Atom AttachScripts(TexFormula formula, StringSpan value, ref int position, Atom atom, bool skipWhiteSpace = true)
         {
             if (skipWhiteSpace)
             {
@@ -632,7 +636,7 @@ namespace WpfMath
             }
         }
 
-        private void SkipWhiteSpace(string value, ref int position)
+        private void SkipWhiteSpace(StringSpan value, ref int position)
         {
             while (position < value.Length && IsWhiteSpace(value[position]))
                 position++;
