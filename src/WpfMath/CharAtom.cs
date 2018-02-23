@@ -1,4 +1,4 @@
-﻿namespace WpfMath
+namespace WpfMath
 {
     // Atom representing single character in specific text style.
     internal class CharAtom : CharSymbol
@@ -18,7 +18,7 @@
             private set;
         }
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var font = GetStyledFont(environment);
             var charInfo = GetCharInfo(font, environment.Style);

@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace WpfMath
 {
     // Atom representing other atom that is not rendered.
@@ -38,7 +33,7 @@ namespace WpfMath
             private set;
         }
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var resultBox = this.RowAtom.CreateBox(environment);
             return new StrutBox((this.useWidth ? resultBox.Width : 0), (this.useHeight ? resultBox.Height : 0),

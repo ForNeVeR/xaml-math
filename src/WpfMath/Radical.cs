@@ -1,11 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace WpfMath
 {
-
     // Atom representing radical (nth-root) construction.
     internal class Radical : Atom
     {
@@ -32,7 +28,7 @@ namespace WpfMath
             private set;
         }
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var texFont = environment.MathFont;
             var style = environment.Style;

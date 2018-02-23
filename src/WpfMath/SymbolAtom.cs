@@ -81,7 +81,7 @@ namespace WpfMath
             private set;
         }
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             return new CharBox(environment, environment.MathFont.GetCharInfo(this.Name, environment.Style));
         }
