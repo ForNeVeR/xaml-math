@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace WpfMath
 {
     // Atom (smallest unit) of TexFormula.
@@ -25,7 +20,14 @@ namespace WpfMath
             set;
         }
 
-        public abstract Box CreateBox(TexEnvironment environment);
+        public Box CreateBox(TexEnvironment environment)
+        {
+            var box = CreateBoxCore(environment);
+            box.Source = Source;
+            return box;
+        }
+
+        protected abstract Box CreateBoxCore(TexEnvironment environment);
 
         // Gets type of leftmost child item.
         public virtual TexAtomType GetLeftType()

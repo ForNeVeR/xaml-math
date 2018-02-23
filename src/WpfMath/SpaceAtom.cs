@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace WpfMath
 {
@@ -10,23 +7,23 @@ namespace WpfMath
     {
         // Collection of unit conversion functions.
         private static UnitConversion[] unitConversions = new UnitConversion[]
-		        {
-		            new UnitConversion(e => e.MathFont.GetXHeight(e.Style, e.LastFontId)),
-		            
-		            new UnitConversion(e => e.MathFont.GetXHeight(e.Style, e.LastFontId)),
+                {
+                    new UnitConversion(e => e.MathFont.GetXHeight(e.Style, e.LastFontId)),
 
-		            new UnitConversion(e => 1.0 / e.MathFont.Size),
+                    new UnitConversion(e => e.MathFont.GetXHeight(e.Style, e.LastFontId)),
 
-		            new UnitConversion(e => TexFontUtilities.PixelsPerPoint / e.MathFont.Size),
+                    new UnitConversion(e => 1.0 / e.MathFont.Size),
 
-		            new UnitConversion(e => (12 * TexFontUtilities.PixelsPerPoint) / e.MathFont.Size),
+                    new UnitConversion(e => TexFontUtilities.PixelsPerPoint / e.MathFont.Size),
 
-		            new UnitConversion(e =>
-		                {
-		                    var texFont = e.MathFont;
-		                    return texFont.GetQuad(texFont.GetMuFontId(), e.Style) / 18;
-		                }),
-		        };
+                    new UnitConversion(e => (12 * TexFontUtilities.PixelsPerPoint) / e.MathFont.Size),
+
+                    new UnitConversion(e =>
+                        {
+                            var texFont = e.MathFont;
+                            return texFont.GetQuad(texFont.GetMuFontId(), e.Style) / 18;
+                        }),
+                };
 
         private delegate double UnitConversion(TexEnvironment environment);
 
@@ -84,7 +81,7 @@ namespace WpfMath
             this.isHardSpace = true;
         }
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             if (isHardSpace)
                 return new StrutBox(environment.MathFont.GetSpace(environment.Style), 0, 0, 0);

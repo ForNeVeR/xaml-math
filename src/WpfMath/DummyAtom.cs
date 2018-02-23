@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace WpfMath
 {
     // Dummy atom representing atom whose type can change or which can be replaced by a ligature.
@@ -58,7 +53,7 @@ namespace WpfMath
             return ((CharSymbol)this.Atom).GetCharFont(texFont);
         }
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             if (this.IsTextSymbol)
                 ((CharSymbol)this.Atom).IsTextSymbol = true;

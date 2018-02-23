@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -99,7 +99,7 @@ namespace WpfMath
             }
         }
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             // Create result box.
             var resultBox = new HorizontalBox(environment.Foreground, environment.Background);

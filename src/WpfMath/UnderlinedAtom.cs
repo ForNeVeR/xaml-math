@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace WpfMath
 {
     // Atom representing other atom that is underlined.
@@ -20,7 +15,7 @@ namespace WpfMath
             private set;
         }
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var defaultLineThickness = environment.MathFont.GetDefaultLineThickness(environment.Style);
 

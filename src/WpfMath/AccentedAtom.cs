@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace WpfMath
 {
@@ -42,7 +39,7 @@ namespace WpfMath
             private set;
         }
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             CharSymbol GetBaseChar()
             {

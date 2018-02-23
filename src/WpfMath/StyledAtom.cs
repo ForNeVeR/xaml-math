@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
 using System.Windows.Media;
 
 namespace WpfMath
@@ -42,7 +37,7 @@ namespace WpfMath
             set;
         }
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var newEnvironment = environment.Clone();
             if (this.Background != null)

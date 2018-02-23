@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace WpfMath
 {
@@ -101,6 +98,7 @@ namespace WpfMath
             get;
             set;
         }
+
         public TexUnit OverSpaceUnit
         {
             get;
@@ -119,7 +117,7 @@ namespace WpfMath
             set;
         }
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             // Create box for base atom.
             var baseBox = this.BaseAtom == null ? StrutBox.Empty : this.BaseAtom.CreateBox(environment);
