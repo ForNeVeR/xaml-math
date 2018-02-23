@@ -198,6 +198,7 @@ namespace WpfMath
             while (position < value.Length && !(allowClosingDelimiter && closedDelimiter))
             {
                 char ch = value[position];
+                var source = new StringSpan(value, position, 1);
                 if (IsWhiteSpace(ch))
                 {
                     if (!skipWhiteSpace)
@@ -239,7 +240,7 @@ namespace WpfMath
                         formula,
                         value,
                         ref position,
-                        ConvertCharacter(formula, ref position, ch),
+                        ConvertCharacter(formula, ref position, source),
                         skipWhiteSpace);
                     formula.Add(scriptsAtom);
                 }
@@ -608,8 +609,9 @@ namespace WpfMath
             }
         }
 
-        private Atom ConvertCharacter(TexFormula formula, ref int position, char character)
+        private Atom ConvertCharacter(TexFormula formula, ref int position, StringSpan source)
         {
+            var character = source[0];
             position++;
             if (IsSymbol(character) && formula.TextStyle != TexUtilities.TextStyleName)
             {
@@ -632,7 +634,7 @@ namespace WpfMath
             }
             else // Character is alpha-numeric or should be rendered as text.
             {
-                return new CharAtom(character, formula.TextStyle);
+                return new CharAtom(new StringSpan(source, 0, 1), formula.TextStyle);
             }
         }
 

@@ -3,17 +3,13 @@
     // Atom representing single character in specific text style.
     internal class CharAtom : CharSymbol
     {
-        public CharAtom(char character, string textStyle = null)
+        public CharAtom(StringSpan source, string textStyle = null)
         {
-            this.Character = character;
+            this.Source = source;
             this.TextStyle = textStyle;
         }
 
-        public char Character
-        {
-            get;
-            private set;
-        }
+        public char Character => Source[0];
 
         // Null means default text style.
         public string TextStyle

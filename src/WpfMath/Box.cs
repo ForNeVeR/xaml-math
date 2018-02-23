@@ -34,6 +34,12 @@ namespace WpfMath
             get { return this.childrenReadOnly; }
         }
 
+        public StringSpan Source
+        {
+            get;
+            set;
+        }
+
         public Brush Foreground
         {
             get;

@@ -19,6 +19,12 @@ namespace WpfMath
             set;
         }
 
+        public StringSpan Source
+        {
+            get;
+            set;
+        }
+
         public abstract Box CreateBox(TexEnvironment environment);
 
         // Gets type of leftmost child item.
