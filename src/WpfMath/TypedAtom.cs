@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
 namespace WpfMath
 {
     // Atom representing other atom with custom left and right types.

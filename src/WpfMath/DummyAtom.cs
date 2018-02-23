@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
 namespace WpfMath
 {
     // Dummy atom representing atom whose type can change or which can be replaced by a ligature.
