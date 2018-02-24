@@ -24,6 +24,8 @@ namespace WpfMath
 
         public override string ToString() => _source.Substring(_start, _length);
 
+        public int Start => _start;
+
         public int Length => _length;
 
         public string Source => _source;

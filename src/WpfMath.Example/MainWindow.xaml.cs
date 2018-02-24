@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+using Microsoft.Win32;
 using System;
 using System.IO;
 using System.Text;
@@ -45,7 +45,7 @@ namespace WpfMath.Example
 
             // Create formula object from input text.
             var formula = ParseFormula(inputTextBox.Text);
-            if (formula == null) return;        
+            if (formula == null) return;
             var renderer = formula.GetRenderer(TexStyle.Display, this.formula.Scale, "Arial");
 
             // Open stream
@@ -62,6 +62,7 @@ namespace WpfMath.Example
                         using (var writer = new StreamWriter(stream))
                             writer.WriteLine(svgText);
                         break;
+
                     case 2:
                         var bitmap = renderer.RenderToBitmap(0, 0);
                         var encoder = new PngBitmapEncoder
@@ -70,6 +71,7 @@ namespace WpfMath.Example
                         };
                         encoder.Save(stream);
                         break;
+
                     default:
                         return;
                 }
@@ -85,7 +87,7 @@ namespace WpfMath.Example
                 .AppendLine("</svg>");
 
             return builder.ToString();
-        } 
+        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -100,6 +102,12 @@ namespace WpfMath.Example
         private void Window_Closed(object sender, EventArgs e)
         {
             //
+        }
+
+        private void inputTextBox_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            formula.SelectionStart = inputTextBox.SelectionStart;
+            formula.SelectionLength = inputTextBox.SelectionLength;
         }
     }
 }

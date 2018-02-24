@@ -5,10 +5,10 @@ namespace WpfMath
     // Atom representing base atom with accent above it.
     internal class AccentedAtom : Atom
     {
-        public AccentedAtom(Atom baseAtom, string accentName)
+        public AccentedAtom(Atom baseAtom, string accentName, StringSpan source)
         {
             this.BaseAtom = baseAtom;
-            this.AccentAtom = SymbolAtom.GetAtom(accentName);
+            this.AccentAtom = SymbolAtom.GetAtom(accentName, source);
 
             if (this.AccentAtom.Type != TexAtomType.Accent)
                 throw new ArgumentException("The specified symbol name is not an accent.", "accent");
