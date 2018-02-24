@@ -28,7 +28,8 @@ namespace WpfMath
         public Box CreateBox(TexEnvironment environment)
         {
             var box = CreateBoxCore(environment);
-            box.Source = Source;
+            if (box.Source == null)
+                box.Source = Source;
             return box;
         }
 

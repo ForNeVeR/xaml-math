@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -13,7 +14,7 @@ namespace WpfMath.Controls
     public partial class FormulaControl : UserControl
     {
         private static TexFormulaParser formulaParser = new TexFormulaParser();
-        private TexFormula texFormula; 
+        private TexFormula texFormula;
 
         public string Formula
         {
@@ -51,8 +52,26 @@ namespace WpfMath.Controls
             set { SetValue(ErrorTemplateProperty, value); }
         }
 
+        public int SelectionStart
+        {
+            get { return (int)GetValue(SelectionStartProperty); }
+            set { SetValue(SelectionStartProperty, value); }
+        }
+
+        public int SelectionLength
+        {
+            get { return (int)GetValue(SelectionLengthProperty); }
+            set { SetValue(SelectionLengthProperty, value); }
+        }
+
+        public Brush SelectionBrush
+        {
+            get { return (Brush)GetValue(SelectionBrushProperty); }
+            set { SetValue(SelectionBrushProperty, value); }
+        }
+
         public static readonly DependencyProperty FormulaProperty = DependencyProperty.Register(
-            "Formula", typeof(string), typeof(FormulaControl), 
+            "Formula", typeof(string), typeof(FormulaControl),
             new PropertyMetadata("", OnRenderSettingsChanged, CoerceFormula));
 
         public static readonly DependencyProperty ScaleProperty = DependencyProperty.Register(
@@ -75,6 +94,18 @@ namespace WpfMath.Controls
             "ErrorTemplate", typeof(ControlTemplate), typeof(FormulaControl),
             new PropertyMetadata(new ControlTemplate()));
 
+        public static readonly DependencyProperty SelectionStartProperty = DependencyProperty.Register(
+            "SelectionStart", typeof(int), typeof(FormulaControl),
+            new PropertyMetadata(0, OnRenderSettingsChanged));
+
+        public static readonly DependencyProperty SelectionLengthProperty = DependencyProperty.Register(
+            "SelectionLength", typeof(int), typeof(FormulaControl),
+            new PropertyMetadata(0, OnRenderSettingsChanged));
+
+        public static readonly DependencyProperty SelectionBrushProperty = DependencyProperty.Register(
+            "SelectionBrush", typeof(Brush), typeof(FormulaControl),
+            new PropertyMetadata(null, OnRenderSettingsChanged));
+
         public FormulaControl()
         {
             InitializeComponent();
@@ -92,6 +123,27 @@ namespace WpfMath.Controls
             // Render formula to visual.
             var visual = new DrawingVisual();
             var renderer = texFormula.GetRenderer(TexStyle.Display, Scale, SystemTextFontName);
+
+            var selectionBrush = SelectionBrush;
+            if (selectionBrush != null)
+            {
+                var allBoxes = new List<Box>(renderer.Box.Children);
+                var selectionStart = SelectionStart;
+                var selectionEnd = selectionStart + SelectionLength;
+                for (int idx = 0; idx < allBoxes.Count; idx++)
+                {
+                    var box = allBoxes[idx];
+                    allBoxes.AddRange(box.Children);
+                    var source = box.Source;
+                    if (source != null)
+                    {
+                        if (selectionStart < source.Start + source.Length && source.Start < selectionEnd)
+                        {
+                            box.Background = selectionBrush;
+                        }
+                    }
+                }
+            }
 
             using (var drawingContext = visual.RenderOpen())
             {

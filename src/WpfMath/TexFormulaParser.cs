@@ -120,12 +120,12 @@ namespace WpfMath
             }
         }
 
-        internal static SymbolAtom GetDelimiterSymbol(string name)
+        internal static SymbolAtom GetDelimiterSymbol(string name, StringSpan source)
         {
             if (name == null)
                 return null;
 
-            var result = SymbolAtom.GetAtom(name);
+            var result = SymbolAtom.GetAtom(name, source);
             if (!result.IsDelimeter)
                 return null;
             return result;
@@ -145,6 +145,7 @@ namespace WpfMath
 
         public TexFormula Parse(string value, string textStyle = null)
         {
+            System.Diagnostics.Debug.WriteLine(value);
             var position = 0;
             return Parse(new StringSpan(value, 0, value.Length), ref position, false, textStyle);
         }
@@ -290,7 +291,7 @@ namespace WpfMath
             else
             {
                 position++;
-                return Parse(ch.ToString(), formula.TextStyle);
+                return Parse(new StringSpan(value, position - 1, 1), formula.TextStyle);
             }
         }
 
@@ -330,7 +331,7 @@ namespace WpfMath
 
                         var internals = ParseUntilDelimiter(value, ref position, formula.TextStyle);
 
-                        var opening = GetDelimiterSymbol(GetDelimeterMapping(delimiter));
+                        var opening = GetDelimiterSymbol(GetDelimeterMapping(delimiter), new StringSpan(value, position - 1, 1));
                         if (opening == null)
                             throw new TexParseException($"Cannot find delimiter named {delimiter}");
 
@@ -350,7 +351,7 @@ namespace WpfMath
                         var delimiter = value[position];
                         ++position;
 
-                        var closing = GetDelimiterSymbol(GetDelimeterMapping(delimiter));
+                        var closing = GetDelimiterSymbol(GetDelimeterMapping(delimiter), new StringSpan(value, position - 1, 1));
                         if (closing == null)
                             throw new TexParseException($"Cannot find delimiter named {delimiter}");
 
@@ -448,11 +449,12 @@ namespace WpfMath
                 position++;
             }
 
-            var command = new StringSpan(value, start, position - start).ToString();
+            var commandSpan = new StringSpan(value, start, position - start);
+            var command = commandSpan.ToString();
 
             SymbolAtom symbolAtom = null;
             TexFormula predefinedFormula = null;
-            if (SymbolAtom.TryGetAtom(command, out symbolAtom))
+            if (SymbolAtom.TryGetAtom(commandSpan, out symbolAtom))
             {
                 // Symbol was found.
 
@@ -460,7 +462,7 @@ namespace WpfMath
                 {
                     TexFormulaHelper helper = new TexFormulaHelper(formula);
                     TexFormula accentFormula = ReadScript(formula, value, ref position);
-                    helper.AddAccent(accentFormula, symbolAtom.Name);
+                    helper.AddAccent(accentFormula, symbolAtom.Name, commandSpan);
                 }
                 else if (symbolAtom.Type == TexAtomType.BigOperator)
                 {
@@ -539,7 +541,7 @@ namespace WpfMath
             {
                 if (value[i] == primeChar)
                 {
-                    primesRowAtom.Add(SymbolAtom.GetAtom("prime"));
+                    primesRowAtom.Add(SymbolAtom.GetAtom("prime", new StringSpan(value, i, 1)));
                     position++;
                 }
                 else if (!IsWhiteSpace(value[i]))
@@ -622,7 +624,7 @@ namespace WpfMath
 
                 try
                 {
-                    return SymbolAtom.GetAtom(symbolName);
+                    return SymbolAtom.GetAtom(symbolName, source);
                 }
                 catch (SymbolNotFoundException e)
                 {
