@@ -31,7 +31,7 @@ The library was originally ported from the [JMathTex project][jmathtex], copyrig
 License Notes
 -------------
 
-The project code is licensed under the terms of [MIT license][license]. The original resources from [JMathTeX][jmathtex] (`DefaultTexFont.xml`, `GlueSettings.xml`, `PredefinedTexFormulas.xml`, `TexFormulaSettings.xml`, `TexSymbols.xml`) are taken from the [GPLv2-distributed][gpl] [JMathTeX][jmathtex], but JMathTeX authors have granted permission to redistribute these resourses under the MIT license.
+The project code is licensed under the terms of [MIT license][license]. The original resources from [JMathTeX][jmathtex] (`DefaultTexFont.xml`, `GlueSettings.xml`, `PredefinedTexFormulas.xml`, `TexFormulaSettings.xml`, `TexSymbols.xml`) are taken from the [GPLv2-distributed][gpl] [JMathTeX][jmathtex], but JMathTeX authors have granted permission to redistribute these resourses under the MIT license. See the [wiki][wiki-license-info] for details.
 
 The [fonts][] `cmex10.ttf`, `cmmi10.ttf`, `cmr10.ttf`, and `cmsy10.ttf` and `cmtt10.ttf` are under the [Knuth License][knuth-license].
 
@@ -48,6 +48,7 @@ The [fonts][] `cmex10.ttf`, `cmmi10.ttf`, `cmr10.ttf`, and `cmsy10.ttf` and `cmt
 [knuth-license]: http://ctan.org/license/knuth
 [launchpad]: https://launchpad.net/wpf-math
 [nuget]: https://www.nuget.org/packages/WpfMath/
+[wiki-license-info]: https://github.com/ForNeVeR/wpf-math/wiki/Additional-license-info
 
 [badge-appveyor]: https://ci.appveyor.com/api/projects/status/b26m3rpfcgb91gdg/branch/master?svg=true
 [badge-nuget]: https://img.shields.io/nuget/v/WpfMath.svg
