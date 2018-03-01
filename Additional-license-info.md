@@ -1,6 +1,6 @@
-WPF-Math was originally ported from the [JMathTex project][jmathtex], copyright 2004-2007 Universiteit Gent. JMathTex is licensed under the terms of GPLv2, and WPF-Math is licensed under the terms of MIT.
+*WPF-Math* was originally ported from the [JMathTex project][jmathtex], copyright 2004-2007 Universiteit Gent. *JMathTex* is licensed under the terms of the GPLv2 licence, while WPF-Math is licensed under the terms of the MIT licence.
 
-Some of the resources included in WPF-Math (`DefaultTexFont.xml`, `GlueSettings.xml`, `PredefinedTexFormulas.xml`, `TexFormulaSettings.xml`, `TexSymbols.xml`) were directly taken from the JMathTex project. To redistribute these resources under the terms of MIT license, we've asked the original authors of JMathTex. Here's a fragment of our email to the JMathTex authors (some irrelevant details from the emails are omitted because they were discussing additional technical topic – about how the resources were initially generated):
+Some of the resources included in WPF-Math (`DefaultTexFont.xml`, `GlueSettings.xml`, `PredefinedTexFormulas.xml`, `TexFormulaSettings.xml`, `TexSymbols.xml`) were directly taken from the JMathTex project. To redistribute these resources under the terms of MIT license, we requested permission from the original authors of JMathTex. Here is a fragment of our email to the JMathTex authors (some irrelevant details from the emails are omitted because they were discussing additional technical topics concerning how the resources were initially generated):
 
 > **FROM**: friedrich@fornever.me
 >
@@ -22,7 +22,7 @@ Some of the resources included in WPF-Math (`DefaultTexFont.xml`, `GlueSettings.
 >
 > [...]
 
-And Dr. Coolsaet kindly granted us a permission:
+In his reply, Dr. Coolsaet kindly granted us a permission:
 
 > **FROM**: Kris Coolsaet
 > 
@@ -40,6 +40,6 @@ And Dr. Coolsaet kindly granted us a permission:
 >
 > [...]
 
-If you need access to the technical email headers of these messages to clarify their validity, please directly contact friedrich@fornever.me
+If you need access to the actual email headers of these messages to verify their validity, please contact the maintainer of this project directly at friedrich@fornever.me.
 
 [jmathtex]: http://jmathtex.sourceforge.net/
