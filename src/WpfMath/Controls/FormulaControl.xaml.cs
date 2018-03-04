@@ -139,7 +139,8 @@ namespace WpfMath.Controls
                     {
                         if (selectionStart < source.Start + source.Length && source.Start < selectionEnd)
                         {
-                            box.Background = selectionBrush;
+                            if (box is CharBox)
+                                box.Background = selectionBrush;
                         }
                     }
                 }
