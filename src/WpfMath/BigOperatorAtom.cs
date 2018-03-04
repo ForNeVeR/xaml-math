@@ -27,6 +27,7 @@ namespace WpfMath
             this.LowerLimitAtom = lowerLimitAtom;
             this.UpperLimitAtom = upperLimitAtom;
             this.UseVerticalLimits = null;
+            this.Source = baseAtom.Source;
         }
 
         // Atom representing big operator.
@@ -77,6 +78,7 @@ namespace WpfMath
                 if (style < TexStyle.Text && texFont.HasNextLarger(opChar))
                     opChar = texFont.GetNextLargerCharInfo(opChar, style);
                 var charBox = new CharBox(environment, opChar);
+                charBox.Source = Source;
                 charBox.Shift = -(charBox.Height + charBox.Depth) / 2 -
                     environment.MathFont.GetAxisHeight(environment.Style);
                 baseBox = new HorizontalBox(charBox);
