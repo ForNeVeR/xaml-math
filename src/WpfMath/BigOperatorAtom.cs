@@ -80,8 +80,7 @@ namespace WpfMath
                 var opChar = texFont.GetCharInfo(((SymbolAtom)this.BaseAtom).Name, style);
                 if (style < TexStyle.Text && texFont.HasNextLarger(opChar))
                     opChar = texFont.GetNextLargerCharInfo(opChar, style);
-                var charBox = new CharBox(environment, opChar);
-                charBox.Source = Source;
+                var charBox = new CharBox(environment, opChar) { Source = Source };
                 charBox.Shift = -(charBox.Height + charBox.Depth) / 2 -
                     environment.MathFont.GetAxisHeight(environment.Style);
                 baseBox = new HorizontalBox(charBox);

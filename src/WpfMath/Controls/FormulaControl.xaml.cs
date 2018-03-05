@@ -124,25 +124,17 @@ namespace WpfMath.Controls
             var visual = new DrawingVisual();
             var renderer = texFormula.GetRenderer(TexStyle.Display, Scale, SystemTextFontName);
 
+            // Render selection.
             var selectionBrush = SelectionBrush;
             if (selectionBrush != null)
             {
-                var allBoxes = new List<Box>(renderer.Box.Children);
-                var selectionStart = SelectionStart;
-                var selectionEnd = selectionStart + SelectionLength;
-                for (int idx = 0; idx < allBoxes.Count; idx++)
+                var start = SelectionStart;
+                var end = start + SelectionLength;
+                var dic = FormulaUtils.GetVisibleBoxes(renderer.Box, Scale, 0, 0,
+                    box => box.Source != null && box.Source.Start < end && start < box.Source.Start + box.Source.Length);
+                foreach (var box in dic.Keys)
                 {
-                    var box = allBoxes[idx];
-                    allBoxes.AddRange(box.Children);
-                    var source = box.Source;
-                    if (source != null)
-                    {
-                        if (selectionStart < source.Start + source.Length && source.Start < selectionEnd)
-                        {
-                            if (box is CharBox)
-                                box.Background = selectionBrush;
-                        }
-                    }
+                    box.Background = Brushes.Aquamarine;
                 }
             }
 

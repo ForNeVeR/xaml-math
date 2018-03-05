@@ -303,6 +303,8 @@ namespace WpfMath
             bool allowClosingDelimiter,
             ref bool closedDelimiter)
         {
+            int start = position - command.Length;
+
             SkipWhiteSpace(value, ref position);
 
             switch (command)
@@ -328,10 +330,11 @@ namespace WpfMath
 
                         var delimiter = value[position];
                         ++position;
+                        var left = position;
 
                         var internals = ParseUntilDelimiter(value, ref position, formula.TextStyle);
 
-                        var opening = GetDelimiterSymbol(GetDelimeterMapping(delimiter), new StringSpan(value, position - 1, 1));
+                        var opening = GetDelimiterSymbol(GetDelimeterMapping(delimiter), new StringSpan(value, start, left - start));
                         if (opening == null)
                             throw new TexParseException($"Cannot find delimiter named {delimiter}");
 
@@ -351,7 +354,7 @@ namespace WpfMath
                         var delimiter = value[position];
                         ++position;
 
-                        var closing = GetDelimiterSymbol(GetDelimeterMapping(delimiter), new StringSpan(value, position - 1, 1));
+                        var closing = GetDelimiterSymbol(GetDelimeterMapping(delimiter), new StringSpan(value, start, position - start));
                         if (closing == null)
                             throw new TexParseException($"Cannot find delimiter named {delimiter}");
 
@@ -365,6 +368,8 @@ namespace WpfMath
                     SkipWhiteSpace(value, ref position);
                     if (position == value.Length)
                         throw new TexParseException("illegal end!");
+
+                    int sqrtEnd = position;
 
                     TexFormula degreeFormula = null;
                     if (value[position] == leftBracketChar)
@@ -384,7 +389,7 @@ namespace WpfMath
                         throw new TexParseException("The radicand of a square root can't be empty!");
                     }
 
-                    return new Radical(sqrtFormula.RootAtom, degreeFormula?.RootAtom);
+                    return new Radical(sqrtFormula.RootAtom, degreeFormula?.RootAtom) { Source = new StringSpan(value, start, sqrtEnd - start) };
 
                 case "color":
                     {
