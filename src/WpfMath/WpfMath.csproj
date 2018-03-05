@@ -73,7 +73,9 @@
     <Compile Include="Exceptions\TexException.cs" />
     <Compile Include="Exceptions\TypeFaceNotFoundException.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="FormulaUtils.cs" />
     <Compile Include="PredefinedColorParser.cs" />
+    <Compile Include="Rendering\BoxWalker.cs" />
     <Compile Include="Rendering\GeometryHelper.cs" />
     <Compile Include="Rendering\GeometryElementRenderer.cs" />
     <Compile Include="Rendering\IElementRenderer.cs" />
