@@ -48,7 +48,7 @@ namespace WpfMath
             // Create box for radical sign.
             var totalHeight = baseBox.Height + baseBox.Depth;
             var radicalSignBox = DelimiterFactory.CreateBox(sqrtSymbol, totalHeight + clearance + defaultRuleThickness,
-                environment);
+                environment, Source);
             radicalSignBox.Source = Source;
 
             // Add half of excess height to clearance.
