@@ -57,6 +57,7 @@ namespace WpfMath
             if (LeftDelimeter != null && LeftDelimeter.Name != SymbolAtom.EmptyDelimiterName)
             {
                 var leftDelimeterBox = DelimiterFactory.CreateBox(this.LeftDelimeter.Name, minHeight, environment);
+                leftDelimeterBox.Source = LeftDelimeter.Source;
                 CentreBox(leftDelimeterBox, axis);
                 resultBox.Add(leftDelimeterBox);
             }
@@ -76,6 +77,7 @@ namespace WpfMath
             if (RightDelimeter != null && RightDelimeter.Name != SymbolAtom.EmptyDelimiterName)
             {
                 var rightDelimeterBox = DelimiterFactory.CreateBox(this.RightDelimeter.Name, minHeight, environment);
+                rightDelimeterBox.Source = RightDelimeter.Source;
                 CentreBox(rightDelimeterBox, axis);
                 resultBox.Add(rightDelimeterBox);
             }
