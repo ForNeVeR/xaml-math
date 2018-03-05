@@ -389,9 +389,7 @@ namespace WpfMath
                         throw new TexParseException("The radicand of a square root can't be empty!");
                     }
 
-                    sqrtFormula.RootAtom.Source = new StringSpan(value, start, sqrtEnd - start);
-
-                    return new Radical(sqrtFormula.RootAtom, degreeFormula?.RootAtom);
+                    return new Radical(sqrtFormula.RootAtom, degreeFormula?.RootAtom) { Source = new StringSpan(value, start, sqrtEnd - start) };
 
                 case "color":
                     {
