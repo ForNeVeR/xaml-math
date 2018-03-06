@@ -16,7 +16,7 @@ namespace WpfMath
         {
             var result = new Dictionary<Box, Rect>();
             var walker = new BoxWalker(result, scale, box => box is CharBox && filter(box));
-            walker.RenderElement(rootBox, x, y);
+            walker.RenderElement(rootBox, x / scale, y / scale + rootBox.Height);
             return result;
         }
     }
