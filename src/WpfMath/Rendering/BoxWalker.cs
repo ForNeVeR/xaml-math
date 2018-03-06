@@ -25,12 +25,16 @@ namespace WpfMath.Rendering
             {
                 if (_boundsDic.TryGetValue(box, out Rect rect))
                 {
-                    rect.Union(new Rect(x * _scale, y * _scale, box.Width * _scale, box.Height * _scale));
+                    rect.Union(new Rect(_scale * x, _scale * (y - box.Height),
+                        _scale * box.TotalWidth,
+                        _scale * box.TotalHeight));
                     _boundsDic[box] = rect;
                 }
                 else
                 {
-                    _boundsDic.Add(box, new Rect(x * _scale, y * _scale, box.Width * _scale, box.Height * _scale));
+                    _boundsDic.Add(box, new Rect(_scale * x, _scale * (y - box.Height),
+                        _scale * box.TotalWidth,
+                        _scale * box.TotalHeight));
                 }
             }
 
