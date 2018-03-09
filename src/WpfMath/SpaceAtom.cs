@@ -84,6 +84,23 @@ namespace WpfMath
             this.isHardSpace = true;
         }
 
+        public override Atom Copy()
+        {
+            var atom = new SpaceAtom();
+
+            atom.isHardSpace = isHardSpace;
+
+            atom.width = width;
+            atom.height = height;
+            atom.depth = depth;
+
+            atom.widthUnit = widthUnit;
+            atom.heightUnit = heightUnit;
+            atom.depthUnit = depthUnit;
+
+            return CopyTo(atom);
+        }
+
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
             if (isHardSpace)

@@ -31,6 +31,11 @@ namespace WpfMath
             private set;
         }
 
+        public override Atom Copy()
+        {
+            return CopyTo(new Radical(BaseAtom?.Copy(), DegreeAtom?.Copy()));
+        }
+
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var texFont = environment.MathFont;

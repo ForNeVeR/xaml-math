@@ -7,15 +7,21 @@ namespace WpfMath
         {
             this.Source = source;
             this.TextStyle = textStyle;
+            this.Character = Source[0];
         }
 
-        public char Character => Source[0];
+        public char Character { get; }
 
         // Null means default text style.
         public string TextStyle
         {
             get;
             private set;
+        }
+
+        public override Atom Copy()
+        {
+            return CopyTo(new CharAtom(Source, TextStyle));
         }
 
         protected override Box CreateBoxCore(TexEnvironment environment)
