@@ -26,6 +26,11 @@ namespace WpfMath
             private set;
         }
 
+        public override Atom Copy()
+        {
+            return CopyTo(new BigDelimeterAtom(DelimeterAtom.Copy(), Size));
+        }
+
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
             // TODO

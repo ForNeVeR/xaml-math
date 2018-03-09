@@ -60,6 +60,11 @@ namespace WpfMath
             private set;
         }
 
+        public override Atom Copy()
+        {
+            return CopyTo(new BigOperatorAtom(BaseAtom?.Copy(), LowerLimitAtom?.Copy(), UpperLimitAtom?.Copy(), UseVerticalLimits));
+        }
+
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var texFont = environment.MathFont;
@@ -68,7 +73,7 @@ namespace WpfMath
             if ((this.UseVerticalLimits.HasValue && !UseVerticalLimits.Value) ||
                 (!this.UseVerticalLimits.HasValue && style >= TexStyle.Text))
                 // Attach atoms for limits as scripts.
-                return new ScriptsAtom(this.BaseAtom, this.LowerLimitAtom, this.UpperLimitAtom).CreateBox(environment);
+                return new ScriptsAtom(this.BaseAtom, this.LowerLimitAtom, this.UpperLimitAtom) { Source = Source }.CreateBox(environment);
 
             // Create box for base atom.
             Box baseBox;

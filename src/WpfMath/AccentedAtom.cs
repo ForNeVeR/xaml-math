@@ -28,6 +28,10 @@ namespace WpfMath
                 throw new ArgumentException("The specified symbol name is not an accent.", "accent");
         }
 
+        private AccentedAtom()
+        {
+        }
+
         // Atom over which accent symbol is placed.
         public Atom BaseAtom
         {
@@ -40,6 +44,15 @@ namespace WpfMath
         {
             get;
             private set;
+        }
+
+        public override Atom Copy()
+        {
+            return CopyTo(new AccentedAtom()
+            {
+                BaseAtom = BaseAtom?.Copy(),
+                AccentAtom = (SymbolAtom)AccentAtom?.Copy()
+            });
         }
 
         protected override Box CreateBoxCore(TexEnvironment environment)

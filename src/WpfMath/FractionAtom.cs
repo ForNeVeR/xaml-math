@@ -84,6 +84,19 @@ namespace WpfMath
             private set;
         }
 
+        public override Atom Copy()
+        {
+            var atom = new FractionAtom(Numerator?.Copy(), Denominator?.Copy(), lineThicknessUnit, lineThickness);
+            atom.numeratorAlignment = numeratorAlignment;
+            atom.denominatorAlignment = denominatorAlignment;
+            atom.useDefaultThickness = useDefaultThickness;
+
+            atom.useDefaultThickness = useDefaultThickness;
+            atom.lineRelativeThickness = lineRelativeThickness;
+
+            return CopyTo(atom);
+        }
+
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var texFont = environment.MathFont;

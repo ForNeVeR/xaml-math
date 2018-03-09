@@ -36,13 +36,27 @@ namespace WpfMath
             private set;
         }
 
+        public override Atom Copy()
+        {
+            return CopyTo(new ScriptsAtom(BaseAtom?.Copy(), SubscriptAtom?.Copy(), SuperscriptAtom?.Copy()));
+        }
+
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var texFont = environment.MathFont;
             var style = environment.Style;
 
             // Create box for base atom.
-            var baseBox = (this.BaseAtom == null ? StrutBox.Empty : this.BaseAtom.CreateBox(environment));
+            Box baseBox;
+            if (BaseAtom == null)
+                baseBox = StrutBox.Empty;
+            else
+            {
+                if (Source != null)
+                    BaseAtom.Source = Source;
+
+                baseBox = BaseAtom.CreateBox(environment);
+            }
             if (this.SubscriptAtom == null && this.SuperscriptAtom == null)
                 return baseBox;
 
