@@ -37,6 +37,11 @@ namespace WpfMath
             set;
         }
 
+        public override Atom Copy()
+        {
+            return CopyTo(new StyledAtom(RowAtom?.Copy(), Background, Foreground) { PreviousAtom = (DummyAtom)PreviousAtom?.Copy() });
+        }
+
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var newEnvironment = environment.Clone();

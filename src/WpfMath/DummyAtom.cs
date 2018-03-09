@@ -41,6 +41,11 @@ namespace WpfMath
             get { return this.Atom is SpaceAtom; }
         }
 
+        public override Atom Copy()
+        {
+            return CopyTo(new DummyAtom(Atom?.Copy()) { IsTextSymbol = IsTextSymbol });
+        }
+
         public void SetLigature(FixedCharAtom ligatureAtom)
         {
             this.Atom = ligatureAtom;

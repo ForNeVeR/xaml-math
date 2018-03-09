@@ -16,6 +16,11 @@ namespace WpfMath
             private set;
         }
 
+        public override Atom Copy()
+        {
+            return CopyTo(new OverlinedAtom(BaseAtom?.Copy()));
+        }
+
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
             // Create box for base atom, in cramped style.

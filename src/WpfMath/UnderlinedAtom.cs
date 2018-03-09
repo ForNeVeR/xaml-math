@@ -15,6 +15,11 @@ namespace WpfMath
             private set;
         }
 
+        public override Atom Copy()
+        {
+            return CopyTo(new UnderlinedAtom(BaseAtom?.Copy()));
+        }
+
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var defaultLineThickness = environment.MathFont.GetDefaultLineThickness(environment.Style);

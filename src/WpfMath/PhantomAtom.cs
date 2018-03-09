@@ -33,6 +33,11 @@ namespace WpfMath
             private set;
         }
 
+        public override Atom Copy()
+        {
+            return CopyTo(new PhantomAtom(RowAtom?.Copy(), useWidth, useHeight, useDepth) { PreviousAtom = (DummyAtom)PreviousAtom?.Copy() });
+        }
+
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var resultBox = this.RowAtom.CreateBox(environment);

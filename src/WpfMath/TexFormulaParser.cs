@@ -482,8 +482,9 @@ namespace WpfMath
             else if (predefinedFormulas.TryGetValue(command, out predefinedFormula))
             {
                 // Predefined formula was found.
-
-                formula.Add(AttachScripts(formula, value, ref position, predefinedFormula.RootAtom));
+                var atom = predefinedFormula.RootAtom.Copy();
+                atom.Source = commandSpan;
+                formula.Add(AttachScripts(formula, value, ref position, atom));
             }
             else if (command.Equals("nbsp"))
             {

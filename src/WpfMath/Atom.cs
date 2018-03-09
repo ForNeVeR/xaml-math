@@ -28,6 +28,15 @@ namespace WpfMath
             return box;
         }
 
+        public abstract Atom Copy();
+
+        protected virtual Atom CopyTo(Atom atom)
+        {
+            atom.Type = Type;
+            atom.Source = Source;
+            return atom;
+        }
+
         protected abstract Box CreateBoxCore(TexEnvironment environment);
 
         // Gets type of leftmost child item.

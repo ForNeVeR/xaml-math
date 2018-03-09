@@ -14,6 +14,11 @@ namespace WpfMath
             private set;
         }
 
+        public override Atom Copy()
+        {
+            return CopyTo(new FixedCharAtom(CharFont));
+        }
+
         public override CharFont GetCharFont(ITeXFont texFont)
         {
             return this.CharFont;

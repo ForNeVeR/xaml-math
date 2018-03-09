@@ -99,6 +99,18 @@ namespace WpfMath
             }
         }
 
+        public override Atom Copy()
+        {
+            var atom = new RowAtom();
+
+            atom.PreviousAtom = (DummyAtom)PreviousAtom?.Copy();
+            foreach (var element in Elements)
+            {
+                atom.Elements.Add(element?.Copy());
+            }
+            return CopyTo(atom);
+        }
+
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
             // Create result box.
@@ -149,6 +161,10 @@ namespace WpfMath
                 // Create and add box for atom.
                 curAtom.PreviousAtom = this.PreviousAtom;
                 var curBox = curAtom.CreateBox(environment);
+                if (Source != null && curBox.Source?.Source != Source.Source)
+                {
+                    curBox.Source = Source;
+                }
                 resultBox.Add(curBox);
                 environment.LastFontId = curBox.GetLastFontId();
 

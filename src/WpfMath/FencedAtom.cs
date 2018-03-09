@@ -39,6 +39,11 @@ namespace WpfMath
             set;
         }
 
+        public override Atom Copy()
+        {
+            return CopyTo(new FencedAtom(BaseAtom?.Copy(), (SymbolAtom)LeftDelimeter?.Copy(), (SymbolAtom)RightDelimeter?.Copy()));
+        }
+
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var texFont = environment.MathFont;

@@ -90,6 +90,11 @@ namespace WpfMath
             private set;
         }
 
+        public override Atom Copy()
+        {
+            return CopyTo(new SymbolAtom(Name, Type, IsDelimeter));
+        }
+
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
             return new CharBox(environment, environment.MathFont.GetCharInfo(this.Name, environment.Style));

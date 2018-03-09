@@ -23,6 +23,10 @@ namespace WpfMath
             this.Over = over;
         }
 
+        private OverUnderDelimiter()
+        {
+        }
+
         public Atom BaseAtom
         {
             get;
@@ -53,6 +57,18 @@ namespace WpfMath
         {
             get;
             set;
+        }
+
+        public override Atom Copy()
+        {
+            return CopyTo(new OverUnderDelimiter()
+            {
+                BaseAtom = BaseAtom?.Copy(),
+                Script = Script?.Copy(),
+                Symbol = (SymbolAtom)Symbol?.Copy(),
+                Kern = (SpaceAtom)Kern?.Copy(),
+                Over = Over
+            });
         }
 
         protected override Box CreateBoxCore(TexEnvironment environment)
