@@ -32,3 +32,15 @@ let ``Box for \text{æ,} should be created successfully``() =
     let atom = parse @"\text{æ,}"
     let box = atom.CreateBox(environment)
     Assert.NotNull(box)
+
+[<Fact>]
+let ``ScriptsAtom should set Shift on the created box when creating box without any sub- or superscript``() =
+    Utils.initializeFontResourceLoading()
+
+    let baseAtom = CharAtom('x')
+    let scriptsAtom = ScriptsAtom(baseAtom, null, null)
+
+    let box = scriptsAtom.CreateBox(environment)
+
+    let expectedShift = -(box.Height + box.Depth) / 2.0 - environment.MathFont.GetAxisHeight(environment.Style)
+    Assert.Equal(expectedShift, box.Shift)
