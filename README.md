@@ -18,6 +18,70 @@ For a more detailed sample, check out the [example project][example]. It shows t
 
 ![Screenshot of example project](docs/example-screenshot.png)
 
+### Using a rendering API
+
+The following example demonstrates usage of `TexFormula` API to render the image into a PNG file using the `RenderToPng` extension method:
+
+```csharp
+using System.IO;
+using WpfMath;
+
+namespace ConsoleApplication2
+{
+    internal class Program
+    {
+        public static void Main(string[] args)
+        {
+            const string latex = @"\frac{2+2}{2}";
+            const string fileName = @"T:\Temp\formula.png";
+            
+            var parser = new TexFormulaParser();
+            var formula = parser.Parse(latex);
+            var pngBytes = formula.RenderToPng(20.0, 0.0, 0.0, "Arial");
+            File.WriteAllBytes(fileName, pngBytes);
+        }
+    }
+}
+```
+
+If you need any additional control over the image format, consider using the `GetRenderer` API:
+
+```csharp
+using System;
+using System.IO;
+using System.Windows.Media.Imaging;
+using WpfMath;
+
+namespace ConsoleApplication2
+{
+    internal class Program
+    {
+        public static void Main(string[] args)
+        {
+            const string latex = @"\frac{2+2}{2}";
+            const string fileName = @"T:\Temp\formula.png";
+            
+            var parser = new TexFormulaParser();
+            var formula = parser.Parse(latex);
+            var renderer = formula.GetRenderer(TexStyle.Display, 20.0, "Arial");
+            var bitmapSource = renderer.RenderToBitmap(0.0, 0.0);
+            Console.WriteLine($"Image width: {bitmapSource.Width}");
+            Console.WriteLine($"Image height: {bitmapSource.Height}");
+            
+            var encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
+            using (var target = new FileStream(fileName, FileMode.Create))
+            {
+                encoder.Save(target);
+                Console.WriteLine($"File saved to {fileName}");
+            }
+        }
+    }
+}
+```
+
+You may also pass your own `IElementRenderer` implementation to `TexFormula.RenderFormulaTo` method if you need support for any alternate rendering engines.
+
 Documentation
 -------------
 
