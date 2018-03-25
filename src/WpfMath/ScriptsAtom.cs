@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace WpfMath
 {
@@ -44,7 +41,17 @@ namespace WpfMath
             // Create box for base atom.
             var baseBox = (this.BaseAtom == null ? StrutBox.Empty : this.BaseAtom.CreateBox(environment));
             if (this.SubscriptAtom == null && this.SuperscriptAtom == null)
+            {
+                if (baseBox is CharBox)
+                {
+                    // This situation should only happen when CreateBox called on a temporary ScriptsAtom created from
+                    // BigOperatorAtom.CreateBox. The CharBox's Shift should then be fixed up.
+                    baseBox.Shift = -(baseBox.Height + baseBox.Depth) / 2
+                                    - environment.MathFont.GetAxisHeight(environment.Style);
+                }
+
                 return baseBox;
+            }
 
             // Create result box.
             var resultBox = new HorizontalBox(baseBox);
