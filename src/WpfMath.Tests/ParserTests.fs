@@ -2,19 +2,24 @@
 
 open System
 
+open FSharp.Linq.RuntimeHelpers
 open DeepEqual.Syntax
 open Xunit
 
+open System.Linq.Expressions
 open WpfMath
 open WpfMath.Exceptions
 open WpfMath.Tests.Utils
 
 let assertParseResult formula expected =
+    let toExpression = LeafExpressionConverter.QuotationToLambdaExpression
+
     let parser = TexFormulaParser()
     let result = parser.Parse(formula)
     result.WithDeepEqual(expected)
         .ExposeInternalsOf<TexFormula>()
         .ExposeInternalsOf<FencedAtom>()
+        .IgnoreProperty<Atom>(toExpression(<@ Func<Atom, obj>(fun a -> upcast a.Source) @>))
         .Assert()
 
 let assertParseThrows<'ex when 'ex :> exn> formula =
