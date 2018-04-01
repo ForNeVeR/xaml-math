@@ -5,7 +5,6 @@ using System.Text;
 
 namespace WpfMath
 {
-
     // Atom representing radical (nth-root) construction.
     internal class Radical : Atom
     {
@@ -32,7 +31,12 @@ namespace WpfMath
             private set;
         }
 
-        public override Box CreateBox(TexEnvironment environment)
+        public override Atom Copy()
+        {
+            return CopyTo(new Radical(BaseAtom?.Copy(), DegreeAtom?.Copy()));
+        }
+
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var texFont = environment.MathFont;
             var style = environment.Style;
@@ -52,7 +56,8 @@ namespace WpfMath
             // Create box for radical sign.
             var totalHeight = baseBox.Height + baseBox.Depth;
             var radicalSignBox = DelimiterFactory.CreateBox(sqrtSymbol, totalHeight + clearance + defaultRuleThickness,
-                environment);
+                environment, Source);
+            radicalSignBox.Source = Source;
 
             // Add half of excess height to clearance.
             var delta = radicalSignBox.Depth - (totalHeight + clearance);

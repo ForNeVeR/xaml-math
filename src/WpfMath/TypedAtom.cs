@@ -33,7 +33,12 @@ namespace WpfMath
             private set;
         }
 
-        public override Box CreateBox(TexEnvironment environment)
+        public override Atom Copy()
+        {
+            return CopyTo(new TypedAtom(Atom?.Copy(), LeftType, RightType));
+        }
+
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             return this.Atom.CreateBox(environment);
         }

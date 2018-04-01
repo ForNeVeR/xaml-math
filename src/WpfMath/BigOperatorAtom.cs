@@ -30,6 +30,7 @@ namespace WpfMath
             this.LowerLimitAtom = lowerLimitAtom;
             this.UpperLimitAtom = upperLimitAtom;
             this.UseVerticalLimits = null;
+            this.Source = baseAtom.Source;
         }
 
         // Atom representing big operator.
@@ -59,7 +60,12 @@ namespace WpfMath
             private set;
         }
 
-        public override Box CreateBox(TexEnvironment environment)
+        public override Atom Copy()
+        {
+            return CopyTo(new BigOperatorAtom(BaseAtom?.Copy(), LowerLimitAtom?.Copy(), UpperLimitAtom?.Copy(), UseVerticalLimits));
+        }
+
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var texFont = environment.MathFont;
             var style = environment.Style;
@@ -67,7 +73,7 @@ namespace WpfMath
             if ((this.UseVerticalLimits.HasValue && !UseVerticalLimits.Value) ||
                 (!this.UseVerticalLimits.HasValue && style >= TexStyle.Text))
                 // Attach atoms for limits as scripts.
-                return new ScriptsAtom(this.BaseAtom, this.LowerLimitAtom, this.UpperLimitAtom).CreateBox(environment);
+                return new ScriptsAtom(this.BaseAtom, this.LowerLimitAtom, this.UpperLimitAtom) { Source = Source }.CreateBox(environment);
 
             // Create box for base atom.
             Box baseBox;
@@ -79,7 +85,7 @@ namespace WpfMath
                 var opChar = texFont.GetCharInfo(((SymbolAtom)this.BaseAtom).Name, style);
                 if (style < TexStyle.Text && texFont.HasNextLarger(opChar))
                     opChar = texFont.GetNextLargerCharInfo(opChar, style);
-                var charBox = new CharBox(environment, opChar);
+                var charBox = new CharBox(environment, opChar) { Source = Source };
                 charBox.Shift = -(charBox.Height + charBox.Depth) / 2 -
                     environment.MathFont.GetAxisHeight(environment.Style);
                 baseBox = new HorizontalBox(charBox);

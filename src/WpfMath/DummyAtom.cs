@@ -46,6 +46,11 @@ namespace WpfMath
             get { return this.Atom is SpaceAtom; }
         }
 
+        public override Atom Copy()
+        {
+            return CopyTo(new DummyAtom(Atom?.Copy()) { IsTextSymbol = IsTextSymbol });
+        }
+
         public void SetLigature(FixedCharAtom ligatureAtom)
         {
             this.Atom = ligatureAtom;
@@ -58,7 +63,7 @@ namespace WpfMath
             return ((CharSymbol)this.Atom).GetCharFont(texFont);
         }
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             if (this.IsTextSymbol)
                 ((CharSymbol)this.Atom).IsTextSymbol = true;

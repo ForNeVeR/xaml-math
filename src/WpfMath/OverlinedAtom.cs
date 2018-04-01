@@ -21,7 +21,12 @@ namespace WpfMath
             private set;
         }
 
-        public override Box CreateBox(TexEnvironment environment)
+        public override Atom Copy()
+        {
+            return CopyTo(new OverlinedAtom(BaseAtom?.Copy()));
+        }
+
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             // Create box for base atom, in cramped style.
             var baseBox = this.BaseAtom == null ? StrutBox.Empty : this.BaseAtom.CreateBox(environment.GetCrampedStyle());

@@ -101,6 +101,7 @@ namespace WpfMath
             get;
             set;
         }
+
         public TexUnit OverSpaceUnit
         {
             get;
@@ -119,7 +120,15 @@ namespace WpfMath
             set;
         }
 
-        public override Box CreateBox(TexEnvironment environment)
+        public override Atom Copy()
+        {
+            return CopyTo(
+                new UnderOverAtom(BaseAtom?.Copy(),
+                UnderAtom?.Copy(), UnderSpaceUnit, UnderSpace, UnderScriptSmaller,
+                OverAtom?.Copy(), OverSpaceUnit, OverSpace, OverScriptSmaller));
+        }
+
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             // Create box for base atom.
             var baseBox = this.BaseAtom == null ? StrutBox.Empty : this.BaseAtom.CreateBox(environment);

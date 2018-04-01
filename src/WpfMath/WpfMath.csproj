@@ -73,13 +73,16 @@
     <Compile Include="Exceptions\TexException.cs" />
     <Compile Include="Exceptions\TypeFaceNotFoundException.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="FormulaUtils.cs" />
     <Compile Include="PredefinedColorParser.cs" />
+    <Compile Include="Rendering\BoxWalker.cs" />
     <Compile Include="Rendering\GeometryHelper.cs" />
     <Compile Include="Rendering\GeometryElementRenderer.cs" />
     <Compile Include="Rendering\IElementRenderer.cs" />
     <Compile Include="Rendering\Transformations\Transformation.cs" />
     <Compile Include="Rendering\Transformations\TransformationKind.cs" />
     <Compile Include="Rendering\WpfElementRenderer.cs" />
+    <Compile Include="StringSpan.cs" />
     <Compile Include="StyledAtom.cs" />
     <Compile Include="DefaultTexFont.cs" />
     <Compile Include="DefaultTexFontParser.cs" />

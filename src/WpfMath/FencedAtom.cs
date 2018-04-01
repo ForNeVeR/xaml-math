@@ -39,7 +39,12 @@ namespace WpfMath
             set;
         }
 
-        public override Box CreateBox(TexEnvironment environment)
+        public override Atom Copy()
+        {
+            return CopyTo(new FencedAtom(BaseAtom?.Copy(), (SymbolAtom)LeftDelimeter?.Copy(), (SymbolAtom)RightDelimeter?.Copy()));
+        }
+
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var texFont = environment.MathFont;
             var style = environment.Style;
@@ -57,6 +62,7 @@ namespace WpfMath
             if (LeftDelimeter != null && LeftDelimeter.Name != SymbolAtom.EmptyDelimiterName)
             {
                 var leftDelimeterBox = DelimiterFactory.CreateBox(this.LeftDelimeter.Name, minHeight, environment);
+                leftDelimeterBox.Source = LeftDelimeter.Source;
                 CentreBox(leftDelimeterBox, axis);
                 resultBox.Add(leftDelimeterBox);
             }
@@ -76,6 +82,7 @@ namespace WpfMath
             if (RightDelimeter != null && RightDelimeter.Name != SymbolAtom.EmptyDelimiterName)
             {
                 var rightDelimeterBox = DelimiterFactory.CreateBox(this.RightDelimeter.Name, minHeight, environment);
+                rightDelimeterBox.Source = RightDelimeter.Source;
                 CentreBox(rightDelimeterBox, axis);
                 resultBox.Add(rightDelimeterBox);
             }

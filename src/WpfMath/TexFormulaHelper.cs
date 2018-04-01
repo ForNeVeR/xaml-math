@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,14 +31,14 @@ namespace WpfMath
             this.Formula.RootAtom = new VerticalCenteredAtom(this.Formula.RootAtom);
         }
 
-        public void AddAccent(string formula, string accentName)
+        public void AddAccent(string formula, string accentName, StringSpan source)
         {
-            AddAccent(formulaParser.Parse(formula), accentName);
+            AddAccent(formulaParser.Parse(formula), accentName, source);
         }
 
-        public void AddAccent(TexFormula baseAtom, string accentName)
+        public void AddAccent(TexFormula baseAtom, string accentName, StringSpan source)
         {
-            Add(new AccentedAtom((baseAtom == null ? null : baseAtom.RootAtom), accentName));
+            Add(new AccentedAtom((baseAtom == null ? null : baseAtom.RootAtom), accentName, source));
         }
 
         public void AddAccent(TexFormula baseAtom, TexFormula accent)
@@ -64,8 +64,8 @@ namespace WpfMath
 
         public void AddEmbraced(TexFormula formula, string leftSymbol, string rightSymbol)
         {
-            Add(new FencedAtom(formula == null ? null : formula.RootAtom, TexFormulaParser.GetDelimiterSymbol(leftSymbol),
-                TexFormulaParser.GetDelimiterSymbol(rightSymbol)));
+            Add(new FencedAtom(formula == null ? null : formula.RootAtom, TexFormulaParser.GetDelimiterSymbol(leftSymbol, null),
+                TexFormulaParser.GetDelimiterSymbol(rightSymbol, null)));
         }
 
         public void AddFraction(string numerator, string denominator, bool drawLine)
@@ -198,14 +198,14 @@ namespace WpfMath
             Add(new SpaceAtom(widthUnit, width, heightUnit, height, depthUnit, depth));
         }
 
-        public void AddSymbol(string name)
+        public void AddSymbol(string name, StringSpan source)
         {
-            Add(SymbolAtom.GetAtom(name));
+            Add(SymbolAtom.GetAtom(name, source));
         }
 
-        public void AddSymbol(string name, TexAtomType type)
+        public void AddSymbol(string name, TexAtomType type, StringSpan source)
         {
-            Add(new SymbolAtom(SymbolAtom.GetAtom(name), type));
+            Add(new SymbolAtom(SymbolAtom.GetAtom(name, source), type));
         }
 
         public void Add(string formula)
@@ -225,46 +225,46 @@ namespace WpfMath
 
         public void PutAccentOver(string accentName)
         {
-            this.Formula.RootAtom = new AccentedAtom(this.Formula.RootAtom, accentName);
+            this.Formula.RootAtom = new AccentedAtom(this.Formula.RootAtom, accentName, null);
         }
 
-        public void PutDelimiterOver(TexDelimeter delimiter)
+        public void PutDelimiterOver(TexDelimeter delimiter, StringSpan source)
         {
             var name = TexFormulaParser.DelimiterNames[(int)delimiter][(int)TexDelimeterType.Over];
-            this.Formula.RootAtom = new OverUnderDelimiter(this.Formula.RootAtom, null, SymbolAtom.GetAtom(name),
+            this.Formula.RootAtom = new OverUnderDelimiter(this.Formula.RootAtom, null, SymbolAtom.GetAtom(name, source),
                 TexUnit.Ex, 0, true);
         }
 
-        public void PutDelimiterOver(TexDelimeter delimiter, string superscriptFormula, TexUnit kernUnit, double kern)
+        public void PutDelimiterOver(TexDelimeter delimiter, string superscriptFormula, TexUnit kernUnit, double kern, StringSpan source)
         {
-            PutDelimiterOver(delimiter, formulaParser.Parse(superscriptFormula), kernUnit, kern);
+            PutDelimiterOver(delimiter, formulaParser.Parse(superscriptFormula), kernUnit, kern, source);
         }
 
-        public void PutDelimiterOver(TexDelimeter delimiter, TexFormula superscriptFormula, TexUnit kernUnit, double kern)
+        public void PutDelimiterOver(TexDelimeter delimiter, TexFormula superscriptFormula, TexUnit kernUnit, double kern, StringSpan source)
         {
             var name = TexFormulaParser.DelimiterNames[(int)delimiter][(int)TexDelimeterType.Over];
             this.Formula.RootAtom = new OverUnderDelimiter(this.Formula.RootAtom,
-                superscriptFormula == null ? null : superscriptFormula.RootAtom, SymbolAtom.GetAtom(name), kernUnit, kern,
+                superscriptFormula == null ? null : superscriptFormula.RootAtom, SymbolAtom.GetAtom(name, source), kernUnit, kern,
                 true);
         }
 
-        public void PutDelimiterUnder(TexDelimeter delimiter)
+        public void PutDelimiterUnder(TexDelimeter delimiter, StringSpan source)
         {
             var name = TexFormulaParser.DelimiterNames[(int)delimiter][(int)TexDelimeterType.Under];
-            this.Formula.RootAtom = new OverUnderDelimiter(this.Formula.RootAtom, null, SymbolAtom.GetAtom(name),
+            this.Formula.RootAtom = new OverUnderDelimiter(this.Formula.RootAtom, null, SymbolAtom.GetAtom(name, source),
                 TexUnit.Ex, 0, false);
         }
 
-        public void PutDelimiterUnder(TexDelimeter delimiter, string subscriptFormula, TexUnit kernUnit, double kern)
+        public void PutDelimiterUnder(TexDelimeter delimiter, string subscriptFormula, TexUnit kernUnit, double kern, StringSpan source)
         {
-            PutDelimiterUnder(delimiter, formulaParser.Parse(subscriptFormula), kernUnit, kern);
+            PutDelimiterUnder(delimiter, formulaParser.Parse(subscriptFormula), kernUnit, kern, source);
         }
 
-        public void PutDelimiterUnder(TexDelimeter delimiter, TexFormula subscriptName, TexUnit kernUnit, double kern)
+        public void PutDelimiterUnder(TexDelimeter delimiter, TexFormula subscriptName, TexUnit kernUnit, double kern, StringSpan source)
         {
             var name = TexFormulaParser.DelimiterNames[(int)delimiter][(int)TexDelimeterType.Under];
             this.Formula.RootAtom = new OverUnderDelimiter(this.Formula.RootAtom,
-                subscriptName == null ? null : subscriptName.RootAtom, SymbolAtom.GetAtom(name), kernUnit, kern, false);
+                subscriptName == null ? null : subscriptName.RootAtom, SymbolAtom.GetAtom(name, source), kernUnit, kern, false);
         }
 
         public void PutOver(TexFormula overFormula, TexUnit overUnit, double overSpace, bool overScriptSize)

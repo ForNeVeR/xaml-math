@@ -1,19 +1,16 @@
-﻿namespace WpfMath
+namespace WpfMath
 {
     // Atom representing single character in specific text style.
     internal class CharAtom : CharSymbol
     {
-        public CharAtom(char character, string textStyle = null)
+        public CharAtom(StringSpan source, string textStyle = null)
         {
-            this.Character = character;
+            this.Source = source;
             this.TextStyle = textStyle;
+            this.Character = Source[0];
         }
 
-        public char Character
-        {
-            get;
-            private set;
-        }
+        public char Character { get; }
 
         // Null means default text style.
         public string TextStyle
@@ -22,7 +19,12 @@
             private set;
         }
 
-        public override Box CreateBox(TexEnvironment environment)
+        public override Atom Copy()
+        {
+            return CopyTo(new CharAtom(Source, TextStyle));
+        }
+
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var font = GetStyledFont(environment);
             var charInfo = GetCharInfo(font, environment.Style);
