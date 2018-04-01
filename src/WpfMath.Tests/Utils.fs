@@ -16,8 +16,8 @@ let formula (root : Atom) : TexFormula =
     TexFormula(RootAtom = root)
 
 let space = SpaceAtom()
-let char (c : char) : CharAtom = CharAtom(StringSpan(c.ToString(), 0, 1))
-let styledChar (c : char, style:string) : CharAtom = CharAtom(StringSpan(c.ToString(), 0, 1), style)
+let char (c : char) : CharAtom = CharAtom(SourceSpan(c.ToString(), 0, 1))
+let styledChar (c : char, style:string) : CharAtom = CharAtom(SourceSpan(c.ToString(), 0, 1), style)
 let op (baseAtom : Atom) (useVertScripts : System.Nullable<bool>)  : BigOperatorAtom = BigOperatorAtom(baseAtom, null, null, useVertScripts)
 let opWithScripts (baseAtom : Atom) (subscript : Atom) (superscript : Atom) (useVertScripts : System.Nullable<bool>)
             : BigOperatorAtom = BigOperatorAtom(baseAtom, subscript, superscript, useVertScripts)

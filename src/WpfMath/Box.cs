@@ -34,7 +34,7 @@ namespace WpfMath
             get { return this.childrenReadOnly; }
         }
 
-        public StringSpan Source
+        public SourceSpan Source
         {
             get;
             set;

@@ -120,7 +120,7 @@ namespace WpfMath
             }
         }
 
-        internal static SymbolAtom GetDelimiterSymbol(string name, StringSpan source)
+        internal static SymbolAtom GetDelimiterSymbol(string name, SourceSpan source)
         {
             if (name == null)
                 return null;
@@ -147,16 +147,16 @@ namespace WpfMath
         {
             System.Diagnostics.Debug.WriteLine(value);
             var position = 0;
-            return Parse(new StringSpan(value, 0, value.Length), ref position, false, textStyle);
+            return Parse(new SourceSpan(value, 0, value.Length), ref position, false, textStyle);
         }
 
-        private TexFormula Parse(StringSpan value, string textStyle = null)
+        private TexFormula Parse(SourceSpan value, string textStyle = null)
         {
             int localPostion = 0;
             return Parse(value, ref localPostion, false, textStyle);
         }
 
-        private DelimiterInfo ParseUntilDelimiter(StringSpan value, ref int position, string textStyle)
+        private DelimiterInfo ParseUntilDelimiter(SourceSpan value, ref int position, string textStyle)
         {
             var embeddedFormula = Parse(value, ref position, true, textStyle);
             if (embeddedFormula.RootAtom == null)
@@ -191,7 +191,7 @@ namespace WpfMath
             return new DelimiterInfo(bodyAtom, lastDelimiter);
         }
 
-        private TexFormula Parse(StringSpan value, ref int position, bool allowClosingDelimiter, string textStyle)
+        private TexFormula Parse(SourceSpan value, ref int position, bool allowClosingDelimiter, string textStyle)
         {
             var formula = new TexFormula() { TextStyle = textStyle };
             var closedDelimiter = false;
@@ -199,7 +199,7 @@ namespace WpfMath
             while (position < value.Length && !(allowClosingDelimiter && closedDelimiter))
             {
                 char ch = value[position];
-                var source = new StringSpan(value, position, 1);
+                var source = new SourceSpan(value, position, 1);
                 if (IsWhiteSpace(ch))
                 {
                     if (!skipWhiteSpace)
@@ -250,7 +250,7 @@ namespace WpfMath
             return formula;
         }
 
-        private StringSpan ReadGroup(TexFormula formula, StringSpan value, ref int position, char openChar, char closeChar)
+        private SourceSpan ReadGroup(TexFormula formula, SourceSpan value, ref int position, char openChar, char closeChar)
         {
             if (position == value.Length || value[position] != openChar)
                 throw new TexParseException("missing '" + openChar + "'!");
@@ -274,10 +274,10 @@ namespace WpfMath
             }
 
             position++;
-            return new StringSpan(value, start, position - start - 1);
+            return new SourceSpan(value, start, position - start - 1);
         }
 
-        private TexFormula ReadScript(TexFormula formula, StringSpan value, ref int position)
+        private TexFormula ReadScript(TexFormula formula, SourceSpan value, ref int position)
         {
             SkipWhiteSpace(value, ref position);
             if (position == value.Length)
@@ -291,13 +291,13 @@ namespace WpfMath
             else
             {
                 position++;
-                return Parse(new StringSpan(value, position - 1, 1), formula.TextStyle);
+                return Parse(new SourceSpan(value, position - 1, 1), formula.TextStyle);
             }
         }
 
         private Atom ProcessCommand(
             TexFormula formula,
-            StringSpan value,
+            SourceSpan value,
             ref int position,
             string command,
             bool allowClosingDelimiter,
@@ -334,7 +334,7 @@ namespace WpfMath
 
                         var internals = ParseUntilDelimiter(value, ref position, formula.TextStyle);
 
-                        var opening = GetDelimiterSymbol(GetDelimeterMapping(delimiter), new StringSpan(value, start, left - start));
+                        var opening = GetDelimiterSymbol(GetDelimeterMapping(delimiter), new SourceSpan(value, start, left - start));
                         if (opening == null)
                             throw new TexParseException($"Cannot find delimiter named {delimiter}");
 
@@ -354,7 +354,7 @@ namespace WpfMath
                         var delimiter = value[position];
                         ++position;
 
-                        var closing = GetDelimiterSymbol(GetDelimeterMapping(delimiter), new StringSpan(value, start, position - start));
+                        var closing = GetDelimiterSymbol(GetDelimeterMapping(delimiter), new SourceSpan(value, start, position - start));
                         if (closing == null)
                             throw new TexParseException($"Cannot find delimiter named {delimiter}");
 
@@ -389,7 +389,7 @@ namespace WpfMath
                         throw new TexParseException("The radicand of a square root can't be empty!");
                     }
 
-                    return new Radical(sqrtFormula.RootAtom, degreeFormula?.RootAtom) { Source = new StringSpan(value, start, sqrtEnd - start) };
+                    return new Radical(sqrtFormula.RootAtom, degreeFormula?.RootAtom) { Source = new SourceSpan(value, start, sqrtEnd - start) };
 
                 case "color":
                     {
@@ -429,7 +429,7 @@ namespace WpfMath
 
         private void ProcessEscapeSequence(
             TexFormula formula,
-            StringSpan value,
+            SourceSpan value,
             ref int position,
             bool allowClosingDelimiter,
             ref bool closedDelimiter)
@@ -454,7 +454,7 @@ namespace WpfMath
                 position++;
             }
 
-            var commandSpan = new StringSpan(value, start, position - start);
+            var commandSpan = new SourceSpan(value, start, position - start);
             var command = commandSpan.ToString();
 
             SymbolAtom symbolAtom = null;
@@ -530,7 +530,7 @@ namespace WpfMath
             }
         }
 
-        private Atom AttachScripts(TexFormula formula, StringSpan value, ref int position, Atom atom, bool skipWhiteSpace = true)
+        private Atom AttachScripts(TexFormula formula, SourceSpan value, ref int position, Atom atom, bool skipWhiteSpace = true)
         {
             if (skipWhiteSpace)
             {
@@ -547,7 +547,7 @@ namespace WpfMath
             {
                 if (value[i] == primeChar)
                 {
-                    primesRowAtom.Add(SymbolAtom.GetAtom("prime", new StringSpan(value, i, 1)));
+                    primesRowAtom.Add(SymbolAtom.GetAtom("prime", new SourceSpan(value, i, 1)));
                     position++;
                 }
                 else if (!IsWhiteSpace(value[i]))
@@ -617,7 +617,7 @@ namespace WpfMath
             }
         }
 
-        private Atom ConvertCharacter(TexFormula formula, ref int position, StringSpan source)
+        private Atom ConvertCharacter(TexFormula formula, ref int position, SourceSpan source)
         {
             var character = source[0];
             position++;
@@ -642,11 +642,11 @@ namespace WpfMath
             }
             else // Character is alpha-numeric or should be rendered as text.
             {
-                return new CharAtom(new StringSpan(source, 0, 1), formula.TextStyle);
+                return new CharAtom(new SourceSpan(source, 0, 1), formula.TextStyle);
             }
         }
 
-        private void SkipWhiteSpace(StringSpan value, ref int position)
+        private void SkipWhiteSpace(SourceSpan value, ref int position)
         {
             while (position < value.Length && IsWhiteSpace(value[position]))
                 position++;

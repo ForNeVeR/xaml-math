@@ -34,7 +34,7 @@ namespace WpfMath
             validSymbolTypes.Set((int)TexAtomType.Accent, true);
         }
 
-        public static SymbolAtom GetAtom(string name, StringSpan source)
+        public static SymbolAtom GetAtom(string name, SourceSpan source)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace WpfMath
             }
         }
 
-        public static bool TryGetAtom(StringSpan name, out SymbolAtom atom)
+        public static bool TryGetAtom(SourceSpan name, out SymbolAtom atom)
         {
             SymbolAtom temp;
             var nameString = name.ToString();

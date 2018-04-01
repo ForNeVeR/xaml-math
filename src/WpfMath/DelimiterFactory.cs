@@ -8,7 +8,7 @@ namespace WpfMath
     // Creates boxes containing delimeter symbol that exists in different sizes.
     internal static class DelimiterFactory
     {
-        public static Box CreateBox(string symbol, double minHeight, TexEnvironment environment, StringSpan source = null)
+        public static Box CreateBox(string symbol, double minHeight, TexEnvironment environment, SourceSpan source = null)
         {
             var texFont = environment.MathFont;
             var style = environment.Style;

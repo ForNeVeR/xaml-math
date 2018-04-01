@@ -14,7 +14,7 @@ namespace WpfMath
             set;
         }
 
-        public StringSpan Source
+        public SourceSpan Source
         {
             get;
             set;
