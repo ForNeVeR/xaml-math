@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
 using System.Windows.Media;
 
 namespace WpfMath
@@ -17,29 +12,17 @@ namespace WpfMath
             this.Foreground = foregroundColor;
         }
 
-        public DummyAtom PreviousAtom
-        {
-            get { return this.RowAtom.PreviousAtom; }
-            set { this.RowAtom.PreviousAtom = value; }
-        }
-
         // RowAtom to which colors are applied.
-        public RowAtom RowAtom
-        {
-            get;
-            private set;
-        }
+        public RowAtom RowAtom { get; }
 
-        public Brush Background
-        {
-            get;
-            set;
-        }
+        public Brush Background { get; }
 
-        public Brush Foreground
+        public Brush Foreground { get; }
+
+        public Atom WithPreviousAtom(DummyAtom previousAtom)
         {
-            get;
-            set;
+            var rowAtom = this.RowAtom.WithPreviousAtom(previousAtom);
+            return new StyledAtom(rowAtom, this.Background, this.Foreground);
         }
 
         public override Box CreateBox(TexEnvironment environment)
@@ -62,9 +45,15 @@ namespace WpfMath
             return this.RowAtom.GetRightType();
         }
 
-        public StyledAtom Clone()
+        public StyledAtom Clone(
+            RowAtom rowAtom = null,
+            Brush background = null,
+            Brush foreground = null)
         {
-            return new StyledAtom(this.RowAtom, this.Background, this.Foreground);
+            return new StyledAtom(
+                rowAtom ?? this.RowAtom,
+                background ?? this.Background,
+                foreground ?? this.Foreground);
         }
     }
 }

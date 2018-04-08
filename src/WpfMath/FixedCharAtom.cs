@@ -13,11 +13,7 @@ namespace WpfMath
             this.CharFont = charFont;
         }
 
-        public CharFont CharFont
-        {
-            get;
-            private set;
-        }
+        public CharFont CharFont { get; }
 
         public override CharFont GetCharFont(ITeXFont texFont)
         {

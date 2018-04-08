@@ -13,11 +13,7 @@ namespace WpfMath
             this.Atom = atom;
         }
 
-        public Atom Atom
-        {
-            get;
-            private set;
-        }
+        public Atom Atom { get; }
 
         public override Box CreateBox(TexEnvironment environment)
         {

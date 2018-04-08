@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace WpfMath
 {
@@ -14,23 +11,14 @@ namespace WpfMath
         private const double scale = 0.55;
 
         public Radical(Atom baseAtom, Atom degreeAtom = null)
-            : base()
         {
             this.BaseAtom = baseAtom;
             this.DegreeAtom = degreeAtom;
         }
 
-        public Atom BaseAtom
-        {
-            get;
-            private set;
-        }
+        public Atom BaseAtom { get; }
 
-        public Atom DegreeAtom
-        {
-            get;
-            private set;
-        }
+        public Atom DegreeAtom { get; }
 
         public override Box CreateBox(TexEnvironment environment)
         {

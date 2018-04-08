@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace WpfMath
 {
@@ -16,9 +13,14 @@ namespace WpfMath
             return maxWidth;
         }
 
-        public OverUnderDelimiter(Atom baseAtom, Atom script, SymbolAtom symbol, TexUnit kernUnit, double kern, bool over)
+        public OverUnderDelimiter(
+            Atom baseAtom,
+            Atom script,
+            SymbolAtom symbol,
+            TexUnit kernUnit,
+            double kern,
+            bool over)
         {
-            this.Type = TexAtomType.Inner;
             this.BaseAtom = baseAtom;
             this.Script = script;
             this.Symbol = symbol;
@@ -26,37 +28,17 @@ namespace WpfMath
             this.Over = over;
         }
 
-        public Atom BaseAtom
-        {
-            get;
-            private set;
-        }
+        public Atom BaseAtom { get; }
 
-        private Atom Script
-        {
-            get;
-            set;
-        }
+        private Atom Script { get; }
 
-        private SymbolAtom Symbol
-        {
-            get;
-            set;
-        }
+        private SymbolAtom Symbol { get; }
 
         // Kern between delimeter symbol and script.
-        private SpaceAtom Kern
-        {
-            get;
-            set;
-        }
+        private SpaceAtom Kern { get; }
 
         // True to place delimeter symbol Over base; false to place delimeter symbol under base.
-        public bool Over
-        {
-            get;
-            set;
-        }
+        public bool Over { get; }
 
         public override Box CreateBox(TexEnvironment environment)
         {

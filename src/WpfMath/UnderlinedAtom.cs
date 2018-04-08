@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace WpfMath
 {
     // Atom representing other atom that is underlined.
@@ -10,15 +5,10 @@ namespace WpfMath
     {
         public UnderlinedAtom(Atom baseAtom)
         {
-            this.Type = TexAtomType.Ordinary;
             this.BaseAtom = baseAtom;
         }
 
-        public Atom BaseAtom
-        {
-            get;
-            private set;
-        }
+        public Atom BaseAtom { get; }
 
         public override Box CreateBox(TexEnvironment environment)
         {

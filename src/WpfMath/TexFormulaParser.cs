@@ -167,8 +167,8 @@ namespace WpfMath
             }
             else if (bodyRow.Elements.Count > 2)
             {
-                var row = new RowAtom();
-                row.Elements.AddRange(bodyRow.Elements.Take(bodyRow.Elements.Count - 1));
+                var row = bodyRow.Elements.Take(bodyRow.Elements.Count - 1)
+                    .Aggregate(new RowAtom(), (r, atom) => r.Add(atom));
                 bodyAtom = row;
             }
             else if (bodyRow.Elements.Count == 2)
@@ -534,7 +534,7 @@ namespace WpfMath
             {
                 if (value[i] == primeChar)
                 {
-                    primesRowAtom.Add(SymbolAtom.GetAtom("prime"));
+                    primesRowAtom = primesRowAtom.Add(SymbolAtom.GetAtom("prime"));
                     position++;
                 }
                 else if (!IsWhiteSpace(value[i]))

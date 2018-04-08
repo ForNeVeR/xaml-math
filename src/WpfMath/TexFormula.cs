@@ -71,16 +71,15 @@ namespace WpfMath
             {
                 if (!(this.RootAtom is RowAtom))
                     this.RootAtom = new RowAtom(RootAtom);
-                ((RowAtom)RootAtom).Add(atom);
+                this.RootAtom = ((RowAtom)RootAtom).Add(atom);
             }
         }
 
         public void SetForeground(Brush brush)
         {
-            if (this.RootAtom is StyledAtom)
+            if (this.RootAtom is StyledAtom sa)
             {
-                this.RootAtom = ((StyledAtom)this.RootAtom).Clone();
-                ((StyledAtom)this.RootAtom).Foreground = brush;
+                this.RootAtom = sa.Clone(foreground: brush);
             }
             else
             {
@@ -90,10 +89,9 @@ namespace WpfMath
 
         public void SetBackground(Brush brush)
         {
-            if (this.RootAtom is StyledAtom)
+            if (this.RootAtom is StyledAtom sa)
             {
-                this.RootAtom = ((StyledAtom)this.RootAtom).Clone();
-                ((StyledAtom)this.RootAtom).Background = brush;
+                this.RootAtom = sa.Clone(background: brush);
             }
             else
             {

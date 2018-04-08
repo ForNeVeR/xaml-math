@@ -1,40 +1,40 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace WpfMath
 {
     // Dummy atom representing atom whose type can change or which can be replaced by a ligature.
     internal class DummyAtom : Atom
     {
-        public DummyAtom(Atom atom)
+        public DummyAtom(TexAtomType type, Atom atom, bool isTextSymbol) : base(type)
         {
-            this.Type = TexAtomType.None;
             this.Atom = atom;
-            this.IsTextSymbol = false;
+            this.IsTextSymbol = isTextSymbol;
         }
 
-        public DummyAtom PreviousAtom
+        public DummyAtom(Atom atom) : this(TexAtomType.None, atom, false)
         {
-            set
+        }
+
+        public Atom WithPreviousAtom(DummyAtom previousAtom)
+        {
+            if (this.Atom is IRow row)
             {
-                if (this.Atom is IRow)
-                    ((IRow)this.Atom).PreviousAtom = value;
+                return new DummyAtom(this.Type, row.WithPreviousAtom(previousAtom), this.IsTextSymbol);
             }
+
+            return this;
         }
 
-        public Atom Atom
-        {
-            get;
-            private set;
-        }
+        public static DummyAtom CreateLigature(FixedCharAtom ligatureAtom) =>
+            new DummyAtom(TexAtomType.None, ligatureAtom, false);
 
-        public bool IsTextSymbol
-        {
-            get;
-            set;
-        }
+        public Atom Atom { get; }
+
+        public bool IsTextSymbol { get; }
+
+        public DummyAtom WithType(TexAtomType type) =>
+            new DummyAtom(type, this.Atom, this.IsTextSymbol);
+
+        public DummyAtom AsTextSymbol() =>
+            this.IsTextSymbol ? this : new DummyAtom(this.Type, this.Atom, true);
 
         public bool IsCharSymbol
         {
@@ -46,27 +46,13 @@ namespace WpfMath
             get { return this.Atom is SpaceAtom; }
         }
 
-        public void SetLigature(FixedCharAtom ligatureAtom)
-        {
-            this.Atom = ligatureAtom;
-            this.Type = TexAtomType.None;
-            this.IsTextSymbol = false;
-        }
-
         public CharFont GetCharFont(ITeXFont texFont)
         {
             return ((CharSymbol)this.Atom).GetCharFont(texFont);
         }
 
-        public override Box CreateBox(TexEnvironment environment)
-        {
-            if (this.IsTextSymbol)
-                ((CharSymbol)this.Atom).IsTextSymbol = true;
-            var resultBox = this.Atom.CreateBox(environment);
-            if (this.IsTextSymbol)
-                ((CharSymbol)this.Atom).IsTextSymbol = false;
-            return resultBox;
-        }
+        public override Box CreateBox(TexEnvironment environment) =>
+            this.Atom.CreateBox(environment);
 
         public override TexAtomType GetLeftType()
         {

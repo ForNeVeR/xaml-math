@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace WpfMath
 {
     // Atom representing big delimeter (e.g. brackets).
@@ -14,17 +9,9 @@ namespace WpfMath
             this.Size = size;
         }
 
-        public Atom DelimeterAtom
-        {
-            get;
-            private set;
-        }
+        public Atom DelimeterAtom { get; }
 
-        public int Size
-        {
-            get;
-            private set;
-        }
+        public int Size { get; }
 
         public override Box CreateBox(TexEnvironment environment)
         {

@@ -8,30 +8,17 @@ namespace WpfMath
         private static readonly SpaceAtom scriptSpaceAtom = new SpaceAtom(TexUnit.Point, 0.5, 0, 0);
 
         public ScriptsAtom(Atom baseAtom, Atom subscriptAtom, Atom superscriptAtom)
-            : base()
         {
             this.BaseAtom = baseAtom;
             this.SubscriptAtom = subscriptAtom;
             this.SuperscriptAtom = superscriptAtom;
         }
 
-        public Atom BaseAtom
-        {
-            get;
-            private set;
-        }
+        public Atom BaseAtom { get; }
 
-        public Atom SubscriptAtom
-        {
-            get;
-            private set;
-        }
+        public Atom SubscriptAtom { get; }
 
-        public Atom SuperscriptAtom
-        {
-            get;
-            private set;
-        }
+        public Atom SuperscriptAtom { get; }
 
         public override Box CreateBox(TexEnvironment environment)
         {

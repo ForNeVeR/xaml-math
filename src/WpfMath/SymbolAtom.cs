@@ -51,35 +51,23 @@ namespace WpfMath
             return symbols.TryGetValue(name, out atom);
         }
 
-        public SymbolAtom(SymbolAtom symbolAtom, TexAtomType type)
-            : base()
+        public SymbolAtom(SymbolAtom symbolAtom, TexAtomType type) : base(type)
         {
             if (!validSymbolTypes[(int)type])
-                throw new ArgumentException("The specified type is not a valid symbol type.", "type");
-            this.Type = type;
+                throw new ArgumentException("The specified type is not a valid symbol type.", nameof(type));
             this.Name = symbolAtom.Name;
             this.IsDelimeter = symbolAtom.IsDelimeter;
         }
 
-        public SymbolAtom(string name, TexAtomType type, bool isDelimeter)
-            : base()
+        public SymbolAtom(string name, TexAtomType type, bool isDelimeter) : base(type)
         {
-            this.Type = type;
             this.Name = name;
             this.IsDelimeter = isDelimeter;
         }
 
-        public bool IsDelimeter
-        {
-            get;
-            private set;
-        }
+        public bool IsDelimeter { get; }
 
-        public string Name
-        {
-            get;
-            private set;
-        }
+        public string Name { get; }
 
         public override Box CreateBox(TexEnvironment environment)
         {

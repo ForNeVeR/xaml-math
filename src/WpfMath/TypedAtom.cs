@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace WpfMath
 {
     // Atom representing other atom with custom left and right types.
@@ -15,23 +10,11 @@ namespace WpfMath
             this.RightType = rightType;
         }
 
-        public Atom Atom
-        {
-            get;
-            private set;
-        }
+        public Atom Atom { get; }
 
-        public TexAtomType LeftType
-        {
-            get;
-            private set;
-        }
+        public TexAtomType LeftType { get; }
 
-        public TexAtomType RightType
-        {
-            get;
-            private set;
-        }
+        public TexAtomType RightType { get; }
 
         public override Box CreateBox(TexEnvironment environment)
         {

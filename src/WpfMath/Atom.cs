@@ -1,23 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace WpfMath
 {
     // Atom (smallest unit) of TexFormula.
     internal abstract class Atom
     {
-        public Atom()
+        protected Atom(TexAtomType type)
         {
-            this.Type = TexAtomType.Ordinary;
+            this.Type = type;
         }
 
-        public TexAtomType Type
+        protected Atom() : this(TexAtomType.Ordinary)
         {
-            get;
-            set;
         }
+
+        public TexAtomType Type { get; }
 
         public abstract Box CreateBox(TexEnvironment environment);
 

@@ -12,7 +12,7 @@ namespace WpfMath
         private static UnitConversion[] unitConversions = new UnitConversion[]
 		        {
 		            new UnitConversion(e => e.MathFont.GetXHeight(e.Style, e.LastFontId)),
-		            
+
 		            new UnitConversion(e => e.MathFont.GetXHeight(e.Style, e.LastFontId)),
 
 		            new UnitConversion(e => 1.0 / e.MathFont.Size),
@@ -37,19 +37,23 @@ namespace WpfMath
         }
 
         // True to represent hard space (actual space character).
-        private bool isHardSpace;
+        private readonly bool isHardSpace;
 
-        private double width;
-        private double height;
-        private double depth;
+        private readonly double width;
+        private readonly double height;
+        private readonly double depth;
 
-        private TexUnit widthUnit;
-        private TexUnit heightUnit;
-        private TexUnit depthUnit;
+        private readonly TexUnit widthUnit;
+        private readonly TexUnit heightUnit;
+        private readonly TexUnit depthUnit;
 
-        public SpaceAtom(TexUnit widthUnit, double width, TexUnit heightUnit, double height,
-            TexUnit depthUnit, double depth)
-            : base()
+        public SpaceAtom(
+            TexUnit widthUnit,
+            double width,
+            TexUnit heightUnit,
+            double height,
+            TexUnit depthUnit,
+            double depth)
         {
             CheckUnit(widthUnit);
             CheckUnit(heightUnit);
@@ -65,7 +69,6 @@ namespace WpfMath
         }
 
         public SpaceAtom(TexUnit unit, double width, double height, double depth)
-            : base()
         {
             CheckUnit(unit);
 
@@ -79,7 +82,6 @@ namespace WpfMath
         }
 
         public SpaceAtom()
-            : base()
         {
             this.isHardSpace = true;
         }

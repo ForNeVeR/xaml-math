@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace WpfMath
 {
@@ -29,18 +26,10 @@ namespace WpfMath
         }
 
         // Atom over which accent symbol is placed.
-        public Atom BaseAtom
-        {
-            get;
-            private set;
-        }
+        public Atom BaseAtom { get; }
 
         // Atom representing accent symbol to place over base atom.
-        public SymbolAtom AccentAtom
-        {
-            get;
-            private set;
-        }
+        public SymbolAtom AccentAtom { get; }
 
         public override Box CreateBox(TexEnvironment environment)
         {

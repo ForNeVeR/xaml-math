@@ -21,23 +21,11 @@ namespace WpfMath
             this.RightDelimeter = rightDelimeter;
         }
 
-        public Atom BaseAtom
-        {
-            get;
-            private set;
-        }
+        public Atom BaseAtom { get; }
 
-        private SymbolAtom LeftDelimeter
-        {
-            get;
-            set;
-        }
+        private SymbolAtom LeftDelimeter { get; }
 
-        private SymbolAtom RightDelimeter
-        {
-            get;
-            set;
-        }
+        private SymbolAtom RightDelimeter { get; }
 
         public override Box CreateBox(TexEnvironment environment)
         {

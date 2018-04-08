@@ -9,17 +9,11 @@ namespace WpfMath
     internal class OverlinedAtom : Atom
     {
         public OverlinedAtom(Atom baseAtom)
-            : base()
         {
-            this.Type = TexAtomType.Ordinary;
             this.BaseAtom = baseAtom;
         }
 
-        public Atom BaseAtom
-        {
-            get;
-            private set;
-        }
+        public Atom BaseAtom { get; }
 
         public override Box CreateBox(TexEnvironment environment)
         {
