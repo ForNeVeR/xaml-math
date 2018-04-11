@@ -9,17 +9,9 @@ namespace WpfMath
             this.Size = size;
         }
 
-        public Atom DelimeterAtom
-        {
-            get;
-            private set;
-        }
+        public Atom DelimeterAtom { get; }
 
-        public int Size
-        {
-            get;
-            private set;
-        }
+        public int Size { get; }
 
         public override Atom Copy()
         {

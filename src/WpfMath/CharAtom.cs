@@ -13,11 +13,7 @@ namespace WpfMath
         public char Character { get; }
 
         // Null means default text style.
-        public string TextStyle
-        {
-            get;
-            private set;
-        }
+        public string TextStyle { get; }
 
         public override Atom Copy()
         {

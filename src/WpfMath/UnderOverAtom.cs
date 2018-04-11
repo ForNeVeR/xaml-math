@@ -61,61 +61,25 @@ namespace WpfMath
             this.OverScriptSmaller = overScriptSize;
         }
 
-        public Atom BaseAtom
-        {
-            get;
-            private set;
-        }
+        public Atom BaseAtom { get; }
 
-        public Atom UnderAtom
-        {
-            get;
-            private set;
-        }
+        public Atom UnderAtom { get; }
 
-        public Atom OverAtom
-        {
-            get;
-            private set;
-        }
+        public Atom OverAtom { get; }
 
         // Kern between base and under atom.
-        public double UnderSpace
-        {
-            get;
-            set;
-        }
+        public double UnderSpace { get; }
 
         // Kern between base and over atom.
-        public double OverSpace
-        {
-            get;
-            set;
-        }
+        public double OverSpace { get; }
 
-        public TexUnit UnderSpaceUnit
-        {
-            get;
-            set;
-        }
+        public TexUnit UnderSpaceUnit { get; }
 
-        public TexUnit OverSpaceUnit
-        {
-            get;
-            set;
-        }
+        public TexUnit OverSpaceUnit { get; }
 
-        public bool UnderScriptSmaller
-        {
-            get;
-            set;
-        }
+        public bool UnderScriptSmaller { get; }
 
-        public bool OverScriptSmaller
-        {
-            get;
-            set;
-        }
+        public bool OverScriptSmaller { get; }
 
         public override Atom Copy()
         {

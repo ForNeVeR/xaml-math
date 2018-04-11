@@ -21,8 +21,8 @@ namespace WpfMath
         }
 
         public BigOperatorAtom(Atom baseAtom, Atom lowerLimitAtom, Atom upperLimitAtom)
+            : base(TexAtomType.BigOperator)
         {
-            this.Type = TexAtomType.BigOperator;
             this.BaseAtom = baseAtom;
             this.LowerLimitAtom = lowerLimitAtom;
             this.UpperLimitAtom = upperLimitAtom;
@@ -31,31 +31,15 @@ namespace WpfMath
         }
 
         // Atom representing big operator.
-        public Atom BaseAtom
-        {
-            get;
-            private set;
-        }
+        public Atom BaseAtom { get; }
 
         // Atoms representing lower and upper limits.
-        public Atom LowerLimitAtom
-        {
-            get;
-            private set;
-        }
+        public Atom LowerLimitAtom { get; }
 
-        public Atom UpperLimitAtom
-        {
-            get;
-            private set;
-        }
+        public Atom UpperLimitAtom { get; }
 
         // True if limits should be drawn over and under the base atom; false if they should be drawn as scripts.
-        public bool? UseVerticalLimits
-        {
-            get;
-            private set;
-        }
+        public bool? UseVerticalLimits { get; }
 
         public override Atom Copy()
         {

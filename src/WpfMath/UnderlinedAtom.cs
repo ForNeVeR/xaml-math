@@ -5,15 +5,10 @@ namespace WpfMath
     {
         public UnderlinedAtom(Atom baseAtom)
         {
-            this.Type = TexAtomType.Ordinary;
             this.BaseAtom = baseAtom;
         }
 
-        public Atom BaseAtom
-        {
-            get;
-            private set;
-        }
+        public Atom BaseAtom { get; }
 
         public override Atom Copy()
         {

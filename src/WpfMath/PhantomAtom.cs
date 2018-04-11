@@ -3,9 +3,9 @@ namespace WpfMath
     // Atom representing other atom that is not rendered.
     internal class PhantomAtom : Atom, IRow
     {
-        private bool useWidth;
-        private bool useHeight;
-        private bool useDepth;
+        private readonly bool useWidth;
+        private readonly bool useHeight;
+        private readonly bool useDepth;
 
         public PhantomAtom(Atom baseAtom)
             : this(baseAtom, true, true, true)
@@ -13,7 +13,6 @@ namespace WpfMath
         }
 
         public PhantomAtom(Atom baseAtom, bool useWidth, bool useHeight, bool useDepth)
-            : base()
         {
             this.RowAtom = baseAtom == null ? new RowAtom() : new RowAtom(baseAtom);
             this.useWidth = useWidth;
@@ -21,17 +20,10 @@ namespace WpfMath
             this.useDepth = useDepth;
         }
 
-        public DummyAtom PreviousAtom
-        {
-            get { return this.RowAtom.PreviousAtom; }
-            set { this.RowAtom.PreviousAtom = value; }
-        }
+        public Atom WithPreviousAtom(DummyAtom previousAtom) =>
+            new PhantomAtom(this.RowAtom.WithPreviousAtom(previousAtom), this.useWidth, this.useHeight, this.useDepth);
 
-        public RowAtom RowAtom
-        {
-            get;
-            private set;
-        }
+        public RowAtom RowAtom { get; }
 
         public override Atom Copy()
         {

@@ -27,9 +27,8 @@ let group (groupedAtom: Atom) : TypedAtom = TypedAtom(groupedAtom, TexAtomType.O
 let symbol (name : string) : SymbolAtom = SymbolAtom(name, TexAtomType.BinaryOperator, false)
 let symbolOp (name : string) : SymbolAtom = SymbolAtom(name, TexAtomType.BigOperator, false)
 let row (children : Atom seq) : RowAtom =
-    let result = RowAtom()
-    result.Elements.AddRange(children)
-    result
+    children
+    |> Seq.fold (fun row atom -> row.Add atom) (RowAtom())
 let fenced left body right : FencedAtom = FencedAtom(body, left, right)
 let styledString (style : string) (text : string) : RowAtom =
     text
