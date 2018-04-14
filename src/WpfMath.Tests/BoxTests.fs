@@ -1,5 +1,8 @@
 module WpfMath.Tests.BoxTests
 
+open System
+
+open FSharp.Core.Fluent
 open DeepEqual.Syntax
 open Xunit
 
@@ -44,3 +47,17 @@ let ``ScriptsAtom should set Shift on the created box when creating box without 
 
     let expectedShift = -(box.Height + box.Depth) / 2.0 - environment.MathFont.GetAxisHeight(environment.Style)
     Assert.Equal(expectedShift, box.Shift)
+
+[<Fact>]
+let ``RowAtom creates a boxes with proper sources``() =
+    let source = "2+2"
+    let src = src source
+    let parser = TexFormulaParser()
+    let formula = parser.Parse source
+    let box = formula.CreateBox environment :?> HorizontalBox
+    let chars = box.Children.filter(fun x -> x :? CharBox)
+    Assert.Collection<Box>(
+        chars,
+        Action<_>(fun (x : Box) -> Assert.Equal(src 0 1, x.Source)),
+        Action<_>(fun (x : Box) -> Assert.Equal(src 1 1, x.Source)),
+        Action<_>(fun (x : Box) -> Assert.Equal(src 2 1, x.Source)))

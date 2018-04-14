@@ -1,6 +1,8 @@
+using System;
+
 namespace WpfMath
 {
-    public class SourceSpan
+    public class SourceSpan : IEquatable<SourceSpan>
     {
         public SourceSpan(string source, int start, int length)
         {
@@ -23,5 +25,31 @@ namespace WpfMath
 
         public SourceSpan Segment(int start) => new SourceSpan(this.Source, this.Start + start, this.Length - start);
         public SourceSpan Segment(int start, int length) => new SourceSpan(this.Source, this.Start + start, length);
+
+        public bool Equals(SourceSpan other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return this.Start == other.Start && this.Length == other.Length && string.Equals(this.Source, other.Source);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((SourceSpan) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = this.Start;
+                hashCode = (hashCode * 397) ^ this.Length;
+                hashCode = (hashCode * 397) ^ (this.Source != null ? this.Source.GetHashCode() : 0);
+                return hashCode;
+            }
+        }
     }
 }

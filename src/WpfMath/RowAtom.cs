@@ -113,7 +113,7 @@ namespace WpfMath
             // Create and add box for each atom in row.
             for (int i = 0; i < this.Elements.Count; i++)
             {
-                var curAtom = new DummyAtom(null, this.Elements[i]);
+                var curAtom = new DummyAtom(this.Elements[i]);
 
                 // Change atom type to Ordinary, if required.
                 var hasNextAtom = i < this.Elements.Count - 1;
@@ -154,10 +154,7 @@ namespace WpfMath
 
                 // Create and add box for atom.
                 var curBox = curAtom.WithPreviousAtom(previousAtom).CreateBox(environment);
-                if (Source != null && curBox.Source?.Source != Source.Source)
-                {
-                    curBox.Source = Source;
-                }
+                curBox.Source = curAtom.Source;
 
                 resultBox.Add(curBox);
                 environment.LastFontId = curBox.GetLastFontId();
