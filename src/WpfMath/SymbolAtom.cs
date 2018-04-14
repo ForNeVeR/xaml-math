@@ -13,7 +13,7 @@ namespace WpfMath
         internal const string EmptyDelimiterName = "_emptyDelimiter";
 
         // Dictionary of definitions of all symbols, keyed by name.
-        private static IDictionary<string, SymbolAtom> symbols;
+        private static readonly IDictionary<string, Func<SourceSpan, SymbolAtom>> symbols;
 
         // Set of all valid symbol types.
         private static BitArray validSymbolTypes;
@@ -38,8 +38,8 @@ namespace WpfMath
         {
             try
             {
-                var symbol = symbols[name];
-                return new SymbolAtom(symbol, symbol.Type) { Source = source };
+                var symbol = symbols[name](source);
+                return new SymbolAtom(source, symbol, symbol.Type);
             }
             catch (KeyNotFoundException)
             {
@@ -49,18 +49,18 @@ namespace WpfMath
 
         public static bool TryGetAtom(SourceSpan name, out SymbolAtom atom)
         {
-            SymbolAtom temp;
-            var nameString = name.ToString();
-            if (symbols.TryGetValue(name.ToString(), out temp))
+            if (symbols.TryGetValue(name.ToString(), out var temp))
             {
-                atom = new SymbolAtom(temp, temp.Type) { Source = name };
+                var symbol = temp(name);
+                atom = new SymbolAtom(name, symbol, symbol.Type);
                 return true;
             }
             atom = null;
             return false;
         }
 
-        public SymbolAtom(SymbolAtom symbolAtom, TexAtomType type) : base(type)
+        public SymbolAtom(SourceSpan source, SymbolAtom symbolAtom, TexAtomType type)
+            : base(source, type)
         {
             if (!validSymbolTypes[(int)type])
                 throw new ArgumentException("The specified type is not a valid symbol type.", nameof(type));
@@ -68,7 +68,8 @@ namespace WpfMath
             this.IsDelimeter = symbolAtom.IsDelimeter;
         }
 
-        public SymbolAtom(string name, TexAtomType type, bool isDelimeter) : base(type)
+        public SymbolAtom(SourceSpan source, string name, TexAtomType type, bool isDelimeter)
+            : base(source, type)
         {
             this.Name = name;
             this.IsDelimeter = isDelimeter;
@@ -78,12 +79,7 @@ namespace WpfMath
 
         public string Name { get; }
 
-        public override Atom Copy()
-        {
-            return CopyTo(new SymbolAtom(Name, Type, IsDelimeter));
-        }
-
-        protected override Box CreateBoxCore(TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             return new CharBox(environment, environment.MathFont.GetCharInfo(this.Name, environment.Style));
         }

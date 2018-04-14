@@ -3,19 +3,15 @@ namespace WpfMath
     // Atom representing other atom vertically centered with respect to axis.
     internal class VerticalCenteredAtom : Atom
     {
-        public VerticalCenteredAtom(Atom atom)
+        public VerticalCenteredAtom(SourceSpan source, Atom atom)
+            : base(source)
         {
             this.Atom = atom;
         }
 
         public Atom Atom { get; }
 
-        public override Atom Copy()
-        {
-            return CopyTo(Atom?.Copy());
-        }
-
-        protected override Box CreateBoxCore(TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             var box = this.Atom.CreateBox(environment);
 

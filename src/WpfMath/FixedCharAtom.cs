@@ -3,24 +3,20 @@ namespace WpfMath
     // Atom representing character that does not depend on text style.
     internal class FixedCharAtom : CharSymbol
     {
-        public FixedCharAtom(CharFont charFont)
+        public FixedCharAtom(SourceSpan source, CharFont charFont)
+            : base(source)
         {
             this.CharFont = charFont;
         }
 
         public CharFont CharFont { get; }
 
-        public override Atom Copy()
-        {
-            return CopyTo(new FixedCharAtom(CharFont));
-        }
-
         public override CharFont GetCharFont(ITeXFont texFont)
         {
             return this.CharFont;
         }
 
-        protected override Box CreateBoxCore(TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             var charInfo = environment.MathFont.GetCharInfo(this.CharFont, environment.Style);
             return new CharBox(environment, charInfo);

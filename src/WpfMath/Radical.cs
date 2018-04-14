@@ -9,7 +9,8 @@ namespace WpfMath
 
         private const double scale = 0.55;
 
-        public Radical(Atom baseAtom, Atom degreeAtom = null)
+        public Radical(SourceSpan source, Atom baseAtom, Atom degreeAtom = null)
+            : base(source)
         {
             this.BaseAtom = baseAtom;
             this.DegreeAtom = degreeAtom;
@@ -19,12 +20,7 @@ namespace WpfMath
 
         public Atom DegreeAtom { get; }
 
-        public override Atom Copy()
-        {
-            return CopyTo(new Radical(BaseAtom?.Copy(), DegreeAtom?.Copy()));
-        }
-
-        protected override Box CreateBoxCore(TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             var texFont = environment.MathFont;
             var style = environment.Style;
@@ -73,7 +69,7 @@ namespace WpfMath
             var resultBox = new HorizontalBox();
 
             // Add box for negative kern.
-            var negativeKern = new SpaceAtom(TexUnit.Mu, -10, 0, 0).CreateBox(environment);
+            var negativeKern = new SpaceAtom(null, TexUnit.Mu, -10, 0, 0).CreateBox(environment);
             var xPos = rootBox.Width + negativeKern.Width;
             if (xPos < 0)
                 resultBox.Add(new StrutBox(-xPos, 0, 0, 0));

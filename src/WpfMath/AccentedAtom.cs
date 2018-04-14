@@ -5,16 +5,18 @@ namespace WpfMath
     // Atom representing base atom with accent above it.
     internal class AccentedAtom : Atom
     {
-        public AccentedAtom(Atom baseAtom, string accentName, SourceSpan source)
+        public AccentedAtom(SourceSpan source, Atom baseAtom, string accentName)
+            : base(source)
         {
             this.BaseAtom = baseAtom;
-            this.AccentAtom = SymbolAtom.GetAtom(accentName, source);
+            this.AccentAtom = SymbolAtom.GetAtom(accentName, null);
 
             if (this.AccentAtom.Type != TexAtomType.Accent)
                 throw new ArgumentException("The specified symbol name is not an accent.", "accent");
         }
 
-        public AccentedAtom(Atom baseAtom, TexFormula accent)
+        public AccentedAtom(SourceSpan source, Atom baseAtom, TexFormula accent)
+            : base(source)
         {
             var rootSymbol = accent.RootAtom as SymbolAtom;
             if (rootSymbol == null)
@@ -25,26 +27,13 @@ namespace WpfMath
                 throw new ArgumentException("The specified symbol name is not an accent.", "accent");
         }
 
-        private AccentedAtom()
-        {
-        }
-
         // Atom over which accent symbol is placed.
         public Atom BaseAtom { get; }
 
         // Atom representing accent symbol to place over base atom.
         public SymbolAtom AccentAtom { get; }
 
-        public override Atom Copy()
-        {
-            return CopyTo(new AccentedAtom()
-            {
-                BaseAtom = BaseAtom?.Copy(),
-                AccentAtom = (SymbolAtom)AccentAtom?.Copy()
-            });
-        }
-
-        protected override Box CreateBoxCore(TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             CharSymbol GetBaseChar()
             {

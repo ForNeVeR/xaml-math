@@ -7,30 +7,31 @@ namespace WpfMath
         private readonly bool useHeight;
         private readonly bool useDepth;
 
-        public PhantomAtom(Atom baseAtom)
-            : this(baseAtom, true, true, true)
+        public PhantomAtom(
+            SourceSpan source,
+            Atom baseAtom,
+            bool useWidth = true,
+            bool useHeight = true,
+            bool useDepth = true)
+            : base(source)
         {
-        }
-
-        public PhantomAtom(Atom baseAtom, bool useWidth, bool useHeight, bool useDepth)
-        {
-            this.RowAtom = baseAtom == null ? new RowAtom() : new RowAtom(baseAtom);
+            this.RowAtom = baseAtom == null ? new RowAtom(null) : new RowAtom(null, baseAtom);
             this.useWidth = useWidth;
             this.useHeight = useHeight;
             this.useDepth = useDepth;
         }
 
         public Atom WithPreviousAtom(DummyAtom previousAtom) =>
-            new PhantomAtom(this.RowAtom.WithPreviousAtom(previousAtom), this.useWidth, this.useHeight, this.useDepth);
+            new PhantomAtom(
+                this.Source,
+                this.RowAtom.WithPreviousAtom(previousAtom),
+                this.useWidth,
+                this.useHeight,
+                this.useDepth);
 
         public RowAtom RowAtom { get; }
 
-        public override Atom Copy()
-        {
-            return CopyTo(new PhantomAtom(RowAtom?.Copy(), useWidth, useHeight, useDepth) { PreviousAtom = (DummyAtom)PreviousAtom?.Copy() });
-        }
-
-        protected override Box CreateBoxCore(TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             var resultBox = this.RowAtom.CreateBox(environment);
             return new StrutBox((this.useWidth ? resultBox.Width : 0), (this.useHeight ? resultBox.Height : 0),

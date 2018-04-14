@@ -5,9 +5,10 @@ namespace WpfMath
     // Atom specifying graphical style.
     internal class StyledAtom : Atom, IRow
     {
-        public StyledAtom(Atom atom, Brush backgroundColor, Brush foregroundColor)
+        public StyledAtom(SourceSpan source, Atom atom, Brush backgroundColor, Brush foregroundColor)
+            : base(source)
         {
-            this.RowAtom = new RowAtom(atom);
+            this.RowAtom = new RowAtom(source, atom);
             this.Background = backgroundColor;
             this.Foreground = foregroundColor;
         }
@@ -22,15 +23,10 @@ namespace WpfMath
         public Atom WithPreviousAtom(DummyAtom previousAtom)
         {
             var rowAtom = this.RowAtom.WithPreviousAtom(previousAtom);
-            return new StyledAtom(rowAtom, this.Background, this.Foreground);
+            return new StyledAtom(this.Source, rowAtom, this.Background, this.Foreground);
         }
 
-        public override Atom Copy()
-        {
-            return CopyTo(new StyledAtom(RowAtom?.Copy(), Background, Foreground) { PreviousAtom = (DummyAtom)PreviousAtom?.Copy() });
-        }
-
-        protected override Box CreateBoxCore(TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             var newEnvironment = environment.Clone();
             if (this.Background != null)
@@ -56,6 +52,7 @@ namespace WpfMath
             Brush foreground = null)
         {
             return new StyledAtom(
+                this.Source,
                 rowAtom ?? this.RowAtom,
                 background ?? this.Background,
                 foreground ?? this.Foreground);

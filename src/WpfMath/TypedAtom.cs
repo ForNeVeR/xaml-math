@@ -3,7 +3,8 @@ namespace WpfMath
     // Atom representing other atom with custom left and right types.
     internal class TypedAtom : Atom
     {
-        public TypedAtom(Atom atom, TexAtomType leftType, TexAtomType rightType)
+        public TypedAtom(SourceSpan source, Atom atom, TexAtomType leftType, TexAtomType rightType)
+            : base(source)
         {
             this.Atom = atom;
             this.LeftType = leftType;
@@ -16,12 +17,7 @@ namespace WpfMath
 
         public TexAtomType RightType { get; }
 
-        public override Atom Copy()
-        {
-            return CopyTo(new TypedAtom(Atom?.Copy(), LeftType, RightType));
-        }
-
-        protected override Box CreateBoxCore(TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             return this.Atom.CreateBox(environment);
         }

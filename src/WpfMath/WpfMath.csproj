@@ -129,7 +129,7 @@
     <Compile Include="TexFormulaHelper.cs" />
     <Compile Include="TexFormulaParser.cs" />
     <Compile Include="Exceptions\TexParseException.cs" />
-    <Compile Include="PredefinedTexFormulasParser.cs" />
+    <Compile Include="TexPredefinedFormulaParser.cs" />
     <Compile Include="PredefinedTexFormulaSettingsParser.cs" />
     <Compile Include="TexRenderer.cs" />
     <Compile Include="TexSymbolParser.cs" />

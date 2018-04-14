@@ -4,8 +4,8 @@ namespace WpfMath
     internal class CharAtom : CharSymbol
     {
         public CharAtom(SourceSpan source, string textStyle = null)
+            : base(source)
         {
-            this.Source = source;
             this.TextStyle = textStyle;
             this.Character = Source[0];
         }
@@ -15,12 +15,7 @@ namespace WpfMath
         // Null means default text style.
         public string TextStyle { get; }
 
-        public override Atom Copy()
-        {
-            return CopyTo(new CharAtom(Source, TextStyle));
-        }
-
-        protected override Box CreateBoxCore(TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             var font = GetStyledFont(environment);
             var charInfo = GetCharInfo(font, environment.Style);

@@ -45,12 +45,14 @@ namespace WpfMath
         private readonly TexUnit depthUnit;
 
         public SpaceAtom(
+            SourceSpan source,
             TexUnit widthUnit,
             double width,
             TexUnit heightUnit,
             double height,
             TexUnit depthUnit,
             double depth)
+            : base(source)
         {
             CheckUnit(widthUnit);
             CheckUnit(heightUnit);
@@ -65,7 +67,8 @@ namespace WpfMath
             this.depth = depth;
         }
 
-        public SpaceAtom(TexUnit unit, double width, double height, double depth)
+        public SpaceAtom(SourceSpan source, TexUnit unit, double width, double height, double depth)
+            : base(source)
         {
             CheckUnit(unit);
 
@@ -78,29 +81,13 @@ namespace WpfMath
             this.depth = depth;
         }
 
-        public SpaceAtom()
+        public SpaceAtom(SourceSpan source)
+            : base(source)
         {
             this.isHardSpace = true;
         }
 
-        public override Atom Copy()
-        {
-            var atom = new SpaceAtom();
-
-            atom.isHardSpace = isHardSpace;
-
-            atom.width = width;
-            atom.height = height;
-            atom.depth = depth;
-
-            atom.widthUnit = widthUnit;
-            atom.heightUnit = heightUnit;
-            atom.depthUnit = depthUnit;
-
-            return CopyTo(atom);
-        }
-
-        protected override Box CreateBoxCore(TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             if (isHardSpace)
                 return new StrutBox(environment.MathFont.GetSpace(environment.Style), 0, 0, 0);

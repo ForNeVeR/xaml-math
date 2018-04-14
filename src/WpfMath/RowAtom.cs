@@ -33,34 +33,39 @@ namespace WpfMath
             ligatureKernChangeSet.Set((int)TexAtomType.Punctuation, true);
         }
 
-        public RowAtom(IList<TexFormula> formulaList)
+        public RowAtom(SourceSpan source, IList<TexFormula> formulaList)
             : this(
+                source,
                 formulaList
                     .Where(formula => formula.RootAtom != null)
                     .Select(formula => formula.RootAtom))
         {
         }
 
-        public RowAtom(Atom baseAtom)
+        public RowAtom(SourceSpan source, Atom baseAtom)
             : this(
+                source,
                 baseAtom is RowAtom
                     ? (IEnumerable<Atom>) ((RowAtom) baseAtom).Elements
                     : new[] { baseAtom })
         {
         }
 
-        public RowAtom()
+        public RowAtom(SourceSpan source)
+            : base(source)
         {
             this.Elements = new List<Atom>().AsReadOnly();
         }
 
-        private RowAtom(DummyAtom previousAtom, ReadOnlyCollection<Atom> elements)
+        private RowAtom(SourceSpan source, DummyAtom previousAtom, ReadOnlyCollection<Atom> elements)
+            : base(source)
         {
             this.PreviousAtom = previousAtom;
             this.Elements = elements;
         }
 
-        private RowAtom(IEnumerable<Atom> elements) =>
+        private RowAtom(SourceSpan source, IEnumerable<Atom> elements)
+            : base(source) =>
             this.Elements = elements.ToList().AsReadOnly();
 
         public DummyAtom PreviousAtom { get; }
@@ -68,13 +73,16 @@ namespace WpfMath
         public ReadOnlyCollection<Atom> Elements { get; }
 
         public Atom WithPreviousAtom(DummyAtom previousAtom) =>
-            new RowAtom(previousAtom, this.Elements);
+            new RowAtom(this.Source, previousAtom, this.Elements);
+
+        public RowAtom WithSource(SourceSpan source) =>
+            new RowAtom(source, this.PreviousAtom, this.Elements);
 
         public RowAtom Add(Atom atom)
         {
             var newElements = this.Elements.ToList();
             newElements.Add(atom);
-            return new RowAtom(this.PreviousAtom, newElements.AsReadOnly());
+            return new RowAtom(this.Source, this.PreviousAtom, newElements.AsReadOnly());
         }
 
         private static DummyAtom ChangeAtomToOrdinary(DummyAtom currentAtom, DummyAtom previousAtom, Atom nextAtom)
@@ -95,19 +103,7 @@ namespace WpfMath
             return currentAtom;
         }
 
-        public override Atom Copy()
-        {
-            var atom = new RowAtom();
-
-            atom.PreviousAtom = (DummyAtom)PreviousAtom?.Copy();
-            foreach (var element in Elements)
-            {
-                atom.Elements.Add(element?.Copy());
-            }
-            return CopyTo(atom);
-        }
-
-        protected override Box CreateBoxCore(TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             // Create result box.
             var resultBox = new HorizontalBox(environment.Foreground, environment.Background);
@@ -117,7 +113,7 @@ namespace WpfMath
             // Create and add box for each atom in row.
             for (int i = 0; i < this.Elements.Count; i++)
             {
-                var curAtom = new DummyAtom(this.Elements[i]);
+                var curAtom = new DummyAtom(null, this.Elements[i]);
 
                 // Change atom type to Ordinary, if required.
                 var hasNextAtom = i < this.Elements.Count - 1;
@@ -145,7 +141,7 @@ namespace WpfMath
                             else
                             {
                                 // Atom is part of ligature.
-                                curAtom = DummyAtom.CreateLigature(new FixedCharAtom(ligatureCharFont));
+                                curAtom = DummyAtom.CreateLigature(new FixedCharAtom(null, ligatureCharFont));
                                 i++;
                             }
                         }

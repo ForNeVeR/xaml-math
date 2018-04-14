@@ -14,9 +14,10 @@ namespace WpfMath
             box.Shift = -(totalHeight / 2 - box.Height) - axis;
         }
 
-        public FencedAtom(Atom baseAtom, SymbolAtom leftDelimeter, SymbolAtom rightDelimeter)
+        public FencedAtom(SourceSpan source, Atom baseAtom, SymbolAtom leftDelimeter, SymbolAtom rightDelimeter)
+            : base(source)
         {
-            this.BaseAtom = baseAtom ?? new RowAtom();
+            this.BaseAtom = baseAtom ?? new RowAtom(null);
             this.LeftDelimeter = leftDelimeter;
             this.RightDelimeter = rightDelimeter;
         }
@@ -27,12 +28,7 @@ namespace WpfMath
 
         private SymbolAtom RightDelimeter { get; }
 
-        public override Atom Copy()
-        {
-            return CopyTo(new FencedAtom(BaseAtom?.Copy(), (SymbolAtom)LeftDelimeter?.Copy(), (SymbolAtom)RightDelimeter?.Copy()));
-        }
-
-        protected override Box CreateBoxCore(TexEnvironment environment)
+        public override Box CreateBox(TexEnvironment environment)
         {
             var texFont = environment.MathFont;
             var style = environment.Style;

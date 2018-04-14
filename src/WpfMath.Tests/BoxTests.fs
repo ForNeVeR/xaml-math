@@ -38,7 +38,7 @@ let ``ScriptsAtom should set Shift on the created box when creating box without 
     Utils.initializeFontResourceLoading()
 
     let baseAtom = CharAtom(SourceSpan("x", 0, 1))
-    let scriptsAtom = ScriptsAtom(baseAtom, null, null)
+    let scriptsAtom = ScriptsAtom(null, baseAtom, null, null)
 
     let box = scriptsAtom.CreateBox(environment)
 
