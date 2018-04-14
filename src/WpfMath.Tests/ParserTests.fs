@@ -1,40 +1,15 @@
 ﻿module WpfMath.Tests.ParserTests
 
-open System
-
-open FSharp.Linq.RuntimeHelpers
-open DeepEqual.Syntax
 open Xunit
 
-open System.Linq.Expressions
 open WpfMath
 open WpfMath.Exceptions
 open WpfMath.Tests.Utils
 
-let assertParseResult formula expected =
-    let toExpression = LeafExpressionConverter.QuotationToLambdaExpression
-
-    let parser = TexFormulaParser()
-    let result = parser.Parse(formula)
-    result.WithDeepEqual(expected)
-        .ExposeInternalsOf<TexFormula>()
-        .ExposeInternalsOf<FencedAtom>()
-        .IgnoreProperty<Atom>(toExpression(<@ Func<Atom, obj>(fun a -> upcast a.Source) @>))
-        .Assert()
-
-let assertParseThrows<'ex when 'ex :> exn> formula =
-    let parser = TexFormulaParser()
-    Assert.Throws<'ex>(Func<obj>(fun () -> upcast parser.Parse(formula)))
-
-let textStyle = "text"
-let rmStyle = "mathrm"
-let itStyle = "mathit"
-let calStyle = "mathcal"
-
 let ``2+2`` = row [char '2'; symbol "plus"; char '2']
-let ``\mathrm{2+2}`` = row [styledChar('2', rmStyle); symbol "plus"; styledChar('2', rmStyle)]
-let ``\lim`` = row [styledChar('l', rmStyle); styledChar('i', rmStyle); styledChar('m', rmStyle)]
-let ``\sin`` = row [styledChar('s', rmStyle); styledChar('i', rmStyle); styledChar('n', rmStyle)]
+let ``\mathrm{2+2}`` = row [styledChar '2' rmStyle; symbol "plus"; styledChar '2' rmStyle]
+let ``\lim`` = row [styledChar 'l' rmStyle; styledChar 'i' rmStyle; styledChar 'm' rmStyle]
+let ``\sin`` = row [styledChar 's' rmStyle; styledChar 'i' rmStyle; styledChar 'n' rmStyle]
 
 [<Fact>]
 let ``2+2 should be parsed properly`` () =
@@ -97,14 +72,12 @@ let ``\text command should be supported`` () =
 
 [<Fact>]
 let ``Spaces in \text shouldn't be ignored`` () =
-    let textChar c = styledChar (c, textStyle)
     assertParseResult
     <| @"\text{a b c}"
     <| (formula <| row [textChar 'a'; space; textChar 'b'; space; textChar 'c'])
 
 [<Fact>]
 let ``\text should support Cyrillic`` () =
-    let textChar c = styledChar (c, textStyle)
     assertParseResult
     <| @"\text{абв}"
     <| (formula <| styledString textStyle "абв")
@@ -113,7 +86,7 @@ let ``\text should support Cyrillic`` () =
 let ``\mathrm should be parsed properly`` () =
     assertParseResult
     <| @"\mathrm{sin}"
-    <| (formula <| row [styledChar('s', rmStyle); styledChar('i', rmStyle); styledChar('n', rmStyle)])
+    <| (formula <| row [styledChar 's' rmStyle; styledChar 'i' rmStyle; styledChar 'n' rmStyle])
 
 [<Fact>]
 let ``\mathrm should be parsed properly for complex eqs`` () =
@@ -127,14 +100,14 @@ let ``\mathrm should be parsed properly for complex eqs`` () =
 let ``\mathit should be parsed properly`` () =
     assertParseResult
     <| @"\mathit{sin}"
-    <| (formula <| row [styledChar('s', itStyle); styledChar('i', itStyle); styledChar('n', itStyle)])
+    <| (formula <| row [styledChar 's' itStyle; styledChar 'i' itStyle; styledChar 'n' itStyle])
 
 
 [<Fact>]
 let ``\mathcal should be parsed properly`` () =
     assertParseResult
     <| @"\mathcal{sin}"
-    <| (formula <| row [styledChar('s', calStyle); styledChar('i', calStyle); styledChar('n', calStyle)])
+    <| (formula <| row [styledChar 's' calStyle; styledChar 'i' calStyle; styledChar 'n' calStyle])
 
 [<Fact>]
 let ``\mathrm{} should throw exn`` () =

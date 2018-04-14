@@ -232,13 +232,13 @@ namespace WpfMath
                 }
                 else
                 {
-                    var scriptsAtom = AttachScripts(
+                    var scriptsAtom = this.AttachScripts(
                         formula,
                         value,
                         ref position,
-                        ConvertCharacter(formula, ref position, source),
+                        this.ConvertCharacter(formula, ref position, source),
                         skipWhiteSpace);
-                    formula.Add(scriptsAtom, value.Segment(initialPosition, scriptsAtom.Source.Length));
+                    formula.Add(scriptsAtom, value.Segment(initialPosition, position));
                 }
             }
 
@@ -659,7 +659,7 @@ namespace WpfMath
             }
             else // Character is alpha-numeric or should be rendered as text.
             {
-                return new CharAtom(source.Segment(0, 1), formula.TextStyle);
+                return new CharAtom(source, character, formula.TextStyle);
             }
         }
 

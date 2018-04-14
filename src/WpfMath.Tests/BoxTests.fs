@@ -37,7 +37,7 @@ let ``Box for \text{æ,} should be created successfully``() =
 let ``ScriptsAtom should set Shift on the created box when creating box without any sub- or superscript``() =
     Utils.initializeFontResourceLoading()
 
-    let baseAtom = CharAtom(SourceSpan("x", 0, 1))
+    let baseAtom = charSrc 'x' (src "x" 0 1)
     let scriptsAtom = ScriptsAtom(null, baseAtom, null, null)
 
     let box = scriptsAtom.CreateBox(environment)
