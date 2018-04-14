@@ -74,9 +74,11 @@ namespace WpfMath
             }
             else
             {
-                var elements = (this.RootAtom is RowAtom r ? r.Elements : Enumerable.Empty<Atom>()).ToList();
+                var elements = (this.RootAtom is RowAtom r
+                    ? (IEnumerable<Atom>) r.Elements
+                    : new[] { this.RootAtom }).ToList();
                 elements.Add(atom);
-                this.RootAtom = new RowAtom(rowSource, atom);
+                this.RootAtom = new RowAtom(rowSource, elements);
             }
         }
 

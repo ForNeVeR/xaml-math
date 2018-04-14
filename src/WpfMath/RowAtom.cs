@@ -64,7 +64,7 @@ namespace WpfMath
             this.Elements = elements;
         }
 
-        private RowAtom(SourceSpan source, IEnumerable<Atom> elements)
+        internal RowAtom(SourceSpan source, IEnumerable<Atom> elements)
             : base(source) =>
             this.Elements = elements.ToList().AsReadOnly();
 
