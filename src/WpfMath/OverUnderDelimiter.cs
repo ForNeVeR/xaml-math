@@ -42,7 +42,7 @@ namespace WpfMath
         // True to place delimeter symbol Over base; false to place delimeter symbol under base.
         public bool Over { get; }
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             // Create boxes for base, delimeter, and script atoms.
             var baseBox = this.BaseAtom == null ? StrutBox.Empty : this.BaseAtom.CreateBox(environment);

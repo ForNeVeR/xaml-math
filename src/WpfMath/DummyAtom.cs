@@ -53,7 +53,7 @@ namespace WpfMath
             return ((CharSymbol)this.Atom).GetCharFont(texFont);
         }
 
-        public override Box CreateBox(TexEnvironment environment) =>
+        protected override Box CreateBoxCore(TexEnvironment environment) =>
             this.Atom.CreateBox(environment);
 
         public override TexAtomType GetLeftType()

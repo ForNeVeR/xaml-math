@@ -49,15 +49,35 @@ let ``ScriptsAtom should set Shift on the created box when creating box without 
     Assert.Equal(expectedShift, box.Shift)
 
 [<Fact>]
-let ``RowAtom creates a boxes with proper sources``() =
+let ``RowAtom creates boxes with proper sources``() =
     let source = "2+2"
     let src = src source
     let parser = TexFormulaParser()
     let formula = parser.Parse source
     let box = formula.CreateBox environment :?> HorizontalBox
     let chars = box.Children.filter(fun x -> x :? CharBox)
-    Assert.Collection<Box>(
+    Assert.Collection(
         chars,
         Action<_>(fun (x : Box) -> Assert.Equal(src 0 1, x.Source)),
         Action<_>(fun (x : Box) -> Assert.Equal(src 1 1, x.Source)),
         Action<_>(fun (x : Box) -> Assert.Equal(src 2 1, x.Source)))
+
+[<Fact>]
+let ``BigOperatorAtom creates a box with proper sources``() =
+    let source = @"\int_a^b"
+    let src = src source
+    let parser = TexFormulaParser()
+    let formula = parser.Parse source
+    let box = formula.CreateBox environment :?> VerticalBox
+
+    let charBoxes =
+        box.Children
+            .filter(fun x -> x :? HorizontalBox)
+            .collect(fun x -> x.Children.filter(fun y -> y :? CharBox))
+            .toList()
+
+    Assert.Collection(
+        charBoxes,
+        Action<_>(fun (x : Box) -> Assert.Equal(src 7 1, x.Source)),
+        Action<_>(fun (x : Box) -> Assert.Equal(src 1 3, x.Source)),
+        Action<_>(fun (x : Box) -> Assert.Equal(src 5 1, x.Source)))

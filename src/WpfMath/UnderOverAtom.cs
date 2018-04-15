@@ -98,7 +98,7 @@ namespace WpfMath
 
         public bool OverScriptSmaller { get; }
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             // Create box for base atom.
             var baseBox = this.BaseAtom == null ? StrutBox.Empty : this.BaseAtom.CreateBox(environment);

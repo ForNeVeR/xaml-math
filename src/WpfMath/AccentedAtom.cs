@@ -33,7 +33,7 @@ namespace WpfMath
         // Atom representing accent symbol to place over base atom.
         public SymbolAtom AccentAtom { get; }
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             CharSymbol GetBaseChar()
             {

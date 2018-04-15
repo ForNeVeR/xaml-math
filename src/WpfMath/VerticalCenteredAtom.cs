@@ -11,7 +11,7 @@ namespace WpfMath
 
         public Atom Atom { get; }
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var box = this.Atom.CreateBox(environment);
 

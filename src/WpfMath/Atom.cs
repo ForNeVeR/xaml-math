@@ -13,7 +13,18 @@ namespace WpfMath
 
         public SourceSpan Source { get; }
 
-        public abstract Box CreateBox(TexEnvironment environment);
+        public Box CreateBox(TexEnvironment environment)
+        {
+            var box = this.CreateBoxCore(environment);
+            if (box.Source == null)
+            {
+                box.Source = this.Source;
+            }
+
+            return box;
+        }
+
+        protected abstract Box CreateBoxCore(TexEnvironment environment);
 
         // Gets type of leftmost child item.
         public virtual TexAtomType GetLeftType()

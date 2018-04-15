@@ -31,7 +31,7 @@ namespace WpfMath
 
         public RowAtom RowAtom { get; }
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var resultBox = this.RowAtom.CreateBox(environment);
             return new StrutBox((this.useWidth ? resultBox.Width : 0), (this.useHeight ? resultBox.Height : 0),

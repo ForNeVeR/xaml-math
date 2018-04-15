@@ -17,10 +17,8 @@ namespace WpfMath
 
         public TexAtomType RightType { get; }
 
-        public override Box CreateBox(TexEnvironment environment)
-        {
-            return this.Atom.CreateBox(environment);
-        }
+        protected override Box CreateBoxCore(TexEnvironment environment) =>
+            this.Atom.CreateBox(environment);
 
         public override TexAtomType GetLeftType()
         {

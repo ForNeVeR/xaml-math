@@ -14,14 +14,19 @@ namespace WpfMath
                 return box;
         }
 
-        public BigOperatorAtom(Atom baseAtom, Atom lowerLimitAtom, Atom upperLimitAtom, bool? useVerticalLimits = null)
-            : this(baseAtom, lowerLimitAtom, upperLimitAtom)
+        public BigOperatorAtom(
+            SourceSpan source,
+            Atom baseAtom,
+            Atom lowerLimitAtom,
+            Atom upperLimitAtom,
+            bool? useVerticalLimits = null)
+            : this(source, baseAtom, lowerLimitAtom, upperLimitAtom)
         {
             this.UseVerticalLimits = useVerticalLimits;
         }
 
-        public BigOperatorAtom(Atom baseAtom, Atom lowerLimitAtom, Atom upperLimitAtom)
-            : base(baseAtom.Source, TexAtomType.BigOperator)
+        public BigOperatorAtom(SourceSpan source, Atom baseAtom, Atom lowerLimitAtom, Atom upperLimitAtom)
+            : base(source, TexAtomType.BigOperator)
         {
             this.BaseAtom = baseAtom;
             this.LowerLimitAtom = lowerLimitAtom;
@@ -40,7 +45,7 @@ namespace WpfMath
         // True if limits should be drawn over and under the base atom; false if they should be drawn as scripts.
         public bool? UseVerticalLimits { get; }
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var texFont = environment.MathFont;
             var style = environment.Style;
@@ -61,7 +66,7 @@ namespace WpfMath
                 var opChar = texFont.GetCharInfo(((SymbolAtom)this.BaseAtom).Name, style);
                 if (style < TexStyle.Text && texFont.HasNextLarger(opChar))
                     opChar = texFont.GetNextLargerCharInfo(opChar, style);
-                var charBox = new CharBox(environment, opChar) { Source = Source };
+                var charBox = new CharBox(environment, opChar) { Source = this.BaseAtom.Source };
                 charBox.Shift = -(charBox.Height + charBox.Depth) / 2 -
                     environment.MathFont.GetAxisHeight(environment.Style);
                 baseBox = new HorizontalBox(charBox);

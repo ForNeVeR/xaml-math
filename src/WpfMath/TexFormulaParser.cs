@@ -439,6 +439,7 @@ namespace WpfMath
             bool allowClosingDelimiter,
             ref bool closedDelimiter)
         {
+            var initialSrcPosition = position;
             position++;
             var start = position;
             while (position < value.Length)
@@ -461,9 +462,7 @@ namespace WpfMath
 
             var commandSpan = value.Segment(start, position - start);
             var command = commandSpan.ToString();
-            var initialSource = formula.RootAtom?.Source ?? commandSpan;
-            Debug.Assert(initialSource.Source == commandSpan.Source);
-            var formulaSource = new SourceSpan(initialSource.Source, initialSource.Start, commandSpan.End);
+            var formulaSource = new SourceSpan(value.Source, initialSrcPosition, commandSpan.End);
 
             SymbolAtom symbolAtom = null;
             if (SymbolAtom.TryGetAtom(commandSpan, out symbolAtom))
@@ -472,13 +471,13 @@ namespace WpfMath
 
                 if (symbolAtom.Type == TexAtomType.Accent)
                 {
-                    var helper = new TexFormulaHelper(formula, commandSpan);
+                    var helper = new TexFormulaHelper(formula, formulaSource);
                     TexFormula accentFormula = ReadScript(formula, value, ref position);
                     helper.AddAccent(accentFormula, symbolAtom.Name);
                 }
                 else if (symbolAtom.Type == TexAtomType.BigOperator)
                 {
-                    var opAtom = new BigOperatorAtom(symbolAtom, null, null);
+                    var opAtom = new BigOperatorAtom(formulaSource, symbolAtom, null, null);
                     formula.Add(this.AttachScripts(formula, value, ref position, opAtom), formulaSource);
                 }
                 else
@@ -489,14 +488,14 @@ namespace WpfMath
             else if (predefinedFormulas.TryGetValue(command, out var factory))
             {
                 // Predefined formula was found.
-                var predefinedFormula = factory(commandSpan);
+                var predefinedFormula = factory(formulaSource);
                 var atom = this.AttachScripts(formula, value, ref position, predefinedFormula.RootAtom);
                 formula.Add(atom, formulaSource);
             }
             else if (command.Equals("nbsp"))
             {
                 // Space was found.
-                var atom = this.AttachScripts(formula, value, ref position, new SpaceAtom(commandSpan));
+                var atom = this.AttachScripts(formula, value, ref position, new SpaceAtom(formulaSource));
                 formula.Add(atom, formulaSource);
             }
             else if (textStyles.Contains(command))
@@ -618,14 +617,18 @@ namespace WpfMath
             var superscriptAtom = superscriptFormula?.RootAtom;
             if (atom.GetRightType() == TexAtomType.BigOperator)
             {
-                if (atom is BigOperatorAtom)
+                var source = value.Segment(atom.Source.Start, position - atom.Source.Start);
+                if (atom is BigOperatorAtom typedAtom)
                 {
-                    var typedAtom = (BigOperatorAtom)atom;
-                    return new BigOperatorAtom(typedAtom.BaseAtom, subscriptAtom, superscriptAtom,
+                    return new BigOperatorAtom(
+                        source,
+                        typedAtom.BaseAtom,
+                        subscriptAtom,
+                        superscriptAtom,
                         typedAtom.UseVerticalLimits);
                 }
 
-                return new BigOperatorAtom(atom, subscriptAtom, superscriptAtom);
+                return new BigOperatorAtom(source, atom, subscriptAtom, superscriptAtom);
             }
             else
             {

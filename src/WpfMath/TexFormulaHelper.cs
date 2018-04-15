@@ -158,17 +158,27 @@ namespace WpfMath
 
         public void AddOperator(TexFormula operatorFormula, TexFormula lowerLimitFormula, TexFormula upperLimitFormula)
         {
-            Add(new BigOperatorAtom(operatorFormula == null ? null : operatorFormula.RootAtom,
-                lowerLimitFormula == null ? null : lowerLimitFormula.RootAtom,
-                upperLimitFormula == null ? null : upperLimitFormula.RootAtom));
+            this.Add(
+                new BigOperatorAtom(
+                    operatorFormula?.RootAtom?.Source,
+                    operatorFormula?.RootAtom,
+                    lowerLimitFormula?.RootAtom,
+                    upperLimitFormula?.RootAtom));
         }
 
-        public void AddOperator(TexFormula operatorFormula, TexFormula lowerLimitFormula, TexFormula upperLimitFormula,
+        public void AddOperator(
+            TexFormula operatorFormula,
+            TexFormula lowerLimitFormula,
+            TexFormula upperLimitFormula,
             bool useVerticalLimits)
         {
-            Add(new BigOperatorAtom(operatorFormula == null ? null : operatorFormula.RootAtom,
-                lowerLimitFormula == null ? null : lowerLimitFormula.RootAtom,
-                upperLimitFormula == null ? null : upperLimitFormula.RootAtom, useVerticalLimits));
+            this.Add(
+                new BigOperatorAtom(
+                    operatorFormula?.RootAtom?.Source,
+                    operatorFormula?.RootAtom,
+                    lowerLimitFormula?.RootAtom,
+                    upperLimitFormula?.RootAtom,
+                    useVerticalLimits));
         }
 
         public void AddPhantom(string formula)

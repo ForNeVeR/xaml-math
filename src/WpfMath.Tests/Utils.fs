@@ -46,9 +46,19 @@ let assertParseThrows<'ex when 'ex :> exn> formula =
 
 let src (string : string) (start : int) (len : int) = SourceSpan(string, start, len)
 
+let private toNullable = function
+    | Some x -> Nullable x
+    | None -> Nullable()
+
 let charSrc (c : char) (source : SourceSpan) : CharAtom = CharAtom(source, c)
-let symbolSrc (name : string) (source : SourceSpan) : SymbolAtom =
-    SymbolAtom(source, name, TexAtomType.BinaryOperator, false)
+let symbolSrc (name : string) (aType : TexAtomType) (source : SourceSpan) : SymbolAtom =
+    SymbolAtom(source, name, aType, false)
+let opWithScriptsSrc (baseAtom : Atom)
+                     (subscript : Atom)
+                     (superscript : Atom)
+                     (useVertScripts : bool option)
+                     (source : SourceSpan)
+            : BigOperatorAtom = BigOperatorAtom(source, baseAtom, subscript, superscript, toNullable useVertScripts)
 let rowSrc (children : Atom seq) (source : SourceSpan) : RowAtom =
     children
     |> Seq.fold (fun row atom -> row.Add atom) (RowAtom(source))
@@ -57,13 +67,14 @@ let space = SpaceAtom(null)
 let char (c : char) : CharAtom = charSrc c null
 let styledChar (c : char) (style : string) : CharAtom = CharAtom(null, c, style)
 let textChar c = styledChar c textStyle
-let op (baseAtom : Atom) (useVertScripts : System.Nullable<bool>)  : BigOperatorAtom = BigOperatorAtom(baseAtom, null, null, useVertScripts)
-let opWithScripts (baseAtom : Atom) (subscript : Atom) (superscript : Atom) (useVertScripts : System.Nullable<bool>)
-            : BigOperatorAtom = BigOperatorAtom(baseAtom, subscript, superscript, useVertScripts)
+let opWithScripts (baseAtom : Atom) (subscript : Atom) (superscript : Atom) (useVertScripts : bool option)
+                  : BigOperatorAtom = opWithScriptsSrc baseAtom subscript superscript useVertScripts null
+let op (baseAtom : Atom) (useVertScripts : bool option) : BigOperatorAtom =
+    opWithScripts baseAtom null null useVertScripts
 let scripts (baseAtom : Atom) (subscript : Atom) (superscript : Atom)
             : ScriptsAtom = ScriptsAtom(null, baseAtom, subscript, superscript)
 let group (groupedAtom: Atom) : TypedAtom = TypedAtom(null, groupedAtom, TexAtomType.Ordinary, TexAtomType.Ordinary)
-let symbol (name : string) : SymbolAtom = symbolSrc name null
+let symbol (name : string) : SymbolAtom = symbolSrc name TexAtomType.BinaryOperator null
 let symbolOp (name : string) : SymbolAtom = SymbolAtom(null, name, TexAtomType.BigOperator, false)
 let row (children : Atom seq) : RowAtom = rowSrc children null
 let fenced left body right : FencedAtom = FencedAtom(null, body, left, right)

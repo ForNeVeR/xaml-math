@@ -120,7 +120,7 @@ let ``\lim should be parsed properly`` () =
     assertParseResult
     <| @"\lim_{n} x"
     <| (formula <| row [
-                    opWithScripts ``\lim`` (char 'n') null (System.Nullable true);
+                    opWithScripts ``\lim`` (char 'n') null (Some true)
                     char 'x'
                         ])
 
@@ -129,7 +129,7 @@ let ``{\lim} x should be parsed properly`` () =
     assertParseResult
     <| @"{\lim} x"
     <| (formula <| row [
-                    group (op ``\lim`` (System.Nullable true));
+                    group (op ``\lim`` (Some true))
                     char 'x'
                         ])
 
@@ -138,7 +138,7 @@ let ``\sin should be parsed properly`` () =
     assertParseResult
     <| @"\sin^{n} x"
     <| (formula <| row [
-                    opWithScripts ``\sin`` null (char 'n') (System.Nullable false);
+                    opWithScripts ``\sin`` null (char 'n') (Some false)
                     char 'x'
                         ])
 
@@ -147,7 +147,7 @@ let ``\int f should be parser properly`` () =
     assertParseResult
     <| @"\int f"
     <| (formula <| row [
-                    op (symbolOp "int") (System.Nullable ())
+                    op (symbolOp "int") (None)
                     char 'f'
                         ])
 

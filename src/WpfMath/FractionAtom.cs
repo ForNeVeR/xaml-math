@@ -93,7 +93,7 @@ namespace WpfMath
 
         public Atom Denominator { get; }
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var texFont = environment.MathFont;
             var style = environment.Style;

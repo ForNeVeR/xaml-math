@@ -15,7 +15,7 @@ namespace WpfMath
         // Null means default text style.
         public string TextStyle { get; }
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var font = GetStyledFont(environment);
             var charInfo = GetCharInfo(font, environment.Style);

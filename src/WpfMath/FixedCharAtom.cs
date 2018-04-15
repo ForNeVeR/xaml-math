@@ -16,7 +16,7 @@ namespace WpfMath
             return this.CharFont;
         }
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var charInfo = environment.MathFont.GetCharInfo(this.CharFont, environment.Style);
             return new CharBox(environment, charInfo);

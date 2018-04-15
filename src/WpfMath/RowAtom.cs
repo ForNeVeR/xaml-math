@@ -103,7 +103,7 @@ namespace WpfMath
             return currentAtom;
         }
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             // Create result box.
             var resultBox = new HorizontalBox(environment.Foreground, environment.Background);
@@ -154,7 +154,6 @@ namespace WpfMath
 
                 // Create and add box for atom.
                 var curBox = curAtom.WithPreviousAtom(previousAtom).CreateBox(environment);
-                curBox.Source = curAtom.Source;
 
                 resultBox.Add(curBox);
                 environment.LastFontId = curBox.GetLastFontId();

@@ -26,7 +26,7 @@ namespace WpfMath
             return new StyledAtom(this.Source, rowAtom, this.Background, this.Foreground);
         }
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var newEnvironment = environment.Clone();
             if (this.Background != null)

@@ -87,7 +87,7 @@ namespace WpfMath
             this.isHardSpace = true;
         }
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             if (isHardSpace)
                 return new StrutBox(environment.MathFont.GetSpace(environment.Style), 0, 0, 0);
