@@ -71,11 +71,11 @@ namespace WpfMath.Controls
         }
 
         public static readonly DependencyProperty FormulaProperty = DependencyProperty.Register(
-            "Formula", typeof(string), typeof(FormulaControl),
+            nameof(Formula), typeof(string), typeof(FormulaControl),
             new PropertyMetadata("", OnRenderSettingsChanged, CoerceFormula));
 
         public static readonly DependencyProperty ScaleProperty = DependencyProperty.Register(
-            "Scale", typeof(double), typeof(FormulaControl),
+            nameof(Scale), typeof(double), typeof(FormulaControl),
             new PropertyMetadata(20d, OnRenderSettingsChanged, CoerceScaleValue));
 
         public static readonly DependencyProperty SystemTextFontNameProperty = DependencyProperty.Register(
@@ -83,27 +83,27 @@ namespace WpfMath.Controls
             new PropertyMetadata("Arial", OnRenderSettingsChanged, CoerceScaleValue));
 
         public static readonly DependencyProperty HasErrorProperty = DependencyProperty.Register(
-            "HasError", typeof(bool), typeof(FormulaControl),
+            nameof(HasError), typeof(bool), typeof(FormulaControl),
             new PropertyMetadata(false));
 
         public static readonly DependencyProperty ErrorsProperty = DependencyProperty.Register(
-            "Errors", typeof(ObservableCollection<Exception>), typeof(FormulaControl),
+            nameof(Errors), typeof(ObservableCollection<Exception>), typeof(FormulaControl),
             new PropertyMetadata(new ObservableCollection<Exception>()));
 
         public static readonly DependencyProperty ErrorTemplateProperty = DependencyProperty.Register(
-            "ErrorTemplate", typeof(ControlTemplate), typeof(FormulaControl),
+            nameof(ErrorTemplate), typeof(ControlTemplate), typeof(FormulaControl),
             new PropertyMetadata(new ControlTemplate()));
 
         public static readonly DependencyProperty SelectionStartProperty = DependencyProperty.Register(
-            "SelectionStart", typeof(int), typeof(FormulaControl),
+            nameof(SelectionStart), typeof(int), typeof(FormulaControl),
             new PropertyMetadata(0, OnRenderSettingsChanged));
 
         public static readonly DependencyProperty SelectionLengthProperty = DependencyProperty.Register(
-            "SelectionLength", typeof(int), typeof(FormulaControl),
+            nameof(SelectionLength), typeof(int), typeof(FormulaControl),
             new PropertyMetadata(0, OnRenderSettingsChanged));
 
         public static readonly DependencyProperty SelectionBrushProperty = DependencyProperty.Register(
-            "SelectionBrush", typeof(Brush), typeof(FormulaControl),
+            nameof(SelectionBrush), typeof(Brush), typeof(FormulaControl),
             new PropertyMetadata(null, OnRenderSettingsChanged));
 
         public FormulaControl()
