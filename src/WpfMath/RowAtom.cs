@@ -122,7 +122,8 @@ namespace WpfMath
 
                 // Check if atom is part of ligature or should be kerned.
                 var kern = 0d;
-                if (hasNextAtom && curAtom.GetRightType() == TexAtomType.Ordinary && curAtom.IsCharSymbol)
+                if ((hasNextAtom && curAtom.GetRightType() == TexAtomType.Ordinary && curAtom.IsCharSymbol) &&
+                    !(this.Elements[i].GetType() == typeof(CharAtom) && ((CharAtom)this.Elements[i]).TextStyle == "text"))
                 {
                     if (nextAtom is CharSymbol cs && ligatureKernChangeSet[(int)nextAtom.GetLeftType()])
                     {
