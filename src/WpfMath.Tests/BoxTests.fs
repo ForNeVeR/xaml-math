@@ -81,3 +81,10 @@ let ``BigOperatorAtom creates a box with proper sources``() =
         Action<_>(fun (x : Box) -> Assert.Equal(src 7 1, x.Source)),
         Action<_>(fun (x : Box) -> Assert.Equal(src 1 3, x.Source)),
         Action<_>(fun (x : Box) -> Assert.Equal(src 5 1, x.Source)))
+
+[<Fact>]
+let ``Cyrillic followed by Latin should be rendered properly``() =
+    Utils.initializeFontResourceLoading()
+    let atom = parse @"\text{Ц}V"
+    let box = atom.CreateBox environment
+    Assert.NotNull(box)
