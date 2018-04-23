@@ -7,15 +7,23 @@ namespace WpfMath
 {
     internal class SystemFont : ITeXFont
     {
-        private readonly FontFamily _fontFamily;
+        private readonly FontFamily fontFamily;
 
         public SystemFont(double size, FontFamily fontFamily)
         {
-            _fontFamily = fontFamily;
+            this.fontFamily = fontFamily;
             Size = size;
         }
 
         public bool SupportsMetrics => false;
+
+        public bool SupportsSymbol(string name) => false;
+
+        public bool SupportsDefaultCharacter(char character, TexStyle style) =>
+            // System font implicitly supports any characters (so it seems).
+            true;
+
+        public bool SupportsCharacter(char character, string textStyle, TexStyle style) => false;
 
         public double Size { get; }
 
@@ -28,23 +36,26 @@ namespace WpfMath
         public CharInfo GetNextLargerCharInfo(CharInfo charInfo, TexStyle style) =>
             throw MethodNotSupported(nameof(GetNextLargerCharInfo));
 
-        public CharInfo GetDefaultCharInfo(char character, TexStyle style) =>
-            throw MethodNotSupported(nameof(GetDefaultCharInfo));
+        public CharInfo GetDefaultCharInfo(char character, TexStyle style, bool assert = true) =>
+            assert ? throw MethodNotSupported(nameof(this.GetDefaultCharInfo)) : (CharInfo)null;
 
-        public CharInfo GetCharInfo(char character, string textStyle, TexStyle style)
+        public CharInfo GetCharInfo(char character, string textStyle, TexStyle style, bool assert = true)
         {
-            var typeface = GetTypeface();
+            var typeface = this.GetTypeface();
             if (!typeface.TryGetGlyphTypeface(out var glyphTypeface))
             {
-                throw new TypeFaceNotFoundException($"Glyph typeface for font {_fontFamily.BaseUri} was not found");
+                if (assert)
+                    throw new TypeFaceNotFoundException(
+                        $"Glyph typeface for font {this.fontFamily.BaseUri} was not found");
+                return null;
             }
 
             var metrics = GetFontMetrics(character, typeface);
             return new CharInfo(character, glyphTypeface, 1.0, TexFontUtilities.NoFontId, metrics);
         }
 
-        public CharInfo GetCharInfo(CharFont charFont, TexStyle style) =>
-            throw MethodNotSupported(nameof(GetCharInfo));
+        public CharInfo GetCharInfo(CharFont charFont, TexStyle style, bool assert = true) =>
+            assert ? throw MethodNotSupported(nameof(this.GetCharInfo)) : (CharInfo)null;
 
         public CharInfo GetCharInfo(string name, TexStyle style) => throw MethodNotSupported(nameof(GetCharInfo));
 
@@ -121,6 +132,6 @@ namespace WpfMath
             return new TexFontMetrics(formattedText.Width, formattedText.Height, 0.0, formattedText.Width, 1.0);
         }
 
-        private Typeface GetTypeface() => new Typeface(_fontFamily, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal); // TODO[F]: Put into lazy field
+        private Typeface GetTypeface() => new Typeface(this.fontFamily, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal); // TODO[F]: Put into lazy field
     }
 }

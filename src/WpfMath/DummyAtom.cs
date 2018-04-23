@@ -38,11 +38,6 @@ namespace WpfMath
         public DummyAtom AsTextSymbol() =>
             this.IsTextSymbol ? this : new DummyAtom(this.Type, this.Atom, true);
 
-        public bool IsCharSymbol
-        {
-            get { return this.Atom is CharSymbol; }
-        }
-
         public bool IsKern
         {
             get { return this.Atom is SpaceAtom; }

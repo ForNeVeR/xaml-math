@@ -14,6 +14,13 @@ namespace WpfMath
         /// <summary>Returns the preferred font to render this character.</summary>
         public virtual ITeXFont GetStyledFont(TexEnvironment environment) => environment.MathFont;
 
+        /// <summary>Checks if the symbol can be rendered by font.</summary>
+        public abstract bool IsSupportedByFont(ITeXFont font);
+
+        /// <summary>
+        /// Returns the symbol rendered by font. Throws an exception if the symbol is not supported by font. Always
+        /// succeed if <see cref="IsSupportedByFont"/>.
+        /// </summary>
         public abstract CharFont GetCharFont(ITeXFont texFont);
     }
 }

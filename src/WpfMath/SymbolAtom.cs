@@ -82,6 +82,8 @@ namespace WpfMath
         protected override Box CreateBoxCore(TexEnvironment environment) =>
             new CharBox(environment, environment.MathFont.GetCharInfo(this.Name, environment.Style));
 
+        public override bool IsSupportedByFont(ITeXFont font) => font.SupportsSymbol(this.Name);
+
         public override CharFont GetCharFont(ITeXFont texFont)
         {
             // Style is irrelevant here.

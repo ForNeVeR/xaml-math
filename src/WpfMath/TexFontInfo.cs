@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Media;
-using WpfMath.Exceptions;
 
 namespace WpfMath
 {
@@ -139,12 +138,12 @@ namespace WpfMath
             return this.XHeight * factor;
         }
 
+        /// <summary>Return the character metrics or <c>null</c> if the metrics weren't found.</summary>
         public double[] GetMetrics(char character)
         {
             if (metrics.Length <= character || metrics[character] == null)
             {
-                throw new TexCharacterMappingNotFoundException(
-                    $"Cannot determine metrics for '{character}' character in font {FontId}");
+                return null;
             }
 
             return this.metrics[character];

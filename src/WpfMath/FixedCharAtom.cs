@@ -11,6 +11,10 @@ namespace WpfMath
 
         public CharFont CharFont { get; }
 
+        public override bool IsSupportedByFont(ITeXFont font) =>
+            // Always "supported" because it ignores the font.
+            true;
+
         public override CharFont GetCharFont(ITeXFont texFont)
         {
             return this.CharFont;
