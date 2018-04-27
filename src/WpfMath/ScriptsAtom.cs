@@ -27,13 +27,7 @@ namespace WpfMath
             var style = environment.Style;
 
             // Create box for base atom.
-            Box baseBox;
-            if (BaseAtom == null)
-                baseBox = StrutBox.Empty;
-            else
-            {
-                baseBox = BaseAtom.CreateBox(environment);
-            }
+            var baseBox = this.BaseAtom == null ? StrutBox.Empty : this.BaseAtom.CreateBox(environment);
             if (this.SubscriptAtom == null && this.SuperscriptAtom == null)
             {
                 if (baseBox is CharBox)

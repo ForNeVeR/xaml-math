@@ -54,9 +54,11 @@ namespace WpfMath
             Debug.Assert(formula != null);
             Debug.Assert(formula.RootAtom != null);
 
-            this.Add(formula.RootAtom is RowAtom
-                ? new RowAtom(source, formula.RootAtom)
-                : formula.RootAtom, source);
+            this.Add(
+                formula.RootAtom is RowAtom
+                    ? new RowAtom(source, formula.RootAtom)
+                    : formula.RootAtom,
+                source);
         }
 
         /// <summary>

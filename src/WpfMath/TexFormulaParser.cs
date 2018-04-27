@@ -27,7 +27,6 @@ namespace WpfMath
 
         // Information used for parsing
         private static HashSet<string> commands;
-
         private static IList<string> symbols;
         private static IList<string> delimeters;
         private static HashSet<string> textStyles;
@@ -138,7 +137,7 @@ namespace WpfMath
             return Parse(new SourceSpan(value, 0, value.Length), ref position, false, textStyle);
         }
 
-        private TexFormula Parse(SourceSpan value, string textStyle = null)
+        private TexFormula Parse(SourceSpan value, string textStyle)
         {
             int localPostion = 0;
             return Parse(value, ref localPostion, false, textStyle);
@@ -382,9 +381,9 @@ namespace WpfMath
                         SkipWhiteSpace(value, ref position);
                     }
 
-                    var sqrtFormula = Parse(
-                        ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar),
-                            formula.TextStyle);
+                    var sqrtFormula = this.Parse(
+                        this.ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar),
+                        formula.TextStyle);
 
                     if (sqrtFormula.RootAtom == null)
                     {
@@ -400,32 +399,26 @@ namespace WpfMath
                         var remainingString = value.Segment(position);
                         var remaining = Parse(remainingString, formula.TextStyle);
                         position = value.Length;
-                        Color color;
-                        if (predefinedColors.TryGetValue(colorName.ToString(), out color))
+                        if (predefinedColors.TryGetValue(colorName.ToString(), out var color))
                         {
                             source = value.Segment(start, position - start);
                             return new StyledAtom(source, remaining.RootAtom, null, new SolidColorBrush(color));
                         }
-                        else
-                        {
-                            throw new TexParseException(String.Format("Color {0} not found", colorName));
-                        }
+
+                        throw new TexParseException($"Color {colorName} not found");
                     }
                 case "colorbox":
                     {
                         var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
                         var remainingString = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
                         var remaining = Parse(remainingString, formula.TextStyle);
-                        Color color;
-                        if (predefinedColors.TryGetValue(colorName.ToString(), out color))
+                        if (predefinedColors.TryGetValue(colorName.ToString(), out var color))
                         {
                             source = value.Segment(start, position - start);
                             return new StyledAtom(source, remaining.RootAtom, new SolidColorBrush(color), null);
                         }
-                        else
-                        {
-                            throw new TexParseException(String.Format("Color {0} not found", colorName));
-                        }
+
+                        throw new TexParseException($"Color {colorName} not found");
                     }
             }
 
