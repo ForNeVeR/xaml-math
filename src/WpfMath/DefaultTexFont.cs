@@ -139,21 +139,15 @@ namespace WpfMath
                     charFont[(int)charKind].FontId), style);
         }
 
-        public CharInfo GetCharInfo(char character, string textStyle, TexStyle style)
-        {
-            var mapping = textStyleMappings[textStyle];
-            if (mapping == null)
-                throw new TextStyleMappingNotFoundException(textStyle);
-            return GetCharInfo(character, (CharFont[])mapping, style);
-        }
+        public CharInfo GetCharInfo(char character, string textStyle, TexStyle style) =>
+            textStyleMappings.TryGetValue(textStyle, out var mapping)
+                ? this.GetCharInfo(character, mapping, style)
+                : throw new TextStyleMappingNotFoundException(textStyle);
 
-        public CharInfo GetCharInfo(string symbolName, TexStyle style)
-        {
-            var mapping = symbolMappings[symbolName];
-            if (mapping == null)
-                throw new SymbolMappingNotFoundException(symbolName);
-            return GetCharInfo((CharFont)mapping, style);
-        }
+        public CharInfo GetCharInfo(string symbolName, TexStyle style) =>
+            symbolMappings.TryGetValue(symbolName, out var mapping)
+                ? this.GetCharInfo(mapping, style)
+                : throw new SymbolMappingNotFoundException(symbolName);
 
         public CharInfo GetCharInfo(CharFont charFont, TexStyle style)
         {

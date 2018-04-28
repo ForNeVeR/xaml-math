@@ -59,6 +59,7 @@
     <Compile Include="Utils.fs" />
     <Compile Include="BoxTests.fs" />
     <Compile Include="CharBoxTests.fs" />
+    <Compile Include="DefaultTexFontTests.fs" />
     <Compile Include="GeometryHelperTests.fs" />
     <Compile Include="GeometryElementRendererTests.fs" />
     <Compile Include="HorizontalBoxTests.fs" />
