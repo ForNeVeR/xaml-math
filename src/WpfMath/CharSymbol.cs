@@ -30,10 +30,7 @@ namespace WpfMath
         public bool IsSupportedByFont(ITeXFont font, TexStyle style) =>
             this.GetCharInfo(font, style).IsSuccess;
 
-        /// <summary>
-        /// Returns the symbol rendered by font. Throws an exception if the symbol is not supported by font. Always
-        /// succeed if <see cref="IsSupportedByFont"/>.
-        /// </summary>
+        /// <summary>Returns the symbol rendered by font.</summary>
         public abstract Result<CharFont> GetCharFont(ITeXFont texFont);
     }
 }
