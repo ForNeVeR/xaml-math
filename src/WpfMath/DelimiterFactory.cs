@@ -12,7 +12,7 @@ namespace WpfMath
         {
             var texFont = environment.MathFont;
             var style = environment.Style;
-            var charInfo = texFont.GetCharInfo(symbol, style);
+            var charInfo = texFont.GetCharInfo(symbol, style).Value;
 
             // Find first version of character that has at least minimum height.
             var metrics = charInfo.Metrics;

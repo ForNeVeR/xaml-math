@@ -14,6 +14,7 @@
     <FileAlignment>512</FileAlignment>
     <PlatformTarget>x86</PlatformTarget>
     <TargetFrameworkProfile />
+    <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -138,6 +139,7 @@
     <Compile Include="TypedAtom.cs" />
     <Compile Include="UnderlinedAtom.cs" />
     <Compile Include="UnderOverAtom.cs" />
+    <Compile Include="Utils\Result.cs" />
     <Compile Include="VerticalBox.cs" />
     <Compile Include="VerticalCenteredAtom.cs" />
     <Compile Include="XmlUtilities.cs" />

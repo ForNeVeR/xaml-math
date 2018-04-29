@@ -64,7 +64,7 @@ namespace WpfMath
             }
             else if (this.BaseAtom is SymbolAtom && this.BaseAtom.Type == TexAtomType.BigOperator)
             {
-                var charInfo = texFont.GetCharInfo(((SymbolAtom)this.BaseAtom).Name, style);
+                var charInfo = texFont.GetCharInfo(((SymbolAtom)this.BaseAtom).Name, style).Value;
                 if (style < TexStyle.Text && texFont.HasNextLarger(charInfo))
                     charInfo = texFont.GetNextLargerCharInfo(charInfo, style);
                 var charBox = new CharBox(environment, charInfo);
@@ -82,9 +82,9 @@ namespace WpfMath
             }
             else if (this.BaseAtom is CharSymbol)
             {
-                var charFont = ((CharSymbol)this.BaseAtom).GetCharFont(texFont);
+                var charFont = ((CharSymbol)this.BaseAtom).GetCharFont(texFont).Value;
                 if (!((CharSymbol)this.BaseAtom).IsTextSymbol || !texFont.HasSpace(charFont.FontId))
-                    delta = texFont.GetCharInfo(charFont, style).Metrics.Italic;
+                    delta = texFont.GetCharInfo(charFont, style).Value.Metrics.Italic;
                 if (delta > TexUtilities.FloatPrecision && SubscriptAtom == null)
                 {
                     resultBox.Add(new StrutBox(delta, 0, 0, 0));

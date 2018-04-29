@@ -1,3 +1,5 @@
+using WpfMath.Utils;
+
 namespace WpfMath
 {
     // Dummy atom representing atom whose type can change or which can be replaced by a ligature.
@@ -43,10 +45,8 @@ namespace WpfMath
             get { return this.Atom is SpaceAtom; }
         }
 
-        public CharFont GetCharFont(ITeXFont texFont)
-        {
-            return ((CharSymbol)this.Atom).GetCharFont(texFont);
-        }
+        public Result<CharFont> GetCharFont(ITeXFont texFont) =>
+            ((CharSymbol)this.Atom).GetCharFont(texFont);
 
         protected override Box CreateBoxCore(TexEnvironment environment) =>
             this.Atom.CreateBox(environment);

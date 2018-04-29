@@ -51,11 +51,11 @@ namespace WpfMath
 
             // Create box for base atom.
             var baseBox = this.BaseAtom == null ? StrutBox.Empty : this.BaseAtom.CreateBox(environment.GetCrampedStyle());
-            var baseCharFont = GetBaseChar()?.GetCharFont(texFont);
+            var baseCharFont = GetBaseChar()?.GetCharFont(texFont).Value;
             var skew = baseCharFont == null ? 0.0 : texFont.GetSkew(baseCharFont, style);
 
             // Find character of best scale for accent symbol.
-            var accentChar = texFont.GetCharInfo(AccentAtom.Name, style);
+            var accentChar = texFont.GetCharInfo(AccentAtom.Name, style).Value;
             while (texFont.HasNextLarger(accentChar))
             {
                 var nextLargerChar = texFont.GetNextLargerCharInfo(accentChar, style);

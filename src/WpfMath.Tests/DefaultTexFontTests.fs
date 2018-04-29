@@ -16,8 +16,7 @@ type DefaultTexFontTests() =
 
     [<Fact>]
     member __.``GetCharInfo(char, string, TexStyle) throws a TextStyleMappingNotFoundException for unknown text style``() =
-        Assert.Throws<TextStyleMappingNotFoundException>(
-            fun () -> ignore <| font.GetCharInfo('x', "unknownStyle", TexStyle.Text))
+        Assert.IsType<TextStyleMappingNotFoundException>(font.GetCharInfo('x', "unknownStyle", TexStyle.Text).Error)
 
     [<Fact>]
     member __.``GetCharInfo(string, TexStyle) returns a CharInfo for existing symbol``() =
@@ -25,8 +24,7 @@ type DefaultTexFontTests() =
 
     [<Fact>]
     member __.``GetCharInfo(string, TexStyle) throws a SymbolMappingNotFoundException for unknown symbol``() =
-        Assert.Throws<SymbolMappingNotFoundException>(
-            fun () -> ignore <| font.GetCharInfo("unknownSymbol", TexStyle.Text))
+        Assert.IsType<SymbolMappingNotFoundException>(font.GetCharInfo("unknownSymbol", TexStyle.Text).Error)
 
     [<Fact>]
     member __.``GetCharInfo(CharFont, TexStyle) returns a CharInfo for existing symbol``() =
@@ -36,5 +34,4 @@ type DefaultTexFontTests() =
     [<Fact>]
     member __.``GetCharInfo(CharFont, TexStyle) throws a TexCharacterMappingNotFoundException for unknown character``() =
         let char = CharFont('й', 1)
-        Assert.Throws<TexCharacterMappingNotFoundException>(
-            fun () -> ignore <| font.GetCharInfo(char, TexStyle.Text))
+        Assert.IsType<TexCharacterMappingNotFoundException>(font.GetCharInfo(char, TexStyle.Text).Error)

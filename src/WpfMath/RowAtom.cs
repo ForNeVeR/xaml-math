@@ -127,16 +127,17 @@ namespace WpfMath
                     if (nextAtom is CharSymbol ns && ligatureKernChangeSet[(int)nextAtom.GetLeftType()])
                     {
                         var font = ns.GetStyledFont(environment);
+                        var style = environment.Style;
                         curAtom = curAtom.AsTextSymbol();
-                        if (font.SupportsMetrics && cs.IsSupportedByFont(font))
+                        if (font.SupportsMetrics && cs.IsSupportedByFont(font, style))
                         {
-                            var leftAtomCharFont = curAtom.GetCharFont(font);
-                            var rightAtomCharFont = ns.GetCharFont(font);
+                            var leftAtomCharFont = curAtom.GetCharFont(font).Value;
+                            var rightAtomCharFont = ns.GetCharFont(font).Value;
                             var ligatureCharFont = font.GetLigature(leftAtomCharFont, rightAtomCharFont);
                             if (ligatureCharFont == null)
                             {
                                 // Atom should be kerned.
-                                kern = font.GetKern(leftAtomCharFont, rightAtomCharFont, environment.Style);
+                                kern = font.GetKern(leftAtomCharFont, rightAtomCharFont, style);
                             }
                             else
                             {

@@ -1,3 +1,5 @@
+using WpfMath.Utils;
+
 namespace WpfMath
 {
     // Atom representing single character that can be marked as text symbol.
@@ -14,13 +16,24 @@ namespace WpfMath
         /// <summary>Returns the preferred font to render this character.</summary>
         public virtual ITeXFont GetStyledFont(TexEnvironment environment) => environment.MathFont;
 
+        /// <summary>Returns a <see cref="CharInfo"/> for this character.</summary>
+        protected abstract Result<CharInfo> GetCharInfo(ITeXFont font, TexStyle style);
+
+        protected sealed override Box CreateBoxCore(TexEnvironment environment)
+        {
+            var font = this.GetStyledFont(environment);
+            var charInfo = this.GetCharInfo(font, environment.Style);
+            return new CharBox(environment, charInfo.Value);
+        }
+
         /// <summary>Checks if the symbol can be rendered by font.</summary>
-        public abstract bool IsSupportedByFont(ITeXFont font);
+        public bool IsSupportedByFont(ITeXFont font, TexStyle style) =>
+            this.GetCharInfo(font, style).IsSuccess;
 
         /// <summary>
         /// Returns the symbol rendered by font. Throws an exception if the symbol is not supported by font. Always
         /// succeed if <see cref="IsSupportedByFont"/>.
         /// </summary>
-        public abstract CharFont GetCharFont(ITeXFont texFont);
+        public abstract Result<CharFont> GetCharFont(ITeXFont texFont);
     }
 }

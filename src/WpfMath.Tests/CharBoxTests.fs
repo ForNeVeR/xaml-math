@@ -18,7 +18,7 @@ type CharBoxTests() =
     member __.``CharBox rendering calls to RenderGlyphRun``() =
         let font = DefaultTexFont 20.0
         let environment = TexEnvironment(TexStyle.Display, font, font)
-        let char = environment.MathFont.GetDefaultCharInfo('x', TexStyle.Display)
+        let char = environment.MathFont.GetDefaultCharInfo('x', TexStyle.Display).Value
         let x = 0.5
         let y = 1.0
 
@@ -28,7 +28,8 @@ type CharBoxTests() =
         Mock.Verify(<@ mockedRenderer.RenderGlyphRun(any(), x, y, Brushes.Black) @>, once)
 
     [<Fact>]
-    member __.``Currently unsupporteded characters like "Å" should throw TexCharacterMappingNotFoundException``() =
+    member __.``Currently unsupporteded characters like "Å" should result in TexCharacterMappingNotFoundException``() =
         let font = DefaultTexFont 20.0
         let environment = TexEnvironment(TexStyle.Display, font, font)
-        Assert.Throws<TexCharacterMappingNotFoundException>(Func<obj>(fun () -> upcast environment.MathFont.GetDefaultCharInfo('Å', TexStyle.Display)))
+        Assert.IsType<TexCharacterMappingNotFoundException>(
+            environment.MathFont.GetDefaultCharInfo('Å', TexStyle.Display).Error)

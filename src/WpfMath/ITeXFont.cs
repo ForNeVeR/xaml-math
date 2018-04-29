@@ -1,3 +1,5 @@
+using WpfMath.Utils;
+
 namespace WpfMath
 {
     // Font that specifies how TexFormula objects are rendered.
@@ -5,15 +7,6 @@ namespace WpfMath
     {
         /// <summary>Whether the font supports <see cref="CharInfo"/>.</summary>
         bool SupportsMetrics { get; }
-
-        /// <summary>Whether the font supports the named symbol.</summary>
-        bool SupportsSymbol(string name);
-
-        /// <summary>Whether the font supports the character with default size.</summary>
-        bool SupportsDefaultCharacter(char character, TexStyle style);
-
-        /// <summary>Whether the font supports the character with the passed style.</summary>
-        bool SupportsCharacter(char character, string textStyle, TexStyle style);
 
         double Size { get; }
 
@@ -25,13 +18,13 @@ namespace WpfMath
 
         CharInfo GetNextLargerCharInfo(CharInfo charInfo, TexStyle style);
 
-        CharInfo GetDefaultCharInfo(char character, TexStyle style, bool assert = true);
+        Result<CharInfo> GetDefaultCharInfo(char character, TexStyle style);
 
-        CharInfo GetCharInfo(char character, string textStyle, TexStyle style, bool assert = true);
+        Result<CharInfo> GetCharInfo(char character, string textStyle, TexStyle style);
 
-        CharInfo GetCharInfo(CharFont charFont, TexStyle style, bool assert = true);
+        Result<CharInfo> GetCharInfo(CharFont charFont, TexStyle style);
 
-        CharInfo GetCharInfo(string name, TexStyle style);
+        Result<CharInfo> GetCharInfo(string name, TexStyle style);
 
         double GetKern(CharFont leftChar, CharFont rightChar, TexStyle style);
 

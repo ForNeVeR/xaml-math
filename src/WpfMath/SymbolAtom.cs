@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using WpfMath.Utils;
 
 namespace WpfMath
 {
@@ -79,15 +80,11 @@ namespace WpfMath
 
         public string Name { get; }
 
-        protected override Box CreateBoxCore(TexEnvironment environment) =>
-            new CharBox(environment, environment.MathFont.GetCharInfo(this.Name, environment.Style));
+        protected override Result<CharInfo> GetCharInfo(ITeXFont font, TexStyle style) =>
+            font.GetCharInfo(this.Name, style);
 
-        public override bool IsSupportedByFont(ITeXFont font) => font.SupportsSymbol(this.Name);
-
-        public override CharFont GetCharFont(ITeXFont texFont)
-        {
+        public override Result<CharFont> GetCharFont(ITeXFont texFont) =>
             // Style is irrelevant here.
-            return texFont.GetCharInfo(Name, TexStyle.Display).GetCharacterFont();
-        }
+            texFont.GetCharInfo(this.Name, TexStyle.Display).Map(ci => ci.GetCharacterFont());
     }
 }

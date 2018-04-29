@@ -63,7 +63,7 @@ namespace WpfMath
             if (this.BaseAtom is SymbolAtom && this.BaseAtom.Type == TexAtomType.BigOperator)
             {
                 // Find character of best scale for operator symbol.
-                var opChar = texFont.GetCharInfo(((SymbolAtom)this.BaseAtom).Name, style);
+                var opChar = texFont.GetCharInfo(((SymbolAtom)this.BaseAtom).Name, style).Value;
                 if (style < TexStyle.Text && texFont.HasNextLarger(opChar))
                     opChar = texFont.GetNextLargerCharInfo(opChar, style);
                 var charBox = new CharBox(environment, opChar) { Source = this.BaseAtom.Source };

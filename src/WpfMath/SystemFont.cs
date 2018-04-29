@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Media;
 using WpfMath.Exceptions;
+using WpfMath.Utils;
 
 namespace WpfMath
 {
@@ -17,14 +18,6 @@ namespace WpfMath
 
         public bool SupportsMetrics => false;
 
-        public bool SupportsSymbol(string name) => false;
-
-        public bool SupportsDefaultCharacter(char character, TexStyle style) =>
-            // System font implicitly supports any characters (so it seems).
-            true;
-
-        public bool SupportsCharacter(char character, string textStyle, TexStyle style) => false;
-
         public double Size { get; }
 
         public ITeXFont DeriveFont(double newSize) => throw MethodNotSupported(nameof(DeriveFont));
@@ -36,28 +29,27 @@ namespace WpfMath
         public CharInfo GetNextLargerCharInfo(CharInfo charInfo, TexStyle style) =>
             throw MethodNotSupported(nameof(GetNextLargerCharInfo));
 
-        public CharInfo GetDefaultCharInfo(char character, TexStyle style, bool assert = true) =>
-            assert ? throw MethodNotSupported(nameof(this.GetDefaultCharInfo)) : (CharInfo)null;
+        public Result<CharInfo> GetDefaultCharInfo(char character, TexStyle style) =>
+            Result.Error<CharInfo>(MethodNotSupported(nameof(this.GetDefaultCharInfo)));
 
-        public CharInfo GetCharInfo(char character, string textStyle, TexStyle style, bool assert = true)
+        public Result<CharInfo> GetCharInfo(char character, string textStyle, TexStyle style)
         {
             var typeface = this.GetTypeface();
             if (!typeface.TryGetGlyphTypeface(out var glyphTypeface))
             {
-                if (assert)
-                    throw new TypeFaceNotFoundException(
-                        $"Glyph typeface for font {this.fontFamily.BaseUri} was not found");
-                return null;
+                return Result.Error<CharInfo>(new TypeFaceNotFoundException(
+                    $"Glyph typeface for font {this.fontFamily.BaseUri} was not found"));
             }
 
             var metrics = GetFontMetrics(character, typeface);
-            return new CharInfo(character, glyphTypeface, 1.0, TexFontUtilities.NoFontId, metrics);
+            return Result.Ok(new CharInfo(character, glyphTypeface, 1.0, TexFontUtilities.NoFontId, metrics));
         }
 
-        public CharInfo GetCharInfo(CharFont charFont, TexStyle style, bool assert = true) =>
-            assert ? throw MethodNotSupported(nameof(this.GetCharInfo)) : (CharInfo)null;
+        public Result<CharInfo> GetCharInfo(CharFont charFont, TexStyle style) =>
+            Result.Error<CharInfo>(MethodNotSupported(nameof(this.GetCharInfo)));
 
-        public CharInfo GetCharInfo(string name, TexStyle style) => throw MethodNotSupported(nameof(GetCharInfo));
+        public Result<CharInfo> GetCharInfo(string name, TexStyle style) =>
+            Result.Error<CharInfo>(MethodNotSupported(nameof(GetCharInfo)));
 
         public double GetKern(CharFont leftChar, CharFont rightChar, TexStyle style) => 0.0;
 

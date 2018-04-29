@@ -1,3 +1,5 @@
+using WpfMath.Utils;
+
 namespace WpfMath
 {
     // Atom representing character that does not depend on text style.
@@ -11,19 +13,10 @@ namespace WpfMath
 
         public CharFont CharFont { get; }
 
-        public override bool IsSupportedByFont(ITeXFont font) =>
-            // Always "supported" because it ignores the font.
-            true;
+        protected override Result<CharInfo> GetCharInfo(ITeXFont font, TexStyle style) =>
+            font.GetCharInfo(this.CharFont, style);
 
-        public override CharFont GetCharFont(ITeXFont texFont)
-        {
-            return this.CharFont;
-        }
-
-        protected override Box CreateBoxCore(TexEnvironment environment)
-        {
-            var charInfo = environment.MathFont.GetCharInfo(this.CharFont, environment.Style);
-            return new CharBox(environment, charInfo);
-        }
+        public override Result<CharFont> GetCharFont(ITeXFont texFont) =>
+            Result.Ok(this.CharFont);
     }
 }

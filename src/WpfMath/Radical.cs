@@ -29,7 +29,7 @@ namespace WpfMath
             double clearance;
             var defaultRuleThickness = texFont.GetDefaultLineThickness(style);
             if (style < TexStyle.Text)
-                clearance = texFont.GetXHeight(style, texFont.GetCharInfo(sqrtSymbol, style).FontId);
+                clearance = texFont.GetXHeight(style, texFont.GetCharInfo(sqrtSymbol, style).Value.FontId);
             else
                 clearance = defaultRuleThickness;
             clearance = defaultRuleThickness + Math.Abs(clearance) / 4;
