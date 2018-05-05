@@ -80,10 +80,10 @@ namespace WpfMath
                 shiftUp = resultBox.Height - texFont.GetSupDrop(superscriptStyle.Style);
                 shiftDown = resultBox.Depth + texFont.GetSubDrop(subscriptStyle.Style);
             }
-            else if (this.BaseAtom is CharSymbol)
+            else if (this.BaseAtom is CharSymbol charSymbol)
             {
-                var charFont = ((CharSymbol)this.BaseAtom).GetCharFont(texFont).Value;
-                if (!((CharSymbol)this.BaseAtom).IsTextSymbol || !texFont.HasSpace(charFont.FontId))
+                var charFont = charSymbol.GetCharFont(texFont).Value;
+                if (!charSymbol.IsTextSymbol || !texFont.HasSpace(charFont.FontId))
                     delta = texFont.GetCharInfo(charFont, style).Value.Metrics.Italic;
                 if (delta > TexUtilities.FloatPrecision && SubscriptAtom == null)
                 {
