@@ -1,6 +1,28 @@
 Release Notes
 =============
 
+## 0.5 (2018-05-08)
+
+Fixed issues:
+
+- [#101: Fixed crash on empty square root][pull-101]
+- [#103: Fixed a crash if inserting a whitespace after a _ or ^ symbol][pull-103]
+- [#102: Fixed a crash when rendering unsupported characters like "Å"][pull-102]
+- [#104: Error when rendering `\text{æ,}`][issue-104]
+- [#119: Big operator rendering problem inside `\frac`][issue-119]
+- [#129: Summation of two Cyrillic symbols][issue-129]
+- [#133: Fix issues with exceptions][pull-133]
+
+New features:
+
+- [#92: Extract Renderer code to a single class/interface][issue-92]
+- [#115: Give a range of source string to Box][issue-115]
+- [#123: Add formula highlighting][pull-123]
+
+New documentation:
+
+- [#108: Dealing with XML][pull-108]
+
 ## 0.4 (2017-09-11)
 
 Fixed issues:
@@ -56,6 +78,11 @@ This was the initial published version. It consisted entirely of the original co
 [issue-82]: https://github.com/ForNeVeR/wpf-math/issues/82
 [issue-84]: https://github.com/ForNeVeR/wpf-math/issues/84
 [issue-88]: https://github.com/ForNeVeR/wpf-math/issues/84
+[issue-92]: https://github.com/ForNeVeR/wpf-math/issues/92
+[issue-104]: https://github.com/ForNeVeR/wpf-math/issues/104
+[issue-115]: https://github.com/ForNeVeR/wpf-math/issues/115
+[issue-119]: https://github.com/ForNeVeR/wpf-math/issues/119
+[issue-129]: https://github.com/ForNeVeR/wpf-math/issues/129
 [pull-53]: https://github.com/ForNeVeR/wpf-math/pull/53
 [pull-54]: https://github.com/ForNeVeR/wpf-math/pull/54
 [pull-58]: https://github.com/ForNeVeR/wpf-math/pull/58
@@ -63,3 +90,9 @@ This was the initial published version. It consisted entirely of the original co
 [pull-74]: https://github.com/ForNeVeR/wpf-math/pull/74
 [pull-79]: https://github.com/ForNeVeR/wpf-math/pull/79
 [pull-80]: https://github.com/ForNeVeR/wpf-math/pull/80
+[pull-101]: https://github.com/ForNeVeR/wpf-math/pull/101
+[pull-102]: https://github.com/ForNeVeR/wpf-math/pull/102
+[pull-103]: https://github.com/ForNeVeR/wpf-math/pull/103
+[pull-108]: https://github.com/ForNeVeR/wpf-math/pull/108
+[pull-123]: https://github.com/ForNeVeR/wpf-math/pull/123
+[pull-133]: https://github.com/ForNeVeR/wpf-math/pull/133
