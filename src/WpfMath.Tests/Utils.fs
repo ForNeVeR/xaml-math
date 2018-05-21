@@ -8,6 +8,7 @@ open DeepEqual.Syntax
 open Xunit
 
 open WpfMath
+open WpfMath.Atoms
 
 let textStyle = "text"
 let rmStyle = "mathrm"

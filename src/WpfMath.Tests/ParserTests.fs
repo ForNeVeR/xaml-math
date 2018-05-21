@@ -3,6 +3,7 @@
 open Xunit
 
 open WpfMath
+open WpfMath.Atoms
 open WpfMath.Exceptions
 open WpfMath.Tests.Utils
 

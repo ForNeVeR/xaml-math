@@ -7,6 +7,7 @@ open Foq
 open Xunit
 
 open WpfMath
+open WpfMath.Boxes
 open WpfMath.Rendering
 
 type HorizontalBoxTests() =

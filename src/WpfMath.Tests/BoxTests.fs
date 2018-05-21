@@ -7,6 +7,8 @@ open DeepEqual.Syntax
 open Xunit
 
 open WpfMath
+open WpfMath.Atoms
+open WpfMath.Boxes
 open WpfMath.Exceptions
 open WpfMath.Tests.Utils
 

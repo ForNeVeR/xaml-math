@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Xml.Linq;
+using WpfMath.Atoms;
 
 namespace WpfMath
 {

@@ -1,3 +1,5 @@
+using WpfMath.Atoms;
+
 namespace WpfMath
 {
     internal class TexFormulaHelper

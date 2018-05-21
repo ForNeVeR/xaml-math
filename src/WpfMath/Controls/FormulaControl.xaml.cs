@@ -1,9 +1,10 @@
 using System;
-using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using WpfMath.Boxes;
 using WpfMath.Exceptions;
 
 namespace WpfMath.Controls
