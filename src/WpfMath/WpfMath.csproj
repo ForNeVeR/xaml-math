@@ -1,187 +1,19 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Sunburst.NET.Sdk.WPF/1.0.47">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>10.0.20506</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{010A34F1-1F3E-4528-99B4-95054DD45729}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WpfMath</RootNamespace>
-    <AssemblyName>WpfMath</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <PlatformTarget>x86</PlatformTarget>
-    <TargetFrameworkProfile />
+    <TargetFramework>net40</TargetFramework>
     <LangVersion>7.2</LangVersion>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>..\..\bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>..\..\bin\Release\WpfMath.xml</DocumentationFile>
+  <PropertyGroup>
+    <AssemblyTitle>WPF-Math</AssemblyTitle>
+    <Description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the WPF framework.</Description>
+    <Copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2018</Copyright>
+    <AssemblyVersion>0.5.0</AssemblyVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="System" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Xaml" />
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Atoms\AccentedAtom.cs" />
-    <Compile Include="Atoms\Atom.cs" />
-    <Compile Include="Atoms\BigDelimeterAtom.cs" />
-    <Compile Include="Atoms\BigOperatorAtom.cs" />
-    <Compile Include="Atoms\CharAtom.cs" />
-    <Compile Include="Atoms\CharSymbol.cs" />
-    <Compile Include="Atoms\DummyAtom.cs" />
-    <Compile Include="Atoms\FencedAtom.cs" />
-    <Compile Include="Atoms\FixedCharAtom.cs" />
-    <Compile Include="Atoms\FractionAtom.cs" />
-    <Compile Include="Atoms\IRow.cs" />
-    <Compile Include="Atoms\OverlinedAtom.cs" />
-    <Compile Include="Atoms\OverUnderDelimiter.cs" />
-    <Compile Include="Atoms\PhantomAtom.cs" />
-    <Compile Include="Atoms\Radical.cs" />
-    <Compile Include="Atoms\RowAtom.cs" />
-    <Compile Include="Atoms\ScriptsAtom.cs" />
-    <Compile Include="Atoms\SpaceAtom.cs" />
-    <Compile Include="Atoms\StyledAtom.cs" />
-    <Compile Include="Atoms\SymbolAtom.cs" />
-    <Compile Include="Atoms\TypedAtom.cs" />
-    <Compile Include="Atoms\UnderlinedAtom.cs" />
-    <Compile Include="Atoms\UnderOverAtom.cs" />
-    <Compile Include="Atoms\VerticalCenteredAtom.cs" />
-    <Compile Include="Boxes\Box.cs" />
-    <Compile Include="Boxes\CharBox.cs" />
-    <Compile Include="Boxes\GlueBox.cs" />
-    <Compile Include="Boxes\HorizontalBox.cs" />
-    <Compile Include="Boxes\HorizontalRule.cs" />
-    <Compile Include="Boxes\OverBar.cs" />
-    <Compile Include="Boxes\OverUnderBox.cs" />
-    <Compile Include="Boxes\StrutBox.cs" />
-    <Compile Include="Boxes\VerticalBox.cs" />
-    <Compile Include="CharFont.cs" />
-    <Compile Include="CharInfo.cs" />
-    <Compile Include="DelimiterInfo.cs" />
-    <Compile Include="Controls\FormulaControl.xaml.cs">
-      <DependentUpon>FormulaControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\VisualContainerElement.cs" />
-    <Compile Include="Exceptions\TexCharacterMappingNotFoundException.cs" />
-    <Compile Include="Exceptions\TexNotSupportedException.cs" />
-    <Compile Include="Exceptions\TexException.cs" />
-    <Compile Include="Exceptions\TypeFaceNotFoundException.cs" />
-    <Compile Include="Extensions.cs" />
-    <Compile Include="PredefinedColorParser.cs" />
-    <Compile Include="Rendering\GeometryHelper.cs" />
-    <Compile Include="Rendering\GeometryElementRenderer.cs" />
-    <Compile Include="Rendering\IElementRenderer.cs" />
-    <Compile Include="Rendering\Transformations\Transformation.cs" />
-    <Compile Include="Rendering\Transformations\TransformationKind.cs" />
-    <Compile Include="Rendering\WpfElementRenderer.cs" />
-    <Compile Include="SourceSpan.cs" />
-    <Compile Include="DefaultTexFont.cs" />
-    <Compile Include="DefaultTexFontParser.cs" />
-    <Compile Include="DelimiterFactory.cs" />
-    <Compile Include="DelimiterMappingNotFoundException.cs" />
-    <Compile Include="ExtensionChar.cs" />
-    <Compile Include="FormulaNotFoundException.cs" />
-    <Compile Include="Glue.cs" />
-    <Compile Include="GlueSettingsParser.cs" />
-    <Compile Include="ITeXFont.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="SVGConverter.cs" />
-    <Compile Include="SymbolMappingNotFoundException.cs" />
-    <Compile Include="SymbolNotFoundException.cs" />
-    <Compile Include="SystemFont.cs" />
-    <Compile Include="TexEnums.cs" />
-    <Compile Include="TexEnvironment.cs" />
-    <Compile Include="TexFontInfo.cs" />
-    <Compile Include="TexFontMetrics.cs" />
-    <Compile Include="TexFontUtilities.cs" />
-    <Compile Include="TexFormula.cs" />
-    <Compile Include="TexFormulaHelper.cs" />
-    <Compile Include="TexFormulaParser.cs" />
-    <Compile Include="Exceptions\TexParseException.cs" />
-    <Compile Include="TexPredefinedFormulaParser.cs" />
-    <Compile Include="PredefinedTexFormulaSettingsParser.cs" />
-    <Compile Include="TexRenderer.cs" />
-    <Compile Include="TexSymbolParser.cs" />
-    <Compile Include="Exceptions\TextStyleMappingNotFoundException.cs" />
-    <Compile Include="TexUtilities.cs" />
-    <Compile Include="Utils\Result.cs" />
-    <Compile Include="XmlUtilities.cs" />
-  </ItemGroup>
-  <ItemGroup>
+    <EmbeddedResource Include="Data/*" />
     <Resource Include="Fonts\cmex10.ttf" />
     <Resource Include="Fonts\cmmi10.ttf" />
     <Resource Include="Fonts\cmr10.ttf" />
     <Resource Include="Fonts\cmsy10.ttf" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Data\DefaultTexFont.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Data\GlueSettings.xml" />
-    <EmbeddedResource Include="Data\PredefinedTexFormulas.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Data\TexFormulaSettings.xml" />
-    <EmbeddedResource Include="Data\TexSymbols.xml" />
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Data\PredefinedColors.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Controls\FormulaControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
