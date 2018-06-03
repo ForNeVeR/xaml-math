@@ -87,6 +87,24 @@ Documentation
 
 - [How to prepare `DefaultTexFont.xml` from the font file][docs-prepare-font]
 
+Build Instructions
+------------------
+
+Build the project using [MSBuild][msbuild] or any compatible environment (e.g. Visual Studio 2017 or Rider). WPF-Math requires C# 7.2 support. Build script:
+
+```console
+$ nuget restore
+$ msbuild /p:Configuration=Release
+```
+
+To run the unit tests, use any xunit-compatible runner (e.g. Visual Studio 2017 or Rider).
+
+To publish the package, execute the following command with [PowerShell][pwsh]:
+
+```console
+$ pwsh scripts/nuget-pack.ps1
+```
+
 History
 -------
 
@@ -111,7 +129,9 @@ The [fonts][] `cmex10.ttf`, `cmmi10.ttf`, `cmr10.ttf`, and `cmsy10.ttf` and `cmt
 [jmathtex]: http://jmathtex.sourceforge.net/
 [knuth-license]: http://ctan.org/license/knuth
 [launchpad]: https://launchpad.net/wpf-math
+[msbuild]: https://github.com/Microsoft/msbuild
 [nuget]: https://www.nuget.org/packages/WpfMath/
+[pwsh]: https://github.com/PowerShell/PowerShell
 [wiki-license-info]: https://github.com/ForNeVeR/wpf-math/wiki/Additional-license-info
 
 [badge-appveyor]: https://ci.appveyor.com/api/projects/status/b26m3rpfcgb91gdg/branch/master?svg=true
