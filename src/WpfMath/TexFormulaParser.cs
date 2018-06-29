@@ -398,6 +398,7 @@ namespace WpfMath
                     }
                 case "fgcolor":
                     {
+                        //Command to change the foreground color 
                         var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
 
                         string remainingString = value.Substring(position);
@@ -424,6 +425,7 @@ namespace WpfMath
                     }
                 case "bgcolor":
                     {
+                        //Command to change the background color
                         var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
                         string remainingString = value.Substring(position);
                         var remaining = Parse(remainingString, formula.TextStyle);
@@ -456,8 +458,19 @@ namespace WpfMath
                             source = value.Segment(start, position - start);
                             return new StyledAtom(source, remaining.RootAtom, new SolidColorBrush(color), null);
                         }
+                        else
+                        {
+                            try
+                            {
+                                Color color1 = UserDefinedColorParser.ParseUserColor(colorName);
+                                return new StyledAtom(remaining.RootAtom, new SolidColorBrush(color1), null);
+                            }
+                            catch (Exception ex)
+                            {
+                                throw new TexParseException(String.Format("Color {0} could either not be found or converted.", colorName));
+                            }
+                        }
 
-                        throw new TexParseException($"Color {colorName} not found");
                     }
             }
 
