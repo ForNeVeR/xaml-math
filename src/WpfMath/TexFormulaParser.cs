@@ -14,7 +14,7 @@ namespace WpfMath
     // TODO: Use TextReader for lexing.
     public class TexFormulaParser
     {
-        // Special characters for parsing
+        #region Special characters for parsing
         private const char escapeChar = '\\';
 
         private const char leftGroupChar = '{';
@@ -25,8 +25,8 @@ namespace WpfMath
         private const char subScriptChar = '_';
         private const char superScriptChar = '^';
         private const char primeChar = '\'';
-
-        // Information used for parsing
+        #endregion
+        #region Information used for parsing
         private static HashSet<string> commands;
         private static IList<string> symbols;
         private static IList<string> delimeters;
@@ -49,7 +49,7 @@ namespace WpfMath
             new[] { "vert", "vert" },
             new[] { "Vert", "Vert" }
         };
-
+        #endregion
         static TexFormulaParser()
         {
             predefinedColors = new Dictionary<string, Color>();
@@ -80,7 +80,8 @@ namespace WpfMath
                 "left",
                 "right",
                 "sqrt",
-                "color",
+                "fgcolor",
+                "bgcolor",
                 "colorbox"
             };
 
@@ -365,6 +366,7 @@ namespace WpfMath
                     }
 
                 case "sqrt":
+                    {
                     // Command is radical.
 
                     SkipWhiteSpace(value, ref position);
@@ -393,20 +395,56 @@ namespace WpfMath
 
                     source = value.Segment(start, sqrtEnd - start);
                     return new Radical(source, sqrtFormula.RootAtom, degreeFormula?.RootAtom);
-
-                case "color":
+                    }
+                case "fgcolor":
                     {
                         var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
-                        var remainingString = value.Segment(position);
+
+                        string remainingString = value.Substring(position);
                         var remaining = Parse(remainingString, formula.TextStyle);
                         position = value.Length;
-                        if (predefinedColors.TryGetValue(colorName.ToString(), out var color))
-                        {
-                            source = value.Segment(start, position - start);
-                            return new StyledAtom(source, remaining.RootAtom, null, new SolidColorBrush(color));
-                        }
 
-                        throw new TexParseException($"Color {colorName} not found");
+                        if (predefinedColors.TryGetValue(colorName, out Color color))
+                        {
+                            return new StyledAtom(remaining.RootAtom, null, new SolidColorBrush(color));
+                        }
+                        else
+                        {
+                            try
+                            {
+                                Color color1 = UserDefinedColorParser.ParseUserColor(colorName);
+                                return new StyledAtom(remaining.RootAtom, null, new SolidColorBrush(color1));
+                            }
+                            catch
+                            {
+                                throw new TexParseException(String.Format("Color {0} could either not be found or converted.", colorName));
+                            }
+                            
+                        }
+                    }
+                case "bgcolor":
+                    {
+                        var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+                        string remainingString = value.Substring(position);
+                        var remaining = Parse(remainingString, formula.TextStyle);
+                        position = value.Length;
+
+                        if (predefinedColors.TryGetValue(colorName, out Color color))
+                        {
+                            return new StyledAtom(remaining.RootAtom, new SolidColorBrush(color), null);
+                        }
+                        else
+                        {
+                            try
+                            {
+                                Color color1 = UserDefinedColorParser.ParseUserColor(colorName);
+                                return new StyledAtom(remaining.RootAtom, new SolidColorBrush(color1), null);
+                            }
+                            catch (Exception ex)
+                            {
+                                throw new TexParseException(String.Format("Color {0} could either not be found or converted.", colorName));
+                            }
+                        }
                     }
                 case "colorbox":
                     {
