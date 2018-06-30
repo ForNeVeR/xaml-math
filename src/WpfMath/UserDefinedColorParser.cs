@@ -8,7 +8,7 @@ using System.Windows;
 using System.Windows.Media;
 using WpfMath.Exceptions;
 
-namespace WpfMath.Parsers
+namespace WpfMath
 {
     /// <summary>
     /// Parses definitions of colors from a <see cref="string"/>.
@@ -23,7 +23,7 @@ namespace WpfMath.Parsers
         public static Color ParseUserColor(string input)
         {
             Color resultColor = new Color();
-            ColorStringTypes CST = GetColorString(input);
+            ColorStringTypes CST = GetColorString(input.Trim());
             switch (CST)
             {
                 case ColorStringTypes.Byte_longString:
@@ -111,11 +111,11 @@ namespace WpfMath.Parsers
         /// <returns></returns>
         private static ColorStringTypes GetColorString(string input)
         {
-            if (Regex.IsMatch(input, "#[A-Za-z0-9]{6}") == true)
+            if (IsByteHexTrain(input,6)==true)
             {
                 return ColorStringTypes.Hex_shortString;
             }
-            else if (Regex.IsMatch(input, "#[A-Za-z0-9]{8}") == true)
+            else if (IsByteHexTrain(input,8))
             {
                 return ColorStringTypes.Hex_longString;
             }
@@ -125,7 +125,7 @@ namespace WpfMath.Parsers
             }
             else if (IsByteTrain(input, 4) == true)
             {
-                return ColorStringTypes.Hex_longString;
+                return ColorStringTypes.Byte_longString;
             }
             else
             {
@@ -159,6 +159,39 @@ namespace WpfMath.Parsers
                     else { continue; }
                 }
                 StrCheck = i == num ? true : false;
+            }
+            else
+            {
+                StrCheck = false;
+            }
+            return StrCheck;
+        }
+        
+        /// <summary>
+        /// Returns a value that tells if the <paramref name="input"/> contains byte hex values,
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="num"></param>
+        /// <returns></returns>
+        /// <remarks><paramref name="input"/> should be left in the raw state(e.g.;#56e245, not 56e245).</remarks>
+        private static bool IsByteHexTrain(string input, int num)
+        {
+            bool StrCheck = false;
+            string subStr = input.Substring(1);
+            if (num == subStr.Length)
+            {
+                int c = 0;
+                for (int i = 1; i < num; i+=2)
+                {
+                    string item = subStr[i - 1].ToString() + subStr[1].ToString();
+                    if (Byte.TryParse(item, System.Globalization.NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture, out byte result) == true)
+                    {
+                        c+=2;
+                    }
+                    else { continue; }
+                }
+ 
+                StrCheck = (c == num )? true : false;
             }
             else
             {
@@ -200,9 +233,6 @@ namespace WpfMath.Parsers
         /// <returns></returns>
         private static byte[] ByteHexStringValues(string input, int num)
         {
-            //This method breaks on every odd natural number
-            //#23e34aff----->8
-            //012
             List<string> hexTwos = new List<string>();
             List<byte> resultByteLst = new List<byte>();
             for (int i = 0; i <input.Length; i++)
@@ -219,8 +249,7 @@ namespace WpfMath.Parsers
             {
                 foreach (string item in hexTwos)
                 {
-                    IFormatProvider ifp;
-                    if (Byte.TryParse(item, System.Globalization.NumberStyles.AllowHexSpecifier,CultureInfo.InvariantCulture, out byte hexbyteres) )
+                    if (Byte.TryParse(item, NumberStyles.AllowHexSpecifier,CultureInfo.InvariantCulture, out byte hexbyteres) )
                     {
                         resultByteLst.Add(hexbyteres);
                     }
