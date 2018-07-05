@@ -34,27 +34,22 @@ namespace WpfMath.Converters
         /// <summary>
         /// Converts an XML-File containing MathML data to a <see cref="TexFormula"/>.
         /// </summary>
-        /// <param name="filepath">The file path of the Math ML data.</param>
+        /// <param name="mmlDoc">The mathml document.</param>
         /// <returns></returns>
-        public string Parse(string filepath)
+        public string Parse(XmlDocument mmlDoc)
         {
             string result="";            
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(filepath);
-            XmlUrlResolver resolver = new XmlUrlResolver
-            {
-                Credentials = CredentialCache.DefaultCredentials
-            };
+            
             //xmlDoc.CreateNode(XmlNodeType.EntityReference, "CenterDot", "http://www.w3.org/1998/Math/MathML");
-            xmlDoc.CreateEntityReference("&CenterDot;");
+            mmlDoc.CreateEntityReference("&CenterDot;");
             //xmlDoc.CreateEntityReference("CenterDot");
             //xmlDoc.CreateEntityReference("CenterDot;");
             //xmlDoc.CreateEntityReference("&CenterDot");
 
-            if (xmlDoc.DocumentElement.NamespaceURI == "http://www.w3.org/1998/Math/MathML" &&xmlDoc.DocumentElement.Name == "math"&& xmlDoc.DocumentElement.HasChildNodes==true)
+            if (mmlDoc.DocumentElement.NamespaceURI == "http://www.w3.org/1998/Math/MathML" &&mmlDoc.DocumentElement.Name == "math"&& mmlDoc.DocumentElement.HasChildNodes==true)
             {
-                foreach (XmlNode item in xmlDoc.DocumentElement.ChildNodes)
-                {
+                foreach (XmlNode item in mmlDoc.DocumentElement.ChildNodes)
+                
                     MathMLElements elementtype = GetElementType(item.Name);
                     
                     switch (elementtype)
@@ -131,7 +126,12 @@ namespace WpfMath.Converters
             return result;
         }
 
-
+        public string Parse(string filepath)
+        {
+            XmlDocument mmkDoc=new XmlDocument();
+            mmlDoc.Load(filepath);
+            return Parse(mmlDoc);
+        }
 
         #region MML Parsing Helpers
         /// <summary>
