@@ -571,6 +571,14 @@ namespace WpfMath
                         }
 
                     }
+                case "uline":
+                    {
+
+                        var underlineFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar,
+                            rightGroupChar), formula.TextStyle);
+                        SkipWhiteSpace(value, ref position);
+                        return new UnderlinedAtom(underlineFormula.RootAtom);
+                    }
             }
 
             throw new TexParseException("Invalid command.");
