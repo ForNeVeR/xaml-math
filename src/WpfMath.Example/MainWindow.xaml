@@ -35,7 +35,7 @@
                     <ContextMenu Opened="TxbCM_Opened" Loaded="TxbCM_Opened">
                         <MenuItem x:Name="cutMenuItem" Header="Cut" Click="Cut_Click" IsEnabled="False"/>
                         <MenuItem x:Name="copyMenuItem" Header="Copy" Click="Copy_Click" IsEnabled="False"/>
-                        <MenuItem x:Name="copyMMLMenuItem" Header="Copy All as MathML" Click="CopyasMML_Click" IsEnabled="False"/>
+    
                         <MenuItem x:Name="pasteMenuItem" Header="Paste" Click="Paste_Click" IsEnabled="False"/>
                         <MenuItem x:Name="openMMLMenuItem" Header="Open MathML" Click="OpenMMLFile_Click"/>
                     </ContextMenu>
