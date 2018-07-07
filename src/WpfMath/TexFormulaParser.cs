@@ -85,7 +85,10 @@ namespace WpfMath
                 "matrix",
                 "table",
                 "uline",
-                "colorbox"
+                "underline",
+                "colorbox",
+                "overline",
+                "oline"
             };
 
             var formulaSettingsParser = new TexPredefinedFormulaSettingsParser();
@@ -572,12 +575,21 @@ namespace WpfMath
 
                     }
                 case "uline":
+                case "underline":
                     {
 
                         var underlineFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar,
                             rightGroupChar), formula.TextStyle);
                         SkipWhiteSpace(value, ref position);
                         return new UnderlinedAtom(underlineFormula.RootAtom);
+                    }
+                case "oline":
+                case "overline":
+                    {
+                        var overlineFormula= Parse(ReadGroup(formula, value, ref position, leftGroupChar,
+                                                           rightGroupChar), formula.TextStyle);
+                        SkipWhiteSpace(value, ref position);
+                        return new OverlinedAtom(overlineFormula.RootAtom);
                     }
             }
 
