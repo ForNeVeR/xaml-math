@@ -1,6 +1,6 @@
-   using System;
+using System;
 using System.Collections.Generic;
-using System.Net;
+using System.Text;
 using System.Xml;
 
 namespace WpfMath.Converters
@@ -38,8 +38,11 @@ namespace WpfMath.Converters
         /// <returns></returns>
         public string Parse(XmlDocument mmlDoc)
         {
-            string result="";            
-            
+            StringBuilder sb = new StringBuilder();
+            //XmlUrlResolver resolver = new XmlUrlResolver
+            //{
+            //    Credentials = CredentialCache.DefaultCredentials
+            //};
             //xmlDoc.CreateNode(XmlNodeType.EntityReference, "CenterDot", "http://www.w3.org/1998/Math/MathML");
             mmlDoc.CreateEntityReference("&CenterDot;");
             //xmlDoc.CreateEntityReference("CenterDot");
@@ -49,66 +52,69 @@ namespace WpfMath.Converters
             if (mmlDoc.DocumentElement.NamespaceURI == "http://www.w3.org/1998/Math/MathML" &&mmlDoc.DocumentElement.Name == "math"&& mmlDoc.DocumentElement.HasChildNodes==true)
             {
                 foreach (XmlNode item in mmlDoc.DocumentElement.ChildNodes)
-                
+                {
                     MathMLElements elementtype = GetElementType(item.Name);
                     
                     switch (elementtype)
                     {
                         case MathMLElements.math:
                             throw new InvalidOperationException("The math element only occurs once in a mathml file.");
+                        case MathMLElements.menclose:
+                            sb.Append(Visiting_menclose(item));
+                            break;
                         case MathMLElements.mfenced:
-                            result += Visiting_mfenced(item);
+                            sb.Append( Visiting_mfenced(item));
                             break;
                         case MathMLElements.mfrac:
-                            result += Visiting_mfrac(item);
+                            sb.Append( Visiting_mfrac(item));
                             break;
                         case MathMLElements.mi:
-                            result += Visiting_mi(item);
+                            sb.Append( Visiting_mi(item));
                             break;
                         case MathMLElements.mmultiscripts:
-                            result += Visiting_mmultiscripts(item);
+                            sb.Append(Visiting_mmultiscripts(item));
                             break;
                         case MathMLElements.mn:
-                            result += Visiting_mn(item);
+                            sb.Append(Visiting_mn(item));
                             break;
                         case MathMLElements.mo:
-                            result += Visiting_mo(item);
+                            sb.Append(Visiting_mo(item));
                             break;
                         case MathMLElements.mphantom:
-                            result += Visiting_mphantom(item);
+                            sb.Append(Visiting_mphantom(item));
                             break;
                         case MathMLElements.mroot:
-                            result += Visiting_mroot(item);
+                            sb.Append(Visiting_mroot(item));
                             break;
                         case MathMLElements.mrow:
-                            result += Visiting_mrow(item);
+                            sb.Append(Visiting_mrow(item));
                             break;
                         case MathMLElements.mspace:
-                            result += Visiting_mspace(item);
+                            sb.Append(Visiting_mspace(item));
                             break;
                         case MathMLElements.msqrt:
-                            result += Visiting_msqrt(item);
+                            sb.Append(Visiting_msqrt(item));
                             break;
                         case MathMLElements.msub:
-                            result += Visiting_msub(item);
+                            sb.Append(Visiting_msub(item));
                             break;
                         case MathMLElements.msubsup:
-                            result += Visiting_msubsup(item);
+                            sb.Append(Visiting_msubsup(item));
                             break;
                         case MathMLElements.msup:
-                            result += Visiting_msup(item);
+                            sb.Append(Visiting_msup(item));
                             break;
                         case MathMLElements.mtable:
-                            result += Visiting_mtable(item);
+                            sb.Append(Visiting_mtable(item));
                             break;
                         case MathMLElements.mtext:
-                            result += Visiting_mtext(item);
+                            sb.Append(Visiting_mtext(item));
                             break;
                         case MathMLElements.munder:
-                            result += Visiting_munder(item);
+                            sb.Append(Visiting_munder(item));
                             break;
                         case MathMLElements.munderover:
-                            result += Visiting_munderover(item);
+                            sb.Append(Visiting_munderover(item));
                             break;
 
 
@@ -123,17 +129,192 @@ namespace WpfMath.Converters
 
             }
 
-            return result;
+            return sb.ToString();
         }
-
-        public string Parse(string filepath)
+        
+        /// <summary>
+        /// Converts an XML-File containing MathML data to a <see cref="TexFormula"/>.
+        /// </summary>
+        /// <param name="filepath">The file path of the Math ML data.</param>
+        /// <returns></returns>
+        public string Parse(string input,bool isFilePath)
         {
-            XmlDocument mmkDoc=new XmlDocument();
-            mmlDoc.Load(filepath);
-            return Parse(mmlDoc);
+            if (isFilePath==true)
+            {
+                XmlDocument mmlDoc = new XmlDocument();
+                mmlDoc.Load(input);
+                return Parse(mmlDoc);
+            }
+            else
+            {
+                XmlDocument mmlDoc = new XmlDocument();
+                mmlDoc.LoadXml(input);
+                return Parse(mmlDoc);
+            }
+            
         }
 
         #region MML Parsing Helpers
+        /// <summary>
+        /// Returns a <see cref="string"/> representation of the <see cref="MathMLElements.menclose"/> <paramref name="inputNode"/>, its attributes and its childnodes.
+        /// <para/> CMD: Enclose content with a stretching symbol such as a long division sign.
+        /// </summary>
+        /// <param name="inputNode">The menclose node.</param>
+        /// <returns></returns>
+        private string Visiting_menclose(XmlNode inputNode)
+        {
+            if(inputNode.HasChildNodes == true && inputNode.Name == "menclose")
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append(@"\enclose");
+                if (inputNode.Attributes.Count>0)
+                {
+                    sb.Append("[" + inputNode.Attributes["notation"].Value + "]");
+                }
+                sb.Append("{");
+                foreach (XmlNode item in inputNode.ChildNodes)
+                {
+                    switch (GetElementType(item.Name))
+                    {
+                        case MathMLElements.math:
+                            {
+                                throw new InvalidOperationException("The math element only occurs once in a mathml file.");
+                            }
+                        case MathMLElements.menclose:
+                            {
+                                sb.Append(Visiting_menclose(item));
+                                break;
+                            }
+                        case MathMLElements.mfenced:
+                            {
+                                sb.Append(Visiting_mfenced(item));
+                                //rowparts += Visiting_mfenced(item);
+                                break;
+                            }
+                        case MathMLElements.mfrac:
+                            {
+                                sb.Append(Visiting_mfrac(item));
+                                //rowparts += Visiting_mfrac(item);
+                                break;
+                            }
+                        case MathMLElements.mi:
+                            {
+                                sb.Append(Visiting_mi(item));
+                                //rowparts += Visiting_mi(item);
+                                break;
+                            }
+                        case MathMLElements.mmultiscripts:
+                            {
+                                sb.Append(Visiting_mmultiscripts(item));
+                                //rowparts += Visiting_mmultiscripts(item);
+                                break;
+                            }
+                        case MathMLElements.mn:
+                            {
+                                sb.Append(Visiting_mn(item));
+                                //rowparts += Visiting_mn(item);
+                                break;
+                            }
+                        case MathMLElements.mo:
+                            {
+                                sb.Append(Visiting_mo(item));
+                                //rowparts += Visiting_mo(item);
+                                break;
+                            }
+                        case MathMLElements.mphantom:
+                            {
+                                sb.Append(Visiting_mphantom(item));
+                                //rowparts += Visiting_mphantom(item);
+                                break;
+                            }
+                        case MathMLElements.mroot:
+                            {
+                                sb.Append(Visiting_mroot(item));
+                                //rowparts += Visiting_mroot(item);
+                                break;
+                            }
+                        case MathMLElements.mrow:
+                            {
+                                sb.Append(Visiting_mrow(item));
+                                //rowparts += Visiting_mrow(item);
+                                break;
+                            }
+                        case MathMLElements.mspace:
+                            {
+                                sb.Append(Visiting_mspace(item));
+                                //rowparts += Visiting_mspace(item);
+                                break;
+                            }
+                        case MathMLElements.msqrt:
+                            {
+                                sb.Append(Visiting_msqrt(item));
+                                //rowparts += Visiting_msqrt(item);
+                                break;
+                            }
+                        case MathMLElements.msub:
+                            {
+                                sb.Append(Visiting_msub(item));
+                                //rowparts += Visiting_msub(item);
+                                break;
+                            }
+                        case MathMLElements.msubsup:
+                            {
+                                sb.Append(Visiting_msubsup(item));
+                                //rowparts += Visiting_msubsup(item);
+                                break;
+                            }
+                        case MathMLElements.msup:
+                            {
+                                sb.Append(Visiting_msup(item));
+                                //rowparts += Visiting_msup(item);
+                                break;
+                            }
+                        case MathMLElements.mtable:
+                            {
+                                sb.Append(Visiting_mtable(item));
+                                //rowparts += Visiting_mtable(item);
+                                break;
+                            }
+                        case MathMLElements.mtext:
+                            {
+                                sb.Append(Visiting_mtext(item));
+                                //rowparts += Visiting_mtext(item);
+                                break;
+                            }
+                        case MathMLElements.munder:
+                            {
+                                sb.Append(Visiting_munder(item));
+                                //rowparts += Visiting_munder(item);
+                                break;
+                            }
+                        case MathMLElements.munderover:
+                            {
+                                sb.Append(Visiting_munderover(item));
+                                //rowparts += Visiting_munderover(item);
+                                break;
+                            }
+
+                        case MathMLElements.NONE:
+                            {
+                                //This means the element is not recognized
+                                sb.Append(" ");
+                                //rowparts += " ";
+                                break;
+                            }
+                        default:
+                            break;
+                    }
+
+                }
+                sb.Append("}");
+                return sb.ToString();
+            }
+            else
+            {
+                throw new InvalidOperationException("The menclose element must have at least one child node.");
+            }
+        }
+
         /// <summary>
         /// Returns a <see cref="string"/> representation of the <see cref="MathMLElements.mfenced"/> <paramref name="inputNode"/>, its attributes and its childnodes.
         /// <para/> CMD: Surround content with a pair of fences.
@@ -144,9 +325,8 @@ namespace WpfMath.Converters
         {
             if (inputNode.HasChildNodes==true && inputNode.Name == "mfenced")
             {
-                //Get the "mfenced" attributes to
-                string openDelim=Get_mfenced_Braces(inputNode,true).Length<2?@"\left(": Get_mfenced_Braces(inputNode, true);
-                string closeDelim = Get_mfenced_Braces(inputNode, false).Length < 2 ? @"\right)" : Get_mfenced_Braces(inputNode, false);
+                string openDelim="";
+                string closeDelim = "";
                 string mfencedresult = "";
                 List<string> mfencedResults = new List<string>();
                 foreach (XmlNode item in inputNode.ChildNodes)
@@ -219,8 +399,57 @@ namespace WpfMath.Converters
                 }
 
                 #region Attributes
-                //Get_element_Attribute(inputNode, "mfenced", "open", out string openDel, out bool hasOpenDel);
-                Get_element_Attribute(inputNode, "mfenced", "separators", out string separators, out bool hasSeparators);
+                bool hasOpenDelim= Attribute_Exists(inputNode, "mfenced", "open");
+                string str1 = Attribute_Value(inputNode, "mfenced", "open");
+                bool hasCloseDelim = Attribute_Exists(inputNode, "mfenced", "close");
+                string str2 = Attribute_Value(inputNode, "mfenced", "close");
+                if (hasOpenDelim == true)
+                {
+                    if (str1.Length == 1)
+                    {
+                        if (str1 == "|")
+                        {
+                            openDelim = @"\left|";
+                        }
+                        else
+                        {
+                            openDelim = MathDelimitersDict[str1];
+                        }
+                    }
+                    else
+                    {
+                        openDelim = @"\left)";
+                    }
+                }
+                if (hasOpenDelim == false)
+                {
+                    openDelim = @"\left(";
+                }
+                if (hasCloseDelim==true)
+                {
+                    if (str2.Length==1)
+                    {
+                        if (str2=="|")
+                        {
+                            closeDelim = @"\right|";
+                        }
+                        else
+                        {
+                            closeDelim = MathDelimitersDict[str2];
+                        }
+                    }
+                    else
+                    {
+                        closeDelim = @"\right)";
+                    }
+                }
+                if (hasCloseDelim==false)
+                {
+                    closeDelim = @"\right)";
+                }
+
+                bool hasSeparators = Attribute_Exists(inputNode, "mfenced", "separators");
+                string separators = Attribute_Value(inputNode, "mfenced", "separators");
                 char[] sepaArr =separators.Length>0? separators.ToCharArray():null;
                 if (hasSeparators == true&&sepaArr!=null)
                 {
@@ -273,14 +502,15 @@ namespace WpfMath.Converters
                     }
                     
                 }
+
                 #endregion
 
                 return openDelim + mfencedresult + closeDelim;
             }
             else
             {
-                string openDelim = Get_mfenced_Braces(inputNode, true).Length < 2 ? @"\lbrack" : Get_mfenced_Braces(inputNode, true);
-                string closeDelim = Get_mfenced_Braces(inputNode, false).Length < 2 ? @"\rbrack" : Get_mfenced_Braces(inputNode, false);
+                string openDelim =  @"\left(" ;
+                string closeDelim =  @"\right)";
                 return openDelim + closeDelim;
             }
         }
@@ -293,23 +523,251 @@ namespace WpfMath.Converters
         /// <returns></returns>
         private string Visiting_mfrac(XmlNode inputNode)
         {
-            string result = @"\frac";
             if (inputNode.ChildNodes.Count==2 && inputNode.Name == "mfrac")
             {
-                string fracChildren = "";
-                foreach (XmlNode item in inputNode.ChildNodes)
+                StringBuilder sb = new StringBuilder(@"\frac");
+                
+                string numerator = "";
+                string denominator = "";
+                for (int i = 0; i < 2; i++)
                 {
-                    if (item.Name=="mrow")
+                    switch (GetElementType(inputNode.ChildNodes[i].Name))
                     {
-                        fracChildren += Visiting_mrow(item);
+                        case MathMLElements.math:
+                            throw new InvalidOperationException("The math element only occurs once in a mathml file.");
+                        case MathMLElements.menclose:
+                            {
+                                if (i == 0)
+                                {
+                                    numerator += Visiting_menclose(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    denominator += Visiting_menclose(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
+                        case MathMLElements.mfenced:
+                            {
+                                if (i == 0)
+                                {
+                                    numerator += Visiting_mfenced(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    denominator += Visiting_mfenced(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
+                        case MathMLElements.mfrac:
+                            {
+                                if (i == 0)
+                                {
+                                    numerator += Visiting_mfrac(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    denominator += Visiting_mfrac(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
+                        case MathMLElements.mi:
+                            {
+                                if (i == 0)
+                                {
+                                    numerator += Visiting_mi(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    denominator += Visiting_mi(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
+                        case MathMLElements.mmultiscripts:
+                            {
+                                if (i == 0)
+                                {
+                                    numerator += Visiting_mmultiscripts(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    denominator += Visiting_mmultiscripts(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
+                        case MathMLElements.mn:
+                            {
+                                if (i == 0)
+                                {
+                                    numerator += Visiting_mn(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    denominator += Visiting_mn(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
+                        case MathMLElements.mo:
+                            {
+                                if (i == 0)
+                                {
+                                    numerator += Visiting_mo(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    denominator += Visiting_mo(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
+                        case MathMLElements.mphantom:
+                            {
+                                if (i == 0)
+                                {
+                                    numerator += Visiting_mphantom(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    denominator += Visiting_mphantom(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
+                        case MathMLElements.mroot:
+                            {
+                                if (i == 0)
+                                {
+                                    numerator += Visiting_mroot(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    denominator += Visiting_mroot(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
+                        case MathMLElements.mrow:
+                            {
+                                if (i == 0)
+                                {
+                                    numerator += Visiting_mrow(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    denominator += Visiting_mrow(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
+                        case MathMLElements.msqrt:
+                            {
+                                if (i == 0)
+                                {
+                                    numerator += Visiting_msqrt(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    denominator += Visiting_msqrt(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
+                        case MathMLElements.msub:
+                            {
+                                if (i == 0)
+                                {
+                                    numerator += Visiting_msub(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    denominator += Visiting_msub(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
+                        case MathMLElements.msubsup:
+                            {
+                                if (i == 0)
+                                {
+                                    numerator += Visiting_msubsup(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    denominator += Visiting_msubsup(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
+                        case MathMLElements.msup:
+                            {
+                                if (i == 0)
+                                {
+                                    numerator += Visiting_msup(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    denominator += Visiting_msup(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
+                        case MathMLElements.mtable:
+                            {
+                                if (i == 0)
+                                {
+                                    numerator += Visiting_mtable(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    denominator += Visiting_mtable(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
+                        case MathMLElements.mtext:
+                            {
+                                if (i == 0)
+                                {
+                                    numerator += Visiting_mtext(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    denominator += Visiting_mtext(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
+                        case MathMLElements.munder:
+                            {
+                                if (i == 0)
+                                {
+                                    numerator += Visiting_munder(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    denominator += Visiting_munder(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
+                        case MathMLElements.munderover:
+                            {
+                                if (i == 0)
+                                {
+                                    numerator += Visiting_munderover(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    denominator += Visiting_munderover(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
+
+
+
+                        case MathMLElements.NONE:
+                            throw new InvalidOperationException($"The element: {inputNode.ChildNodes[i].Name} is not yet supported.");
+                        default:
+                            break;
                     }
                 }
-                return result + fracChildren;
+
+                sb.Append("{" + numerator + "}" + "{" + denominator + "}");
+                return sb.ToString();
             }
             else
             {
                 //throw an exception, >>"msqrt" cannot contain >1 child nodes.
-                throw new FormatException(@"The msqrt element cannot contain >1 child nodes.");
+                throw new FormatException(@"The mfrac element must contain 2 child nodes.");
 
             }
         }
@@ -765,6 +1223,18 @@ namespace WpfMath.Converters
                     {
                         case MathMLElements.math:
                             throw new InvalidOperationException("The math element only occurs once in a mathml file.");
+                        case MathMLElements.menclose:
+                            {
+                                if (i == 0)
+                                {
+                                    mainStr += Visiting_menclose(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    supStr += Visiting_menclose(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
                         case MathMLElements.mfenced:
                             {
                                 if (i == 0)
@@ -1025,6 +1495,11 @@ namespace WpfMath.Converters
                             {
                                 throw new InvalidOperationException("The math element only occurs once in a mathml file.");
                             }
+                        case MathMLElements.menclose:
+                            {
+                                hiddenparts += Visiting_menclose(item);
+                                break;
+                            }
                         case MathMLElements.mfenced:
                             {
                                 hiddenparts += Visiting_mfenced(item);
@@ -1128,7 +1603,7 @@ namespace WpfMath.Converters
                     }
                 }
 
-                return @"{\fgcolor{#00000000} " + hiddenparts + " }";
+                return @"\phantom{ " + hiddenparts + " }";
             }
             else
             {
@@ -1155,6 +1630,18 @@ namespace WpfMath.Converters
                     {
                         case MathMLElements.math:
                             throw new InvalidOperationException("The math element only occurs once in a mathml file.");
+                        case MathMLElements.menclose:
+                            {
+                                if (i == 0)
+                                {
+                                    mrootBaseStr += Visiting_menclose(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    mrootRadStr += Visiting_menclose(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
                         case MathMLElements.mfenced:
                             {
                                 if (i == 0)
@@ -1408,7 +1895,8 @@ namespace WpfMath.Converters
             
             if (inputNode.HasChildNodes==true && inputNode.Name == "mrow")
             {
-                string rowparts = "";
+                StringBuilder sb = new StringBuilder("{");
+                //string rowparts = "";
                 foreach (XmlNode item in inputNode.ChildNodes)
                 {
                     switch (GetElementType(item.Name))
@@ -1417,109 +1905,135 @@ namespace WpfMath.Converters
                             {
                                 throw new InvalidOperationException("The math element only occurs once in a mathml file.");
                             }
+                        case MathMLElements.menclose:
+                            {
+                                sb.Append(Visiting_menclose(item));
+                                //rowparts += Visiting_mfenced(item);
+                                break;
+                            }
                         case MathMLElements.mfenced:
                             {
-                                rowparts += Visiting_mfenced(item);
+                                sb.Append(Visiting_mfenced(item));
+                                //rowparts += Visiting_mfenced(item);
                                 break;
                             }
                         case MathMLElements.mfrac:
                             {
-                                rowparts += Visiting_mfrac(item);
+                                sb.Append(Visiting_mfrac(item));
+                                //rowparts += Visiting_mfrac(item);
                                 break;
                             }
                         case MathMLElements.mi:
                             {
-                                rowparts += Visiting_mi(item);
+                                sb.Append(Visiting_mi(item));
+                                //rowparts += Visiting_mi(item);
                                 break;
                             }
                         case MathMLElements.mmultiscripts:
                             {
-                                rowparts += Visiting_mmultiscripts(item);
+                                sb.Append(Visiting_mmultiscripts(item));
+                                //rowparts += Visiting_mmultiscripts(item);
                                 break;
                             }
                         case MathMLElements.mn:
                             {
-                                rowparts += Visiting_mn(item);
+                                sb.Append(Visiting_mn(item));
+                                //rowparts += Visiting_mn(item);
                                 break;
                             }
                         case MathMLElements.mo:
                             {
-                                rowparts += Visiting_mo(item);
+                                sb.Append(Visiting_mo(item));
+                                //rowparts += Visiting_mo(item);
                                 break;
                             }
                         case MathMLElements.mphantom:
                             {
-                                rowparts += Visiting_mphantom(item);
+                                sb.Append(Visiting_mphantom(item));
+                                //rowparts += Visiting_mphantom(item);
                                 break;
                             }
                         case MathMLElements.mroot:
                             {
-                                rowparts += Visiting_mroot(item);
+                                sb.Append(Visiting_mroot(item));
+                                //rowparts += Visiting_mroot(item);
                                 break;
                             }
                         case MathMLElements.mrow:
-                            { 
-                                rowparts += Visiting_mrow(item);
+                            {
+                                sb.Append(Visiting_mrow(item));
+                                //rowparts += Visiting_mrow(item);
                                 break;
                             }
                         case MathMLElements.mspace:
                             {
-                                rowparts += Visiting_mspace(item);
+                                sb.Append(Visiting_mspace(item));
+                                //rowparts += Visiting_mspace(item);
                                 break;
                             }
                         case MathMLElements.msqrt:
                             {
-                                rowparts += Visiting_msqrt(item);
+                                sb.Append(Visiting_msqrt(item));
+                                //rowparts += Visiting_msqrt(item);
                                 break;
                             }
                         case MathMLElements.msub:
                             {
-                                rowparts += Visiting_msub(item);
+                                sb.Append(Visiting_msub(item));
+                                //rowparts += Visiting_msub(item);
                                 break;
                             }
                         case MathMLElements.msubsup:
                             {
-                                rowparts += Visiting_msubsup(item);
+                                sb.Append(Visiting_msubsup(item));
+                                //rowparts += Visiting_msubsup(item);
                                 break;
                             }
                         case MathMLElements.msup:
                             {
-                                rowparts += Visiting_msup(item);
+                                sb.Append(Visiting_msup(item));
+                                //rowparts += Visiting_msup(item);
                                 break;
                             }
                         case MathMLElements.mtable:
                             {
-                                rowparts += Visiting_mtable(item);
+                                sb.Append(Visiting_mtable(item));
+                                //rowparts += Visiting_mtable(item);
                                 break;
                             }
                         case MathMLElements.mtext:
                             {
-                                rowparts += Visiting_mtext(item);
+                                sb.Append(Visiting_mtext(item));
+                                //rowparts += Visiting_mtext(item);
                                 break;
                             }
                         case MathMLElements.munder:
                             {
-                                rowparts += Visiting_munder(item);
+                                sb.Append(Visiting_munder(item));
+                                //rowparts += Visiting_munder(item);
                                 break;
                             }
                         case MathMLElements.munderover:
                             {
-                                rowparts += Visiting_munderover(item);
+                                sb.Append(Visiting_munderover(item));
+                                //rowparts += Visiting_munderover(item);
                                 break;
                             }
 
                         case MathMLElements.NONE:
                             {
                                 //This means the element is not recognized
-                                rowparts += " ";
+                                sb.Append(" ");
+                                //rowparts += " ";
                                 break;
                             }
                         default:
                             break;
                     }
                 }
-
-                return "{ " + rowparts + " }";
+                sb.Append("}");
+                //return "{ " + rowparts + " }";
+                return sb.ToString();
             }
             else
             {
@@ -1555,69 +2069,73 @@ namespace WpfMath.Converters
         /// <returns></returns>
         private string Visiting_msqrt(XmlNode inputNode)
         {
-            string result = @"\sqrt{";
-            if (inputNode.ChildNodes.Count==1 && inputNode.Name == "msqrt")
+            
+            if (inputNode.ChildNodes.Count>0 && inputNode.Name == "msqrt")
             {
-                string msqrtresult = "";
+                StringBuilder sb = new StringBuilder();
+                sb.Append(@"\sqrt{");
                 //msqrt normally contains one child, but a row or root can let it contain more.
                 XmlNode item = inputNode.FirstChild;
                     switch (GetElementType(item.Name))
                     {
                         case MathMLElements.math:
                             throw new InvalidOperationException("The math element only occurs once in a mathml file.");
-                        case MathMLElements.mfenced:
-                            msqrtresult += Visiting_mfenced(item);
+                    case MathMLElements.menclose:
+                        sb.Append(Visiting_menclose(item));
+                        break;
+                    case MathMLElements.mfenced:
+                            sb.Append( Visiting_mfenced(item));
                             break;
                         case MathMLElements.mfrac:
-                            msqrtresult += Visiting_mfrac(item);
+                        sb.Append(Visiting_mfrac(item));
                             break;
                         case MathMLElements.mi:
-                            msqrtresult += Visiting_mi(item);
+                        sb.Append(Visiting_mi(item));
                             break;
                     case MathMLElements.mmultiscripts:
-                        msqrtresult += Visiting_mmultiscripts(item);
+                        sb.Append(Visiting_mmultiscripts(item));
                         break;
                     case MathMLElements.mn:
-                            msqrtresult += Visiting_mn(item);
+                        sb.Append(Visiting_mn(item));
                             break;
                         case MathMLElements.mo:
-                            msqrtresult += Visiting_mo(item);
+                        sb.Append(Visiting_mo(item));
                             break;
                     case MathMLElements.mphantom:
-                        msqrtresult += Visiting_mphantom(item);
+                        sb.Append(Visiting_mphantom(item));
                         break;
                     case MathMLElements.mroot:
-                            msqrtresult += Visiting_mroot(item);
+                        sb.Append(Visiting_mroot(item));
                             break;
                         case MathMLElements.mrow:
-                            msqrtresult += Visiting_mrow(item);
+                        sb.Append(Visiting_mrow(item));
                             break;
                     case MathMLElements.mspace:
-                        msqrtresult += Visiting_mspace(item);
+                        sb.Append(Visiting_mspace(item));
                         break;
                     case MathMLElements.msqrt:
-                            msqrtresult += Visiting_msqrt(item);
+                        sb.Append(Visiting_msqrt(item));
                             break;
                         case MathMLElements.msub:
-                            msqrtresult += Visiting_msub(item);
+                        sb.Append(Visiting_msub(item));
                             break;
                         case MathMLElements.msubsup:
-                            msqrtresult += Visiting_msubsup(item);
+                        sb.Append(Visiting_msubsup(item));
                             break;
                         case MathMLElements.msup:
-                            msqrtresult += Visiting_msup(item);
+                        sb.Append(Visiting_msup(item));
                             break;
                     case MathMLElements.mtable:
-                        msqrtresult += Visiting_mtable(item);
+                        sb.Append(Visiting_mtable(item));
                         break;
                     case MathMLElements.mtext:
-                        msqrtresult += Visiting_mtext(item);
+                        sb.Append(Visiting_mtext(item));
                         break;
                     case MathMLElements.munder:
-                            msqrtresult += Visiting_munder(item);
+                        sb.Append(Visiting_munder(item));
                             break;
                     case MathMLElements.munderover:
-                        msqrtresult += Visiting_munderover(item);
+                        sb.Append(Visiting_munderover(item));
                         break;
 
 
@@ -1627,14 +2145,13 @@ namespace WpfMath.Converters
                         default:
                             break;
                     }
-                
-                return result+ msqrtresult +"}" ;
+                sb.Append("}");
+                return sb.ToString();
 
             }
             else
             {
-                //throw an exception, >>"msqrt" cannot contain >1 child nodes.
-                throw new FormatException(@"The msqrt element cannot contain more than 1 child nodes.");
+                throw new FormatException(@"The msqrt element must contain at least 1 child node.");
 
             }
 
@@ -1659,6 +2176,18 @@ namespace WpfMath.Converters
                     {
                         case MathMLElements.math:
                             throw new InvalidOperationException("The math element only occurs once in a mathml file.");
+                        case MathMLElements.menclose:
+                            {
+                                if (i == 0)
+                                {
+                                    mainStr += Visiting_menclose(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    subStr += Visiting_menclose(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
                         case MathMLElements.mfenced:
                             {
                                 if (i == 0)
@@ -1908,6 +2437,22 @@ namespace WpfMath.Converters
                     {
                         case MathMLElements.math:
                             throw new InvalidOperationException();
+                        case MathMLElements.menclose:
+                            {
+                                if (i == 0)
+                                {
+                                    mainStr += Visiting_menclose(inputNode.ChildNodes[i]);
+                                }
+                                else if (i == 1)
+                                {
+                                    subStr += Visiting_menclose(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    supStr += Visiting_menclose(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
                         case MathMLElements.mfenced:
                             {
                                 if (i == 0)
@@ -2239,6 +2784,18 @@ namespace WpfMath.Converters
                     {
                         case MathMLElements.math:
                             throw new InvalidOperationException("The math element only occurs once in a mathml file.");
+                        case MathMLElements.menclose:
+                            {
+                                if (i == 0)
+                                {
+                                    mainStr += Visiting_menclose(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    supStr += Visiting_menclose(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
                         case MathMLElements.mfenced:
                             {
                                 if (i == 0)
@@ -2557,6 +3114,9 @@ namespace WpfMath.Converters
                     {
                         case MathMLElements.math:
                             throw new InvalidOperationException("The math element only occurs once in a mathml file, as a top-level element.");
+                        case MathMLElements.menclose:
+                            result += Visiting_menclose(item);
+                            break;
                         case MathMLElements.mfenced:
                             result += Visiting_mfenced(item);
                             break;
@@ -2666,6 +3226,9 @@ namespace WpfMath.Converters
                     {
                         case MathMLElements.math:
                             throw new InvalidOperationException("The math element only occurs once in a mathml file.");
+                        case MathMLElements.menclose:
+                            textchild += Visiting_menclose(item);
+                            break;
                         case MathMLElements.mfenced:
                             textchild += Visiting_mfenced(item);
                             break;
@@ -2793,6 +3356,18 @@ namespace WpfMath.Converters
                     {
                         case MathMLElements.math:
                             throw new InvalidOperationException("Throw an error, the math element only occurs once in a mathml file.");
+                        case MathMLElements.menclose:
+                            {
+                                if (i == 0)
+                                {
+                                    mainStr += Visiting_menclose(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    subStr += Visiting_menclose(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
                         case MathMLElements.mfenced:
                             {
                                 if (i == 0)
@@ -3056,6 +3631,22 @@ namespace WpfMath.Converters
                     {
                         case MathMLElements.math:
                             throw new InvalidOperationException();
+                        case MathMLElements.menclose:
+                            {
+                                if (i == 0)
+                                {
+                                    mainStr += Visiting_menclose(inputNode.ChildNodes[i]);
+                                }
+                                else if (i == 1)
+                                {
+                                    subStr += Visiting_menclose(inputNode.ChildNodes[i]);
+                                }
+                                else
+                                {
+                                    supStr += Visiting_menclose(inputNode.ChildNodes[i]);
+                                }
+                                break;
+                            }
                         case MathMLElements.mfenced:
                             {
                                 if (i == 0)
@@ -3384,51 +3975,57 @@ namespace WpfMath.Converters
 
         #region Attributes Helpers
         // I Need to make this more general
-        private void Get_element_Attribute(XmlNode inputNode,string elementName, string attribute, out string attributeValue, out bool hasAttribute)
+        private bool Attribute_Exists(XmlNode inputNode, string elementName, string attribute)
         {
-            if (inputNode.Name==elementName)
+            int i = 0;
+            if (inputNode.Name == elementName && inputNode.Attributes.Count > 0)
             {
-                if (inputNode.Attributes[attribute].Value==null)
+                foreach (XmlAttribute item in inputNode.Attributes)
                 {
-                    hasAttribute = false;
-                    attributeValue = null;
-                    
+                    if (item.Name == attribute)
+                    {
+                        i += 1;
+                    }
+                    else
+                    {
+                        continue;
+                    }
                 }
-                else
-                {
-                    hasAttribute = true;
-                    attributeValue = inputNode.Attributes[attribute].Value;
-                }
+                return i > 0;
             }
             else
             {
                 throw new InvalidOperationException($"The element: {inputNode.Name} is not the same as {elementName}.");
             }
-        } 
+        }
+
+        private string Attribute_Value(XmlNode inputNode, string elementName, string attribute)
+        {
+            if (inputNode.Name == elementName && inputNode.Attributes.Count > 0)
+            {
+                string attributeValue = "";
+                foreach (XmlAttribute item in inputNode.Attributes)
+                {
+                    if (item.Name == attribute)
+                    {
+                        attributeValue = item.Value;
+                    }
+                    else
+                    {
+                        attributeValue = "";
+                    }
+                }
+                return attributeValue;
+            }
+            else
+            {
+                throw new InvalidOperationException($"The element: {inputNode.Name} is not the same as {elementName}.");
+            }
+        }
+
 
         #endregion
 
-        private string Get_mfenced_Braces(XmlNode inputNode, bool openingBrace)
-        {
-            string result="";
-            XmlAttributeCollection mfencedAttributes= inputNode.Attributes;
-            if (inputNode.Attributes.Count>0)
-            {
-                foreach (XmlAttribute item in inputNode.Attributes)
-                {
-                    if (item.Name.ToLower()=="open"&&openingBrace==true)
-                    {
-                        result = MathDelimitersDict[item.Value];
-                    }
-                    else if (item.Name.ToLower() == "close" && openingBrace == false)
-                    {
-                        result = item.Value == "|" ? @"\right|" : MathDelimitersDict[item.Value];
-                    }
-                }
-               
-            }
-            return result;
-        }
 
         #endregion
 
@@ -3443,14 +4040,15 @@ namespace WpfMath.Converters
             {"+",@"\plus " },
             {"-",@"\minus " },
             {"*",@"\times " },
-            {"Ã",@"\times" },
+            {"×",@"\times" },
             {"/",@"\divide " },
             {"=",@"\equals " },
             {"%",@"\% " },
             {"&CenterDot;",@"\cdot " },
             {"CenterDot;",@"\cdot " },
             {"CenterDot",@"\cdot "  },
-            {"Â·",@"\cdot" },
+            {"·",@"\cdot" },
+
             #region Inequalities
             {"&le;",@"\le " },
             {"&lt;=",@"\lt \equals " },
@@ -3482,10 +4080,13 @@ namespace WpfMath.Converters
             {"there exists",@"\exists " },
 
             {",",@"\comma " },
+            {"int",@"\int" },
             {"&int;",@"\int " },
-            {"â«",@"\int " },
-            {"â",@"\prod " },
-            {"â",@"\sum " },
+            {"∫",@"\int " },
+            {"∏",@"\prod " },
+            {"∑",@"\sum " },
+            {"sum",@"\sum" },
+            {"lim",@"\lim" },
 
             #region Delimiter Operators
              {"[",@"\lsqbracket" },
@@ -3503,11 +4104,11 @@ namespace WpfMath.Converters
         /// </summary>
         private Dictionary<string, string> MathSymbolsDict = new Dictionary<string, string>()
         {
-            {"Î»",@"\lambda" },
-            {"Î¼",@"\mu" },
-            { "Ï",@"\pi "},
-            {"â",@"\infty" },
-            {"â",@"\to" },
+            {"λ",@"\lambda" },
+            {"μ",@"\mu" },
+            { "π",@"\pi "},
+            {"∞",@"\infty" },
+            {"→",@"\to" },
             {"&delta;",@"\delta " },
             {"lim",@"\lim" },
 
@@ -3574,6 +4175,10 @@ namespace WpfMath.Converters
             /// </summary>
             math,
             /// <summary>
+            /// Enclosed contents.
+            /// </summary>
+            menclose,
+            /// <summary>
             /// Parentheses.
             /// </summary>
             mfenced,
@@ -3621,7 +4226,7 @@ namespace WpfMath.Converters
             /// </summary>
             mrow,
             /// <summary>
-            /// Space
+            /// Space.
             /// </summary>
             mspace,
             /// <summary>
@@ -3691,6 +4296,8 @@ namespace WpfMath.Converters
             {
                 case "math":
                     return MathMLElements.math;
+                case "menclose":
+                    return MathMLElements.menclose;
                 case "mfenced":
                     return MathMLElements.mfenced;
                 case "mfrac":
