@@ -15,6 +15,7 @@ namespace WpfMath.Boxes
             this.Height = charInfo.Metrics.Height;
             this.Depth = charInfo.Metrics.Depth;
             this.Italic = charInfo.Metrics.Italic;
+            Background=Brushes.Transparent;
         }
 
         public CharInfo Character
