@@ -76,19 +76,25 @@ namespace WpfMath
 
             commands = new HashSet<string>
             {
+                "bgcolor",
+                "colorbox",
+                "enclose",
+                "fgcolor",
                 "frac",
+                "hide",
+                "image",
                 "left",
+                "matrix",
+                "oline",
+                "overline",
+                "phantom",
+                "photo",
                 "right",
                 "sqrt",
-                "fgcolor",
-                "bgcolor",
-                "matrix",
                 "table",
+                "tbl",
                 "uline",
                 "underline",
-                "colorbox",
-                "overline",
-                "oline"
             };
 
             var formulaSettingsParser = new TexPredefinedFormulaSettingsParser();
@@ -590,6 +596,62 @@ namespace WpfMath
                                                            rightGroupChar), formula.TextStyle);
                         SkipWhiteSpace(value, ref position);
                         return new OverlinedAtom(overlineFormula.RootAtom);
+                    }
+                case "enclose":
+                    {
+                        SkipWhiteSpace(value, ref position);
+                        if (position == value.Length)
+                            throw new TexParseException("illegal end!");
+                        var enclosetypes = "circle";
+                        if (value[position] == leftBracketChar)
+                        {
+                            // type of enclosure - is specified.
+                            SkipWhiteSpace(value, ref position);
+                            enclosetypes = ReadGroup(formula, value, ref position, leftBracketChar, rightBracketChar);
+                        }
+                         
+
+                        var enclosedItemFormula = Parse(
+                            ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
+
+                        if (enclosedItemFormula.RootAtom == null)
+                        {
+                            throw new TexParseException("The enclosed item can't be empty!");
+                        }
+
+                        return new EnclosedAtom(enclosedItemFormula.RootAtom,enclosetypes);
+                    }
+
+                case "hide":
+                case "phantom":
+                    {
+                        SkipWhiteSpace(value, ref position);
+                        if (position == value.Length)
+                            throw new TexParseException("illegal end!");
+
+                        var phantomItemFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
+
+                        return new PhantomAtom(phantomItemFormula.RootAtom);
+                    }
+
+                case "photo":
+                case "image":
+                    {
+                        SkipWhiteSpace(value, ref position);
+                        if (position == value.Length)
+                            throw new TexParseException("illegal end!");
+                        var imagedim = "10:7";
+                        if (value[position] == leftBracketChar)
+                        {
+                            // type of enclosure - is specified.
+                            SkipWhiteSpace(value, ref position);
+                            imagedim = ReadGroup(formula, value, ref position, leftBracketChar, rightBracketChar);
+                            SkipWhiteSpace(value, ref position);
+                        }
+                         
+                        var imagePath = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+
+                        return new ImageAtom(null,imagePath, imagedim);
                     }
             }
 
