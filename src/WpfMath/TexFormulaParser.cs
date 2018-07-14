@@ -430,7 +430,8 @@ namespace WpfMath
                             }
                             catch
                             {
-                                throw new TexParseException(String.Format("Color {0} could either not be found or converted.", colorName));
+                                string helpstr= HelpOutMessage(colorName, predefinedColors.Keys.ToList());
+                                throw new TexParseException(String.Format("Color {0} could either not be found or converted{1}.", colorName,helpstr));
                             }
                             
                         }
@@ -456,7 +457,8 @@ namespace WpfMath
                             }
                             catch (Exception ex)
                             {
-                                throw new TexParseException(String.Format("Color {0} could either not be found or converted.", colorName));
+                                string helpstr= HelpOutMessage(colorName, predefinedColors.Keys.ToList());
+                                throw new TexParseException(String.Format("Color {0} could either not be found or converted{1}.", colorName,helpstr));
                             }
                         }
                     }
@@ -575,7 +577,8 @@ namespace WpfMath
                             }
                             catch (Exception ex)
                             {
-                                throw new TexParseException(String.Format("Color {0} could either not be found or converted.", colorName));
+                                string helpstr= HelpOutMessage(colorName, predefinedColors.Keys.ToList());
+                                throw new TexParseException(String.Format("Color {0} could either not be found or converted{1}.", colorName,helpstr));
                             }
                         }
 
@@ -658,6 +661,29 @@ namespace WpfMath
             throw new TexParseException("Invalid command.");
         }
 
+        public static string HelpOutMessage(string input, List<string> database)
+            {
+            string helpStr=""; bool helpGiven=false;
+            foreach(var item in database){
+                if(input!=""&& input!=null&& input.Trim().Length>=1&& database!=null&&item!=null&&item!=""&& database.Count>0)
+                   {
+                    if(item.StartsWith(input)){
+                        helpStr=$" Did you mean: {item}";
+                        helpGiven=true;}
+                    if(item.Contains(input))
+                        {
+                        if(helpGiven==false){
+                            helpStr=$" Did you mean: {item}";
+                            helpGiven=true;
+                            }
+                        else{continue;}
+                        }
+                    else{continue;}
+                    }
+                else{continue;}
+                }
+            return helpStr;
+            }
         private void ProcessEscapeSequence(
             TexFormula formula,
             SourceSpan value,
@@ -760,7 +786,16 @@ namespace WpfMath
             else
             {
                 // Escape sequence is invalid.
-                throw new TexParseException("Unknown symbol or command or predefined TeXFormula: '" + command + "'");
+                
+                List<string> somepossibleparams=new List<string>();
+                foreach(var item in commands){somepossibleparams.Add(item);}
+                 foreach(var item in delimeters){somepossibleparams.Add(item);}
+                 foreach(var item in predefinedFormulas){somepossibleparams.Add(item.Key);}
+                 foreach(var item in textStyles){somepossibleparams.Add(item);}
+                 foreach(var item in symbols){somepossibleparams.Add(item);}
+                
+                string helpstr=HelpOutMessage(command,somepossibleparams);
+                throw new TexParseException("Unknown symbol or command or predefined TeXFormula: '" + command + "'"+helpstr);
             }
         }
 
