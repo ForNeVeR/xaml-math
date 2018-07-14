@@ -388,6 +388,7 @@ namespace WpfMath
                     int sqrtEnd = position;
 
                     TexFormula degreeFormula = null;
+                 
                     if (value[position] == leftBracketChar)
                     {
                         // Degree of radical- is specified.
@@ -402,7 +403,7 @@ namespace WpfMath
 
                     if (sqrtFormula.RootAtom == null)
                     {
-                        throw new TexParseException("The radicand of a square root can't be empty!");
+                        throw new TexParseException($"The radicand of the square root at column {position-1} can't be empty!");
                     }
 
                     source = value.Segment(start, sqrtEnd - start);
@@ -431,7 +432,8 @@ namespace WpfMath
                             catch
                             {
                                 string helpstr= HelpOutMessage(colorName, predefinedColors.Keys.ToList());
-                                throw new TexParseException(String.Format("Color {0} could either not be found or converted{1}.", colorName,helpstr));
+                                int a =position-remainingString.Length-3-colorName.Length;
+                                throw new TexParseException($"Color {colorName} at columns {a} and {a+colorName.Length} could either not be found or converted{helpstr}.");
                             }
                             
                         }
@@ -458,7 +460,8 @@ namespace WpfMath
                             catch (Exception ex)
                             {
                                 string helpstr= HelpOutMessage(colorName, predefinedColors.Keys.ToList());
-                                throw new TexParseException(String.Format("Color {0} could either not be found or converted{1}.", colorName,helpstr));
+                                  int a =position-remainingString.Length-3-colorName.Length;
+                                throw new TexParseException($"Color {colorName} at columns {a} and {a+colorName.Length} could either not be found or converted{helpstr}.");
                             }
                         }
                     }
@@ -578,7 +581,8 @@ namespace WpfMath
                             catch (Exception ex)
                             {
                                 string helpstr= HelpOutMessage(colorName, predefinedColors.Keys.ToList());
-                                throw new TexParseException(String.Format("Color {0} could either not be found or converted{1}.", colorName,helpstr));
+                                int a =position-remainingString.Length-3-colorName.Length;
+                                throw new TexParseException($"Color {colorName} at columns {a} and {a+colorName.Length} could either not be found or converted{helpstr}.");
                             }
                         }
 
