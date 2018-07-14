@@ -13,6 +13,15 @@ namespace WpfMath.Atoms
     internal class EnclosedAtom : Atom
     {
         /// <summary>
+        /// Stores a list of notations supported by the <see cref="EnclosedAtom"/>.
+        /// </summary>
+        public readonly List<string> AllowedEncloseNotations = new List<string>
+        {
+            "bottom","box","circle","ddstrike","downdiagonalstrike","ellipse","horizontalstrike","hstrike","left",
+            "obar","oval","overbar","rbox","right","roundedbox","strikethrough","top","udstrike","updiagonalstrike",
+            "ubar","underbar","verticalstrike","vstrike"
+        };
+        /// <summary>
         /// Initializes an <see cref="EnclosedAtom"/> with the specified <paramref name="baseAtom"/> and <paramref name="encNots"/>.
         /// </summary>
         /// <param name="baseAtom">The base atom.</param>
@@ -125,7 +134,10 @@ namespace WpfMath.Atoms
                         }
 
                     default:
-                         throw new TexParseException($"Unknown enclose notation: {item} ");
+                    {
+                        string helpStr = TexFormulaParser.HelpOutMessage(item, AllowedEncloseNotations);
+                         throw new TexParseException($"Unknown enclose notation: {item}{helpStr} ");
+                    }
                 }
             }
             return baseBox;
