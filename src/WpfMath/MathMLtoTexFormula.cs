@@ -4072,29 +4072,6 @@ namespace WpfMath.Converters
 
         };
 
-        /// <summary>
-        /// Contains a Dictionary of supported Mathematical delimiters and their Tex equivalent.
-        /// </summary>
-        private Dictionary<string, string> MathDelimitersDict = new Dictionary<string, string>()
-        {
-            //{"[",@"\lsqbracket" }
-            //{"(",@"\lbrack" }
-            //{"{",@"\lbrace" },
-            //{"|",@"\lbar" },
-            {"{",@"\left{ " },
-            {"}",@"\right}" },
-            {"(",@"\left( " },
-            {")",@"\right) " },
-            {"[",@"\left[ " },
-            {"]",@"\right] " },
-            {"|",@"\left| " },
-        };
-
-        private string[] crossoutvals = new string[]
-        {
-            "n","uds","dds","vs","hs"
-        };
-
         #region Elements and their Attributes
         //This dictionary key contains the element names and the values contain the names of its defined attributes.
         //NB: Keep the list of attributes in alphabetical order.
