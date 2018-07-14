@@ -135,7 +135,9 @@ namespace WpfMath.Converters
         /// <summary>
         /// Converts an XML-File containing MathML data to a <see cref="TexFormula"/>.
         /// </summary>
-        /// <param name="filepath">The file path of the Math ML data.</param>
+        /// <param name="isFilepath">true if and only if the <paramref name="input"/> is an mml file location.
+        /// <para/> false if and only if the <paramref name="input"/> is a well-formed mml string (not a file path).
+        ///</param>
         /// <returns></returns>
         public string Parse(string input,bool isFilePath)
         {
