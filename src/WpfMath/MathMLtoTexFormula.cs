@@ -403,51 +403,9 @@ namespace WpfMath.Converters
                 string str1 = Attribute_Value(inputNode, "mfenced", "open");
                 bool hasCloseDelim = Attribute_Exists(inputNode, "mfenced", "close");
                 string str2 = Attribute_Value(inputNode, "mfenced", "close");
-                if (hasOpenDelim == true)
-                {
-                    if (str1.Length == 1)
-                    {
-                        if (str1 == "|")
-                        {
-                            openDelim = @"\left|";
-                        }
-                        else
-                        {
-                            openDelim = MathDelimitersDict[str1];
-                        }
-                    }
-                    else
-                    {
-                        openDelim = @"\left)";
-                    }
-                }
-                if (hasOpenDelim == false)
-                {
-                    openDelim = @"\left(";
-                }
-                if (hasCloseDelim==true)
-                {
-                    if (str2.Length==1)
-                    {
-                        if (str2=="|")
-                        {
-                            closeDelim = @"\right|";
-                        }
-                        else
-                        {
-                            closeDelim = MathDelimitersDict[str2];
-                        }
-                    }
-                    else
-                    {
-                        closeDelim = @"\right)";
-                    }
-                }
-                if (hasCloseDelim==false)
-                {
-                    closeDelim = @"\right)";
-                }
-
+                openDelim=(hasOpenDelim&&str1.Trim()!=""&&str1.Trim().Length==1)?@"\left"+str1:@"\left(";
+                closeDelim=(hasCloseDelim&&str2.Trim()!=""&&str2.Trim().Length==1)?@"\right"+str2:@"\right)";
+                
                 bool hasSeparators = Attribute_Exists(inputNode, "mfenced", "separators");
                 string separators = Attribute_Value(inputNode, "mfenced", "separators");
                 char[] sepaArr =separators.Length>0? separators.ToCharArray():null;
@@ -4012,7 +3970,7 @@ namespace WpfMath.Converters
                     }
                     else
                     {
-                        attributeValue = "";
+                         continue;
                     }
                 }
                 return attributeValue;
