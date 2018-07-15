@@ -84,6 +84,8 @@ namespace WpfMath
                 "hide",
                 "image",
                 "left",
+                "longdiv",
+                "longdivision",
                 "matrix",
                 "oline",
                 "overline",
@@ -355,6 +357,46 @@ namespace WpfMath
                         return new FencedAtom(source, internals.Body, opening, closing);
                     }
 
+                        case "longdiv":
+                case "longdivision":
+                    {
+                        SkipWhiteSpace(value, ref position);
+                        if (position == value.Length)
+                            throw new TexParseException("illegal end!");
+                        var ldivstyle = "lefttop";
+                        if (value[position] == leftBracketChar)
+                        {
+                            // type of enclosure - is specified.
+                            SkipWhiteSpace(value, ref position);
+                            ldivstyle = ReadGroup(formula, value, ref position, leftBracketChar, rightBracketChar);
+                        }
+
+                        List<TexFormula> longdivformulas = new List<TexFormula>();
+                        
+                        for (uint i = 0; i < 4; i++)
+                        {
+                            SkipWhiteSpace(value, ref position);
+                            var longdivitem = Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
+                            longdivformulas.Add(longdivitem);
+                            SkipWhiteSpace(value, ref position);
+                        }
+
+                        List<Atom> ldivatoms = new List<Atom>();
+                        foreach (var item in longdivformulas)
+                        {
+                            if (item!=null&&item.RootAtom!=null)
+                            {
+                                ldivatoms.Add(item.RootAtom);
+                            }
+                            else
+                            {
+                                throw new TexParseException("The items of a longdivision cannot be empty.");
+                            }
+                        }
+
+                        return new LongDivAtom(ldivatoms,ldivstyle);
+                    }
+                    
                 case "right":
                     {
                         if (!allowClosingDelimiter)
