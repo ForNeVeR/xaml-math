@@ -776,21 +776,531 @@ namespace WpfMath.Converters
             }  
         }
 
-        private void Visiting_mlongdiv(XmlNode inputNode)
+           /// <summary>
+        /// Returns a <see cref="string"/> representation of the <see cref="MathMLElements.mlongdiv"/> <paramref name="inputNode"/>, its attributes and its childnodes.
+        /// <para/> CMD: Long Division.
+        /// </summary>
+        /// <param name="inputNode"></param>
+        /// <returns></returns>
+        private string Visiting_mlongdiv(XmlNode inputNode)
         {
-            if (inputNode.Name=="mlongdiv"&&inputNode.ChildNodes.Count>=3)
+            if (inputNode.Name == "mlongdiv" && inputNode.ChildNodes.Count >= 3)
             {
                 //Not yet implemented in the rendering program.
                 string divisorStr = "";
                 string dividendStr = "";
                 string resultStr = "";
                 string stepsStr = "";
+                /* The first node is the divisorStr
+                 * second is the resultStr OR quotient
+                 * third is the dividendStr
+                 * The others would be the stepsStr
+                 */
+                bool hasDivStyle = Attribute_Exists(inputNode, "mlongdiv", "longdivstyle");
+                string divStyle = hasDivStyle ? Attribute_Value(inputNode, "mlongdiv", "longdivstyle") : "lefttop";
 
+                for (int i = 0; i < inputNode.ChildNodes.Count; i++)
+                {
+                    XmlNode item = inputNode.ChildNodes[i];
+                    switch (GetElementType(item.Name))
+                    {
+                        case MathMLElements.math:
+                            throw new InvalidOperationException("The mathml element cannot be a child element.");
+                        case MathMLElements.menclose:
+                            {
+                                if (i==0)
+                                {
 
-                //return
+                                }
+                                else if (i==1)
+                                {
+
+                                }
+                                else if (i==2)
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                                break;
+                            }
+                        case MathMLElements.mfenced:
+                            {
+                                if (i == 0)
+                                {
+
+                                }
+                                else if (i == 1)
+                                {
+
+                                }
+                                else if (i == 2)
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                                break;
+                            }
+                        case MathMLElements.mfrac:
+                            {
+                                if (i == 0)
+                                {
+
+                                }
+                                else if (i == 1)
+                                {
+
+                                }
+                                else if (i == 2)
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                                break;
+                            }
+                        case MathMLElements.mi:
+                            {
+                                if (i == 0)
+                                {
+
+                                }
+                                else if (i == 1)
+                                {
+
+                                }
+                                else if (i == 2)
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                                break;
+                            }
+                        case MathMLElements.mmultiscripts:
+                            {
+                                if (i == 0)
+                                {
+
+                                }
+                                else if (i == 1)
+                                {
+
+                                }
+                                else if (i == 2)
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                                break;
+                            }
+                        case MathMLElements.mn:
+                            {
+                                if (i == 0)
+                                {
+
+                                }
+                                else if (i == 1)
+                                {
+
+                                }
+                                else if (i == 2)
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                                break;
+                            }
+                        case MathMLElements.mo:
+                            {
+                                if (i == 0)
+                                {
+
+                                }
+                                else if (i == 1)
+                                {
+
+                                }
+                                else if (i == 2)
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                                break;
+                            }
+                        case MathMLElements.mover:
+                            {
+                                if (i == 0)
+                                {
+
+                                }
+                                else if (i == 1)
+                                {
+
+                                }
+                                else if (i == 2)
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                                break;
+                            }
+                        case MathMLElements.mphantom:
+                            {
+                                if (i == 0)
+                                {
+
+                                }
+                                else if (i == 1)
+                                {
+
+                                }
+                                else if (i == 2)
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                                break;
+                            }
+                        case MathMLElements.mprescripts:
+                            {
+                                if (i == 0)
+                                {
+
+                                }
+                                else if (i == 1)
+                                {
+
+                                }
+                                else if (i == 2)
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                                break;
+                            }
+                        case MathMLElements.mroot:
+                            {
+                                if (i == 0)
+                                {
+
+                                }
+                                else if (i == 1)
+                                {
+
+                                }
+                                else if (i == 2)
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                                break;
+                            }
+                        case MathMLElements.mrow:
+                            {
+                                if (i == 0)
+                                {
+
+                                }
+                                else if (i == 1)
+                                {
+
+                                }
+                                else if (i == 2)
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                                break;
+                            }
+                        case MathMLElements.mspace:
+                            {
+                                if (i == 0)
+                                {
+
+                                }
+                                else if (i == 1)
+                                {
+
+                                }
+                                else if (i == 2)
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                                break;
+                            }
+                        case MathMLElements.msqrt:
+                            {
+                                if (i == 0)
+                                {
+
+                                }
+                                else if (i == 1)
+                                {
+
+                                }
+                                else if (i == 2)
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                                break;
+                            }
+                        case MathMLElements.msub:
+                            {
+                                if (i == 0)
+                                {
+
+                                }
+                                else if (i == 1)
+                                {
+
+                                }
+                                else if (i == 2)
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                                break;
+                            }
+                        case MathMLElements.msubsup:
+                            {
+                                if (i == 0)
+                                {
+
+                                }
+                                else if (i == 1)
+                                {
+
+                                }
+                                else if (i == 2)
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                                break;
+                            }
+                        case MathMLElements.msup:
+                            {
+                                if (i == 0)
+                                {
+
+                                }
+                                else if (i == 1)
+                                {
+
+                                }
+                                else if (i == 2)
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                                break;
+                            }
+                        case MathMLElements.mtable:
+                            {
+                                if (i == 0)
+                                {
+
+                                }
+                                else if (i == 1)
+                                {
+
+                                }
+                                else if (i == 2)
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                                break;
+                            }
+                        case MathMLElements.mtd:
+                            {
+                                if (i == 0)
+                                {
+
+                                }
+                                else if (i == 1)
+                                {
+
+                                }
+                                else if (i == 2)
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                                break;
+                            }
+                        case MathMLElements.mtext:
+                            {
+                                if (i == 0)
+                                {
+
+                                }
+                                else if (i == 1)
+                                {
+
+                                }
+                                else if (i == 2)
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                                break;
+                            }
+                        case MathMLElements.mtr:
+                            {
+                                if (i == 0)
+                                {
+
+                                }
+                                else if (i == 1)
+                                {
+
+                                }
+                                else if (i == 2)
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                                break;
+                            }
+                        case MathMLElements.munder:
+                            {
+                                if (i == 0)
+                                {
+
+                                }
+                                else if (i == 1)
+                                {
+
+                                }
+                                else if (i == 2)
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                                break;
+                            }
+                        case MathMLElements.munderover:
+                            {
+                                if (i == 0)
+                                {
+
+                                }
+                                else if (i == 1)
+                                {
+
+                                }
+                                else if (i == 2)
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                                break;
+                            }
+                        case MathMLElements.none:
+                            {
+                                if (i == 0)
+                                {
+
+                                }
+                                else if (i == 1)
+                                {
+
+                                }
+                                else if (i == 2)
+                                {
+
+                                }
+                                else
+                                {
+
+                                }
+                                break;
+                            }
+                        case MathMLElements.NONE:
+                            throw new InvalidOperationException($"The element '{item.Name}' is not supported.");
+                        default:
+                            break;
+                    }
+                }
+
+                return @"\longdivision[" + divStyle + "]{" + divisorStr + "}{" +resultStr + "}{" + dividendStr + "}{" + stepsStr + "}";
+            }
+            else
+            {
+                throw new InvalidOperationException(@"The mlongdiv element must contain at least 3 child nodes.");
             }
         }
-
+       
         /// <summary>
         /// Returns a <see cref="string"/> representation of the <see cref="MathMLElements.mmultiscripts"/> <paramref name="inputNode"/>, its attributes and its childnodes.
         /// <para/>CMD: Attach prescripts and tensor indices to a base.
