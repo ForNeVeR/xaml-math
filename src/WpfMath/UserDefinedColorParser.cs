@@ -28,7 +28,8 @@ namespace WpfMath
             {
                 case ColorStringTypes.Byte_longString:
                     {
-                        byte[] channelbytes = ByteStringValues(input.Trim(), 4);
+                        bool wstchk=IsByteTrain(input.Trim(), 4, out List<byte> result);
+                        byte[] channelbytes = result.ToArray();
                         resultColor.A = channelbytes[0];
                         resultColor.R = channelbytes[1];
                         resultColor.G = channelbytes[2];
@@ -38,8 +39,9 @@ namespace WpfMath
                     
                 case ColorStringTypes.Byte_shortString:
                     {
-                        byte[] channelbytes = ByteStringValues(input.Trim(), 3);
-                        resultColor.A = 255;
+                        bool wstchk=IsByteTrain(input.Trim(), 3, out List<byte> result);
+                        byte[] channelbytes = result.ToArray();
+                        resultColor.A=255;
                         resultColor.R = channelbytes[0];
                         resultColor.G = channelbytes[1];
                         resultColor.B = channelbytes[2];
@@ -47,7 +49,8 @@ namespace WpfMath
                     }
                 case ColorStringTypes.Hex_longString:
                     {
-                        byte[] channelbytes = ByteHexStringValues(input.Trim(), 8);
+                        bool wstchk=IsByteTrain(input.Trim(), 8, out List<byte> result);
+                        byte[] channelbytes = result.ToArray();
                         resultColor.A = channelbytes[0];
                         resultColor.R = channelbytes[1];
                         resultColor.G = channelbytes[2];
@@ -56,7 +59,8 @@ namespace WpfMath
                     }
                 case ColorStringTypes.Hex_shortString:
                     {
-                        byte[] channelbytes = ByteHexStringValues(input.Trim(), 6);
+                        bool wstchk=IsByteTrain(input.Trim(), 6, out List<byte> result);
+                        byte[] channelbytes = result.ToArray();
                         resultColor.A = 255;
                         resultColor.R = channelbytes[0];
                         resultColor.G = channelbytes[1];
@@ -111,19 +115,19 @@ namespace WpfMath
         /// <returns></returns>
         private static ColorStringTypes GetColorString(string input)
         {
-            if (IsByteHexTrain(input,6)==true)
+            if (IsByteHexTrain(input,6, out List<byte> hssres)==true)
             {
                 return ColorStringTypes.Hex_shortString;
             }
-            else if (IsByteHexTrain(input,8))
+            else if (IsByteHexTrain(input,8 , out List<byte> hlsres ))
             {
                 return ColorStringTypes.Hex_longString;
             }
-            else if (IsByteTrain(input, 3) == true)
+            else if (IsByteTrain(input, 3, out List<byte> bssres ) == true)
             {
                 return ColorStringTypes.Byte_shortString;
             }
-            else if (IsByteTrain(input, 4) == true)
+            else if (IsByteTrain(input, 4, out List<byte> blsres ) == true)
             {
                 return ColorStringTypes.Byte_longString;
             }
@@ -143,9 +147,10 @@ namespace WpfMath
         /// <param name="input"></param>
         /// <param name="num"></param>
         /// <returns></returns>
-        private static bool IsByteTrain(string input, int num)
+        private static bool IsByteTrain(string input, int num, out List<byte> resultbytes )
         {
             bool StrCheck = false;
+            resultbytes= new List<byte>();
             string[] arrStr = input.Trim().Split(',');
             if (num == arrStr.Length)
             {
@@ -154,7 +159,8 @@ namespace WpfMath
                 {
                     if (Byte.TryParse(item, out byte result) == true)
                     {
-                        i += 1;
+                        i ++;
+                        resultbytes.Add(result);
                     }
                     else { continue; }
                 }
@@ -174,9 +180,11 @@ namespace WpfMath
         /// <param name="num"></param>
         /// <returns></returns>
         /// <remarks><paramref name="input"/> should be left in the raw state(e.g.;#56e245, not 56e245).</remarks>
-        private static bool IsByteHexTrain(string input, int num)
+        private static bool IsByteHexTrain(string input, int num, out List<byte> resultByteList)
         {
             bool StrCheck = false;
+            resultByteList=new List<byte>();
+            List<string> hexTwos = new List<string>();
             string subStr = input.Substring(1);
             if (num == subStr.Length)
             {
@@ -192,37 +200,32 @@ namespace WpfMath
                 }
  
                 StrCheck = (c == num )? true : false;
+                for (int i = 0; i <input.Length; i++)
+                {
+                    if (i%2==0&&i>0)
+                    {
+                        //add the current and previous strings as one to the "hexTwos" list
+                        string str = input[i].ToString() + input[i - 1].ToString();
+                        hexTwos.Add(str);
+                    }
+                }
+
+                if ((num/2)==hexTwos.Count)
+                {
+                    foreach (string item in hexTwos)
+                    {
+                        if (Byte.TryParse(item, NumberStyles.AllowHexSpecifier,CultureInfo.InvariantCulture, out byte hexbyteres) )
+                        {
+                            resultByteList.Add(hexbyteres);
+                        }
+                    }
+                }
             }
             else
             {
                 StrCheck = false;
             }
             return StrCheck;
-        }
-
-        /// <summary>
-        /// Gets the <see cref="byte"/> values from the <paramref name="input"/> if the number of items are ==<paramref name="num"/>.
-        /// </summary>
-        /// <param name="input"></param>
-        /// <param name="num"></param>
-        /// <returns></returns>
-        private static byte[] ByteStringValues(string input,int num)
-        {
-            List<byte> resultByteArr = new List<byte>();
-            string[] arrStr = input.Split(',');
-            if (num == arrStr.Length)
-            {
-                foreach (var item in arrStr)
-                {
-                    if (Byte.TryParse(item, out byte result) == true)
-                    {
-                        resultByteArr.Add(result);
-                    }
-                    else { continue; }
-                }
-
-            }
-            return resultByteArr.ToArray();
         }
 
         /// <summary>
@@ -233,28 +236,9 @@ namespace WpfMath
         /// <returns></returns>
         private static byte[] ByteHexStringValues(string input, int num)
         {
-            List<string> hexTwos = new List<string>();
+            
             List<byte> resultByteLst = new List<byte>();
-            for (int i = 0; i <input.Length; i++)
-            {
-                if (i%2==0&&i>0)
-                {
-                    //add the current and previous strings as one to the "hexTwos" list
-                    string str = input[i].ToString() + input[i - 1].ToString();
-                    hexTwos.Add(str);
-                }
-            }
-
-            if ((num/2)==hexTwos.Count)
-            {
-                foreach (string item in hexTwos)
-                {
-                    if (Byte.TryParse(item, NumberStyles.AllowHexSpecifier,CultureInfo.InvariantCulture, out byte hexbyteres) )
-                    {
-                        resultByteLst.Add(hexbyteres);
-                    }
-                }
-            }
+            
             return resultByteLst.ToArray();
         }
 
