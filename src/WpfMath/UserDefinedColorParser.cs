@@ -228,19 +228,7 @@ namespace WpfMath
             return StrCheck;
         }
 
-        /// <summary>
-        /// Gets the <see cref="byte"/> values from the Hex <paramref name="input"/> if the number of items are ==<paramref name="num"/>.
-        /// </summary>
-        /// <param name="input"></param>
-        /// <param name="num"></param>
-        /// <returns></returns>
-        private static byte[] ByteHexStringValues(string input, int num)
-        {
-            
-            List<byte> resultByteLst = new List<byte>();
-            
-            return resultByteLst.ToArray();
-        }
+      
 
         #endregion
 
