@@ -398,64 +398,44 @@ namespace WpfMath
                     }
                 case "fgcolor":
                     {
-                        //Command to change the foreground color 
-                        var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+                        //Command to change the foreground color
+                        var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar)
+                            .ToString();
 
-                        string remainingString = value.Substring(position);
+                        var remainingString = value.Segment(position);
                         var remaining = Parse(remainingString, formula.TextStyle);
                         position = value.Length;
+                        source = value.Segment(start, position - start);
 
                         if (predefinedColors.TryGetValue(colorName, out Color color))
                         {
-                            return new StyledAtom(remaining.RootAtom, null, new SolidColorBrush(color));
+                            return new StyledAtom(source, remaining.RootAtom, null, new SolidColorBrush(color));
                         }
                         else
                         {
                             try
                             {
                                 Color color1 = UserDefinedColorParser.ParseUserColor(colorName);
-                                return new StyledAtom(remaining.RootAtom, null, new SolidColorBrush(color1));
+                                return new StyledAtom(source, remaining.RootAtom, null, new SolidColorBrush(color1));
                             }
                             catch
                             {
-                                throw new TexParseException(String.Format("Color {0} could either not be found or converted.", colorName));
+                                throw new TexParseException($"Color {colorName} could neither be found nor converted.");
                             }
-                            
                         }
                     }
                 case "bgcolor":
                     {
                         //Command to change the background color
-                        var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
-                        string remainingString = value.Substring(position);
+                        var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar)
+                            .ToString();
+                        var remainingString = value.Segment(position);
                         var remaining = Parse(remainingString, formula.TextStyle);
                         position = value.Length;
+                        source = value.Segment(start, position - start);
 
                         if (predefinedColors.TryGetValue(colorName, out Color color))
                         {
-                            return new StyledAtom(remaining.RootAtom, new SolidColorBrush(color), null);
-                        }
-                        else
-                        {
-                            try
-                            {
-                                Color color1 = UserDefinedColorParser.ParseUserColor(colorName);
-                                return new StyledAtom(remaining.RootAtom, new SolidColorBrush(color1), null);
-                            }
-                            catch (Exception ex)
-                            {
-                                throw new TexParseException(String.Format("Color {0} could either not be found or converted.", colorName));
-                            }
-                        }
-                    }
-                case "colorbox":
-                    {
-                        var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
-                        var remainingString = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
-                        var remaining = Parse(remainingString, formula.TextStyle);
-                        if (predefinedColors.TryGetValue(colorName.ToString(), out var color))
-                        {
-                            source = value.Segment(start, position - start);
                             return new StyledAtom(source, remaining.RootAtom, new SolidColorBrush(color), null);
                         }
                         else
@@ -463,14 +443,38 @@ namespace WpfMath
                             try
                             {
                                 Color color1 = UserDefinedColorParser.ParseUserColor(colorName);
-                                return new StyledAtom(remaining.RootAtom, new SolidColorBrush(color1), null);
+                                return new StyledAtom(source, remaining.RootAtom, new SolidColorBrush(color1), null);
                             }
                             catch (Exception ex)
                             {
-                                throw new TexParseException(String.Format("Color {0} could either not be found or converted.", colorName));
+                                throw new TexParseException($"Color {colorName} could neither be found nor converted.");
                             }
                         }
+                    }
+                case "colorbox":
+                    {
+                        var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar)
+                            .ToString();
+                        var remainingString = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+                        var remaining = Parse(remainingString, formula.TextStyle);
+                        source = value.Segment(start, position - start);
 
+                        if (predefinedColors.TryGetValue(colorName, out var color))
+                        {
+                            return new StyledAtom(source, remaining.RootAtom, new SolidColorBrush(color), null);
+                        }
+                        else
+                        {
+                            try
+                            {
+                                Color color1 = UserDefinedColorParser.ParseUserColor(colorName);
+                                return new StyledAtom(source, remaining.RootAtom, new SolidColorBrush(color1), null);
+                            }
+                            catch (Exception ex)
+                            {
+                                throw new TexParseException($"Color {colorName} could neither be found nor converted.");
+                            }
+                        }
                     }
             }
 
