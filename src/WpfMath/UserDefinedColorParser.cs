@@ -36,7 +36,7 @@ namespace WpfMath
                         resultColor.B = channelbytes[3];
                         break;
                     }
-                    
+
                 case ColorStringTypes.Byte_shortString:
                     {
                         bool wstchk=IsByteTrain(input.Trim(), 3, out List<byte> result);
@@ -172,7 +172,7 @@ namespace WpfMath
             }
             return StrCheck;
         }
-        
+
         /// <summary>
         /// Returns a value that tells if the <paramref name="input"/> contains byte hex values,
         /// </summary>
@@ -180,7 +180,7 @@ namespace WpfMath
         /// <param name="num"></param>
         /// <returns></returns>
         /// <remarks><paramref name="input"/> should be left in the raw state(e.g.;#56e245, not 56e245).</remarks>
-        private static bool IsByteHexTrain(string input, int num, out List<byte> resultByteList)
+        internal static bool IsByteHexTrain(string input, int num, out List<byte> resultByteList)
         {
             bool StrCheck = false;
             resultByteList=new List<byte>();
@@ -198,7 +198,7 @@ namespace WpfMath
                     }
                     else { continue; }
                 }
- 
+
                 StrCheck = (c == num )? true : false;
                 for (int i = 0; i <input.Length; i++)
                 {
@@ -228,7 +228,7 @@ namespace WpfMath
             return StrCheck;
         }
 
-      
+
 
         #endregion
 
