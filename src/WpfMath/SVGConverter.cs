@@ -91,7 +91,6 @@ namespace WpfMath
                         PolyBezierSegment seg = ps as PolyBezierSegment;
                         for (int i = 0; i < seg.Points.Count; i += 3)
                         {
-                            var point = seg.Points[i];
                             svgString.Append("C ");
                             svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i].X);
                             svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i].Y);
@@ -140,7 +139,6 @@ namespace WpfMath
                         PolyQuadraticBezierSegment seg = ps as PolyQuadraticBezierSegment;
                         for (int i = 0; i < seg.Points.Count; i += 2)
                         {
-                            var point = seg.Points[i];
                             svgString.Append("Q ");
                             svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i].X);
                             svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i].Y);
