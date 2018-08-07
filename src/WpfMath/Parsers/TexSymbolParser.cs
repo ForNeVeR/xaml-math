@@ -4,8 +4,9 @@ using System.IO;
 using System.Reflection;
 using System.Xml.Linq;
 using WpfMath.Atoms;
+using WpfMath.Utils;
 
-namespace WpfMath
+namespace WpfMath.Parsers
 {
     // Parse definitions of symbols from XML files.
     internal class TexSymbolParser
