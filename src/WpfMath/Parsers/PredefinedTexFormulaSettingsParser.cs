@@ -5,8 +5,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Xml.Linq;
+using WpfMath.Utils;
 
-namespace WpfMath
+namespace WpfMath.Parsers
 {
     // Parses settings for predefined formulas from XML file.
     internal class TexPredefinedFormulaSettingsParser
