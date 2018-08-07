@@ -1,12 +1,13 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Media;
 using System.Xml.Linq;
 using System.Reflection;
+using WpfMath.Utils;    
 
-namespace WpfMath
+namespace WpfMath.Parsers
 {
     internal class PredefinedColorParser
     {
