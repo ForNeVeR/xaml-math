@@ -6,8 +6,9 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Media;
 using System.Xml.Linq;
+using WpfMath.Utils;
 
-namespace WpfMath
+namespace WpfMath.Parsers
 {
     // Parses definitions of predefined formulas from XML file.
     internal class TexPredefinedFormulaParser
