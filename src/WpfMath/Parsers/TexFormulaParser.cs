@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Media;
 using WpfMath.Atoms;
 using WpfMath.Exceptions;
+using WpfMath.Utils;
 
 namespace WpfMath
 {
