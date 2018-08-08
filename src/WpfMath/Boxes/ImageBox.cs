@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Media;
 using WpfMath.Exceptions;
 using WpfMath.Rendering;
-using WpfMath.Utilities;
+using WpfMath.Utils;
 
 namespace WpfMath.Boxes
 {
@@ -30,8 +30,8 @@ namespace WpfMath.Boxes
             this.Width = width;
             this.Height = height;
             this.Shift = shift;
-            this.Foreground = environment.Foreground;
-            this.Background = environment.Background;	//Not strictly necessary
+            this.Foreground = environment.Foreground;//not needed
+            this.Background = environment.Background;	//Not needed
         }
 
         /// <summary>
