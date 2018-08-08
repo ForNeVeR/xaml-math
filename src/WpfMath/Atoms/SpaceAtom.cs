@@ -1,9 +1,12 @@
 using System;
 using WpfMath.Boxes;
+using WpfMath.Utils;
 
 namespace WpfMath.Atoms
 {
-    // Atom representing whitespace.
+    /// <summary>
+    /// Atom representing whitespace.
+    /// </summary>
     internal class SpaceAtom : Atom
     {
         // Collection of unit conversion functions.
