@@ -1,4 +1,5 @@
 using WpfMath.Atoms;
+using WpfMath.Parsers;
 
 namespace WpfMath
 {
