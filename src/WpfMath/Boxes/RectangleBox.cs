@@ -27,7 +27,7 @@ namespace WpfMath.Boxes
         {
             var color = Foreground ?? Brushes.Black;
             var rectangle = new Rect(x, y -Height, Width, Height);
-            renderer.RenderRectangle(rectangle,color, mull);
+            renderer.RenderRectangle(rectangle,color, Brushes.Transparent);
 
         }
 
