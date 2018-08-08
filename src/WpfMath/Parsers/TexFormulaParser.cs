@@ -9,7 +9,7 @@ using WpfMath.Atoms;
 using WpfMath.Exceptions;
 using WpfMath.Utils;
 
-namespace WpfMath
+namespace WpfMath.Parsers
 {
     // TODO: Put all error strings into resources.
     // TODO: Use TextReader for lexing.
@@ -26,6 +26,7 @@ namespace WpfMath
         private const char subScriptChar = '_';
         private const char superScriptChar = '^';
         private const char primeChar = '\'';
+        private const char commentChar='%';
         #endregion
         #region Information used for parsing
         private static HashSet<string> commands;
@@ -35,6 +36,7 @@ namespace WpfMath
         private static readonly IDictionary<string, Func<SourceSpan, TexFormula>> predefinedFormulas =
             new Dictionary<string, Func<SourceSpan, TexFormula>>();
         private static IDictionary<string, Color> predefinedColors;
+        private static Dictionary<string, Color> userdefinedColors;
 
         private static readonly string[][] delimiterNames =
         {
@@ -77,10 +79,9 @@ namespace WpfMath
 
             commands = new HashSet<string>
             {
-                "bgcolor",
                 "colorbox",
+                "definecolor"
                 "enclose",
-                "fgcolor",
                 "frac",
                 "hide",
                 "image",
@@ -100,6 +101,7 @@ namespace WpfMath
                 "underline",
             };
 
+            userdefinedColors = new Dictionary<string, Color>();
             var formulaSettingsParser = new TexPredefinedFormulaSettingsParser();
             symbols = formulaSettingsParser.GetSymbolMappings();
             delimeters = formulaSettingsParser.GetDelimiterMappings();
@@ -356,47 +358,7 @@ namespace WpfMath
                         var closing = internals.ClosingDelimiter;
                         source = value.Segment(start, position - start);
                         return new FencedAtom(source, internals.Body, opening, closing);
-                    }
-
-                        case "longdiv":
-                case "longdivision":
-                    {
-                        SkipWhiteSpace(value, ref position);
-                        if (position == value.Length)
-                            throw new TexParseException("illegal end!");
-                        var ldivstyle = "lefttop";
-                        if (value[position] == leftBracketChar)
-                        {
-                            // type of enclosure - is specified.
-                            SkipWhiteSpace(value, ref position);
-                            ldivstyle = ReadGroup(formula, value, ref position, leftBracketChar, rightBracketChar);
-                        }
-
-                        List<TexFormula> longdivformulas = new List<TexFormula>();
-                        
-                        for (uint i = 0; i < 4; i++)
-                        {
-                            SkipWhiteSpace(value, ref position);
-                            var longdivitem = Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
-                            longdivformulas.Add(longdivitem);
-                            SkipWhiteSpace(value, ref position);
-                        }
-
-                        List<Atom> ldivatoms = new List<Atom>();
-                        foreach (var item in longdivformulas)
-                        {
-                            if (item!=null&&item.RootAtom!=null)
-                            {
-                                ldivatoms.Add(item.RootAtom);
-                            }
-                            else
-                            {
-                                throw new TexParseException("The items of a longdivision cannot be empty.");
-                            }
-                        }
-
-                        return new LongDivAtom(ldivatoms,ldivstyle);
-                    }
+                    }                        
                     
                 case "right":
                     {
@@ -452,7 +414,7 @@ namespace WpfMath
                     source = value.Segment(start, sqrtEnd - start);
                     return new Radical(source, sqrtFormula.RootAtom, degreeFormula?.RootAtom);
                     }
-                case "fgcolor":
+                case "color":
                     {
                         //Command to change the foreground color 
                         var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
@@ -464,6 +426,11 @@ namespace WpfMath
                         if (predefinedColors.TryGetValue(colorName, out Color color))
                         {
                             return new StyledAtom(remaining.RootAtom, null, new SolidColorBrush(color));
+                        }
+                        else if(userdefinedColors.ContainsKey(colorName.ToString()))
+                        {
+                            source = value.Segment(start, position - start);
+                            return new StyledAtom(source, remaining.RootAtom, null, new SolidColorBrush(userdefinedColors[colorName.ToString()]));
                         }
                         else
                         {
@@ -481,7 +448,7 @@ namespace WpfMath
                             
                         }
                     }
-                case "bgcolor":
+                case "colorbox":
                     {
                         //Command to change the background color
                         var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
@@ -493,126 +460,10 @@ namespace WpfMath
                         {
                             return new StyledAtom(remaining.RootAtom, new SolidColorBrush(color), null);
                         }
-                        else
-                        {
-                            try
-                            {
-                                Color color1 = UserDefinedColorParser.ParseUserColor(colorName);
-                                return new StyledAtom(remaining.RootAtom, new SolidColorBrush(color1), null);
-                            }
-                            catch (Exception ex)
-                            {
-                                string helpstr= HelpOutMessage(colorName, predefinedColors.Keys.ToList());
-                                  int a =position-remainingString.Length-3-colorName.Length;
-                                throw new TexParseException($"Color {colorName} at columns {a} and {a+colorName.Length} could either not be found or converted{helpstr}.");
-                            }
-                        }
-                    }
-                case "matrix":
-                case "table":
-                    {
-                        //command requires a tabular arrangement of atoms.
-                        SkipWhiteSpace(value, ref position);
-                        if (position == value.Length)
-                        {
-                            throw new TexParseException("illegal end!");
-                        }
-                        //the def of table
-                        string tableTypeDef = "0,0";
-                        tableTypeDef= ReadGroup(formula, value, ref position, leftBracketChar, rightBracketChar);
-                        string[] ttdstrarr = new string[] { };
-                        SkipWhiteSpace(value, ref position);
-                        if (tableTypeDef.Contains(",")&&Regex.IsMatch(tableTypeDef,@"[0-9]+,[0-9]+"))
-                        {
-                            ttdstrarr = tableTypeDef.Split(',') ;
-                        }
-                        if (tableTypeDef.Contains(",")==false)
-                        {
-                            throw new TexParseException("Invalid number of columns.");
-                        }
-                        if (tableTypeDef.Contains(",")==true && Regex.IsMatch(tableTypeDef, @"[0-9]+,[0-9]+")==false)
-                        {
-                            throw new TexParseException("Invalid number of rows and columns.");
-                        }
-                        uint rowsdefined = 0;
-                        uint colsdefined = 0;
-                        if (ttdstrarr.Length==2)
-                        {
-                            if (uint.TryParse(ttdstrarr[0], out rowsdefined) == true)
-                            {
-                            }
-                            if (uint.TryParse(ttdstrarr[1], out colsdefined) == true)
-                            {
-                            }
-                            if (uint.TryParse(ttdstrarr[0], out rowsdefined) == false)
-                            {
-                                throw new TexParseException("The number of rows of a table must be >=0.");
-                            }
-                            if (uint.TryParse(ttdstrarr[1], out colsdefined) == false)
-                            {
-                                throw new TexParseException("The number of columns of a table must be >=0.");
-                            }
-                        }
-                        if (ttdstrarr.Length>2)
-                        {
-                            throw new TexParseException("Multiple parameters given for the table.");
-                        }
-
-                        //Need To work on the parsing stage from here downwards
-                        List<List<TexFormula>> TableData = new List<List<TexFormula>>();
-                        for (int i = 0; i < rowsdefined; i++)
-                        {
-                            List<TexFormula> rowData = new List<TexFormula>();
-                            for (int j = 0; j < colsdefined; j++)
-                            {
-                                TexFormula colFxn = new TexFormula();
-                                rowData.Add(colFxn);
-                            }
-                            TableData.Add(rowData);
-                        }
-
-                        List<TexFormula> cellsdata = new List<TexFormula>();
-                        uint cellsdefined = rowsdefined * colsdefined;
-                        for (uint i = 0; i < cellsdefined; i++)
-                        {
-                            SkipWhiteSpace(value, ref position);
-                            var curcell= Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
-                            cellsdata.Add(curcell);
-                            SkipWhiteSpace(value, ref position);
-                        }
-
-                        //create a row atom list:Outer list holds an inner list which contains its cells
-                        List<List<Atom>> tableDataAtoms = new List<List<Atom>>();
-                        for (uint i = 0; i < cellsdefined; i+=colsdefined)
-                        {
-                            List<Atom> rowData = new List<Atom>();
-                            for (uint j = i; j < i+colsdefined; j++)
-                            {
-                                var item = cellsdata[int.Parse(j.ToString())];
-                                if (item==null||item.RootAtom==null)
-                                {
-                                    throw new TexParseException("The cells of a table cannot be empty.");
-                                }
-                                else
-                                {
-                                    rowData.Add(item.RootAtom);
-                                }
-                                
-                            }
-                            tableDataAtoms.Add(rowData);
-                        }
-                                               
-                        return new TableAtom(tableDataAtoms);
-                    }
-                case "colorbox":
-                    {
-                        var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
-                        var remainingString = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
-                        var remaining = Parse(remainingString, formula.TextStyle);
-                        if (predefinedColors.TryGetValue(colorName.ToString(), out var color))
+                        else if(userdefinedColors.ContainsKey(colorName.ToString()))
                         {
                             source = value.Segment(start, position - start);
-                            return new StyledAtom(source, remaining.RootAtom, new SolidColorBrush(color), null);
+                            return new StyledAtom(source, remaining.RootAtom, null, new SolidColorBrush(userdefinedColors[colorName.ToString()]));
                         }
                         else
                         {
@@ -628,8 +479,38 @@ namespace WpfMath
                                 throw new TexParseException($"Color {colorName} at columns {a} and {a+colorName.Length} could either not be found or converted{helpstr}.");
                             }
                         }
-
                     }
+                case "definecolor":
+                    {
+                        //Syntax:\definecolor{colorname}{colormodel}{colordefinition}
+                        var paramgroups = new string[] { "", "", "" };
+                        for (int i = 0; i < 3;i++)
+                        {
+                            var paramgroup = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+                            paramgroups[i] = paramgroup.ToString();
+                        }
+                        for (int i = 0; i < 3; i++)
+                        {
+                            if (paramgroups[i].Trim().Length==0)
+                            {
+                                if (i==1){throw new TexParseException("The name of the color cannot be empty");}
+                                else if (i == 2){throw new TexParseException("The name of the color model cannot be empty");}
+                                else if (i == 3){throw new TexParseException("The color definition cannot be empty");}
+                            }
+                        }
+                        if (userdefinedColors.ContainsKey(paramgroups[0]))
+                        {
+                            userdefinedColors[paramgroups[0]] = ColorUtilities.Parse(paramgroups[1], paramgroups[2]);
+                        }
+                        else
+                        {
+                            userdefinedColors.Add( paramgroups[0],ColorUtilities.Parse(paramgroups[1], paramgroups[2]));
+                        }
+                        int a = paramgroups[0].Length+ paramgroups[1].Length+ paramgroups[2].Length+6;
+                        source = value.Segment(start, position - start-a); 
+                        return new SpaceAtom(source);
+                    }
+                
                 case "uline":
                 case "underline":
                     {
@@ -684,25 +565,7 @@ namespace WpfMath
                         return new PhantomAtom(phantomItemFormula.RootAtom);
                     }
 
-                case "photo":
-                case "image":
-                    {
-                        SkipWhiteSpace(value, ref position);
-                        if (position == value.Length)
-                            throw new TexParseException("illegal end!");
-                        var imagedim = "10:7";
-                        if (value[position] == leftBracketChar)
-                        {
-                            // type of enclosure - is specified.
-                            SkipWhiteSpace(value, ref position);
-                            imagedim = ReadGroup(formula, value, ref position, leftBracketChar, rightBracketChar);
-                            SkipWhiteSpace(value, ref position);
-                        }
-                         
-                        var imagePath = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
-
-                        return new ImageAtom(null,imagePath, imagedim);
-                    }
+                
             }
 
             throw new TexParseException("Invalid command.");
