@@ -5,7 +5,7 @@ namespace WpfMath.Atoms
 {
     internal class ImageAtom : Atom
     {
-        public ImageAtom(Atom baseAtom,string path,string bounds)
+        public ImageAtom(SourceSpan source,Atom baseAtom,string path,string bounds):base(source)
         {
             ImageLocation = path;
             string[] boundsarr = bounds.Split(':');
