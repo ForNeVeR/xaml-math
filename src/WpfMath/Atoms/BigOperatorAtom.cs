@@ -1,9 +1,12 @@
 using System;
 using WpfMath.Boxes;
+using WpfMath.Utils;
 
 namespace WpfMath.Atoms
 {
-    // Atom representing big operator with optional limits.
+    /// <summary>
+    /// Atom representing big operator with optional limits.
+    /// </summary>
     internal class BigOperatorAtom : Atom
     {
         private static Box ChangeWidth(Box box, double maxWidth)
