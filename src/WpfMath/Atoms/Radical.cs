@@ -48,16 +48,7 @@ namespace WpfMath
             var delta = radicalSignBox.Depth - (totalHeight + clearance);
             clearance += delta / 2;
 
-            // Create box for radical sign.
-            var totalHeight = baseBox.Height + baseBox.Depth;
-            var radicalSignBox = DelimiterFactory.CreateBox(sqrtSymbol, totalHeight + clearance + defaultRuleThickness,environment, Source);
-            radicalSignBox.Source = Source;
-            
-            // Add half of excess height to clearance.
-            var delta = radicalSignBox.Depth - (totalHeight + clearance);
-            clearance += delta / 2;
-
-            // Create box for square-root containing base box.
+            // Create box for root base containing base box.
             var overBar = new OverBar(environment, baseBox, clearance, radicalSignBox.Height)
             {
                 Shift = -defaultRuleThickness,
@@ -66,35 +57,35 @@ namespace WpfMath
             //Create box to hold the radical and the degree atom(if it exists)
             var radicalContainerBox = new VerticalBox();
             radicalContainerBox.Add(radicalSignBox);
-            
+
             // Create box for root atom.
-            var  radrootBox =this.DegreeAtom==null?StrutBox.Empty: this.DegreeAtom.CreateBox(environment.GetRootStyle());
+            var radrootBox = this.DegreeAtom == null ? StrutBox.Empty : this.DegreeAtom.CreateBox(environment.GetRootStyle());
             var bottomShift = scale * (radicalSignBox.Height + radicalSignBox.Depth);
-            var rcbItemsdiff = radicalSignBox.TotalHeight -radrootBox.TotalHeight;
+            var rcbItemsdiff = radicalSignBox.TotalHeight - radrootBox.TotalHeight;
             bottomShift = rcbItemsdiff;
-            if (rcbItemsdiff < radicalSignBox.Height/2)
+            radrootBox.Shift = radicalContainerBox.Depth - radicalSignBox.Depth;
+            if (rcbItemsdiff < radicalSignBox.Height / 2)
             {
-                //bottomShift += radicalSignBox.Height / 4;
                 var gh = (radicalSignBox.Height / 2) - bottomShift;
-                bottomShift = (radicalSignBox.Height / 2);
+                bottomShift = (rcbItemsdiff / 2);
+                bottomShift += radicalContainerBox.Depth - radicalSignBox.Depth;
             }
             var Vnegspace = new StrutBox(0, -bottomShift, 0, 0);
             radicalContainerBox.Add(Vnegspace);
             radicalContainerBox.Add(radrootBox);
-            //var Hnegspace = new StrutBox(-radicalSignBox.TotalWidth / 2, -bottomShift, 0, 0);
-            
-            //var rsignboxshift = overBar.TotalHeight - radicalSignBox.TotalHeight;
-            radicalSignBox.Shift =radrootBox.TotalWidth-radicalSignBox.TotalWidth/2;
-            
+
+            radicalSignBox.Shift = radrootBox.TotalWidth - radicalSignBox.TotalWidth / 2;
+
             // Create result box.
             var resultBox = new HorizontalBox();
 
             resultBox.Add(radicalContainerBox);
-            var leftpad = radicalContainerBox.TotalWidth -radicalSignBox.Shift - radicalSignBox.TotalWidth;
+            var leftpad = radicalContainerBox.TotalWidth - radicalSignBox.Shift - radicalSignBox.TotalWidth;
             resultBox.Add(new StrutBox(-leftpad, 0, 0, 0));
             resultBox.Add(overBar);
             resultBox.Shift = -(baseBox.Height + clearance + defaultRuleThickness);
 
+            
             return resultBox;
         }
     }
