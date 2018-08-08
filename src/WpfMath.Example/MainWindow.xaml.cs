@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using WpfMath.Parsers;
 
 namespace WpfMath.Example
 {
