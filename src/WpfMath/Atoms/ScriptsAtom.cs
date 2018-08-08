@@ -1,9 +1,12 @@
 using System;
 using WpfMath.Boxes;
+using WpfMath.Utils;
 
 namespace WpfMath.Atoms
 {
-    // Atom representing scripts to attach to other atom.
+    /// <summary>
+    /// Atom representing scripts to attach to other atom.
+    /// </summary>
     internal class ScriptsAtom : Atom
     {
         private static readonly SpaceAtom scriptSpaceAtom = new SpaceAtom(null, TexUnit.Point, 0.5, 0, 0);
