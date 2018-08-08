@@ -1,10 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Windows;
 using System.Windows.Media;
 using WpfMath.Exceptions;
 
@@ -20,7 +16,7 @@ namespace WpfMath.Parsers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public static Color ParseUserColor(string input)
+        public static Color Parse(string input)
         {
             Color resultColor = new Color();
             ColorStringTypes CST = GetColorString(input.Trim());
@@ -149,28 +145,10 @@ namespace WpfMath.Parsers
         /// <returns></returns>
         private static bool IsByteTrain(string input, int num, out List<byte> resultbytes )
         {
-            bool StrCheck = false;
-            resultbytes= new List<byte>();
-            string[] arrStr = input.Trim().Split(',');
-            if (num == arrStr.Length)
-            {
-                int i = 0;
-                foreach (var item in arrStr)
-                {
-                    if (Byte.TryParse(item, out byte result) == true)
-                    {
-                        i ++;
-                        resultbytes.Add(result);
-                    }
-                    else { continue; }
-                }
-                StrCheck = i == num ? true : false;
-            }
-            else
-            {
-                StrCheck = false;
-            }
-            return StrCheck;
+            resultbytes = new List<byte>();
+            bool valid = Utils.ColorUtilities.IsByteTrain(input, num, out List<byte> result);
+            resultbytes = result;
+            return valid;
         }
         
         /// <summary>
@@ -182,50 +160,10 @@ namespace WpfMath.Parsers
         /// <remarks><paramref name="input"/> should be left in the raw state(e.g.;#56e245, not 56e245).</remarks>
         private static bool IsByteHexTrain(string input, int num, out List<byte> resultByteList)
         {
-            bool StrCheck = false;
-            resultByteList=new List<byte>();
-            List<string> hexTwos = new List<string>();
-            string subStr = input.Substring(1);
-            if (num == subStr.Length)
-            {
-                int c = 0;
-                for (int i = 1; i < num; i+=2)
-                {
-                    string item = subStr[i - 1].ToString() + subStr[1].ToString();
-                    if (Byte.TryParse(item, System.Globalization.NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture, out byte result) == true)
-                    {
-                        c+=2;
-                    }
-                    else { continue; }
-                }
- 
-                StrCheck = (c == num )? true : false;
-                for (int i = 0; i <input.Length; i++)
-                {
-                    if (i%2==0&&i>0)
-                    {
-                        //add the current and previous strings as one to the "hexTwos" list
-                        string str = input[i].ToString() + input[i - 1].ToString();
-                        hexTwos.Add(str);
-                    }
-                }
-
-                if ((num/2)==hexTwos.Count)
-                {
-                    foreach (string item in hexTwos)
-                    {
-                        if (Byte.TryParse(item, NumberStyles.AllowHexSpecifier,CultureInfo.InvariantCulture, out byte hexbyteres) )
-                        {
-                            resultByteList.Add(hexbyteres);
-                        }
-                    }
-                }
-            }
-            else
-            {
-                StrCheck = false;
-            }
-            return StrCheck;
+           resultByteList = new List<byte>();
+            bool valid = Utils.ColorUtilities.IsByteHexTrain(input, num, out List<byte> result);
+            resultByteList = result;
+            return valid;
         }
 
       
