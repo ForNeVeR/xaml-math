@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Media;
 using WpfMath.Rendering;
-using WpfMath.Utilities;
+using WpfMath.Utils;
 
 namespace WpfMath.Boxes
 {
