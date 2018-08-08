@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Media;
 using WpfMath.Rendering;
@@ -31,7 +27,7 @@ namespace WpfMath.Boxes
         {
             var color = Foreground ?? Brushes.Black;
             var rectangle = new Rect(x, y -Height, Width, Height);
-            renderer.RenderRectangle(rectangle,color, Brushes.Transparent);
+            renderer.RenderRectangle(rectangle,color, mull);
 
         }
 
