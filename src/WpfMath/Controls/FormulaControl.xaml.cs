@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using WpfMath.Boxes;
 using WpfMath.Exceptions;
+using WpfMath.Parsers;
 
 namespace WpfMath.Controls
 {
