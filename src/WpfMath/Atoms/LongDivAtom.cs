@@ -1,7 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using WpfMath.Boxes;
 using WpfMath.Exceptions;
 
@@ -63,7 +60,7 @@ namespace WpfMath.Atoms
 
         #endregion
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             switch (LongDivStyle)
             {
@@ -94,7 +91,7 @@ namespace WpfMath.Atoms
 
             var dividend_divisor = new HorizontalBox();
             var divisorbox = this.DivisorAtom == null ? StrutBox.Empty : this.DivisorAtom.CreateBox(environment);
-            var leftsep = new SymbolAtom("rbrack", TexAtomType.Closing, true).CreateBox(environment);
+            var leftsep = SymbolAtom.GetAtom("rbrack", this.Source).CreateBox(environment);
             var dividendbox = this.DividendAtom == null ? StrutBox.Empty : this.DividendAtom.CreateBox(environment);
             double barwidth = leftsep.TotalWidth + dividendbox.TotalWidth;
             var separatorbar = new HorizontalRule(environment, defaultLineThickness, barwidth, -dividendbox.TotalHeight-defaultLineThickness);
@@ -323,9 +320,9 @@ namespace WpfMath.Atoms
             var divisor_dividend_quotient = new HorizontalBox();
 
             var divisorbox = this.DivisorAtom == null ? StrutBox.Empty : this.DivisorAtom.CreateBox(environment);
-            var leftsep = new SymbolAtom("rbrack", TexAtomType.Closing, true).CreateBox(environment);
+            var leftsep = SymbolAtom.GetAtom("rbrack", this.Source).CreateBox(environment);
             var dividendbox = this.DividendAtom == null ? StrutBox.Empty : this.DividendAtom.CreateBox(environment);
-            var rightsep = new SymbolAtom("lbrack", TexAtomType.Opening, true).CreateBox(environment);
+            var rightsep = SymbolAtom.GetAtom("lbrack",this.Source).CreateBox(environment);
             var quotientbox = this.QuotientAtom == null ? StrutBox.Empty : this.QuotientAtom.CreateBox(environment);
 
             divisor_dividend_quotient.Add(divisorbox);
@@ -348,9 +345,9 @@ namespace WpfMath.Atoms
             var divisor_dividend_quotient = new HorizontalBox();
 
             var divisorbox = this.DivisorAtom == null ? StrutBox.Empty : this.DivisorAtom.CreateBox(environment);
-            var leftsep = new SymbolAtom("slash", TexAtomType.Ordinary, true).CreateBox(environment);
+            var leftsep = SymbolAtom.GetAtom("slash",  this.Source).CreateBox(environment);
             var dividendbox = this.DividendAtom == null ? StrutBox.Empty : this.DividendAtom.CreateBox(environment);
-            var rightsep = new SymbolAtom("rslash", TexAtomType.Ordinary, true).CreateBox(environment);
+            var rightsep = SymbolAtom.GetAtom("rslash", this.Source).CreateBox(environment);
             var quotientbox = this.QuotientAtom == null ? StrutBox.Empty : this.QuotientAtom.CreateBox(environment);
 
             divisor_dividend_quotient.Add(divisorbox);
@@ -373,9 +370,9 @@ namespace WpfMath.Atoms
             var divisor_dividend_quotient = new HorizontalBox();
 
             var dividendbox = this.DividendAtom == null ? StrutBox.Empty : this.DividendAtom.CreateBox(environment);
-            var leftsep = new SymbolAtom("colon", TexAtomType.Ordinary, true).CreateBox(environment);
+            var leftsep = SymbolAtom.GetAtom("colon", this.Source).CreateBox(environment);
             var divisorbox = this.DivisorAtom == null ? StrutBox.Empty : this.DivisorAtom.CreateBox(environment);
-            var rightsep = new SymbolAtom("equals", TexAtomType.Opening, true).CreateBox(environment);
+            var rightsep = SymbolAtom.GetAtom("equals", this.Source).CreateBox(environment);
             var quotientbox = this.QuotientAtom == null ? StrutBox.Empty : this.QuotientAtom.CreateBox(environment);
 
             divisor_dividend_quotient.Add(dividendbox);
