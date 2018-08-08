@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using WpfMath.Boxes;
 using WpfMath.Exceptions;
+using WpfMath.Parsers;
 
 namespace WpfMath.Atoms
 {
@@ -26,11 +27,10 @@ namespace WpfMath.Atoms
         /// </summary>
         /// <param name="baseAtom">The base atom.</param>
         /// <param name="encNots">The enclose notations.</param>
-        public EnclosedAtom(Atom baseAtom,string encNots="circle")
+        public EnclosedAtom(SourceSpan source,Atom baseAtom,string encNots="circle"):base(source)
         {
-            this.Type = TexAtomType.Ordinary;
             this.BaseAtom = baseAtom;
-            EncloseNotations = encNots.Split(' ');
+            EncloseNotations = encNots.Split(',');
         }
 
         /// <summary>
