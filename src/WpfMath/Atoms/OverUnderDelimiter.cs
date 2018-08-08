@@ -1,6 +1,7 @@
 using System;
 using WpfMath.Atoms;
 using WpfMath.Boxes;
+using WpfMath.Utils;
 
 namespace WpfMath
 {
