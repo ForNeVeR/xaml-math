@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 using WpfMath.Boxes;
+using System.Windows.Shapes;
 using WpfMath.Rendering.Transformations;
 
 namespace WpfMath.Rendering
@@ -57,7 +58,7 @@ namespace WpfMath.Rendering
         }
 
         /// <summary>
-        /// Renders an image to the <see cref="GeometryGroup"/>.
+        /// Renders a rectangle(an image isn't a geometry) to the <see cref="GeometryGroup"/>.
         /// </summary>
         /// <param name="rectangle"></param>
         /// <param name="imagesrc"></param>
