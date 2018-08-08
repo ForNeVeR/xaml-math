@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using WpfMath.Boxes;
 using WpfMath.Rendering.Transformations;
 
@@ -39,17 +40,16 @@ namespace WpfMath.Rendering
         public void RenderRectangle(Rect rectangle, Brush foreground, Brush background, double rotationAngle = 0)
         {
             var scaledRectangle = GeometryHelper.ScaleRectangle(_scale, rectangle);
-            double rotationAngle_rad = (rotationAngle/180)*Math.PI;
-            double x1, y1, x2, y2;
-            x1= y2 = Math.Cos(rotationAngle_rad);
-            x2 = Math.Sin(rotationAngle_rad);
-            y1 = -Math.Sin(rotationAngle_rad);
-            Matrix transMatrix = new Matrix(x1,x2,y1,y2,0,0);
-            scaledRectangle.Transform(transMatrix);
             var rectGeom = new RectangleGeometry(scaledRectangle);
             Pen rectpen = new Pen(foreground, 0.8);
-            _drawingContext.DrawGeometry(background,rectpen,rectGeom);
-            //_drawingContext.DrawRectangle(foreground, null, scaledRectangle);
+            if (background == null)
+            {
+                _drawingContext.DrawRectangle(foreground, null, scaledRectangle);
+            }
+            else
+            {
+                _drawingContext.DrawGeometry(background, rectpen, rectGeom);
+            }
         }
         
         public void RenderRoundedRectangle(Rect rectangle,Brush foreground,Brush background,double radX,double radY)
