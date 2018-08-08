@@ -80,7 +80,7 @@ namespace WpfMath.Parsers
             commands = new HashSet<string>
             {
                 "colorbox",
-                "definecolor"
+                "definecolor",
                 "enclose",
                 "frac",
                 "hide",
@@ -319,13 +319,13 @@ namespace WpfMath.Parsers
                         //Command to change the foreground color 
                         var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
 
-                        string remainingString = value.Substring(position);
+                        var remainingString = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
                         var remaining = Parse(remainingString, formula.TextStyle);
                         position = value.Length;
-
-                        if (predefinedColors.TryGetValue(colorName, out Color color))
+                        source = value.Segment(start, position - start);
+                        if (predefinedColors.TryGetValue(colorName.ToString(), out Color color))
                         {
-                            return new StyledAtom(remaining.RootAtom, null, new SolidColorBrush(color));
+                            return new StyledAtom(source,remaining.RootAtom, null, new SolidColorBrush(color));
                         }
                         else if(userdefinedColors.ContainsKey(colorName.ToString()))
                         {
@@ -336,14 +336,14 @@ namespace WpfMath.Parsers
                         {
                             try
                             {
-                                Color color1 = UserDefinedColorParser.ParseUserColor(colorName);
-                                return new StyledAtom(remaining.RootAtom, null, new SolidColorBrush(color1));
+                                Color color1 = UserDefinedColorParser.Parse(colorName.ToString());
+                                return new StyledAtom(source,remaining.RootAtom, null, new SolidColorBrush(color1));
                             }
                             catch
                             {
-                                string helpstr= HelpOutMessage(colorName, predefinedColors.Keys.ToList());
+                                string helpstr= HelpOutMessage(colorName.ToString(), predefinedColors.Keys.ToList());
                                 int a =position-remainingString.Length-3-colorName.Length;
-                                throw new TexParseException($"Color {colorName} at columns {a} and {a+colorName.Length} could either not be found or converted{helpstr}.");
+                                throw new TexParseException($"Color {colorName.ToString()} at columns {a} and {a+colorName.Length} could either not be found or converted{helpstr}.");
                             }
                             
                         }
@@ -352,13 +352,13 @@ namespace WpfMath.Parsers
                     {
                         //Command to change the background color
                         var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
-                        string remainingString = value.Substring(position);
+                        var remainingString = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
                         var remaining = Parse(remainingString, formula.TextStyle);
                         position = value.Length;
-
-                        if (predefinedColors.TryGetValue(colorName, out Color color))
+                        source = value.Segment(start, position - start);
+                        if (predefinedColors.TryGetValue(colorName.ToString(), out Color color))
                         {
-                            return new StyledAtom(remaining.RootAtom, new SolidColorBrush(color), null);
+                            return new StyledAtom(source,remaining.RootAtom, new SolidColorBrush(color), null);
                         }
                         else if(userdefinedColors.ContainsKey(colorName.ToString()))
                         {
@@ -369,14 +369,14 @@ namespace WpfMath.Parsers
                         {
                             try
                             {
-                                Color color1 = UserDefinedColorParser.ParseUserColor(colorName);
-                                return new StyledAtom(remaining.RootAtom, new SolidColorBrush(color1), null);
+                                Color color1 = UserDefinedColorParser.Parse(colorName.ToString());
+                                return new StyledAtom(source,remaining.RootAtom, new SolidColorBrush(color1), null);
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
-                                string helpstr= HelpOutMessage(colorName, predefinedColors.Keys.ToList());
+                                string helpstr= HelpOutMessage(colorName.ToString(), predefinedColors.Keys.ToList());
                                 int a =position-remainingString.Length-3-colorName.Length;
-                                throw new TexParseException($"Color {colorName} at columns {a} and {a+colorName.Length} could either not be found or converted{helpstr}.");
+                                throw new TexParseException($"Color {colorName.ToString()} at columns {a} and {a+colorName.Length} could either not be found or converted{helpstr}.");
                             }
                         }
                     }
