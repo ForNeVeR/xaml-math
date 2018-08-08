@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using Microsoft.Win32;
 using System.Windows.Media;
 using System.Xml;
-using static WpfMath.Utilities.CustomFontUtilities;
+using static WpfMath.Utils.CustomFontUtilities;
 using System.Windows.Input;
 
 namespace WpfMath.Controls
