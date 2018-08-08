@@ -8,7 +8,7 @@ using System.Windows;
 using System.Windows.Media;
 using WpfMath.Exceptions;
 
-namespace WpfMath
+namespace WpfMath.Parsers
 {
     /// <summary>
     /// Parses definitions of colors from a <see cref="string"/>.
