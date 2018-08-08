@@ -1,8 +1,4 @@
- using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
 using WpfMath.Boxes;
 
 namespace WpfMath.Atoms
@@ -18,9 +14,8 @@ namespace WpfMath.Atoms
         /// Initializes a new <see cref="TableAtom"/> with the specified cell atoms.
         /// </summary>
         /// <param name="input"></param>
-        public TableAtom(List<List<Atom>> _tblcells, List<Atom> input=null,double tbPad=0.15, double lrpad = 0.5, bool showgridlines=false)
+        public TableAtom(SourceSpan source,List<List<Atom>> _tblcells, List<Atom> input=null,double tbPad=0.15, double lrpad = 0.5, bool showgridlines=false):base(source)
         {
-            this.Type = TexAtomType.Ordinary;
             TableCells = _tblcells;
             BaseAtoms = input;
             GridLinesVisible = showgridlines;
@@ -110,7 +105,7 @@ namespace WpfMath.Atoms
 
         #endregion
 
-        public override Box CreateBox(TexEnvironment environment)
+        protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var defaultLineThickness = environment.MathFont.GetDefaultLineThickness(environment.Style);
 
