@@ -23,7 +23,7 @@ namespace WpfMath.Atoms
         /// </summary>
         /// <param name="input"></param>
         /// <param name="divstyle"></param>
-        public LongDivAtom(List<Atom> input,string divstyle= "lefttop")
+        public LongDivAtom(SourceSpan source,List<Atom> input,string divstyle= "lefttop"):base(source)
         {
             LongDivStyle = divstyle;
             DivisorAtom = input[0];
