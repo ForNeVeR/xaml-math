@@ -30,17 +30,7 @@
                 </Grid.ColumnDefinitions>
                 <Button Name="saveButton" Grid.Column="1" Margin="10,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Stretch" Content="_Save" Click="saveButton_Click" />
             </Grid>
-            <TextBox Name="inputTextBox" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="inputTextBox_SelectionChanged" >
-                <TextBox.ContextMenu>
-                    <ContextMenu Opened="TxbCM_Opened" Loaded="TxbCM_Opened">
-                        <MenuItem x:Name="cutMenuItem" Header="Cut" Click="Cut_Click" IsEnabled="False"/>
-                        <MenuItem x:Name="copyMenuItem" Header="Copy" Click="Copy_Click" IsEnabled="False"/>
-    
-                        <MenuItem x:Name="pasteMenuItem" Header="Paste" Click="Paste_Click" IsEnabled="False"/>
-                        <MenuItem x:Name="openMMLMenuItem" Header="Open MathML" Click="OpenMMLFile_Click"/>
-                    </ContextMenu>
-                </TextBox.ContextMenu>
-            </TextBox>
+            <TextBox Name="inputTextBox" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="inputTextBox_SelectionChanged" />
         </DockPanel>
 
         <Label Margin="10,0,10,10" Grid.Row="1" Grid.Column="0">
