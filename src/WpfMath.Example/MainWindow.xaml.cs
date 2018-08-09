@@ -90,91 +90,6 @@ namespace WpfMath.Example
             return builder.ToString();
         }
 
-     private void TxbCM_Opened(object o, RoutedEventArgs e)
-        {
-            if (Clipboard.ContainsText() == false)
-            {
-                pasteMenuItem.IsEnabled = false;
-            }
-            if (Clipboard.ContainsText() == true)
-            {
-                pasteMenuItem.IsEnabled = true;
-            }
-            if (inputTextBox.SelectedText.Length == 0)
-            {
-                cutMenuItem.IsEnabled = false;
-                copyMenuItem.IsEnabled = false;
-                copyMMLMenuItem.IsEnabled = false;
-            }
-            if (inputTextBox.SelectedText.Length > 0)
-            {
-                cutMenuItem.IsEnabled = true;
-                copyMenuItem.IsEnabled = true;
-                copyMMLMenuItem.IsEnabled = true;
-            }
-        }
-
-
-        private void Cut_Click(object o, RoutedEventArgs e)
-        {
-            inputTextBox.Cut();
-        }
-
-        private void Copy_Click(object o, RoutedEventArgs e)
-        {
-            Clipboard.SetText(inputTextBox.SelectedText);
-        }
-
-        private void CopyasMML_Click(object o, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Paste_Click(object o, RoutedEventArgs e)
-        {
-            if (inputTextBox.SelectedText.Length>0)
-            {
-                int tci = inputTextBox.CaretIndex;
-                int cTL = Clipboard.GetText().Length;
-                string newText = inputTextBox.Text.Insert(inputTextBox.CaretIndex, Clipboard.GetText());
-
-            }
-            else
-            {
-                int tci = inputTextBox.CaretIndex;
-                int cTL = Clipboard.GetText().Length;
-                string newText = inputTextBox.Text.Insert(inputTextBox.CaretIndex, Clipboard.GetText());
-                inputTextBox.Text = newText;
-                inputTextBox.CaretIndex = tci + cTL;
-                inputTextBox.Select(tci, cTL);
-            }
-        }
-
-        private void OpenMMLFile_Click(object o, RoutedEventArgs e)
-        {
-            try
-            {
-                Converters.MathMLtoTexFormula MML2Tex = new Converters.MathMLtoTexFormula();
-                OpenFileDialog dlg = new OpenFileDialog
-                {
-                    Title = "Select the MathML File.",
-                    Multiselect = false,
-                    Filter = "Math ML File(*.mml)|*.mml"
-                };
-                Nullable<bool> result = dlg.ShowDialog();
-                if (result == true)
-                {
-                    inputTextBox.Text = MML2Tex.Parse(dlg.FileName);
-                }
-            }
-            catch (Exception Ex)
-            {
-
-                MessageBox.Show(Ex.Message);
-            }
-            
-            
-        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.formulaParser = new TexFormulaParser();
@@ -195,5 +110,6 @@ namespace WpfMath.Example
             formula.SelectionStart = inputTextBox.SelectionStart;
             formula.SelectionLength = inputTextBox.SelectionLength;
         }
+
     }
 }
