@@ -30,7 +30,34 @@ namespace WpfMath.Rendering
         /// <summary>Renders a rectangle.</summary>
         /// <param name="rectangle">Rectangle to render.</param>
         /// <param name="foreground">Rectangle foreground color.</param>
-        void RenderRectangle(Rect rectangle, Brush foreground);
+        void RenderRectangle(Rect rectangle, Brush foreground, Brush background, double rotationAngle = 0);
+        
+        /// <summary>Renders a rounded rectangle.</summary>
+        /// <param name="rectangle">Bounds of the rounded rectangle.</param>
+        /// <param name="foreground">Rectangle foreground color.</param>
+        void RenderRoundedRectangle(Rect rectangle, Brush foreground, Brush background, double RadiusX = 0,double RadiusY=0);
+
+
+        /// <summary>Renders an ellipse.</summary>
+        /// <param name="rectangle">Ellipse to render.</param>
+        /// <param name="foreground">Ellipse foreground color.</param>
+        void RenderEllipse(Rect rectangle, Brush foreground, Brush background);
+
+        /// <summary>
+        /// Renders an image.
+        /// </summary>
+        /// <param name="rectangle"></param>
+        /// <param name="imagesrc"></param>
+        void RenderImage(Rect rectangle, string imagesrc);
+
+        /// <summary>
+        /// Renders a line.
+        /// </summary>
+        /// <param name="startPoint">The start point of the line.</param>
+        /// <param name="endPoint">The end point of the line.</param>
+        /// <param name="foreground">The stroke brush of the line.</param>
+        void RenderLine(Point startPoint, Point endPoint, Brush foreground);
+
 
         /// <summary>Renders a box applying the geometry transforms.</summary>
         /// <param name="box">A box to render.</param>

@@ -1,14 +1,15 @@
-﻿using System.Windows;
+using System.Windows;
 using System.Windows.Media;
 using WpfMath.Rendering;
 
 namespace WpfMath.Boxes
 {
-    // Box representing single character.
+    /// <summary>
+    /// Box representing single character.
+    /// </summary>
     internal class CharBox : Box
     {
-        public CharBox(TexEnvironment environment, CharInfo charInfo)
-            : base(environment)
+        public CharBox(TexEnvironment environment, CharInfo charInfo): base(environment)
         {
             this.Character = charInfo;
             this.Width = charInfo.Metrics.Width;

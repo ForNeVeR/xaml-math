@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using WpfMath.Parsers;
 
 namespace WpfMath.Example
 {
@@ -109,5 +110,6 @@ namespace WpfMath.Example
             formula.SelectionStart = inputTextBox.SelectionStart;
             formula.SelectionLength = inputTextBox.SelectionLength;
         }
+
     }
 }

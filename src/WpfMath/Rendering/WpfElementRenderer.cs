@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using WpfMath.Boxes;
 using WpfMath.Rendering.Transformations;
 
@@ -36,10 +37,58 @@ namespace WpfMath.Rendering
             _drawingContext.DrawGlyphRun(foreground, glyphRun);
         }
 
-        public void RenderRectangle(Rect rectangle, Brush foreground)
+        public void RenderRectangle(Rect rectangle, Brush foreground, Brush background, double rotationAngle = 0)
         {
             var scaledRectangle = GeometryHelper.ScaleRectangle(_scale, rectangle);
-            _drawingContext.DrawRectangle(foreground, null, scaledRectangle);
+            var rectGeom = new RectangleGeometry(scaledRectangle);
+            Pen rectpen = new Pen(foreground, 0.8);
+            if (background == null)
+            {
+                _drawingContext.DrawRectangle(foreground, null, scaledRectangle);
+            }
+            else
+            {
+                _drawingContext.DrawGeometry(background, rectpen, rectGeom);
+            }
+        }
+        
+        public void RenderRoundedRectangle(Rect rectangle,Brush foreground,Brush background,double radX,double radY)
+        {
+            Rect scaledRectangle = GeometryHelper.ScaleRectangle(_scale, rectangle);
+            Pen rectpen = new Pen(foreground, 1.2);
+
+            _drawingContext.DrawRoundedRectangle(background, rectpen, scaledRectangle, radX, radY);
+        }
+
+        public void RenderEllipse(Rect rectangle, Brush foreground, Brush background)
+        {
+            var scaledEllipse = GeometryHelper.ScaleRectangle(_scale, rectangle);
+            var cPt = new Point(scaledEllipse.X+ (scaledEllipse.Width / 2), scaledEllipse.Y+ (scaledEllipse.Height / 2));
+            Pen ellpen = new Pen(foreground, 1);
+            var radius_X = scaledEllipse.Width / 2;
+            var radius_Y = scaledEllipse.Height / 2;
+            _drawingContext.DrawEllipse(background, ellpen, cPt, radius_X,radius_Y);
+        }
+
+        /// <summary>
+        /// Renders an image to the <see cref="GeometryGroup"/>.
+        /// </summary>
+        /// <param name="rectangle"></param>
+        /// <param name="imagesrc"></param>
+        public void RenderImage(Rect rectangle, string imagesrc)
+        {
+            var scaledImg = GeometryHelper.ScaleRectangle(_scale, rectangle);
+            
+            ImageSource  img= new BitmapImage(new Uri(imagesrc));
+            _drawingContext.DrawImage(img, scaledImg);
+        }
+
+        public void RenderLine(Point startPt, Point endPt, Brush foreground)
+        {
+            var scaledSP = GeometryHelper.ScalePoint(_scale, startPt);
+            var scaledEP = GeometryHelper.ScalePoint(_scale, endPt);
+            Pen linePen = new Pen(foreground, 1);
+            _drawingContext.DrawLine(linePen,scaledSP,scaledEP);
         }
 
         public void RenderTransformed(Box box, Transformation[] transforms, double x, double y)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace WpfMath
+namespace WpfMath.Utils
 {
     internal static class TexFontUtilities
     {

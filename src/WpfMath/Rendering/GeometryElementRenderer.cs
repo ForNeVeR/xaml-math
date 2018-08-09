@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 using WpfMath.Boxes;
+using System.Windows.Shapes;
 using WpfMath.Rendering.Transformations;
 
 namespace WpfMath.Rendering
@@ -29,12 +30,53 @@ namespace WpfMath.Rendering
             _geometry.Children.Add(glyphGeometry);
         }
 
-        public void RenderRectangle(Rect rectangle, Brush foreground)
+        public void RenderRectangle(Rect rectangle, Brush foreground, Brush background, double rotationAngle=0)
+        {
+            var rectangleGeometry = new RectangleGeometry(GeometryHelper.ScaleRectangle(_scale, rectangle))
+            {
+                Transform = new RotateTransform(rotationAngle)
+            };
+            _geometry.Children.Add(rectangleGeometry);
+        }
+        public void RenderRoundedRectangle(Rect rectangle, Brush foreground, Brush background, double radX, double radY)
+        {
+            Rect scaledRectangle = GeometryHelper.ScaleRectangle(_scale, rectangle);
+            Pen rectpen = new Pen(foreground, 0.8);
+            var roundrectangleGeometry = new RectangleGeometry(scaledRectangle, radX, radY);
+            _geometry.Children.Add(roundrectangleGeometry);
+        }
+
+        /// <summary>
+        /// Renders an ellipse to the <see cref="GeometryGroup"/>.
+        /// </summary>
+        /// <param name="rectangle"></param>
+        /// <param name="foreground"></param>
+        public void RenderEllipse(Rect rectangle, Brush foreground, Brush background)
+        {
+            var ellipseGeometry = new EllipseGeometry(GeometryHelper.ScaleRectangle(_scale, rectangle));
+            _geometry.Children.Add(ellipseGeometry);
+        }
+
+        /// <summary>
+        /// Renders a rectangle(an image isn't a geometry) to the <see cref="GeometryGroup"/>.
+        /// </summary>
+        /// <param name="rectangle"></param>
+        /// <param name="imagesrc"></param>
+        public void RenderImage(Rect rectangle, string imagesrc)
         {
             var rectangleGeometry = new RectangleGeometry(GeometryHelper.ScaleRectangle(_scale, rectangle));
+
+            ImageBrush imgbrs = new ImageBrush();
+            Rectangle ty=new Rectangle();
+            GeometryDrawing geodrw = new GeometryDrawing(imgbrs, null, rectangleGeometry);
             _geometry.Children.Add(rectangleGeometry);
         }
 
+        public void RenderLine(Point startPoint, Point endPoint,Brush foreground)
+        {
+            var lineGeometry = new LineGeometry(GeometryHelper.ScalePoint(_scale,startPoint), GeometryHelper.ScalePoint(_scale, endPoint));
+            _geometry.Children.Add(lineGeometry);
+        }
         public void RenderTransformed(Box box, Transformation[] transforms, double x, double y)
         {
             var group = new GeometryGroup();

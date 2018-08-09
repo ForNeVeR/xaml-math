@@ -7,14 +7,15 @@ using System.Windows;
 using System.Windows.Media;
 using WpfMath.Atoms;
 using WpfMath.Exceptions;
+using WpfMath.Utils;
 
-namespace WpfMath
+namespace WpfMath.Parsers
 {
     // TODO: Put all error strings into resources.
     // TODO: Use TextReader for lexing.
     public class TexFormulaParser
     {
-        // Special characters for parsing
+        #region Special characters for parsing
         private const char escapeChar = '\\';
 
         private const char leftGroupChar = '{';
@@ -25,8 +26,9 @@ namespace WpfMath
         private const char subScriptChar = '_';
         private const char superScriptChar = '^';
         private const char primeChar = '\'';
-
-        // Information used for parsing
+        private const char commentChar='%';
+        #endregion
+        #region Information used for parsing
         private static HashSet<string> commands;
         private static IList<string> symbols;
         private static IList<string> delimeters;
@@ -34,6 +36,7 @@ namespace WpfMath
         private static readonly IDictionary<string, Func<SourceSpan, TexFormula>> predefinedFormulas =
             new Dictionary<string, Func<SourceSpan, TexFormula>>();
         private static IDictionary<string, Color> predefinedColors;
+        private static Dictionary<string, Color> userdefinedColors;
 
         private static readonly string[][] delimiterNames =
         {
@@ -49,7 +52,7 @@ namespace WpfMath
             new[] { "vert", "vert" },
             new[] { "Vert", "Vert" }
         };
-
+        #endregion
         static TexFormulaParser()
         {
             predefinedColors = new Dictionary<string, Color>();
@@ -76,14 +79,20 @@ namespace WpfMath
 
             commands = new HashSet<string>
             {
+                "colorbox",
+                "definecolor",
+                "enclose",
                 "frac",
+                "hide",
                 "left",
+                "overline",
+                "phantom",
                 "right",
                 "sqrt",
-                "color",
-                "colorbox"
+                "underline",
             };
 
+            userdefinedColors = new Dictionary<string, Color>();
             var formulaSettingsParser = new TexPredefinedFormulaSettingsParser();
             symbols = formulaSettingsParser.GetSymbolMappings();
             delimeters = formulaSettingsParser.GetDelimiterMappings();
@@ -305,7 +314,129 @@ namespace WpfMath
             SourceSpan source;
             switch (command)
             {
-                case "frac":
+                case "color":
+                    {
+                        //Command to change the foreground color 
+                        var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+
+                        var remainingString = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+                        var remaining = Parse(remainingString, formula.TextStyle);
+                        position = value.Length;
+                        source = value.Segment(start, position - start);
+                        if (predefinedColors.TryGetValue(colorName.ToString(), out Color color))
+                        {
+                            return new StyledAtom(source,remaining.RootAtom, null, new SolidColorBrush(color));
+                        }
+                        else if(userdefinedColors.ContainsKey(colorName.ToString()))
+                        {
+                            source = value.Segment(start, position - start);
+                            return new StyledAtom(source, remaining.RootAtom, null, new SolidColorBrush(userdefinedColors[colorName.ToString()]));
+                        }
+                        else
+                        {
+                            try
+                            {
+                                Color color1 = UserDefinedColorParser.Parse(colorName.ToString());
+                                return new StyledAtom(source,remaining.RootAtom, null, new SolidColorBrush(color1));
+                            }
+                            catch
+                            {
+                                string helpstr= HelpOutMessage(colorName.ToString(), predefinedColors.Keys.ToList());
+                                int a =position-remainingString.Length-3-colorName.Length;
+                                throw new TexParseException($"Color {colorName.ToString()} at columns {a} and {a+colorName.Length} could either not be found or converted{helpstr}.");
+                            }
+                            
+                        }
+                    }
+                case "colorbox":
+                    {
+                        //Command to change the background color
+                        var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+                        var remainingString = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+                        var remaining = Parse(remainingString, formula.TextStyle);
+                        position = value.Length;
+                        source = value.Segment(start, position - start);
+                        if (predefinedColors.TryGetValue(colorName.ToString(), out Color color))
+                        {
+                            return new StyledAtom(source,remaining.RootAtom, new SolidColorBrush(color), null);
+                        }
+                        else if(userdefinedColors.ContainsKey(colorName.ToString()))
+                        {
+                            source = value.Segment(start, position - start);
+                            return new StyledAtom(source, remaining.RootAtom, null, new SolidColorBrush(userdefinedColors[colorName.ToString()]));
+                        }
+                        else
+                        {
+                            try
+                            {
+                                Color color1 = UserDefinedColorParser.Parse(colorName.ToString());
+                                return new StyledAtom(source,remaining.RootAtom, new SolidColorBrush(color1), null);
+                            }
+                            catch (Exception)
+                            {
+                                string helpstr= HelpOutMessage(colorName.ToString(), predefinedColors.Keys.ToList());
+                                int a =position-remainingString.Length-3-colorName.Length;
+                                throw new TexParseException($"Color {colorName.ToString()} at columns {a} and {a+colorName.Length} could either not be found or converted{helpstr}.");
+                            }
+                        }
+                    }
+                case "definecolor":
+                    {
+                        //Syntax:\definecolor{colorname}{colormodel}{colordefinition}
+                        var paramgroups = new string[] { "", "", "" };
+                        for (int i = 0; i < 3;i++)
+                        {
+                            var paramgroup = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+                            paramgroups[i] = paramgroup.ToString();
+                        }
+                        for (int i = 0; i < 3; i++)
+                        {
+                            if (paramgroups[i].Trim().Length==0)
+                            {
+                                if (i==1){throw new TexParseException("The name of the color cannot be empty");}
+                                else if (i == 2){throw new TexParseException("The name of the color model cannot be empty");}
+                                else if (i == 3){throw new TexParseException("The color definition cannot be empty");}
+                            }
+                        }
+                        if (userdefinedColors.ContainsKey(paramgroups[0]))
+                        {
+                            userdefinedColors[paramgroups[0]] = ColorUtilities.Parse(paramgroups[1], paramgroups[2]);
+                        }
+                        else
+                        {
+                            userdefinedColors.Add( paramgroups[0],ColorUtilities.Parse(paramgroups[1], paramgroups[2]));
+                        }
+                        int a = paramgroups[0].Length+ paramgroups[1].Length+ paramgroups[2].Length+6;
+                        source = value.Segment(start, position - start-a); 
+                        return new SpaceAtom(source);
+                    }
+                    
+                case "enclose":
+                    {
+                        SkipWhiteSpace(value, ref position);
+                        if (position == value.Length)
+                            throw new TexParseException("illegal end!");
+                        var enclosetypes = "circle";
+                        if (value[position] == leftBracketChar)
+                        {
+                            // type of enclosure - is specified.
+                            SkipWhiteSpace(value, ref position);
+                            enclosetypes = ReadGroup(formula, value, ref position, leftBracketChar, rightBracketChar).ToString();
+                        }
+
+
+                        var enclosedItemFormula = Parse(
+                            ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
+
+                        if (enclosedItemFormula.RootAtom == null)
+                        {
+                            throw new TexParseException("The enclosed item can't be empty!");
+                        }
+                        source = value.Segment(start, position - start);
+                        return new EnclosedAtom(source,enclosedItemFormula.RootAtom, enclosetypes);
+                    }
+                    
+                case "frac":{
                     // Command is fraction.
 
                     var numeratorFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar,
@@ -318,7 +449,7 @@ namespace WpfMath
 
                     source = value.Segment(start, position - start);
                     return new FractionAtom(source, numeratorFormula.RootAtom, denominatorFormula.RootAtom, true);
-
+                    }
                 case "left":
                     {
                         SkipWhiteSpace(value, ref position);
@@ -340,8 +471,28 @@ namespace WpfMath
                         var closing = internals.ClosingDelimiter;
                         source = value.Segment(start, position - start);
                         return new FencedAtom(source, internals.Body, opening, closing);
+                    }                        
+                    
+                case "overline":
+                    {
+                        var overlineFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
+                        SkipWhiteSpace(value, ref position);
+                        source = value.Segment(start, position - start);
+                        return new OverlinedAtom(source, overlineFormula.RootAtom);
                     }
 
+                case "phantom":
+                case "hide":
+                    {
+                        SkipWhiteSpace(value, ref position);
+                        if (position == value.Length)
+                            throw new TexParseException("illegal end!");
+
+                        var phantomItemFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
+                        source = value.Segment(start, position - start);
+                        return new PhantomAtom(source,phantomItemFormula.RootAtom);
+                    }
+                    
                 case "right":
                     {
                         if (!allowClosingDelimiter)
@@ -365,6 +516,7 @@ namespace WpfMath
                     }
 
                 case "sqrt":
+                    {
                     // Command is radical.
 
                     SkipWhiteSpace(value, ref position);
@@ -374,6 +526,7 @@ namespace WpfMath
                     int sqrtEnd = position;
 
                     TexFormula degreeFormula = null;
+                 
                     if (value[position] == leftBracketChar)
                     {
                         // Degree of radical- is specified.
@@ -388,44 +541,47 @@ namespace WpfMath
 
                     if (sqrtFormula.RootAtom == null)
                     {
-                        throw new TexParseException("The radicand of a square root can't be empty!");
+                        throw new TexParseException($"The radicand of the square root at column {position-1} can't be empty!");
                     }
 
                     source = value.Segment(start, sqrtEnd - start);
                     return new Radical(source, sqrtFormula.RootAtom, degreeFormula?.RootAtom);
-
-                case "color":
-                    {
-                        var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
-                        var remainingString = value.Segment(position);
-                        var remaining = Parse(remainingString, formula.TextStyle);
-                        position = value.Length;
-                        if (predefinedColors.TryGetValue(colorName.ToString(), out var color))
-                        {
-                            source = value.Segment(start, position - start);
-                            return new StyledAtom(source, remaining.RootAtom, null, new SolidColorBrush(color));
-                        }
-
-                        throw new TexParseException($"Color {colorName} not found");
                     }
-                case "colorbox":
+                    
+                case "underline":
                     {
-                        var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
-                        var remainingString = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
-                        var remaining = Parse(remainingString, formula.TextStyle);
-                        if (predefinedColors.TryGetValue(colorName.ToString(), out var color))
-                        {
-                            source = value.Segment(start, position - start);
-                            return new StyledAtom(source, remaining.RootAtom, new SolidColorBrush(color), null);
-                        }
-
-                        throw new TexParseException($"Color {colorName} not found");
+                        var underlineFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar,rightGroupChar), formula.TextStyle);
+                        SkipWhiteSpace(value, ref position);
+                        source = value.Segment(start, position - start);
+                        return new UnderlinedAtom(source,underlineFormula.RootAtom);
                     }
             }
-
             throw new TexParseException("Invalid command.");
         }
 
+        public static string HelpOutMessage(string input, List<string> database)
+        {
+            string helpStr=""; bool helpGiven=false;
+            foreach(var item in database){
+                if(input!=""&& input!=null&& input.Trim().Length>=1&& database!=null&&item!=null&&item!=""&& database.Count>0)
+                   {
+                    if(item.StartsWith(input)){
+                        helpStr=$" Did you mean: {item}";
+                        helpGiven=true;}
+                    if(item.Contains(input))
+                        {
+                        if(helpGiven==false){
+                            helpStr=$" Did you mean: {item}";
+                            helpGiven=true;
+                            }
+                        else{continue;}
+                        }
+                    else{continue;}
+                    }
+                else{continue;}
+                }
+            return helpStr;
+        }
         private void ProcessEscapeSequence(
             TexFormula formula,
             SourceSpan value,
@@ -528,7 +684,16 @@ namespace WpfMath
             else
             {
                 // Escape sequence is invalid.
-                throw new TexParseException("Unknown symbol or command or predefined TeXFormula: '" + command + "'");
+                
+                List<string> somepossibleparams=new List<string>();
+                foreach(var item in commands){somepossibleparams.Add(item);}
+                 foreach(var item in delimeters){somepossibleparams.Add(item);}
+                 foreach(var item in predefinedFormulas){somepossibleparams.Add(item.Key);}
+                 foreach(var item in textStyles){somepossibleparams.Add(item);}
+                 foreach(var item in symbols){somepossibleparams.Add(item);}
+                
+                string helpstr=HelpOutMessage(command,somepossibleparams);
+                throw new TexParseException("Unknown symbol or command or predefined TeXFormula: '" + command + "'"+helpstr);
             }
         }
 

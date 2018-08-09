@@ -6,8 +6,9 @@ using System.Text;
 using System.Windows;
 using System.Windows.Media;
 using System.Xml.Linq;
+using WpfMath.Utils;
 
-namespace WpfMath
+namespace WpfMath.Parsers
 {
     // Parses information for DefaultTeXFont settings from XML file.
     internal class DefaultTexFontParser
