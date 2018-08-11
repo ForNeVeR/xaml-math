@@ -63,12 +63,10 @@ namespace WpfMath
             var bottomShift = scale * (radicalSignBox.Height + radicalSignBox.Depth);
             var rcbItemsdiff = radicalSignBox.TotalHeight - radrootBox.TotalHeight;
             bottomShift = rcbItemsdiff;
-            radrootBox.Shift = radicalContainerBox.Depth - radicalSignBox.Depth;
-            if (rcbItemsdiff < radicalSignBox.Height / 2)
+            radrootBox.Shift =0;
+            if (radrootBox.TotalHeight< radicalSignBox.TotalHeight / 2)
             {
-                var gh = (radicalSignBox.Height / 2) - bottomShift;
-                bottomShift = (rcbItemsdiff / 2);
-                bottomShift += radicalContainerBox.Depth - radicalSignBox.Depth;
+                bottomShift = (radicalSignBox.TotalHeight/2) + radrootBox.TotalHeight;
             }
             var Vnegspace = new StrutBox(0, -bottomShift, 0, 0);
             radicalContainerBox.Add(Vnegspace);
