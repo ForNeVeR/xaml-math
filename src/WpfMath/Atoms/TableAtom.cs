@@ -1,4 +1,9 @@
+ using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows;
+using System.Windows.Media;
 using WpfMath.Boxes;
 
 namespace WpfMath.Atoms
@@ -107,127 +112,118 @@ namespace WpfMath.Atoms
 
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
-            var defaultLineThickness = environment.MathFont.GetDefaultLineThickness(environment.Style);
+            var texFont = environment.MathFont;
+            var style = environment.Style;
+            var axis = texFont.GetAxisHeight(style);
+            var defaultLineThickness = texFont.GetDefaultLineThickness(style);
 
-            #region Suggested Height and width             
-            //sum of rows height
-            double b = defaultLineThickness * TableCells.Count;
-            //sum of table height
-            double c = b + (TableCells.Count * 2 * CellBottomTopPadding);
 
-            #endregion
 
             //Region for adjustment vars
             double maxrowWidth = 0;
-            double maxCellWidth = 0;
-            double maxCellHeight = 0;
+            //double maxCellWidth = 0;
+            //double maxCellHeight = 0;
             double maxrowHeight = 0;
-            //Table Atom Height should be the sum of its childrens height
-            double sigmaHeight = 0;
+            //store the max cell height for each row
+            List<double> RowsMaxCellHeight = new List<double>();
+            for (int i = 0; i < RowCount; i++)
+            {
+                RowsMaxCellHeight.Add(0);
+            }
+            //store the max cell width for each column
+            List<double> ColumnsMaxCellWidth = new List<double>();
+            for (int i = 0; i < ColumnCount; i++)
+            {
+                ColumnsMaxCellWidth.Add(0);
+            }
             //Create a vertical box to hold the rows and their cells
             var resultBox = new VerticalBox
             {
                 Height =0,
-                Background=environment.Background
+                Background=Brushes.Red,//environment.Background,
             };
 
-            List<Box> tblboxes = new List<Box>();
+            //List<Box> tblboxes = new List<Box>();
             //Focus on this sect
             for (int i = 0; i < RowCount; i++)
             {
-                #region Row Top
-                if (GridLinesVisible == true)
-                {
-                    var rectbox = new HorizontalRule(environment, CellBottomTopPadding / 4, maxrowWidth, 0);
-                    resultBox.Add(rectbox);
-                    tblboxes.Add(rectbox);
-                }
-                if (GridLinesVisible == false)
-                {
-                    var rectbox = new StrutBox(maxrowWidth, CellBottomTopPadding / 2, 0, 0);
-                    resultBox.Add(rectbox);
-                    tblboxes.Add(rectbox);
-                }
-                #endregion
+                //row top pad
+                var rectbox = new StrutBox(maxrowWidth, CellBottomTopPadding / 2, 0, 0);
+                resultBox.Add(rectbox);
 
                 var rowbox =  new HorizontalBox(StrutBox.Empty,0,TexAlignment.Center);
                 double chkrwidth = 0;
                 for (int j = 0; j < ColumnCount; j++)
                 {
-                    #region Cell Left
-                    if (GridLinesVisible == true)
-                    {
-                        rowbox.Add(new VerticalRule(environment, CellLeftRightPadding / 4, maxrowHeight, 0));
-                        chkrwidth += CellLeftRightPadding / 4;
-                    }
-                    if (GridLinesVisible == false)
-                    {
-                        rowbox.Add(new StrutBox( CellLeftRightPadding / 2, maxrowHeight, 0, 0));
-                        chkrwidth += CellLeftRightPadding / 2;
-                    }
-                    #endregion
-
+                    //cell left pad
+                    rowbox.Add(new StrutBox( CellLeftRightPadding / 2, maxrowHeight, 0, 0));
+                    chkrwidth += CellLeftRightPadding / 2;
+                    //cell box
                     var rowcolbox = TableCells[i][j] == null ? StrutBox.Empty : TableCells[i][j].CreateBox(environment);
-                    maxCellHeight = rowcolbox.Height > maxCellHeight ? rowcolbox.Height : maxCellHeight;
-                    maxCellWidth= rowcolbox.Width > maxCellWidth ? rowcolbox.Width : maxCellWidth;
+                    RowsMaxCellHeight[i] = rowcolbox.TotalHeight > RowsMaxCellHeight[i] ? rowcolbox.TotalHeight : RowsMaxCellHeight[i];
+                    ColumnsMaxCellWidth[j]= rowcolbox.TotalWidth > ColumnsMaxCellWidth[j] ? rowcolbox.TotalWidth : ColumnsMaxCellWidth[j];
                     rowbox.Add(rowcolbox);
-                    chkrwidth += rowcolbox.Width;
+                    chkrwidth += rowcolbox.TotalWidth;
 
-                    #region Cell Right
-                    if (GridLinesVisible == true)
-                    {
-                        rowbox.Add(new VerticalRule(environment, CellLeftRightPadding / 4, maxrowHeight, 0));
-                        chkrwidth += CellLeftRightPadding / 4;
-                    }
-                    if (GridLinesVisible == false)
-                    {
-                        rowbox.Add(new StrutBox(CellLeftRightPadding / 2, maxrowHeight, 0, 0));
-                        chkrwidth += CellLeftRightPadding / 2;
-                    }
-                    #endregion
-
+                    //cell right pad
+                    rowbox.Add(new StrutBox(CellLeftRightPadding / 2, maxrowHeight, 0, 0));
+                    chkrwidth += CellLeftRightPadding / 2;
                 }
                 maxrowWidth = chkrwidth > maxrowWidth ? chkrwidth : maxrowWidth;
-                maxrowHeight = maxCellHeight > maxrowHeight ? maxCellHeight : maxrowHeight;
+                maxrowHeight = RowsMaxCellHeight[i] > maxrowHeight ? RowsMaxCellHeight[i] : maxrowHeight;
                 rowbox.Height = maxrowHeight;
                 rowbox.Width = maxrowWidth;
 
                 resultBox.Add(rowbox);
-
-                #region Row Bottom
-                if (GridLinesVisible == true)
-                {
-                    resultBox.Add(new HorizontalRule(environment, CellBottomTopPadding / 4, maxrowWidth, 0));
-                }
-                if (GridLinesVisible == false)
-                {
-                    resultBox.Add(new StrutBox(maxrowWidth, CellBottomTopPadding / 2, 0, 0));
-                }
-                #endregion
-
+                //row bottom pad
+                resultBox.Add(new StrutBox(maxrowWidth, CellBottomTopPadding / 2, 0, 0));
             }
 
-            foreach (var item in tblboxes)
+            int a = 0;
+            int b = 0;
+            double maxpad = 0;
+            for (int i = 0; i < resultBox.Children.Count; i++)
             {
-                item.Width = maxrowWidth;
-                if (item is HorizontalBox)
+                var tablerowitem = resultBox.Children[i];
+                
+                if (tablerowitem is HorizontalBox)
                 {
-                    item.Height = maxrowHeight;
-                    
-                    foreach (var item1 in ((HorizontalBox)item).Children)
+                    tablerowitem.Width = maxrowWidth;
+                    tablerowitem.Height = maxrowHeight;
+                    double paddedrowwidth = 0;
+                    for (int j = 0; j < ((HorizontalBox)tablerowitem).Children.Count; j++)
                     {
-                        if (item1 is VerticalRule||item1 is StrutBox)
+                        var rowcolitem = ((HorizontalBox)tablerowitem).Children[j];
+                        if (rowcolitem is StrutBox)
                         {
 
                         }
                         else
                         {
-                            item1.Width = maxCellWidth;
+                            
+                            double cellVShift = RowsMaxCellHeight[a] - rowcolitem.TotalHeight;
+                            rowcolitem.Shift = -(cellVShift / 2);
+                            double cellHShift = ColumnsMaxCellWidth[b]-rowcolitem.TotalWidth;
+                            ((HorizontalBox)tablerowitem).Children[j-1].Width = cellHShift / 2;
+                            ((HorizontalBox)tablerowitem).Children[j + 1].Width = cellHShift / 2;
+                            if (paddedrowwidth==0)
+                            {
+
+                            }
+                            paddedrowwidth += rowcolitem.TotalWidth+2*(cellHShift / 2);
+                            //item1.Width = maxCellWidth;
+                            b++;
                         }
                     }
+                    if (paddedrowwidth>maxpad)
+                    {
+                        maxpad = paddedrowwidth;
+                    }
+                    b = 0;
+                    a++;
                 }
             }
-               
+
             //    sigmaHeight += rowatm.Height;
             //    sigmaHeight += 2 * CellBottomTopPadding;
 
@@ -236,13 +232,20 @@ namespace WpfMath.Atoms
                 item.Width = maxrowWidth;
             }
 
-            double adjTotheight = (TableCells.Count * maxrowHeight) + (TableCells.Count * 2 * CellBottomTopPadding);
+            //(RowCount * maxrowHeight) 
+            double adjustedTotalHeight = RowsMaxCellHeight.Sum()+ (RowCount * 2 * CellBottomTopPadding);
             resultBox.Depth = 0;// + 2 * defaultLineThickness;
-            resultBox.Height = c>adjTotheight?c:adjTotheight;
-            resultBox.Width = maxrowWidth+2*CellBottomTopPadding;
-
+            resultBox.Height = adjustedTotalHeight;
+            resultBox.Width = maxpad;// +2*CellBottomTopPadding;
+            resultBox.Shift = axis>= resultBox.TotalHeight? - (axis- resultBox.TotalHeight)/2: ( resultBox.TotalHeight-axis) / 2;
+            var testbox = new HorizontalBox();
+            testbox.Add(new StrutBox(CellLeftRightPadding/8, 0, 0, 0));
+            testbox.Add(resultBox);
+            testbox.Height = resultBox.TotalHeight-resultBox.Shift + (CellBottomTopPadding / 8);
+            //testbox.Shift = (CellBottomTopPadding / 8);
+            testbox.Add(new StrutBox(CellLeftRightPadding/8, 0, 0, 0));
             //MessageBox.Show("Def: "+defaultLineThickness.ToString() + "ThisTable: " + resultBox.Height.ToString());
-            return resultBox;
+            return testbox;
         }
 
     }
