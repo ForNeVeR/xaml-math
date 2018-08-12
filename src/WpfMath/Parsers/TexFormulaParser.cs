@@ -85,10 +85,12 @@ namespace WpfMath.Parsers
                 "frac",
                 "hide",
                 "left",
+                "middle",
                 "overline",
                 "phantom",
                 "right",
                 "sqrt",
+                "table",
                 "underline",
             };
 
@@ -546,6 +548,110 @@ namespace WpfMath.Parsers
 
                     source = value.Segment(start, sqrtEnd - start);
                     return new Radical(source, sqrtFormula.RootAtom, degreeFormula?.RootAtom);
+                    }
+                    
+                    case "table":
+                    case "matrix":
+                    {
+                        //command requires a tabular arrangement of atoms.
+                        SkipWhiteSpace(value, ref position);
+                        if (position == value.Length)
+                        {
+                            throw new TexParseException("illegal end!");
+                        }
+                        //the definition of the table(number of columns and rows)
+                        string tableTypeDef = "";
+                        //table type definition string array
+                        string[] ttdstrarr = new string[] { };
+                        int beginning = position;
+                        if (value[position] == leftBracketChar)
+                        {
+                            tableTypeDef = ReadGroup(formula, value, ref position, leftBracketChar, rightBracketChar).ToString();
+                            SkipWhiteSpace(value, ref position);
+                        }
+                        if (tableTypeDef.Length == 0)
+                        {
+                            throw new TexParseException("The definition for the table has not been given.");
+                        }
+                        if (tableTypeDef.Contains(",") && Regex.IsMatch(tableTypeDef, @"[0-9]+,[0-9]+"))
+                        {
+                            ttdstrarr = tableTypeDef.Split(',');
+                        }
+                        if (tableTypeDef.Contains(",") == false)
+                        {
+                            throw new TexParseException("Invalid number of columns.");
+                        }
+                        if (tableTypeDef.Contains(",") == true && Regex.IsMatch(tableTypeDef, @"[0-9]+,[0-9]+") == false)
+                        {
+                            throw new TexParseException("Invalid number of rows and columns.");
+                        }
+                        uint rowsdefined = 0;
+                        uint colsdefined = 0;
+                        if (ttdstrarr.Length == 2)
+                        {
+                            if (uint.TryParse(ttdstrarr[0], out rowsdefined) == true){  }
+                            if (uint.TryParse(ttdstrarr[1], out colsdefined) == true){ }
+                            if (uint.TryParse(ttdstrarr[0], out rowsdefined) == false)
+                            {
+                                throw new TexParseException("The number of rows of a table must be >=0.");
+                            }
+                            if (uint.TryParse(ttdstrarr[1], out colsdefined) == false)
+                            {
+                                throw new TexParseException("The number of columns of a table must be >=0.");
+                            }
+                        }
+                        if (ttdstrarr.Length > 2)
+                        {
+                            throw new TexParseException("Multiple parameters given for the table.");
+                        }
+                        SkipWhiteSpace(value, ref position);
+                        
+                        List<List<TexFormula>> TableData = new List<List<TexFormula>>();
+                        for (int i = 0; i < rowsdefined; i++)
+                        {
+                            List<TexFormula> rowData = new List<TexFormula>();
+                            for (int j = 0; j < colsdefined; j++)
+                            {
+                                TexFormula colFxn = new TexFormula();
+                                rowData.Add(colFxn);
+                            }
+                            TableData.Add(rowData);
+                        }
+
+                        List<TexFormula> cellsdata = new List<TexFormula>();
+                        uint cellsdefined = rowsdefined * colsdefined;
+
+                        for (uint i = 0; i < cellsdefined; i++)
+                        {
+                            SkipWhiteSpace(value, ref position);
+                            var curcellsrc = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+                            var curcell = Parse(curcellsrc, formula.TextStyle);
+                            cellsdata.Add(curcell);
+                            SkipWhiteSpace(value, ref position);
+                        }
+
+                        //create a row atom list:Outer list holds an inner list which contains its cells
+                        List<List<Atom>> tableDataAtoms = new List<List<Atom>>();
+                        for (uint i = 0; i < cellsdefined; i += colsdefined)
+                        {
+                            List<Atom> rowData = new List<Atom>();
+                            for (uint j = i; j < i + colsdefined; j++)
+                            {
+                                var item = cellsdata[int.Parse(j.ToString())];
+                                if (item == null || item.RootAtom == null)
+                                {
+                                    throw new TexParseException("The cells of a table cannot be empty.");
+                                }
+                                else
+                                {
+                                    rowData.Add(item.RootAtom);
+                                }
+                            }
+                            tableDataAtoms.Add(rowData);
+                        }
+
+                        source = value.Segment(start, beginning - start);
+                        return new TableAtom(source, tableDataAtoms);
                     }
                     
                 case "underline":
