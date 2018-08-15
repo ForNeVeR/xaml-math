@@ -76,12 +76,13 @@ namespace WpfMath
 
             commands = new HashSet<string>
             {
+                "color",
+                "colorbox",
                 "frac",
                 "left",
                 "right",
                 "sqrt",
-                "color",
-                "colorbox"
+                "overline",
             };
 
             var formulaSettingsParser = new TexPredefinedFormulaSettingsParser();
@@ -341,7 +342,13 @@ namespace WpfMath
                         source = value.Segment(start, position - start);
                         return new FencedAtom(source, internals.Body, opening, closing);
                     }
-
+                case "overline":
+                    {
+                        var overlineFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
+                        SkipWhiteSpace(value, ref position);
+                        source = value.Segment(start, position - start);
+                        return new OverlinedAtom(source, overlineFormula.RootAtom);
+                    }
                 case "right":
                     {
                         if (!allowClosingDelimiter)
