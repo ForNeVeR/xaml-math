@@ -344,8 +344,8 @@ namespace WpfMath
                     }
                 case "overline":
                     {
-                        var overlineFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
-                        SkipWhiteSpace(value, ref position);
+                        var overlineFormula = this.Parse(this.ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
+                        this.SkipWhiteSpace(value, ref position);
                         source = value.Segment(start, position - start);
                         return new OverlinedAtom(source, overlineFormula.RootAtom);
                     }
