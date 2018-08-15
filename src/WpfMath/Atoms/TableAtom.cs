@@ -8,8 +8,6 @@ using WpfMath.Boxes;
 
 namespace WpfMath.Atoms
 {
-    //TODO: Make each cell be as wide as the widest in its vertical group 
-    //each row to be as wide as the widest row
     /// <summary>
     /// Atom representing a tabular arrangement of Atoms.
     /// </summary>
@@ -18,12 +16,9 @@ namespace WpfMath.Atoms
         /// <summary>
         /// Initializes a new <see cref="TableAtom"/> with the specified cell atoms.
         /// </summary>
-        /// <param name="input"></param>
-        public TableAtom(SourceSpan source,List<List<Atom>> _tblcells, List<Atom> input=null,double tbPad=0.15, double lrpad = 0.5, bool showgridlines=false):base(source)
+        public TableAtom(SourceSpan source,List<List<Atom>> _tblcells, double tbPad=0.15, double lrpad = 0.5):base(source)
         {
             TableCells = _tblcells;
-            BaseAtoms = input;
-            GridLinesVisible = showgridlines;
             CellBottomTopPadding = tbPad;
             CellLeftRightPadding = lrpad;
         }
@@ -33,23 +28,6 @@ namespace WpfMath.Atoms
         /// Gets or sets the table cell <see cref="Atom"/>s contained in this table.
         /// </summary>
         public List<List<Atom>> TableCells
-        {
-            get; private set;
-        }
-
-        /// <summary>
-        /// Gets or sets the rows <see cref="Atom"/>s contained in this table.
-        /// </summary>
-        public List<Atom> BaseAtoms
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// Gets or sets the visibility of the gridlines in the <see cref="TableAtom"/>.
-        /// </summary>
-        public bool GridLinesVisible
         {
             get; private set;
         }
@@ -121,8 +99,6 @@ namespace WpfMath.Atoms
 
             //Region for adjustment vars
             double maxrowWidth = 0;
-            //double maxCellWidth = 0;
-            //double maxCellHeight = 0;
             double maxrowHeight = 0;
             //store the max cell height for each row
             List<double> RowsMaxCellHeight = new List<double>();
@@ -137,14 +113,8 @@ namespace WpfMath.Atoms
                 ColumnsMaxCellWidth.Add(0);
             }
             //Create a vertical box to hold the rows and their cells
-            var resultBox = new VerticalBox
-            {
-                Height =0,
-                Background=Brushes.Red,//environment.Background,
-            };
+            var resultBox = new VerticalBox(){Background=Brushes.Red,//environment.Background,};
 
-            //List<Box> tblboxes = new List<Box>();
-            //Focus on this sect
             for (int i = 0; i < RowCount; i++)
             {
                 //row top pad
@@ -223,29 +193,28 @@ namespace WpfMath.Atoms
                     a++;
                 }
             }
-
-            //    sigmaHeight += rowatm.Height;
-            //    sigmaHeight += 2 * CellBottomTopPadding;
-
+            double sigmaTotalHeight = 0;
+            double sigmaDepth = 0;
+            double sigmaHeight = 0;
             foreach (var item in resultBox.Children)
             {
                 item.Width = maxrowWidth;
+                sigmaTotalHeight += item.TotalHeight;
+                sigmaHeight += item.Height;
+                sigmaDepth += item.Depth;
             }
 
-            //(RowCount * maxrowHeight) 
-            double adjustedTotalHeight = RowsMaxCellHeight.Sum()+ (RowCount * 2 * CellBottomTopPadding);
+            double adjustedTotalHeight = RowsMaxCellHeight.Sum()+ (RowCount * CellBottomTopPadding);
             resultBox.Depth = 0;// + 2 * defaultLineThickness;
-            resultBox.Height = adjustedTotalHeight;
+            resultBox.Height = adjustedTotalHeight>sigmaTotalHeight?adjustedTotalHeight:sigmaTotalHeight;
             resultBox.Width = maxpad;// +2*CellBottomTopPadding;
-            resultBox.Shift = axis>= resultBox.TotalHeight? - (axis- resultBox.TotalHeight)/2: ( resultBox.TotalHeight-axis) / 2;
-            var testbox = new HorizontalBox();
-            testbox.Add(new StrutBox(CellLeftRightPadding/8, 0, 0, 0));
-            testbox.Add(resultBox);
-            testbox.Height = resultBox.TotalHeight-resultBox.Shift + (CellBottomTopPadding / 8);
-            //testbox.Shift = (CellBottomTopPadding / 8);
-            testbox.Add(new StrutBox(CellLeftRightPadding/8, 0, 0, 0));
-            //MessageBox.Show("Def: "+defaultLineThickness.ToString() + "ThisTable: " + resultBox.Height.ToString());
-            return testbox;
+            var enviroYDiff = axis>= resultBox.TotalHeight ? - (axis- resultBox.TotalHeight)/2: ( resultBox.TotalHeight-axis) / 2;
+            resultBox.Shift = enviroYDiff;
+            var finalbox = new HorizontalBox() { Background=Brushes.Yellow};
+            finalbox.Add(new StrutBox(CellLeftRightPadding/8, 0, 0, 0));
+            finalbox.Add(resultBox);
+            finalbox.Add(new StrutBox(CellLeftRightPadding/8, 0, 0, 0));
+            return finalbox;
         }
 
     }
