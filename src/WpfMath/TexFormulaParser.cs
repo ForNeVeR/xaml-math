@@ -80,6 +80,7 @@ namespace WpfMath
                 "left",
                 "right",
                 "sqrt",
+                "underline",
                 "color",
                 "colorbox"
             };
@@ -394,6 +395,13 @@ namespace WpfMath
                     source = value.Segment(start, sqrtEnd - start);
                     return new Radical(source, sqrtFormula.RootAtom, degreeFormula?.RootAtom);
 
+                case "underline":
+                    {
+                        var underlineFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
+                        SkipWhiteSpace(value, ref position);
+                        source = value.Segment(start, position - start);
+                        return new UnderlinedAtom(source, underlineFormula.RootAtom);
+                    }
                 case "color":
                     {
                         var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
