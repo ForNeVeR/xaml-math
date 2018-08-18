@@ -56,6 +56,9 @@ namespace WpfMath
 
             //Create box to hold the radical and the degree atom(if it exists)
             var radicalContainerBox = new VerticalBox();
+            //Create a box for creating a space for the radical sign box's left shift and width
+            var horizoverlapbox= new StrutBox(0,0,0,0);
+            radicalContainerBox.Add(horizoverlapbox);
             radicalContainerBox.Add(radicalSignBox);
 
             // Create box for root atom.
@@ -72,7 +75,10 @@ namespace WpfMath
             radicalContainerBox.Add(Vnegspace);
             radicalContainerBox.Add(radrootBox);
 
-            radicalSignBox.Shift = radrootBox.TotalWidth - radicalSignBox.TotalWidth / 2;
+            var leftshift = radrootBox.TotalWidth - radicalSignBox.TotalWidth / 2;
+            radicalSignBox.Shift= leftshift;
+            //increase the left overlap width
+            horizoverlapbox.Width= leftshift+radicalSignBox.Width;
 
             // Create result box.
             var resultBox = new HorizontalBox();
