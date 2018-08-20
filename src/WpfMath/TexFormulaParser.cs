@@ -285,6 +285,19 @@ namespace WpfMath
             {
                 return Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
             }
+            else if (ch == escapeChar)
+            {
+                StringBuilder sb = new StringBuilder("\\");
+                position++;
+                while (position < value.Length && IsWhiteSpace(value[position]) == false && value[position] != escapeChar)
+                {
+                    sb.Append(value[position].ToString());
+                    position++;
+                }
+                var scriptlengthb = sb.Length;
+                var scrsrc = value.Segment(position - scriptlengthb, scriptlengthb);
+                return Parse(scrsrc, formula.TextStyle);
+            }
             else
             {
                 position++;
@@ -308,19 +321,40 @@ namespace WpfMath
             switch (command)
             {
                 case "frac":
-                    // Command is fraction.
+                    {
+                        // Command is fraction.
+                        SkipWhiteSpace(value, ref position);
+                        if (value[position]==leftGroupChar)
+                        {
+                            var numeratorFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar,
+                                                   rightGroupChar), formula.TextStyle);
+                            SkipWhiteSpace(value, ref position);
+                            var denominatorFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar,
+                                                     rightGroupChar), formula.TextStyle);
+                            if (numeratorFormula.RootAtom == null || denominatorFormula.RootAtom == null)
+                                throw new TexParseException("Both numerator and denominator of a fraction can't be empty!");
 
-                    var numeratorFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar,
-                        rightGroupChar), formula.TextStyle);
-                    SkipWhiteSpace(value, ref position);
-                    var denominatorFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar,
-                        rightGroupChar), formula.TextStyle);
-                    if (numeratorFormula.RootAtom == null || denominatorFormula.RootAtom == null)
-                        throw new TexParseException("Both numerator and denominator of a fraction can't be empty!");
+                            source = value.Segment(start, position - start);
+                            return new FractionAtom(source, numeratorFormula.RootAtom, denominatorFormula.RootAtom, true);
 
-                    source = value.Segment(start, position - start);
-                    return new FractionAtom(source, numeratorFormula.RootAtom, denominatorFormula.RootAtom, true);
+                        }
+                        else
+                        {
+                            StringBuilder sb = new StringBuilder();
+                            while (position < value.Length && IsWhiteSpace(value[position]) == false && value[position] != escapeChar )
+                            {
+                                sb.Append(value[position].ToString());
+                                position++;
+                            }
+                            var b = sb.ToString().Length;
+                            source = value.Segment(position - b, b);
+                            int sectseppt=((int)Math.Floor((double)(source.Length/2)));
+                            var numeratorFormula = Parse(source.Segment(0,sectseppt),formula.TextStyle);
+                            var denominatorFormula= Parse(source.Segment(sectseppt, source.Length-sectseppt), formula.TextStyle);
 
+                            return new FractionAtom(source, numeratorFormula.RootAtom, denominatorFormula.RootAtom, true);
+                        }
+                    }
                 case "left":
                     {
                         SkipWhiteSpace(value, ref position);
@@ -345,10 +379,19 @@ namespace WpfMath
                     }
                 case "overline":
                     {
-                        var overlineFormula = this.Parse(this.ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
-                        this.SkipWhiteSpace(value, ref position);
-                        source = value.Segment(start, position - start);
-                        return new OverlinedAtom(source, overlineFormula.RootAtom);
+                       if (value[position]==leftGroupChar)
+                        {
+                            var overlineFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
+                            SkipWhiteSpace(value, ref position);
+                            source = value.Segment(start, position - start);
+                            return new OverlinedAtom(source, overlineFormula.RootAtom);
+                        }
+                        else
+                        {
+                            source = GetSimpleUngroupedSource(value,ref position);
+                            var overlineFormula = Parse(source, formula.TextStyle);
+                            return new OverlinedAtom(source, overlineFormula.RootAtom);
+                        }
                     }
                 case "right":
                     {
@@ -373,34 +416,45 @@ namespace WpfMath
                     }
 
                 case "sqrt":
-                    // Command is radical.
-
-                    SkipWhiteSpace(value, ref position);
-                    if (position == value.Length)
-                        throw new TexParseException("illegal end!");
-
-                    int sqrtEnd = position;
-
-                    TexFormula degreeFormula = null;
-                    if (value[position] == leftBracketChar)
                     {
-                        // Degree of radical- is specified.
-                        degreeFormula = Parse(ReadGroup(formula, value, ref position, leftBracketChar,
-                            rightBracketChar), formula.TextStyle);
+                        // Command is radical.
                         SkipWhiteSpace(value, ref position);
+                        if (value[position]==leftBracketChar||value[position]==leftGroupChar)
+                        {
+                            if (position == value.Length)
+                                throw new TexParseException("illegal end!");
+
+                            int sqrtEnd = position;
+
+                            TexFormula degreeFormula = null;
+
+                            if (value[position] == leftBracketChar)
+                            {
+                                // Degree of radical- is specified.
+                                degreeFormula = Parse(ReadGroup(formula, value, ref position, leftBracketChar,
+                                    rightBracketChar), formula.TextStyle);
+                                SkipWhiteSpace(value, ref position);
+                            }
+
+                            var sqrtFormula = this.Parse(
+                                this.ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar),
+                                formula.TextStyle);
+
+                            if (sqrtFormula.RootAtom == null)
+                            {
+                                throw new TexParseException($"The radicand of the square root at column {position - 1} can't be empty!");
+                            }
+
+                            source = value.Segment(start, sqrtEnd - start);
+                            return new Radical(source, sqrtFormula.RootAtom, degreeFormula?.RootAtom);
+                        }
+                        else
+                        {
+                            source = GetSimpleUngroupedSource(value,ref position);
+                            var sqrtFormula = Parse(source, formula.TextStyle);
+                            return new Radical(source, sqrtFormula.RootAtom, null);
+                        }
                     }
-
-                    var sqrtFormula = this.Parse(
-                        this.ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar),
-                        formula.TextStyle);
-
-                    if (sqrtFormula.RootAtom == null)
-                    {
-                        throw new TexParseException("The radicand of a square root can't be empty!");
-                    }
-
-                    source = value.Segment(start, sqrtEnd - start);
-                    return new Radical(source, sqrtFormula.RootAtom, degreeFormula?.RootAtom);
 
                 case "underline":
                     {
@@ -439,6 +493,35 @@ namespace WpfMath
             }
 
             throw new TexParseException("Invalid command.");
+        }
+
+        private SourceSpan GetSimpleUngroupedSource(SourceSpan value,ref int position)
+        {
+            SourceSpan result;
+            if (value[position] == escapeChar)
+            {
+                StringBuilder sb = new StringBuilder("\\");
+                position++;
+                while (position < value.Length && IsWhiteSpace(value[position]) == false && value[position] != escapeChar && Char.IsLetter(value[position]))
+                {
+                    sb.Append(value[position].ToString());
+                    position++;
+                }
+                var grouplength = sb.Length;
+                result = value.Segment(position - grouplength, grouplength);
+            }
+            else
+            {
+                StringBuilder sb = new StringBuilder();
+                while (position < value.Length && IsWhiteSpace(value[position]) == false && value[position] != escapeChar)
+                {
+                    sb.Append(value[position].ToString());
+                    position++;
+                }
+                var grouplength = sb.Length;
+                result = value.Segment(position - grouplength, grouplength);
+            }
+            return result;
         }
 
         private void ProcessEscapeSequence(
