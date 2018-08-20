@@ -144,6 +144,7 @@
   <Symbol name="Im" type="ord"/>
   <Symbol name="partial" type="ord"/>
   <Symbol name="infty" type="ord"/>
+  <Symbol name="oo" type="ord"/>
   <Symbol name="prime" type="ord"/>
   <Symbol name="emptyset" type="ord"/>
   <Symbol name="nabla" type="ord"/>
