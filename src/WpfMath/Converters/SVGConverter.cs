@@ -6,7 +6,7 @@ using System.Windows.Media;
 using System.Globalization;
 using System.Diagnostics;
 
-namespace WpfMath
+namespace WpfMath.Converters
 {
     public class SVGConverter
     {
