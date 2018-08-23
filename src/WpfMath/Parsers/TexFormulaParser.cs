@@ -466,8 +466,8 @@ namespace WpfMath.Parsers
                             SkipWhiteSpace(value, ref position);
                             var denominatorFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar,
                                                      rightGroupChar), formula.TextStyle);
-                            if (numeratorFormula.RootAtom == null || denominatorFormula.RootAtom == null)
-                                throw new TexParseException("Both numerator and denominator of a fraction can't be empty!");
+                            //if (numeratorFormula.RootAtom == null || denominatorFormula.RootAtom == null)
+                            //    throw new TexParseException("Both numerator and denominator of a fraction can't be empty!");
 
                             source = value.Segment(start, position - start);
                             return new FractionAtom(source, numeratorFormula.RootAtom, denominatorFormula.RootAtom, true);
@@ -574,12 +574,11 @@ namespace WpfMath.Parsers
 
                 case "sqrt":
                     {
-                    // Command is radical.
-
-                    SkipWhiteSpace(value, ref position);
-                    if(position==value.Length)
-                        throw new TexParseException("illegal end!");
-                     if (value[position]==leftBracketChar||value[position]==leftGroupChar)
+                        // Command is radical.
+                        SkipWhiteSpace(value, ref position);
+                        if(position==value.Length)
+                            throw new TexParseException("illegal end!");
+                        if (value[position]==leftBracketChar||value[position]==leftGroupChar)
                         {
                             if (position == value.Length)
                                 throw new TexParseException("illegal end!");
@@ -587,10 +586,11 @@ namespace WpfMath.Parsers
                             int sqrtEnd = position;
 
                             TexFormula degreeFormula = null;
-
+                            bool degreerequested=false;
                             if (value[position] == leftBracketChar)
                             {
                                 // Degree of radical- is specified.
+                                degreerequested= true;
                                 degreeFormula = Parse(ReadGroup(formula, value, ref position, leftBracketChar,
                                     rightBracketChar), formula.TextStyle);
                                 SkipWhiteSpace(value, ref position);
@@ -606,13 +606,13 @@ namespace WpfMath.Parsers
                             }
 
                             source = value.Segment(start, sqrtEnd - start);
-                            return new Radical(source, sqrtFormula.RootAtom, degreeFormula?.RootAtom);
+                            return new Radical(source, sqrtFormula.RootAtom, degreeFormula?.RootAtom, degreerequested );
                         }
                         else
                         {
                             source = GetSimpleUngroupedSource(value,ref position);
                             var sqrtFormula = Parse(source, formula.TextStyle);
-                            return new Radical(source, sqrtFormula.RootAtom, null);
+                            return new Radical(source, sqrtFormula.RootAtom, null, false);
                         }
                     }
                     
