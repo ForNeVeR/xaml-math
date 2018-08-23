@@ -79,16 +79,20 @@ namespace WpfMath.Parsers
 
             commands = new HashSet<string>
             {
+                "color",
                 "colorbox",
                 "definecolor",
                 "enclose",
                 "frac",
                 "hide",
+                "it",
                 "left",
                 "overline",
                 "phantom",
                 "right",
+                "rm",
                 "sqrt",
+                "table",
                 "underline",
             };
 
@@ -292,6 +296,19 @@ namespace WpfMath.Parsers
             {
                 return Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
             }
+            else if (ch == escapeChar)
+            {
+                StringBuilder sb = new StringBuilder("\\");
+                position++;
+                while (position < value.Length && IsWhiteSpace(value[position]) == false && value[position] != escapeChar)
+                {
+                    sb.Append(value[position].ToString());
+                    position++;
+                }
+                var scriptlengthb = sb.Length;
+                var scrsrc = value.Segment(position - scriptlengthb, scriptlengthb);
+                return Parse(scrsrc, formula.TextStyle);
+            }
             else
             {
                 position++;
@@ -437,18 +454,46 @@ namespace WpfMath.Parsers
                     }
                     
                 case "frac":{
-                    // Command is fraction.
+                        // Command is fraction.
+                        SkipWhiteSpace(value, ref position);
+                        if(position==value.Length)
+                            throw new TexParseException("illegal end!");
+                        
+                        if (value[position]==leftGroupChar)
+                        {
+                            var numeratorFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar,
+                                                   rightGroupChar), formula.TextStyle);
+                            SkipWhiteSpace(value, ref position);
+                            var denominatorFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar,
+                                                     rightGroupChar), formula.TextStyle);
+                            if (numeratorFormula.RootAtom == null || denominatorFormula.RootAtom == null)
+                                throw new TexParseException("Both numerator and denominator of a fraction can't be empty!");
 
-                    var numeratorFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar,
-                        rightGroupChar), formula.TextStyle);
-                    SkipWhiteSpace(value, ref position);
-                    var denominatorFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar,
-                        rightGroupChar), formula.TextStyle);
-                    if (numeratorFormula.RootAtom == null || denominatorFormula.RootAtom == null)
-                        throw new TexParseException("Both numerator and denominator of a fraction can't be empty!");
+                            source = value.Segment(start, position - start);
+                            return new FractionAtom(source, numeratorFormula.RootAtom, denominatorFormula.RootAtom, true);
 
-                    source = value.Segment(start, position - start);
-                    return new FractionAtom(source, numeratorFormula.RootAtom, denominatorFormula.RootAtom, true);
+                        }
+                        else
+                        {
+                            StringBuilder sb = new StringBuilder();
+                            while (position < value.Length && IsWhiteSpace(value[position]) == false && value[position] != escapeChar )
+                            {
+                                sb.Append(value[position].ToString());
+                                position++;
+                            }
+                            var b = sb.ToString().Length;
+                            source = value.Segment(position - b, b);
+                            int sectseppt=((int)Math.Floor((double)(source.Length/2)));
+                            var numeratorFormula = Parse(source.Segment(0,sectseppt),formula.TextStyle);
+                            var denominatorFormula= Parse(source.Segment(sectseppt, source.Length-sectseppt), formula.TextStyle);
+
+                            return new FractionAtom(source, numeratorFormula.RootAtom, denominatorFormula.RootAtom, true);
+                        }
+                    }
+                 case "it":
+                    {
+                        formula.TextStyle="mathit";
+                        return new NullAtom(new SourceSpan ("", position,0);
                     }
                 case "left":
                     {
@@ -475,10 +520,22 @@ namespace WpfMath.Parsers
                     
                 case "overline":
                     {
-                        var overlineFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
-                        SkipWhiteSpace(value, ref position);
-                        source = value.Segment(start, position - start);
-                        return new OverlinedAtom(source, overlineFormula.RootAtom);
+                        SkipWhiteSpace(value,ref position);
+                        if(position==value.Length)
+                            throw new TexParseException("illegal end!");
+                        if (value[position]==leftGroupChar)
+                        {
+                            var overlineFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
+                            SkipWhiteSpace(value, ref position);
+                            source = value.Segment(start, position - start);
+                            return new OverlinedAtom(source, overlineFormula.RootAtom);
+                        }
+                        else
+                        {
+                            source = GetSimpleUngroupedSource(value,ref position);
+                            var overlineFormula = Parse(source, formula.TextStyle);
+                            return new OverlinedAtom(source, overlineFormula.RootAtom);
+                        }
                     }
 
                 case "phantom":
@@ -520,43 +577,94 @@ namespace WpfMath.Parsers
                     // Command is radical.
 
                     SkipWhiteSpace(value, ref position);
-                    if (position == value.Length)
+                    if(position==value.Length)
                         throw new TexParseException("illegal end!");
+                     if (value[position]==leftBracketChar||value[position]==leftGroupChar)
+                        {
+                            if (position == value.Length)
+                                throw new TexParseException("illegal end!");
 
-                    int sqrtEnd = position;
+                            int sqrtEnd = position;
 
-                    TexFormula degreeFormula = null;
-                 
-                    if (value[position] == leftBracketChar)
-                    {
-                        // Degree of radical- is specified.
-                        degreeFormula = Parse(ReadGroup(formula, value, ref position, leftBracketChar,
-                            rightBracketChar), formula.TextStyle);
-                        SkipWhiteSpace(value, ref position);
-                    }
+                            TexFormula degreeFormula = null;
 
-                    var sqrtFormula = this.Parse(
-                        this.ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar),
-                        formula.TextStyle);
+                            if (value[position] == leftBracketChar)
+                            {
+                                // Degree of radical- is specified.
+                                degreeFormula = Parse(ReadGroup(formula, value, ref position, leftBracketChar,
+                                    rightBracketChar), formula.TextStyle);
+                                SkipWhiteSpace(value, ref position);
+                            }
 
-                    if (sqrtFormula.RootAtom == null)
-                    {
-                        throw new TexParseException($"The radicand of the square root at column {position-1} can't be empty!");
-                    }
+                            var sqrtFormula = this.Parse(
+                                this.ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar),
+                                formula.TextStyle);
 
-                    source = value.Segment(start, sqrtEnd - start);
-                    return new Radical(source, sqrtFormula.RootAtom, degreeFormula?.RootAtom);
+                            if (sqrtFormula.RootAtom == null)
+                            {
+                                throw new TexParseException($"The radicand of the square root at column {position - 1} can't be empty!");
+                            }
+
+                            source = value.Segment(start, sqrtEnd - start);
+                            return new Radical(source, sqrtFormula.RootAtom, degreeFormula?.RootAtom);
+                        }
+                        else
+                        {
+                            source = GetSimpleUngroupedSource(value,ref position);
+                            var sqrtFormula = Parse(source, formula.TextStyle);
+                            return new Radical(source, sqrtFormula.RootAtom, null);
+                        }
                     }
                     
                 case "underline":
                     {
-                        var underlineFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar,rightGroupChar), formula.TextStyle);
-                        SkipWhiteSpace(value, ref position);
-                        source = value.Segment(start, position - start);
-                        return new UnderlinedAtom(source,underlineFormula.RootAtom);
+                        if(position==value.Length)
+                            throw new TexParseException("illegal end!");
+                        if (value[position]==leftGroupChar)
+                        {
+                            var underlineFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
+                            SkipWhiteSpace(value, ref position);
+                            source = value.Segment(start, position - start);
+                            return new UnderlinedAtom(source, underlineFormula.RootAtom);
+                        }
+                        else
+                        {
+                            source = GetSimpleUngroupedSource(value,ref position);
+                            var underlineFormula = Parse(source, formula.TextStyle);
+                            return new UnderlinedAtom(source, underlineFormula.RootAtom);
+                        }
                     }
             }
             throw new TexParseException("Invalid command.");
+        }
+        
+        private SourceSpan GetSimpleUngroupedSource(SourceSpan value,ref int position)
+        {
+            SourceSpan result;
+            if (value[position] == escapeChar)
+            {
+                StringBuilder sb = new StringBuilder("\\");
+                position++;
+                while (position < value.Length && IsWhiteSpace(value[position]) == false && value[position] != escapeChar && Char.IsLetter(value[position]))
+                {
+                    sb.Append(value[position].ToString());
+                    position++;
+                }
+                var grouplength = sb.Length;
+                result = value.Segment(position - grouplength, grouplength);
+            }
+            else
+            {
+                StringBuilder sb = new StringBuilder();
+                while (position < value.Length && IsWhiteSpace(value[position]) == false && value[position] != escapeChar)
+                {
+                    sb.Append(value[position].ToString());
+                    position++;
+                }
+                var grouplength = sb.Length;
+                result = value.Segment(position - grouplength, grouplength);
+            }
+            return result;
         }
 
         public static string HelpOutMessage(string input, List<string> database)
