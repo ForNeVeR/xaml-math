@@ -323,6 +323,8 @@ namespace WpfMath
                 case "frac":
                     {
                         // Command is fraction.
+                        if(position== value.Length)
+                            throw new TexParseException("illegal end!");
                         SkipWhiteSpace(value, ref position);
                         if (value[position]==leftGroupChar)
                         {
@@ -379,6 +381,8 @@ namespace WpfMath
                     }
                 case "overline":
                     {
+                       if(position== value.Length)
+                           throw new TexParseException("illegal end!");
                        if (value[position]==leftGroupChar)
                         {
                             var overlineFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
@@ -419,6 +423,8 @@ namespace WpfMath
                     {
                         // Command is radical.
                         SkipWhiteSpace(value, ref position);
+                        if(position== value.Length)
+                            throw new TexParseException("illegal end!");
                         if (value[position]==leftBracketChar||value[position]==leftGroupChar)
                         {
                             if (position == value.Length)
