@@ -1,24 +1,24 @@
- using System;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Media;
+using System.Text.RegularExpressions;
 using WpfMath.Boxes;
 
 namespace WpfMath.Atoms
 {
     /// <summary>
-    /// Atom representing a tabular arrangement of Atoms.
+    /// An atom representing a tabular arrangement of Atoms.
     /// </summary>
     internal class TableAtom:Atom
     {
         /// <summary>
         /// Initializes a new <see cref="TableAtom"/> with the specified cell atoms.
         /// </summary>
-        public TableAtom(SourceSpan source,List<List<Atom>> _tblcells, double tbPad=0.15, double lrpad = 0.5):base(source)
+        public TableAtom(SourceSpan source,List<List<Atom>> _tblcells,TexAlignment cellValignment=TexAlignment.Center,TexAlignment cellHAlignment=TexAlignment.Center, double tbPad=0.35, double lrpad = 0.35):base(source)
         {
             TableCells = _tblcells;
+            
             CellBottomTopPadding = tbPad;
             CellLeftRightPadding = lrpad;
         }
@@ -86,6 +86,8 @@ namespace WpfMath.Atoms
             }
         }
 
+        public TexAlignment CellVerticalAlignment { get; private set; }
+        public TexAlignment CellHorizontalAlignment { get; private set; }
         #endregion
 
         protected override Box CreateBoxCore(TexEnvironment environment)
@@ -93,57 +95,76 @@ namespace WpfMath.Atoms
             var texFont = environment.MathFont;
             var style = environment.Style;
             var axis = texFont.GetAxisHeight(style);
-            var defaultLineThickness = texFont.GetDefaultLineThickness(style);
-
-
 
             //Region for adjustment vars
             double maxrowWidth = 0;
-            double maxrowHeight = 0;
-            //store the max cell height for each row
-            List<double> RowsMaxCellHeight = new List<double>();
+            
+            //stores the max cell height for each row
+            var RowsMaxCellHeight = new List<double>();
             for (int i = 0; i < RowCount; i++)
             {
                 RowsMaxCellHeight.Add(0);
             }
-            //store the max cell width for each column
-            List<double> ColumnsMaxCellWidth = new List<double>();
+            //stores the max cell width for each column
+            var ColumnsMaxCellWidth = new List<double>();
             for (int i = 0; i < ColumnCount; i++)
             {
                 ColumnsMaxCellWidth.Add(0);
             }
             //Create a vertical box to hold the rows and their cells
-            var resultBox = new VerticalBox(){Background=Brushes.Red,//environment.Background,};
+            var resultBox = new VerticalBox();
 
             for (int i = 0; i < RowCount; i++)
             {
                 //row top pad
-                var rectbox = new StrutBox(maxrowWidth, CellBottomTopPadding / 2, 0, 0);
-                resultBox.Add(rectbox);
+                resultBox.Add(new StrutBox(maxrowWidth, CellBottomTopPadding / 2, 0, 0));
 
-                var rowbox =  new HorizontalBox(StrutBox.Empty,0,TexAlignment.Center);
-                double chkrwidth = 0;
+                var rowbox =  new HorizontalBox() {Tag= $"Row:{i}",};
+                
                 for (int j = 0; j < ColumnCount; j++)
                 {
+                    double maxrowHeight = 0;
                     //cell left pad
-                    rowbox.Add(new StrutBox( CellLeftRightPadding / 2, maxrowHeight, 0, 0));
-                    chkrwidth += CellLeftRightPadding / 2;
-                    //cell box
-                    var rowcolbox = TableCells[i][j] == null ? StrutBox.Empty : TableCells[i][j].CreateBox(environment);
-                    RowsMaxCellHeight[i] = rowcolbox.TotalHeight > RowsMaxCellHeight[i] ? rowcolbox.TotalHeight : RowsMaxCellHeight[i];
-                    ColumnsMaxCellWidth[j]= rowcolbox.TotalWidth > ColumnsMaxCellWidth[j] ? rowcolbox.TotalWidth : ColumnsMaxCellWidth[j];
-                    rowbox.Add(rowcolbox);
-                    chkrwidth += rowcolbox.TotalWidth;
+                    var cellleftpad = new StrutBox(CellLeftRightPadding / 2, 0, 0, 0)
+                    {
+                        Tag = $"CellLeftPad{i}:{j}",
+                        Shift =0,
+                    };
 
                     //cell right pad
-                    rowbox.Add(new StrutBox(CellLeftRightPadding / 2, maxrowHeight, 0, 0));
-                    chkrwidth += CellLeftRightPadding / 2;
-                }
-                maxrowWidth = chkrwidth > maxrowWidth ? chkrwidth : maxrowWidth;
-                maxrowHeight = RowsMaxCellHeight[i] > maxrowHeight ? RowsMaxCellHeight[i] : maxrowHeight;
-                rowbox.Height = maxrowHeight;
-                rowbox.Width = maxrowWidth;
+                    var cellrightpad = new StrutBox(CellLeftRightPadding / 2, 0, 0, 0)
+                    {
+                        Tag = $"CellRightPad{i}:{j}",
+                        Shift = 0,
+                    };
 
+                    //cell box
+                    var rowcellbox = TableCells[i][j] == null ? StrutBox.Empty : TableCells[i][j].CreateBox(environment);
+                    ColumnsMaxCellWidth[j] = rowcellbox.TotalWidth > ColumnsMaxCellWidth[j] ? rowcellbox.TotalWidth : ColumnsMaxCellWidth[j];
+                    rowcellbox.Tag = "innercell";
+                    //cell box holder
+                    var rowcolbox = new VerticalBox(){Tag=$"Cell{i}:{j}",ShowBounds=false};
+
+                    var celltoppad = new StrutBox(rowcellbox.TotalWidth, CellBottomTopPadding / 2, 0, 0){Tag = $"CellTopPad{i}:{j}",};
+                    var cellbottompad = new StrutBox(rowcellbox.TotalWidth, CellBottomTopPadding / 2, 0, 0){Tag = $"CellBottomPad{i}:{j}",};
+                    rowcolbox.Add(celltoppad);
+                    rowcolbox.Add(rowcellbox);
+                    rowcolbox.Add(cellbottompad);
+
+                    //maxrowHeight += rowcolbox.TotalHeight;
+                    maxrowHeight += rowcellbox.TotalHeight + CellBottomTopPadding;
+                    rowcolbox.Width = rowcellbox.TotalWidth;
+                    //rowcolbox.Height = maxrowHeight;
+
+                    rowbox.Add(cellleftpad);
+                    rowbox.Add(rowcolbox);
+                    rowbox.Add(cellrightpad);
+
+                    RowsMaxCellHeight[i] = maxrowHeight > RowsMaxCellHeight[i] ? maxrowHeight : RowsMaxCellHeight[i];
+
+                }
+                
+                rowbox.Shift = 0;
                 resultBox.Add(rowbox);
                 //row bottom pad
                 resultBox.Add(new StrutBox(maxrowWidth, CellBottomTopPadding / 2, 0, 0));
@@ -151,69 +172,161 @@ namespace WpfMath.Atoms
 
             int a = 0;
             int b = 0;
-            double maxpad = 0;
+            //1->Left and right, 2->Top and Bottom
+            //create the item below to hold the left-right gaps(Tuple.Item1) and top-bottom gaps (Tuple.Item2) for the rows
+            List<List<Tuple<double, double>>> TableCellGaps = new List<List<Tuple<double, double>>>();
             for (int i = 0; i < resultBox.Children.Count; i++)
             {
                 var tablerowitem = resultBox.Children[i];
-                
-                if (tablerowitem is HorizontalBox)
+                List<Tuple<double, double>> RowGaps = new List<Tuple<double, double>>();
+
+                if (tablerowitem is HorizontalBox&&tablerowitem.Tag.ToString()==$"Row:{a}")
                 {
-                    tablerowitem.Width = maxrowWidth;
-                    tablerowitem.Height = maxrowHeight;
-                    double paddedrowwidth = 0;
                     for (int j = 0; j < ((HorizontalBox)tablerowitem).Children.Count; j++)
                     {
                         var rowcolitem = ((HorizontalBox)tablerowitem).Children[j];
                         if (rowcolitem is StrutBox)
                         {
-
+                            rowcolitem.Height = RowsMaxCellHeight[a];
                         }
-                        else
+                        else if(rowcolitem is VerticalBox && rowcolitem.Tag.ToString() == $"Cell{a}:{b}")
                         {
-                            
                             double cellVShift = RowsMaxCellHeight[a] - rowcolitem.TotalHeight;
-                            rowcolitem.Shift = -(cellVShift / 2);
+                                                        
                             double cellHShift = ColumnsMaxCellWidth[b]-rowcolitem.TotalWidth;
-                            ((HorizontalBox)tablerowitem).Children[j-1].Width = cellHShift / 2;
-                            ((HorizontalBox)tablerowitem).Children[j + 1].Width = cellHShift / 2;
-                            if (paddedrowwidth==0)
-                            {
+                            ((HorizontalBox)tablerowitem).Children[j - 1].Shift = rowcolitem.Depth;// + (cellVShift / 2);//.Width += cellHShift / 2;
+                            ((HorizontalBox)tablerowitem).Children[j + 1].Shift = rowcolitem.Depth;// +(cellVShift / 2);// Width += cellHShift / 2;
+                            //rowcolitem.Shift =  cellVShift/2;
+                            RowGaps.Add( new Tuple<double, double> (cellHShift/2, cellVShift/2));
 
-                            }
-                            paddedrowwidth += rowcolitem.TotalWidth+2*(cellHShift / 2);
-                            //item1.Width = maxCellWidth;
                             b++;
                         }
                     }
-                    if (paddedrowwidth>maxpad)
+
+                    b = 0;
+                    a++;
+                    TableCellGaps.Add(RowGaps);
+                }
+
+            }
+
+            a = 0;
+            b = 0;
+            for (int i = 0; i < resultBox.Children.Count; i++)
+            {
+                var tablerowitem = resultBox.Children[i];
+
+                if (tablerowitem is HorizontalBox && tablerowitem.Tag.ToString() == $"Row:{a}")
+                {
+                    double rowwidth = 0;
+                    for (int j = 0; j < ((HorizontalBox)tablerowitem).Children.Count; j++)
                     {
-                        maxpad = paddedrowwidth;
+                        var currowcolitem = ((HorizontalBox)tablerowitem).Children[j];
+                        var prevrowcolitem = j > 0 ? ((HorizontalBox)tablerowitem).Children[j - 1] : ((HorizontalBox)tablerowitem).Children[j];
+                        var nextrowcolitem = j < ((HorizontalBox)tablerowitem).Children.Count-1 ? ((HorizontalBox)tablerowitem).Children[j + 1] : ((HorizontalBox)tablerowitem).Children[j];
+                        
+                        if (currowcolitem is VerticalBox&& Regex.IsMatch(currowcolitem.Tag.ToString(), @"Cell[0-9]+:[0-9]+"))
+                        {
+                            rowwidth += currowcolitem.TotalWidth;
+                            var leftstructboxtag = $"CellLeftPad{a}:{b}";
+                            var rightstructboxtag = $"CellRightPad{a}:{b}";
+                            if (prevrowcolitem is StrutBox&& prevrowcolitem.Tag.ToString() == leftstructboxtag)
+                            {
+                                prevrowcolitem.Width += TableCellGaps[a][b].Item1;
+                                rowwidth += prevrowcolitem.TotalWidth;
+                            }
+                            if (nextrowcolitem is StrutBox && nextrowcolitem.Tag.ToString() == rightstructboxtag)
+                            {
+                                nextrowcolitem.Width += TableCellGaps[a][b].Item1;
+                                rowwidth += nextrowcolitem.TotalWidth;
+                            }
+
+                            double cellheight = 0;
+                            //check the vertical cell gap size and increase appropriately
+                            for (int k = 0; k < ((VerticalBox)currowcolitem).Children.Count; k++)
+                            {
+                                var curcellitem = ((VerticalBox)currowcolitem).Children[k];
+                                var prevcellitem =k>0? ((VerticalBox)currowcolitem).Children[k-1]:((VerticalBox)currowcolitem).Children[k];
+                                var nextcellitem =k<(((VerticalBox)currowcolitem).Children.Count -1)? ((VerticalBox)currowcolitem).Children[k+1]:((VerticalBox)currowcolitem).Children[k];
+
+                                
+                                if (curcellitem.Tag.ToString() == "innercell" )
+                                {
+                                    cellheight += curcellitem.TotalHeight;
+                                    var topstructboxtag = $"CellTopPad{a}:{b}";
+                                    var bottomstructboxtag = $"CellBottomPad{a}:{b}";
+                                    
+                                    if (prevcellitem.Tag.ToString() == topstructboxtag )
+                                    {
+                                        prevcellitem.Height += TableCellGaps[a][b].Item2;
+                                        //prevcellitem.Background = Brushes.Aquamarine;
+                                        cellheight += prevcellitem.TotalHeight;
+                                        if (prevcellitem.Height>(currowcolitem.Height/2))
+                                        {
+
+                                        }
+                                    }
+                                    if (nextcellitem.Tag.ToString() == bottomstructboxtag)
+                                    {
+                                        nextcellitem.Height += TableCellGaps[a][b].Item2;
+                                        //nextcellitem.Background = Brushes.BurlyWood;
+                                        cellheight += nextcellitem.TotalHeight;
+                                    }
+                                    if (prevrowcolitem is StrutBox && prevrowcolitem.Tag.ToString() == leftstructboxtag)
+                                    {
+                                        prevrowcolitem.Shift += TableCellGaps[a][b].Item2;
+                                    }
+                                    if (nextrowcolitem is StrutBox && nextrowcolitem.Tag.ToString() == rightstructboxtag)
+                                    {
+                                        nextrowcolitem.Shift += TableCellGaps[a][b].Item2;
+                                    }
+                                    //currowcolitem.Shift -= TableCellGaps[a][b].Item2; ;
+                                }
+
+
+                            }
+                            //currowcolitem.Height = cellheight;
+                            b++;
+                        }
                     }
+
+                    tablerowitem.Width = rowwidth;
                     b = 0;
                     a++;
                 }
+
             }
+
             double sigmaTotalHeight = 0;
             double sigmaDepth = 0;
             double sigmaHeight = 0;
+            double adjwidth = 0;
             foreach (var item in resultBox.Children)
             {
-                item.Width = maxrowWidth;
                 sigmaTotalHeight += item.TotalHeight;
                 sigmaHeight += item.Height;
                 sigmaDepth += item.Depth;
+                if (item.TotalWidth>adjwidth)
+                {
+                    adjwidth = item.TotalWidth;
+                }
             }
 
             double adjustedTotalHeight = RowsMaxCellHeight.Sum()+ (RowCount * CellBottomTopPadding);
-            resultBox.Depth = 0;// + 2 * defaultLineThickness;
+
+            resultBox.Depth = 0;
             resultBox.Height = adjustedTotalHeight>sigmaTotalHeight?adjustedTotalHeight:sigmaTotalHeight;
-            resultBox.Width = maxpad;// +2*CellBottomTopPadding;
+            resultBox.Width = adjwidth>resultBox.TotalWidth?adjwidth:resultBox.TotalWidth;
             var enviroYDiff = axis>= resultBox.TotalHeight ? - (axis- resultBox.TotalHeight)/2: ( resultBox.TotalHeight-axis) / 2;
             resultBox.Shift = enviroYDiff;
-            var finalbox = new HorizontalBox() { Background=Brushes.Yellow};
+
+            var finalbox = new HorizontalBox() ;
             finalbox.Add(new StrutBox(CellLeftRightPadding/8, 0, 0, 0));
             finalbox.Add(resultBox);
             finalbox.Add(new StrutBox(CellLeftRightPadding/8, 0, 0, 0));
+
+            //finalbox.Shift = -enviroYDiff;
+
             return finalbox;
         }
 
