@@ -11,17 +11,21 @@ namespace WpfMath
 
         private const double scale = 0.55;
 
-        public Radical(SourceSpan source, Atom baseAtom, Atom degreeAtom = null)
+        public Radical(SourceSpan source, Atom baseAtom, Atom degreeAtom = null,bool degreespecified=false )
             : base(source)
         {
             this.BaseAtom = baseAtom;
             this.DegreeAtom = degreeAtom;
+            this.DegreeSpecified=degreespecified;
         }
 
         public Atom BaseAtom { get; }
 
         public Atom DegreeAtom { get; }
-
+        /// <summary>
+        /// Gets a value that specifies whether a degree was requested.
+        /// </summary>
+        public bool DegreeSpecified{get;}
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var texFont = environment.MathFont;
@@ -37,7 +41,7 @@ namespace WpfMath
             clearance = defaultRuleThickness + Math.Abs(clearance) / 4;
 
             // Create box for base atom, in cramped style.
-            var baseBox = this.BaseAtom.CreateBox(environment.GetCrampedStyle());
+            var baseBox =this.BaseAtom== null? StrutBox.Empty: this.BaseAtom.CreateBox(environment.GetCrampedStyle());
 
             // Create box for radical sign.
             var totalHeight = baseBox.Height + baseBox.Depth;
@@ -62,7 +66,7 @@ namespace WpfMath
             radicalContainerBox.Add(radicalSignBox);
 
             // Create box for root atom.
-            var radrootBox = this.DegreeAtom == null ? StrutBox.Empty : this.DegreeAtom.CreateBox(environment.GetRootStyle());
+            var radrootBox = this.DegreeAtom == null ?(this.DegreeSpecified? StrutBox.Empty:NullAtom.NullBox) : this.DegreeAtom.CreateBox(environment.GetRootStyle());
             var bottomShift = scale * (radicalSignBox.Height + radicalSignBox.Depth);
             var rcbItemsdiff = radicalSignBox.TotalHeight - radrootBox.TotalHeight;
             bottomShift = rcbItemsdiff;
@@ -75,7 +79,9 @@ namespace WpfMath
             radicalContainerBox.Add(Vnegspace);
             radicalContainerBox.Add(radrootBox);
 
-            var leftshift = radrootBox.TotalWidth - radicalSignBox.TotalWidth / 2;
+            var leftshift = this.DegreeAtom== null? 0: radrootBox.TotalWidth - radicalSignBox.TotalWidth / 2;
+            if(radrootBox.TotalWidth<(radicalSignBox.TotalWidth/2))
+                leftshift=0;
             radicalSignBox.Shift= leftshift;
             //increase the left overlap width
             horizoverlapbox.Width= leftshift+radicalSignBox.Width;
@@ -84,6 +90,7 @@ namespace WpfMath
             var resultBox = new HorizontalBox();
 
             resultBox.Add(radicalContainerBox);
+            radicalContainerBox.Shift=-defaultRuleThickness;
             var leftpad = radicalContainerBox.TotalWidth - radicalSignBox.Shift - radicalSignBox.TotalWidth;
             resultBox.Add(new StrutBox(-leftpad, 0, 0, 0));
             resultBox.Add(overBar);
