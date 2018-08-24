@@ -90,13 +90,14 @@ namespace WpfMath
             var resultBox = new HorizontalBox();
 
             resultBox.Add(radicalContainerBox);
-            radicalContainerBox.Shift=-defaultRuleThickness;
-            var leftpad = radicalContainerBox.TotalWidth - radicalSignBox.Shift - radicalSignBox.TotalWidth;
-            resultBox.Add(new StrutBox(-leftpad, 0, 0, 0));
-            resultBox.Add(overBar);
-            resultBox.Shift = -(baseBox.Height + clearance + defaultRuleThickness);
+            //adjust the vertical shift of the radicalContainerBox
+            radicalContainerBox.Shift = -defaultRuleThickness- radicalContainerBox.Depth;
+            var leftpad = radicalContainerBox.TotalWidth -radicalSignBox.Shift - radicalSignBox.TotalWidth;
 
-            
+            resultBox.Add(new StrutBox(leftpad, 0, 0, 0));
+            overBar.Shift = -defaultRuleThickness - radicalContainerBox.Depth;
+            resultBox.Add(overBar);
+
             return resultBox;
         }
     }
