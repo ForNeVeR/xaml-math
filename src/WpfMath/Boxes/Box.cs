@@ -52,6 +52,8 @@ namespace WpfMath.Boxes
             set;
         }
 
+        public object Tag{ get; set;}
+        
         public double TotalHeight
         {
             get { return this.Height + this.Depth; }
