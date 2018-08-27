@@ -34,7 +34,7 @@ namespace WpfMath.Rendering
                {
                    DashStyle= new DashStyle(new double[]{2.3, 2.3}, 0.25),
                };
-               var boxrect= GeometryHelper.ScaleRectangle(_scale, new Rect(x,(y-box.Height),box.TotalWidth,box.TotalHeight);
+               var boxrect= GeometryHelper.ScaleRectangle(_scale, new Rect(x,(y-box.Height),box.TotalWidth,box.TotalHeight));
                _drawingContext.DrawRectangle(null,boundspen,boxrect);
             }
 
