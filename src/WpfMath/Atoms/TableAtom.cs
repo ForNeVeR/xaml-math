@@ -433,7 +433,7 @@ namespace WpfMath.Atoms
                 sigmaTotalHeight += item.TotalHeight;
                 sigmaHeight += item.Height;
                 sigmaDepth += item.Depth;
-                if (item.TotalWidth>adjwidth)
+                if (item.TotalWidth>adjustedwidth)
                 {
                     adjustedwidth = item.TotalWidth;
                 }
