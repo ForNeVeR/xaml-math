@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,17 +7,18 @@ using WpfMath.Boxes;
 namespace WpfMath.Atoms
 {
     /// <summary>
-    /// An atom representing a tabular arrangement of Atoms.
+    /// An atom representing a tabular arrangement of atoms.
     /// </summary>
     internal class TableAtom:Atom
     {
         /// <summary>
         /// Initializes a new <see cref="TableAtom"/> with the specified cell atoms.
         /// </summary>
-        public TableAtom(SourceSpan source,List<List<Atom>> _tblcells,TexAlignment cellValignment=TexAlignment.Center,TexAlignment cellHAlignment=TexAlignment.Center, double tbPad=0.35, double lrpad = 0.35):base(source)
+        public TableAtom(SourceSpan source,List<List<Atom>> _tblcells,VerticalAlignment cellValignment=VerticalAlignment.Center, HorizontalAlignment cellHAlignment = HorizontalAlignment.Center, double tbPad=0.35, double lrpad = 0.35):base(source)
         {
             TableCells = _tblcells;
-            
+            this.CellHorizontalAlignment = cellHAlignment;
+            this.CellVerticalAlignment = cellValignment;
             CellBottomTopPadding = tbPad;
             CellLeftRightPadding = lrpad;
         }
@@ -75,7 +75,7 @@ namespace WpfMath.Atoms
         {
             get
             {
-                if (TableCells == null)
+                if (TableCells == null||TableCells[0]==null)
                 {
                     return 0;
                 }
@@ -86,8 +86,8 @@ namespace WpfMath.Atoms
             }
         }
 
-        public TexAlignment CellVerticalAlignment { get; private set; }
-        public TexAlignment CellHorizontalAlignment { get; private set; }
+        public VerticalAlignment CellVerticalAlignment { get; private set; }
+        public HorizontalAlignment CellHorizontalAlignment { get; private set; }
         #endregion
 
         protected override Box CreateBoxCore(TexEnvironment environment)
@@ -230,15 +230,73 @@ namespace WpfMath.Atoms
                             rowwidth += currowcolitem.TotalWidth;
                             var leftstructboxtag = $"CellLeftPad{a}:{b}";
                             var rightstructboxtag = $"CellRightPad{a}:{b}";
-                            if (prevrowcolitem is StrutBox&& prevrowcolitem.Tag.ToString() == leftstructboxtag)
+
+                            switch (CellHorizontalAlignment)
                             {
-                                prevrowcolitem.Width += TableCellGaps[a][b].Item1;
-                                rowwidth += prevrowcolitem.TotalWidth;
-                            }
-                            if (nextrowcolitem is StrutBox && nextrowcolitem.Tag.ToString() == rightstructboxtag)
-                            {
-                                nextrowcolitem.Width += TableCellGaps[a][b].Item1;
-                                rowwidth += nextrowcolitem.TotalWidth;
+                                case HorizontalAlignment.Left:
+                                    {
+                                        if (prevrowcolitem is StrutBox && prevrowcolitem.Tag.ToString() == leftstructboxtag)
+                                        {
+                                            //prevrowcolitem.Width += TableCellGaps[a][b].Item1;
+                                            rowwidth += prevrowcolitem.TotalWidth;
+                                        }
+                                        if (nextrowcolitem is StrutBox && nextrowcolitem.Tag.ToString() == rightstructboxtag)
+                                        {
+                                            nextrowcolitem.Width +=2* TableCellGaps[a][b].Item1;
+                                            rowwidth += nextrowcolitem.TotalWidth;
+                                        }
+                                        break;
+                                    }
+
+                                case HorizontalAlignment.Right:
+                                    {
+                                        if (prevrowcolitem is StrutBox && prevrowcolitem.Tag.ToString() == leftstructboxtag)
+                                        {
+                                            prevrowcolitem.Width +=2* TableCellGaps[a][b].Item1;
+                                            rowwidth += prevrowcolitem.TotalWidth;
+                                        }
+                                        if (nextrowcolitem is StrutBox && nextrowcolitem.Tag.ToString() == rightstructboxtag)
+                                        {
+                                            //nextrowcolitem.Width += TableCellGaps[a][b].Item1;
+                                            rowwidth += nextrowcolitem.TotalWidth;
+                                        }
+                                        break;
+                                    }
+
+                                case HorizontalAlignment.Center:
+                                    {
+                                        if (prevrowcolitem is StrutBox && prevrowcolitem.Tag.ToString() == leftstructboxtag)
+                                        {
+                                            prevrowcolitem.Width += TableCellGaps[a][b].Item1;
+                                            rowwidth += prevrowcolitem.TotalWidth;
+                                        }
+                                        if (nextrowcolitem is StrutBox && nextrowcolitem.Tag.ToString() == rightstructboxtag)
+                                        {
+                                            nextrowcolitem.Width += TableCellGaps[a][b].Item1;
+                                            rowwidth += nextrowcolitem.TotalWidth;
+                                        }
+                                        break;
+                                    }
+                                    
+                                case HorizontalAlignment.Stretch:
+                                    {
+                                        if (prevrowcolitem is StrutBox && prevrowcolitem.Tag.ToString() == leftstructboxtag)
+                                        {
+                                            prevrowcolitem.Width = 0;
+                                            prevrowcolitem.Italic = 0;
+                                            rowwidth += prevrowcolitem.TotalWidth;
+                                        }
+                                        if (nextrowcolitem is StrutBox && nextrowcolitem.Tag.ToString() == rightstructboxtag)
+                                        {
+                                            nextrowcolitem.Width = 0;
+                                            nextrowcolitem.Italic = 0;
+                                            rowwidth += nextrowcolitem.TotalWidth;
+                                        }
+                                        break;
+                                    }
+
+                                default:
+                                    break;
                             }
 
                             double cellheight = 0;
@@ -248,30 +306,100 @@ namespace WpfMath.Atoms
                                 var curcellitem = ((VerticalBox)currowcolitem).Children[k];
                                 var prevcellitem =k>0? ((VerticalBox)currowcolitem).Children[k-1]:((VerticalBox)currowcolitem).Children[k];
                                 var nextcellitem =k<(((VerticalBox)currowcolitem).Children.Count -1)? ((VerticalBox)currowcolitem).Children[k+1]:((VerticalBox)currowcolitem).Children[k];
-
                                 
                                 if (curcellitem.Tag.ToString() == "innercell" )
                                 {
                                     cellheight += curcellitem.TotalHeight;
                                     var topstructboxtag = $"CellTopPad{a}:{b}";
                                     var bottomstructboxtag = $"CellBottomPad{a}:{b}";
-                                    
-                                    if (prevcellitem.Tag.ToString() == topstructboxtag )
-                                    {
-                                        prevcellitem.Height += TableCellGaps[a][b].Item2;
-                                        //prevcellitem.Background = Brushes.Aquamarine;
-                                        cellheight += prevcellitem.TotalHeight;
-                                        if (prevcellitem.Height>(currowcolitem.Height/2))
-                                        {
 
-                                        }
-                                    }
-                                    if (nextcellitem.Tag.ToString() == bottomstructboxtag)
+                                    switch (CellVerticalAlignment)
                                     {
-                                        nextcellitem.Height += TableCellGaps[a][b].Item2;
-                                        //nextcellitem.Background = Brushes.BurlyWood;
-                                        cellheight += nextcellitem.TotalHeight;
+                                        case VerticalAlignment.Bottom:
+                                            {
+                                                if (prevcellitem.Tag.ToString() == topstructboxtag)
+                                                {
+                                                    prevcellitem.Height +=2* TableCellGaps[a][b].Item2;
+                                                    //prevcellitem.Background = Brushes.Aquamarine;
+                                                    cellheight += prevcellitem.TotalHeight;
+                                                    if (prevcellitem.Height > (currowcolitem.Height / 2))
+                                                    {
+
+                                                    }
+                                                }
+                                                if (nextcellitem.Tag.ToString() == bottomstructboxtag)
+                                                {
+                                                    //nextcellitem.Height += TableCellGaps[a][b].Item2;
+                                                    //nextcellitem.Background = Brushes.BurlyWood;
+                                                    cellheight += nextcellitem.TotalHeight;
+                                                }
+                                                break;
+                                            }
+                                        case VerticalAlignment.Center:
+                                            {
+                                                if (prevcellitem.Tag.ToString() == topstructboxtag)
+                                                {
+                                                    prevcellitem.Height += TableCellGaps[a][b].Item2;
+                                                    //prevcellitem.Background = Brushes.Aquamarine;
+                                                    cellheight += prevcellitem.TotalHeight;
+                                                    if (prevcellitem.Height > (currowcolitem.Height / 2))
+                                                    {
+
+                                                    }
+                                                }
+                                                if (nextcellitem.Tag.ToString() == bottomstructboxtag)
+                                                {
+                                                    nextcellitem.Height += TableCellGaps[a][b].Item2;
+                                                    //nextcellitem.Background = Brushes.BurlyWood;
+                                                    cellheight += nextcellitem.TotalHeight;
+                                                }
+                                                break;
+                                            }
+                                        case VerticalAlignment.Stretch:
+                                            {
+                                                if (prevcellitem.Tag.ToString() == topstructboxtag)
+                                                {
+                                                    prevcellitem.Height = 0;
+                                                    prevcellitem.Depth = 0;
+                                                    //prevcellitem.Background = Brushes.Aquamarine;
+                                                    cellheight += prevcellitem.TotalHeight;
+                                                    if (prevcellitem.Height > (currowcolitem.Height / 2))
+                                                    {
+    
+                                                    }
+                                                }
+                                                if (nextcellitem.Tag.ToString() == bottomstructboxtag)
+                                                {
+                                                    nextcellitem.Height = 0;
+                                                    nextcellitem.Depth = 0;
+                                                    //nextcellitem.Background = Brushes.BurlyWood;
+                                                    cellheight += nextcellitem.TotalHeight;
+                                                }
+                                                break;
+                                            }
+                                        case VerticalAlignment.Top:
+                                            {
+                                                if (prevcellitem.Tag.ToString() == topstructboxtag)
+                                                {
+                                                    //prevcellitem.Height += TableCellGaps[a][b].Item2;
+                                                    //prevcellitem.Background = Brushes.Aquamarine;
+                                                    cellheight += prevcellitem.TotalHeight;
+                                                    if (prevcellitem.Height > (currowcolitem.Height / 2))
+                                                    {
+                                                    }
+                                                }
+                                                if (nextcellitem.Tag.ToString() == bottomstructboxtag)
+                                                {
+                                                    nextcellitem.Height +=2* TableCellGaps[a][b].Item2;
+                                                    //nextcellitem.Background = Brushes.BurlyWood;
+                                                    cellheight += nextcellitem.TotalHeight;
+                                                }
+                                                break;
+                                            }
+                                        default:
+                                            break;
                                     }
+                                    
                                     if (prevrowcolitem is StrutBox && prevrowcolitem.Tag.ToString() == leftstructboxtag)
                                     {
                                         prevrowcolitem.Shift += TableCellGaps[a][b].Item2;
@@ -282,7 +410,6 @@ namespace WpfMath.Atoms
                                     }
                                     //currowcolitem.Shift -= TableCellGaps[a][b].Item2; ;
                                 }
-
 
                             }
                             //currowcolitem.Height = cellheight;
@@ -300,7 +427,7 @@ namespace WpfMath.Atoms
             double sigmaTotalHeight = 0;
             double sigmaDepth = 0;
             double sigmaHeight = 0;
-            double adjwidth = 0;
+            double adjustedwidth = 0;
             foreach (var item in resultBox.Children)
             {
                 sigmaTotalHeight += item.TotalHeight;
@@ -308,7 +435,7 @@ namespace WpfMath.Atoms
                 sigmaDepth += item.Depth;
                 if (item.TotalWidth>adjwidth)
                 {
-                    adjwidth = item.TotalWidth;
+                    adjustedwidth = item.TotalWidth;
                 }
             }
 
@@ -316,7 +443,7 @@ namespace WpfMath.Atoms
 
             resultBox.Depth = 0;
             resultBox.Height = adjustedTotalHeight>sigmaTotalHeight?adjustedTotalHeight:sigmaTotalHeight;
-            resultBox.Width = adjwidth>resultBox.TotalWidth?adjwidth:resultBox.TotalWidth;
+            resultBox.Width = adjustedwidth>resultBox.TotalWidth?adjustedwidth:resultBox.TotalWidth;
             var enviroYDiff = axis>= resultBox.TotalHeight ? - (axis- resultBox.TotalHeight)/2: ( resultBox.TotalHeight-axis) / 2;
             resultBox.Shift = enviroYDiff;
 
@@ -325,10 +452,7 @@ namespace WpfMath.Atoms
             finalbox.Add(resultBox);
             finalbox.Add(new StrutBox(CellLeftRightPadding/8, 0, 0, 0));
 
-            //finalbox.Shift = -enviroYDiff;
-
             return finalbox;
         }
-
     }
 }
