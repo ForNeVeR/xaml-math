@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Media;
+using System.Text;
 using WpfMath.Atoms;
 using WpfMath.Exceptions;
 using WpfMath.Utils;
@@ -493,7 +494,7 @@ namespace WpfMath.Parsers
                  case "it":
                     {
                         formula.TextStyle="mathit";
-                        return new NullAtom(new SourceSpan ("", position,0);
+                        return new NullAtom(new SourceSpan ("", position,0));
                     }
                 case "left":
                     {
