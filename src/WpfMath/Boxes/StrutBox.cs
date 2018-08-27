@@ -13,7 +13,7 @@ namespace WpfMath.Boxes
         /// <summary>
         /// Gets a box that has no content.
         /// </summary>
-        public static StrutBox Empty=> new StrutBox(0.5,0.5,0,0){ShowBounds=true;};
+        public static StrutBox Empty=> new StrutBox(0.5,0.5,0,0){ShowBounds=true,};
 
         public StrutBox(double width, double height, double depth, double shift)
         {
