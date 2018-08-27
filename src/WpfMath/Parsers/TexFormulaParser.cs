@@ -866,7 +866,7 @@ namespace WpfMath.Parsers
                         }
                         else
                         {
-                            rowdata.Add(new List<StringBuilder>() { new StringBuilder() });
+                            rowdata.Add(new List<StringBuilder>() { new StringBuilder( matrixsource.ToString()[i+2].ToString() ) });
                             rows++;
                             cols = 0;
                             i +=2;
@@ -885,12 +885,11 @@ namespace WpfMath.Parsers
                     {
                         if (i+3==matrixsource.ToString().Length || String.IsNullOrWhiteSpace(matrixsource.ToString().Substring(i+3)))
                         {
-                           
                             i += matrixsource.ToString().Length-i;
                         }
                         else
                         {
-                            rowdata.Add(new List<StringBuilder>() { new StringBuilder() });
+                            rowdata.Add(new List<StringBuilder>() { new StringBuilder( matrixsource.ToString()[i+3].ToString()) });
                             rows++;
                             cols = 0;
                             i += 3;
@@ -915,6 +914,7 @@ namespace WpfMath.Parsers
                 {
                     rowdata[rows].Add(new StringBuilder());
                     cols++;
+                    i++;
                 }
                 else
                 {
