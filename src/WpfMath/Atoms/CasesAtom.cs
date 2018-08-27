@@ -19,8 +19,8 @@ namespace WpfMath.Atoms
            
             var leftparen = DelimiterFactory.CreateBox("lbrace", innermatrix.TotalHeight+heightdiff, environment);
 
-            leftparen.Shift = -(innermatrix.Height);
-            innermatrix.Shift = heightdiff;
+            leftparen.Shift = -innermatrix.Height;
+            innermatrix.Shift = heightdiff/2;
             resultBox.Add(leftparen);
             resultBox.Add(innermatrix);
 
