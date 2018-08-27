@@ -79,19 +79,32 @@ namespace WpfMath.Parsers
 
             commands = new HashSet<string>
             {
+                "\\",
+                "amatrix",
+                "bmatrix",
+                "Bmatrix",
+                "cases",
+                "color",
                 "colorbox",
+                "cr",
                 "definecolor",
                 "enclose",
                 "frac",
                 "hide",
                 "left",
-                "middle",
+                "matrix",
+                "of",
+                "over",
                 "overline",
                 "phantom",
+                "pmatrix",
+                "rect",
                 "right",
                 "sqrt",
                 "table",
                 "underline",
+                "vmatrix",
+                "Vmatrix",
             };
 
             userdefinedColors = new Dictionary<string, Color>();
@@ -283,6 +296,55 @@ namespace WpfMath.Parsers
             return value.Segment(start, position - start - 1);
         }
 
+        private string ReadGroup(string str,char leftchar,char rightchar,int startPosition)
+        {
+            StringBuilder sb = new StringBuilder();
+            if (startPosition==str.Length)
+            {
+                throw new TexParseException("illegal end!");
+            }
+            int deepness = 0;bool groupfound = false;
+            var start = startPosition;
+            if (str[start]==leftchar)
+            {
+                start++;
+                while (start < str.Length && groupfound == false)
+                {
+                    if (str[start] == leftchar)
+                    {
+                        deepness++;
+                        sb.Append(leftchar);
+                    }
+                    else if (str[start] == rightchar)
+                    {
+                        if (deepness == 0)
+                        {
+                            groupfound = true;
+                        }
+                        else
+                        {
+                            deepness--;
+                            sb.Append(rightchar);
+                        }
+                    }
+                    else
+                    {
+                        sb.Append(str[start]);
+                    }
+                    start++;
+                }
+            }
+
+            if (groupfound)
+            {
+                return sb.ToString();
+            }
+            else
+            {
+                throw new TexParseException("missing->>" + rightchar);
+            }
+        }
+        
         private TexFormula ReadScript(TexFormula formula, SourceSpan value, ref int position)
         {
             SkipWhiteSpace(value, ref position);
@@ -316,6 +378,70 @@ namespace WpfMath.Parsers
             SourceSpan source;
             switch (command)
             {
+                case "\\":
+                case "cr":
+                case "of":
+                    {
+                        return new NullAtom(new SourceSpan("cr", start, 2));
+                    }
+
+                case "amatrix":
+                    {
+                        if (position == value.Length)
+                            throw new TexParseException("illegal end!");
+                        SkipWhiteSpace(value, ref position);
+
+                        var leftmatrixsource = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+                        var rightmatrixsource = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+                        var leftcells = GetMatrixData(formula, leftmatrixsource);
+                        var rightcells = GetMatrixData(formula, rightmatrixsource);
+                        rootindexsource = value.Segment(start, position - start);
+                        if (leftcells.Count==rightcells.Count)
+                        {
+                            return new AugmentedMatrixAtom(rootindexsource, new TableAtom(leftmatrixsource, leftcells), new TableAtom(rightmatrixsource, rightcells));
+                        }
+                        else
+                        {
+                            throw new TexParseException("an augmented matrix cannot have unequal rows");
+                        }
+                    }
+
+                case "bmatrix":
+                    {
+                        if (position == value.Length)
+                            throw new TexParseException("illegal end!");
+                        SkipWhiteSpace(value, ref position);
+
+                        var matrixsource = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+
+                        var cells = GetMatrixData(formula, matrixsource);
+                        return new BmatrixAtom(matrixsource, new TableAtom(matrixsource, cells));
+                    }
+
+                case "Bmatrix":
+                    {
+                        if (position == value.Length)
+                            throw new TexParseException("illegal end!");
+                        SkipWhiteSpace(value, ref position);
+
+                        var matrixsource = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+
+                        var cells = GetMatrixData(formula, matrixsource);
+                        return new BBMatrixAtom(matrixsource, new TableAtom(matrixsource, cells));
+                    }
+
+                case "cases":
+                    {
+                        if (position == value.Length)
+                            throw new TexParseException("illegal end!");
+                        SkipWhiteSpace(value, ref position);
+
+                        var matrixsource = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+
+                        var cells = GetMatrixData(formula, matrixsource);
+                        return new CasesAtom(matrixsource, new TableAtom(matrixsource, cells, cellHAlignment: HorizontalAlignment.Left));
+                    }
+                    
                 case "color":
                     {
                         //Command to change the foreground color 
@@ -475,6 +601,18 @@ namespace WpfMath.Parsers
                         return new FencedAtom(source, internals.Body, opening, closing);
                     }                        
                     
+                case "matrix":
+                    {
+                        if (position == value.Length)
+                            throw new TexParseException("illegal end!");
+                        SkipWhiteSpace(value, ref position);
+
+                        var matrixsource = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+
+                        var cells = GetMatrixData(formula, matrixsource);
+                        return new TableAtom(matrixsource, cells);
+                    }
+                    
                 case "overline":
                     {
                         var overlineFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
@@ -493,6 +631,18 @@ namespace WpfMath.Parsers
                         var phantomItemFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
                         source = value.Segment(start, position - start);
                         return new PhantomAtom(source,phantomItemFormula.RootAtom);
+                    }
+                    
+                case "pmatrix":
+                    {
+                        if (position == value.Length)
+                            throw new TexParseException("illegal end!");
+                        SkipWhiteSpace(value, ref position);
+
+                        var matrixsource = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+
+                        var cells = GetMatrixData(formula, matrixsource);
+                        return new PmatrixAtom(matrixsource, new TableAtom(matrixsource, cells));
                     }
                     
                 case "right":
@@ -551,7 +701,6 @@ namespace WpfMath.Parsers
                     }
                     
                     case "table":
-                    case "matrix":
                     {
                         //command requires a tabular arrangement of atoms.
                         SkipWhiteSpace(value, ref position);
@@ -661,8 +810,169 @@ namespace WpfMath.Parsers
                         source = value.Segment(start, position - start);
                         return new UnderlinedAtom(source,underlineFormula.RootAtom);
                     }
+                    
+                case "vmatrix":
+                    {
+                        if (position == value.Length)
+                            throw new TexParseException("illegal end!");
+                        SkipWhiteSpace(value, ref position);
+
+                        var matrixsource = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+
+                        var cells = GetMatrixData(formula, matrixsource);
+                        return new VmatrixAtom(matrixsource, new TableAtom(matrixsource, cells));
+                    }
+
+                case "Vmatrix":
+                    {
+                        if (position == value.Length)
+                            throw new TexParseException("illegal end!");
+                        SkipWhiteSpace(value, ref position);
+
+                        var matrixsource = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+
+                        var cells = GetMatrixData(formula, matrixsource);
+                        return new VVMatrixAtom(matrixsource, new TableAtom(matrixsource, cells));
+                    }
+                    
             }
             throw new TexParseException("Invalid command.");
+        }
+        
+        private List<List<Atom>> GetMatrixData(TexFormula formula, SourceSpan matrixsource)
+        {
+            List<List<StringBuilder>> rowdata = new List<List<StringBuilder>>() { new List<StringBuilder>() {new StringBuilder() } };
+            int rows = 0;
+            int cols = 0;
+            //how many characters the next row should skip for its sourcespan to start
+            int rowindent = 0;
+            //to ensure multiple row separators aren't used
+            string rowseparationstyle = null;
+            for (int i = 0; i < matrixsource.ToString().Length; i++)
+            {
+                var curchar = matrixsource.ToString()[i];
+                var nextchar = i < matrixsource.ToString().Length - 1 ? matrixsource.ToString()[i + 1] : matrixsource.ToString()[i];
+                var thirdchar = i < matrixsource.ToString().Length - 2 ? matrixsource.ToString()[i + 2] : matrixsource.ToString()[i];
+
+                if (curchar == '\\' && nextchar == '\\')
+                {
+                    if (rowseparationstyle == null || rowseparationstyle == "slash")
+                    {
+                        if (i + 2 == matrixsource.ToString().Length  && Regex.IsMatch(matrixsource.ToString().Substring(i +1, matrixsource.ToString().Length-(i+1)), @"\s*"))
+                        {
+                            i +=2;
+                        }
+                        else
+                        {
+                            rowdata.Add(new List<StringBuilder>() { new StringBuilder() });
+                            rows++;
+                            cols = 0;
+                            i +=2;
+                            rowindent = 2;
+                            rowseparationstyle = "slash";
+                        }
+                    }
+                    else
+                    {
+                        throw new TexParseException("Multiple row separator styles.");
+                    }
+                }
+                else if (curchar == '\\' && nextchar == 'c' && thirdchar == 'r')
+                {
+                    if (rowseparationstyle == null || rowseparationstyle == "cr")
+                    {
+                        if (i+3==matrixsource.ToString().Length&&Regex.IsMatch(matrixsource.ToString().Substring(i+2, matrixsource.ToString().Length-(i+2)),@"\s*"))
+                        {
+                           
+                            i += 3;
+                        }
+                        else
+                        {
+                            rowdata.Add(new List<StringBuilder>() { new StringBuilder() });
+                            rows++;
+                            cols = 0;
+                            i += 3;
+                            rowindent = 3;
+                            rowseparationstyle = "cr";
+                        }
+                        
+                    }
+                    else
+                    {
+                        throw new TexParseException("Multiple row separator styles.");
+                    }
+                }
+                else if (curchar == leftGroupChar)
+                {
+                    var nestedgroup = ReadGroup(matrixsource.ToString(), leftGroupChar, rightGroupChar, i);
+                    
+                    rowdata[rows][cols].Append("{"+nestedgroup+"}");
+                    i += nestedgroup.Length+1;
+                }
+                else if (curchar=='&')
+                {
+                    rowdata[rows].Add(new StringBuilder());
+                    cols++;
+                }
+                else
+                {
+                    rowdata[rows][cols].Append(curchar);
+                }
+            }
+
+            List<List<Atom>> matrixcells = new List<List<Atom>>();
+            int matrixsrcstart = 0;
+            int columnscount = 0;
+            for (int i = 0; i < rowdata.Count; i++)
+            {
+                var rowitem = rowdata[i];
+                if (rowitem.Count > 0)
+                {
+                    List<Atom> rowcellatoms = new List<Atom>();
+                    for (int j = 0; j < rowitem.Count; j++)
+                    {
+                        var cellitem = rowdata[i][j];
+                        if (cellitem.ToString().Trim().Length>0)
+                        {
+                            var cellsource = matrixsource.Segment(matrixsrcstart, cellitem.Length);// new SourceSpan(cellitem, matrixsrcstart, cellitem.Length);
+                            var cellformula = Parse(cellsource, formula.TextStyle);
+                            rowcellatoms.Add(cellformula.RootAtom);
+
+                            if (j < (rowitem.Count - 1))
+                            {
+                                matrixsrcstart += (cellitem.Length + 1);
+                            }
+                            else
+                            {
+                                matrixsrcstart += (cellitem.Length + rowindent + 1);
+                            }
+                        }
+                        
+                    }
+
+                    matrixcells.Add(rowcellatoms);
+                    columnscount = rowcellatoms.Count;
+                }
+
+            }
+
+            int colsvalid = 0;
+            foreach (var item in matrixcells)
+            {
+                if (item.Count == columnscount)
+                {
+                    colsvalid++;
+                }
+            }
+
+            if (colsvalid == matrixcells.Count)
+            {
+                return matrixcells;
+            }
+            else
+            {
+                throw new TexParseException("The column numbers are not equal.");
+            }
         }
 
         public static string HelpOutMessage(string input, List<string> database)
