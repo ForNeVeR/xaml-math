@@ -702,7 +702,7 @@ namespace WpfMath.Parsers
                     return new Radical(source, sqrtFormula.RootAtom, degreeFormula?.RootAtom);
                     }
                     
-                    case "table":
+                case "table":
                     {
                         //command requires a tabular arrangement of atoms.
                         SkipWhiteSpace(value, ref position);
@@ -860,9 +860,9 @@ namespace WpfMath.Parsers
                 {
                     if (rowseparationstyle == null || rowseparationstyle == "slash")
                     {
-                        if (i + 2 == matrixsource.ToString().Length  && Regex.IsMatch(matrixsource.ToString().Substring(i +1, matrixsource.ToString().Length-(i+1)), @"\s*"))
+                        if (i + 2 == matrixsource.ToString().Length  || String.IsNullOrWhiteSpace(matrixsource.ToString().Substring(i + 2)))
                         {
-                            i +=2;
+                            i += matrixsource.ToString().Length - i;
                         }
                         else
                         {
@@ -876,17 +876,17 @@ namespace WpfMath.Parsers
                     }
                     else
                     {
-                        throw new TexParseException("Multiple row separator styles.");
+                        throw new TexParseException("Multiple row separator styles cannot be used.");
                     }
                 }
                 else if (curchar == '\\' && nextchar == 'c' && thirdchar == 'r')
                 {
                     if (rowseparationstyle == null || rowseparationstyle == "cr")
                     {
-                        if (i+3==matrixsource.ToString().Length&&Regex.IsMatch(matrixsource.ToString().Substring(i+2, matrixsource.ToString().Length-(i+2)),@"\s*"))
+                        if (i+3==matrixsource.ToString().Length || String.IsNullOrWhiteSpace(matrixsource.ToString().Substring(i+3)))
                         {
                            
-                            i += 3;
+                            i += matrixsource.ToString().Length-i;
                         }
                         else
                         {
@@ -901,7 +901,7 @@ namespace WpfMath.Parsers
                     }
                     else
                     {
-                        throw new TexParseException("Multiple row separator styles.");
+                        throw new TexParseException("Multiple row separator styles cannot be used.");
                     }
                 }
                 else if (curchar == leftGroupChar)
