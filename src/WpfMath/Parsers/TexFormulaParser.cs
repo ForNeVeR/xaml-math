@@ -8,6 +8,8 @@ using System.Windows.Media;
 using WpfMath.Atoms;
 using WpfMath.Exceptions;
 using WpfMath.Utils;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace WpfMath.Parsers
 {
@@ -395,10 +397,10 @@ namespace WpfMath.Parsers
                         var rightmatrixsource = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
                         var leftcells = GetMatrixData(formula, leftmatrixsource);
                         var rightcells = GetMatrixData(formula, rightmatrixsource);
-                        rootindexsource = value.Segment(start, position - start);
+                        source = value.Segment(start, position - start);
                         if (leftcells.Count==rightcells.Count)
                         {
-                            return new AugmentedMatrixAtom(rootindexsource, new TableAtom(leftmatrixsource, leftcells), new TableAtom(rightmatrixsource, rightcells));
+                            return new AugmentedMatrixAtom(source, new TableAtom(leftmatrixsource, leftcells), new TableAtom(rightmatrixsource, rightcells));
                         }
                         else
                         {
