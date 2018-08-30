@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Media;
 using System.Text;
+using System.Text.RegularExpressions;
 using WpfMath.Atoms;
 using WpfMath.Exceptions;
 using WpfMath.Utils;
@@ -286,6 +287,55 @@ namespace WpfMath.Parsers
             return value.Segment(start, position - start - 1);
         }
 
+        private string ReadGroup(string str, char leftchar, char rightchar, int startPosition)
+        {
+            StringBuilder sb = new StringBuilder();
+            if (startPosition == str.Length)
+            {
+                throw new TexParseException("illegal end!");
+            }
+            int deepness = 0; bool groupfound = false;
+            var start = startPosition;
+            if (str[start] == leftchar)
+            {
+                start++;
+                while (start < str.Length && groupfound == false)
+                {
+                    if (str[start] == leftchar)
+                    {
+                        deepness++;
+                        sb.Append(leftchar);
+                    }
+                    else if (str[start] == rightchar)
+                    {
+                        if (deepness == 0)
+                        {
+                            groupfound = true;
+                        }
+                        else
+                        {
+                            deepness--;
+                            sb.Append(rightchar);
+                        }
+                    }
+                    else
+                    {
+                        sb.Append(str[start]);
+                    }
+                    start++;
+                }
+            }
+
+            if (groupfound)
+            {
+                return sb.ToString();
+            }
+            else
+            {
+                throw new TexParseException("missing->>" + rightchar);
+            }
+        }
+
         private TexFormula ReadScript(TexFormula formula, SourceSpan value, ref int position)
         {
             SkipWhiteSpace(value, ref position);
@@ -306,9 +356,9 @@ namespace WpfMath.Parsers
                     sb.Append(value[position].ToString());
                     position++;
                 }
-                var scriptlengthb = sb.Length;
-                var scrsrc = value.Segment(position - scriptlengthb, scriptlengthb);
-                return Parse(scrsrc, formula.TextStyle);
+                var scriptlength = sb.Length;
+                var scriptsrc = value.Segment(position - scriptlength, scriptlength);
+                return Parse(scriptsrc, formula.TextStyle);
             }
             else
             {
@@ -337,7 +387,7 @@ namespace WpfMath.Parsers
                         //Command to change the foreground color 
                         var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
 
-                        var remainingString = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+                        var remainingString = value.Segment(position);
                         var remaining = Parse(remainingString, formula.TextStyle);
                         position = value.Length;
                         source = value.Segment(start, position - start);
@@ -370,7 +420,7 @@ namespace WpfMath.Parsers
                     {
                         //Command to change the background color
                         var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
-                        var remainingString = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+                        var remainingString = value.Segment(position);
                         var remaining = Parse(remainingString, formula.TextStyle);
                         position = value.Length;
                         source = value.Segment(start, position - start);
