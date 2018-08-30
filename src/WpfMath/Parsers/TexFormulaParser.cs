@@ -731,7 +731,10 @@ namespace WpfMath.Parsers
                 numeratorFormula = Parse(source.Segment(0, midLength), formula.TextStyle);
                 denominatorFormula = Parse(source.Segment(midLength), formula.TextStyle);
             }
-
+            if(denominatorFormula==null)
+            {
+                throw new TexParseException("The denominator cannot be null");
+            }
             return new FractionAtom(source, numeratorFormula.RootAtom, denominatorFormula.RootAtom, true);
         }
         
