@@ -526,59 +526,7 @@ namespace WpfMath.Parsers
                         }
                         else
                         {
-                            bool fracparamsfound = false;
-                            StringBuilder sb = new StringBuilder();
-                            int srcstart = position;
-                            while (position < value.Length &&fracparamsfound==false && value[position] != escapeChar)
-                            {
-                                string curChar = value[position].ToString();
-                                if (curChar=="{")
-                                {
-                                    var groupsource = value.Segment(position, value.Length - position);
-                                    var denomgroup = ReadGroup(groupsource.ToString(), leftGroupChar, rightGroupChar, 0);
-                                    sb.Append("{"+denomgroup+"}");
-                                    position += denomgroup.Length + 2;
-                                    fracparamsfound = true;
-                                }
-                                else if (curChar==" ")
-                                {
-                                    fracparamsfound = true;
-                                }
-                                else
-                                {
-                                    sb.Append(value[position].ToString());
-                                    position++;
-                                }
-                            }
-
-                            var fracParamsLength = sb.ToString().Length;
-                            source =fracParamsLength==0?new SourceSpan("  ",position,2): value.Segment(srcstart, fracParamsLength);
-
-                            int midLength = ((int)Math.Floor((double)(source.Length / 2)));
-                            TexFormula numeratorFormula = null;
-                            TexFormula denominatorFormula = null;
-
-                            if (Regex.IsMatch(sb.ToString(), @".+/.+"))
-                            {
-                                midLength = sb.ToString().Split('/')[0].Length;
-                                numeratorFormula = Parse(source.Segment(0, midLength), formula.TextStyle);
-                                denominatorFormula = Parse(source.Segment(midLength+1, source.ToString().Substring(midLength).Length), formula.TextStyle);
-                            }
-                            if (Regex.IsMatch(sb.ToString(), @"[.]+[{][.]+[}]")|| sb.ToString().Contains("{") == true)
-                            {
-                                midLength = sb.ToString().Split('{')[0].Length;
-                                numeratorFormula = Parse(source.Segment(0, midLength), formula.TextStyle);
-                                denominatorFormula = Parse(source.Segment(midLength), formula.TextStyle);
-                            }
-                           
-                            if (sb.ToString().Contains("/")==false&& sb.ToString().Contains("{") == false && sb.ToString().Contains("}") == false)
-                            {
-                                midLength = ((int)Math.Floor((double)(source.Length / 2)));
-                                numeratorFormula = Parse(source.Segment(0, midLength), formula.TextStyle);
-                                denominatorFormula = Parse(source.Segment(midLength), formula.TextStyle);
-                            }
-
-                            return new FractionAtom(source, numeratorFormula.RootAtom, denominatorFormula.RootAtom, true);
+                            return GetSimpleFractionAtom(formula, value, ref position);
                         }
                     }
                  case "it":
@@ -727,6 +675,64 @@ namespace WpfMath.Parsers
                     }
             }
             throw new TexParseException("Invalid command.");
+        }
+        
+        private Atom GetSimpleFractionAtom(TexFormula formula,SourceSpan value,ref int position)
+        {
+            SourceSpan source;
+            bool fracparamsfound = false;
+            StringBuilder sb = new StringBuilder();
+            int srcstart = position;
+            while (position < value.Length && fracparamsfound == false && value[position] != escapeChar)
+            {
+                string curChar = value[position].ToString();
+                if (curChar == "{")
+                {
+                    var groupsource = value.Segment(position, value.Length - position);
+                    var denomgroup = ReadGroup(groupsource.ToString(), leftGroupChar, rightGroupChar, 0);
+                    sb.Append("{" + denomgroup + "}");
+                    position += denomgroup.Length + 2;
+                    fracparamsfound = true;
+                }
+                else if (curChar == " ")
+                {
+                    fracparamsfound = true;
+                }
+                else
+                {
+                    sb.Append(value[position].ToString());
+                    position++;
+                }
+            }
+
+            var fracParamsLength = sb.ToString().Length;
+            source = fracParamsLength == 0 ? new SourceSpan("  ", position, 2) : value.Segment(srcstart, fracParamsLength);
+
+            int midLength = ((int)Math.Floor((double)(source.Length / 2)));
+            TexFormula numeratorFormula = null;
+            TexFormula denominatorFormula = null;
+
+            if (Regex.IsMatch(sb.ToString(), @".+/.+"))
+            {
+                midLength = sb.ToString().Split('/')[0].Length;
+                numeratorFormula = Parse(source.Segment(0, midLength), formula.TextStyle);
+                denominatorFormula = Parse(source.Segment(midLength + 1, source.ToString().Substring(midLength).Length), formula.TextStyle);
+            }
+            if (Regex.IsMatch(sb.ToString(), @"[.]+[{][.]+[}]") || sb.ToString().Contains("{") == true)
+            {
+                midLength = sb.ToString().Split('{')[0].Length;
+                numeratorFormula = Parse(source.Segment(0, midLength), formula.TextStyle);
+                denominatorFormula = Parse(source.Segment(midLength), formula.TextStyle);
+            }
+
+            if (sb.ToString().Contains("/") == false && sb.ToString().Contains("{") == false && sb.ToString().Contains("}") == false)
+            {
+                midLength = ((int)Math.Floor((double)(source.Length / 2)));
+                numeratorFormula = Parse(source.Segment(0, midLength), formula.TextStyle);
+                denominatorFormula = Parse(source.Segment(midLength), formula.TextStyle);
+            }
+
+            return new FractionAtom(source, numeratorFormula.RootAtom, denominatorFormula.RootAtom, true);
         }
         
         private SourceSpan GetSimpleUngroupedSource(SourceSpan value,ref int position)
