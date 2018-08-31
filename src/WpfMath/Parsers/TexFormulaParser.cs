@@ -10,8 +10,6 @@ using System.Text.RegularExpressions;
 using WpfMath.Atoms;
 using WpfMath.Exceptions;
 using WpfMath.Utils;
-using System.Text;
-using System.Text.RegularExpressions;
 
 namespace WpfMath.Parsers
 {
