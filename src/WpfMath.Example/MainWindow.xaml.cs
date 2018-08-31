@@ -97,7 +97,15 @@ namespace WpfMath.Example
             var testFormula1 = "\\int_0^{\\infty}{x^{2n} e^{-a x^2} dx} = \\frac{2n-1}{2a} \\int_0^{\\infty}{x^{2(n-1)} e^{-a x^2} dx} = \\frac{(2n-1)!!}{2^{n+1}} \\sqrt{\\frac{\\pi}{a^{2n+1}}}";
             var testFormula2 = "\\int_a^b{f(x) dx} = (b - a) \\sum_{n = 1}^{\\infty}  {\\sum_{m = 1}^{2^n  - 1} { ( { - 1} )^{m + 1} } } 2^{ - n} f(a + m ( {b - a}  )2^{-n} )";
             var testFormula3 = @"L = \int_a^b \sqrt[4]{ \left| \sum_{i,j=1}^ng_{ij}\left(\gamma(t)\right) \left[\frac{d}{dt}x^i\circ\gamma(t) \right] \left{\frac{d}{dt}x^j\circ\gamma(t) \right} \right|}dt";
-            this.inputTextBox.Text = testFormula3;
+            
+            //matrices
+            var tf8 = @"\matrix{4&78&3 \\ 5 & 9  & 82 }";
+            var tf9 = @"\bmatrix{4 & 78 & 3 \cr 5 & 9  & 22 }";
+            var tf10 = @"\cases{x,&if x \ge 0;\cr -x,& otherwise.}";
+            var tf11= @"\matrix{4&78&3\\57 & {\bmatrix{78 \\ 12}}  & 20782 }";
+            var tf15 = @"R_2 = \left[ \amatrix{2 & 1 & 6 \\ 4 & 3 &14 \\ 2 & -2 & \alpha - 2}{0 \\ 4 \\ -\beta + 12} \right]";
+            var tf17 = @"v \times w = \left( \matrix{v_2 w_3 - v_3 w_2 \\ v_3 w_1 - v_1 w_3 \\ v_1 w_2 - v_2 w_1} \right) where \medspace v= \left(\matrix{ v_1 \\ v_2 \\ v_3 }\right), w= \left( \matrix{w_1 \\ w_2  \\ w_3} \right)";
+            this.inputTextBox.Text = tf17;
         }
 
         private void Window_Closed(object sender, EventArgs e)
