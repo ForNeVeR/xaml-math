@@ -83,14 +83,17 @@ namespace WpfMath.Parsers
             {
                 "\\",
                 "amatrix",
+                "bcancel",
                 "bmatrix",
                 "Bmatrix",
+                "cancel",
                 "cases",
                 "color",
                 "colorbox",
                 "cr",
                 "definecolor",
                 "enclose",
+                "fbox",
                 "frac",
                 "hide",
                 "it",
@@ -423,6 +426,17 @@ namespace WpfMath.Parsers
                         }
                     }
 
+                case "bcancel":
+                    {
+                        if (position == value.Length)
+                            throw new TexParseException("illegal end!");
+                        SkipWhiteSpace(value, ref position);
+
+                        source = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+                        var cancelformula = Parse(source, formula.TextStyle);
+                        return new BCancelAtom(source, cancelformula.RootAtom);
+                    }
+                    
                 case "bmatrix":
                     {
                         if (position == value.Length)
@@ -447,6 +461,17 @@ namespace WpfMath.Parsers
                         return new BBMatrixAtom(matrixsource, new TableAtom(matrixsource, cells));
                     }
 
+                case "cancel":
+                    {
+                        if (position == value.Length)
+                            throw new TexParseException("illegal end!");
+                        SkipWhiteSpace(value, ref position);
+
+                        source = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
+                        var cancelformula = Parse(source, formula.TextStyle);
+                        return new CancelAtom(source, cancelformula.RootAtom);
+                    }
+                    
                 case "cases":
                     {
                         if (position == value.Length)
@@ -461,67 +486,93 @@ namespace WpfMath.Parsers
                     
                 case "color":
                     {
-                        //Command to change the foreground color 
+                        //Syntax:\color{predefinedcolorname/userdefinedcolorname}
+                        //Syntax:\color[colormodel]{color-definition}
+                        //Command to change the foreground color
+                        var colormodel = "";
+                        if (value[position] == leftBracketChar)
+                        {
+                            colormodel = ReadGroup(formula, value, ref position, leftBracketChar, rightBracketChar).ToString();
+                            SkipWhiteSpace(value, ref position);
+                        }
                         var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
-
                         var remainingString = value.Segment(position);
                         var remaining = Parse(remainingString, formula.TextStyle);
                         position = value.Length;
                         source = value.Segment(start, position - start);
-                        if (predefinedColors.TryGetValue(colorName.ToString(), out Color color))
+                        if (colormodel.Length > 0)
                         {
-                            return new StyledAtom(source,remaining.RootAtom, null, new SolidColorBrush(color));
-                        }
-                        else if(userdefinedColors.ContainsKey(colorName.ToString()))
-                        {
-                            source = value.Segment(start, position - start);
-                            return new StyledAtom(source, remaining.RootAtom, null, new SolidColorBrush(userdefinedColors[colorName.ToString()]));
+                            var directcolor = ColorUtilities.Parse(colormodel.Trim(), colorName.ToString());
+                            return new StyledAtom(source, remaining.RootAtom, null, new SolidColorBrush(directcolor));
                         }
                         else
                         {
-                            try
+                            if (predefinedColors.TryGetValue(colorName.ToString(), out Color color))
                             {
-                                Color color1 = UserDefinedColorParser.Parse(colorName.ToString());
-                                return new StyledAtom(source,remaining.RootAtom, null, new SolidColorBrush(color1));
+                                return new StyledAtom(source, remaining.RootAtom, null, new SolidColorBrush(color));
                             }
-                            catch
+                            else if (userdefinedColors.ContainsKey(colorName.ToString()))
                             {
-                                string helpstr= HelpOutMessage(colorName.ToString(), predefinedColors.Keys.ToList());
-                                int a =position-remainingString.Length-3-colorName.Length;
-                                throw new TexParseException($"Color {colorName.ToString()} at columns {a} and {a+colorName.Length} could either not be found or converted{helpstr}.");
+                                return new StyledAtom(source, remaining.RootAtom, null, new SolidColorBrush(userdefinedColors[colorName.ToString()]));
                             }
-                            
+                            else
+                            {
+                                try
+                                {
+                                    Color color1 = UserDefinedColorParser.Parse(colorName.ToString());
+                                    return new StyledAtom(source, remaining.RootAtom, null, new SolidColorBrush(color1));
+                                }
+                                catch
+                                {
+                                    string helpstr = HelpOutMessage(colorName.ToString(), predefinedColors.Keys.ToList());
+                                    int a = position - remainingString.Length - 3 - colorName.Length;
+                                    throw new TexParseException($"Color {colorName} at columns {a} and {a + colorName.Length} could either not be found or converted{helpstr}.");
+                                }
+                            }
                         }
                     }
                 case "colorbox":
                     {
                         //Command to change the background color
+                        var colormodel = "";
+                        if (value[position] == leftBracketChar)
+                        {
+                            colormodel = ReadGroup(formula, value, ref position, leftBracketChar, rightBracketChar).ToString();
+                            SkipWhiteSpace(value, ref position);
+                        }
                         var colorName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
                         var remainingString = value.Segment(position);
                         var remaining = Parse(remainingString, formula.TextStyle);
                         position = value.Length;
                         source = value.Segment(start, position - start);
-                        if (predefinedColors.TryGetValue(colorName.ToString(), out Color color))
+                        if (colormodel.Length > 0)
                         {
-                            return new StyledAtom(source,remaining.RootAtom, new SolidColorBrush(color), null);
-                        }
-                        else if(userdefinedColors.ContainsKey(colorName.ToString()))
-                        {
-                            source = value.Segment(start, position - start);
-                            return new StyledAtom(source, remaining.RootAtom, null, new SolidColorBrush(userdefinedColors[colorName.ToString()]));
+                            var directcolor = ColorUtilities.Parse(colormodel.Trim(), colorName.ToString());
+                            return new StyledAtom(source, remaining.RootAtom, new SolidColorBrush(directcolor), null);
                         }
                         else
                         {
-                            try
+                            if (predefinedColors.TryGetValue(colorName.ToString(), out Color color))
                             {
-                                Color color1 = UserDefinedColorParser.Parse(colorName.ToString());
-                                return new StyledAtom(source,remaining.RootAtom, new SolidColorBrush(color1), null);
+                                return new StyledAtom(source, remaining.RootAtom, new SolidColorBrush(color), null);
                             }
-                            catch (Exception)
+                            else if (userdefinedColors.ContainsKey(colorName.ToString()))
                             {
-                                string helpstr= HelpOutMessage(colorName.ToString(), predefinedColors.Keys.ToList());
-                                int a =position-remainingString.Length-3-colorName.Length;
-                                throw new TexParseException($"Color {colorName.ToString()} at columns {a} and {a+colorName.Length} could either not be found or converted{helpstr}.");
+                                return new StyledAtom(source, remaining.RootAtom, null, new SolidColorBrush(userdefinedColors[colorName.ToString()]));
+                            }
+                            else
+                            {
+                                try
+                                {
+                                    Color color1 = UserDefinedColorParser.Parse(colorName.ToString());
+                                    return new StyledAtom(source, remaining.RootAtom, new SolidColorBrush(color1), null);
+                                }
+                                catch (Exception)
+                                {
+                                    string helpstr = HelpOutMessage(colorName.ToString(), predefinedColors.Keys.ToList());
+                                    int a = position - remainingString.Length - 3 - colorName.Length;
+                                    throw new TexParseException($"Color {colorName} at columns {a} and {a + colorName.Length} could either not be found or converted{helpstr}.");
+                                }
                             }
                         }
                     }
@@ -581,7 +632,17 @@ namespace WpfMath.Parsers
                         return new EnclosedAtom(source,enclosedItemFormula.RootAtom, enclosetypes);
                     }
                     
-                case "frac":{
+                case "fbox":
+                case "rect":
+                    {
+                        var rectangleFormula = Parse(ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar), formula.TextStyle);
+                        SkipWhiteSpace(value, ref position);
+                        source = value.Segment(start, position - start);
+                        return new RectangleAtom(source, rectangleFormula.RootAtom);
+                    }
+                    
+                case "frac":
+                    {
                         // Command is fraction.
                         SkipWhiteSpace(value, ref position);
                         if(position==value.Length)
