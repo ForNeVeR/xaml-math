@@ -712,6 +712,9 @@ namespace WpfMath.Parsers
             TexFormula numeratorFormula = null;
             TexFormula denominatorFormula = null;
 
+            if(fracparamsfound=false)
+                throw new TexParseException("The current fraction style is invalid");
+            
             if (Regex.IsMatch(sb.ToString(), @".+/.+"))
             {
                 midLength = sb.ToString().Split('/')[0].Length;
