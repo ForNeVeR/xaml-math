@@ -27,6 +27,16 @@ namespace WpfMath.Rendering
 
             RenderBackground(box, x, y);
             box.RenderTo(this, x, y);
+            
+            if(box.ShowBounds==true)
+            {
+               Pen boundspen=new Pen(Brushes.Black,1.2)
+               {
+                   DashStyle= new DashStyle(new double[]{2.3, 2.3}, 0.25),
+               };
+               var boxrect= GeometryHelper.ScaleRectangle(_scale, new Rect(x,(y-box.Height),box.TotalWidth,box.TotalHeight));
+               _drawingContext.DrawRectangle(null,boundspen,boxrect);
+            }
 
             _drawingContext.Pop();
         }

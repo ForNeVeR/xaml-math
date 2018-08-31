@@ -195,6 +195,7 @@ for a text style is not defined (e.g. "numbers" and "small" in "mathcal") -->
     <SymbolMapping name="Im" ch="61" fontId="3"/>
     <SymbolMapping name="partial" ch="64" fontId="0"/>
     <SymbolMapping name="infty" ch="49" fontId="3"/>
+    <SymbolMapping name="oo" ch="49" fontId="3"/>
     <SymbolMapping name="prime" ch="48" fontId="3"/>
     <SymbolMapping name="emptyset" ch="59" fontId="3"/>
     <SymbolMapping name="nabla" ch="114" fontId="3"/>
