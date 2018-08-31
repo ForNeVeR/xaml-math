@@ -14,11 +14,7 @@ namespace WpfMath.Boxes
     /// </summary>
     internal class DownDiagonalRule:Box
     {
-        //private double LeftX = 0;
-        //private double LeftY = 0;
-        //private double RightX = 0;
-        //private double RightY = 0;
-        private double LineThickness;
+        public double LineThickness{get;}
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HorizontalRule"/>.
@@ -37,8 +33,8 @@ namespace WpfMath.Boxes
         public override void RenderTo(IElementRenderer renderer, double x, double y)
         {
             var color = Foreground ?? Brushes.Black;
-            var pt1 = new Point(x,y);
-            var pt2 = new Point(x-Width,y+ Height);
+            var pt1 = new Point(x,y-Height);
+            var pt2 = new Point(x+Width,y);
             renderer.RenderLine(pt1,pt2,color);
         }
 
