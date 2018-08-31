@@ -6,57 +6,75 @@ using WpfMath.Exceptions;
 
 namespace WpfMath.Utils
 {
+    /// <summary>
+    /// Represents a class for the processing of colors.
+    /// </summary>
     internal static class ColorUtilities
     {
-        public static Color Parse(string colormodel, string colordef)
+        /// <summary>
+        /// Returns a <see cref="Color"/> based on the specified <paramref name="colormodel"/> and <paramref name="colordefinition"/>.
+        /// </summary>
+        /// <param name="colormodel">The model for generating the <see cref="Color"/>.</param>
+        /// <param name="colordefinition">The description of the color, based on the color model.</param>
+        /// <returns></returns>
+        public static Color Parse(string colormodel, string colordefinition)
         {
             Color resultcolor = new Color();
             switch (colormodel)
             {
-                case "rgb":
+                case "ARGB":
                     {
-
-                        break;
-                    }
-                case "RGB":
-                    {
-                        List<byte> channelbytes = Get_RGB(colordef);
-                        resultcolor.A = 255;
-                        if (channelbytes != null)
-                        {
-                            resultcolor.R = channelbytes[0];
-                            resultcolor.G = channelbytes[1];
-                            resultcolor.B = channelbytes[2];
-                        }
-                        break;
-                    }
-                case " ARGB":
-                    {
-                        List<byte> channelbytes = Get_ARGB(colordef);
+                        List<byte> channelbytes = Get_ARGB(colordefinition);
                         if (channelbytes != null)
                         {
                             resultcolor.A = channelbytes[0];
                             resultcolor.R = channelbytes[1];
                             resultcolor.G = channelbytes[2];
                             resultcolor.B = channelbytes[3];
+                        }
+                        else
+                        {
+                            throw new TexParseException($"The color definition \"{colordefinition}\", is invalid for the {colormodel} color model.");
+                        }
+                        break;
+                    }
+                case "gray":
+                    {
+                        List<byte> channelbytes = Get_gray(colordefinition);
+                        if (channelbytes != null)
+                        {
+                            resultcolor.A = 255;
+                            resultcolor.R = channelbytes[0];
+                            resultcolor.G = channelbytes[0];
+                            resultcolor.B = channelbytes[0];
+                        }
+                        else
+                        {
+                            throw new TexParseException($"The color definition \"{colordefinition}\", is invalid for the {colormodel} color model.");
                         }
                         break;
                     }
                 case "hsb":
+                case "hsl":
+                case "hsv":
                     {
-                        List<byte> channelbytes = Get_hsb(colordef);
+                        List<byte> channelbytes = Get_hsb(colordefinition);
                         if (channelbytes != null)
                         {
                             resultcolor.A = channelbytes[0];
                             resultcolor.R = channelbytes[1];
                             resultcolor.G = channelbytes[2];
                             resultcolor.B = channelbytes[3];
+                        }
+                        else
+                        {
+                            throw new TexParseException($"The color definition \"{colordefinition}\", is invalid for the {colormodel} color model.");
                         }
                         break;
                     }
                 case "HTML":
                     {
-                        List<byte> channelbytes = Get_HTML(colordef);
+                        List<byte> channelbytes = Get_HTML(colordefinition);
                         resultcolor.A = 255;
                         if (channelbytes != null)
                         {
@@ -64,31 +82,48 @@ namespace WpfMath.Utils
                             resultcolor.G = channelbytes[1];
                             resultcolor.B = channelbytes[2];
                         }
-
+                        else
+                        {
+                            throw new TexParseException($"The color definition \"{colordefinition}\", is invalid for the {colormodel} color model.");
+                        }
+                        break;
+                    }
+                case "rgb":
+                    {
+                        List<byte> channelbytes = Get_rgb(colordefinition);
+                        resultcolor.A = 255;
+                        if (channelbytes != null)
+                        {
+                            resultcolor.R = channelbytes[0];
+                            resultcolor.G = channelbytes[1];
+                            resultcolor.B = channelbytes[2];
+                        }
+                        else
+                        {
+                            throw new TexParseException($"The color definition \"{colordefinition}\", is invalid for the {colormodel} color model.");
+                        }
+                        break;
+                    }
+                case "RGB":
+                    {
+                        List<byte> channelbytes = Get_RGB(colordefinition);
+                        resultcolor.A = 255;
+                        if (channelbytes != null)
+                        {
+                            resultcolor.R = channelbytes[0];
+                            resultcolor.G = channelbytes[1];
+                            resultcolor.B = channelbytes[2];
+                        }
+                        else
+                        {
+                            throw new TexParseException($"The color definition \"{colordefinition}\", is invalid for the {colormodel} color model.");
+                        }
                         break;
                     }
                 default:
-                    throw new TexParseException($"The color model {colormodel} is not supported");
+                    throw new TexParseException("The color model " + '"' + colormodel + '"' + " is not supported");
             }
             return resultcolor;
-        }
-
-        /// <summary>
-        /// Checks if the <paramref name="str"/> is an RGB color model.
-        /// </summary>
-        /// <param name="str"></param>
-        /// <param name="resultbytes"></param>
-        /// <returns></returns>
-        /// <remarks>
-        /// Used for strings with byte values for the rgb channels.
-        /// </remarks>
-        public static List<byte> Get_RGB(string str)
-        {
-            if (IsByteTrain(str, 3, out List<byte> resultbytes))
-            {
-                return resultbytes;
-            }
-            else { return null; }
         }
 
         /// <summary>
@@ -100,16 +135,19 @@ namespace WpfMath.Utils
         /// <remarks> Used for strings with byte values for the argb channels.</remarks>
         public static List<byte> Get_ARGB(string str)
         {
-            if (IsByteHexTrain(str, 8, out List<byte> resultbytes))
+            if (IsByteTrain(str, 4, out List<byte> resultbytes))
             {
                 return resultbytes;
             }
             else { return null; }
         }
 
-        public static List<byte> Get_HTML(string str)
+        //\define-color{orange}{cmyk}{0,0.5,1,0}
+
+
+        public static List<byte> Get_gray(string str)
         {
-            if (IsByteHexTrain(str, 6, out List<byte> resultbytes))
+            if (IsFloatColorString(str, 1, out List<byte> resultbytes))
             {
                 return resultbytes;
             }
@@ -125,15 +163,48 @@ namespace WpfMath.Utils
             else { return null; }
         }
 
+        public static List<byte> Get_HTML(string str)
+        {
+            if (IsByteHexTrain(str, 6, out List<byte> resultbytes))
+            {
+                return resultbytes;
+            }
+            else { return null; }
+        }
+
+        public static List<byte> Get_rgb(string str)
+        {
+            if (IsFloatColorString(str, 3, out List<byte> resultbytes))
+            {
+                return resultbytes;
+            }
+            else { return null; }
+        }
+
+        // <summary>
+        // Checks if the <paramref name="str"/> is an RGB color model.
+        // </summary>
+        // <param name="str"></param>
+        // <returns></returns>
+        // <remarks>
+        // Used for strings with byte values for the rgb channels.
+        // </remarks>
+        public static List<byte> Get_RGB(string str)
+        {
+            if (IsByteTrain(str, 3, out List<byte> resultbytes))
+            {
+                return resultbytes;
+            }
+            else { return null; }
+        }
+
         /// <summary>
         /// Returns a value that tells if the <paramref name="input"/> contains byte values, separated by a ",".
         /// </summary>
         /// <example>
-        /// 23,78,56=>true
-        /// 789,fp=>false
         /// </example>
-        /// <param name="input"></param>
-        /// <param name="num"></param>
+        /// <param name="input">The string expected to contain the byte values.</param>
+        /// <param name="num">The expected number of bytes in the <paramref name="input"/>.</param>
         /// <returns></returns>
         public static bool IsByteTrain(string input, int num, out List<byte> resultbytes)
         {
@@ -162,10 +233,10 @@ namespace WpfMath.Utils
         }
 
         /// <summary>
-        /// Returns a value that tells if the <paramref name="input"/> contains byte hex values,
+        /// Returns a value that tells if the <paramref name="input"/> contains byte hex values.
         /// </summary>
-        /// <param name="input"></param>
-        /// <param name="num"></param>
+        /// <param name="input">The <see cref="string"/> containing the hex codes.</param>
+        /// <param name="num">The number of bytes (in hexadecimal form) contained in the <paramref name="input"/>.</param>
         /// <returns></returns>
         /// <remarks><paramref name="input"/> should be left in the raw state(e.g.;#56e245, not 56e245).</remarks>
         public static bool IsByteHexTrain(string input, int num, out List<byte> resultByteList)
@@ -306,6 +377,34 @@ namespace WpfMath.Utils
                 return false;
             }
             return false;
+        }
+
+        private static bool IsFloatColorString(string input, int num, out List<byte> resultbytes)
+        {
+            resultbytes = new List<byte>();
+            string[] arrstr = input.Trim().Split(',');
+            if (arrstr.Length == num)
+            {
+                foreach (var item in arrstr)
+                {
+                    if (double.TryParse(item, out double floatvalue))
+                    {
+                        if (floatvalue >= 0 && floatvalue <= 1)
+                        {
+                            resultbytes.Add((byte)Math.Floor(floatvalue * 255));
+                        }
+                    }
+                }
+            }
+            if (resultbytes.Count == num)
+            {
+                return true;
+            }
+            else
+            {
+                resultbytes = null;
+                return false;
+            }
         }
 
     }
