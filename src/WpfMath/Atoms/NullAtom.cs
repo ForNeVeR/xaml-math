@@ -10,9 +10,7 @@ namespace WpfMath.Atoms
           
           public static Box NullBox=>new StrutBox(0,0,0,0);
           
-          protected override Box CreateBoxCore(TexEnvironment environment)
-          {
-              return new StrutBox(0,0,0,0);
-          }
+          protected override Box CreateBoxCore(TexEnvironment environment)=> new StrutBox(0,0,0,0);
+          
      }
 }
