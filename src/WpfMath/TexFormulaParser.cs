@@ -342,19 +342,7 @@ namespace WpfMath
                         }
                         else
                         {
-                            StringBuilder sb = new StringBuilder();
-                            while (position < value.Length && IsWhiteSpace(value[position]) == false && value[position] != escapeChar )
-                            {
-                                sb.Append(value[position].ToString());
-                                position++;
-                            }
-                            var b = sb.ToString().Length;
-                            source = value.Segment(position - b, b);
-                            int sectseppt=((int)Math.Floor((double)(source.Length/2)));
-                            var numeratorFormula = Parse(source.Segment(0,sectseppt),formula.TextStyle);
-                            var denominatorFormula= Parse(source.Segment(sectseppt, source.Length-sectseppt), formula.TextStyle);
-
-                            return new FractionAtom(source, numeratorFormula.RootAtom, denominatorFormula.RootAtom, true);
+                            return GetSimpleFractionAtom(formula, value, ref position);
                         }
                     }
                 case "left":
@@ -634,6 +622,77 @@ namespace WpfMath
                 // Escape sequence is invalid.
                 throw new TexParseException("Unknown symbol or command or predefined TeXFormula: '" + command + "'");
             }
+        }
+        
+        private Atom GetSimpleFractionAtom(TexFormula formula,SourceSpan value,ref int position)
+        {
+            if(value[position]==escapeChar||value [position]=='/')
+                throw new TexParseException("Escape characters must be put in groups and fractions can't begin with a forward slash");
+            SourceSpan source;
+            bool fracparamsfound = false;
+            StringBuilder sb = new StringBuilder();
+            int srcstart = position;
+            while (position < value.Length && fracparamsfound == false && value[position] != escapeChar)
+            {
+                string curChar = value[position].ToString();
+                string prevChar = position>0? value[position-1].ToString():value[position].ToString() ;
+                if (curChar == "{")
+                {
+                    if(prevChar!="/")
+                    {
+                        var groupsource = value.Segment(position, value.Length - position);
+                        var denomgroup = ReadGroup(groupsource.ToString(), leftGroupChar, rightGroupChar, 0);
+                        sb.Append("{" + denomgroup + "}");
+                        position += denomgroup.Length + 2;
+                        fracparamsfound = true;
+                    }
+                    else
+                    {
+                        throw new TexParseException("Invalid fraction style");
+                    }
+                    
+                }
+                else if (curChar == " ")
+                {
+                    fracparamsfound = true;
+                }
+                else
+                {
+                    sb.Append(value[position].ToString());
+                    position++;
+                }
+            }
+
+            var fracParamsLength = sb.ToString().Length;
+            source = fracParamsLength == 0 ? new SourceSpan("  ", position, 2) : value.Segment(srcstart, fracParamsLength);
+
+            int midLength = ((int)Math.Floor((double)(source.Length / 2)));
+            TexFormula numeratorFormula = null;
+            TexFormula denominatorFormula = null;
+
+            if(fracparamsfound==false|| sb.ToString().EndsWith("/"))
+                throw new TexParseException("The current fraction style is invalid");
+            
+            if (Regex.IsMatch(sb.ToString(), @".+/.+"))
+            {
+                midLength = sb.ToString().Split('/')[0].Length;
+                numeratorFormula = Parse(source.Segment(0, midLength), formula.TextStyle);
+                denominatorFormula = Parse(source.Segment(midLength + 1, source.ToString().Substring(midLength).Length), formula.TextStyle);
+            }
+            else if (Regex.IsMatch(sb.ToString(), @"[.]+[{][.]+[}]") || sb.ToString().Contains("{") == true)
+            {
+                midLength = sb.ToString().Split('{')[0].Length;
+                numeratorFormula = Parse(source.Segment(0, midLength), formula.TextStyle);
+                denominatorFormula = Parse(source.Segment(midLength), formula.TextStyle);
+            }
+            else if (sb.ToString().Contains("/") == false && sb.ToString().Contains("{") == false && sb.ToString().Contains("}") == false)
+            {
+                midLength = ((int)Math.Floor((double)(source.Length / 2)));
+                numeratorFormula = Parse(source.Segment(0, midLength), formula.TextStyle);
+                denominatorFormula = Parse(source.Segment(midLength), formula.TextStyle);
+            }
+            
+            return new FractionAtom(source, numeratorFormula.RootAtom, denominatorFormula.RootAtom, true);
         }
 
         private Atom AttachScripts(TexFormula formula, SourceSpan value, ref int position, Atom atom, bool skipWhiteSpace = true)
