@@ -111,6 +111,17 @@ namespace WpfMath.Controls
         {
             InitializeComponent();
         }
+        
+        protected override void OnRender(DrawingContext drawingContext)
+        {
+            base.OnRender(drawingContext);
+            
+            base.VisualTextRenderingMode = TextRenderingMode.ClearType;
+            base.VisualTextHintingMode = TextHintingMode.Fixed;
+            base.VisualEdgeMode = EdgeMode.Aliased;
+            base.VisualClearTypeHint = ClearTypeHint.Enabled;
+            
+        }
 
         private void Render()
         {
