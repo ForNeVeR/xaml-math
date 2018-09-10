@@ -5,6 +5,14 @@ using System.Text;
 
 namespace WpfMath
 {
+    public enum HorizontalAlignment
+    {
+        Center,
+        Left,
+        Right,
+        Stretch,
+    }
+    
     public enum TexDelimeterType
     {
         Over = 0,
@@ -66,4 +74,13 @@ namespace WpfMath
         Pica = 4,
         Mu = 5
     }
+    
+    public enum VerticalAlignment
+    {
+        Bottom,
+        Center,
+        Stretch,
+        Top,
+    }
+    
 }
