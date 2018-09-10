@@ -283,6 +283,55 @@ namespace WpfMath
             position++;
             return value.Segment(start, position - start - 1);
         }
+        
+        private string ReadGroup(string str, char leftchar, char rightchar, int startPosition)
+        {
+            StringBuilder sb = new StringBuilder();
+            if (startPosition == str.Length)
+            {
+                throw new TexParseException("illegal end!");
+            }
+            int deepness = 0; bool groupfound = false;
+            var start = startPosition;
+            if (str[start] == leftchar)
+            {
+                start++;
+                while (start < str.Length && groupfound == false)
+                {
+                    if (str[start] == leftchar)
+                    {
+                        deepness++;
+                        sb.Append(leftchar);
+                    }
+                    else if (str[start] == rightchar)
+                    {
+                        if (deepness == 0)
+                        {
+                            groupfound = true;
+                        }
+                        else
+                        {
+                            deepness--;
+                            sb.Append(rightchar);
+                        }
+                    }
+                    else
+                    {
+                        sb.Append(str[start]);
+                    }
+                    start++;
+                }
+            }
+
+            if (groupfound)
+            {
+                return sb.ToString();
+            }
+            else
+            {
+                throw new TexParseException("missing->>" + rightchar);
+            }
+        }
 
         private TexFormula ReadScript(TexFormula formula, SourceSpan value, ref int position)
         {
