@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Media;
+using System.Text;
 using WpfMath.Atoms;
 using WpfMath.Exceptions;
 
@@ -385,7 +386,7 @@ namespace WpfMath
                         source = value.Segment(start, position - start);
                         if (leftcells.Count == rightcells.Count)
                         {
-                            return new AugmentedMatrixAtom(source, new TableAtom(leftmatrixsource, leftcells), new TableAtom(rightmatrixsource, rightcells));
+                            return new AugmentedMatrixAtom(source, new MatrixAtom(leftmatrixsource, leftcells), new TableAtom(rightmatrixsource, rightcells));
                         }
                         else
                         {
@@ -402,7 +403,7 @@ namespace WpfMath
                         var matrixsource = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
 
                         var cells = GetMatrixData(formula, matrixsource);
-                        return new BmatrixAtom(matrixsource, new TableAtom(matrixsource, cells));
+                        return new BmatrixAtom(matrixsource, new MatrixAtom(matrixsource, cells));
                     }
 
                 case "Bmatrix":
@@ -414,7 +415,7 @@ namespace WpfMath
                         var matrixsource = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
 
                         var cells = GetMatrixData(formula, matrixsource);
-                        return new BBMatrixAtom(matrixsource, new TableAtom(matrixsource, cells));
+                        return new BBMatrixAtom(matrixsource, new MatrixAtom(matrixsource, cells));
                     }
                     
                 case "cases":
@@ -426,7 +427,7 @@ namespace WpfMath
                         var matrixsource = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
 
                         var cells = GetMatrixData(formula, matrixsource);
-                        return new CasesAtom(matrixsource, new TableAtom(matrixsource, cells, cellHAlignment: HorizontalAlignment.Left));
+                        return new CasesAtom(matrixsource, new MatrixAtom(matrixsource, cells, cellHAlignment: HorizontalAlignment.Left));
                     }
                     
                 case "frac":
@@ -475,7 +476,7 @@ namespace WpfMath
                         var matrixsource = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
 
                         var cells = GetMatrixData(formula, matrixsource);
-                        return new TableAtom(matrixsource, cells);
+                        return new MatrixAtom(matrixsource, cells);
                     }
                     
                 case "overline":
@@ -495,7 +496,7 @@ namespace WpfMath
                         var matrixsource = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
 
                         var cells = GetMatrixData(formula, matrixsource);
-                        return new PmatrixAtom(matrixsource, new TableAtom(matrixsource, cells));
+                        return new PmatrixAtom(matrixsource, new MatrixAtom(matrixsource, cells));
                     }
                     
                 case "right":
@@ -594,7 +595,7 @@ namespace WpfMath
                         var matrixsource = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
 
                         var cells = GetMatrixData(formula, matrixsource);
-                        return new VmatrixAtom(matrixsource, new TableAtom(matrixsource, cells));
+                        return new VmatrixAtom(matrixsource, new MatrixAtom(matrixsource, cells));
                     }
 
                 case "Vmatrix":
@@ -606,7 +607,7 @@ namespace WpfMath
                         var matrixsource = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar);
 
                         var cells = GetMatrixData(formula, matrixsource);
-                        return new VVMatrixAtom(matrixsource, new TableAtom(matrixsource, cells));
+                        return new VVMatrixAtom(matrixsource, new MatrixAtom(matrixsource, cells));
                     }
                     
             }
