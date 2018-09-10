@@ -51,6 +51,13 @@ namespace WpfMath.Boxes
             get;
             set;
         }
+        
+        /// <summary>
+        /// Gets or sets a value that specifies whether the bounds of this box should be shown.
+        /// </summary>
+        public bool ShowBounds{get; set;}
+        
+        public object Tag{get; set;}
 
         public double TotalHeight
         {
