@@ -386,7 +386,7 @@ namespace WpfMath
                         source = value.Segment(start, position - start);
                         if (leftcells.Count == rightcells.Count)
                         {
-                            return new AugmentedMatrixAtom(source, new MatrixAtom(leftmatrixsource, leftcells), new TableAtom(rightmatrixsource, rightcells));
+                            return new AugmentedMatrixAtom(source, new MatrixAtom(leftmatrixsource, leftcells), new MatrixAtom(rightmatrixsource, rightcells));
                         }
                         else
                         {
