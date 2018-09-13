@@ -7,6 +7,11 @@ using System.Windows;
 using System.Windows.Media;
 using WpfMath.Atoms;
 using WpfMath.Exceptions;
+using Ionic.Zip;
+using System.IO;
+using System.Xml;
+using System.Text;
+using WpfMath.Utils;
 
 namespace WpfMath
 {
@@ -49,20 +54,73 @@ namespace WpfMath
             new[] { "vert", "vert" },
             new[] { "Vert", "Vert" }
         };
+        
+        /// <summary>
+        /// Gets or sets the number of declared fonts.
+        /// </summary>
+        public int DeclaredFonts { get; private set; }
 
-        static TexFormulaParser()
+        /// <summary>
+        /// Gets or sets the default text style mapping for the formula parser.
+        /// <para/>
+        /// Item1->Digits                   <para/>
+        /// Item2->EnglishCapitals          <para/>
+        /// Item3->EnglishSmall             <para/>
+        /// Item4->GreekCapitals            <para/>
+        /// Item5->GreekSmall
+        /// </summary>
+        public Tuple<string, string, string, string, string> DefaultTextStyleMapping { get; private set; }
+        /// <summary>
+        /// Gets or sets the directory containing the font file(s).
+        /// </summary>
+        public string FormulaFontFilesDirectory { get; private set; }
+        /// <summary>
+        /// Gets or sets the path to the font information file.
+        /// </summary>
+        public string FormulaFontInfoFilePath { get; private set; }
+        /// <summary>
+        /// Gets or sets the path to the settings for the font.
+        /// </summary>
+        public string FormulaSettingsFilePath { get; private set; }
+        /// <summary>
+        /// Gets or sets the path to the font symbols name-type declaration file.
+        /// </summary>
+        public string FormulaSymbolsFilePath { get; private set; }
+        
+        /// <summary>
+        /// Indicates whether the font(s) is(are) an internal or external font(s).
+        /// </summary>
+        public bool AreFontsInternal { get; private set; }
+        
+        /// <summary>
+        /// Gets or sets the path to the font settings file in this library.
+        /// </summary>
+        public Dictionary<string, string> AvailableFonts { get; private set; }
+ 
+        /// <summary>
+        /// Initializes a new <see cref="TexFormulaParser"/>.
+        /// </summary>
+        public TexFormulaParser()
         {
-            predefinedColors = new Dictionary<string, Color>();
+            
 
             Initialize();
         }
 
+        /// <summary>
+        /// Initializes a new <see cref="TexFormulaParser"/> with the specified properties.
+        /// </summary>
+        public TexFormulaParser(int declaredFonts, string fontFilesDir, string fontInfoFilePath, string formulaSettingsFilePath, string symbolsFilePath, bool isInternal)
+        {
+            Initialize(declaredFonts, fontFilesDir, fontInfoFilePath, formulaSettingsFilePath, symbolsFilePath, isInternal);
+        }
+        
         internal static string[][] DelimiterNames
         {
             get { return delimiterNames; }
         }
 
-        private static void Initialize()
+        private void Initialize(int declaredFonts=4,string fontFilesDir= "Fonts/Default/",string fontInfoFilePath= "WpfMath.Data.DefaultTexFont.xml",string formulaSettingsFilePath= "WpfMath.Data.TexFormulaSettings.xml",string symbolsFilePath= "WpfMath.Data.TexSymbols.xml",bool isInternal= true)
         {
             //
             // If start application isn't WPF, pack isn't registered by defaultTexFontParser
@@ -74,6 +132,14 @@ namespace WpfMath
                     UriParser.Register(new GenericUriParser(GenericUriParserOptions.GenericAuthority), "pack", -1);
             }
 
+            AvailableFonts = new Dictionary<string,string>
+            {
+                {"Asana-Math","WpfMath.Data.AsanaMathFontSettings.wmpkg" },
+                {"Computer-Modern","WpfMath.Data.AsanaMathFontSettings.wmpkg" },
+                {"Default","WpfMath.Data.AsanaMathFontSettings.wmpkg" },
+                
+            };
+            
             commands = new HashSet<string>
             {
                 "color",
@@ -86,10 +152,22 @@ namespace WpfMath
                 "underline"
             };
 
-            var formulaSettingsParser = new TexPredefinedFormulaSettingsParser();
+            predefinedColors = new Dictionary<string, Color>();
+            
+            DeclaredFonts = declaredFonts;
+            
+            FormulaFontFilesDirectory = fontFilesDir;
+            FormulaFontInfoFilePath = fontInfoFilePath;
+            FormulaSettingsFilePath = formulaSettingsFilePath;
+            FormulaSymbolsFilePath = symbolsFilePath;
+            AreFontsInternal = isInternal;
+
+            
+            var formulaSettingsParser = new InternalTexFormulaSettingsParser(FormulaSettingsFilePath,AreFontsInternal);
             symbols = formulaSettingsParser.GetSymbolMappings();
             delimeters = formulaSettingsParser.GetDelimiterMappings();
-            textStyles = formulaSettingsParser.GetTextStyles();
+            TextStyles = formulaSettingsParser.GetTextStyles();
+            DefaultTextStyleMapping = formulaSettingsParser.GetDefaultTextStyleMappings();
 
             var colorParser = new PredefinedColorParser();
             colorParser.Parse(predefinedColors);
@@ -98,6 +176,160 @@ namespace WpfMath
             predefinedFormulasParser.Parse(predefinedFormulas);
         }
 
+        /// <summary>
+        /// Loads the specified <paramref name="settingsFile"/> for this <see cref="TexFormulaParser"/> to use for parsing.
+        /// </summary>
+        /// <param name="settingsFile"></param>
+        /// <param name="fromthisAssembly"></param>
+        public void LoadSettings(string settingsFile,bool fromthisAssembly)
+        {
+            if (settingsFile.EndsWith(".wmpkg"))
+            {
+                if (!fromthisAssembly && !File.Exists(settingsFile))
+                {
+                    throw new TexParseException("Invalid settings file path");
+                }
+
+                ZipFile zipfile = null;
+                var dirs = Regex.Split(settingsFile.Substring(0, settingsFile.Length - 6), @"[./\\]");
+                string folderName = dirs[dirs.Length - 1];
+
+                var extractionDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\WPFMATH\\" + folderName;
+                var parentExtractionDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\WPFMATH\\";
+
+                if (Directory.Exists(extractionDir))
+                {
+                    //Clear the files in it if they exist
+                    foreach (var item in Directory.EnumerateFiles(extractionDir))
+                    {
+                        File.Delete(item);
+                    }
+                }
+                if (Directory.Exists(extractionDir) == false)
+                {
+                    //create it
+                    Directory.CreateDirectory(extractionDir);
+                }
+
+                if (!fromthisAssembly && File.Exists(settingsFile))
+                {
+                    zipfile = ZipFile.Read(settingsFile);
+                    zipfile.ExtractAll(extractionDir, ExtractExistingFileAction.DoNotOverwrite);
+                }
+                if (fromthisAssembly)
+                {
+                    using (var fs= (Assembly.GetExecutingAssembly().GetManifestResourceStream(settingsFile)))
+                    {
+                        zipfile= ZipFile.Read(fs);
+                        zipfile.ExtractAll(extractionDir, ExtractExistingFileAction.DoNotOverwrite);
+                    }  
+                }
+                
+                var settingsguidefile = extractionDir + "\\SettingsInfo.xml";
+                DirectoryInfo dirInfo = new DirectoryInfo(parentExtractionDir)
+                {
+                    Attributes = FileAttributes.Hidden
+                };
+
+                if (File.Exists(settingsguidefile))
+                {
+                    using (var fs = File.Open(settingsguidefile, FileMode.Open))
+                    {
+                        XmlDocument settingsDoc = new XmlDocument();
+                        settingsDoc.Load(fs);
+                        if (settingsDoc.DocumentElement.Name == "ParserSettings" && settingsDoc.DocumentElement.HasChildNodes)
+                        {
+                            var settingsDocNodes = settingsDoc.DocumentElement.GetXmlNodes();
+                            foreach (var item in settingsDocNodes)
+                            {
+                                if (item.Name == "DeclaredFonts")
+                                {
+                                    if (int.TryParse(item.FirstChild.Value, out int result))
+                                    {
+                                        DeclaredFonts = result;
+                                    }
+                                    else
+                                    {
+                                    }
+                                }
+                                if (item.Name == "SymbolsPath")
+                                {
+                                    FormulaSymbolsFilePath = extractionDir + item.FirstChild.Value.Trim();
+                                }
+                                if (item.Name == "FontDescriptionPath")
+                                {
+                                    FormulaFontInfoFilePath = extractionDir + item.FirstChild.Value.Trim();
+                                }
+                                if (item.Name == "FormulaSettingsPath")
+                                {
+                                    FormulaSettingsFilePath = extractionDir + item.FirstChild.Value.Trim();
+                                }
+                                if (item.Name == "FontsDirectory")
+                                {
+                                    FormulaFontFilesDirectory = extractionDir + item.FirstChild.Value.Trim();
+                                }
+                            }
+                            AreFontsInternal = false;
+                            Initialize(DeclaredFonts, FormulaFontFilesDirectory, FormulaFontInfoFilePath, FormulaSettingsFilePath, FormulaSymbolsFilePath, AreFontsInternal);
+                        }
+                        fs.Close();
+                    }
+                }
+                else
+                {
+                    throw new TexParseException("Invalid font package");
+                }
+                zipfile.Dispose();
+            }
+            
+        }
+
+        //TODO: Include Predefined tex formulas
+        /// <summary>
+        /// Generates a Formula setting file from the specified files
+        /// </summary>
+        /// <param name="settingsFileName"></param>
+        /// <param name="ParserSettingsFile"></param>
+        /// <param name="FontDescriptionFile"></param>
+        /// <param name="FormulaSettingsPath"></param>
+        /// <param name="FormulaSymbolsFile"></param>
+        /// <param name="FontFiles"></param>
+        public void SaveSettings(string settingsFileName,
+            string ParserSettingsFile,
+            string FontDescriptionFile,
+            string FormulaSettingsPath,
+            string FormulaSymbolsFile,
+            string[] FontFiles)
+        {
+            if (File.Exists(settingsFileName))
+            {
+                string errstr = DateTime.Now.ToShortTimeString() ;
+                Debug.WriteLine(errstr);
+                File.Delete(settingsFileName);
+            }
+            using (ZipFile zipfile=new ZipFile(settingsFileName))
+            {
+                zipfile.SortEntriesBeforeSaving = true;
+                if (ParserSettingsFile.EndsWith("SettingsInfo.xml")
+                    &&FontDescriptionFile.EndsWith(".xml")
+                    && FormulaSettingsPath.EndsWith(".xml")
+                    && FormulaSymbolsFile.EndsWith(".xml"))
+                {                    
+                    zipfile.AddFile(ParserSettingsFile, "");
+                    zipfile.AddFile(FontDescriptionFile, "");
+                    zipfile.AddFile(FormulaSettingsPath, "");
+                    zipfile.AddFile(FormulaSymbolsFile, "");
+                }
+                
+                foreach (var item in FontFiles)
+                {
+                    zipfile.AddFile(item, "Fonts");
+                }
+
+                zipfile.Save();
+            }  
+        }
+        
         internal static string GetDelimeterMapping(char character)
         {
             try
@@ -110,12 +342,12 @@ namespace WpfMath
             }
         }
 
-        internal static SymbolAtom GetDelimiterSymbol(string name, SourceSpan source)
+        internal static SymbolAtom GetDelimiterSymbol(string name, SourceSpan source,string symbolsFilepath= "WpfMath.Data.TexSymbols.xml", bool isInternal=true)
         {
             if (name == null)
                 return null;
 
-            var result = SymbolAtom.GetAtom(name, source);
+            var result = SymbolAtom.GetAtom(name, source,,symbolsFilepath,isInternal );
             if (!result.IsDelimeter)
                 return null;
             return result;
@@ -137,7 +369,15 @@ namespace WpfMath
         {
             Debug.WriteLine(value);
             var position = 0;
-            return Parse(new SourceSpan(value, 0, value.Length), ref position, false, textStyle);
+            var result = Parse(new SourceSpan(value, 0, value.Length), ref position, false, textStyle);
+            result.DeclaredFonts = DeclaredFonts;
+            result.FormulaFontFilesDirectory = FormulaFontFilesDirectory;
+            result.FormulaFontInfoFilePath = FormulaFontInfoFilePath;
+            result.FormulaSettingsFilePath = FormulaSettingsFilePath;
+            result.FormulaSymbolsFilePath = FormulaSymbolsFilePath;
+            result.AreFontsInternal = AreFontsInternal;
+           
+            return result;
         }
 
         private TexFormula Parse(SourceSpan value, string textStyle)
@@ -335,7 +575,8 @@ namespace WpfMath
 
                         var opening = GetDelimiterSymbol(
                             GetDelimeterMapping(delimiter),
-                            value.Segment(start, left - start));
+                            value.Segment(start, left - start),
+                            FormulaSymbolsFilePath,AreFontsInternal);
                         if (opening == null)
                             throw new TexParseException($"Cannot find delimiter named {delimiter}");
 
@@ -364,7 +605,8 @@ namespace WpfMath
 
                         var closing = GetDelimiterSymbol(
                             GetDelimeterMapping(delimiter),
-                            value.Segment(start, position - start));
+                            value.Segment(start, position - start),
+                            FormulaSymbolsFilePath,AreFontsInternal);
                         if (closing == null)
                             throw new TexParseException($"Cannot find delimiter named {delimiter}");
 
@@ -473,8 +715,41 @@ namespace WpfMath
             var command = commandSpan.ToString();
             var formulaSource = new SourceSpan(value.Source, initialSrcPosition, commandSpan.End);
 
-            SymbolAtom symbolAtom = null;
-            if (SymbolAtom.TryGetAtom(commandSpan, out symbolAtom))
+            SymbolAtom symbolAtom =null;
+            if (TexFontUtilities.GreekCapitalLetters.Contains(command) || TexFontUtilities.GreekSmallLetters.Contains(command))
+            {
+                string symbolName = TexFontUtilities.TextStylesPrefixDict[formula.TextStyle ?? "mathrm"] + command;//mtt6
+                try
+                {
+                    var alphanumericchar = new AlphaNumericAtom(commandSpan, symbolName);
+
+                    //current representation can't be found so use the default mapping
+                    string greekmapping_default = null;
+                    if (TexFontUtilities.GreekCapitalLetters.Contains(command))
+                    {
+                        greekmapping_default = DefaultTextStyleMapping.Item4;
+                    }
+                    if (TexFontUtilities.GreekSmallLetters.Contains(command))
+                    {
+                        greekmapping_default = DefaultTextStyleMapping.Item5;
+                    }
+                    string defaultSymbolName = TexFontUtilities.TextStylesPrefixDict[greekmapping_default] + command;
+                    alphanumericchar = new AlphaNumericAtom(commandSpan, symbolName, defaultSymbolName);
+                    //I need to make some slight changes for digamma,Digamma and var[A-Za-z]+
+
+                    formula.Add(this.AttachScripts(formula, value, ref position, alphanumericchar), formulaSource);
+                    
+                }
+                catch (SymbolNotFoundException e)
+                {
+                    throw new TexParseException("The macro \""
+                            + command.ToString()
+                            + "\" was mapped to an unknown symbol with the name \""
+                            + symbolName + "\"!", e);
+                }
+                
+            }
+            else if (SymbolAtom.TryGetAtom(commandSpan, out symbolAtom, FormulaSymbolsFilePath, AreFontsInternal))
             {
                 // Symbol was found.
 
@@ -565,7 +840,9 @@ namespace WpfMath
             {
                 if (value[i] == primeChar)
                 {
-                    primesRowAtom = primesRowAtom.Add(SymbolAtom.GetAtom("prime", value.Segment(i, 1)));
+                    var primesymbol = SymbolAtom.GetAtom("prime", value.Segment(i, 1), FormulaSymbolsFilePath, AreFontsInternal);
+                    
+                    primesRowAtom = primesRowAtom.Add(primesymbol);
                     position++;
                 }
                 else if (!IsWhiteSpace(value[i]))
@@ -659,7 +936,7 @@ namespace WpfMath
 
                 try
                 {
-                    return SymbolAtom.GetAtom(symbolName, source);
+                    return SymbolAtom.GetAtom(symbolName, source,FormulaSymbolsFilePath,AreFontsInternal);
                 }
                 catch (SymbolNotFoundException e)
                 {
@@ -671,7 +948,45 @@ namespace WpfMath
             }
             else // Character is alpha-numeric or should be rendered as text.
             {
-                return new CharAtom(source, character, formula.TextStyle);
+                if (formula.TextStyle=="text")
+                {
+                    return new CharAtom(source, character, formula.TextStyle);
+                }
+                else
+                {
+                    //convert the character to its internal macro representation
+                    string charname = TexFontUtilities.TextStylesPrefixDict[formula.TextStyle ?? "mathrm"] + TexFontUtilities.GetCharacterasString(character);//mtt6
+                    AlphaNumericAtom alphanumericchar = null;
+                    try
+                    {
+                        string defaultcharmapping = null;
+                        if (TexFontUtilities.Digits.Contains(character))
+                        {
+                            defaultcharmapping = DefaultTextStyleMapping.Item1;
+                        }
+                        if (TexFontUtilities.EnglishCapitalLetters.Contains(character))
+                        {
+                            defaultcharmapping = DefaultTextStyleMapping.Item2;
+                        }
+                        if (TexFontUtilities.EnglishSmallLetters.Contains(character))
+                        {
+                            defaultcharmapping = DefaultTextStyleMapping.Item3;
+                        }
+                        // create a default character name to be used if current representation can't be found 
+
+                        string defaultcharname = TexFontUtilities.TextStylesPrefixDict[defaultcharmapping] + TexFontUtilities.GetCharacterasString(character);
+                        alphanumericchar = new AlphaNumericAtom(source, charname,defaultcharname);
+
+                        return alphanumericchar;
+                    }
+                    catch (Exception e)
+                    {
+                        throw new TexParseException("The character '"
+                                + character.ToString()
+                                + "' was mapped to an unknown symbol with the name \""
+                                + charname + "\"!", e);
+                    }
+                }
             }
         }
 
