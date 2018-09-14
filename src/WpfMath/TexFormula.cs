@@ -43,9 +43,35 @@ namespace WpfMath
             set;
         }
 
+        /// <summary>
+        /// Gets or sets the number of declared fonts.
+        /// </summary>
+        public int DeclaredFonts { get; set; }
+        /// <summary>
+        /// Gets or sets the directory containing the font file(s).
+        /// </summary>
+        public string FormulaFontFilesDirectory { get; set; }
+        /// <summary>
+        /// Gets or sets the path to the font information file.
+        /// </summary>
+        public string FormulaFontInfoFilePath { get; set; }
+        /// <summary>
+        /// Gets or sets the path to the settings for the font.
+        /// </summary>
+        public string FormulaSettingsFilePath { get; set; }
+        /// <summary>
+        /// Gets or sets the path to the font symbols name-type declaration file.
+        /// </summary>
+        public string FormulaSymbolsFilePath { get; set; }
+        /// <summary>
+        /// Indicates whether the font is an internal or external font.
+        /// </summary>
+        public bool AreFontsInternal { get; set; }
+
         public TexRenderer GetRenderer(TexStyle style, double scale, string systemTextFontName)
         {
-            var mathFont = new DefaultTexFont(scale);
+            var mathFont = new DefaultTexFont(FormulaFontInfoFilePath,FormulaFontFilesDirectory,DeclaredFonts,AreFontsInternal);
+            mathFont.Size = scale;
             var textFont = systemTextFontName == null ? (ITeXFont)mathFont : GetSystemFont(systemTextFontName, scale);
             var environment = new TexEnvironment(style, mathFont, textFont);
             return new TexRenderer(CreateBox(environment), scale);
