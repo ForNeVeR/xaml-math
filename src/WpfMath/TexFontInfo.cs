@@ -9,7 +9,7 @@ namespace WpfMath
     // Specifies all information about single font.
     internal class TexFontInfo
     {
-        public const int charCodesCount = 256;
+        public const int charCodesCount = ushort.MaxValue;
 
         private readonly double[][] metrics;
         private readonly IDictionary<Tuple<char, char>, char> ligatures;
