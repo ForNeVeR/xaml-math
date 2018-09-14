@@ -1,16 +1,29 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Media;
 using System.Globalization;
 using System.Diagnostics;
+using WpfMath.Parsers;
+using System.IO;
+using System.Windows;
 
-namespace WpfMath.Converters
+namespace WpfMath
 {
     public class SVGConverter
     {
         private int m_nestedLevel = 0;
+
+        public string Formula { get; set; }
+
+        public string FormulaSettingsFile { get; set; }
+
+        public double Scale { get; set; }
+
+        public bool IsSettingsFileInternal { get; set; }
+
+        public string SystemTextFontName { get; set; }
 
         public string ConvertGeometry(Geometry geometry)
         {
@@ -156,7 +169,7 @@ namespace WpfMath.Converters
                 if (pf.IsClosed)
                     svgString.Append("Z ");
             }
-            svgString.Append("\" fill = \"black\" />");
+            svgString.Append($"\" fill = \"black\" />");
             svgString.Append(Environment.NewLine);
         }
 
@@ -166,5 +179,58 @@ namespace WpfMath.Converters
                 , rectangle.Rect.Left, rectangle.Rect.Top, rectangle.Rect.Width, rectangle.Rect.Height);
             svgString.Append(Environment.NewLine);
         }
+
+        private string AddSVGHeader(string svgText)
+        {
+            var builder = new StringBuilder();
+            builder.AppendLine("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>")
+                .AppendLine("<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" >")
+                .AppendLine(svgText)
+                .AppendLine("</svg>");
+
+            return builder.ToString();
+        }
+
+        public SVGConverter(string settingsFile,string formulaStr,double scale,bool isSettingsFileInternal)
+        {
+            FormulaSettingsFile = settingsFile;
+            Formula = formulaStr;
+            Scale =scale;
+            IsSettingsFileInternal = isSettingsFileInternal;
+            SystemTextFontName = "Arial";
+        }
+
+        public void SaveGeometry(string filename)
+        {
+            TexFormulaParser formulaParser = new TexFormulaParser();
+            formulaParser.LoadSettings(FormulaSettingsFile,IsSettingsFileInternal);
+            if (filename == null) return;
+
+            // Create formula object from input text.
+            TexFormula formula = null;
+            try
+            {
+                formula = formulaParser.Parse(Formula);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while parsing the given input:" + Environment.NewLine +
+                    Environment.NewLine + ex.Message, "WPF-Math Example", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            // Create formula object from input text.
+            
+            if (formula == null) return;
+            var renderer = formula.GetRenderer(TexStyle.Display, Scale, SystemTextFontName);
+            using (var fs=new FileStream(filename,FileMode.Create,FileAccess.Write))
+            {
+                var geometry = renderer.RenderToGeometry(0, 0);
+                
+                var svgPathText = ConvertGeometry(geometry);
+                var svgText = AddSVGHeader(svgPathText);
+                using (var writer = new StreamWriter(fs))
+                    writer.WriteLine(svgText);
+            }
+        }
+
     }
 }
