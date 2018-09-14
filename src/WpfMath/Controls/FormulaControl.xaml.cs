@@ -107,10 +107,26 @@ namespace WpfMath.Controls
             nameof(SelectionBrush), typeof(Brush), typeof(FormulaControl),
             new PropertyMetadata(null, OnRenderSettingsChanged));
 
+        /// <summary>
+        /// Gets or sets the file containing the settings for the formula parser used by this <see cref="FormulaControl"/>.
+        /// </summary>
+        public string FormulaSettingsFile { get; set; }
+        /// <summary>
+        /// Gets or sets a value that specifies whether the settings file is inside or outside this assembly.
+        /// </summary>
+        public bool IsSettingsFileInternal { get; set; }
+
         public FormulaControl()
         {
             InitializeComponent();
-        }
+            errorlogger = new ErrorLogger();
+            formulaParser = new TexFormulaParser();
+            
+            FormulaSettingsFile = "WpfMath.Data.AsanaMathFontSettings.wmpkg";
+            IsSettingsFileInternal = true;
+            formulaParser.LoadSettings(FormulaSettingsFile,IsSettingsFileInternal);
+
+        } 
 
         private void Render()
         {
