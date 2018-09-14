@@ -23,6 +23,9 @@ namespace WpfMath
         Punctuation = 6,
         Inner = 7,
         Accent = 10,
+        Over,
+        Under,
+        
     }
 
     public enum TexAlignment
