@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using WpfMath.Exceptions;
+using WpfMath.Parsers;
 using WpfMath.Utils;
 
 namespace WpfMath
@@ -8,21 +9,27 @@ namespace WpfMath
     // Default implementation of ITeXFont that reads all font information from XML file.
     internal class DefaultTexFont : ITeXFont
     {
-        private static readonly IDictionary<string, double> parameters;
-        private static readonly IDictionary<string, object> generalSettings;
-        private static readonly IDictionary<string, CharFont[]> textStyleMappings;
-        private static readonly IDictionary<string, CharFont> symbolMappings;
-        internal static readonly IList<string> defaultTextStyleMappings;
-        private static readonly IList<TexFontInfo> fontInfoList;
+        private readonly IDictionary<string, double> parameters;
+        private readonly IDictionary<string, object> generalSettings;
+        private readonly IDictionary<string, CharFont[]> textStyleMappings;
+        public IDictionary<string, CharFont> SymbolMappings { get; private set; }
+        internal readonly IList<string> defaultTextStyleMappings;
+        private readonly IList<TexFontInfo> fontInfoList;
 
-        static DefaultTexFont()
+        public DefaultTexFont():this("WpfMath.Data.DefaultTexFont.xml", "Fonts/Default/", 4,true)
         {
-            var parser = new DefaultTexFontParser();
+        }
+
+        public DefaultTexFont(string fontdescrdir,string fontsDir,int fontsCount,bool isInternal)
+        {
+            
+            var parser = new InternalMathFontParser(fontdescrdir,fontsDir,fontsCount,isInternal);
+            //var parser = new InternalMathFontParser("WpfMath.Data.AsanaMathData.AsanaMath_TexFont.xml", "Fonts/AsanaMath/",21);
             parameters = parser.GetParameters();
             generalSettings = parser.GetGeneralSettings();
             textStyleMappings = parser.GetTextStyleMappings();
             defaultTextStyleMappings = parser.GetDefaultTextStyleMappings();
-            symbolMappings = parser.GetSymbolMappings();
+            SymbolMappings = parser.GetSymbolMappings();
             fontInfoList = parser.GetFontDescriptions();
 
             // Check that Mu font exists.
@@ -31,12 +38,12 @@ namespace WpfMath
                 throw new InvalidOperationException("ID of Mu font is invalid.");
         }
 
-        private static double GetParameter(string name)
+        private double GetParameter(string name)
         {
             return parameters[name];
         }
 
-        private static double GetSizeFactor(TexStyle style)
+        private double GetSizeFactor(TexStyle style)
         {
             if (style < TexStyle.Script)
                 return 1d;
@@ -46,7 +53,7 @@ namespace WpfMath
                 return (double)generalSettings["scriptscriptfactor"];
         }
 
-        public DefaultTexFont(double size)
+        public DefaultTexFont(double size):this()
         {
             this.Size = size;
         }
@@ -56,7 +63,7 @@ namespace WpfMath
         public double Size
         {
             get;
-            private set;
+            set;
         }
 
         public ITeXFont DeriveFont(double newSize)
@@ -71,6 +78,8 @@ namespace WpfMath
             // Create character for each part of extension.
             var fontInfo = fontInfoList[charInfo.FontId];
             var extension = fontInfo.GetExtension(charInfo.Character);
+            
+
             var parts = new CharInfo[extension.Length];
             for (int i = 0; i < extension.Length; i++)
             {
@@ -114,16 +123,16 @@ namespace WpfMath
                 GetMetrics(charFont, GetSizeFactor(style)).Value);
         }
 
-        private static string GetDefaultTextStyleMapping(char character)
+        private string GetDefaultTextStyleMapping(char character)
         {
             TexCharKind GetCharKind()
             {
-                if (character >= '0' && character <= '9')
-                    return TexCharKind.Numbers;
-                else if (character >= 'a' && character <= 'z')
-                    return TexCharKind.Small;
+                if (character >= '0' && character <= '9'||TexFontUtilities.Digits.Contains(character))
+                    return TexCharKind.Digit;
+                else if (character >= 'a' && character <= 'z'|| TexFontUtilities.EnglishSmallLetters.Contains(character))
+                    return TexCharKind.EnglishSmall;
                 else
-                    return TexCharKind.Capitals;
+                    return TexCharKind.EnglishCapital;
             }
 
             return defaultTextStyleMappings[(int)GetCharKind()];
@@ -138,17 +147,17 @@ namespace WpfMath
             int charIndexOffset;
             if (char.IsDigit(character))
             {
-                charKind = TexCharKind.Numbers;
+                charKind = TexCharKind.Digit;
                 charIndexOffset = character - '0';
             }
             else if (char.IsLetter(character) && char.IsLower(character))
             {
-                charKind = TexCharKind.Small;
+                charKind = TexCharKind.EnglishSmall;
                 charIndexOffset = character - 'a';
             }
             else
             {
-                charKind = TexCharKind.Capitals;
+                charKind = TexCharKind.EnglishCapital;
                 charIndexOffset = character - 'A';
             }
 
@@ -167,7 +176,7 @@ namespace WpfMath
                 : Result.Error<CharInfo>(new TextStyleMappingNotFoundException(textStyle));
 
         public Result<CharInfo> GetCharInfo(string symbolName, TexStyle style) =>
-            symbolMappings.TryGetValue(symbolName, out var mapping)
+            SymbolMappings.TryGetValue(symbolName, out var mapping)
                 ? this.GetCharInfo(mapping, style)
                 : Result.Error<CharInfo>(new SymbolMappingNotFoundException(symbolName));
 
@@ -335,7 +344,7 @@ namespace WpfMath
             return GetParameter("defaultrulethickness") * GetSizeFactor(style) * TexFontUtilities.PixelsPerPoint;
         }
 
-        private static Result<TexFontMetrics> GetMetrics(CharFont charFont, double size)
+        private Result<TexFontMetrics> GetMetrics(CharFont charFont, double size)
         {
             var fontInfo = fontInfoList[charFont.FontId];
             var metrics = fontInfo.GetMetrics(charFont.Character);
@@ -351,8 +360,8 @@ namespace WpfMath
     internal enum TexCharKind
     {
         None = -1,
-        Numbers = 0,
-        Capitals = 1,
-        Small = 2
+        Digit = 0,
+        EnglishCapital = 1,
+        EnglishSmall = 2
     }
 }
