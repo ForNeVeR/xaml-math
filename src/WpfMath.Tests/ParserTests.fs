@@ -1,7 +1,5 @@
 ﻿module WpfMath.Tests.ParserTests
 
-open System.Windows.Media
-
 open Xunit
 
 open WpfMath
@@ -14,6 +12,7 @@ let ``2+2`` = row [char '2'; symbol "plus"; char '2']
 let ``\mathrm{2+2}`` = row [styledChar '2' rmStyle; symbol "plus"; styledChar '2' rmStyle]
 let ``\lim`` = row [styledChar 'l' rmStyle; styledChar 'i' rmStyle; styledChar 'm' rmStyle]
 let ``\sin`` = row [styledChar 's' rmStyle; styledChar 'i' rmStyle; styledChar 'n' rmStyle]
+let redBrush = brush "#ed1b23"
 
 [<Fact>]
 let ``2+2 should be parsed properly`` () =
@@ -181,14 +180,14 @@ let ``"\sum_ " should throw a TexParseException``() =
     assertParseThrows<TexParseException> @"\sum_ "
 
 [<Theory>]
-[<InlineData(@"\color{red}123");
-  InlineData(@"\color{red}{123}");
-  InlineData(@"\color{red} 123");
-  InlineData(@"\color{red} {123}")>]
+[<InlineData(@"\color{red}1123");
+  InlineData(@"\color{red}{1}123");
+  InlineData(@"\color{red} 1123");
+  InlineData(@"\color{red} {1}123")>]
 let ``\color should parse arguments properly``(text : string) : unit =
     assertParseResult
     <| text
-    <| (formula (row <| seq { yield upcast foreColor ``2+2`` Brushes.Red; yield! ``123`` }))
+    <| (formula (row <| seq { yield upcast foreColor (char '1') redBrush; yield! ``123`` }))
 
 [<Theory>]
 [<InlineData(@"\colorbox{red}1123");
@@ -198,7 +197,7 @@ let ``\color should parse arguments properly``(text : string) : unit =
 let ``\colorbox should parse arguments properly``(text : string) : unit =
     assertParseResult
     <| text
-    <| (formula (row <| seq { yield upcast backColor ``2+2`` Brushes.Red; yield! ``123`` }))
+    <| (formula (row <| seq { yield upcast backColor (char '1') redBrush; yield! ``123`` }))
 
 [<Theory>]
 [<InlineData(@"\frac2x123");

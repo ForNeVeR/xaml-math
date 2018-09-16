@@ -94,3 +94,7 @@ let backColor (body : Atom) (color : Brush) = StyledAtom(null, body, color, null
 let brace (name : string) (braceType : TexAtomType) : SymbolAtom = SymbolAtom(null, name, braceType, true)
 let openBrace (name : string) : SymbolAtom = brace name TexAtomType.Opening
 let closeBrace (name : string) : SymbolAtom = brace name TexAtomType.Closing
+
+let brush : string -> Brush =
+    let converter = BrushConverter()
+    fun color -> downcast converter.ConvertFrom color
