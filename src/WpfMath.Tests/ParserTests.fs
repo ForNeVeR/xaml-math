@@ -241,3 +241,19 @@ let ``\underline should parse arguments properly``(text : string) : unit =
     assertParseResult
     <| text
     <| (formula (row <| seq { yield upcast underline(char '1'); yield! ``123`` }))
+
+[<Theory>]
+[<InlineData("x^y_z");
+  InlineData("x^y_{z}");
+  InlineData("x^{y}_z");
+  InlineData("x^{y}_{z}");
+  InlineData("{x}^y_z");
+  InlineData("{x}^y_{z}");
+  InlineData("{x}^{y}_z");
+  InlineData("{x}^{y}_{z}");
+  InlineData("x^y_ z");
+  InlineData("{x} ^ {y} _ {z}")>]
+let ``Scripts should be parsed properly``(text : string) : unit =
+    assertParseResult
+    <| text
+    <| (formula <| scripts (char 'x') (char 'z') (char 'y'))
