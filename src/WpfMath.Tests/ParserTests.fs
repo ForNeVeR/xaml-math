@@ -257,3 +257,11 @@ let ``Scripts should be parsed properly``(text : string) : unit =
     assertParseResult
     <| text
     <| (formula <| scripts (char 'x') (char 'z') (char 'y'))
+
+[<Theory>]
+[<InlineData(@"\text 1123");
+  InlineData(@"\text {1}123")>]
+let ``\text command should support extended argument parsing``(text : string) : unit =
+    assertParseResult
+    <| text
+    <| (formula (row <| seq { yield upcast styledChar '1' textStyle; yield! ``123`` }))
