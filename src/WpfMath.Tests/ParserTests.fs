@@ -233,6 +233,16 @@ let ``\sqrt should parse arguments properly``(text : string) : unit =
     <| (formula (row <| seq { yield upcast radical(char '1'); yield! ``123`` }))
 
 [<Theory>]
+[<InlineData(@"\sqrt [2]1123");
+  InlineData(@"\sqrt [ 2]{1}123");
+  InlineData(@"\sqrt[2 ] 1123");
+  InlineData(@"\sqrt[ 2 ] {1}123")>]
+let ``\sqrt should parse optional argument properly``(text : string) : unit =
+    assertParseResult
+    <| text
+    <| (formula (row <| seq { yield upcast radicalWithDegree (char '2') (char '1'); yield! ``123`` }))
+
+[<Theory>]
 [<InlineData(@"\underline1123");
   InlineData(@"\underline{1}123");
   InlineData(@"\underline 1123");

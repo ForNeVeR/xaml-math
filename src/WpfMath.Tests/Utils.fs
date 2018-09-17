@@ -80,6 +80,7 @@ let symbol (name : string) : SymbolAtom = symbolSrc name TexAtomType.BinaryOpera
 let symbolOp (name : string) : SymbolAtom = SymbolAtom(null, name, TexAtomType.BigOperator, false)
 let underline(body : Atom) : UnderlinedAtom = UnderlinedAtom(null, body)
 let radical(body : Atom) : Radical = Radical(null, body)
+let radicalWithDegree (degree : Atom) (body : Atom) : Radical = Radical(null, body, degree)
 let row (children : Atom seq) : RowAtom = rowSrc children null
 let fenced left body right : FencedAtom = FencedAtom(null, body, left, right)
 let fraction (num : Atom) (denom : Atom) : FractionAtom = FractionAtom(null, num, denom, true)
