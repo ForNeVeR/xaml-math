@@ -292,36 +292,8 @@ namespace WpfMath
             return value.Segment(position++, 1);
         }
 
-        private TexFormula ReadScript(TexFormula formula, SourceSpan value, ref int position)
-        {
-            SkipWhiteSpace(value, ref position);
-            if (position == value.Length)
-                throw new TexParseException("illegal end, missing script!");
-
-            var ch = value[position];
-            if (ch == leftGroupChar)
-            {
-                return this.Parse(ReadElement(value, ref position), formula.TextStyle);
-            }
-            else if (ch == escapeChar)
-            {
-                StringBuilder sb = new StringBuilder("\\");
-                position++;
-                while (position < value.Length && IsWhiteSpace(value[position]) == false && value[position] != escapeChar)
-                {
-                    sb.Append(value[position].ToString());
-                    position++;
-                }
-                var scriptlengthb = sb.Length;
-                var scrsrc = value.Segment(position - scriptlengthb, scriptlengthb);
-                return Parse(scrsrc, formula.TextStyle);
-            }
-            else
-            {
-                position++;
-                return Parse(value.Segment(position - 1, 1), formula.TextStyle);
-            }
-        }
+        private TexFormula ReadScript(TexFormula formula, SourceSpan value, ref int position) =>
+            this.Parse(ReadElement(value, ref position), formula.TextStyle);
 
         private Atom ProcessCommand(
             TexFormula formula,
@@ -400,7 +372,7 @@ namespace WpfMath
                         SkipWhiteSpace(value, ref position);
 
                         TexFormula degreeFormula = null;
-                        if (value[position] == leftBracketChar)
+                        if (value.Length > position && value[position] == leftBracketChar)
                         {
                             // Degree of radical is specified.
                             degreeFormula = this.Parse(

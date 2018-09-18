@@ -172,8 +172,8 @@ let ``\text doesn't create any SymbolAtoms``() =
     <| (formula <| row [char '2'; char '+'; char '2'])
 
 [<Fact>]
-let ``\sqrt{} should throw a TexParseException``() =
-    assertParseThrows<TexParseException> @"\sqrt{}"
+let ``\sqrt should throw a TexParseException``() =
+    assertParseThrows<TexParseException> @"\sqrt"
 
 [<Fact>]
 let ``"\sum_ " should throw a TexParseException``() =
