@@ -305,8 +305,6 @@ namespace WpfMath
         {
             int start = position - command.Length;
 
-            SkipWhiteSpace(value, ref position);
-
             SourceSpan source;
             switch (command)
             {
@@ -388,7 +386,6 @@ namespace WpfMath
                 case "underline":
                     {
                         var underlineFormula = this.Parse(ReadElement(value, ref position), formula.TextStyle);
-                        SkipWhiteSpace(value, ref position);
                         source = value.Segment(start, position - start);
                         return new UnderlinedAtom(source, underlineFormula.RootAtom);
                     }
