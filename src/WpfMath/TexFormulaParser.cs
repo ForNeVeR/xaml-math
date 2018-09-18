@@ -10,6 +10,21 @@ using WpfMath.Exceptions;
 
 namespace WpfMath
 {
+    /// <summary>
+    /// Represents the method that will handle the TeX command.
+    /// </summary>
+    /// <param name="formula"></param>
+    /// <param name="value"></param>
+    /// <param name="position"></param>
+    /// <param name="allowClosingDelimiter"></param>
+    /// <param name="closedDelimiter"></param>
+    /// <returns></returns>
+    public delegate Atom TexCommandHandler(TexFormula formula, SourceSpan value, ref int position, bool allowClosingDelimiter, ref bool closedDelimiter);
+    /// <summary>
+    /// Represents the method that will handle the TeX environment.
+    /// </summary>
+    public delegate Atom TexEnvironmentHandler(TexFormula formula, SourceSpan environmentSource);
+
     // TODO: Put all error strings into resources.
     // TODO: Use TextReader for lexing.
     public class TexFormulaParser
