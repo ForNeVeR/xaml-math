@@ -5,8 +5,10 @@ using System.Text;
 
 namespace WpfMath
 {
-    // Specifies font metrics for single character.
-    internal class TexFontMetrics
+    /// <summary>
+    /// Specifies font metrics for single character.
+    /// </summary>
+    public class TexFontMetrics
     {
         public TexFontMetrics(double width, double height, double depth, double italicWidth, double scale)
         {

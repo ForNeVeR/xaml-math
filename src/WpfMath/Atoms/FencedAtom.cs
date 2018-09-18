@@ -3,8 +3,10 @@ using WpfMath.Boxes;
 
 namespace WpfMath.Atoms
 {
-    // Atom representing base atom surrounded by delimeters.
-    internal class FencedAtom : Atom
+    /// <summary>
+    /// Atom representing base atom surrounded by delimeters.
+    /// </summary>
+    public class FencedAtom : Atom
     {
         private const int delimeterFactor = 901;
         private const double delimeterShortfall = 0.5;

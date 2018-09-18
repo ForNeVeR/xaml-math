@@ -5,8 +5,10 @@ using System.Text;
 
 namespace WpfMath
 {
-    // Extension character that contains character information for each of its parts.
-    internal class ExtensionChar
+    /// <summary>
+    /// Extension character that contains character information for each of its parts.
+    /// </summary>
+    public class ExtensionChar
     {
         public ExtensionChar(CharInfo top, CharInfo middle, CharInfo bottom, CharInfo repeat)
         {

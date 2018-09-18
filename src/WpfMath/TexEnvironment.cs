@@ -1,9 +1,11 @@
-﻿using System.Windows.Media;
+using System.Windows.Media;
 
 namespace WpfMath
 {
-    // Specifies current graphical parameters used to create boxes.
-    internal class TexEnvironment
+    /// <summary>
+    /// Specifies current graphical parameters used to create boxes.
+    /// </summary>
+    public class TexEnvironment
     {
         // ID of font that was last used.
         private int lastFontId = TexFontUtilities.NoFontId;

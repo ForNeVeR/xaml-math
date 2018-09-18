@@ -6,8 +6,10 @@ using WpfMath.Boxes;
 
 namespace WpfMath.Atoms
 {
-    // Atom representing horizontal row of other atoms, separated by glue.
-    internal class RowAtom : Atom, IRow
+    /// <summary>
+    /// Atom representing horizontal row of other atoms, separated by glue.
+    /// </summary>
+    public class RowAtom : Atom, IRow
     {
         // Set of atom types that make previous atom of BinaryOperator type change to Ordinary type.
         private static BitArray binaryOperatorChangeSet;

@@ -2,8 +2,10 @@ using WpfMath.Utils;
 
 namespace WpfMath.Atoms
 {
-    // Atom representing single character in specific text style.
-    internal class CharAtom : CharSymbol
+    /// <summary>
+    /// Atom representing single character in specific text style.
+    /// </summary>
+    public class CharAtom : CharSymbol
     {
         public CharAtom(SourceSpan source, char character, string textStyle = null)
             : base(source)

@@ -4,8 +4,10 @@ using WpfMath.Boxes;
 
 namespace WpfMath
 {
-    // Atom representing radical (nth-root) construction.
-    internal class Radical : Atom
+    /// <summary>
+    /// Atom representing radical (nth-root) construction.
+    /// </summary>
+    public class Radical : Atom
     {
         private const string sqrtSymbol = "sqrt";
 

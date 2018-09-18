@@ -3,8 +3,10 @@ using WpfMath.Boxes;
 
 namespace WpfMath.Atoms
 {
-    // Atom specifying graphical style.
-    internal class StyledAtom : Atom, IRow
+    /// <summary>
+    /// Atom specifying graphical style.
+    /// </summary>
+    public class StyledAtom : Atom, IRow
     {
         public StyledAtom(SourceSpan source, Atom atom, Brush backgroundColor, Brush foregroundColor)
             : base(source)

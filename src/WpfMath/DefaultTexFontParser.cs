@@ -9,8 +9,10 @@ using System.Xml.Linq;
 
 namespace WpfMath
 {
-    // Parses information for DefaultTeXFont settings from XML file.
-    internal class DefaultTexFontParser
+    /// <summary>
+    /// Parses information for DefaultTeXFont settings from XML file.
+    /// </summary>
+    public class DefaultTexFontParser
     {
         private static readonly string resourceName = TexUtilities.ResourcesDataDirectory + "DefaultTexFont.xml";
 

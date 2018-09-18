@@ -3,8 +3,10 @@ using WpfMath.Boxes;
 
 namespace WpfMath.Atoms
 {
-    // Atom representing big operator with optional limits.
-    internal class BigOperatorAtom : Atom
+    /// <summary>
+    /// Atom representing big operator with optional limits.
+    /// </summary>
+    public class BigOperatorAtom : Atom
     {
         private static Box ChangeWidth(Box box, double maxWidth)
         {

@@ -3,8 +3,10 @@ using WpfMath.Boxes;
 
 namespace WpfMath.Atoms
 {
-    // Atom representing whitespace.
-    internal class SpaceAtom : Atom
+    /// <summary>
+    /// Atom representing whitespace.
+    /// </summary>
+    public class SpaceAtom : Atom
     {
         // Collection of unit conversion functions.
         private static UnitConversion[] unitConversions = new UnitConversion[]

@@ -3,8 +3,10 @@ using WpfMath.Boxes;
 
 namespace WpfMath.Atoms
 {
-    // Atom representing base atom with accent above it.
-    internal class AccentedAtom : Atom
+    /// <summary>
+    /// Atom representing base atom with accent above it.
+    /// </summary>
+    public class AccentedAtom : Atom
     {
         public AccentedAtom(SourceSpan source, Atom baseAtom, string accentName)
             : base(source)

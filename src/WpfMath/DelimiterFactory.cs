@@ -6,8 +6,10 @@ using WpfMath.Boxes;
 
 namespace WpfMath
 {
-    // Creates boxes containing delimeter symbol that exists in different sizes.
-    internal static class DelimiterFactory
+    /// <summary>
+    /// Creates boxes containing delimeter symbol that exists in different sizes.
+    /// </summary>
+    public static class DelimiterFactory
     {
         public static Box CreateBox(string symbol, double minHeight, TexEnvironment environment, SourceSpan source = null)
         {

@@ -6,8 +6,10 @@ using WpfMath.Boxes;
 
 namespace WpfMath
 {
-    // Represents glueElement for holding together boxes.
-    internal class Glue
+    /// <summary>
+    /// Represents glueElement for holding together boxes.
+    /// </summary>
+    public class Glue
     {
         private static readonly IList<Glue> glueTypes;
         private static readonly int[, ,] glueRules;

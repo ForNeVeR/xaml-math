@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 
 namespace WpfMath.Utils
 {
-    internal static class Result
+    public static class Result
     {
         public static Result<TValue> Ok<TValue>(TValue value) => new Result<TValue>(value, null);
         public static Result<TValue> Error<TValue>(Exception error) => new Result<TValue>(default, error);
     }
 
-    internal readonly struct Result<TValue>
+    public readonly struct Result<TValue>
     {
         private readonly TValue value;
 

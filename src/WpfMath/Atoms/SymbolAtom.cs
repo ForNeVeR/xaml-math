@@ -5,8 +5,10 @@ using WpfMath.Utils;
 
 namespace WpfMath.Atoms
 {
-    // Atom representing symbol (non-alphanumeric character).
-    internal class SymbolAtom : CharSymbol
+    /// <summary>
+    /// Atom representing symbol (non-alphanumeric character).
+    /// </summary>
+    public class SymbolAtom : CharSymbol
     {
         /// <summary>
         /// Special name of empty delimiter symbol that shouldn't be rendered.

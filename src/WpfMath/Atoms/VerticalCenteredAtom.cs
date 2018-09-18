@@ -2,8 +2,10 @@ using WpfMath.Boxes;
 
 namespace WpfMath.Atoms
 {
-    // Atom representing other atom vertically centered with respect to axis.
-    internal class VerticalCenteredAtom : Atom
+    /// <summary>
+    /// Atom representing other atom vertically centered with respect to axis.
+    /// </summary>
+    public class VerticalCenteredAtom : Atom
     {
         public VerticalCenteredAtom(SourceSpan source, Atom atom)
             : base(source)

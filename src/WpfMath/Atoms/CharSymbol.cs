@@ -3,8 +3,10 @@ using WpfMath.Utils;
 
 namespace WpfMath.Atoms
 {
-    // Atom representing single character that can be marked as text symbol.
-    internal abstract class CharSymbol : Atom
+    /// <summary>
+    /// Atom representing single character that can be marked as text symbol.
+    /// </summary>
+    public abstract class CharSymbol : Atom
     {
         protected CharSymbol(SourceSpan source, TexAtomType type = TexAtomType.Ordinary)
             : base(source, type)

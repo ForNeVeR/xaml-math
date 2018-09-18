@@ -2,8 +2,10 @@ using WpfMath.Boxes;
 
 namespace WpfMath.Atoms
 {
-    // Atom (smallest unit) of TexFormula.
-    internal abstract class Atom
+    /// <summary>
+    /// Atom (smallest unit) of TexFormula.
+    /// </summary>
+    public abstract class Atom
     {
         protected Atom(SourceSpan source, TexAtomType type = TexAtomType.Ordinary)
         {

@@ -3,8 +3,10 @@ using WpfMath.Boxes;
 
 namespace WpfMath.Atoms
 {
-    // Atom representing other atom with atoms optionally over and under it.
-    internal class UnderOverAtom : Atom
+    /// <summary>
+    /// Atom representing other atom with atoms optionally over and under it.
+    /// </summary>
+    public class UnderOverAtom : Atom
     {
         private static Box ChangeWidth(Box box, double maxWidth)
         {

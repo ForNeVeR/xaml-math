@@ -2,8 +2,10 @@ using WpfMath.Boxes;
 
 namespace WpfMath.Atoms
 {
-    // Atom representing big delimeter (e.g. brackets).
-    internal class BigDelimeterAtom : Atom
+    /// <summary>
+    /// Atom representing big delimeter (e.g. brackets).
+    /// </summary>
+    public class BigDelimeterAtom : Atom
     {
         public BigDelimeterAtom(SourceSpan source, Atom delimeterAtom, int size)
             : base(source)

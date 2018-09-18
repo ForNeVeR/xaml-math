@@ -1,6 +1,6 @@
-﻿namespace WpfMath
+namespace WpfMath
 {
-    internal static class TexUtilities
+    public static class TexUtilities
     {
         public static readonly string ResourcesDataDirectory = "WpfMath.Data.";
 

@@ -2,8 +2,10 @@ using WpfMath.Utils;
 
 namespace WpfMath
 {
-    // Font that specifies how TexFormula objects are rendered.
-    internal interface ITeXFont
+    /// <summary>
+    /// Font that specifies how TexFormula objects are rendered.
+    /// </summary>
+    public interface ITeXFont
     {
         /// <summary>Whether the font supports <see cref="CharInfo"/>.</summary>
         bool SupportsMetrics { get; }

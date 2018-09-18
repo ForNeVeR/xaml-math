@@ -2,8 +2,10 @@ using WpfMath.Boxes;
 
 namespace WpfMath.Atoms
 {
-    // Atom representing fraction, with or without separation line.
-    internal class FractionAtom : Atom
+    /// <summary>
+    /// Atom representing fraction, with or without separation line.
+    /// </summary>
+    public class FractionAtom : Atom
     {
         private static TexAlignment CheckAlignment(TexAlignment alignment)
         {

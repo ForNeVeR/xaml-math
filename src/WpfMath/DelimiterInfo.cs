@@ -1,11 +1,11 @@
-﻿using WpfMath.Atoms;
+using WpfMath.Atoms;
 
 namespace WpfMath
 {
     /// <summary>
     /// Information about the body between a pair of delimiters.
     /// </summary>
-    internal class DelimiterInfo
+    public class DelimiterInfo
     {
         public Atom Body { get; }
 

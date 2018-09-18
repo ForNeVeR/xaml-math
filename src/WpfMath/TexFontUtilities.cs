@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace WpfMath
 {
-    internal static class TexFontUtilities
+    public static class TexFontUtilities
     {
         public const int NoFontId = -1;
 

@@ -10,7 +10,7 @@ namespace WpfMath.Example
 {
     public partial class MainWindow : Window
     {
-        private TexFormulaParser formulaParser;
+        private TexFormulaParser formulaParser=new TexFormulaParser();
 
         public MainWindow()
         {

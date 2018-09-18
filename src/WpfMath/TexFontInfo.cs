@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Windows.Media;
 using WpfMath.Exceptions;
@@ -6,8 +6,10 @@ using WpfMath.Utils;
 
 namespace WpfMath
 {
-    // Specifies all information about single font.
-    internal class TexFontInfo
+    /// <summary>
+    /// Specifies all information about single font.
+    /// </summary>
+    public class TexFontInfo
     {
         public const int charCodesCount = 256;
 

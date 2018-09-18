@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Media;
 using WpfMath.Exceptions;
@@ -6,7 +6,7 @@ using WpfMath.Utils;
 
 namespace WpfMath
 {
-    internal class SystemFont : ITeXFont
+    public class SystemFont : ITeXFont
     {
         private readonly FontFamily fontFamily;
 

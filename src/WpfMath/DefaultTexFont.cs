@@ -1,12 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using WpfMath.Exceptions;
 using WpfMath.Utils;
 
 namespace WpfMath
 {
-    // Default implementation of ITeXFont that reads all font information from XML file.
-    internal class DefaultTexFont : ITeXFont
+    /// <summary>
+    /// Default implementation of ITeXFont that reads all font information from XML file.
+    /// </summary>
+    public class DefaultTexFont : ITeXFont
     {
         private static readonly IDictionary<string, double> parameters;
         private static readonly IDictionary<string, object> generalSettings;
