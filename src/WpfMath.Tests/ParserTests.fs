@@ -7,10 +7,12 @@ open WpfMath.Atoms
 open WpfMath.Exceptions
 open WpfMath.Tests.Utils
 
+let private ``123`` : Atom seq = [| char '1'; char '2'; char '3' |] |> Seq.map (fun x -> upcast x)
 let ``2+2`` = row [char '2'; symbol "plus"; char '2']
 let ``\mathrm{2+2}`` = row [styledChar '2' rmStyle; symbol "plus"; styledChar '2' rmStyle]
 let ``\lim`` = row [styledChar 'l' rmStyle; styledChar 'i' rmStyle; styledChar 'm' rmStyle]
 let ``\sin`` = row [styledChar 's' rmStyle; styledChar 'i' rmStyle; styledChar 'n' rmStyle]
+let redBrush = brush "#ed1b23"
 
 [<Fact>]
 let ``2+2 should be parsed properly`` () =
@@ -170,9 +172,102 @@ let ``\text doesn't create any SymbolAtoms``() =
     <| (formula <| row [char '2'; char '+'; char '2'])
 
 [<Fact>]
-let ``\sqrt{} should throw a TexParseException``() =
-    assertParseThrows<TexParseException> @"\sqrt{}"
+let ``\sqrt should throw a TexParseException``() =
+    assertParseThrows<TexParseException> @"\sqrt"
 
 [<Fact>]
 let ``"\sum_ " should throw a TexParseException``() =
     assertParseThrows<TexParseException> @"\sum_ "
+
+[<Theory>]
+[<InlineData(@"\color{red}1123");
+  InlineData(@"\color{red}{1}123");
+  InlineData(@"\color{red} 1123");
+  InlineData(@"\color{red} {1}123")>]
+let ``\color should parse arguments properly``(text : string) : unit =
+    assertParseResult
+    <| text
+    <| (formula (row <| seq { yield upcast foreColor (char '1') redBrush; yield! ``123`` }))
+
+[<Theory>]
+[<InlineData(@"\colorbox{red}1123");
+  InlineData(@"\colorbox{red}{1}123");
+  InlineData(@"\colorbox{red} 1123");
+  InlineData(@"\colorbox{red} {1}123")>]
+let ``\colorbox should parse arguments properly``(text : string) : unit =
+    assertParseResult
+    <| text
+    <| (formula (row <| seq { yield upcast backColor (char '1') redBrush; yield! ``123`` }))
+
+[<Theory>]
+[<InlineData(@"\frac2x123");
+  InlineData(@"\frac2{x}123");
+  InlineData(@"\frac{2}x123");
+  InlineData(@"\frac{2}{x}123");
+  InlineData(@"\frac 2 x123");
+  InlineData(@"\frac2 {x}123");
+  InlineData(@"\frac 2{x}123")>]
+let ``\frac should parse arguments properly``(text : string) : unit =
+    assertParseResult
+    <| text
+    <| (formula (row <| seq { yield upcast fraction (char '2') (char 'x'); yield! ``123`` }))
+
+[<Theory>]
+[<InlineData(@"\overline1123");
+  InlineData(@"\overline{1}123");
+  InlineData(@"\overline 1123");
+  InlineData(@"\overline {1}123")>]
+let ``\overline should parse arguments properly``(text : string) : unit =
+    assertParseResult
+    <| text
+    <| (formula (row <| seq { yield upcast overline(char '1'); yield! ``123`` }))
+
+[<Theory>]
+[<InlineData(@"\sqrt1123");
+  InlineData(@"\sqrt{1}123");
+  InlineData(@"\sqrt 1123");
+  InlineData(@"\sqrt {1}123")>]
+let ``\sqrt should parse arguments properly``(text : string) : unit =
+    assertParseResult
+    <| text
+    <| (formula (row <| seq { yield upcast radical(char '1'); yield! ``123`` }))
+
+[<Theory>]
+[<InlineData(@"\sqrt [2]1123");
+  InlineData(@"\sqrt [ 2]{1}123");
+  InlineData(@"\sqrt[2 ] 1123");
+  InlineData(@"\sqrt[ 2 ] {1}123")>]
+let ``\sqrt should parse optional argument properly``(text : string) : unit =
+    assertParseResult
+    <| text
+    <| (formula (row <| seq { yield upcast radicalWithDegree (char '2') (char '1'); yield! ``123`` }))
+
+[<Theory>]
+[<InlineData(@"\underline1123");
+  InlineData(@"\underline{1}123");
+  InlineData(@"\underline 1123");
+  InlineData(@"\underline {1}123")>]
+let ``\underline should parse arguments properly``(text : string) : unit =
+    assertParseResult
+    <| text
+    <| (formula (row <| seq { yield upcast underline(char '1'); yield! ``123`` }))
+
+[<Theory>]
+[<InlineData("x^y_z");
+  InlineData("x^y_{z}");
+  InlineData("x^{y}_z");
+  InlineData("x^{y}_{z}");
+  InlineData("x^y_ z");
+  InlineData("x ^ {y} _ {z}")>]
+let ``Scripts should be parsed properly``(text : string) : unit =
+    assertParseResult
+    <| text
+    <| (formula <| scripts (char 'x') (char 'z') (char 'y'))
+
+[<Theory>]
+[<InlineData(@"\text 1123");
+  InlineData(@"\text {1}123")>]
+let ``\text command should support extended argument parsing``(text : string) : unit =
+    assertParseResult
+    <| text
+    <| (formula (row <| seq { yield upcast styledChar '1' textStyle; yield! ``123`` }))
