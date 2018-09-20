@@ -20,7 +20,7 @@ namespace WpfMath.Boxes
         {
             var color = this.Foreground ?? Brushes.Black;
             var rectangle = new Rect(x, y - this.Height, this.Width, this.Height);
-            renderer.RenderRectangle(rectangle, color);
+            renderer.RenderRectangle(rectangle, color,color);
         }
 
         public override int GetLastFontId()

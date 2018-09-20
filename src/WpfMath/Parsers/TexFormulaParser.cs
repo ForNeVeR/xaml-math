@@ -9,7 +9,7 @@ using System.Windows.Media;
 using WpfMath.Atoms;
 using WpfMath.Exceptions;
 
-namespace WpfMath
+namespace WpfMath.Parsers
 {
     /// <summary>
     /// Represents the method that will handle the TeX command.
@@ -43,7 +43,6 @@ namespace WpfMath
         public char primeChar => '\'';
 
         // Information used for parsing
-        private static HashSet<string> commands;
         private static IList<string> symbols;
         public static IList<string> delimeters;
         private static HashSet<string> textStyles;
@@ -98,17 +97,6 @@ namespace WpfMath
                     UriParser.Register(new GenericUriParser(GenericUriParserOptions.GenericAuthority), "pack", -1);
             }
 
-            commands = new HashSet<string>
-            {
-                "color",
-                "colorbox",
-                "frac",
-                "left",
-                "overline",
-                "right",
-                "sqrt",
-                "underline"
-            };
             predefinedColors = new Dictionary<string, Color>();
 
             TexCommands = new Dictionary<string, TexCommandHandler>();
@@ -410,53 +398,56 @@ namespace WpfMath
                     if (value[position] == escapeChar)
                     {
                         position++;
-
-                        if (Char.IsLetter(value[position]))
+                        if (position < value.Length)
                         {
-                            StringBuilder commandSB = new StringBuilder(value[position]);
+                            if (Char.IsLetter(value[position]))
+                            {
+                                StringBuilder commandSB = new StringBuilder(value[position]);
 
-                            while (position < value.Length && Char.IsLetter(value[position]))
-                            {
-                                commandSB.Append(value[position].ToString());
-                                position++;
-                            }
-
-                            if (commandSB.ToString() == "begin")
-                            {
-                                environmentDeepness++;
-                                environmentSourceLength += 6;
-                            }
-                            else if (commandSB.ToString() == "end")
-                            {
-                                if (environmentDeepness == 0)
+                                while (position < value.Length && Char.IsLetter(value[position]))
                                 {
-                                    //try to check if the ending environment name is equal to the beginning environment name
-                                    var endEnvironmentName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar).ToString().Trim();
-                                    if (endEnvironmentName == beginEnvironmentName)
+                                    commandSB.Append(value[position].ToString());
+                                    position++;
+                                }
+
+                                if (commandSB.ToString() == "begin")
+                                {
+                                    environmentDeepness++;
+                                    environmentSourceLength += 6;
+                                }
+                                else if (commandSB.ToString() == "end")
+                                {
+                                    if (environmentDeepness == 0)
                                     {
-                                        environmentEndReached = true;
+                                        //try to check if the ending environment name is equal to the beginning environment name
+                                        var endEnvironmentName = ReadGroup(formula, value, ref position, leftGroupChar, rightGroupChar).ToString().Trim();
+                                        if (endEnvironmentName == beginEnvironmentName)
+                                        {
+                                            environmentEndReached = true;
+                                        }
+                                        else
+                                        {
+                                            throw new TexParseException($"The environment name \"{beginEnvironmentName}\" does not match the ending environment name \"{endEnvironmentName}\"");
+                                        }
                                     }
                                     else
                                     {
-                                        throw new TexParseException($"The environment name \"{beginEnvironmentName}\" does not match the ending environment name \"{endEnvironmentName}\"");
+                                        environmentDeepness--;
+                                        environmentSourceLength += 4;
                                     }
                                 }
                                 else
                                 {
-                                    environmentDeepness--;
-                                    environmentSourceLength += 4;
+                                    environmentSourceLength += commandSB.Length + 1;
                                 }
                             }
                             else
                             {
-                                environmentSourceLength += commandSB.Length + 1;
+                                position++;
+                                environmentSourceLength += 2;
                             }
                         }
-                        else
-                        {
-                            position++;
-                            environmentSourceLength += 2;
-                        }
+                        
                     }
                     else
                     {
@@ -483,15 +474,10 @@ namespace WpfMath
                     throw new TexParseException($"The end of the environment, \"{beginEnvironmentName}\", cannot be found");
                 }
             }
-            else if (TexCommands.ContainsKey(command))
+            else 
             {
                 return TexCommands[command].Invoke(formula, value, ref position, allowClosingDelimiter, ref closedDelimiter);
             }
-            else
-            {
-                throw new TexParseException("invalid command");
-            }
-
         }
 
         private void ProcessEscapeSequence(
@@ -571,7 +557,7 @@ namespace WpfMath
                 var source = new SourceSpan(formulaSource.Source, formulaSource.Start, position);
                 formula.Add(atom, source);
             }
-            else if (commands.Contains(command))
+            else if (TexCommands.ContainsKey(command))
             {
                 // Command was found.
                 var commandAtom = this.ProcessCommand(
@@ -734,4 +720,5 @@ namespace WpfMath
                 position++;
         }
     }
+
 }

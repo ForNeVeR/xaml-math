@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows;
 using System.Windows.Media;
 using WpfMath.Boxes;
@@ -30,7 +30,7 @@ namespace WpfMath.Rendering
         /// <summary>Renders a rectangle.</summary>
         /// <param name="rectangle">Rectangle to render.</param>
         /// <param name="foreground">Rectangle foreground color.</param>
-        void RenderRectangle(Rect rectangle, Brush foreground);
+        void RenderRectangle(Rect rectangle, Brush foreground, Brush background);
 
         /// <summary>Renders a box applying the geometry transforms.</summary>
         /// <param name="box">A box to render.</param>

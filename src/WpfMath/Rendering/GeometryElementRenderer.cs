@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -29,7 +29,7 @@ namespace WpfMath.Rendering
             _geometry.Children.Add(glyphGeometry);
         }
 
-        public void RenderRectangle(Rect rectangle, Brush foreground)
+        public void RenderRectangle(Rect rectangle, Brush foreground, Brush background)
         {
             var rectangleGeometry = new RectangleGeometry(GeometryHelper.ScaleRectangle(_scale, rectangle));
             _geometry.Children.Add(rectangleGeometry);

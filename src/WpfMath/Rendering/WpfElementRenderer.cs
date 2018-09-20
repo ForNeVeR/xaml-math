@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
@@ -33,13 +33,34 @@ namespace WpfMath.Rendering
         public void RenderGlyphRun(Func<double, GlyphRun> scaledGlyphFactory, double x, double y, Brush foreground)
         {
             var glyphRun = scaledGlyphFactory(_scale);
+            //Pen glyphPen = new Pen(foreground, 1)
+            //{
+            //    //DashStyle = new DashStyle(new double[] { 2, 2 }, 0.25),
+            //    StartLineCap=PenLineCap.Round,
+            //    LineJoin=PenLineJoin.Bevel,
+            //};
+            //Using the DrawGeometry might make glyphs less blurry but a little too deep/bold
+            //_drawingContext.DrawGeometry(foreground, glyphPen, glyphRun.BuildGeometry());
+
             _drawingContext.DrawGlyphRun(foreground, glyphRun);
         }
 
-        public void RenderRectangle(Rect rectangle, Brush foreground)
+        public void RenderRectangle(Rect rectangle, Brush foreground, Brush background)
         {
             var scaledRectangle = GeometryHelper.ScaleRectangle(_scale, rectangle);
-            _drawingContext.DrawRectangle(foreground, null, scaledRectangle);
+            var rectGeom = new RectangleGeometry(scaledRectangle);
+            Pen rectpen = new Pen(foreground, 1.2)
+            {
+
+            };
+            if (background == null)
+            {
+                _drawingContext.DrawRectangle(foreground, null, scaledRectangle);
+            }
+            else
+            {
+                _drawingContext.DrawGeometry(background, rectpen, rectGeom);
+            }
         }
 
         public void RenderTransformed(Box box, Transformation[] transforms, double x, double y)

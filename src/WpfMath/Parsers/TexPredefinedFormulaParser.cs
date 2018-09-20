@@ -7,9 +7,11 @@ using System.Reflection;
 using System.Windows.Media;
 using System.Xml.Linq;
 
-namespace WpfMath
+namespace WpfMath.Parsers
 {
-    // Parses definitions of predefined formulas from XML file.
+    /// <summary>
+    /// Parses definitions of predefined formulas from XML file.
+    /// </summary>
     internal class TexPredefinedFormulaParser
     {
         public static readonly string resourceName = TexUtilities.ResourcesDataDirectory + "PredefinedTexFormulas.xml";
@@ -108,7 +110,7 @@ namespace WpfMath
                 }
             }
         }
-
+        
         public TexFormula ParseFormula(SourceSpan source, XElement formulaElement)
         {
             var tempFormulas = new Dictionary<string, TexFormula>();

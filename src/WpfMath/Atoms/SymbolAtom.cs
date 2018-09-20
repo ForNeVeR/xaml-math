@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using WpfMath.Parsers;
 using WpfMath.Utils;
 
 namespace WpfMath.Atoms

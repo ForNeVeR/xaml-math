@@ -5,10 +5,13 @@ using System.Text;
 using System.Windows.Media;
 using WpfMath.Atoms;
 using WpfMath.Exceptions;
-using static WpfMath.TexFormulaParser;
+using static WpfMath.Parsers.TexFormulaParser;
 
-namespace WpfMath
+namespace WpfMath.Parsers
 {
+    /// <summary>
+    /// Represents a class containing default command processing functions used by the <see cref="TexFormulaParser"/>.
+    /// </summary>
     public static class DefaultCommands
     {
         public static Atom ColorCommand(this TexFormulaParser formulaParser, TexFormula formula, SourceSpan value, ref int position, bool allowClosingDelimiter, ref bool closedDelimiter)
@@ -154,6 +157,7 @@ namespace WpfMath
             var source = value.Segment(start, position - start);
             return new UnderlinedAtom(source, underlineFormula.RootAtom);
         }
+
 
     }
 }
