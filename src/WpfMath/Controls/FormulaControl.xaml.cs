@@ -119,7 +119,6 @@ namespace WpfMath.Controls
         public FormulaControl()
         {
             InitializeComponent();
-            errorlogger = new ErrorLogger();
             formulaParser = new TexFormulaParser();
             
             FormulaSettingsFile = "WpfMath.Data.AsanaMathFontSettings.wmpkg";

@@ -1,4 +1,5 @@
 using WpfMath.Rendering;
+using WpfMath.Utils;
 
 namespace WpfMath.Boxes
 {

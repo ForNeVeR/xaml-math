@@ -1,13 +1,17 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace WpfMath
 {
-    internal static class XmlUtilities
+    /// <summary>
+    /// Represents a class containing extension methods for dealing with xml files.
+    /// </summary>
+    public static class XmlUtilities
     {
         public static bool AttributeBooleanValue(this XElement element, string attributeName, bool? defaultValue = null)
         {

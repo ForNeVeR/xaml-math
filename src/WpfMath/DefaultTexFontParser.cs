@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Media;
 using System.Xml.Linq;
+using WpfMath.Utils;
 
 namespace WpfMath
 {
@@ -31,9 +32,9 @@ namespace WpfMath
 
         private static void SetRangeTypeMappings()
         {
-            rangeTypeMappings.Add("numbers", (int)TexCharKind.Numbers);
-            rangeTypeMappings.Add("capitals", (int)TexCharKind.Capitals);
-            rangeTypeMappings.Add("small", (int)TexCharKind.Small);
+            rangeTypeMappings.Add("numbers", (int)TexCharKind.Digit);
+            rangeTypeMappings.Add("capitals", (int)TexCharKind.EnglishCapital);
+            rangeTypeMappings.Add("small", (int)TexCharKind.EnglishSmall);
         }
 
         private static void SetCharChildParsers()

@@ -100,7 +100,10 @@ namespace WpfMath
                     if (enabled)
                     {
                         var formulaName = formulaElement.AttributeValue("name");
-                        predefinedTeXFormulas.Add(formulaName, source => this.ParseFormula(source, formulaElement));
+                        if (predefinedTeXFormulas.ContainsKey(formulaName) == false)
+                        {
+                            predefinedTeXFormulas.Add(formulaName, source => this.ParseFormula(source, formulaElement));
+                        }
                     }
                 }
             }

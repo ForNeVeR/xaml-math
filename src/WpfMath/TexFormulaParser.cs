@@ -12,6 +12,8 @@ using System.IO;
 using System.Xml;
 using System.Text;
 using WpfMath.Utils;
+using System.Text.RegularExpressions;
+using WpfMath.Parsers;
 
 namespace WpfMath
 {
@@ -35,7 +37,7 @@ namespace WpfMath
         private static HashSet<string> commands;
         private static IList<string> symbols;
         private static IList<string> delimeters;
-        private static HashSet<string> textStyles;
+        private static HashSet<string> TextStyles;
         private static readonly IDictionary<string, Func<SourceSpan, TexFormula>> predefinedFormulas =
             new Dictionary<string, Func<SourceSpan, TexFormula>>();
         private static IDictionary<string, Color> predefinedColors;
@@ -102,8 +104,6 @@ namespace WpfMath
         /// </summary>
         public TexFormulaParser()
         {
-            
-
             Initialize();
         }
 
@@ -347,7 +347,7 @@ namespace WpfMath
             if (name == null)
                 return null;
 
-            var result = SymbolAtom.GetAtom(name, source,,symbolsFilepath,isInternal );
+            var result = SymbolAtom.GetAtom(name, source,symbolsFilepath,isInternal );
             if (!result.IsDelimeter)
                 return null;
             return result;
@@ -782,7 +782,7 @@ namespace WpfMath
                 var atom = this.AttachScripts(formula, value, ref position, new SpaceAtom(formulaSource));
                 formula.Add(atom, formulaSource);
             }
-            else if (textStyles.Contains(command))
+            else if (TextStyles.Contains(command))
             {
                 // Text style was found.
                 this.SkipWhiteSpace(value, ref position);

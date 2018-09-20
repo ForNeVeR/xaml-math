@@ -1,9 +1,12 @@
 using System;
 using WpfMath.Boxes;
+using WpfMath.Utils;
 
 namespace WpfMath.Atoms
 {
-    // Atom representing big operator with optional limits.
+    /// <summary>
+    /// Atom representing big operator with optional limits.
+    /// </summary>
     internal class BigOperatorAtom : Atom
     {
         private static Box ChangeWidth(Box box, double maxWidth)
@@ -50,6 +53,7 @@ namespace WpfMath.Atoms
         {
             var texFont = environment.MathFont;
             var style = environment.Style;
+            var axis = environment.MathFont.GetAxisHeight(environment.Style);
 
             if ((this.UseVerticalLimits.HasValue && !this.UseVerticalLimits.Value) ||
                 (!this.UseVerticalLimits.HasValue && style >= TexStyle.Text))
@@ -68,9 +72,15 @@ namespace WpfMath.Atoms
                 if (style < TexStyle.Text && texFont.HasNextLarger(opChar))
                     opChar = texFont.GetNextLargerCharInfo(opChar, style);
                 var charBox = new CharBox(environment, opChar) { Source = this.BaseAtom.Source };
-                charBox.Shift = -(charBox.Height + charBox.Depth) / 2 -
-                    environment.MathFont.GetAxisHeight(environment.Style);
-                baseBox = new HorizontalBox(charBox);
+
+                var bigopBox = new VerticalBox();
+                bigopBox.Add(new StrutBox(0, -charBox.Height, 0, 0));
+                bigopBox.Add(charBox);
+
+                bigopBox.Shift = charBox.TotalHeight >= axis ? (-charBox.TotalHeight / 2 - axis) : (axis - charBox.TotalHeight) / 2;
+
+                baseBox = new HorizontalBox(bigopBox);
+                baseBox.Add(new StrutBox(0, charBox.Height, 0, 0));
 
                 delta = opChar.Metrics.Italic;
                 if (delta > TexUtilities.FloatPrecision)

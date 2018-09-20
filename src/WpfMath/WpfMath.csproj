@@ -11,6 +11,9 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="Data/*" />
+    <Reference Include="Ionic.Zip">
+      <HintPath>Libraries\Ionic.Zip.dll</HintPath>
+    </Reference>
     <Resource Include="Fonts\cmex10.ttf" />
     <Resource Include="Fonts\cmmi10.ttf" />
     <Resource Include="Fonts\cmr10.ttf" />
