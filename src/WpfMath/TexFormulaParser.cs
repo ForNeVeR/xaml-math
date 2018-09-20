@@ -83,8 +83,6 @@ namespace WpfMath
                 "overline",
                 "right",
                 "sqrt",
-                "fgcolor",
-                "bgcolor",
                 "underline"
             };
 
@@ -390,7 +388,7 @@ namespace WpfMath
                         source = value.Segment(start, position - start);
                         return new UnderlinedAtom(source, underlineFormula.RootAtom);
                     }
-                case "fgcolor":
+                case "color":
                     {
                         //Command to change the foreground color
                         var colorName = ReadElement(value, ref position).ToString();
@@ -412,32 +410,6 @@ namespace WpfMath
                                 return new StyledAtom(source, remaining.RootAtom, null, new SolidColorBrush(color1));
                             }
                             catch
-                            {
-                                throw new TexParseException($"Color {colorName} could neither be found nor converted.");
-                            }
-                        }
-                    }
-                case "bgcolor":
-                    {
-                        //Command to change the background color
-                        var colorName = ReadElement(value, ref position).ToString();
-                        var remainingString = value.Segment(position);
-                        var remaining = Parse(remainingString, formula.TextStyle);
-                        position = value.Length;
-                        source = value.Segment(start, position - start);
-
-                        if (predefinedColors.TryGetValue(colorName, out Color color))
-                        {
-                            return new StyledAtom(source, remaining.RootAtom, new SolidColorBrush(color), null);
-                        }
-                        else
-                        {
-                            try
-                            {
-                                Color color1 = UserDefinedColorParser.ParseUserColor(colorName);
-                                return new StyledAtom(source, remaining.RootAtom, new SolidColorBrush(color1), null);
-                            }
-                            catch (Exception ex)
                             {
                                 throw new TexParseException($"Color {colorName} could neither be found nor converted.");
                             }
@@ -467,7 +439,7 @@ namespace WpfMath
                             }
                         }
                     }
-            }
+                }
 
             throw new TexParseException("Invalid command.");
         }
