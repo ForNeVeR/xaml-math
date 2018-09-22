@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Windows;
 using System.Windows.Media;
 using WpfMath.Atoms;
@@ -417,7 +418,7 @@ namespace WpfMath
                             throw new TexParseException("`left` command should be passed a delimiter");
 
                         string delimiter = "";
-                        if (value[position] == formulaParser.escapeChar)
+                        if (value[position] == escapeChar)
                         {
                             position++;
                             if (position == value.Length)
@@ -463,13 +464,13 @@ namespace WpfMath
 
                         var left = position;
 
-                        var internals = formulaParser.ParseUntilDelimiter(value, ref position, formula.TextStyle, environment);
+                        var internals = ParseUntilDelimiter(value, ref position, formula.TextStyle, environment);
 
                         SymbolAtom opening = null;
                         if (delimiter.Length == 1)
                         {
                             opening = GetDelimiterSymbol(
-                            formulaParser.GetDelimeterMapping(delimiter[0]),
+                            GetDelimeterMapping(delimiter[0]),
                             value.Segment(start, left - start));
                         }
                         if (delimiter.Length > 1)
@@ -503,7 +504,7 @@ namespace WpfMath
                             throw new TexParseException("`right` command should be passed a delimiter");
 
                         string delimiter = "";
-                        if (value[position] == formulaParser.escapeChar)
+                        if (value[position] == escapeChar)
                         {
                             position++;
                             if (position == value.Length)
@@ -551,13 +552,13 @@ namespace WpfMath
                         if (delimiter.Length == 1)
                         {
                             closing = GetDelimiterSymbol(
-                            formulaParser.GetDelimeterMapping(delimiter[0]),
-                            value.Segment(start, position - start), formulaParser.FormulaSymbolsFilePath, formulaParser.AreFontsInternal);
+                            GetDelimeterMapping(delimiter[0]),
+                            value.Segment(start, position - start));
                         }
                         if (delimiter.Length > 1)
                         {
                             closing = GetDelimiterSymbol(
-                            delimiter, value.Segment(start, position - start), formulaParser.FormulaSymbolsFilePath, formulaParser.AreFontsInternal);
+                            delimiter, value.Segment(start, position - start));
                         }
                         if (closing == null)
                             throw new TexParseException($"Cannot find delimiter named {delimiter}");
