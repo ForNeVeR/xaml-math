@@ -71,11 +71,12 @@ namespace WpfMath.Rendering
 
         private void RenderBackground(Box box, double x, double y)
         {
-            if (box.Background != null)
+            Brush background = box.Background ?? Background;
+            if (background != null)
             {
                 // Fill background of box with color:
                 _drawingContext.DrawRectangle(
-                    box.Background,
+                    background,
                     null,
                     new Rect(_scale * x, _scale * (y - box.Height),
                         _scale * box.TotalWidth,
