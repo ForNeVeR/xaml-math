@@ -149,7 +149,7 @@ namespace WpfMath.Controls
 
             using (var drawingContext = visual.RenderOpen())
             {
-                renderer.Render(drawingContext, 0, 0);
+                renderer.Render(drawingContext, 0, 0,this.Foreground,this.Background);
             }
             formulaContainerElement.Visual = visual;
         }

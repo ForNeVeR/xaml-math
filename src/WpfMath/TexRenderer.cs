@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -46,19 +46,19 @@ namespace WpfMath
         public void RenderFormulaTo(IElementRenderer renderer, double x, double y) =>
             renderer.RenderElement(Box, x / Scale, y / Scale + Box.Height);
 
-        public Geometry RenderToGeometry(double x, double y)
+        public Geometry RenderToGeometry(double x, double y, Brush foreground = null, Brush background = null)
         {
             var geometry = new GeometryGroup();
-            var renderer = new GeometryElementRenderer(geometry, Scale);
+            var renderer = new GeometryElementRenderer(geometry, Scale, foreground, background);
             RenderFormulaTo(renderer, x, y);
             return geometry;
         }
 
-        public BitmapSource RenderToBitmap(double x, double y)
+        public BitmapSource RenderToBitmap(double x, double y, Brush foreground = null, Brush background = null)
         {
             var visual = new DrawingVisual();
             using (var drawingContext = visual.RenderOpen())
-                this.Render(drawingContext, 0, 0);
+                this.Render(drawingContext, 0, 0, foreground, background);
 
             var width = (int)Math.Ceiling(this.RenderSize.Width);
             var height = (int)Math.Ceiling(this.RenderSize.Height);
@@ -68,7 +68,7 @@ namespace WpfMath
             return bitmap;
         }
 
-        public void Render(DrawingContext drawingContext, double x, double y) =>
-            RenderFormulaTo(new WpfElementRenderer(drawingContext, Scale), x, y);
+        public void Render(DrawingContext drawingContext, double x, double y, Brush foreground = null, Brush background = null) =>
+            RenderFormulaTo(new WpfElementRenderer(drawingContext, Scale, foreground, background), x, y);
     }
 }

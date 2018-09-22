@@ -47,7 +47,7 @@ namespace WpfMath.Example
             // Create formula object from input text.
             var formula = ParseFormula(inputTextBox.Text);
             if (formula == null) return;
-            var renderer = formula.GetRenderer(TexStyle.Display, this.formula.Scale, "Arial");
+            var renderer = formula.GetRenderer(TexStyle.Display, this.formulaControl.Scale, "Arial");
 
             // Open stream
             var filename = saveFileDialog.FileName;
@@ -56,7 +56,7 @@ namespace WpfMath.Example
                 switch (saveFileDialog.FilterIndex)
                 {
                     case 1:
-                        var geometry = renderer.RenderToGeometry(0, 0);
+                        var geometry = renderer.RenderToGeometry(0, 0, formulaControl.Foreground, formulaControl.Background);
                         var converter = new SVGConverter();
                         var svgPathText = converter.ConvertGeometry(geometry);
                         var svgText = AddSVGHeader(svgPathText);
@@ -65,7 +65,7 @@ namespace WpfMath.Example
                         break;
 
                     case 2:
-                        var bitmap = renderer.RenderToBitmap(0, 0);
+                        var bitmap = renderer.RenderToBitmap(0, 0, formulaControl.Foreground, formulaControl.Background);
                         var encoder = new PngBitmapEncoder
                         {
                             Frames = { BitmapFrame.Create(bitmap) }
@@ -107,8 +107,8 @@ namespace WpfMath.Example
 
         private void inputTextBox_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            formula.SelectionStart = inputTextBox.SelectionStart;
-            formula.SelectionLength = inputTextBox.SelectionLength;
+            formulaControl.SelectionStart = inputTextBox.SelectionStart;
+            formulaControl.SelectionLength = inputTextBox.SelectionLength;
         }
     }
 }

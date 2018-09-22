@@ -37,12 +37,12 @@
             <Label.Style>
                 <Style TargetType="Label">
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=formula, Path=HasError}" Value="False">
+                        <DataTrigger Binding="{Binding ElementName=formulaControl, Path=HasError}" Value="False">
                             <Setter Property="Content" Value="Formula is valid" />
                             <Setter Property="Foreground" Value="Green" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=formula, Path=HasError}" Value="True">
-                            <Setter Property="Content" Value="{Binding ElementName=formula, Path=Errors[0].Message}" />
+                        <DataTrigger Binding="{Binding ElementName=formulaControl, Path=HasError}" Value="True">
+                            <Setter Property="Content" Value="{Binding ElementName=formulaControl, Path=Errors[0].Message}" />
                             <Setter Property="Foreground" Value="Red" />
                         </DataTrigger>
                     </Style.Triggers>
@@ -57,14 +57,14 @@
             </Grid.ColumnDefinitions>
             <Label Margin="10,0,10,0" Content="Scale: " Grid.Column="0" />
             <Slider Margin="10,0,10,0" Grid.Column="1"
-                Value="{Binding ElementName=formula, Path=Scale}" Minimum="7" Maximum="42"
+                Value="{Binding ElementName=formulaControl, Path=Scale}" Minimum="7" Maximum="42"
                 IsSnapToTickEnabled="True" TickPlacement="BottomRight"
                 AutoToolTipPlacement="BottomRight" AutoToolTipPrecision="2" />
         </Grid>
 
         <Border Margin="10,0,10,10" BorderBrush="LightGray" BorderThickness="1" Grid.Row="3" Grid.Column="0">
             <ScrollViewer Padding="4" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-                <controls:FormulaControl x:Name="formula" Formula="{Binding Text, ElementName = inputTextBox, NotifyOnValidationError=True}"
+                <controls:FormulaControl x:Name="formulaControl" Formula="{Binding Text, ElementName = inputTextBox, NotifyOnValidationError=True}"
                                          SelectionBrush="LightBlue"
                                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SnapsToDevicePixels="True" />
             </ScrollViewer>

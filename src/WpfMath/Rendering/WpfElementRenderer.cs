@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
@@ -13,10 +13,21 @@ namespace WpfMath.Rendering
         private readonly DrawingContext _drawingContext;
         private readonly double _scale;
 
-        public WpfElementRenderer(DrawingContext drawingContext, double scale)
+        /// <summary>
+        /// Gets the foreground of this renderer.
+        /// </summary>
+        public Brush Foreground { get; }
+        /// <summary>
+        /// Gets the background of this renderer.
+        /// </summary>
+        public Brush Background { get; }
+
+        public WpfElementRenderer(DrawingContext drawingContext, double scale, Brush foreground = null, Brush background = null)
         {
             _drawingContext = drawingContext;
             _scale = scale;
+            Foreground = foreground;
+            Background = background;
         }
 
         public void RenderElement(Box box, double x, double y)

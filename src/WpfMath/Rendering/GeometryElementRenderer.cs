@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -14,10 +14,22 @@ namespace WpfMath.Rendering
         private readonly GeometryGroup _geometry;
         private readonly double _scale;
 
-        public GeometryElementRenderer(GeometryGroup geometry, double scale)
+        /// <summary>
+        /// Gets the foreground of this renderer.
+        /// </summary>
+        public Brush Foreground { get; }
+
+        /// <summary>
+        /// Gets the background of this renderer.
+        /// </summary>
+        public Brush Background { get; }
+
+        public GeometryElementRenderer(GeometryGroup geometry, double scale, Brush foreground = null, Brush background = null)
         {
             _geometry = geometry;
             _scale = scale;
+            Foreground = foreground;
+            Background = background;
         }
 
         public void RenderElement(Box box, double x, double y) => box.RenderTo(this, x, y);
