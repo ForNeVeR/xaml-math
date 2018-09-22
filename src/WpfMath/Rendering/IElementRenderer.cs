@@ -9,6 +9,16 @@ namespace WpfMath.Rendering
     /// <summary>Renderer interface for WPF-Math elements.</summary>
     public interface IElementRenderer
     {
+        /// <summary>
+        /// Gets the foreground of this renderer.
+        /// </summary>
+        Brush Foreground { get; }
+        
+        /// <summary>
+        /// Gets the background of this renderer.
+        /// </summary>
+        Brush Background { get; }
+        
         /// <summary>Renders a <see cref="Box"/> to the renderer drawing context.</summary>
         /// <param name="box">The element that should be rendered.</param>
         /// <param name="x">An X coordinate of the top left corner.</param>
