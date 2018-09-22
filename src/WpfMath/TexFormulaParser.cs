@@ -416,15 +416,67 @@ namespace WpfMath
                         if (position == value.Length)
                             throw new TexParseException("`left` command should be passed a delimiter");
 
-                        var delimiter = value[position];
-                        ++position;
+                        string delimiter = "";
+                        if (value[position] == formulaParser.escapeChar)
+                        {
+                            position++;
+                            if (position == value.Length)
+                                throw new TexParseException("`left` command should be passed a delimiter");
+
+                            if (Char.IsLetter(value[position]) == false)
+                            {
+                                delimiter = value[position].ToString();
+                                position++;
+                            }
+                            else
+                            {
+                                StringBuilder sb = new StringBuilder();
+                                bool leftSymbolFound = false;
+                                while (position < value.Length && leftSymbolFound == false)
+                                {
+                                    if (IsWhiteSpace(value[position]) || Char.IsLetter(value[position]) == false)
+                                    {
+                                        leftSymbolFound = true;
+                                    }
+                                    if (leftSymbolFound == false)
+                                    {
+                                        sb.Append(value[position].ToString());
+                                        position++;
+                                    }
+                                }
+                                if (leftSymbolFound == true)
+                                {
+                                    var grouplength = sb.Length;
+                                    delimiter = value.Segment(position - grouplength, grouplength).ToString();
+                                }
+                                else
+                                {
+                                    throw new TexParseException("left symbol is incomplete");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            delimiter = value[position].ToString();
+                            position++;
+                        }
+
                         var left = position;
 
-                        var internals = ParseUntilDelimiter(value, ref position, formula.TextStyle, environment);
+                        var internals = formulaParser.ParseUntilDelimiter(value, ref position, formula.TextStyle, environment);
 
-                        var opening = GetDelimiterSymbol(
-                            GetDelimeterMapping(delimiter),
+                        SymbolAtom opening = null;
+                        if (delimiter.Length == 1)
+                        {
+                            opening = GetDelimiterSymbol(
+                            formulaParser.GetDelimeterMapping(delimiter[0]),
                             value.Segment(start, left - start));
+                        }
+                        if (delimiter.Length > 1)
+                        {
+                            opening = GetDelimiterSymbol(
+                            delimiter, value.Segment(start, left - start));
+                        }
                         if (opening == null)
                             throw new TexParseException($"Cannot find delimiter named {delimiter}");
 
@@ -450,12 +502,63 @@ namespace WpfMath
                         if (position == value.Length)
                             throw new TexParseException("`right` command should be passed a delimiter");
 
-                        var delimiter = value[position];
-                        ++position;
+                        string delimiter = "";
+                        if (value[position] == formulaParser.escapeChar)
+                        {
+                            position++;
+                            if (position == value.Length)
+                                throw new TexParseException("`right` command should be passed a delimiter");
 
-                        var closing = GetDelimiterSymbol(
-                            GetDelimeterMapping(delimiter),
-                            value.Segment(start, position - start));
+                            if (Char.IsLetter(value[position]) == false)
+                            {
+                                delimiter = value[position].ToString();
+                                position++;
+                            }
+                            else
+                            {
+                                StringBuilder sb = new StringBuilder();
+                                bool rightSymbolFound = false;
+                                while (position < value.Length && rightSymbolFound == false)
+                                {
+                                    if (IsWhiteSpace(value[position]) || Char.IsLetter(value[position]) == false)
+                                    {
+                                        rightSymbolFound = true;
+                                    }
+                                    if (rightSymbolFound == false)
+                                    {
+                                        sb.Append(value[position].ToString());
+                                        position++;
+                                    }
+                                }
+                                if (rightSymbolFound)
+                                {
+                                    var grouplength = sb.Length;
+                                    delimiter = value.Segment(position - grouplength, grouplength).ToString();
+                                }
+                                else
+                                {
+                                    throw new TexParseException("right symbol is incomplete");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            delimiter = value[position].ToString();
+                            position++;
+                        }
+
+                        SymbolAtom closing = null;
+                        if (delimiter.Length == 1)
+                        {
+                            closing = GetDelimiterSymbol(
+                            formulaParser.GetDelimeterMapping(delimiter[0]),
+                            value.Segment(start, position - start), formulaParser.FormulaSymbolsFilePath, formulaParser.AreFontsInternal);
+                        }
+                        if (delimiter.Length > 1)
+                        {
+                            closing = GetDelimiterSymbol(
+                            delimiter, value.Segment(start, position - start), formulaParser.FormulaSymbolsFilePath, formulaParser.AreFontsInternal);
+                        }
                         if (closing == null)
                             throw new TexParseException($"Cannot find delimiter named {delimiter}");
 
