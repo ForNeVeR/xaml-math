@@ -280,15 +280,33 @@ namespace WpfMath
         {
             SkipWhiteSpace(value, ref position);
 
-            if (position == value.Length)
-                throw new TexParseException("An element is missing");
-
-            if (value[position] == leftGroupChar)
+            if (position<value.Length)
             {
-                return ReadElementGroup(value, ref position, leftGroupChar, rightGroupChar);
+                if (value[position] == leftGroupChar)
+                    return ReadElementGroup(value, ref position, leftGroupChar, rightGroupChar);
+                else if (value[position]==escapeChar)
+                {
+                    var start = position;
+                    bool elementfound = false;
+                    position++;
+                    while (position<value.Length&&elementfound==false)
+                    {
+                        if (!Char.IsLetter(value[position]))
+                        {
+                            elementfound = true;
+                        }
+                        position++;
+                    }
+                    if (elementfound)
+                        return value.Segment(start, position - start);
+                    else
+                        throw new TexParseException("An element is missing");
+                }
+                else
+                    return value.Segment(position++, 1);
             }
-
-            return value.Segment(position++, 1);
+            else
+                throw new TexParseException("An element is missing"); 
         }
 
         private TexFormula ReadScript(TexFormula formula, SourceSpan value, ref int position) =>
