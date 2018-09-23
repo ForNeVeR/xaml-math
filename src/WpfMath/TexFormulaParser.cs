@@ -104,7 +104,7 @@ namespace WpfMath
             }
             catch (KeyNotFoundException)
             {
-                throw new DelimiterMappingNotFoundException(character);
+                throw new TexParseException(new DelimiterMappingNotFoundException(character).Message);
             }
         }
 
@@ -253,7 +253,7 @@ namespace WpfMath
                 }
                 else if (ch == leftGroupChar)
                 {
-                    var groupValue = ReadElement(value, ref position);
+                    var groupValue = ReadArgument(value, ref position);
                     var parsedGroup = Parse(groupValue, textStyle, environment.CreateChildEnvironment());
                     var innerGroupAtom = parsedGroup.RootAtom ?? new RowAtom(groupValue);
                     var groupAtom = new TypedAtom(
@@ -318,7 +318,7 @@ namespace WpfMath
             return formula;
         }
 
-        internal static SourceSpan ReadElementGroup(SourceSpan value, ref int position, char openChar, char closeChar)
+        internal static SourceSpan ReadArgumentGroup(SourceSpan value, ref int position, char openChar, char closeChar)
         {
             if (position == value.Length || value[position] != openChar)
                 throw new TexParseException("missing '" + openChar + "'!");
@@ -356,24 +356,55 @@ namespace WpfMath
             if (value[position] != openChar)
                 return null;
 
-            return ReadElementGroup(value, ref position, openChar, closeChar);
+            return ReadArgumentGroup(value, ref position, openChar, closeChar);
         }
 
-        /// <summary>Reads an element: typically, a curly brace-enclosed value group or a singular value.</summary>
+        /// <summary>Reads an argument: typically, a curly brace-enclosed value group, a singular value or an escaped sequence of letters/a character.</summary>
         /// <exception cref="TexParseException">Will be thrown for ill-formed groups.</exception>
-        internal static SourceSpan ReadElement(SourceSpan value, ref int position)
+        internal static SourceSpan ReadArgument(SourceSpan value, ref int position)
         {
-            SkipWhiteSpace(value, ref position);
-
-            if (position == value.Length)
-                throw new TexParseException("An element is missing");
-
-            if (value[position] == leftGroupChar)
+            if (position < value.Length)
             {
-                return ReadElementGroup(value, ref position, leftGroupChar, rightGroupChar);
-            }
+                if (value[position] == leftGroupChar)
+                    return ReadArgumentGroup(value, ref position, leftGroupChar, rightGroupChar);
+                else if (value[position] == escapeChar)
+                {
+                    position++;
+                    var start = position;
 
-            return value.Segment(position++, 1);
+                    if (position < value.Length)
+                    {
+                        if (!Char.IsLetter(value[position]))
+                        {
+                            position++;
+                            return value.Segment(start, 1);
+                        }
+                        else
+                        {
+                            bool elementfound = false;
+                            while (position < value.Length && elementfound == false)
+                            {
+                                if (!Char.IsLetter(value[position]))
+                                {
+                                    elementfound = true;
+                                    position--;
+                                }
+                                position++;
+                            }
+                            if (elementfound)
+                                return value.Segment(start-1, position - start+1);
+                            else
+                                throw new TexParseException("An argument is missing");
+                        }
+                    }
+                    else
+                        throw new TexParseException("An argument is missing");
+                }
+                else
+                    return value.Segment(position++, 1);
+            }
+            else
+                throw new TexParseException("An argument is missing");
         }
 
         private TexFormula ReadScript(
@@ -381,7 +412,7 @@ namespace WpfMath
             SourceSpan value,
             ref int position,
             ICommandEnvironment environment) =>
-            Parse(ReadElement(value, ref position), formula.TextStyle, environment.CreateChildEnvironment());
+            Parse(ReadArgument(value, ref position), formula.TextStyle, environment.CreateChildEnvironment());
 
         /// <remarks>May return <c>null</c> for commands that produce no atoms.</remarks>
         private Atom ProcessCommand(
@@ -401,11 +432,11 @@ namespace WpfMath
                 case "frac":
                     {
                         var numeratorFormula = Parse(
-                            ReadElement(value, ref position),
+                            ReadArgument(value, ref position),
                             formula.TextStyle,
                             environment.CreateChildEnvironment());
                         var denominatorFormula = Parse(
-                            ReadElement(value, ref position),
+                            ReadArgument(value, ref position),
                             formula.TextStyle,
                             environment.CreateChildEnvironment());
                         source = value.Segment(start, position - start);
@@ -417,50 +448,7 @@ namespace WpfMath
                         if (position == value.Length)
                             throw new TexParseException("`left` command should be passed a delimiter");
 
-                        string delimiter = "";
-                        if (value[position] == escapeChar)
-                        {
-                            position++;
-                            if (position == value.Length)
-                                throw new TexParseException("`left` command should be passed a delimiter");
-
-                            if (Char.IsLetter(value[position]) == false)
-                            {
-                                delimiter = value[position].ToString();
-                                position++;
-                            }
-                            else
-                            {
-                                StringBuilder sb = new StringBuilder();
-                                bool leftSymbolFound = false;
-                                while (position < value.Length && leftSymbolFound == false)
-                                {
-                                    if (IsWhiteSpace(value[position]) || Char.IsLetter(value[position]) == false)
-                                    {
-                                        leftSymbolFound = true;
-                                    }
-                                    if (leftSymbolFound == false)
-                                    {
-                                        sb.Append(value[position].ToString());
-                                        position++;
-                                    }
-                                }
-                                if (leftSymbolFound == true)
-                                {
-                                    var grouplength = sb.Length;
-                                    delimiter = value.Segment(position - grouplength, grouplength).ToString();
-                                }
-                                else
-                                {
-                                    throw new TexParseException("left symbol is incomplete");
-                                }
-                            }
-                        }
-                        else
-                        {
-                            delimiter = value[position].ToString();
-                            position++;
-                        }
+                        string delimiter = ReadArgument(value, ref position).ToString().Trim();
 
                         var left = position;
 
@@ -476,7 +464,7 @@ namespace WpfMath
                         if (delimiter.Length > 1)
                         {
                             opening = GetDelimiterSymbol(
-                            delimiter, value.Segment(start, left - start));
+                            delimiter.Replace('\\', ' ').Trim(), value.Segment(start, left - start));
                         }
                         if (opening == null)
                             throw new TexParseException($"Cannot find delimiter named {delimiter}");
@@ -488,7 +476,7 @@ namespace WpfMath
                 case "overline":
                     {
                         var overlineFormula = Parse(
-                            ReadElement(value, ref position),
+                            ReadArgument(value, ref position),
                             formula.TextStyle,
                             environment.CreateChildEnvironment());
                         source = value.Segment(start, position - start);
@@ -503,50 +491,7 @@ namespace WpfMath
                         if (position == value.Length)
                             throw new TexParseException("`right` command should be passed a delimiter");
 
-                        string delimiter = "";
-                        if (value[position] == escapeChar)
-                        {
-                            position++;
-                            if (position == value.Length)
-                                throw new TexParseException("`right` command should be passed a delimiter");
-
-                            if (Char.IsLetter(value[position]) == false)
-                            {
-                                delimiter = value[position].ToString();
-                                position++;
-                            }
-                            else
-                            {
-                                StringBuilder sb = new StringBuilder();
-                                bool rightSymbolFound = false;
-                                while (position < value.Length && rightSymbolFound == false)
-                                {
-                                    if (IsWhiteSpace(value[position]) || Char.IsLetter(value[position]) == false)
-                                    {
-                                        rightSymbolFound = true;
-                                    }
-                                    if (rightSymbolFound == false)
-                                    {
-                                        sb.Append(value[position].ToString());
-                                        position++;
-                                    }
-                                }
-                                if (rightSymbolFound)
-                                {
-                                    var grouplength = sb.Length;
-                                    delimiter = value.Segment(position - grouplength, grouplength).ToString();
-                                }
-                                else
-                                {
-                                    throw new TexParseException("right symbol is incomplete");
-                                }
-                            }
-                        }
-                        else
-                        {
-                            delimiter = value[position].ToString();
-                            position++;
-                        }
+                        string delimiter = ReadArgument(value, ref position).ToString().Trim();
 
                         SymbolAtom closing = null;
                         if (delimiter.Length == 1)
@@ -558,7 +503,7 @@ namespace WpfMath
                         if (delimiter.Length > 1)
                         {
                             closing = GetDelimiterSymbol(
-                            delimiter, value.Segment(start, position - start));
+                            delimiter.Replace('\\', ' ').Trim(), value.Segment(start, position - start));
                         }
                         if (closing == null)
                             throw new TexParseException($"Cannot find delimiter named {delimiter}");
@@ -576,13 +521,13 @@ namespace WpfMath
                         {
                             // Degree of radical is specified.
                             degreeFormula = Parse(
-                                ReadElementGroup(value, ref position, leftBracketChar, rightBracketChar),
+                                ReadArgumentGroup(value, ref position, leftBracketChar, rightBracketChar),
                                 formula.TextStyle,
                                 environment.CreateChildEnvironment());
                         }
 
                         var sqrtFormula = this.Parse(
-                            ReadElement(value, ref position),
+                            ReadArgument(value, ref position),
                             formula.TextStyle,
                             environment.CreateChildEnvironment());
 
@@ -593,7 +538,7 @@ namespace WpfMath
                 {
                     var color = ReadColorModelData(value, ref position);
 
-                    var bodyValue = ReadElement(value, ref position);
+                    var bodyValue = ReadArgument(value, ref position);
                     var bodyFormula = Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
                     source = value.Segment(start, position - start);
 
@@ -603,7 +548,7 @@ namespace WpfMath
                 {
                     var color = ReadColorModelData(value, ref position);
 
-                    var bodyValue = ReadElement(value, ref position);
+                    var bodyValue = ReadArgument(value, ref position);
                     var bodyFormula = Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
                     source = value.Segment(start, position - start);
 
@@ -637,7 +582,7 @@ namespace WpfMath
                 ref position,
                 leftBracketChar,
                 rightBracketChar)?.ToString();
-            var colorDefinition = ReadElement(value, ref position).ToString();
+            var colorDefinition = ReadArgument(value, ref position).ToString();
             var colorComponents = colorDefinition.Split(',').Select(c => c.Trim());
 
             var colorParser = string.IsNullOrEmpty(colorModelName)
@@ -727,8 +672,8 @@ namespace WpfMath
                 SkipWhiteSpace(value, ref position);
 
                 var styledFormula = command == TexUtilities.TextStyleName
-                    ? ConvertRawText(ReadElement(value, ref position), command)
-                    : Parse(ReadElement(value, ref position), command, environment.CreateChildEnvironment());
+                    ? ConvertRawText(ReadArgument(value, ref position), command)
+                    : Parse(ReadArgument(value, ref position), command, environment.CreateChildEnvironment());
 
                 var source = value.Segment(start, position - start);
                 var atom = styledFormula.RootAtom ?? new NullAtom(source);

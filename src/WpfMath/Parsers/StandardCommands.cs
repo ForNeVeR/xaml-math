@@ -13,7 +13,7 @@ namespace WpfMath.Parsers
                 var source = context.CommandSource;
                 var position = context.ArgumentsStartPosition;
                 var underlineFormula = context.Parser.Parse(
-                    TexFormulaParser.ReadElement(source, ref position),
+                    TexFormulaParser.ReadArgument(source, ref position),
                     context.Formula.TextStyle,
                     context.Environment);
                 var start = context.CommandNameStartPosition;
@@ -30,11 +30,11 @@ namespace WpfMath.Parsers
                 var source = context.CommandSource;
                 var position = context.ArgumentsStartPosition;
                 var topFormula = context.Parser.Parse(
-                            TexFormulaParser.ReadElement(source, ref position),
+                            TexFormulaParser.ReadArgument(source, ref position),
                             context.Formula.TextStyle,
                             context.Environment.CreateChildEnvironment());
                 var bottomFormula = context.Parser.Parse(
-                            TexFormulaParser.ReadElement(source, ref position),
+                            TexFormulaParser.ReadArgument(source, ref position),
                             context.Formula.TextStyle,
                             context.Environment.CreateChildEnvironment());
                 var start = context.CommandNameStartPosition;
