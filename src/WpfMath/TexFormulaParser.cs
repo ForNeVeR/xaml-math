@@ -225,12 +225,22 @@ namespace WpfMath
                 }
                 else if (ch == superScriptChar || ch == subScriptChar || ch == primeChar)
                 {
-                    if (position == 0)
-                        throw new TexParseException("Every script needs a base: \""
-                            + superScriptChar + "\", \"" + subScriptChar + "\" and \""
-                            + primeChar + "\" can't be the first character!");
+                    if(textStyle == TexUtilities.TextStyleName)
+                    {
+                        source=value.Segment(position-1,1);
+                        formula.Add(new CharAtom(source, ch, textStyle), source);
+                        position++;
+                    }
                     else
-                        throw new TexParseException("Double scripts found! Try using more braces.");
+                    {
+                        if (position == 0)
+                            throw new TexParseException("Every script needs a base: \""
+                                + superScriptChar + "\", \"" + subScriptChar + "\" and \""
+                                + primeChar + "\" can't be the first character!");
+                        else
+                            throw new TexParseException("Double scripts found! Try using more braces.");
+                    }
+                    
                 }
                 else
                 {
@@ -567,30 +577,43 @@ namespace WpfMath
             var ch = value[position];
             if (ch == superScriptChar)
             {
-                // Attach superscript.
-                position++;
-                superscriptFormula = ReadScript(formula, value, ref position);
-
-                SkipWhiteSpace(value, ref position);
-                if (position < value.Length && value[position] == subScriptChar)
+                if(formula.TextStyle == TexUtilities.TextStyleName)
                 {
-                    // Attach subscript also.
-                    position++;
-                    subscriptFormula = ReadScript(formula, value, ref position);
                 }
+                else
+                {
+                    // Attach superscript.
+                    position++;
+                    superscriptFormula = ReadScript(formula, value, ref position);
+
+                    SkipWhiteSpace(value, ref position);
+                    if (position < value.Length && value[position] == subScriptChar)
+                    {
+                        // Attach subscript also.
+                        position++;
+                        subscriptFormula = ReadScript(formula, value, ref position);
+                    }
+                }
+                
             }
             else if (ch == subScriptChar)
             {
-                // Add subscript.
-                position++;
-                subscriptFormula = ReadScript(formula, value, ref position);
-
-                SkipWhiteSpace(value, ref position);
-                if (position < value.Length && value[position] == superScriptChar)
+                if(formula.TextStyle == TexUtilities.TextStyleName)
                 {
-                    // Attach superscript also.
+                }
+                else
+                {
+                    // Add subscript.
                     position++;
-                    superscriptFormula = ReadScript(formula, value, ref position);
+                    subscriptFormula = ReadScript(formula, value, ref position);
+
+                    SkipWhiteSpace(value, ref position);
+                    if (position < value.Length && value[position] == superScriptChar)
+                    {
+                        // Attach superscript also.
+                        position++;
+                        superscriptFormula = ReadScript(formula, value, ref position);
+                    }
                 }
             }
 
