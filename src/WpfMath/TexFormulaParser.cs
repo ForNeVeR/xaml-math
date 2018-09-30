@@ -392,22 +392,20 @@ namespace WpfMath
                     {
                         //Command to change the foreground color
                         var colorName = ReadElement(value, ref position).ToString();
-
-                        var remainingString = value.Segment(position);
-                        var remaining = Parse(remainingString, formula.TextStyle);
-                        position = value.Length;
+                        var bodyValue = ReadElement(value, ref position);
+                        var bodyFormula = this.Parse(bodyValue, formula.TextStyle);
                         source = value.Segment(start, position - start);
 
                         if (predefinedColors.TryGetValue(colorName, out Color color))
                         {
-                            return new StyledAtom(source, remaining.RootAtom, null, new SolidColorBrush(color));
+                            return new StyledAtom(source, bodyFormula.RootAtom, null, new SolidColorBrush(color));
                         }
                         else
                         {
                             try
                             {
                                 Color color1 = UserDefinedColorParser.ParseUserColor(colorName);
-                                return new StyledAtom(source, remaining.RootAtom, null, new SolidColorBrush(color1));
+                                return new StyledAtom(source, bodyFormula.RootAtom, null, new SolidColorBrush(color1));
                             }
                             catch
                             {
@@ -418,20 +416,20 @@ namespace WpfMath
                 case "colorbox":
                     {
                         var colorName = ReadElement(value, ref position).ToString();
-                        var remainingString = ReadElement(value, ref position);
-                        var remaining = Parse(remainingString, formula.TextStyle);
+                        var bodyValue = ReadElement(value, ref position);
+                        var bodyFormula = this.Parse(bodyValue, formula.TextStyle);
                         source = value.Segment(start, position - start);
 
                         if (predefinedColors.TryGetValue(colorName, out var color))
                         {
-                            return new StyledAtom(source, remaining.RootAtom, new SolidColorBrush(color), null);
+                            return new StyledAtom(source, bodyFormula.RootAtom, new SolidColorBrush(color), null);
                         }
                         else
                         {
                             try
                             {
                                 Color color1 = UserDefinedColorParser.ParseUserColor(colorName);
-                                return new StyledAtom(source, remaining.RootAtom, new SolidColorBrush(color1), null);
+                                return new StyledAtom(source, bodyFormula.RootAtom, new SolidColorBrush(color1), null);
                             }
                             catch (Exception ex)
                             {
