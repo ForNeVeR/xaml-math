@@ -85,6 +85,7 @@ You may also pass your own `IElementRenderer` implementation to `TexFormula.Rend
 Documentation
 -------------
 
+- [Color support in WPF-Math][docs-colors]
 - [How to prepare `DefaultTexFont.xml` from the font file][docs-prepare-font]
 
 Build Instructions
@@ -117,6 +118,7 @@ The project code is licensed under the terms of [MIT license][license]. The orig
 
 The [fonts][] `cmex10.ttf`, `cmmi10.ttf`, `cmr10.ttf`, and `cmsy10.ttf` and `cmtt10.ttf` are under the [Knuth License][knuth-license].
 
+[docs-colors]: docs/colors.md
 [docs-prepare-font]: docs/prepare-font.md
 [example]: WpfMath.Example/
 [fonts]: src/WpfMath/Fonts/
