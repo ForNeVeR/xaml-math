@@ -271,3 +271,29 @@ let ``\text command should support extended argument parsing``(text : string) : 
     assertParseResult
     <| text
     <| (formula (row <| seq { yield upcast styledChar '1' textStyle; yield! ``123`` }))
+
+[<Theory>]
+[<InlineData(@"\color {red} x", "#ed1b23");
+  InlineData(@"\color [gray] {0.5} x", "#808080");
+  InlineData(@"\color [rgb] {0.5, 0.5, 0.5} x", "#808080");
+  InlineData(@"\color [RGB] {128, 128, 128} x", "#808080");
+  InlineData(@"\color [cmyk] {0.5, 0.5, 0.5, 0.5} x", "#404040");
+  InlineData(@"\color [HTML] {abcdef} x", "#abcdef")>]
+let ``Various color models should be supported``(text : string, color : string) : unit =
+    assertParseResult
+    <| text
+    <| (formula (foreColor (char 'x') (brush color)))
+
+[<Theory>]
+[<InlineData(@"\color {red, 0.1} x", "#ed1b2319");
+  InlineData(@"\color [gray] {0.5, 0.1} x", "#80808019");
+  InlineData(@"\color [argb] {0.1, 0.5, 0.5, 0.5} x", "#80808019");
+  InlineData(@"\color [rgba] {0.5, 0.5, 0.5, 0.1} x", "#80808019");
+  InlineData(@"\color [ARGB] {25, 128, 128, 128} x", "#80808019");
+  InlineData(@"\color [RGBA] {128, 128, 128, 25} x", "#80808019");
+  InlineData(@"\color [cmyk] {0.5, 0.5, 0.5, 0.5, 0.1} x", "#40404019");
+  InlineData(@"\color [HTML] {abcdef19} x", "#abcdef19")>]
+let ``Color models with opacity should be supported``(text : string, color : string) : unit =
+    assertParseResult
+    <| text
+    <| (formula (foreColor (char 'x') (brush color)))

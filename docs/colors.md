@@ -17,11 +17,11 @@ The full color command syntax is:
 
 Where:
 - `command` is either `color` or `colorbox`
-- `mode` is an optional argument that could be one of 
+- `mode` is an optional argument that could be one of
     - `gray`
     - `RGB`, `rgb`, `ARGB`, `argb`, `RGBA`, `rgba`
     - `cmyk`
-    - `HTML` 
+    - `HTML`
 - `color` is either a predefined color name if the `mode` argument wasn't
   provided, or a color definition according to the `mode` argument
 
@@ -64,7 +64,7 @@ last. Examples:
 \colorbox[argb]{0.5, 0,0,0}{opacity = 0.5}
 \colorbox[RGB]{255,255,255}{text}
 \colorbox[RGBA]{255,255,255,128}{opacity = 128}
-\colorbox[ARGBA]{128, 255,255,255}{opacity = 128}
+\colorbox[ARGB]{128, 255,255,255}{opacity = 128}
 ```
 
 ## CMYK mode
@@ -73,8 +73,8 @@ last. Examples:
 to 1 for the CMYK color model. Examples:
 
 ```
-\colorbox[cmyk]{0,0,0}{text}
-\colorbox[cmyk]{0,0,0, 0.5}{opacity = 0.5}
+\colorbox[cmyk]{0,0,0,0}{text}
+\colorbox[cmyk]{0,0,0,0, 0.5}{opacity = 0.5}
 ```
 
 ## HTML mode
