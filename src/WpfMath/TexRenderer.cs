@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -46,11 +47,13 @@ namespace WpfMath
         public void RenderFormulaTo(IElementRenderer renderer, double x, double y) =>
             renderer.RenderElement(Box, x / Scale, y / Scale + Box.Height);
 
-        public Geometry RenderToGeometry(double x, double y, Brush foreground = null, Brush background = null)
+        public Geometry RenderToGeometry(double x, double y, out Queue<Brush> GlyphBrushes, Brush foreground = null, Brush background = null)
         {
+            GlyphBrushes = new Queue<Brush>();
             var geometry = new GeometryGroup();
             var renderer = new GeometryElementRenderer(geometry, Scale, foreground, background);
             RenderFormulaTo(renderer, x, y);
+            GlyphBrushes = renderer.GlyphBrushes;
             return geometry;
         }
 

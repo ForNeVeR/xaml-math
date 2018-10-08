@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +11,8 @@ namespace WpfMath.Converters
     public class SVGConverter
     {
         private int m_nestedLevel = 0;
+
+        public Queue<Brush> GeometryBrushes = new Queue<Brush>();
 
         public string ConvertGeometry(Geometry geometry)
         {
@@ -156,14 +158,22 @@ namespace WpfMath.Converters
                 if (pf.IsClosed)
                     svgString.Append("Z ");
             }
-            svgString.Append("\" fill = \"black\" />");
+
+            SolidColorBrush pathfillBrush = (SolidColorBrush)GeometryBrushes.Dequeue() ?? Brushes.Black;
+
+            string pathfill = "#" + pathfillBrush.Color.ToString().Substring(3) + pathfillBrush.Color.ToString().Substring(1, 2);
+
+            svgString.Append($"\" fill = \"{pathfill}\" />");
             svgString.Append(Environment.NewLine);
         }
 
         private void AddGeometry(StringBuilder svgString, RectangleGeometry rectangle)
         {
-            svgString.AppendFormat(CultureInfo.InvariantCulture, "<rect x=\"{0}\" y=\"{1}\" width=\"{2}\" height=\"{3}\" />"
-                , rectangle.Rect.Left, rectangle.Rect.Top, rectangle.Rect.Width, rectangle.Rect.Height);
+            SolidColorBrush pathfillBrush = (SolidColorBrush)GeometryBrushes.Dequeue() ?? Brushes.Black;
+            string pathfill = "#" + pathfillBrush.Color.ToString().Substring(3) + pathfillBrush.Color.ToString().Substring(1, 2);
+
+            svgString.AppendFormat(CultureInfo.InvariantCulture, "<rect x=\"{0}\" y=\"{1}\" width=\"{2}\" height=\"{3}\" fill=\"{4}\" />"
+                , rectangle.Rect.Left, rectangle.Rect.Top, rectangle.Rect.Width, rectangle.Rect.Height, pathfill);
             svgString.Append(Environment.NewLine);
         }
     }

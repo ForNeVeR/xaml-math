@@ -1,8 +1,10 @@
 using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using WpfMath.Converters;
 
@@ -56,8 +58,9 @@ namespace WpfMath.Example
                 switch (saveFileDialog.FilterIndex)
                 {
                     case 1:
-                        var geometry = renderer.RenderToGeometry(0, 0, formulaControl.Foreground, formulaControl.Background);
+                        var geometry = renderer.RenderToGeometry(0, 0, out Queue<Brush> glyphbrushes, formulaControl.Foreground, formulaControl.Background);
                         var converter = new SVGConverter();
+                        converter.GeometryBrushes = glyphbrushes;
                         var svgPathText = converter.ConvertGeometry(geometry);
                         var svgText = AddSVGHeader(svgPathText);
                         using (var writer = new StreamWriter(stream))

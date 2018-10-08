@@ -24,12 +24,15 @@ namespace WpfMath.Rendering
         /// </summary>
         public Brush Background { get; }
 
+        public Queue<Brush> GlyphBrushes { get; private set; }
+
         public GeometryElementRenderer(GeometryGroup geometry, double scale, Brush foreground = null, Brush background = null)
         {
             _geometry = geometry;
             _scale = scale;
             Foreground = foreground;
             Background = background;
+            GlyphBrushes = new Queue<Brush>();
         }
 
         public void RenderElement(Box box, double x, double y) => box.RenderTo(this, x, y);
@@ -38,12 +41,16 @@ namespace WpfMath.Rendering
         {
             var glyph = scaledGlyphFactory(_scale);
             var glyphGeometry = glyph.BuildGeometry();
+            var itemForeground = foreground ?? (Foreground ?? Brushes.Black);
+            GlyphBrushes.Enqueue(itemForeground);
             _geometry.Children.Add(glyphGeometry);
         }
 
         public void RenderRectangle(Rect rectangle, Brush foreground)
         {
             var rectangleGeometry = new RectangleGeometry(GeometryHelper.ScaleRectangle(_scale, rectangle));
+            var itemForeground = foreground ?? (Foreground ?? Brushes.Black);
+            GlyphBrushes.Enqueue(itemForeground);
             _geometry.Children.Add(rectangleGeometry);
         }
 
