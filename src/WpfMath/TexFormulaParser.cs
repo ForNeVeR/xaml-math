@@ -618,7 +618,8 @@ namespace WpfMath
         /// <summary>
         /// Retrives the cells of a matrix from a given source.
         /// </summary>
-        private List<List<Atom>> GetMatrixData(TexFormula formula, SourceSpan matrixsource)
+        /// <param name="matrixsource">The source to retrieve the 2D-Array of atoms from.</param>
+        private List<List<Atom>> GetMatrixData(TexFormula formula, SourceSpan matrixsource, bool allowEmptyCells = true, bool parseasArrays = false)
         {
             List<List<StringBuilder>> rowdata = new List<List<StringBuilder>>() { new List<StringBuilder>() { new StringBuilder() } };
             int rows = 0;
@@ -639,18 +640,16 @@ namespace WpfMath
                     {
                         if (i + 2 == matrixsource.ToString().Length || String.IsNullOrWhiteSpace(matrixsource.ToString().Substring(i + 2)))
                         {
-                            i += matrixsource.ToString().Length - i;
+                            i = matrixsource.ToString().Length - 1;
                         }
                         else
                         {
                             rowdata.Add(new List<StringBuilder>() { new StringBuilder() });
                             rows++;
                             cols = 0;
-                            i += 2;
+                            i++;
                             rowindent = 2;
                             rowseparationstyle = "slash";
-
-                            //rowdata[rows][cols].Append((matrixsource.ToString()[i +3].ToString()));
                         }
                     }
                     else
@@ -660,20 +659,20 @@ namespace WpfMath
                 }
                 else if (curchar == '\\' && nextchar == 'c' && thirdchar == 'r')
                 {
-                    if (rowseparationstyle == null || rowseparationstyle == "cr")
+                    if (rowseparationstyle == null || rowseparationstyle == "carriagereturn")
                     {
                         if (i + 3 == matrixsource.ToString().Length || String.IsNullOrWhiteSpace(matrixsource.ToString().Substring(i + 3)))
                         {
-                            i += matrixsource.ToString().Length - i;
+                            i = matrixsource.ToString().Length - 1;
                         }
                         else
                         {
                             rowdata.Add(new List<StringBuilder>() { new StringBuilder() });
                             rows++;
                             cols = 0;
-                            i += 3;
+                            i += 2;
                             rowindent = 3;
-                            rowseparationstyle = "cr";
+                            rowseparationstyle = "carriagereturn";
                         }
 
                     }
@@ -681,6 +680,11 @@ namespace WpfMath
                     {
                         throw new TexParseException("Multiple row separator styles cannot be used.");
                     }
+                }
+                else if (curchar == '\\' && Char.IsSymbol(nextchar))
+                {
+                    rowdata[rows][cols].Append(curchar.ToString() + nextchar.ToString());
+                    i++;
                 }
                 else if (curchar == leftGroupChar)
                 {
@@ -691,6 +695,7 @@ namespace WpfMath
                 }
                 else if (curchar == '&')
                 {
+                    //create a new column in the current row.
                     rowdata[rows].Add(new StringBuilder());
                     cols++;
                 }
@@ -712,22 +717,43 @@ namespace WpfMath
                     for (int j = 0; j < rowitem.Count; j++)
                     {
                         var cellitem = rowdata[i][j];
-                        if (cellitem.ToString().Trim().Length > 0)
+                        if (cellitem.ToString().Trim().Length > 0 || cellitem.Length > 0)
                         {
                             var cellsource = matrixsource.Segment(matrixsrcstart, cellitem.Length);// new SourceSpan(cellitem, matrixsrcstart, cellitem.Length);
                             var cellformula = Parse(cellsource, formula.TextStyle);
-                            rowcellatoms.Add(cellformula.RootAtom);
-
-                            if (j < (rowitem.Count - 1))
+                            if (allowEmptyCells)
                             {
-                                matrixsrcstart += (cellitem.Length + 1);
+                                if (cellformula.RootAtom == null)
+                                {
+                                    cellsource = new SourceSpan(" ", 0, 1);
+                                    rowcellatoms.Add(new NullAtom(cellsource));
+                                }
+                                else
+                                {
+                                    rowcellatoms.Add(cellformula.RootAtom);
+                                }
                             }
                             else
                             {
-                                matrixsrcstart += (cellitem.Length + rowindent + 1);
+                                rowcellatoms.Add(cellformula.RootAtom);
                             }
-                        }
 
+                        }
+                        else
+                        {
+                            //Compensate by adding an invincible whitespace
+                            //(This allows for empty cells instead of relying on the user to request a phantom atom or space atom)
+                            var cellsource = new SourceSpan(" ", 0, 1);
+                            rowcellatoms.Add(new NullAtom(cellsource));
+                        }
+                        if (j < (rowitem.Count - 1))
+                        {
+                            matrixsrcstart += (cellitem.Length + 1);
+                        }
+                        else
+                        {
+                            matrixsrcstart += (cellitem.Length + rowindent + 1);
+                        }
                     }
 
                     matrixcells.Add(rowcellatoms);
@@ -745,13 +771,20 @@ namespace WpfMath
                 }
             }
 
-            if (colsvalid == matrixcells.Count)
+            if (parseasArrays)
             {
                 return matrixcells;
             }
             else
             {
-                throw new TexParseException("The column numbers are not equal.");
+                if (colsvalid == matrixcells.Count)
+                {
+                    return matrixcells;
+                }
+                else
+                {
+                    throw new TexParseException("The column numbers are not equal.");
+                }
             }
         }
         

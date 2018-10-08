@@ -278,22 +278,22 @@ namespace WpfMath.Atoms
                                         break;
                                     }
                                     
-                                case HorizontalAlignment.Stretch:
-                                    {
-                                        if (prevrowcolitem is StrutBox && prevrowcolitem.Tag.ToString() == leftstructboxtag)
-                                        {
-                                            prevrowcolitem.Width = 0;
-                                            prevrowcolitem.Italic = 0;
-                                            rowwidth += prevrowcolitem.TotalWidth;
-                                        }
-                                        if (nextrowcolitem is StrutBox && nextrowcolitem.Tag.ToString() == rightstructboxtag)
-                                        {
-                                            nextrowcolitem.Width = 0;
-                                            nextrowcolitem.Italic = 0;
-                                            rowwidth += nextrowcolitem.TotalWidth;
-                                        }
-                                        break;
-                                    }
+                                //case HorizontalAlignment.Stretch:
+                                //    {
+                                //        if (prevrowcolitem is StrutBox && prevrowcolitem.Tag.ToString() == leftstructboxtag)
+                                //        {
+                                //            prevrowcolitem.Width = 0;
+                                //            prevrowcolitem.Italic = 0;
+                                //            rowwidth += prevrowcolitem.TotalWidth;
+                                //        }
+                                //        if (nextrowcolitem is StrutBox && nextrowcolitem.Tag.ToString() == rightstructboxtag)
+                                //        {
+                                //            nextrowcolitem.Width = 0;
+                                //            nextrowcolitem.Italic = 0;
+                                //            rowwidth += nextrowcolitem.TotalWidth;
+                                //        }
+                                //        break;
+                                //    }
 
                                 default:
                                     break;
@@ -355,28 +355,28 @@ namespace WpfMath.Atoms
                                                 }
                                                 break;
                                             }
-                                        case VerticalAlignment.Stretch:
-                                            {
-                                                if (prevcellitem.Tag.ToString() == topstructboxtag)
-                                                {
-                                                    prevcellitem.Height = 0;
-                                                    prevcellitem.Depth = 0;
-                                                    //prevcellitem.Background = Brushes.Aquamarine;
-                                                    cellheight += prevcellitem.TotalHeight;
-                                                    if (prevcellitem.Height > (currowcolitem.Height / 2))
-                                                    {
+                                        //case VerticalAlignment.Stretch:
+                                        //    {
+                                        //        if (prevcellitem.Tag.ToString() == topstructboxtag)
+                                        //        {
+                                        //            prevcellitem.Height = 0;
+                                        //            prevcellitem.Depth = 0;
+                                        //            //prevcellitem.Background = Brushes.Aquamarine;
+                                        //            cellheight += prevcellitem.TotalHeight;
+                                        //            if (prevcellitem.Height > (currowcolitem.Height / 2))
+                                        //            {
     
-                                                    }
-                                                }
-                                                if (nextcellitem.Tag.ToString() == bottomstructboxtag)
-                                                {
-                                                    nextcellitem.Height = 0;
-                                                    nextcellitem.Depth = 0;
-                                                    //nextcellitem.Background = Brushes.BurlyWood;
-                                                    cellheight += nextcellitem.TotalHeight;
-                                                }
-                                                break;
-                                            }
+                                        //            }
+                                        //        }
+                                        //        if (nextcellitem.Tag.ToString() == bottomstructboxtag)
+                                        //        {
+                                        //            nextcellitem.Height = 0;
+                                        //            nextcellitem.Depth = 0;
+                                        //            //nextcellitem.Background = Brushes.BurlyWood;
+                                        //            cellheight += nextcellitem.TotalHeight;
+                                        //        }
+                                        //        break;
+                                        //    }
                                         case VerticalAlignment.Top:
                                             {
                                                 if (prevcellitem.Tag.ToString() == topstructboxtag)
