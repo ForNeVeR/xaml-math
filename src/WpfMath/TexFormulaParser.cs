@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Media;
+using System.Text.RegularExpressions;
 using WpfMath.Atoms;
 using WpfMath.Exceptions;
 
@@ -34,6 +35,10 @@ namespace WpfMath
         private static readonly IDictionary<string, Func<SourceSpan, TexFormula>> predefinedFormulas =
             new Dictionary<string, Func<SourceSpan, TexFormula>>();
         private static IDictionary<string, Color> predefinedColors;
+        /// <summary>
+        /// Contains the <see cref="Regex"/> pattern used to read measurements.
+        /// </summary>
+        private const string MeasurementPattern = @"[-+]?([0-9]+|[0-9]*[\.][0-9]+)\s*(em|ex|mu|pt|px|pc)";
 
         private static readonly string[][] delimiterNames =
         {
@@ -289,6 +294,65 @@ namespace WpfMath
             }
 
             return value.Segment(position++, 1);
+        }
+        
+        /// <summary>
+        /// Returns the string representation of a measurement argument. A return value indicates whether the argument was valid.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="position"></param>
+        /// <param name="measurementValue"></param>
+        /// <returns></returns>
+        public bool TryReadMeasurementArgument(SourceSpan value,ref int position,out string measurementValue)
+        {
+            if (position == value.Length)
+                throw new TexParseException("illegal end!");
+            SkipWhiteSpace(value, ref position);
+
+            if (value[position]==leftGroupChar)
+            {
+                var measurementGroup=ReadArgumentGroup(value, ref position, leftGroupChar, rightGroupChar).ToString().Trim();
+
+                if (Regex.IsMatch(measurementGroup, MeasurementPattern))
+                {
+                    if (measurementGroup== Regex.Match(measurementGroup, MeasurementPattern).Value)
+                    {
+                        measurementValue = Regex.Match(measurementGroup, MeasurementPattern).Value;
+                        return true;
+                    }
+                    else
+                    {
+                        measurementValue = null;
+                        return false;
+                    }
+                }
+                else
+                {
+                    measurementValue = null;
+                    return false;
+                }
+            }
+            else if (Regex.Match(value.Segment(position).ToString(),MeasurementPattern).Success)
+            {
+                measurementValue = Regex.Match(value.Segment(position).ToString(), MeasurementPattern).Value;
+
+                if (value.Segment(position).ToString().StartsWith(measurementValue))
+                {
+                    position += measurementValue.Length;
+                    return true;
+                }
+                else
+                {
+                    measurementValue = null;
+                    return false;
+                }
+                
+            }
+            else
+            {
+                measurementValue = null;
+                return false;
+            }
         }
 
         private TexFormula ReadScript(TexFormula formula, SourceSpan value, ref int position) =>
