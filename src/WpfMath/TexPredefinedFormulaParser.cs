@@ -173,8 +173,11 @@ namespace WpfMath
                 {
                     formula = new TexFormula();
                 }
-
-                this.TempFormulas.Add(name, formula);
+                if (!this.TempFormulas.ContainsKey(name))
+                {
+                    this.TempFormulas.Add(name, formula);
+                }
+                
             }
         }
 
@@ -194,9 +197,13 @@ namespace WpfMath
             public override void Parse(SourceSpan source, XElement element)
             {
                 var name = element.AttributeValue("name");
-                var result = this.TempFormulas[name];
-                Debug.Assert(result != null);
-                this.Result = result;
+                if (this.TempFormulas.ContainsKey(name))
+                {
+                    var result = this.TempFormulas[name];
+                    Debug.Assert(result != null);
+                    this.Result = result;
+                }
+                
             }
         }
 

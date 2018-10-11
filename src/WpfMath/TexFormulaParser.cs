@@ -311,7 +311,7 @@ namespace WpfMath
 
             if (value[position]==leftGroupChar)
             {
-                var measurementGroup=ReadArgumentGroup(value, ref position, leftGroupChar, rightGroupChar).ToString().Trim();
+                var measurementGroup=ReadElementGroup(value, ref position, leftGroupChar, rightGroupChar).ToString().Trim();
 
                 if (Regex.IsMatch(measurementGroup, MeasurementPattern))
                 {
