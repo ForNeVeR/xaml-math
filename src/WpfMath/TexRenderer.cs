@@ -58,10 +58,20 @@ namespace WpfMath
         {
             var visual = new DrawingVisual();
             using (var drawingContext = visual.RenderOpen())
-                this.Render(drawingContext, 0, 0);
+                this.Render(drawingContext, x, y);
+            var bounds = visual.ContentBounds;
+            if (bounds.X < 0 || bounds.Y < 0)
+            {
+                using (var drawingContext = visual.RenderOpen())
+                {
+                    drawingContext.PushTransform(new TranslateTransform(-bounds.X, -bounds.Y));
+                    this.Render(drawingContext, x, y);
+                }
+            }
 
-            var width = (int)Math.Ceiling(this.RenderSize.Width);
-            var height = (int)Math.Ceiling(this.RenderSize.Height);
+            var bounds2 = visual.ContentBounds;
+            var width = (int)Math.Ceiling(bounds2.X + bounds2.Width);
+            var height = (int)Math.Ceiling(bounds2.Y + bounds2.Height);
             var bitmap = new RenderTargetBitmap(width, height, 96, 96, PixelFormats.Default);
             bitmap.Render(visual);
 
