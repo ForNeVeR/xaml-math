@@ -36,6 +36,7 @@
     <Compile Include="OverUnderBoxTests.fs" />
     <Compile Include="ParserTests.fs" />
     <Compile Include="SourceDetectionTests.fs" />
+    <Compile Include="TexRendererTests.fs" />
     <Compile Include="TransformationTests.fs" />
     <Compile Include="VerticalBoxTests.fs" />
     <Compile Include="WpfRendererTests.fs" />

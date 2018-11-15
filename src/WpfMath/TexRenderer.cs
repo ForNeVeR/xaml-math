@@ -9,6 +9,9 @@ namespace WpfMath
 {
     public class TexRenderer
     {
+        /// <summary>Default DPI for WPF.</summary>
+        private const int DefaultDpi = 96;
+
         internal TexRenderer(Box box, double scale)
         {
             this.Box = box;
@@ -54,25 +57,30 @@ namespace WpfMath
             return geometry;
         }
 
+        private void RenderWithPositiveCoordinates(DrawingVisual visual, double x, double y)
+        {
+            using (var drawingContext = visual.RenderOpen())
+                this.Render(drawingContext, x, y);
+
+            var bounds = visual.ContentBounds;
+            if (bounds.X >= 0 && bounds.Y >= 0) return;
+
+            using (var drawingContext = visual.RenderOpen())
+            {
+                drawingContext.PushTransform(new TranslateTransform(-bounds.X, -bounds.Y));
+                this.Render(drawingContext, x, y);
+            }
+        }
+
         public BitmapSource RenderToBitmap(double x, double y)
         {
             var visual = new DrawingVisual();
-            using (var drawingContext = visual.RenderOpen())
-                this.Render(drawingContext, x, y);
-            var bounds = visual.ContentBounds;
-            if (bounds.X < 0 || bounds.Y < 0)
-            {
-                using (var drawingContext = visual.RenderOpen())
-                {
-                    drawingContext.PushTransform(new TranslateTransform(-bounds.X, -bounds.Y));
-                    this.Render(drawingContext, x, y);
-                }
-            }
+            this.RenderWithPositiveCoordinates(visual, x, y);
 
-            var bounds2 = visual.ContentBounds;
-            var width = (int)Math.Ceiling(bounds2.X + bounds2.Width);
-            var height = (int)Math.Ceiling(bounds2.Y + bounds2.Height);
-            var bitmap = new RenderTargetBitmap(width, height, 96, 96, PixelFormats.Default);
+            var bounds = visual.ContentBounds;
+            var width = (int)Math.Ceiling(bounds.Right);
+            var height = (int)Math.Ceiling(bounds.Bottom);
+            var bitmap = new RenderTargetBitmap(width, height, DefaultDpi, DefaultDpi, PixelFormats.Default);
             bitmap.Render(visual);
 
             return bitmap;
