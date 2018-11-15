@@ -72,19 +72,21 @@ namespace WpfMath
             }
         }
 
-        public BitmapSource RenderToBitmap(double x, double y)
+        public BitmapSource RenderToBitmap(double x, double y, double dpi)
         {
             var visual = new DrawingVisual();
             this.RenderWithPositiveCoordinates(visual, x, y);
 
             var bounds = visual.ContentBounds;
-            var width = (int)Math.Ceiling(bounds.Right);
-            var height = (int)Math.Ceiling(bounds.Bottom);
-            var bitmap = new RenderTargetBitmap(width, height, DefaultDpi, DefaultDpi, PixelFormats.Default);
+            var width = (int)Math.Ceiling(bounds.Right * dpi / DefaultDpi);
+            var height = (int)Math.Ceiling(bounds.Bottom * dpi / DefaultDpi);
+            var bitmap = new RenderTargetBitmap(width, height, dpi, dpi, PixelFormats.Default);
             bitmap.Render(visual);
 
             return bitmap;
         }
+
+        public BitmapSource RenderToBitmap(double x, double y) => this.RenderToBitmap(x, y, DefaultDpi);
 
         public void Render(DrawingContext drawingContext, double x, double y) =>
             RenderFormulaTo(new WpfElementRenderer(drawingContext, Scale), x, y);
