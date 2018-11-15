@@ -67,7 +67,8 @@ namespace WpfMath
 
             using (var drawingContext = visual.RenderOpen())
             {
-                drawingContext.PushTransform(new TranslateTransform(-bounds.X, -bounds.Y));
+                drawingContext.PushTransform(
+                    new TranslateTransform(Math.Max(0.0, -bounds.X), Math.Max(0.0, -bounds.Y)));
                 this.Render(drawingContext, x, y);
             }
         }
