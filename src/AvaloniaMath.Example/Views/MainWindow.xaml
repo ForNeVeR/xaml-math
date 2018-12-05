@@ -3,14 +3,22 @@
         xmlns:vm="clr-namespace:AvaloniaMath.Example.ViewModels;assembly=AvaloniaMath.Example"
         xmlns:math="clr-namespace:AvaloniaMath.Controls;assembly=AvaloniaMath"
         Icon="resm:AvaloniaMath.Example.Assets.avalonia-logo.ico"
-        Title="AvaloniaMath.Example">
+        Title="AvaloniaMath.Example"
+        Width="800"
+        Height="600"
+        >
 
-    <StackPanel>
-        <Border BorderBrush="Green" BorderThickness="1">
-        <math:FormulaControl Width="800" Height="100" Scale="20" Formula="L = \int_a^b \sqrt[4]{ \left| \sum_{i,j=1}^ng_{ij}\left(\gamma(t)\right) \left[\frac{d}{dt}x^i\circ\gamma(t) \right] \left{\frac{d}{dt}x^j\circ\gamma(t) \right} \right|}dt" />
-        </Border>
-        <math:FormulaControl Width="800" Height="100" Formula="\int_a^b{f(x) dx} = (b - a) \sum_{n = 1}^{\infty}  {\sum_{m = 1}^{2^n  - 1} { ( { - 1} )^{m + 1} } } 2^{ - n} f(a + m ( {b - a}  )2^{-n} )" />
-        <math:FormulaControl Width="1000" Height="200" Scale="30" Formula="\int_0^{\infty}{x^{2n} e^{-a x^2} dx} = \frac{2n-1}{2a} \int_0^{\infty}{x^{2(n-1)} e^{-a x^2} dx} = \frac{(2n-1)!!}{2^{n+1}} \sqrt{\frac{\pi}{a^{2n+1}}}" />
+    <Grid RowDefinitions="auto,auto,*,100,200">
+    
+        <TextBox Name="formula" Text="L = \int_a^b \sqrt[4]{ \left| \sum_{i,j=1}^ng_{ij}\left(\gamma(t)\right) \left[\frac{d}{dt}x^i\circ\gamma(t) \right] \left{\frac{d}{dt}x^j\circ\gamma(t) \right} \right|}dt"/>
+        <Slider Grid.Row="1" Minimum="1" Maximum="100" Value="20" Name="zoom"/>
+
+        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">
+                    <math:FormulaBlock Scale="{Binding #zoom.Value}" Formula="{Binding #formula.Text}" />
+        </ScrollViewer>
+
+        <math:FormulaBlock Grid.Row="3" Formula="\int_a^b{f(x) dx} = (b - a) \sum_{n = 1}^{\infty}  {\sum_{m = 1}^{2^n  - 1} { ( { - 1} )^{m + 1} } } 2^{ - n} f(a + m ( {b - a}  )2^{-n} )" />
+        <math:FormulaBlock Grid.Row="4" Scale="30" Formula="\int_0^{\infty}{x^{2n} e^{-a x^2} dx} = \frac{2n-1}{2a} \int_0^{\infty}{x^{2(n-1)} e^{-a x^2} dx} = \frac{(2n-1)!!}{2^{n+1}} \sqrt{\frac{\pi}{a^{2n+1}}}" />
      
-    </StackPanel>
+    </Grid>
 </Window>

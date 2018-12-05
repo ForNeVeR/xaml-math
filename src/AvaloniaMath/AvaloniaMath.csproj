@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Controls\FormulaControl.xaml" />
     <None Remove="Data\DefaultTexFont.xml" />
     <None Remove="Data\GlueSettings.xml" />
     <None Remove="Data\PredefinedColors.xml" />

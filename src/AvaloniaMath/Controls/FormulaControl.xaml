@@ -1,9 +1,0 @@
-<UserControl 
-             xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             Design.Width="300" Design.Height="300">
-    <Grid>
-     <!--   <local:VisualContainerElement x:Name="formulaContainerElement"/>-->
-    </Grid>
-</UserControl>
-
