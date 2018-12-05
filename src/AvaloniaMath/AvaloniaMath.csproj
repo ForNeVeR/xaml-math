@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Controls\FormulaControl.xaml" />
+    <None Remove="Data\DefaultTexFont.xml" />
+    <None Remove="Data\GlueSettings.xml" />
+    <None Remove="Data\PredefinedColors.xml" />
+    <None Remove="Data\PredefinedTexFormulas.xml" />
+    <None Remove="Data\TexFormulaSettings.xml" />
+    <None Remove="Data\TexSymbols.xml" />
+    <None Remove="Fonts\cmex10.ttf" />
+    <None Remove="Fonts\cmmi10.ttf" />
+    <None Remove="Fonts\cmr10.ttf" />
+    <None Remove="Fonts\cmsy10.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Data\DefaultTexFont.xml" />
+    <EmbeddedResource Include="Data\GlueSettings.xml" />
+    <EmbeddedResource Include="Data\PredefinedColors.xml" />
+    <EmbeddedResource Include="Data\PredefinedTexFormulas.xml" />
+    <EmbeddedResource Include="Data\TexFormulaSettings.xml" />
+    <EmbeddedResource Include="Data\TexSymbols.xml" />
+    <EmbeddedResource Include="Fonts\cmex10.ttf" />
+    <EmbeddedResource Include="Fonts\cmmi10.ttf" />
+    <EmbeddedResource Include="Fonts\cmr10.ttf" />
+    <EmbeddedResource Include="Fonts\cmsy10.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="**\*.xaml.cs">
+        <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="**\*.xaml">
+        <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="0.7.1-build885-beta" />
+  </ItemGroup>
+
+  <Import Project="..\SharedMath\SharedMath.projitems" Label="Shared" />
+
+</Project>

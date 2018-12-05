@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfMath.Example", "src\WpfMath.Example\WpfMath.Example.csproj", "{FB56A927-25E4-4EC9-BA36-3A843C606B34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfMath.Example", "src\WpfMath.Example\WpfMath.Example.csproj", "{FB56A927-25E4-4EC9-BA36-3A843C606B34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfMath", "src\WpfMath\WpfMath.csproj", "{010A34F1-1F3E-4528-99B4-95054DD45729}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfMath", "src\WpfMath\WpfMath.csproj", "{010A34F1-1F3E-4528-99B4-95054DD45729}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D9341AA3-BF7C-4CC1-8E11-82258967B82F}"
 	ProjectSection(SolutionItems) = preProject
@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{853A
 		scripts\nuget-pack.ps1 = scripts\nuget-pack.ps1
 	EndProjectSection
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WpfMath.Tests", "src\WpfMath.Tests\WpfMath.Tests.fsproj", "{F19E5FB1-EE6B-4A48-A522-41F30676BE41}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "WpfMath.Tests", "src\WpfMath.Tests\WpfMath.Tests.fsproj", "{F19E5FB1-EE6B-4A48-A522-41F30676BE41}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{39669369-C4F6-4AC6-9D35-B4B6086FF172}"
 	ProjectSection(SolutionItems) = preProject
@@ -31,24 +31,41 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{39669369-C
 		docs\JMathTeX-license.txt = docs\JMathTeX-license.txt
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaMath", "src\AvaloniaMath\AvaloniaMath.csproj", "{945C8E20-AE99-493E-8A0D-D5880272050B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaMath.Example", "src\AvaloniaMath.Example\AvaloniaMath.Example.csproj", "{4D9FD5DA-DA8C-4513-8783-413924A76D62}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SharedMath", "src\SharedMath\SharedMath.shproj", "{22DCFC4B-909F-48CB-AD31-15C37198201C}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		src\SharedMath\SharedMath.projitems*{22dcfc4b-909f-48cb-ad31-15c37198201c}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{010A34F1-1F3E-4528-99B4-95054DD45729}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{010A34F1-1F3E-4528-99B4-95054DD45729}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{010A34F1-1F3E-4528-99B4-95054DD45729}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{010A34F1-1F3E-4528-99B4-95054DD45729}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FB56A927-25E4-4EC9-BA36-3A843C606B34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FB56A927-25E4-4EC9-BA36-3A843C606B34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB56A927-25E4-4EC9-BA36-3A843C606B34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB56A927-25E4-4EC9-BA36-3A843C606B34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{010A34F1-1F3E-4528-99B4-95054DD45729}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{010A34F1-1F3E-4528-99B4-95054DD45729}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{010A34F1-1F3E-4528-99B4-95054DD45729}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{010A34F1-1F3E-4528-99B4-95054DD45729}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F19E5FB1-EE6B-4A48-A522-41F30676BE41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F19E5FB1-EE6B-4A48-A522-41F30676BE41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F19E5FB1-EE6B-4A48-A522-41F30676BE41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F19E5FB1-EE6B-4A48-A522-41F30676BE41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{945C8E20-AE99-493E-8A0D-D5880272050B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{945C8E20-AE99-493E-8A0D-D5880272050B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{945C8E20-AE99-493E-8A0D-D5880272050B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{945C8E20-AE99-493E-8A0D-D5880272050B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D9FD5DA-DA8C-4513-8783-413924A76D62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D9FD5DA-DA8C-4513-8783-413924A76D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D9FD5DA-DA8C-4513-8783-413924A76D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D9FD5DA-DA8C-4513-8783-413924A76D62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,5 +73,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{853A4436-C44F-4A61-878D-1B85CE43DB31} = {D9341AA3-BF7C-4CC1-8E11-82258967B82F}
 		{39669369-C4F6-4AC6-9D35-B4B6086FF172} = {D9341AA3-BF7C-4CC1-8E11-82258967B82F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6563FDA0-9C49-4091-AAE3-611169C996D8}
 	EndGlobalSection
 EndGlobal

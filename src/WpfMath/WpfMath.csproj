@@ -16,4 +16,5 @@
     <Resource Include="Fonts\cmr10.ttf" />
     <Resource Include="Fonts\cmsy10.ttf" />
   </ItemGroup>
+  <Import Project="..\SharedMath\SharedMath.projitems" Label="Shared" />
 </Project>

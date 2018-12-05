@@ -1,4 +1,4 @@
-﻿using System.Windows;
+using System.Windows;
 using System.Windows.Media;
 using WpfMath.Rendering;
 
@@ -28,7 +28,7 @@ namespace WpfMath.Boxes
             var typeface = this.Character.Font;
             var glyphIndex = typeface.CharacterToGlyphMap[this.Character.Character];
             var glyphRun = new GlyphRun(typeface, 0, false, this.Character.Size * scale,
-                new ushort[] { glyphIndex }, new Point(x * scale, y * scale),
+                new ushort[] { glyphIndex }, new Point(x * scale, y*scale),
                 new double[] { typeface.AdvanceWidths[glyphIndex] }, null, null, null, null, null, null);
             return glyphRun;
         }

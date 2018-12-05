@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>22dcfc4b-909f-48cb-ad31-15c37198201c</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>SharedMath</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\AccentedAtom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\Atom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\BigDelimeterAtom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\BigOperatorAtom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\CharAtom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\CharSymbol.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\DummyAtom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\FencedAtom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\FixedCharAtom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\FractionAtom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\IRow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\OverlinedAtom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\OverUnderDelimiter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\PhantomAtom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\Radical.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\RowAtom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\ScriptsAtom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\SpaceAtom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\SymbolAtom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\TypedAtom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\UnderlinedAtom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\UnderOverAtom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\VerticalCenteredAtom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Boxes\GlueBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Boxes\OverBar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Boxes\OverUnderBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Boxes\StrutBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Boxes\VerticalBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CharFont.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DefaultTexFont.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DelimiterFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DelimiterInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DelimiterMappingNotFoundException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\TexCharacterMappingNotFoundException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\TexException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\TexNotSupportedException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\TexParseException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\TextStyleMappingNotFoundException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\TypeFaceNotFoundException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExtensionChar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FormulaNotFoundException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Glue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GlueSettingsParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ITeXFont.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SourceSpan.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SymbolMappingNotFoundException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SymbolNotFoundException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TexEnums.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TexFontMetrics.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TexFontUtilities.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TexFormulaHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TexSymbolParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\Result.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)XmlUtilities.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Converters\" />
+  </ItemGroup>
+</Project>
