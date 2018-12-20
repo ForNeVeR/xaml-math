@@ -64,6 +64,8 @@
 
   <!-- delimiters that can change size -->
 
+  <Symbol name="(" type="open" del="true"/>
+  <Symbol name=")" type="close" del="true"/>
   <Symbol name="lbrace" type="open" del="true"/>
   <Symbol name="rbrace" type="close" del="true"/>
   <Symbol name="lbrack" type="open" del="true"/>

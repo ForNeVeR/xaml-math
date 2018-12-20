@@ -49,13 +49,13 @@
     <Map char="-" symbol="minus"/>
     <Map char="/" symbol="slash"/>
     <Map char="*" symbol="ast"/>
-    <Map char="(" symbol="lbrack"/>
+    <Map char="(" symbol="("/>
     <Map char="." symbol="normaldot"/>
     <Map char=";" symbol="semicolon"/>
     <Map char="&gt;" symbol="gt"/>
     <Map char="{" symbol="lbrace"/>
     <Map char="!" symbol="faculty"/>
-    <Map char=")" symbol="rbrack"/>
+    <Map char=")" symbol=")"/>
     <Map char="," symbol="comma"/>
     <Map char="&lt;" symbol="lt"/>
     <Map char="?" symbol="question"/>
@@ -74,8 +74,8 @@ The symbolnames must be defined in "TexSymbols.xml" as delimiters (del="true")!!
 
   <CharacterToDelimiterMappings>
     <Map char="." symbol="_emptyDelimiter"/>
-    <Map char="(" symbol="lbrack"/>
-    <Map char=")" symbol="rbrack"/>
+    <Map char="(" symbol="("/>
+    <Map char=")" symbol=")"/>
     <Map char="[" symbol="lsqbrack"/>
     <Map char="]" symbol="rsqbrack"/>
     <Map char="{" symbol="lbrace"/>
