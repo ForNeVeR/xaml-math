@@ -216,7 +216,7 @@ namespace WpfMath
                         TexAtomType.Ordinary,
                         TexAtomType.Ordinary);
                     var scriptsAtom = this.AttachScripts(formula, value, ref position, groupAtom);
-                    formula.Add(scriptsAtom, value.Segment(initialPosition, scriptsAtom.Source.Length));
+                    formula.Add(scriptsAtom, value.Segment(initialPosition, position - initialPosition));
                 }
                 else if (ch == rightGroupChar)
                 {
