@@ -59,11 +59,11 @@
     <Map char="," symbol="comma"/>
     <Map char="&lt;" symbol="lt"/>
     <Map char="?" symbol="question"/>
-    <Map char="]" symbol="rsqbrack"/>
+    <Map char="]" symbol="rbrack"/>
     <Map char="|" symbol="vert"/>
     <Map char=":" symbol="colon"/>
     <Map char="=" symbol="equals"/>
-    <Map char="[" symbol="lsqbrack"/>
+    <Map char="[" symbol="lbrack"/>
     <Map char="}" symbol="rbrace"/>
   </CharacterToSymbolMappings>
 
@@ -76,8 +76,8 @@ The symbolnames must be defined in "TexSymbols.xml" as delimiters (del="true")!!
     <Map char="." symbol="_emptyDelimiter"/>
     <Map char="(" symbol="("/>
     <Map char=")" symbol=")"/>
-    <Map char="[" symbol="lsqbrack"/>
-    <Map char="]" symbol="rsqbrack"/>
+    <Map char="[" symbol="lbrack"/>
+    <Map char="]" symbol="rbrack"/>
     <Map char="{" symbol="lbrace"/>
     <Map char="}" symbol="rbrace"/>
     <Map char="&lt;" symbol="langle"/>

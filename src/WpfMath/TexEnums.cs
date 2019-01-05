@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace WpfMath
 {
     public enum TexDelimeterType
@@ -34,10 +29,11 @@ namespace WpfMath
         Bottom = 4
     }
 
-    public enum TexDelimeter
+    /// <remarks>The numbers here correspond to the indices in <see cref="TexFormulaParser.DelimiterNames"/>.</remarks>
+    public enum TexDelimiter
     {
         Brace = 0,
-        SquareBracket = 1,
+        Parenthesis = 1,
         Bracket = 2,
         LeftArrow = 3,
         RightArrow = 4,

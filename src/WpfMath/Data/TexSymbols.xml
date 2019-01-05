@@ -70,8 +70,6 @@
   <Symbol name="rbrace" type="close" del="true"/>
   <Symbol name="lbrack" type="open" del="true"/>
   <Symbol name="rbrack" type="close" del="true"/>
-  <Symbol name="rsqbrack" type="close" del="true"/>
-  <Symbol name="lsqbrack" type="open" del="true"/>
   <Symbol name="langle" type="open" del="true"/>
   <Symbol name="rangle" type="close" del="true"/>
   <Symbol name="lfloor" type="open" del="true"/>

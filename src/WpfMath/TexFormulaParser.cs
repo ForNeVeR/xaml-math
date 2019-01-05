@@ -37,9 +37,8 @@ namespace WpfMath
 
         private static readonly string[][] delimiterNames =
         {
-            new[] { "(", ")" },
             new[] { "lbrace", "rbrace" },
-            new[] { "lsqbrack", "rsqbrack" },
+            new[] { "(", ")" },
             new[] { "lbrack", "rbrack" },
             new[] { "downarrow", "downarrow" },
             new[] { "uparrow", "uparrow" },
