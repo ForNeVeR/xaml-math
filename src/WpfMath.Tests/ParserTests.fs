@@ -271,3 +271,9 @@ let ``\text command should support extended argument parsing``(text : string) : 
     assertParseResult
     <| text
     <| (formula (row <| seq { yield upcast styledChar '1' textStyle; yield! ``123`` }))
+
+[<Fact>]
+let ``{\hat T} should parse successfully``() : unit =
+    assertParseResult
+    <| @"{\hat T}"
+    <| formula (typed (accented (char 'T') (formula (symbolAccent "hat"))) TexAtomType.Ordinary TexAtomType.Ordinary)
