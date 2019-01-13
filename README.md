@@ -34,7 +34,7 @@ namespace ConsoleApplication2
         {
             const string latex = @"\frac{2+2}{2}";
             const string fileName = @"T:\Temp\formula.png";
-            
+
             var parser = new TexFormulaParser();
             var formula = parser.Parse(latex);
             var pngBytes = formula.RenderToPng(20.0, 0.0, 0.0, "Arial");
@@ -60,14 +60,14 @@ namespace ConsoleApplication2
         {
             const string latex = @"\frac{2+2}{2}";
             const string fileName = @"T:\Temp\formula.png";
-            
+
             var parser = new TexFormulaParser();
             var formula = parser.Parse(latex);
             var renderer = formula.GetRenderer(TexStyle.Display, 20.0, "Arial");
             var bitmapSource = renderer.RenderToBitmap(0.0, 0.0);
             Console.WriteLine($"Image width: {bitmapSource.Width}");
             Console.WriteLine($"Image height: {bitmapSource.Height}");
-            
+
             var encoder = new PngBitmapEncoder();
             encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
             using (var target = new FileStream(fileName, FileMode.Create))
@@ -94,7 +94,8 @@ Build the project using [MSBuild][msbuild] or any compatible environment (e.g. V
 
 ```console
 $ nuget restore
-$ msbuild /p:Configuration=Release
+$ msbuild /p:Configuration=Release WpfMath.sln
+$ dotnet build -c Release Avalonia-Math.sln
 ```
 
 To run the unit tests, use any xunit-compatible runner (e.g. Visual Studio 2017 or Rider).

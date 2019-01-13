@@ -1,3 +1,6 @@
 ﻿image: Visual Studio 2017
-before_build:
-- nuget restore
+
+build_script:
+    - nuget restore WpfMath.sln
+    - msbuild /m WpfMath.sln
+    - dotnet build -c Release Avalonia-Math.sln
