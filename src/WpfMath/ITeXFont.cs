@@ -1,13 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using WpfMath.Utils;
 
 namespace WpfMath
 {
     // Font that specifies how TexFormula objects are rendered.
     internal interface ITeXFont
     {
+        /// <summary>Whether the font supports <see cref="CharInfo"/>.</summary>
+        bool SupportsMetrics { get; }
+
         double Size { get; }
 
         ITeXFont DeriveFont(double newSize);
@@ -18,13 +18,13 @@ namespace WpfMath
 
         CharInfo GetNextLargerCharInfo(CharInfo charInfo, TexStyle style);
 
-        CharInfo GetDefaultCharInfo(char character, TexStyle style);
+        Result<CharInfo> GetDefaultCharInfo(char character, TexStyle style);
 
-        CharInfo GetCharInfo(char character, string textStyle, TexStyle style);
+        Result<CharInfo> GetCharInfo(char character, string textStyle, TexStyle style);
 
-        CharInfo GetCharInfo(CharFont charFont, TexStyle style);
+        Result<CharInfo> GetCharInfo(CharFont charFont, TexStyle style);
 
-        CharInfo GetCharInfo(string name, TexStyle style);
+        Result<CharInfo> GetCharInfo(string name, TexStyle style);
 
         double GetKern(CharFont leftChar, CharFont rightChar, TexStyle style);
 

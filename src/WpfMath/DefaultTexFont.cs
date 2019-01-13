@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using WpfMath.Exceptions;
+using WpfMath.Utils;
 
 namespace WpfMath
 {
@@ -50,6 +51,8 @@ namespace WpfMath
             this.Size = size;
         }
 
+        public bool SupportsMetrics => true;
+
         public double Size
         {
             get;
@@ -74,8 +77,15 @@ namespace WpfMath
                 if (extension[i] == (int)TexCharKind.None)
                     parts[i] = null;
                 else
-                    parts[i] = new CharInfo((char)extension[i], charInfo.Font, sizeFactor, charInfo.FontId,
-                        GetMetrics(new CharFont((char)extension[i], charInfo.FontId), sizeFactor));
+                {
+                    var metrics = GetMetrics(new CharFont((char)extension[i], charInfo.FontId), sizeFactor).Value;
+                    parts[i] = new CharInfo(
+                        (char)extension[i],
+                        charInfo.Font,
+                        sizeFactor,
+                        charInfo.FontId,
+                        metrics);
+                }
             }
 
             return new ExtensionChar(parts[TexFontUtilities.ExtensionTop], parts[TexFontUtilities.ExtensionMiddle],
@@ -96,21 +106,33 @@ namespace WpfMath
             var fontInfo = fontInfoList[charInfo.FontId];
             var charFont = fontInfo.GetNextLarger(charInfo.Character);
             var newFontInfo = fontInfoList[charFont.FontId];
-            return new CharInfo(charFont.Character, newFontInfo.Font, GetSizeFactor(style), charFont.FontId,
-                GetMetrics(charFont, GetSizeFactor(style)));
+            return new CharInfo(
+                charFont.Character,
+                newFontInfo.Font,
+                GetSizeFactor(style),
+                charFont.FontId,
+                GetMetrics(charFont, GetSizeFactor(style)).Value);
         }
 
-        public CharInfo GetDefaultCharInfo(char character, TexStyle style)
+        private static string GetDefaultTextStyleMapping(char character)
         {
-            if (character >= '0' && character <= '9')
-                return GetCharInfo(character, defaultTextStyleMappings[(int)TexCharKind.Numbers], style);
-            else if (character >= 'a' && character <= 'z')
-                return GetCharInfo(character, defaultTextStyleMappings[(int)TexCharKind.Small], style);
-            else
-                return GetCharInfo(character, defaultTextStyleMappings[(int)TexCharKind.Capitals], style);
+            TexCharKind GetCharKind()
+            {
+                if (character >= '0' && character <= '9')
+                    return TexCharKind.Numbers;
+                else if (character >= 'a' && character <= 'z')
+                    return TexCharKind.Small;
+                else
+                    return TexCharKind.Capitals;
+            }
+
+            return defaultTextStyleMappings[(int)GetCharKind()];
         }
 
-        private CharInfo GetCharInfo(char character, CharFont[] charFont, TexStyle style)
+        public Result<CharInfo> GetDefaultCharInfo(char character, TexStyle style) =>
+            this.GetCharInfo(character, GetDefaultTextStyleMapping(character), style);
+
+        private Result<CharInfo> GetCharInfo(char character, CharFont[] charFont, TexStyle style)
         {
             TexCharKind charKind;
             int charIndexOffset;
@@ -130,34 +152,31 @@ namespace WpfMath
                 charIndexOffset = character - 'A';
             }
 
-            if (charFont[(int)charKind] == null)
-                return GetDefaultCharInfo(character, style);
-            else
-                return GetCharInfo(new CharFont((char)(charFont[(int)charKind].Character + charIndexOffset),
-                    charFont[(int)charKind].FontId), style);
+            return charFont[(int)charKind] == null
+                ? this.GetDefaultCharInfo(character, style)
+                : this.GetCharInfo(
+                    new CharFont(
+                        (char)(charFont[(int)charKind].Character + charIndexOffset),
+                        charFont[(int)charKind].FontId),
+                    style);
         }
 
-        public CharInfo GetCharInfo(char character, string textStyle, TexStyle style)
-        {
-            var mapping = textStyleMappings[textStyle];
-            if (mapping == null)
-                throw new TextStyleMappingNotFoundException(textStyle);
-            return GetCharInfo(character, (CharFont[])mapping, style);
-        }
+        public Result<CharInfo> GetCharInfo(char character, string textStyle, TexStyle style) =>
+            textStyleMappings.TryGetValue(textStyle, out var mapping)
+                ? this.GetCharInfo(character, mapping, style)
+                : Result.Error<CharInfo>(new TextStyleMappingNotFoundException(textStyle));
 
-        public CharInfo GetCharInfo(string symbolName, TexStyle style)
-        {
-            var mapping = symbolMappings[symbolName];
-            if (mapping == null)
-                throw new SymbolMappingNotFoundException(symbolName);
-            return GetCharInfo((CharFont)mapping, style);
-        }
+        public Result<CharInfo> GetCharInfo(string symbolName, TexStyle style) =>
+            symbolMappings.TryGetValue(symbolName, out var mapping)
+                ? this.GetCharInfo(mapping, style)
+                : Result.Error<CharInfo>(new SymbolMappingNotFoundException(symbolName));
 
-        public CharInfo GetCharInfo(CharFont charFont, TexStyle style)
+        public Result<CharInfo> GetCharInfo(CharFont charFont, TexStyle style)
         {
             var size = GetSizeFactor(style);
             var fontInfo = fontInfoList[charFont.FontId];
-            return new CharInfo(charFont.Character, fontInfo.Font, size, charFont.FontId, GetMetrics(charFont, size));
+            var metrics = GetMetrics(charFont, size);
+            return metrics.Map(m => new CharInfo(charFont.Character, fontInfo.Font, size, charFont.FontId, m));
         }
 
         public double GetKern(CharFont leftCharFont, CharFont rightCharFont, TexStyle style)
@@ -316,13 +335,16 @@ namespace WpfMath
             return GetParameter("defaultrulethickness") * GetSizeFactor(style) * TexFontUtilities.PixelsPerPoint;
         }
 
-        private TexFontMetrics GetMetrics(CharFont charFont, double size)
+        private static Result<TexFontMetrics> GetMetrics(CharFont charFont, double size)
         {
             var fontInfo = fontInfoList[charFont.FontId];
             var metrics = fontInfo.GetMetrics(charFont.Character);
-            return new TexFontMetrics(metrics[TexFontUtilities.MetricsWidth], metrics[TexFontUtilities.MetricsHeight],
-                metrics[TexFontUtilities.MetricsDepth], metrics[TexFontUtilities.MetricsItalic],
-                size * TexFontUtilities.PixelsPerPoint);
+            return metrics.Map(m => new TexFontMetrics(
+                m[TexFontUtilities.MetricsWidth],
+                m[TexFontUtilities.MetricsHeight],
+                m[TexFontUtilities.MetricsDepth],
+                m[TexFontUtilities.MetricsItalic],
+                size * TexFontUtilities.PixelsPerPoint));
         }
     }
 

@@ -1,8 +1,10 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using WpfMath.Boxes;
 using WpfMath.Exceptions;
 
 namespace WpfMath.Controls
@@ -13,7 +15,7 @@ namespace WpfMath.Controls
     public partial class FormulaControl : UserControl
     {
         private static TexFormulaParser formulaParser = new TexFormulaParser();
-        private TexFormula texFormula; 
+        private TexFormula texFormula;
 
         public string Formula
         {
@@ -51,12 +53,30 @@ namespace WpfMath.Controls
             set { SetValue(ErrorTemplateProperty, value); }
         }
 
+        public int SelectionStart
+        {
+            get { return (int)GetValue(SelectionStartProperty); }
+            set { SetValue(SelectionStartProperty, value); }
+        }
+
+        public int SelectionLength
+        {
+            get { return (int)GetValue(SelectionLengthProperty); }
+            set { SetValue(SelectionLengthProperty, value); }
+        }
+
+        public Brush SelectionBrush
+        {
+            get { return (Brush)GetValue(SelectionBrushProperty); }
+            set { SetValue(SelectionBrushProperty, value); }
+        }
+
         public static readonly DependencyProperty FormulaProperty = DependencyProperty.Register(
-            "Formula", typeof(string), typeof(FormulaControl), 
+            nameof(Formula), typeof(string), typeof(FormulaControl),
             new PropertyMetadata("", OnRenderSettingsChanged, CoerceFormula));
 
         public static readonly DependencyProperty ScaleProperty = DependencyProperty.Register(
-            "Scale", typeof(double), typeof(FormulaControl),
+            nameof(Scale), typeof(double), typeof(FormulaControl),
             new PropertyMetadata(20d, OnRenderSettingsChanged, CoerceScaleValue));
 
         public static readonly DependencyProperty SystemTextFontNameProperty = DependencyProperty.Register(
@@ -64,16 +84,28 @@ namespace WpfMath.Controls
             new PropertyMetadata("Arial", OnRenderSettingsChanged, CoerceScaleValue));
 
         public static readonly DependencyProperty HasErrorProperty = DependencyProperty.Register(
-            "HasError", typeof(bool), typeof(FormulaControl),
+            nameof(HasError), typeof(bool), typeof(FormulaControl),
             new PropertyMetadata(false));
 
         public static readonly DependencyProperty ErrorsProperty = DependencyProperty.Register(
-            "Errors", typeof(ObservableCollection<Exception>), typeof(FormulaControl),
+            nameof(Errors), typeof(ObservableCollection<Exception>), typeof(FormulaControl),
             new PropertyMetadata(new ObservableCollection<Exception>()));
 
         public static readonly DependencyProperty ErrorTemplateProperty = DependencyProperty.Register(
-            "ErrorTemplate", typeof(ControlTemplate), typeof(FormulaControl),
+            nameof(ErrorTemplate), typeof(ControlTemplate), typeof(FormulaControl),
             new PropertyMetadata(new ControlTemplate()));
+
+        public static readonly DependencyProperty SelectionStartProperty = DependencyProperty.Register(
+            nameof(SelectionStart), typeof(int), typeof(FormulaControl),
+            new PropertyMetadata(0, OnRenderSettingsChanged));
+
+        public static readonly DependencyProperty SelectionLengthProperty = DependencyProperty.Register(
+            nameof(SelectionLength), typeof(int), typeof(FormulaControl),
+            new PropertyMetadata(0, OnRenderSettingsChanged));
+
+        public static readonly DependencyProperty SelectionBrushProperty = DependencyProperty.Register(
+            nameof(SelectionBrush), typeof(Brush), typeof(FormulaControl),
+            new PropertyMetadata(null, OnRenderSettingsChanged));
 
         public FormulaControl()
         {
@@ -92,6 +124,28 @@ namespace WpfMath.Controls
             // Render formula to visual.
             var visual = new DrawingVisual();
             var renderer = texFormula.GetRenderer(TexStyle.Display, Scale, SystemTextFontName);
+
+            var selectionBrush = SelectionBrush;
+            if (selectionBrush != null)
+            {
+                var allBoxes = new List<Box>(renderer.Box.Children);
+                var selectionStart = SelectionStart;
+                var selectionEnd = selectionStart + SelectionLength;
+                for (int idx = 0; idx < allBoxes.Count; idx++)
+                {
+                    var box = allBoxes[idx];
+                    allBoxes.AddRange(box.Children);
+                    var source = box.Source;
+                    if (source != null)
+                    {
+                        if (selectionStart < source.Start + source.Length && source.Start < selectionEnd)
+                        {
+                            if (box is CharBox)
+                                box.Background = selectionBrush;
+                        }
+                    }
+                }
+            }
 
             using (var drawingContext = visual.RenderOpen())
             {

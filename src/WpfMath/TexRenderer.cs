@@ -2,11 +2,16 @@
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using WpfMath.Boxes;
+using WpfMath.Rendering;
 
 namespace WpfMath
 {
     public class TexRenderer
     {
+        /// <summary>Default DPI for WPF.</summary>
+        private const int DefaultDpi = 96;
+
         internal TexRenderer(Box box, double scale)
         {
             this.Box = box;
@@ -41,30 +46,50 @@ namespace WpfMath
             }
         }
 
+        public void RenderFormulaTo(IElementRenderer renderer, double x, double y) =>
+            renderer.RenderElement(Box, x / Scale, y / Scale + Box.Height);
+
         public Geometry RenderToGeometry(double x, double y)
         {
-            GeometryGroup geometry = new GeometryGroup();
-            Box.RenderGeometry(geometry, this.Scale, x / this.Scale, y / this.Scale + this.Box.Height);
+            var geometry = new GeometryGroup();
+            var renderer = new GeometryElementRenderer(geometry, Scale);
+            RenderFormulaTo(renderer, x, y);
             return geometry;
         }
 
-        public BitmapSource RenderToBitmap(double x, double y)
+        private void RenderWithPositiveCoordinates(DrawingVisual visual, double x, double y)
+        {
+            using (var drawingContext = visual.RenderOpen())
+                this.Render(drawingContext, x, y);
+
+            var bounds = visual.ContentBounds;
+            if (bounds.X >= 0 && bounds.Y >= 0) return;
+
+            using (var drawingContext = visual.RenderOpen())
+            {
+                drawingContext.PushTransform(
+                    new TranslateTransform(Math.Max(0.0, -bounds.X), Math.Max(0.0, -bounds.Y)));
+                this.Render(drawingContext, x, y);
+            }
+        }
+
+        public BitmapSource RenderToBitmap(double x, double y, double dpi)
         {
             var visual = new DrawingVisual();
-            using (var drawingContext = visual.RenderOpen())
-                this.Render(drawingContext, 0, 0);
+            this.RenderWithPositiveCoordinates(visual, x, y);
 
-            var width = (int)Math.Ceiling(this.RenderSize.Width);
-            var height = (int)Math.Ceiling(this.RenderSize.Height);
-            var bitmap = new RenderTargetBitmap(width, height, 96, 96, PixelFormats.Default);
+            var bounds = visual.ContentBounds;
+            var width = (int)Math.Ceiling(bounds.Right * dpi / DefaultDpi);
+            var height = (int)Math.Ceiling(bounds.Bottom * dpi / DefaultDpi);
+            var bitmap = new RenderTargetBitmap(width, height, dpi, dpi, PixelFormats.Default);
             bitmap.Render(visual);
 
             return bitmap;
         }
 
-        public void Render(DrawingContext drawingContext, double x, double y)
-        {
-            Box.DrawWithGuidelines(drawingContext, Scale, x / Scale, y / Scale + Box.Height);
-        }
+        public BitmapSource RenderToBitmap(double x, double y) => this.RenderToBitmap(x, y, DefaultDpi);
+
+        public void Render(DrawingContext drawingContext, double x, double y) =>
+            RenderFormulaTo(new WpfElementRenderer(drawingContext, Scale), x, y);
     }
 }

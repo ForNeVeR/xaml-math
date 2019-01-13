@@ -1,4 +1,6 @@
-﻿namespace WpfMath
+﻿using WpfMath.Atoms;
+
+namespace WpfMath
 {
     /// <summary>
     /// Information about the body between a pair of delimiters.

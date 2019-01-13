@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Reflection;
-using System.Text;
 using System.Xml.Linq;
+using WpfMath.Atoms;
 
 namespace WpfMath
 {
@@ -38,14 +38,14 @@ namespace WpfMath
         public TexSymbolParser()
         {
             // for 3.5
-            var doc = XDocument.Load(new System.IO.StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)));
+            var doc = XDocument.Load(new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)));
             this.rootElement = doc.Root;
-            
+
         }
 
-        public IDictionary<string, SymbolAtom> GetSymbols()
+        public IDictionary<string, Func<SourceSpan, SymbolAtom>> GetSymbols()
         {
-            var result = new Dictionary<string, SymbolAtom>();
+            var result = new Dictionary<string, Func<SourceSpan, SymbolAtom>>();
 
             foreach (var symbolElement in rootElement.Elements("Symbol"))
             {
@@ -53,8 +53,9 @@ namespace WpfMath
                 var symbolType = symbolElement.AttributeValue("type");
                 var symbolIsDelimeter = symbolElement.AttributeBooleanValue("del", false);
 
-                result.Add(symbolName, new SymbolAtom(symbolName, (TexAtomType)typeMappings[symbolType],
-                    symbolIsDelimeter));
+                result.Add(
+                    symbolName,
+                    source => new SymbolAtom(source, symbolName, typeMappings[symbolType], symbolIsDelimeter));
             }
 
             return result;

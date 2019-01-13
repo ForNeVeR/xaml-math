@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Media;
+using WpfMath.Atoms;
+using WpfMath.Boxes;
 
 namespace WpfMath
 {
@@ -15,7 +17,7 @@ namespace WpfMath
             if (formulaList.Count == 1)
                 Add(formulaList[0]);
             else
-                this.RootAtom = new RowAtom(formulaList);
+                this.RootAtom = new RowAtom(null, formulaList);
         }
 
         public TexFormula(TexFormula formula)
@@ -49,18 +51,25 @@ namespace WpfMath
             return new TexRenderer(CreateBox(environment), scale);
         }
 
-        public void Add(TexFormula formula)
+        public void Add(TexFormula formula, SourceSpan source = null)
         {
             Debug.Assert(formula != null);
             Debug.Assert(formula.RootAtom != null);
 
-            if (formula.RootAtom is RowAtom)
-                Add(new RowAtom(formula.RootAtom));
-            else
-                Add(formula.RootAtom);
+            this.Add(
+                formula.RootAtom is RowAtom
+                    ? new RowAtom(source, formula.RootAtom)
+                    : formula.RootAtom,
+                source);
         }
 
-        internal void Add(Atom atom)
+        /// <summary>
+        /// Adds an atom to the formula. If the <see cref="RootAtom"/> exists and is not a <see cref="RowAtom"/>, it
+        /// will become one.
+        /// </summary>
+        /// <param name="atom">The atom to add.</param>
+        /// <param name="rowSource">The source that will be set for the resulting row atom.</param>
+        internal void Add(Atom atom, SourceSpan rowSource)
         {
             Debug.Assert(atom != null);
             if (this.RootAtom == null)
@@ -69,35 +78,35 @@ namespace WpfMath
             }
             else
             {
-                if (!(this.RootAtom is RowAtom))
-                    this.RootAtom = new RowAtom(RootAtom);
-                ((RowAtom)RootAtom).Add(atom);
+                var elements = (this.RootAtom is RowAtom r
+                    ? (IEnumerable<Atom>) r.Elements
+                    : new[] { this.RootAtom }).ToList();
+                elements.Add(atom);
+                this.RootAtom = new RowAtom(rowSource, elements);
             }
         }
 
         public void SetForeground(Brush brush)
         {
-            if (this.RootAtom is StyledAtom)
+            if (this.RootAtom is StyledAtom sa)
             {
-                this.RootAtom = ((StyledAtom)this.RootAtom).Clone();
-                ((StyledAtom)this.RootAtom).Foreground = brush;
+                this.RootAtom = sa.Clone(foreground: brush);
             }
             else
             {
-                this.RootAtom = new StyledAtom(this.RootAtom, null, brush);
+                this.RootAtom = new StyledAtom(this.RootAtom?.Source, this.RootAtom, null, brush);
             }
         }
 
         public void SetBackground(Brush brush)
         {
-            if (this.RootAtom is StyledAtom)
+            if (this.RootAtom is StyledAtom sa)
             {
-                this.RootAtom = ((StyledAtom)this.RootAtom).Clone();
-                ((StyledAtom)this.RootAtom).Background = brush;
+                this.RootAtom = sa.Clone(background: brush);
             }
             else
             {
-                this.RootAtom = new StyledAtom(this.RootAtom, brush, null);
+                this.RootAtom = new StyledAtom(this.RootAtom?.Source, this.RootAtom, brush, null);
             }
         }
 
@@ -109,7 +118,7 @@ namespace WpfMath
                 return this.RootAtom.CreateBox(environment);
         }
 
-        private SystemFont GetSystemFont(string fontName, double size)
+        internal static SystemFont GetSystemFont(string fontName, double size)
         {
             var fontFamily = Fonts.SystemFontFamilies.First(ff => ff.ToString() == fontName);
             return new SystemFont(size, fontFamily);

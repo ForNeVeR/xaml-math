@@ -2,17 +2,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WpfMath.Boxes;
 
 namespace WpfMath
 {
     // Creates boxes containing delimeter symbol that exists in different sizes.
     internal static class DelimiterFactory
     {
-        public static Box CreateBox(string symbol, double minHeight, TexEnvironment environment)
+        public static Box CreateBox(string symbol, double minHeight, TexEnvironment environment, SourceSpan source = null)
         {
             var texFont = environment.MathFont;
             var style = environment.Style;
-            var charInfo = texFont.GetCharInfo(symbol, style);
+            var charInfo = texFont.GetCharInfo(symbol, style).Value;
 
             // Find first version of character that has at least minimum height.
             var metrics = charInfo.Metrics;
@@ -31,19 +32,19 @@ namespace WpfMath
             }
             else if (texFont.IsExtensionChar(charInfo))
             {
-                var resultBox = new VerticalBox();
+                var resultBox = new VerticalBox() { Source = source };
 
                 // Construct box from extension character.
                 var extension = texFont.GetExtension(charInfo, style);
                 if (extension.Top != null)
-                    resultBox.Add(new CharBox(environment, extension.Top));
+                    resultBox.Add(new CharBox(environment, extension.Top) { Source = source });
                 if (extension.Middle != null)
-                    resultBox.Add(new CharBox(environment, extension.Middle));
+                    resultBox.Add(new CharBox(environment, extension.Middle) { Source = source });
                 if (extension.Bottom != null)
-                    resultBox.Add(new CharBox(environment, extension.Bottom));
+                    resultBox.Add(new CharBox(environment, extension.Bottom) { Source = source });
 
                 // Insert repeatable part multiple times until box is high enough.
-                var repeatBox = new CharBox(environment, extension.Repeat);
+                var repeatBox = new CharBox(environment, extension.Repeat) { Source = source };
                 do
                 {
                     if (extension.Top != null && extension.Bottom != null)
@@ -67,7 +68,7 @@ namespace WpfMath
             else
             {
                 // No extensions available, so use tallest available version of character.
-                return new CharBox(environment, charInfo);
+                return new CharBox(environment, charInfo) { Source = source };
             }
         }
     }

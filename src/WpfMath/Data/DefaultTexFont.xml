@@ -114,10 +114,10 @@ for a text style is not defined (e.g. "numbers" and "small" in "mathcal") -->
 
     <SymbolMapping name="lbrace" ch="102" fontId="3"/>
     <SymbolMapping name="rbrace" ch="103" fontId="3"/>
-    <SymbolMapping name="lbrack" ch="40" fontId="1"/>
-    <SymbolMapping name="rbrack" ch="41" fontId="1"/>
-    <SymbolMapping name="rsqbrack" ch="93" fontId="1"/>
-    <SymbolMapping name="lsqbrack" ch="91" fontId="1"/>
+    <SymbolMapping name="(" ch="40" fontId="1"/>
+    <SymbolMapping name=")" ch="41" fontId="1"/>
+    <SymbolMapping name="lbrack" ch="91" fontId="1"/>
+    <SymbolMapping name="rbrack" ch="93" fontId="1"/>
     <SymbolMapping name="langle" ch="104" fontId="3"/>
     <SymbolMapping name="rangle" ch="105" fontId="3"/>
     <SymbolMapping name="lfloor" ch="98" fontId="3"/>

@@ -3,7 +3,7 @@
 <package>
     <metadata>
         <id>WpfMath</id>
-        <version>0.4.0</version>
+        <version>0.6.0</version>
         <title>WPF-Math</title>
         <authors>ForNeVeR</authors>
         <owners>ForNeVeR</owners>
@@ -11,11 +11,11 @@
         <projectUrl>https://github.com/ForNeVeR/wpf-math</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the WPF framework.</description>
-        <releaseNotes>Improve SVG support, fix accent alignment, add \text command.</releaseNotes>
-        <copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2017</copyright>
+        <releaseNotes>Fixed command argument parsing and exported PNG quality issues, new overline and underline commands, small refactoring.</releaseNotes>
+        <copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2018</copyright>
         <tags>wpf latex formula</tags>
     </metadata>
     <files>
-        <file src="bin\Release\WpfMath.???" target="lib\net40"/>
+        <file src="src\WpfMath\bin\Release\net40\WpfMath.???" target="lib\net40"/>
     </files>
 </package>
