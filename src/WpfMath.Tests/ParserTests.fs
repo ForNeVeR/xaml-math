@@ -21,8 +21,8 @@ let ``2+2 should be parsed properly`` () =
     <| formula ``2+2``
 
 [<Theory>]
-[<InlineData("(", ")", "lbrack", "rbrack")>]
-[<InlineData("[", "]", "lsqbrack", "rsqbrack")>]
+[<InlineData("(", ")", "(", ")")>]
+[<InlineData("[", "]", "lbrack", "rbrack")>]
 [<InlineData("{", "}", "lbrace", "rbrace")>]
 [<InlineData("<", ">", "langle", "rangle")>]
 let ``Delimiters should work`` (left : string, right : string, lResult : string, rResult : string) =
@@ -35,8 +35,8 @@ let ``Delimiters should work`` (left : string, right : string, lResult : string,
 [<InlineData("(", ".", false, true)>]
 let ``Empty delimiters should work`` (left : string, right : string, isLeftEmpty : bool, isRightEmpty : bool) =
     let empty = brace SymbolAtom.EmptyDelimiterName TexAtomType.Ordinary
-    let leftBrace = if isLeftEmpty then empty else (openBrace "lbrack")
-    let rightBrace = if isRightEmpty then empty else (closeBrace "rbrack")
+    let leftBrace = if isLeftEmpty then empty else (openBrace "(")
+    let rightBrace = if isRightEmpty then empty else (closeBrace ")")
 
     assertParseResult
     <| sprintf @"\left%sa\right%s" left right
@@ -46,7 +46,7 @@ let ``Empty delimiters should work`` (left : string, right : string, isLeftEmpty
 let ``Unmatched delimiters should work`` () =
     assertParseResult
     <| @"\left)a\right|"
-    <| (formula <| fenced (closeBrace "rbrack") (char 'a') (brace "vert" TexAtomType.Ordinary))
+    <| (formula <| fenced (closeBrace ")") (char 'a') (brace "vert" TexAtomType.Ordinary))
 
 [<Fact>]
 let ``Non-existing delimiter should throw exception`` () =
@@ -57,13 +57,13 @@ let ``Non-existing delimiter should throw exception`` () =
 let ``Expression in braces should be parsed`` () =
     assertParseResult
     <| @"\left(2+2\right)"
-    <| (formula <| fenced (openBrace "lbrack") ``2+2`` (closeBrace "rbrack"))
+    <| (formula <| fenced (openBrace "(") ``2+2`` (closeBrace ")"))
 
 [<Fact>]
 let ``Expression after the braces should be parsed`` () =
     assertParseResult
     <| @"\left(2+2\right) + 1"
-    <| (formula <| row [ fenced (openBrace "lbrack") ``2+2`` (closeBrace "rbrack")
+    <| (formula <| row [ fenced (openBrace "(") ``2+2`` (closeBrace ")")
                          symbol "plus"
                          char '1' ])
 
@@ -95,7 +95,7 @@ let ``\mathrm should be parsed properly`` () =
 let ``\mathrm should be parsed properly for complex eqs`` () =
     assertParseResult
     <| @"\mathrm{\left(2+2\right)} + 1"
-    <| (formula <| row [ fenced (openBrace "lbrack") ``\mathrm{2+2}`` (closeBrace "rbrack")
+    <| (formula <| row [ fenced (openBrace "(") ``\mathrm{2+2}`` (closeBrace ")")
                          symbol "plus"
                          char '1' ])
 
@@ -164,7 +164,7 @@ let ``{} should be parsed properly`` () =
 let ``Delimiter with scripts should be parsed properly`` () =
     assertParseResult
     <| @"\left(2+2\right)_a^b"
-    <| (formula <| scripts (fenced (openBrace "lbrack") ``2+2`` (closeBrace "rbrack")) (char 'a') (char 'b'))
+    <| (formula <| scripts (fenced (openBrace "(") ``2+2`` (closeBrace ")")) (char 'a') (char 'b'))
 
 let ``\text doesn't create any SymbolAtoms``() =
     assertParseResult
@@ -271,3 +271,9 @@ let ``\text command should support extended argument parsing``(text : string) : 
     assertParseResult
     <| text
     <| (formula (row <| seq { yield upcast styledChar '1' textStyle; yield! ``123`` }))
+
+[<Fact>]
+let ``{\hat T} should parse successfully``() : unit =
+    assertParseResult
+    <| @"{\hat T}"
+    <| formula (typed (accented (char 'T') (formula (symbolAccent "hat"))) TexAtomType.Ordinary TexAtomType.Ordinary)

@@ -78,6 +78,10 @@ let scripts (baseAtom : Atom) (subscript : Atom) (superscript : Atom)
 let group (groupedAtom: Atom) : TypedAtom = TypedAtom(null, groupedAtom, TexAtomType.Ordinary, TexAtomType.Ordinary)
 let symbol (name : string) : SymbolAtom = symbolSrc name TexAtomType.BinaryOperator null
 let symbolOp (name : string) : SymbolAtom = SymbolAtom(null, name, TexAtomType.BigOperator, false)
+let symbolAccent (name : string) : SymbolAtom = SymbolAtom(null, name, TexAtomType.Accent, false)
+let accented (baseAtom : Atom) (accent : TexFormula) : AccentedAtom = AccentedAtom(null, baseAtom, accent)
+let typed (baseAtom : Atom) (leftType : TexAtomType) (rightType : TexAtomType) : TypedAtom =
+    TypedAtom(null, baseAtom, leftType, rightType)
 let underline(body : Atom) : UnderlinedAtom = UnderlinedAtom(null, body)
 let radical(body : Atom) : Radical = Radical(null, body)
 let radicalWithDegree (degree : Atom) (body : Atom) : Radical = Radical(null, body, degree)

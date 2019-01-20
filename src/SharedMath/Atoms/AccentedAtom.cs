@@ -19,10 +19,11 @@ namespace WpfMath.Atoms
         public AccentedAtom(SourceSpan source, Atom baseAtom, TexFormula accent)
             : base(source)
         {
-            var rootSymbol = accent.RootAtom as SymbolAtom;
-            if (rootSymbol == null)
-                throw new ArgumentException("The formula for the accent is not a single symbol.", "accent");
-            this.AccentAtom = (SymbolAtom)rootSymbol;
+            if (!(accent.RootAtom is SymbolAtom rootSymbol))
+                throw new ArgumentException("The formula for the accent is not a single symbol.", nameof(accent));
+
+            this.BaseAtom = baseAtom;
+            this.AccentAtom = rootSymbol;
 
             if (this.AccentAtom.Type != TexAtomType.Accent)
                 throw new ArgumentException("The specified symbol name is not an accent.", "accent");

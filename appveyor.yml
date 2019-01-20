@@ -1,3 +1,5 @@
 ﻿image: Visual Studio 2017
-before_build:
-- nuget restore
+
+build_script:
+    - nuget restore
+    - msbuild /m /p:Configuration=Release WpfMath.sln

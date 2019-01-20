@@ -38,7 +38,7 @@ namespace WpfMath
         private static readonly string[][] delimiterNames =
         {
             new[] { "lbrace", "rbrace" },
-            new[] { "lsqbrack", "rsqbrack" },
+            new[] { "(", ")" },
             new[] { "lbrack", "rbrack" },
             new[] { "downarrow", "downarrow" },
             new[] { "uparrow", "uparrow" },
@@ -216,7 +216,7 @@ namespace WpfMath
                         TexAtomType.Ordinary,
                         TexAtomType.Ordinary);
                     var scriptsAtom = this.AttachScripts(formula, value, ref position, groupAtom);
-                    formula.Add(scriptsAtom, value.Segment(initialPosition, scriptsAtom.Source.Length));
+                    formula.Add(scriptsAtom, value.Segment(initialPosition, position - initialPosition));
                 }
                 else if (ch == rightGroupChar)
                 {
