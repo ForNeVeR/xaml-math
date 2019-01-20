@@ -39,7 +39,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.7.1-build885-beta" />
+    <PackageReference Include="Avalonia" Version="0.7.0" />
   </ItemGroup>
 
   <Import Project="..\SharedMath\SharedMath.projitems" Label="Shared" />
