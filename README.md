@@ -87,6 +87,8 @@ Documentation
 
 - [How to prepare `DefaultTexFont.xml` from the font file][docs-prepare-font]
 
+- [Licensing history][docs-licensing-history]
+
 Build Instructions
 ------------------
 
@@ -113,14 +115,21 @@ The library was originally ported from the [JMathTex project][jmathtex], copyrig
 License Notes
 -------------
 
-The project code is licensed under the terms of [MIT license][license]. The original resources from [JMathTeX][jmathtex] (`DefaultTexFont.xml`, `GlueSettings.xml`, `PredefinedTexFormulas.xml`, `TexFormulaSettings.xml`, `TexSymbols.xml`) are taken from the [GPLv2-distributed][gpl] [JMathTeX][jmathtex], but JMathTeX authors have granted permission to redistribute these resourses under the MIT license. See the [wiki][wiki-license-info] for details.
+The project code and all the resources are distributed under the terms of [MIT license][license].
 
 The [fonts][] `cmex10.ttf`, `cmmi10.ttf`, `cmr10.ttf`, and `cmsy10.ttf` and `cmtt10.ttf` are under the [Knuth License][knuth-license].
 
+WPF-Math started as a direct port of [JMathTeX][jmathtex] project written in Java, reusing both code and resources. JMathTeX is distributed under the terms of GNU GPL v2 license. WPF-Math, being a derived work, has a permission from JMathTeX authors to be redistributed under the MIT license. See the [Licensing history][docs-licensing-history] for the details.
+
+We're very grateful to JMathTeX authors for their work and allowing to redistribute the derived library. JMathTeX is written by:
+- Kris Coolsaet
+- Nico Van Cleemput
+- Kurt Vermeulen
+
 [docs-prepare-font]: docs/prepare-font.md
+[docs-licensing-history]: docs/licensing-history.md
 [example]: WpfMath.Example/
 [fonts]: src/WpfMath/Fonts/
-[gpl]: docs/JMathTeX-license.txt
 [license]: LICENSE.md
 
 [alex-regueiro]: https://github.com/alexreg
@@ -132,7 +141,6 @@ The [fonts][] `cmex10.ttf`, `cmmi10.ttf`, `cmr10.ttf`, and `cmsy10.ttf` and `cmt
 [msbuild]: https://github.com/Microsoft/msbuild
 [nuget]: https://www.nuget.org/packages/WpfMath/
 [pwsh]: https://github.com/PowerShell/PowerShell
-[wiki-license-info]: https://github.com/ForNeVeR/wpf-math/wiki/Additional-license-info
 
 [badge-appveyor]: https://ci.appveyor.com/api/projects/status/b26m3rpfcgb91gdg/branch/master?svg=true
 [badge-nuget]: https://img.shields.io/nuget/v/WpfMath.svg

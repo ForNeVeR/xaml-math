@@ -28,7 +28,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{39669369-C4F6-4AC6-9D35-B4B6086FF172}"
 	ProjectSection(SolutionItems) = preProject
 		docs\example-screenshot.png = docs\example-screenshot.png
-		docs\JMathTeX-license.txt = docs\JMathTeX-license.txt
+		docs\licensing-history.md = docs\licensing-history.md
 	EndProjectSection
 EndProject
 Global
