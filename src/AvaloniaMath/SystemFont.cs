@@ -1,7 +1,4 @@
-using System.Globalization;
-using System.Windows;
 using Avalonia.Media;
-
 using WpfMath.Exceptions;
 using WpfMath.Utils;
 
@@ -19,7 +16,7 @@ namespace WpfMath
 
         public double Size { get; }
 
-        public bool SupportsMetrics => throw new System.NotImplementedException();
+        public bool SupportsMetrics => false;
 
         public ITeXFont DeriveFont(double newSize) => throw MethodNotSupported(nameof(DeriveFont));
         public ExtensionChar GetExtension(CharInfo charInfo, TexStyle style) =>
@@ -30,25 +27,27 @@ namespace WpfMath
         public CharInfo GetNextLargerCharInfo(CharInfo charInfo, TexStyle style) =>
             throw MethodNotSupported(nameof(GetNextLargerCharInfo));
 
-        public CharInfo GetDefaultCharInfo(char character, TexStyle style) =>
-            throw MethodNotSupported(nameof(GetDefaultCharInfo));
+        public Result<CharInfo> GetDefaultCharInfo(char character, TexStyle style) =>
+            Result.Error<CharInfo>(MethodNotSupported(nameof(this.GetDefaultCharInfo)));
 
-        public CharInfo GetCharInfo(char character, string textStyle, TexStyle style)
+        public Result<CharInfo> GetCharInfo(char character, string textStyle, TexStyle style)
         {
             var typeface = GetTypeface();
-            //if (!typeface.TryGetGlyphTypeface(out var glyphTypeface))
-            //{
-            //    throw new TypeFaceNotFoundException($"Glyph typeface for font {_fontFamily.BaseUri} was not found");
-            //}
+//            if (!typeface.TryGetGlyphTypeface(out var glyphTypeface))
+//            {
+//                return Result.Error<CharInfo>(new TypeFaceNotFoundException(
+//                    $"Glyph typeface for font {this.fontFamily.BaseUri} was not found"));
+//            }
 
             var metrics = GetFontMetrics(character, typeface);
-            return new CharInfo(character, typeface, 1.0, TexFontUtilities.NoFontId, metrics);
+            return Result.Ok(new CharInfo(character, typeface, 1.0, TexFontUtilities.NoFontId, metrics));
         }
 
-        public CharInfo GetCharInfo(CharFont charFont, TexStyle style) =>
-            throw MethodNotSupported(nameof(GetCharInfo));
+        public Result<CharInfo> GetCharInfo(CharFont charFont, TexStyle style) =>
+            Result.Error<CharInfo>(MethodNotSupported(nameof(this.GetCharInfo)));
 
-        public CharInfo GetCharInfo(string name, TexStyle style) => throw MethodNotSupported(nameof(GetCharInfo));
+        public Result<CharInfo> GetCharInfo(string name, TexStyle style) =>
+            Result.Error<CharInfo>(MethodNotSupported(nameof(GetCharInfo)));
 
         public double GetKern(CharFont leftChar, CharFont rightChar, TexStyle style) => 0.0;
 
@@ -120,7 +119,7 @@ namespace WpfMath
                 Text = c.ToString(),
                 Typeface = typeface,
                 TextAlignment=TextAlignment.Left
-                  
+
             };
 
             return new TexFontMetrics(formattedText.Constraint.Width, formattedText.Constraint.Height, 0.0, formattedText.Constraint.Width, 1.0);
@@ -130,26 +129,6 @@ namespace WpfMath
         {
             var face = new Typeface(_fontFamily, 12);
             return face;
-        }
-
-        Result<CharInfo> ITeXFont.GetDefaultCharInfo(char character, TexStyle style)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        Result<CharInfo> ITeXFont.GetCharInfo(char character, string textStyle, TexStyle style)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        Result<CharInfo> ITeXFont.GetCharInfo(CharFont charFont, TexStyle style)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        Result<CharInfo> ITeXFont.GetCharInfo(string name, TexStyle style)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }
