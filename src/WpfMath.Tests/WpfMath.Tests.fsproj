@@ -1,44 +1,49 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net461</TargetFramework>
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="../WpfMath/WpfMath.csproj" />
-    <PackageReference Include="DeepEqual" Version="1.6.0.0" />
-    <PackageReference Include="Foq" Version="1.7.3" />
-    <PackageReference Include="FSharp.Core" Version="4.2.3" />
-    <PackageReference Include="FSharp.Core.Fluent-4.0" Version="1.0.0.6" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
-    <PackageReference Include="System.ValueTuple" Version="4.4.0" />
-    <PackageReference Include="xunit" Version="2.1.0" />
-    <PackageReference Include="xunit.abstractions" Version="2.0.0" />
-    <PackageReference Include="xunit.assert" Version="2.1.0" />
-    <PackageReference Include="xunit.core" Version="2.1.0" />
-    <PackageReference Include="xunit.extensibility.core" Version="2.1.0" />
-    <PackageReference Include="xunit.extensibility.execution" Version="2.1.0" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="WindowsBase" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Utils.fs" />
-    <Compile Include="BoxTests.fs" />
-    <Compile Include="CharBoxTests.fs" />
-    <Compile Include="DefaultTexFontTests.fs" />
-    <Compile Include="GeometryHelperTests.fs" />
-    <Compile Include="GeometryElementRendererTests.fs" />
-    <Compile Include="HorizontalBoxTests.fs" />
-    <Compile Include="HorizontalRuleTests.fs" />
-    <Compile Include="OverUnderBoxTests.fs" />
-    <Compile Include="ParserTests.fs" />
-    <Compile Include="SourceDetectionTests.fs" />
-    <Compile Include="TexRendererTests.fs" />
-    <Compile Include="TransformationTests.fs" />
-    <Compile Include="VerticalBoxTests.fs" />
-    <Compile Include="WpfRendererTests.fs" />
-  </ItemGroup>
+    <PropertyGroup>
+        <TargetFramework>net461</TargetFramework>
+        <IsPackable>false</IsPackable>
+        <DebugType>Full</DebugType> <!-- To preserve stack traces, important for ApprovalTests.Net -->
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="ApprovalTests" Version="3.0.19" />
+        <PackageReference Include="DeepEqual" Version="1.6.0.0" />
+        <PackageReference Include="Foq" Version="1.7.3" />
+        <PackageReference Include="FSharp.Core" Version="4.2.3" />
+        <PackageReference Include="FSharp.Core.Fluent-4.0" Version="1.0.0.6" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+        <PackageReference Include="System.ValueTuple" Version="4.4.0" />
+        <PackageReference Include="xunit" Version="2.1.0" />
+        <PackageReference Include="xunit.abstractions" Version="2.0.0" />
+        <PackageReference Include="xunit.assert" Version="2.1.0" />
+        <PackageReference Include="xunit.core" Version="2.1.0" />
+        <PackageReference Include="xunit.extensibility.core" Version="2.1.0" />
+        <PackageReference Include="xunit.extensibility.execution" Version="2.1.0" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
+        <ProjectReference Include="../WpfMath/WpfMath.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <Reference Include="PresentationCore" />
+        <Reference Include="PresentationFramework" />
+        <Reference Include="WindowsBase" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="ApprovalTestUtils.fs" />
+        <Compile Include="Utils.fs" />
+        <Compile Include="BoxTests.fs" />
+        <Compile Include="CharBoxTests.fs" />
+        <Compile Include="DefaultTexFontTests.fs" />
+        <Compile Include="GeometryHelperTests.fs" />
+        <Compile Include="GeometryElementRendererTests.fs" />
+        <Compile Include="HorizontalBoxTests.fs" />
+        <Compile Include="HorizontalRuleTests.fs" />
+        <Compile Include="OverUnderBoxTests.fs" />
+        <Compile Include="ParserTests.fs" />
+        <Compile Include="SourceDetectionTests.fs" />
+        <Compile Include="TexRendererTests.fs" />
+        <Compile Include="TransformationTests.fs" />
+        <Compile Include="VerticalBoxTests.fs" />
+        <Compile Include="WpfRendererTests.fs" />
+        <None Include="*.txt" />
+    </ItemGroup>
 </Project>

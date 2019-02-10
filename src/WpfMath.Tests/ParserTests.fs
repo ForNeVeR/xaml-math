@@ -5,6 +5,7 @@ open Xunit
 open WpfMath
 open WpfMath.Atoms
 open WpfMath.Exceptions
+open WpfMath.Tests.ApprovalTestUtils
 open WpfMath.Tests.Utils
 
 let private ``123`` : Atom seq = [| char '1'; char '2'; char '3' |] |> Seq.map (fun x -> upcast x)
@@ -15,10 +16,7 @@ let ``\sin`` = row [styledChar 's' rmStyle; styledChar 'i' rmStyle; styledChar '
 let redBrush = brush "#ed1b23"
 
 [<Fact>]
-let ``2+2 should be parsed properly`` () =
-    assertParseResult
-    <| "2+2"
-    <| formula ``2+2``
+let ``test_2+2``() = approvalTestParseResult "2+2"
 
 [<Theory>]
 [<InlineData("(", ")", "(", ")")>]
