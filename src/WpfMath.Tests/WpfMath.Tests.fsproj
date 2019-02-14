@@ -44,6 +44,6 @@
         <Compile Include="TransformationTests.fs" />
         <Compile Include="VerticalBoxTests.fs" />
         <Compile Include="WpfRendererTests.fs" />
-        <None Include="*.txt" />
+        <None Include="TestResults/*.txt" />
     </ItemGroup>
 </Project>

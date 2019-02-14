@@ -3,6 +3,7 @@ module WpfMath.Tests.ApprovalTestUtils
 open System.Reflection
 
 open ApprovalTests
+open ApprovalTests.Namers
 open ApprovalTests.Reporters
 open Newtonsoft.Json
 open Newtonsoft.Json.Converters
@@ -11,6 +12,7 @@ open Newtonsoft.Json.Serialization
 open WpfMath
 
 [<assembly: UseReporter(typeof<DiffReporter>)>]
+[<assembly: UseApprovalSubdirectory("TestResults")>]
 do ()
 
 type private InnerPropertyContractResolver() =
@@ -35,8 +37,12 @@ let private jsonSettings = JsonSerializerSettings(ContractResolver = InnerProper
 let private serialize o =
     JsonConvert.SerializeObject(o, jsonSettings)
 
-let approvalTestParseResult(formulaText : string) : unit =
+let checkParseResult(formulaText : string) : unit =
     let parser = TexFormulaParser()
     let formula = parser.Parse formulaText
     let result = serialize formula
     Approvals.Verify result
+
+let checkScenarioParseResult (scenario : string) (formulaText : string) : unit =
+    use block = NamerFactory.AsEnvironmentSpecificTest(fun () -> sprintf "(%s)" scenario)
+    checkParseResult formulaText

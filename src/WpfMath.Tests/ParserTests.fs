@@ -16,17 +16,15 @@ let ``\sin`` = row [styledChar 's' rmStyle; styledChar 'i' rmStyle; styledChar '
 let redBrush = brush "#ed1b23"
 
 [<Fact>]
-let ``test_2+2``() = approvalTestParseResult "2+2"
+let ``test_2+2``() = checkParseResult "2+2"
 
 [<Theory>]
 [<InlineData("(", ")", "(", ")")>]
 [<InlineData("[", "]", "lbrack", "rbrack")>]
 [<InlineData("{", "}", "lbrace", "rbrace")>]
 [<InlineData("<", ">", "langle", "rangle")>]
-let ``Delimiters should work`` (left : string, right : string, lResult : string, rResult : string) =
-    assertParseResult
-    <| sprintf @"\left%sa\right%s" left right
-    <| (formula <| fenced (openBrace lResult) (char 'a') (closeBrace rResult))
+let delimiters (left : string, right : string, lResult : string, rResult : string) =
+    checkScenarioParseResult (sprintf "(%s,%s)" lResult rResult) (sprintf @"\left%sa\right%s" left right)
 
 [<Theory>]
 [<InlineData(".", ")", true, false)>]
