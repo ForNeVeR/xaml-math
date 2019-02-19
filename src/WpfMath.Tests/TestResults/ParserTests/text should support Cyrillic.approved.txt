@@ -8,23 +8,47 @@
         "TextStyle": "text",
         "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
-        "Type": "Ordinary"
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 6,
+          "End": 7,
+          "Length": 1,
+          "Source": "\\text{абв}"
+        }
       },
       {
         "Character": "б",
         "TextStyle": "text",
         "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
-        "Type": "Ordinary"
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 7,
+          "End": 8,
+          "Length": 1,
+          "Source": "\\text{абв}"
+        }
       },
       {
         "Character": "в",
         "TextStyle": "text",
         "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
-        "Type": "Ordinary"
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 8,
+          "End": 9,
+          "Length": 1,
+          "Source": "\\text{абв}"
+        }
       }
     ],
-    "Type": "Ordinary"
+    "Type": "Ordinary",
+    "Source": {
+      "Start": 6,
+      "End": 9,
+      "Length": 3,
+      "Source": "\\text{абв}"
+    }
   }
 }

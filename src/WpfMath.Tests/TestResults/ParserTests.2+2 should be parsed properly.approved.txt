@@ -8,22 +8,46 @@
         "TextStyle": null,
         "IsDefaultTextStyle": true,
         "IsTextSymbol": false,
-        "Type": "Ordinary"
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 0,
+          "End": 1,
+          "Length": 1,
+          "Source": "2+2"
+        }
       },
       {
         "IsDelimeter": false,
         "Name": "plus",
         "IsTextSymbol": false,
-        "Type": "BinaryOperator"
+        "Type": "BinaryOperator",
+        "Source": {
+          "Start": 1,
+          "End": 2,
+          "Length": 1,
+          "Source": "2+2"
+        }
       },
       {
         "Character": "2",
         "TextStyle": null,
         "IsDefaultTextStyle": true,
         "IsTextSymbol": false,
-        "Type": "Ordinary"
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 2,
+          "End": 3,
+          "Length": 1,
+          "Source": "2+2"
+        }
       }
     ],
-    "Type": "Ordinary"
+    "Type": "Ordinary",
+    "Source": {
+      "Start": 0,
+      "End": 3,
+      "Length": 3,
+      "Source": "2+2"
+    }
   }
 }

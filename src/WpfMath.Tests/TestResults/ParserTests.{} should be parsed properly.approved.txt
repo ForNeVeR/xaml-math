@@ -4,10 +4,22 @@
     "Atom": {
       "PreviousAtom": null,
       "Elements": [],
-      "Type": "Ordinary"
+      "Type": "Ordinary",
+      "Source": {
+        "Start": 1,
+        "End": 1,
+        "Length": 0,
+        "Source": "{}"
+      }
     },
     "LeftType": "Ordinary",
     "RightType": "Ordinary",
-    "Type": "Ordinary"
+    "Type": "Ordinary",
+    "Source": {
+      "Start": 1,
+      "End": 1,
+      "Length": 0,
+      "Source": "{}"
+    }
   }
 }
