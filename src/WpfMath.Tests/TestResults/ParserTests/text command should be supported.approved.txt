@@ -1,0 +1,37 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "PreviousAtom": null,
+    "Elements": [
+      {
+        "Character": "t",
+        "TextStyle": "text",
+        "IsDefaultTextStyle": false,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      },
+      {
+        "Character": "e",
+        "TextStyle": "text",
+        "IsDefaultTextStyle": false,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      },
+      {
+        "Character": "s",
+        "TextStyle": "text",
+        "IsDefaultTextStyle": false,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      },
+      {
+        "Character": "t",
+        "TextStyle": "text",
+        "IsDefaultTextStyle": false,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      }
+    ],
+    "Type": "Ordinary"
+  }
+}

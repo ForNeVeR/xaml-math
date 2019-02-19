@@ -1,0 +1,48 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "PreviousAtom": null,
+    "Elements": [
+      {
+        "RowAtom": {
+          "PreviousAtom": null,
+          "Elements": [
+            {
+              "Character": "1",
+              "TextStyle": null,
+              "IsDefaultTextStyle": true,
+              "IsTextSymbol": false,
+              "Type": "Ordinary"
+            }
+          ],
+          "Type": "Ordinary"
+        },
+        "Background": null,
+        "Foreground": "#FFED1B23",
+        "Type": "Ordinary"
+      },
+      {
+        "Character": "1",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      },
+      {
+        "Character": "2",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      },
+      {
+        "Character": "3",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      }
+    ],
+    "Type": "Ordinary"
+  }
+}

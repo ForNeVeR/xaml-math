@@ -16,7 +16,10 @@ let ``\sin`` = row [styledChar 's' rmStyle; styledChar 'i' rmStyle; styledChar '
 let redBrush = brush "#ed1b23"
 
 [<Fact>]
-let ``test_2+2``() = checkParseResult "2+2"
+let ``2+2 should be parsed properly`` () =
+    assertParseResult
+    <| "2+2"
+    <| formula ``2+2``
 
 [<Theory>]
 [<InlineData("(", ")", "(", ")")>]
@@ -24,7 +27,10 @@ let ``test_2+2``() = checkParseResult "2+2"
 [<InlineData("{", "}", "lbrace", "rbrace")>]
 [<InlineData("<", ">", "langle", "rangle")>]
 let delimiters (left : string, right : string, lResult : string, rResult : string) =
-    checkScenarioParseResult (sprintf "(%s,%s)" lResult rResult) (sprintf @"\left%sa\right%s" left right)
+    assertParseResultScenario
+    <| sprintf "%s,%s" lResult rResult
+    <| sprintf @"\left%sa\right%s" left right
+    <| (formula <| fenced (openBrace lResult) (char 'a') (closeBrace rResult))
 
 [<Theory>]
 [<InlineData(".", ")", true, false)>]
@@ -34,7 +40,8 @@ let ``Empty delimiters should work`` (left : string, right : string, isLeftEmpty
     let leftBrace = if isLeftEmpty then empty else (openBrace "(")
     let rightBrace = if isRightEmpty then empty else (closeBrace ")")
 
-    assertParseResult
+    assertParseResultScenario
+    <| sprintf "(%s,%s,%A,%A)" left right isLeftEmpty isRightEmpty
     <| sprintf @"\left%sa\right%s" left right
     <| (formula <| fenced leftBrace (char 'a') rightBrace)
 
@@ -47,7 +54,7 @@ let ``Unmatched delimiters should work`` () =
 [<Fact>]
 let ``Non-existing delimiter should throw exception`` () =
     let markup = @"\left x\right)"
-    Assert.Throws<TexParseException>(fun () -> TexFormulaParser().Parse(markup) |> ignore)
+    assertParseThrows<TexParseException> markup
 
 [<Fact>]
 let ``Expression in braces should be parsed`` () =
@@ -110,9 +117,7 @@ let ``\mathcal should be parsed properly`` () =
 
 [<Fact>]
 let ``\mathrm{} should throw exn`` () =
-    let parser = TexFormulaParser()
-    let methodcall = (fun () -> parser.Parse(@"\mathrm{}") |> ignore)
-    Assert.Throws<TexParseException>(methodcall)
+    assertParseThrows<TexParseException> @"\mathrm{}"
 
 [<Fact>]
 let ``\lim should be parsed properly`` () =
@@ -142,7 +147,7 @@ let ``\sin should be parsed properly`` () =
                         ])
 
 [<Fact>]
-let ``\int f should be parser properly`` () =
+let ``\int f should be parsed properly`` () =
     assertParseResult
     <| @"\int f"
     <| (formula <| row [
@@ -181,7 +186,8 @@ let ``"\sum_ " should throw a TexParseException``() =
   InlineData(@"\color{red} 1123");
   InlineData(@"\color{red} {1}123")>]
 let ``\color should parse arguments properly``(text : string) : unit =
-    assertParseResult
+    assertParseResultScenario
+    <| processSpecialChars text
     <| text
     <| (formula (row <| seq { yield upcast foreColor (char '1') redBrush; yield! ``123`` }))
 
@@ -191,7 +197,8 @@ let ``\color should parse arguments properly``(text : string) : unit =
   InlineData(@"\colorbox{red} 1123");
   InlineData(@"\colorbox{red} {1}123")>]
 let ``\colorbox should parse arguments properly``(text : string) : unit =
-    assertParseResult
+    assertParseResultScenario
+    <| processSpecialChars text
     <| text
     <| (formula (row <| seq { yield upcast backColor (char '1') redBrush; yield! ``123`` }))
 
@@ -204,7 +211,8 @@ let ``\colorbox should parse arguments properly``(text : string) : unit =
   InlineData(@"\frac2 {x}123");
   InlineData(@"\frac 2{x}123")>]
 let ``\frac should parse arguments properly``(text : string) : unit =
-    assertParseResult
+    assertParseResultScenario
+    <| processSpecialChars text
     <| text
     <| (formula (row <| seq { yield upcast fraction (char '2') (char 'x'); yield! ``123`` }))
 
@@ -214,7 +222,8 @@ let ``\frac should parse arguments properly``(text : string) : unit =
   InlineData(@"\overline 1123");
   InlineData(@"\overline {1}123")>]
 let ``\overline should parse arguments properly``(text : string) : unit =
-    assertParseResult
+    assertParseResultScenario
+    <| processSpecialChars text
     <| text
     <| (formula (row <| seq { yield upcast overline(char '1'); yield! ``123`` }))
 
@@ -224,7 +233,8 @@ let ``\overline should parse arguments properly``(text : string) : unit =
   InlineData(@"\sqrt 1123");
   InlineData(@"\sqrt {1}123")>]
 let ``\sqrt should parse arguments properly``(text : string) : unit =
-    assertParseResult
+    assertParseResultScenario
+    <| processSpecialChars text
     <| text
     <| (formula (row <| seq { yield upcast radical(char '1'); yield! ``123`` }))
 
@@ -234,7 +244,8 @@ let ``\sqrt should parse arguments properly``(text : string) : unit =
   InlineData(@"\sqrt[2 ] 1123");
   InlineData(@"\sqrt[ 2 ] {1}123")>]
 let ``\sqrt should parse optional argument properly``(text : string) : unit =
-    assertParseResult
+    assertParseResultScenario
+    <| processSpecialChars text
     <| text
     <| (formula (row <| seq { yield upcast radicalWithDegree (char '2') (char '1'); yield! ``123`` }))
 
@@ -244,7 +255,8 @@ let ``\sqrt should parse optional argument properly``(text : string) : unit =
   InlineData(@"\underline 1123");
   InlineData(@"\underline {1}123")>]
 let ``\underline should parse arguments properly``(text : string) : unit =
-    assertParseResult
+    assertParseResultScenario
+    <| processSpecialChars text
     <| text
     <| (formula (row <| seq { yield upcast underline(char '1'); yield! ``123`` }))
 
@@ -256,7 +268,8 @@ let ``\underline should parse arguments properly``(text : string) : unit =
   InlineData("x^y_ z");
   InlineData("x ^ {y} _ {z}")>]
 let ``Scripts should be parsed properly``(text : string) : unit =
-    assertParseResult
+    assertParseResultScenario
+    <| processSpecialChars text
     <| text
     <| (formula <| scripts (char 'x') (char 'z') (char 'y'))
 
@@ -264,7 +277,8 @@ let ``Scripts should be parsed properly``(text : string) : unit =
 [<InlineData(@"\text 1123");
   InlineData(@"\text {1}123")>]
 let ``\text command should support extended argument parsing``(text : string) : unit =
-    assertParseResult
+    assertParseResultScenario
+    <| processSpecialChars text
     <| text
     <| (formula (row <| seq { yield upcast styledChar '1' textStyle; yield! ``123`` }))
 

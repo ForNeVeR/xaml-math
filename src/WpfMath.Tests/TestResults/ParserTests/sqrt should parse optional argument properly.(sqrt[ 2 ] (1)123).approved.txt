@@ -1,0 +1,47 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "PreviousAtom": null,
+    "Elements": [
+      {
+        "BaseAtom": {
+          "Character": "1",
+          "TextStyle": null,
+          "IsDefaultTextStyle": true,
+          "IsTextSymbol": false,
+          "Type": "Ordinary"
+        },
+        "DegreeAtom": {
+          "Character": "2",
+          "TextStyle": null,
+          "IsDefaultTextStyle": true,
+          "IsTextSymbol": false,
+          "Type": "Ordinary"
+        },
+        "Type": "Ordinary"
+      },
+      {
+        "Character": "1",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      },
+      {
+        "Character": "2",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      },
+      {
+        "Character": "3",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      }
+    ],
+    "Type": "Ordinary"
+  }
+}

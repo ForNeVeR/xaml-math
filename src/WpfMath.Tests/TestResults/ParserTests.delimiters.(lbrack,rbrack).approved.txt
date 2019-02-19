@@ -1,0 +1,25 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "BaseAtom": {
+      "Character": "a",
+      "TextStyle": null,
+      "IsDefaultTextStyle": true,
+      "IsTextSymbol": false,
+      "Type": "Ordinary"
+    },
+    "LeftDelimeter": {
+      "IsDelimeter": true,
+      "Name": "lbrack",
+      "IsTextSymbol": false,
+      "Type": "Opening"
+    },
+    "RightDelimeter": {
+      "IsDelimeter": true,
+      "Name": "rbrack",
+      "IsTextSymbol": false,
+      "Type": "Closing"
+    },
+    "Type": "Ordinary"
+  }
+}

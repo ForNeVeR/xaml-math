@@ -4,12 +4,14 @@ open System
 open System.Windows
 open System.Windows.Media
 
+open ApprovalTests.Namers
 open FSharp.Linq.RuntimeHelpers
 open DeepEqual.Syntax
 open Xunit
 
 open WpfMath
 open WpfMath.Atoms
+open WpfMath.Tests.ApprovalTestUtils
 
 let textStyle = "text"
 let rmStyle = "mathrm"
@@ -35,12 +37,26 @@ let private createComparer formula expected =
 
 let assertParseResultWithSource (formula : string) (expected : TexFormula) : unit =
     (createComparer formula expected).Assert()
+    verifyParseResult formula
+    verifyFormula expected
 
 let assertParseResult (formula : string) (expected : TexFormula) : unit =
     let toExpression = LeafExpressionConverter.QuotationToLambdaExpression
     (createComparer formula expected)
         .IgnoreProperty<Atom>(toExpression(<@ Func<Atom, obj>(fun a -> upcast a.Source) @>))
         .Assert()
+    verifyParseResultWithoutSource formula
+    verifyFormulaWithoutSource expected
+
+let assertParseResultScenario (scenario : string) (formula : string) (expected : TexFormula) : unit =
+    let toExpression = LeafExpressionConverter.QuotationToLambdaExpression
+    (createComparer formula expected)
+        .IgnoreProperty<Atom>(toExpression(<@ Func<Atom, obj>(fun a -> upcast a.Source) @>))
+        .Assert()
+    use block = NamerFactory.AsEnvironmentSpecificTest(fun () -> sprintf "(%s)" scenario)
+    verifyParseResultWithoutSource formula
+    use block = NamerFactory.AsEnvironmentSpecificTest(fun () -> sprintf "(%s)" scenario)
+    verifyFormulaWithoutSource expected
 
 let assertParseThrows<'ex when 'ex :> exn> formula =
     let parser = TexFormulaParser()

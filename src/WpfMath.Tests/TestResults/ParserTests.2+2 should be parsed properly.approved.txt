@@ -1,0 +1,29 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "PreviousAtom": null,
+    "Elements": [
+      {
+        "Character": "2",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      },
+      {
+        "IsDelimeter": false,
+        "Name": "plus",
+        "IsTextSymbol": false,
+        "Type": "BinaryOperator"
+      },
+      {
+        "Character": "2",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      }
+    ],
+    "Type": "Ordinary"
+  }
+}

@@ -1,0 +1,36 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "PreviousAtom": null,
+    "Elements": [
+      {
+        "Character": "a",
+        "TextStyle": "text",
+        "IsDefaultTextStyle": false,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      },
+      {
+        "Type": "Ordinary"
+      },
+      {
+        "Character": "b",
+        "TextStyle": "text",
+        "IsDefaultTextStyle": false,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      },
+      {
+        "Type": "Ordinary"
+      },
+      {
+        "Character": "c",
+        "TextStyle": "text",
+        "IsDefaultTextStyle": false,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      }
+    ],
+    "Type": "Ordinary"
+  }
+}

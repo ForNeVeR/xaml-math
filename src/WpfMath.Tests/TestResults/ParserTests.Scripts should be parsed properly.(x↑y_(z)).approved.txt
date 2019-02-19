@@ -1,0 +1,27 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "BaseAtom": {
+      "Character": "x",
+      "TextStyle": null,
+      "IsDefaultTextStyle": true,
+      "IsTextSymbol": false,
+      "Type": "Ordinary"
+    },
+    "SubscriptAtom": {
+      "Character": "z",
+      "TextStyle": null,
+      "IsDefaultTextStyle": true,
+      "IsTextSymbol": false,
+      "Type": "Ordinary"
+    },
+    "SuperscriptAtom": {
+      "Character": "y",
+      "TextStyle": null,
+      "IsDefaultTextStyle": true,
+      "IsTextSymbol": false,
+      "Type": "Ordinary"
+    },
+    "Type": "Ordinary"
+  }
+}

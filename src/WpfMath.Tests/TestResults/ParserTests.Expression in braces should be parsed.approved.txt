@@ -1,0 +1,44 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "BaseAtom": {
+      "PreviousAtom": null,
+      "Elements": [
+        {
+          "Character": "2",
+          "TextStyle": null,
+          "IsDefaultTextStyle": true,
+          "IsTextSymbol": false,
+          "Type": "Ordinary"
+        },
+        {
+          "IsDelimeter": false,
+          "Name": "plus",
+          "IsTextSymbol": false,
+          "Type": "BinaryOperator"
+        },
+        {
+          "Character": "2",
+          "TextStyle": null,
+          "IsDefaultTextStyle": true,
+          "IsTextSymbol": false,
+          "Type": "Ordinary"
+        }
+      ],
+      "Type": "Ordinary"
+    },
+    "LeftDelimeter": {
+      "IsDelimeter": true,
+      "Name": "(",
+      "IsTextSymbol": false,
+      "Type": "Opening"
+    },
+    "RightDelimeter": {
+      "IsDelimeter": true,
+      "Name": ")",
+      "IsTextSymbol": false,
+      "Type": "Closing"
+    },
+    "Type": "Ordinary"
+  }
+}

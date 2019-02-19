@@ -1,0 +1,28 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "PreviousAtom": null,
+    "Elements": [
+      {
+        "BaseAtom": {
+          "IsDelimeter": false,
+          "Name": "int",
+          "IsTextSymbol": false,
+          "Type": "BigOperator"
+        },
+        "LowerLimitAtom": null,
+        "UpperLimitAtom": null,
+        "UseVerticalLimits": null,
+        "Type": "BigOperator"
+      },
+      {
+        "Character": "f",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      }
+    ],
+    "Type": "Ordinary"
+  }
+}

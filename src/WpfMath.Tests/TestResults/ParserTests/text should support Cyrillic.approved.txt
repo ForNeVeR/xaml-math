@@ -1,0 +1,30 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "PreviousAtom": null,
+    "Elements": [
+      {
+        "Character": "а",
+        "TextStyle": "text",
+        "IsDefaultTextStyle": false,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      },
+      {
+        "Character": "б",
+        "TextStyle": "text",
+        "IsDefaultTextStyle": false,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      },
+      {
+        "Character": "в",
+        "TextStyle": "text",
+        "IsDefaultTextStyle": false,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      }
+    ],
+    "Type": "Ordinary"
+  }
+}

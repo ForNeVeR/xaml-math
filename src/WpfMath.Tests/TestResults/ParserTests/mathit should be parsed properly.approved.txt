@@ -1,0 +1,30 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "PreviousAtom": null,
+    "Elements": [
+      {
+        "Character": "s",
+        "TextStyle": "mathit",
+        "IsDefaultTextStyle": false,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      },
+      {
+        "Character": "i",
+        "TextStyle": "mathit",
+        "IsDefaultTextStyle": false,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      },
+      {
+        "Character": "n",
+        "TextStyle": "mathit",
+        "IsDefaultTextStyle": false,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      }
+    ],
+    "Type": "Ordinary"
+  }
+}

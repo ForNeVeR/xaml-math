@@ -1,0 +1,55 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "PreviousAtom": null,
+    "Elements": [
+      {
+        "BaseAtom": {
+          "PreviousAtom": null,
+          "Elements": [
+            {
+              "Character": "s",
+              "TextStyle": "mathrm",
+              "IsDefaultTextStyle": false,
+              "IsTextSymbol": false,
+              "Type": "Ordinary"
+            },
+            {
+              "Character": "i",
+              "TextStyle": "mathrm",
+              "IsDefaultTextStyle": false,
+              "IsTextSymbol": false,
+              "Type": "Ordinary"
+            },
+            {
+              "Character": "n",
+              "TextStyle": "mathrm",
+              "IsDefaultTextStyle": false,
+              "IsTextSymbol": false,
+              "Type": "Ordinary"
+            }
+          ],
+          "Type": "Ordinary"
+        },
+        "LowerLimitAtom": null,
+        "UpperLimitAtom": {
+          "Character": "n",
+          "TextStyle": null,
+          "IsDefaultTextStyle": true,
+          "IsTextSymbol": false,
+          "Type": "Ordinary"
+        },
+        "UseVerticalLimits": false,
+        "Type": "BigOperator"
+      },
+      {
+        "Character": "x",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      }
+    ],
+    "Type": "Ordinary"
+  }
+}

@@ -1,0 +1,13 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "Atom": {
+      "PreviousAtom": null,
+      "Elements": [],
+      "Type": "Ordinary"
+    },
+    "LeftType": "Ordinary",
+    "RightType": "Ordinary",
+    "Type": "Ordinary"
+  }
+}

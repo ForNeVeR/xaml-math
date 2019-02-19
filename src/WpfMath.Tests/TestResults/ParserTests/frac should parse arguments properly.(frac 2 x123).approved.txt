@@ -1,0 +1,47 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "PreviousAtom": null,
+    "Elements": [
+      {
+        "Numerator": {
+          "Character": "2",
+          "TextStyle": null,
+          "IsDefaultTextStyle": true,
+          "IsTextSymbol": false,
+          "Type": "Ordinary"
+        },
+        "Denominator": {
+          "Character": "x",
+          "TextStyle": null,
+          "IsDefaultTextStyle": true,
+          "IsTextSymbol": false,
+          "Type": "Ordinary"
+        },
+        "Type": "Inner"
+      },
+      {
+        "Character": "1",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      },
+      {
+        "Character": "2",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      },
+      {
+        "Character": "3",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary"
+      }
+    ],
+    "Type": "Ordinary"
+  }
+}
