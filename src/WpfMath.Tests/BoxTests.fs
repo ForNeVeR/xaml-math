@@ -8,12 +8,13 @@ open Xunit
 open WpfMath
 open WpfMath.Atoms
 open WpfMath.Boxes
-open WpfMath.Tests.Utils
 
 let private parse text =
     let parser = TexFormulaParser()
     let result = parser.Parse text
     result.RootAtom
+
+let private src (string : string) (start : int) (len : int) = SourceSpan(string, start, len)
 
 let private environment =
     let mathFont = DefaultTexFont 20.0

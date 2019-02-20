@@ -7,11 +7,6 @@ open Xunit
 
 open WpfMath
 
-let textStyle = "text"
-let rmStyle = "mathrm"
-let itStyle = "mathit"
-let calStyle = "mathcal"
-
 let initializeFontResourceLoading =
     let monitor = obj()
     fun () ->
@@ -23,9 +18,3 @@ let assertParseThrows<'ex when 'ex :> exn> formula =
     let parser = TexFormulaParser()
     Assert.Throws<'ex>(Func<obj>(fun () -> upcast parser.Parse(formula)))
 
-// TODO[F]: Move to BoxTests because it's used only there
-let src (string : string) (start : int) (len : int) = SourceSpan(string, start, len)
-
-let private toNullable = function
-    | Some x -> Nullable x
-    | None -> Nullable()

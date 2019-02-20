@@ -212,6 +212,4 @@ let ``{\hat T} should parse successfully``() : unit =
 
 [<Fact>]
 let ``integral expression should be parsed properly`` () =
-    let source = @"\int_a^b"
-    let src = src source
-    verifyParseResult source
+    verifyParseResult @"\int_a^b"
