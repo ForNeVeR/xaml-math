@@ -38,6 +38,7 @@
         <Compile Include="HorizontalRuleTests.fs" />
         <Compile Include="OverUnderBoxTests.fs" />
         <Compile Include="ParserTests.fs" />
+        <Compile Include="ParserExceptionTests.fs" />
         <Compile Include="TexRendererTests.fs" />
         <Compile Include="TransformationTests.fs" />
         <Compile Include="VerticalBoxTests.fs" />

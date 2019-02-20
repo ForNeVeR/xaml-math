@@ -2,12 +2,10 @@
 
 open Xunit
 
-open WpfMath.Exceptions
 open WpfMath.Tests.ApprovalTestUtils
-open WpfMath.Tests.Utils
 
 [<Fact>]
-let ``2+2 should be parsed properly`` () =
+let ``2+2``() =
     verifyParseResult "2+2"
 
 [<Theory>]
@@ -15,7 +13,7 @@ let ``2+2 should be parsed properly`` () =
 [<InlineData("[", "]", "lbrack", "rbrack")>]
 [<InlineData("{", "}", "lbrace", "rbrace")>]
 [<InlineData("<", ">", "langle", "rangle")>]
-let delimiters (left : string, right : string, lResult : string, rResult : string) =
+let delimiters(left : string, right : string, lResult : string, rResult : string) =
     verifyParseResultScenario
     <| sprintf "%s,%s" lResult rResult
     <| sprintf @"\left%sa\right%s" left right
@@ -23,168 +21,150 @@ let delimiters (left : string, right : string, lResult : string, rResult : strin
 [<Theory>]
 [<InlineData(".", ")", true, false)>]
 [<InlineData("(", ".", false, true)>]
-let ``Empty delimiters should work`` (left : string, right : string, isLeftEmpty : bool, isRightEmpty : bool) =
+let emptyDelimiters(left : string, right : string, isLeftEmpty : bool, isRightEmpty : bool) =
     verifyParseResultScenario
     <| sprintf "(%s,%s,%A,%A)" left right isLeftEmpty isRightEmpty
     <| sprintf @"\left%sa\right%s" left right
 
 [<Fact>]
-let ``Unmatched delimiters should work`` () =
+let unmatchedDelimiters() =
     verifyParseResult @"\left)a\right|"
 
 [<Fact>]
-let ``Non-existing delimiter should throw exception`` () =
-    let markup = @"\left x\right)"
-    assertParseThrows<TexParseException> markup
-
-[<Fact>]
-let ``Expression in braces should be parsed`` () =
+let expressionInBraces() =
     verifyParseResult @"\left(2+2\right)"
 
 [<Fact>]
-let ``Expression after the braces should be parsed`` () =
+let expressionAfterBraces() =
     verifyParseResult @"\left(2+2\right) + 1"
 
 [<Fact>]
-let ``\text command should be supported`` () =
+let textCommand() =
     verifyParseResult @"\text{test}"
 
 [<Fact>]
-let ``Spaces in \text shouldn't be ignored`` () =
+let spacesInText() =
     verifyParseResult @"\text{a b c}"
 
 [<Fact>]
-let ``\text should support Cyrillic`` () =
+let cyrillicText() =
     verifyParseResult @"\text{абв}"
 
 [<Fact>]
-let ``\mathrm should be parsed properly`` () =
+let mathrm() =
     verifyParseResult @"\mathrm{sin}"
 
 [<Fact>]
-let ``\mathrm should be parsed properly for complex eqs`` () =
+let complexMathrm() =
     verifyParseResult @"\mathrm{\left(2+2\right)} + 1"
 
 [<Fact>]
-let ``\mathit should be parsed properly`` () =
+let mathit() =
     verifyParseResult @"\mathit{sin}"
 
-
 [<Fact>]
-let ``\mathcal should be parsed properly`` () =
+let mathcal() =
     verifyParseResult @"\mathcal{sin}"
 
 [<Fact>]
-let ``\mathrm{} should throw exn`` () =
-    assertParseThrows<TexParseException> @"\mathrm{}"
-
-[<Fact>]
-let ``\lim should be parsed properly`` () =
+let lim() =
     verifyParseResult @"\lim_{n} x"
 
 [<Fact>]
-let ``{\lim} x should be parsed properly`` () =
+let limInCurlyBraces() =
     verifyParseResult @"{\lim} x"
 
 [<Fact>]
-let ``\sin should be parsed properly`` () =
+let sin() =
     verifyParseResult @"\sin^{n} x"
 
 [<Fact>]
-let ``\int f should be parsed properly`` () =
+let intF() =
     verifyParseResult @"\int f"
 
 [<Fact>]
-let ``{} should be parsed properly`` () =
+let emptyCurlyBraces() =
     verifyParseResult @"{}"
 
 [<Fact>]
-let ``Delimiter with scripts should be parsed properly`` () =
+let delimiterWithScripts() =
     verifyParseResult @"\left(2+2\right)_a^b"
 
-let ``\text doesn't create any SymbolAtoms``() =
+let textWithExpression() =
     verifyParseResult @"\text{2+2}"
 
-[<Fact>]
-let ``\sqrt should throw a TexParseException``() =
-    assertParseThrows<TexParseException> @"\sqrt"
-
-[<Fact>]
-let ``"\sum_ " should throw a TexParseException``() =
-    assertParseThrows<TexParseException> @"\sum_ "
-
 [<Theory>]
-[<InlineData(@"\color{red}1123");
-  InlineData(@"\color{red}{1}123");
-  InlineData(@"\color{red} 1123");
-  InlineData(@"\color{red} {1}123")>]
-let ``\color should parse arguments properly``(text : string) : unit =
+[<InlineData("{red}1123");
+  InlineData("{red}{1}123");
+  InlineData("{red} 1123");
+  InlineData("{red} {1}123")>]
+let color(text : string) : unit =
     verifyParseResultScenario
     <| processSpecialChars text
-    <| text
+    <| sprintf @"\color%s" text
 
 [<Theory>]
-[<InlineData(@"\colorbox{red}1123");
-  InlineData(@"\colorbox{red}{1}123");
-  InlineData(@"\colorbox{red} 1123");
-  InlineData(@"\colorbox{red} {1}123")>]
-let ``\colorbox should parse arguments properly``(text : string) : unit =
+[<InlineData(@"{red}1123");
+  InlineData(@"{red}{1}123");
+  InlineData(@"{red} 1123");
+  InlineData(@"{red} {1}123")>]
+let colorbox(text : string) : unit =
     verifyParseResultScenario
     <| processSpecialChars text
-    <| text
+    <| sprintf @"\colorbox%s" text
 
 [<Theory>]
-[<InlineData(@"\frac2x123");
-  InlineData(@"\frac2{x}123");
-  InlineData(@"\frac{2}x123");
-  InlineData(@"\frac{2}{x}123");
-  InlineData(@"\frac 2 x123");
-  InlineData(@"\frac2 {x}123");
-  InlineData(@"\frac 2{x}123")>]
-let ``\frac should parse arguments properly``(text : string) : unit =
+[<InlineData("2x123");
+  InlineData("2{x}123");
+  InlineData("{2}x123");
+  InlineData("{2}{x}123");
+  InlineData(" 2 x123");
+  InlineData("2 {x}123");
+  InlineData(" 2{x}123")>]
+let frac(text : string) : unit =
     verifyParseResultScenario
     <| processSpecialChars text
-    <| text
+    <| sprintf @"\frac%s" text
 
 [<Theory>]
-[<InlineData(@"\overline1123");
-  InlineData(@"\overline{1}123");
-  InlineData(@"\overline 1123");
-  InlineData(@"\overline {1}123")>]
-let ``\overline should parse arguments properly``(text : string) : unit =
+[<InlineData("1123");
+  InlineData("{1}123");
+  InlineData(" 1123");
+  InlineData(" {1}123")>]
+let overline(text : string) : unit =
     verifyParseResultScenario
     <| processSpecialChars text
-    <| text
+    <| sprintf @"\overline%s" text
 
 [<Theory>]
-[<InlineData(@"\sqrt1123");
-  InlineData(@"\sqrt{1}123");
-  InlineData(@"\sqrt 1123");
-  InlineData(@"\sqrt {1}123")>]
-let ``\sqrt should parse arguments properly``(text : string) : unit =
+[<InlineData("1123");
+  InlineData("{1}123");
+  InlineData(" 1123");
+  InlineData(" {1}123")>]
+let sqrt(text : string) : unit =
     verifyParseResultScenario
     <| processSpecialChars text
-    <| text
+    <| sprintf @"\sqrt%s" text
 
 [<Theory>]
-[<InlineData(@"\sqrt [2]1123");
-  InlineData(@"\sqrt [ 2]{1}123");
-  InlineData(@"\sqrt[2 ] 1123");
-  InlineData(@"\sqrt[ 2 ] {1}123")>]
-let ``\sqrt should parse optional argument properly``(text : string) : unit =
+[<InlineData(" [2]1123");
+  InlineData(" [ 2]{1}123");
+  InlineData("[2 ] 1123");
+  InlineData("[ 2 ] {1}123")>]
+let sqrtWithOptArgument(text : string) : unit =
     verifyParseResultScenario
     <| processSpecialChars text
-    <| text
+    <| sprintf @"\sqrt%s" text
 
 [<Theory>]
-[<InlineData(@"\underline1123");
-  InlineData(@"\underline{1}123");
-  InlineData(@"\underline 1123");
-  InlineData(@"\underline {1}123")>]
-let ``\underline should parse arguments properly``(text : string) : unit =
+[<InlineData("1123");
+  InlineData("{1}123");
+  InlineData(" 1123");
+  InlineData(" {1}123")>]
+let underline(text : string) : unit =
     verifyParseResultScenario
     <| processSpecialChars text
-    <| text
+    <| sprintf @"\underline%s" text
 
 [<Theory>]
 [<InlineData("x^y_z");
@@ -193,23 +173,23 @@ let ``\underline should parse arguments properly``(text : string) : unit =
   InlineData("x^{y}_{z}");
   InlineData("x^y_ z");
   InlineData("x ^ {y} _ {z}")>]
-let ``Scripts should be parsed properly``(text : string) : unit =
+let scripts(text : string) : unit =
     verifyParseResultScenario
     <| processSpecialChars text
     <| text
 
 [<Theory>]
-[<InlineData(@"\text 1123");
-  InlineData(@"\text {1}123")>]
-let ``\text command should support extended argument parsing``(text : string) : unit =
+[<InlineData(" 1123");
+  InlineData(" {1}123")>]
+let textArgumentParsing(text : string) : unit =
     verifyParseResultScenario
     <| processSpecialChars text
-    <| text
+    <| sprintf @"\text%s" text
 
 [<Fact>]
-let ``{\hat T} should parse successfully``() : unit =
+let hat() : unit =
     verifyParseResult @"{\hat T}"
 
 [<Fact>]
-let ``integral expression should be parsed properly`` () =
+let integral() =
     verifyParseResult @"\int_a^b"
