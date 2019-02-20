@@ -209,3 +209,9 @@ let ``\text command should support extended argument parsing``(text : string) : 
 [<Fact>]
 let ``{\hat T} should parse successfully``() : unit =
     verifyParseResult @"{\hat T}"
+
+[<Fact>]
+let ``integral expression should be parsed properly`` () =
+    let source = @"\int_a^b"
+    let src = src source
+    verifyParseResult source
