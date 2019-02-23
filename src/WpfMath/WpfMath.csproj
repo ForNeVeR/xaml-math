@@ -11,10 +11,13 @@
         <AssemblyVersion>0.6.0</AssemblyVersion>
     </PropertyGroup>
     <ItemGroup>
-        <EmbeddedResource Include="Data/*"/>
-        <Resource Include="Fonts\cmex10.ttf"/>
-        <Resource Include="Fonts\cmmi10.ttf"/>
-        <Resource Include="Fonts\cmr10.ttf"/>
-        <Resource Include="Fonts\cmsy10.ttf"/>
+        <EmbeddedResource Include="Data/*" />
+        <Resource Include="Fonts\cmex10.ttf" />
+        <Resource Include="Fonts\cmmi10.ttf" />
+        <Resource Include="Fonts\cmr10.ttf" />
+        <Resource Include="Fonts\cmsy10.ttf" />
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="System.ValueTuple" Version="4.5.0" />
     </ItemGroup>
 </Project>

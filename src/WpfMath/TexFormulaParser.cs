@@ -617,11 +617,14 @@ namespace WpfMath
         /// <param name="matrixsource">The source to retrieve the 2D-Array of atoms from.</param>
         private List<List<Atom>> GetMatrixData(TexFormula formula, SourceSpan matrixsource, bool allowEmptyCells = true, bool parseasArrays = false)
         {
-            List<List<StringBuilder>> rowdata = new List<List<StringBuilder>>() { new List<StringBuilder>() { new StringBuilder() } };
+            // rowindent: how many characters the next row should skip for its sourcespan to start
+            var rowdata = new List<List<(StringBuilder builder, int rowindent)>>
+            {
+                new List<(StringBuilder, int)> {(new StringBuilder(), 0)}
+            };
             int rows = 0;
             int cols = 0;
-            //how many characters the next row should skip for its sourcespan to start
-            int rowindent = 0;
+
             //to ensure multiple row separators aren't used
             string rowseparationstyle = null;
             for (int i = 0; i < matrixsource.ToString().Length; i++)
@@ -640,11 +643,10 @@ namespace WpfMath
                         }
                         else
                         {
-                            rowdata.Add(new List<StringBuilder>() { new StringBuilder() });
+                            rowdata.Add(new List<(StringBuilder, int)> { (new StringBuilder(), 2) });
                             rows++;
                             cols = 0;
                             i++;
-                            rowindent = 2;
                             rowseparationstyle = "slash";
                         }
                     }
@@ -663,11 +665,10 @@ namespace WpfMath
                         }
                         else
                         {
-                            rowdata.Add(new List<StringBuilder>() { new StringBuilder() });
+                            rowdata.Add(new List<(StringBuilder, int)> {(new StringBuilder(), 3)});
                             rows++;
                             cols = 0;
                             i += 2;
-                            rowindent = 3;
                             rowseparationstyle = "carriagereturn";
                         }
 
@@ -679,25 +680,25 @@ namespace WpfMath
                 }
                 else if (curchar == '\\' && Char.IsSymbol(nextchar))
                 {
-                    rowdata[rows][cols].Append(curchar.ToString() + nextchar.ToString());
+                    rowdata[rows][cols].builder.Append($"{curchar}{nextchar}");
                     i++;
                 }
                 else if (curchar == leftGroupChar)
                 {
                     var nestedgroup = ReadGroup(matrixsource.ToString(), leftGroupChar, rightGroupChar, i);
 
-                    rowdata[rows][cols].Append("{" + nestedgroup + "}");
+                    rowdata[rows][cols].builder.Append("{" + nestedgroup + "}");
                     i += nestedgroup.Length + 1;
                 }
                 else if (curchar == '&')
                 {
                     //create a new column in the current row.
-                    rowdata[rows].Add(new StringBuilder());
+                    rowdata[rows].Add((new StringBuilder(), 1));
                     cols++;
                 }
                 else
                 {
-                    rowdata[rows][cols].Append(curchar.ToString());
+                    rowdata[rows][cols].builder.Append(curchar.ToString());
                 }
             }
 
@@ -712,7 +713,8 @@ namespace WpfMath
                     List<Atom> rowcellatoms = new List<Atom>();
                     for (int j = 0; j < rowitem.Count; j++)
                     {
-                        var cellitem = rowdata[i][j];
+                        var (cellitem, rowindent) = rowdata[i][j];
+                        matrixsrcstart += rowindent;
                         if (cellitem.ToString().Trim().Length > 0 || cellitem.Length > 0)
                         {
                             var cellsource = matrixsource.Segment(matrixsrcstart, cellitem.Length);// new SourceSpan(cellitem, matrixsrcstart, cellitem.Length);
@@ -742,14 +744,8 @@ namespace WpfMath
                             var cellsource = new SourceSpan(" ", 0, 1);
                             rowcellatoms.Add(new NullAtom(cellsource));
                         }
-                        if (j < (rowitem.Count - 1))
-                        {
-                            matrixsrcstart += (cellitem.Length + 1);
-                        }
-                        else
-                        {
-                            matrixsrcstart += (cellitem.Length + rowindent + 1);
-                        }
+
+                        matrixsrcstart += cellitem.Length;
                     }
 
                     matrixcells.Add(rowcellatoms);
