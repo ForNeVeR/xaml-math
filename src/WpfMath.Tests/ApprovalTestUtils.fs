@@ -19,9 +19,7 @@ do ()
 type private InnerPropertyContractResolver() =
     inherit DefaultContractResolver()
     member private __.DoCreateProperty(p, ms) =
-        let prop = base.CreateProperty(p, ms)
-        prop.Readable <- true
-        prop
+        base.CreateProperty(p, ms, Readable = true)
 
     override this.CreateProperties(``type``, memberSerialization) =
         // override that to serialize internal properties, too
