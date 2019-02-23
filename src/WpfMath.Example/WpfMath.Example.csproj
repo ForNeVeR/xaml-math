@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Sunburst.NET.Sdk.WPF/1.0.47">
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net40</TargetFramework>
-  </PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="../WpfMath/WpfMath.csproj" />
-  </ItemGroup>
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net40</TargetFramework>
+        <DebugType>Full</DebugType>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="../WpfMath/WpfMath.csproj"/>
+    </ItemGroup>
 </Project>

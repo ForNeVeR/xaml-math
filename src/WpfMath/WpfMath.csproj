@@ -1,19 +1,20 @@
 ﻿<Project Sdk="Sunburst.NET.Sdk.WPF/1.0.47">
-  <PropertyGroup>
-    <TargetFramework>net40</TargetFramework>
-    <LangVersion>7.2</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyTitle>WPF-Math</AssemblyTitle>
-    <Description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the WPF framework.</Description>
-    <Copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2018</Copyright>
-    <AssemblyVersion>0.6.0</AssemblyVersion>
-  </PropertyGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Data/*" />
-    <Resource Include="Fonts\cmex10.ttf" />
-    <Resource Include="Fonts\cmmi10.ttf" />
-    <Resource Include="Fonts\cmr10.ttf" />
-    <Resource Include="Fonts\cmsy10.ttf" />
-  </ItemGroup>
+    <PropertyGroup>
+        <TargetFramework>net40</TargetFramework>
+        <LangVersion>7.2</LangVersion>
+        <DebugType>Full</DebugType>
+    </PropertyGroup>
+    <PropertyGroup>
+        <AssemblyTitle>WPF-Math</AssemblyTitle>
+        <Description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the WPF framework.</Description>
+        <Copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2018</Copyright>
+        <AssemblyVersion>0.6.0</AssemblyVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <EmbeddedResource Include="Data/*"/>
+        <Resource Include="Fonts\cmex10.ttf"/>
+        <Resource Include="Fonts\cmmi10.ttf"/>
+        <Resource Include="Fonts\cmr10.ttf"/>
+        <Resource Include="Fonts\cmsy10.ttf"/>
+    </ItemGroup>
 </Project>

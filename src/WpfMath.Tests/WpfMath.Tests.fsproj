@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFramework>net461</TargetFramework>
         <IsPackable>false</IsPackable>
-        <DebugType>Full</DebugType> <!-- To preserve stack traces, important for ApprovalTests.Net -->
+        <DebugType>Full</DebugType>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="ApprovalTests" Version="3.0.19" />
