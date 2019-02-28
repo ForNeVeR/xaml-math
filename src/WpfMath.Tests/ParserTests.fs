@@ -90,6 +90,7 @@ let emptyCurlyBraces() =
 let delimiterWithScripts() =
     verifyParseResult @"\left(2+2\right)_a^b"
 
+[<Fact>]
 let textWithExpression() =
     verifyParseResult @"\text{2+2}"
 
