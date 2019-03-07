@@ -202,3 +202,27 @@ let hat() : unit =
 [<Fact>]
 let integral() =
     verifyParseResult @"\int_a^b"
+
+[<Fact>]
+let simpleMatrix() =
+    verifyParseResult @"\matrix{4&78&3 \\ 5 & 9  & 82 }"
+
+[<Fact>]
+let simpleCases() =
+    verifyParseResult @"\cases{x,&if x > 0;\cr -x,& otherwise.}"
+
+[<Fact>]
+let nestedMatrix() =
+    verifyParseResult @"\matrix{4&78&3\\ 57 & {\matrix{78 \\ 12}}  & 20782 }"
+
+[<Fact>]
+let piecewiseDefinedFunction() =
+    verifyParseResult @"f(x) = \cases{1/3 & if \thinspace 0\le x\le 1;\cr 2/3 & if \thinspace 3\le x \le 4; \cr 0 & elsewhere.\cr}"
+
+[<Fact>]
+let matrixExpression() =
+    verifyParseResult @"v \times w = \left( \matrix{v_2 w_3 - v_3 w_2 \\ v_3 w_1 - v_1 w_3 \\ v_1 w_2 - v_2 w_1} \right) where v= \left(\matrix{ v_1 \\ v_2 \\ v_3 }\right), w= \left( \matrix{w_1 \\ w_2  \\ w_3} \right)"
+
+[<Fact>]
+let bigMatrixExpression() =
+    verifyParseResult @"\Gamma_{\mu \rho} ^{\sigma}= \pmatrix{\pmatrix{0 & 0 & 0 \\ 0 & -r & 0 \\ 0 & 0 & -r sin^2(\theta)} \\ \pmatrix{0 & \frac{1}{r} & 0 \\ \frac{1}{r} & 0 & 0 \\ 0 & 0 & -\sin(\theta) \cos(\theta)} \\ \pmatrix{0 & 0 & \frac{1}{r} \\ 0 & 0 & \frac{1}{\tan(\theta)} \\ \frac{1}{r} & \frac{1}{\tan(\theta)} & 0 }}"

@@ -1,0 +1,348 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "BaseAtom": {
+      "MatrixCells": [
+        [
+          {
+            "PreviousAtom": null,
+            "Elements": [
+              {
+                "Character": "x",
+                "TextStyle": null,
+                "IsDefaultTextStyle": true,
+                "IsTextSymbol": false,
+                "Type": "Ordinary",
+                "Source": {
+                  "Start": 7,
+                  "End": 8,
+                  "Length": 1,
+                  "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+                }
+              },
+              {
+                "IsDelimeter": false,
+                "Name": "comma",
+                "IsTextSymbol": false,
+                "Type": "Punctuation",
+                "Source": {
+                  "Start": 8,
+                  "End": 9,
+                  "Length": 1,
+                  "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+                }
+              }
+            ],
+            "Type": "Ordinary",
+            "Source": {
+              "Start": 7,
+              "End": 9,
+              "Length": 2,
+              "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+            }
+          },
+          {
+            "PreviousAtom": null,
+            "Elements": [
+              {
+                "Character": "i",
+                "TextStyle": null,
+                "IsDefaultTextStyle": true,
+                "IsTextSymbol": false,
+                "Type": "Ordinary",
+                "Source": {
+                  "Start": 10,
+                  "End": 11,
+                  "Length": 1,
+                  "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+                }
+              },
+              {
+                "Character": "f",
+                "TextStyle": null,
+                "IsDefaultTextStyle": true,
+                "IsTextSymbol": false,
+                "Type": "Ordinary",
+                "Source": {
+                  "Start": 11,
+                  "End": 12,
+                  "Length": 1,
+                  "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+                }
+              },
+              {
+                "Character": "x",
+                "TextStyle": null,
+                "IsDefaultTextStyle": true,
+                "IsTextSymbol": false,
+                "Type": "Ordinary",
+                "Source": {
+                  "Start": 13,
+                  "End": 14,
+                  "Length": 1,
+                  "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+                }
+              },
+              {
+                "IsDelimeter": false,
+                "Name": "gt",
+                "IsTextSymbol": false,
+                "Type": "Relation",
+                "Source": {
+                  "Start": 15,
+                  "End": 16,
+                  "Length": 1,
+                  "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+                }
+              },
+              {
+                "Character": "0",
+                "TextStyle": null,
+                "IsDefaultTextStyle": true,
+                "IsTextSymbol": false,
+                "Type": "Ordinary",
+                "Source": {
+                  "Start": 17,
+                  "End": 18,
+                  "Length": 1,
+                  "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+                }
+              },
+              {
+                "IsDelimeter": false,
+                "Name": "semicolon",
+                "IsTextSymbol": false,
+                "Type": "Punctuation",
+                "Source": {
+                  "Start": 18,
+                  "End": 19,
+                  "Length": 1,
+                  "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+                }
+              }
+            ],
+            "Type": "Ordinary",
+            "Source": {
+              "Start": 10,
+              "End": 19,
+              "Length": 9,
+              "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+            }
+          }
+        ],
+        [
+          {
+            "PreviousAtom": null,
+            "Elements": [
+              {
+                "IsDelimeter": false,
+                "Name": "minus",
+                "IsTextSymbol": false,
+                "Type": "BinaryOperator",
+                "Source": {
+                  "Start": 23,
+                  "End": 24,
+                  "Length": 1,
+                  "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+                }
+              },
+              {
+                "Character": "x",
+                "TextStyle": null,
+                "IsDefaultTextStyle": true,
+                "IsTextSymbol": false,
+                "Type": "Ordinary",
+                "Source": {
+                  "Start": 24,
+                  "End": 25,
+                  "Length": 1,
+                  "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+                }
+              },
+              {
+                "IsDelimeter": false,
+                "Name": "comma",
+                "IsTextSymbol": false,
+                "Type": "Punctuation",
+                "Source": {
+                  "Start": 25,
+                  "End": 26,
+                  "Length": 1,
+                  "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+                }
+              }
+            ],
+            "Type": "Ordinary",
+            "Source": {
+              "Start": 22,
+              "End": 26,
+              "Length": 4,
+              "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+            }
+          },
+          {
+            "PreviousAtom": null,
+            "Elements": [
+              {
+                "Character": "o",
+                "TextStyle": null,
+                "IsDefaultTextStyle": true,
+                "IsTextSymbol": false,
+                "Type": "Ordinary",
+                "Source": {
+                  "Start": 28,
+                  "End": 29,
+                  "Length": 1,
+                  "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+                }
+              },
+              {
+                "Character": "t",
+                "TextStyle": null,
+                "IsDefaultTextStyle": true,
+                "IsTextSymbol": false,
+                "Type": "Ordinary",
+                "Source": {
+                  "Start": 29,
+                  "End": 30,
+                  "Length": 1,
+                  "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+                }
+              },
+              {
+                "Character": "h",
+                "TextStyle": null,
+                "IsDefaultTextStyle": true,
+                "IsTextSymbol": false,
+                "Type": "Ordinary",
+                "Source": {
+                  "Start": 30,
+                  "End": 31,
+                  "Length": 1,
+                  "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+                }
+              },
+              {
+                "Character": "e",
+                "TextStyle": null,
+                "IsDefaultTextStyle": true,
+                "IsTextSymbol": false,
+                "Type": "Ordinary",
+                "Source": {
+                  "Start": 31,
+                  "End": 32,
+                  "Length": 1,
+                  "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+                }
+              },
+              {
+                "Character": "r",
+                "TextStyle": null,
+                "IsDefaultTextStyle": true,
+                "IsTextSymbol": false,
+                "Type": "Ordinary",
+                "Source": {
+                  "Start": 32,
+                  "End": 33,
+                  "Length": 1,
+                  "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+                }
+              },
+              {
+                "Character": "w",
+                "TextStyle": null,
+                "IsDefaultTextStyle": true,
+                "IsTextSymbol": false,
+                "Type": "Ordinary",
+                "Source": {
+                  "Start": 33,
+                  "End": 34,
+                  "Length": 1,
+                  "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+                }
+              },
+              {
+                "Character": "i",
+                "TextStyle": null,
+                "IsDefaultTextStyle": true,
+                "IsTextSymbol": false,
+                "Type": "Ordinary",
+                "Source": {
+                  "Start": 34,
+                  "End": 35,
+                  "Length": 1,
+                  "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+                }
+              },
+              {
+                "Character": "s",
+                "TextStyle": null,
+                "IsDefaultTextStyle": true,
+                "IsTextSymbol": false,
+                "Type": "Ordinary",
+                "Source": {
+                  "Start": 35,
+                  "End": 36,
+                  "Length": 1,
+                  "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+                }
+              },
+              {
+                "Character": "e",
+                "TextStyle": null,
+                "IsDefaultTextStyle": true,
+                "IsTextSymbol": false,
+                "Type": "Ordinary",
+                "Source": {
+                  "Start": 36,
+                  "End": 37,
+                  "Length": 1,
+                  "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+                }
+              },
+              {
+                "IsDelimeter": false,
+                "Name": "normaldot",
+                "IsTextSymbol": false,
+                "Type": "Ordinary",
+                "Source": {
+                  "Start": 37,
+                  "End": 38,
+                  "Length": 1,
+                  "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+                }
+              }
+            ],
+            "Type": "Ordinary",
+            "Source": {
+              "Start": 27,
+              "End": 38,
+              "Length": 11,
+              "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+            }
+          }
+        ]
+      ],
+      "CellBottomTopPadding": 0.35,
+      "CellLeftRightPadding": 0.35,
+      "RowCount": 2,
+      "ColumnCount": 2,
+      "CellVerticalAlignment": "Center",
+      "CellHorizontalAlignment": "Left",
+      "Type": "Ordinary",
+      "Source": {
+        "Start": 7,
+        "End": 38,
+        "Length": 31,
+        "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+      }
+    },
+    "Type": "Ordinary",
+    "Source": {
+      "Start": 7,
+      "End": 38,
+      "Length": 31,
+      "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
+    }
+  }
+}
