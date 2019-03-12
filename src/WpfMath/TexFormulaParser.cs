@@ -247,6 +247,34 @@ namespace WpfMath
             return formula;
         }
 
+        private TexFormula ParseChars(SourceSpan value, string textStyle)
+        {
+            int localPostion = 0;
+            return ParseChars(value, ref localPostion, textStyle);
+        }
+
+        private TexFormula ParseChars(SourceSpan value, ref int position, string textStyle)
+        {
+            var formula = new TexFormula() { TextStyle = textStyle };
+            var initialPosition = position;
+            while (position < value.Length)
+            {
+                char ch = value[position];
+                var source = value.Segment(position, 1);
+                if (IsWhiteSpace(ch))
+                {
+                    formula.Add(new SpaceAtom(source), source);
+                }                   
+                else
+                {
+                    formula.Add(new CharAtom(source, ch, textStyle), source);
+                }            
+                position++;
+            }
+
+            return formula;
+        }
+
         private static SourceSpan ReadElementGroup(SourceSpan value, ref int position, char openChar, char closeChar)
         {
             if (position == value.Length || value[position] != openChar)
@@ -487,10 +515,21 @@ namespace WpfMath
             {
                 // Text style was found.
                 SkipWhiteSpace(value, ref position);
-                var styledFormula = this.Parse(ReadElement(value, ref position), command);
+
+                TexFormula styledFormula = null;
+                switch (command)
+                {
+                    case TexUtilities.TextStyleName:
+                        styledFormula = ParseChars(ReadElement(value, ref position), command);
+                        break;
+                    default:
+                        styledFormula = Parse(ReadElement(value, ref position), command);
+                        break;
+                }
+
                 if (styledFormula.RootAtom == null)
                     throw new TexParseException("Styled text can't be empty!");
-                var atom = this.AttachScripts(formula, value, ref position, styledFormula.RootAtom);
+                var atom = AttachScripts(formula, value, ref position, styledFormula.RootAtom);
                 var source = new SourceSpan(formulaSource.Source, formulaSource.Start, position);
                 formula.Add(atom, source);
             }
