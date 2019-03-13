@@ -77,14 +77,9 @@ namespace WpfMath
 
             commands = new HashSet<string>
             {
-                "\\",
-                "amatrix",
-                "bmatrix",
-                "Bmatrix",
                 "cases",
                 "color",
                 "colorbox",
-                "cr",
                 "frac",
                 "left",
                 "matrix",
@@ -92,9 +87,7 @@ namespace WpfMath
                 "pmatrix",
                 "right",
                 "sqrt",
-                "underline",
-                "vmatrix",
-                "Vmatrix",
+                "underline"
             };
 
             var formulaSettingsParser = new TexPredefinedFormulaSettingsParser();
@@ -387,57 +380,6 @@ namespace WpfMath
             SourceSpan source;
             switch (command)
             {
-                case "\\":
-                case "cr":
-                    {
-                        return new NullAtom(new SourceSpan("cr", start, 2));
-                    }
-
-                case "amatrix":
-                    {
-                        if (position == value.Length)
-                            throw new TexParseException("illegal end!");
-                        SkipWhiteSpace(value, ref position);
-
-                        var leftmatrixsource = ReadElement(value, ref position);
-                        var rightmatrixsource = ReadElement(value, ref position);
-                        var leftcells = GetMatrixData(formula, leftmatrixsource);
-                        var rightcells = GetMatrixData(formula, rightmatrixsource);
-                        source = value.Segment(start, position - start);
-                        if (leftcells.Count == rightcells.Count)
-                        {
-                            return new AugmentedMatrixAtom(source, new MatrixAtom(leftmatrixsource, leftcells), new MatrixAtom(rightmatrixsource, rightcells));
-                        }
-                        else
-                        {
-                            throw new TexParseException("an augmented matrix cannot have unequal rows");
-                        }
-                    }
-
-                case "bmatrix":
-                    {
-                        if (position == value.Length)
-                            throw new TexParseException("illegal end!");
-                        SkipWhiteSpace(value, ref position);
-
-                        var matrixsource = ReadElement(value, ref position);
-
-                        var cells = GetMatrixData(formula, matrixsource);
-                        return new BmatrixAtom(matrixsource, new MatrixAtom(matrixsource, cells));
-                    }
-
-                case "Bmatrix":
-                    {
-                        if (position == value.Length)
-                            throw new TexParseException("illegal end!");
-                        SkipWhiteSpace(value, ref position);
-
-                        var matrixsource = ReadElement(value, ref position);
-
-                        var cells = GetMatrixData(formula, matrixsource);
-                        return new BBMatrixAtom(matrixsource, new MatrixAtom(matrixsource, cells));
-                    }
-
                 case "cases":
                     {
                         if (position == value.Length)
@@ -581,31 +523,6 @@ namespace WpfMath
 
                         throw new TexParseException($"Color {colorName} not found");
                     }
-
-                case "vmatrix":
-                    {
-                        if (position == value.Length)
-                            throw new TexParseException("illegal end!");
-                        SkipWhiteSpace(value, ref position);
-
-                        var matrixsource = ReadElement(value, ref position);
-
-                        var cells = GetMatrixData(formula, matrixsource);
-                        return new VmatrixAtom(matrixsource, new MatrixAtom(matrixsource, cells));
-                    }
-
-                case "Vmatrix":
-                    {
-                        if (position == value.Length)
-                            throw new TexParseException("illegal end!");
-                        SkipWhiteSpace(value, ref position);
-
-                        var matrixsource = ReadElement(value, ref position);
-
-                        var cells = GetMatrixData(formula, matrixsource);
-                        return new VVMatrixAtom(matrixsource, new MatrixAtom(matrixsource, cells));
-                    }
-
             }
 
             throw new TexParseException("Invalid command.");
