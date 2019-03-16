@@ -247,31 +247,26 @@ namespace WpfMath
             return formula;
         }
 
-        private TexFormula ParseChars(SourceSpan value, string textStyle)
+        private static TexFormula ParseChars(SourceSpan value, string textStyle)
         {
-            int localPostion = 0;
-            return ParseChars(value, ref localPostion, textStyle);
+            var localPosition = 0;
+            return ParseChars(value, ref localPosition, textStyle);
         }
 
-        private TexFormula ParseChars(SourceSpan value, ref int position, string textStyle)
+        private static TexFormula ParseChars(SourceSpan value, ref int position, string textStyle)
         {
-            var formula = new TexFormula() { TextStyle = textStyle };
+            var formula = new TexFormula { TextStyle = textStyle };
             var initialPosition = position;
             while (position < value.Length)
             {
-                char ch = value[position];
+                var ch = value[position];
                 var source = value.Segment(position, 1);
-                if (IsWhiteSpace(ch))
-                {
-                    formula.Add(new SpaceAtom(source), source);
-                }                   
-                else
-                {
-                    formula.Add(new CharAtom(source, ch, textStyle), source);
-                }            
+                var atom = IsWhiteSpace(ch)
+                    ? (Atom) new SpaceAtom(source)
+                    : new CharAtom(source, ch, textStyle);
                 position++;
+                formula.Add(atom, value.Segment(initialPosition, position - initialPosition));
             }
-
             return formula;
         }
 
@@ -516,7 +511,7 @@ namespace WpfMath
                 // Text style was found.
                 SkipWhiteSpace(value, ref position);
 
-                TexFormula styledFormula = null;
+                TexFormula styledFormula;
                 switch (command)
                 {
                     case TexUtilities.TextStyleName:
