@@ -51,6 +51,10 @@ let cyrillicText() =
     verifyParseResult @"\text{абв}"
 
 [<Fact>]
+let underscoreText() =
+    verifyParseResult @"\text{_}"
+
+[<Fact>]
 let mathrm() =
     verifyParseResult @"\mathrm{sin}"
 
