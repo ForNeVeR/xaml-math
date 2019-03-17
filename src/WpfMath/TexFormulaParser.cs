@@ -247,15 +247,11 @@ namespace WpfMath
             return formula;
         }
 
-        private static TexFormula ParseChars(SourceSpan value, string textStyle)
-        {
-            var localPosition = 0;
-            return ParseChars(value, ref localPosition, textStyle);
-        }
-
-        private static TexFormula ParseChars(SourceSpan value, ref int position, string textStyle)
+        private static TexFormula ConvertRawText(SourceSpan value, string textStyle)
         {
             var formula = new TexFormula { TextStyle = textStyle };
+
+            var position = 0;
             var initialPosition = position;
             while (position < value.Length)
             {
@@ -267,6 +263,7 @@ namespace WpfMath
                 position++;
                 formula.Add(atom, value.Segment(initialPosition, position - initialPosition));
             }
+
             return formula;
         }
 
@@ -511,19 +508,13 @@ namespace WpfMath
                 // Text style was found.
                 SkipWhiteSpace(value, ref position);
 
-                TexFormula styledFormula;
-                switch (command)
-                {
-                    case TexUtilities.TextStyleName:
-                        styledFormula = ParseChars(ReadElement(value, ref position), command);
-                        break;
-                    default:
-                        styledFormula = Parse(ReadElement(value, ref position), command);
-                        break;
-                }
+                var styledFormula = command == TexUtilities.TextStyleName
+                    ? ConvertRawText(ReadElement(value, ref position), command)
+                    : Parse(ReadElement(value, ref position), command);
 
                 if (styledFormula.RootAtom == null)
                     throw new TexParseException("Styled text can't be empty!");
+
                 var atom = AttachScripts(formula, value, ref position, styledFormula.RootAtom);
                 var source = new SourceSpan(formulaSource.Source, formulaSource.Start, position);
                 formula.Add(atom, source);

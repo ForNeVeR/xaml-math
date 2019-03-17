@@ -55,6 +55,10 @@ let underscoreText() =
     verifyParseResult @"\text{_}"
 
 [<Fact>]
+let commandsInText() =
+    verifyParseResult @"\text{\alpha \beta \unknowncommand}"
+
+[<Fact>]
 let mathrm() =
     verifyParseResult @"\mathrm{sin}"
 
