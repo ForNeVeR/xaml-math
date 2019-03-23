@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text.RegularExpressions;
 using WpfMath.Boxes;
@@ -14,81 +15,49 @@ namespace WpfMath.Atoms
         /// <summary>
         /// Initializes a new <see cref="MatrixAtom"/> with the specified cell atoms.
         /// </summary>
-        public MatrixAtom(SourceSpan source,List<List<Atom>> _tblcells,VerticalAlignment cellValignment=VerticalAlignment.Center, HorizontalAlignment cellHAlignment = HorizontalAlignment.Center, double tbPad=0.35, double lrpad = 0.35):base(source)
+        public MatrixAtom(
+            SourceSpan source,
+            List<List<Atom>> tableCells,
+            VerticalAlignment cellValignment = VerticalAlignment.Center,
+            HorizontalAlignment cellHAlignment = HorizontalAlignment.Center,
+            double tbPad = 0.35,
+            double lrpad = 0.35) : base(source)
         {
-            MatrixCells = _tblcells;
+            MatrixCells = new ReadOnlyCollection<ReadOnlyCollection<Atom>>(
+                tableCells.Select(row => new ReadOnlyCollection<Atom>(row)).ToList());
             this.CellHorizontalAlignment = cellHAlignment;
             this.CellVerticalAlignment = cellValignment;
             CellBottomTopPadding = tbPad;
             CellLeftRightPadding = lrpad;
         }
 
-        #region Properties
         /// <summary>
         /// Gets or sets the Matrix cell <see cref="Atom"/>s contained in this Matrix.
         /// </summary>
-        public List<List<Atom>> MatrixCells
-        {
-            get; private set;
-        }
+        public ReadOnlyCollection<ReadOnlyCollection<Atom>> MatrixCells { get; }
 
         /// <summary>
         /// Gets or sets the top and bottom padding of the cells.
         /// </summary>
-        public double CellBottomTopPadding
-        {
-            get;
-            private set;
-        }
+        public double CellBottomTopPadding { get; }
 
         /// <summary>
         /// Gets or sets the left and right padding of the cells.
         /// </summary>
-        public double CellLeftRightPadding
-        {
-            get;
-            private set;
-        }
+        public double CellLeftRightPadding { get; }
 
         /// <summary>
         /// Gets the number of rows in this <see cref="MatrixAtom"/>.
         /// </summary>
-        public int RowCount
-        {
-            get
-            {
-                if (MatrixCells == null)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return MatrixCells.Count;
-                }
-            }
-        }
+        public int RowCount => MatrixCells.Count;
 
         /// <summary>
         /// Gets the number of columns in this <see cref="MatrixAtom"/>.
         /// </summary>
-        public int ColumnCount
-        {
-            get
-            {
-                if (MatrixCells == null||MatrixCells[0]==null)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return MatrixCells[0].Count;
-                }
-            }
-        }
+        public int ColumnCount => MatrixCells[0]?.Count ?? 0;
 
-        public VerticalAlignment CellVerticalAlignment { get; private set; }
-        public HorizontalAlignment CellHorizontalAlignment { get; private set; }
-        #endregion
+        public VerticalAlignment CellVerticalAlignment { get; }
+        public HorizontalAlignment CellHorizontalAlignment { get; }
 
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
@@ -98,7 +67,7 @@ namespace WpfMath.Atoms
 
             //Region for adjustment vars
             double maxrowWidth = 0;
-            
+
             //stores the max cell height for each row
             var RowsMaxCellHeight = new List<double>();
             for (int i = 0; i < RowCount; i++)
@@ -120,7 +89,7 @@ namespace WpfMath.Atoms
                 resultBox.Add(new StrutBox(maxrowWidth, CellBottomTopPadding / 2, 0, 0));
 
                 var rowbox =  new HorizontalBox() {Tag= $"Row:{i}",};
-                
+
                 for (int j = 0; j < ColumnCount; j++)
                 {
                     double maxrowHeight = 0;
@@ -143,7 +112,7 @@ namespace WpfMath.Atoms
                     ColumnsMaxCellWidth[j] = rowcellbox.TotalWidth > ColumnsMaxCellWidth[j] ? rowcellbox.TotalWidth : ColumnsMaxCellWidth[j];
                     rowcellbox.Tag = "innercell";
                     //cell box holder
-                    var rowcolbox = new VerticalBox(){Tag=$"Cell{i}:{j}",ShowBounds=false};
+                    var rowcolbox = new VerticalBox() { Tag = $"Cell{i}:{j}" };
 
                     var celltoppad = new StrutBox(rowcellbox.TotalWidth, CellBottomTopPadding / 2, 0, 0){Tag = $"CellTopPad{i}:{j}",};
                     var cellbottompad = new StrutBox(rowcellbox.TotalWidth, CellBottomTopPadding / 2, 0, 0){Tag = $"CellBottomPad{i}:{j}",};
@@ -163,7 +132,7 @@ namespace WpfMath.Atoms
                     RowsMaxCellHeight[i] = maxrowHeight > RowsMaxCellHeight[i] ? maxrowHeight : RowsMaxCellHeight[i];
 
                 }
-                
+
                 rowbox.Shift = 0;
                 resultBox.Add(rowbox);
                 //row bottom pad
@@ -192,7 +161,7 @@ namespace WpfMath.Atoms
                         else if(rowcolitem is VerticalBox && rowcolitem.Tag.ToString() == $"Cell{rows}:{columns}")
                         {
                             double cellVShift = RowsMaxCellHeight[rows] - rowcolitem.TotalHeight;
-                                                        
+
                             double cellHShift = ColumnsMaxCellWidth[columns]-rowcolitem.TotalWidth;
                             ((HorizontalBox)Matrixrowitem).Children[j - 1].Shift = rowcolitem.Depth;// + (cellVShift / 2);//.Width += cellHShift / 2;
                             ((HorizontalBox)Matrixrowitem).Children[j + 1].Shift = rowcolitem.Depth;// +(cellVShift / 2);// Width += cellHShift / 2;
@@ -224,7 +193,7 @@ namespace WpfMath.Atoms
                         var currowcolitem = ((HorizontalBox)Matrixrowitem).Children[j];
                         var prevrowcolitem = j > 0 ? ((HorizontalBox)Matrixrowitem).Children[j - 1] : ((HorizontalBox)Matrixrowitem).Children[j];
                         var nextrowcolitem = j < ((HorizontalBox)Matrixrowitem).Children.Count-1 ? ((HorizontalBox)Matrixrowitem).Children[j + 1] : ((HorizontalBox)Matrixrowitem).Children[j];
-                        
+
                         if (currowcolitem is VerticalBox&& Regex.IsMatch(currowcolitem.Tag.ToString(), @"Cell[0-9]+:[0-9]+"))
                         {
                             rowwidth += currowcolitem.TotalWidth;
@@ -277,7 +246,7 @@ namespace WpfMath.Atoms
                                         }
                                         break;
                                     }
-                                    
+
                                 //case HorizontalAlignment.Stretch:
                                 //    {
                                 //        if (prevrowcolitem is StrutBox && prevrowcolitem.Tag.ToString() == leftstructboxtag)
@@ -306,7 +275,7 @@ namespace WpfMath.Atoms
                                 var curcellitem = ((VerticalBox)currowcolitem).Children[k];
                                 var prevcellitem =k>0? ((VerticalBox)currowcolitem).Children[k-1]:((VerticalBox)currowcolitem).Children[k];
                                 var nextcellitem =k<(((VerticalBox)currowcolitem).Children.Count -1)? ((VerticalBox)currowcolitem).Children[k+1]:((VerticalBox)currowcolitem).Children[k];
-                                
+
                                 if (curcellitem.Tag.ToString() == "innercell" )
                                 {
                                     cellheight += curcellitem.TotalHeight;
@@ -365,7 +334,7 @@ namespace WpfMath.Atoms
                                         //            cellheight += prevcellitem.TotalHeight;
                                         //            if (prevcellitem.Height > (currowcolitem.Height / 2))
                                         //            {
-    
+
                                         //            }
                                         //        }
                                         //        if (nextcellitem.Tag.ToString() == bottomstructboxtag)
@@ -400,7 +369,7 @@ namespace WpfMath.Atoms
                                         default:
                                             break;
                                     }
-                                    
+
                                     if (prevrowcolitem is StrutBox && prevrowcolitem.Tag.ToString() == leftstructboxtag)
                                     {
                                         prevrowcolitem.Shift += MatrixCellGaps[rows][columns].Item2;
@@ -456,6 +425,5 @@ namespace WpfMath.Atoms
 
             return finalbox;
         }
-
     }
 }
