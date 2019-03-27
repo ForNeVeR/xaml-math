@@ -87,6 +87,8 @@ Documentation
 
 - [How to prepare `DefaultTexFont.xml` from the font file][docs-prepare-font]
 
+- [How to improve blurred formulas][docs-blurred-text-issue]
+
 - [Licensing history][docs-licensing-history]
 
 Build Instructions
@@ -127,6 +129,7 @@ We're very grateful to JMathTeX authors for their work and allowing to redistrib
 - Kurt Vermeulen
 
 [docs-prepare-font]: docs/prepare-font.md
+[docs-blurred-text-issue]: docs/blurred-text-issue.md
 [docs-licensing-history]: docs/licensing-history.md
 [example]: WpfMath.Example/
 [fonts]: src/WpfMath/Fonts/
