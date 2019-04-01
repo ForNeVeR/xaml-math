@@ -325,8 +325,6 @@
       ],
       "CellBottomTopPadding": 0.35,
       "CellLeftRightPadding": 0.35,
-      "RowCount": 2,
-      "ColumnCount": 2,
       "CellVerticalAlignment": "Center",
       "CellHorizontalAlignment": "Left",
       "Type": "Ordinary",

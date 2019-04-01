@@ -46,16 +46,6 @@ namespace WpfMath.Atoms
         /// </summary>
         public double CellLeftRightPadding { get; }
 
-        /// <summary>
-        /// Gets the number of rows in this <see cref="MatrixAtom"/>.
-        /// </summary>
-        public int RowCount => MatrixCells.Count;
-
-        /// <summary>
-        /// Gets the number of columns in this <see cref="MatrixAtom"/>.
-        /// </summary>
-        public int ColumnCount => MatrixCells[0]?.Count ?? 0;
-
         public VerticalAlignment CellVerticalAlignment { get; }
         public HorizontalAlignment CellHorizontalAlignment { get; }
 
@@ -65,32 +55,35 @@ namespace WpfMath.Atoms
             var style = environment.Style;
             var axis = texFont.GetAxisHeight(style);
 
+            var rowCount = MatrixCells.Count;
+            var maxColumnCount = MatrixCells.Max(row => row.Count);
+
             //Region for adjustment vars
             double maxrowWidth = 0;
 
             //stores the max cell height for each row
             var RowsMaxCellHeight = new List<double>();
-            for (int i = 0; i < RowCount; i++)
+            for (int i = 0; i < rowCount; i++)
             {
                 RowsMaxCellHeight.Add(0);
             }
             //stores the max cell width for each column
             var ColumnsMaxCellWidth = new List<double>();
-            for (int i = 0; i < ColumnCount; i++)
+            for (int i = 0; i < maxColumnCount; i++)
             {
                 ColumnsMaxCellWidth.Add(0);
             }
             //Create a vertical box to hold the rows and their cells
             var resultBox = new VerticalBox();
 
-            for (int i = 0; i < RowCount; i++)
+            for (int i = 0; i < rowCount; i++)
             {
                 //row top pad
                 resultBox.Add(new StrutBox(maxrowWidth, CellBottomTopPadding / 2, 0, 0));
 
                 var rowbox =  new HorizontalBox() {Tag= $"Row:{i}",};
 
-                for (int j = 0; j < ColumnCount; j++)
+                for (int j = 0; j < maxColumnCount; j++)
                 {
                     double maxrowHeight = 0;
                     //cell left pad
@@ -410,7 +403,7 @@ namespace WpfMath.Atoms
                 }
             }
 
-            double adjustedTotalHeight = RowsMaxCellHeight.Sum()+ (RowCount * CellBottomTopPadding);
+            double adjustedTotalHeight = RowsMaxCellHeight.Sum()+ (rowCount * CellBottomTopPadding);
 
             resultBox.Depth = 0;
             resultBox.Height = adjustedTotalHeight>sigmaTotalHeight?adjustedTotalHeight:sigmaTotalHeight;
