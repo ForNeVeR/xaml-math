@@ -323,10 +323,10 @@
           }
         ]
       ],
-      "CellBottomTopPadding": 0.35,
-      "CellLeftRightPadding": 0.35,
-      "CellVerticalAlignment": "Center",
-      "CellHorizontalAlignment": "Left",
+      "VerticalPadding": 0.35,
+      "HorizontalPadding": 0.35,
+      "VerticalAlignment": "Center",
+      "HorizontalAlignment": "Left",
       "Type": "Ordinary",
       "Source": {
         "Start": 7,

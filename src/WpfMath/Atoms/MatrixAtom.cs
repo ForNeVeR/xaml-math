@@ -7,47 +7,34 @@ using WpfMath.Boxes;
 
 namespace WpfMath.Atoms
 {
-    /// <summary>
-    /// An atom representing a tabular arrangement of atoms.
-    /// </summary>
-    internal class MatrixAtom:Atom
+    /// <summary>An atom representing a tabular arrangement of atoms.</summary>
+    internal class MatrixAtom : Atom
     {
-        /// <summary>
-        /// Initializes a new <see cref="MatrixAtom"/> with the specified cell atoms.
-        /// </summary>
         public MatrixAtom(
             SourceSpan source,
-            List<List<Atom>> tableCells,
-            VerticalAlignment cellValignment = VerticalAlignment.Center,
-            HorizontalAlignment cellHAlignment = HorizontalAlignment.Center,
-            double tbPad = 0.35,
-            double lrpad = 0.35) : base(source)
+            List<List<Atom>> cells,
+            VerticalAlignment verticalAlignment = VerticalAlignment.Center,
+            HorizontalAlignment horizontalAlignment = HorizontalAlignment.Center,
+            double verticalPadding = 0.35,
+            double horizontalPadding = 0.35) : base(source)
         {
             MatrixCells = new ReadOnlyCollection<ReadOnlyCollection<Atom>>(
-                tableCells.Select(row => new ReadOnlyCollection<Atom>(row)).ToList());
-            this.CellHorizontalAlignment = cellHAlignment;
-            this.CellVerticalAlignment = cellValignment;
-            CellBottomTopPadding = tbPad;
-            CellLeftRightPadding = lrpad;
+                cells.Select(row => new ReadOnlyCollection<Atom>(row)).ToList());
+            HorizontalAlignment = horizontalAlignment;
+            VerticalAlignment = verticalAlignment;
+            VerticalPadding = verticalPadding;
+            HorizontalPadding = horizontalPadding;
         }
 
-        /// <summary>
-        /// Gets or sets the Matrix cell <see cref="Atom"/>s contained in this Matrix.
-        /// </summary>
         public ReadOnlyCollection<ReadOnlyCollection<Atom>> MatrixCells { get; }
 
-        /// <summary>
-        /// Gets or sets the top and bottom padding of the cells.
-        /// </summary>
-        public double CellBottomTopPadding { get; }
+        public double VerticalPadding { get; }
 
-        /// <summary>
-        /// Gets or sets the left and right padding of the cells.
-        /// </summary>
-        public double CellLeftRightPadding { get; }
+        public double HorizontalPadding { get; }
 
-        public VerticalAlignment CellVerticalAlignment { get; }
-        public HorizontalAlignment CellHorizontalAlignment { get; }
+        public VerticalAlignment VerticalAlignment { get; }
+
+        public HorizontalAlignment HorizontalAlignment { get; }
 
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
@@ -79,7 +66,7 @@ namespace WpfMath.Atoms
             for (int i = 0; i < rowCount; i++)
             {
                 //row top pad
-                resultBox.Add(new StrutBox(maxrowWidth, CellBottomTopPadding / 2, 0, 0));
+                resultBox.Add(new StrutBox(maxrowWidth, VerticalPadding / 2, 0, 0));
 
                 var rowbox =  new HorizontalBox() {Tag= $"Row:{i}",};
 
@@ -87,14 +74,14 @@ namespace WpfMath.Atoms
                 {
                     double maxrowHeight = 0;
                     //cell left pad
-                    var cellleftpad = new StrutBox(CellLeftRightPadding / 2, 0, 0, 0)
+                    var cellleftpad = new StrutBox(HorizontalPadding / 2, 0, 0, 0)
                     {
                         Tag = $"CellLeftPad{i}:{j}",
                         Shift =0,
                     };
 
                     //cell right pad
-                    var cellrightpad = new StrutBox(CellLeftRightPadding / 2, 0, 0, 0)
+                    var cellrightpad = new StrutBox(HorizontalPadding / 2, 0, 0, 0)
                     {
                         Tag = $"CellRightPad{i}:{j}",
                         Shift = 0,
@@ -107,14 +94,14 @@ namespace WpfMath.Atoms
                     //cell box holder
                     var rowcolbox = new VerticalBox() { Tag = $"Cell{i}:{j}" };
 
-                    var celltoppad = new StrutBox(rowcellbox.TotalWidth, CellBottomTopPadding / 2, 0, 0){Tag = $"CellTopPad{i}:{j}",};
-                    var cellbottompad = new StrutBox(rowcellbox.TotalWidth, CellBottomTopPadding / 2, 0, 0){Tag = $"CellBottomPad{i}:{j}",};
+                    var celltoppad = new StrutBox(rowcellbox.TotalWidth, VerticalPadding / 2, 0, 0){Tag = $"CellTopPad{i}:{j}",};
+                    var cellbottompad = new StrutBox(rowcellbox.TotalWidth, VerticalPadding / 2, 0, 0){Tag = $"CellBottomPad{i}:{j}",};
                     rowcolbox.Add(celltoppad);
                     rowcolbox.Add(rowcellbox);
                     rowcolbox.Add(cellbottompad);
 
                     //maxrowHeight += rowcolbox.TotalHeight;
-                    maxrowHeight += rowcellbox.TotalHeight + CellBottomTopPadding;
+                    maxrowHeight += rowcellbox.TotalHeight + VerticalPadding;
                     rowcolbox.Width = rowcellbox.TotalWidth;
                     //rowcolbox.Height = maxrowHeight;
 
@@ -129,7 +116,7 @@ namespace WpfMath.Atoms
                 rowbox.Shift = 0;
                 resultBox.Add(rowbox);
                 //row bottom pad
-                resultBox.Add(new StrutBox(maxrowWidth, CellBottomTopPadding / 2, 0, 0));
+                resultBox.Add(new StrutBox(maxrowWidth, VerticalPadding / 2, 0, 0));
             }
 
             int rows = 0;
@@ -193,7 +180,7 @@ namespace WpfMath.Atoms
                             var leftstructboxtag = $"CellLeftPad{rows}:{columns}";
                             var rightstructboxtag = $"CellRightPad{rows}:{columns}";
 
-                            switch (CellHorizontalAlignment)
+                            switch (HorizontalAlignment)
                             {
                                 case HorizontalAlignment.Left:
                                     {
@@ -275,7 +262,7 @@ namespace WpfMath.Atoms
                                     var topstructboxtag = $"CellTopPad{rows}:{columns}";
                                     var bottomstructboxtag = $"CellBottomPad{rows}:{columns}";
 
-                                    switch (CellVerticalAlignment)
+                                    switch (VerticalAlignment)
                                     {
                                         case VerticalAlignment.Bottom:
                                             {
@@ -403,7 +390,7 @@ namespace WpfMath.Atoms
                 }
             }
 
-            double adjustedTotalHeight = RowsMaxCellHeight.Sum()+ (rowCount * CellBottomTopPadding);
+            double adjustedTotalHeight = RowsMaxCellHeight.Sum()+ (rowCount * VerticalPadding);
 
             resultBox.Depth = 0;
             resultBox.Height = adjustedTotalHeight>sigmaTotalHeight?adjustedTotalHeight:sigmaTotalHeight;
@@ -412,9 +399,9 @@ namespace WpfMath.Atoms
             resultBox.Shift = enviroYDiff;
 
             var finalbox = new HorizontalBox() ;
-            finalbox.Add(new StrutBox(CellLeftRightPadding/8, 0, 0, 0));
+            finalbox.Add(new StrutBox(HorizontalPadding/8, 0, 0, 0));
             finalbox.Add(resultBox);
-            finalbox.Add(new StrutBox(CellLeftRightPadding/8, 0, 0, 0));
+            finalbox.Add(new StrutBox(HorizontalPadding/8, 0, 0, 0));
 
             return finalbox;
         }
