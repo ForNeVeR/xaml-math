@@ -36,11 +36,13 @@ let private jsonSettings = JsonSerializerSettings(ContractResolver = InnerProper
 let private serialize o =
     JsonConvert.SerializeObject(o, jsonSettings)
 
+let verifyObject : obj -> unit =
+    serialize >> Approvals.Verify
+
 let verifyParseResult(formulaText : string) : unit =
     let parser = TexFormulaParser()
     let formula = parser.Parse formulaText
-    let result = serialize formula
-    Approvals.Verify result
+    verifyObject formula
 
 let verifyParseResultScenario (scenario : string) (formulaText : string) : unit =
     use block = NamerFactory.AsEnvironmentSpecificTest(fun () -> sprintf "(%s)" scenario)

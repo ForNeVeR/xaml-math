@@ -8,6 +8,7 @@ open Xunit
 open WpfMath
 open WpfMath.Atoms
 open WpfMath.Boxes
+open WpfMath.Tests.ApprovalTestUtils
 
 let private parse text =
     let parser = TexFormulaParser()
@@ -89,3 +90,10 @@ let ``Cyrillic followed by Latin should be rendered properly``() =
     let atom = parse @"\text{Ц}V"
     let box = atom.CreateBox environment
     Assert.NotNull(box)
+
+[<Fact>]
+let simpleMatrixAtomBox() =
+    let source = @"\pmatrix{2 & 2 \\ 2 & 2}"
+    let atom = parse source
+    let box = atom.CreateBox environment
+    verifyObject box
