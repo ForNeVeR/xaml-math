@@ -71,14 +71,6 @@ namespace WpfMath.Controls
             set { SetValue(SelectionBrushProperty, value); }
         }
 
-        public bool IsCharacterSmoothingEnabled
-        {
-            get { return (bool)GetValue(IsCharacterSmoothingEnabledProperty); }
-            set { SetValue(IsCharacterSmoothingEnabledProperty, value); }
-        }
-
-        public static readonly DependencyProperty IsCharacterSmoothingEnabledProperty = DependencyProperty.Register("IsCharacterSmoothingEnabled", typeof(bool), typeof(FormulaControl), new PropertyMetadata(true));
-
         public static readonly DependencyProperty FormulaProperty = DependencyProperty.Register(
             nameof(Formula), typeof(string), typeof(FormulaControl),
             new PropertyMetadata("", OnRenderSettingsChanged, CoerceFormula));
@@ -118,20 +110,6 @@ namespace WpfMath.Controls
         public FormulaControl()
         {
             InitializeComponent();
-        }
-        
-        protected override void OnRender(DrawingContext drawingContext)
-        {
-            base.OnRender(drawingContext);
-            
-            if(IsCharacterSmoothingEnabled)
-            {
-                base.VisualTextRenderingMode = TextRenderingMode.ClearType;
-                base.VisualTextHintingMode = TextHintingMode.Fixed;
-                base.VisualEdgeMode = EdgeMode.Aliased;
-                base.VisualClearTypeHint = ClearTypeHint.Enabled;
-            }
-       
         }
 
         private void Render()
