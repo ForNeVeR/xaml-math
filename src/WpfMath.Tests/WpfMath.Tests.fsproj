@@ -3,6 +3,7 @@
         <TargetFramework>net461</TargetFramework>
         <IsPackable>false</IsPackable>
         <DebugType>Full</DebugType>
+        <Deterministic>false</Deterministic>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="ApprovalTests" Version="3.0.19" />
