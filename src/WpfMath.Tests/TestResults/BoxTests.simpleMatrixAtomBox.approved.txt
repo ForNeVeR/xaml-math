@@ -1,0 +1,629 @@
+﻿{
+  "Children": [
+    {
+      "Character": {
+        "Character": "\"",
+        "Font": "pack://application:,,,/WpfMath;component/Fonts/cmex10.ttf",
+        "Size": 1.0,
+        "Metrics": {
+          "Width": 0.583336,
+          "Height": 0.039999,
+          "Depth": 2.9600315,
+          "Italic": 0.0
+        },
+        "FontId": 2
+      },
+      "Children": [],
+      "Source": null,
+      "Foreground": null,
+      "Background": null,
+      "Tag": null,
+      "TotalHeight": 3.0000305,
+      "TotalWidth": 0.583336,
+      "Italic": 0.0,
+      "Width": 0.583336,
+      "Height": 0.039999,
+      "Depth": 2.9600315,
+      "Shift": -1.7194440000000002
+    },
+    {
+      "Children": [
+        {
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "Tag": null,
+          "TotalHeight": 0.0,
+          "TotalWidth": 0.04375,
+          "Italic": 0.0,
+          "Width": 0.04375,
+          "Height": 0.0,
+          "Depth": 0.0,
+          "Shift": 0.0
+        },
+        {
+          "Children": [
+            {
+              "Children": [],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "Tag": null,
+              "TotalHeight": 0.175,
+              "TotalWidth": 0.0,
+              "Italic": 0.0,
+              "Width": 0.0,
+              "Height": 0.175,
+              "Depth": 0.0,
+              "Shift": 0.0
+            },
+            {
+              "Children": [
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "Tag": "CellLeftPad0:0",
+                  "TotalHeight": 0.994444,
+                  "TotalWidth": 0.175,
+                  "Italic": 0.0,
+                  "Width": 0.175,
+                  "Height": 0.994444,
+                  "Depth": 0.0,
+                  "Shift": 0.81944400000000006
+                },
+                {
+                  "Children": [
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "Tag": "CellTopPad0:0",
+                      "TotalHeight": 0.17499999999999993,
+                      "TotalWidth": 0.500002,
+                      "Italic": 0.0,
+                      "Width": 0.500002,
+                      "Height": 0.17499999999999993,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    },
+                    {
+                      "Character": {
+                        "Character": "2",
+                        "Font": "pack://application:,,,/WpfMath;component/Fonts/cmr10.ttf",
+                        "Size": 1.0,
+                        "Metrics": {
+                          "Width": 0.500002,
+                          "Height": 0.644444,
+                          "Depth": 0.0,
+                          "Italic": 0.0
+                        },
+                        "FontId": 1
+                      },
+                      "Children": [],
+                      "Source": {
+                        "Start": 9,
+                        "End": 10,
+                        "Length": 1,
+                        "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}"
+                      },
+                      "Foreground": null,
+                      "Background": null,
+                      "Tag": "innercell",
+                      "TotalHeight": 0.644444,
+                      "TotalWidth": 0.500002,
+                      "Italic": 0.0,
+                      "Width": 0.500002,
+                      "Height": 0.644444,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    },
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "Tag": "CellBottomPad0:0",
+                      "TotalHeight": 0.17499999999999993,
+                      "TotalWidth": 0.500002,
+                      "Italic": 0.0,
+                      "Width": 0.500002,
+                      "Height": 0.17499999999999993,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    }
+                  ],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "Tag": "Cell0:0",
+                  "TotalHeight": 0.99444400000000011,
+                  "TotalWidth": 0.500002,
+                  "Italic": 0.0,
+                  "Width": 0.500002,
+                  "Height": 0.175,
+                  "Depth": 0.81944400000000006,
+                  "Shift": 0.0
+                },
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "Tag": "CellRightPad0:0",
+                  "TotalHeight": 0.994444,
+                  "TotalWidth": 0.175,
+                  "Italic": 0.0,
+                  "Width": 0.175,
+                  "Height": 0.994444,
+                  "Depth": 0.0,
+                  "Shift": 0.81944400000000006
+                },
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "Tag": "CellLeftPad0:1",
+                  "TotalHeight": 0.994444,
+                  "TotalWidth": 0.175,
+                  "Italic": 0.0,
+                  "Width": 0.175,
+                  "Height": 0.994444,
+                  "Depth": 0.0,
+                  "Shift": 0.81944400000000006
+                },
+                {
+                  "Children": [
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "Tag": "CellTopPad0:1",
+                      "TotalHeight": 0.17499999999999993,
+                      "TotalWidth": 0.500002,
+                      "Italic": 0.0,
+                      "Width": 0.500002,
+                      "Height": 0.17499999999999993,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    },
+                    {
+                      "Character": {
+                        "Character": "2",
+                        "Font": "pack://application:,,,/WpfMath;component/Fonts/cmr10.ttf",
+                        "Size": 1.0,
+                        "Metrics": {
+                          "Width": 0.500002,
+                          "Height": 0.644444,
+                          "Depth": 0.0,
+                          "Italic": 0.0
+                        },
+                        "FontId": 1
+                      },
+                      "Children": [],
+                      "Source": {
+                        "Start": 13,
+                        "End": 14,
+                        "Length": 1,
+                        "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}"
+                      },
+                      "Foreground": null,
+                      "Background": null,
+                      "Tag": "innercell",
+                      "TotalHeight": 0.644444,
+                      "TotalWidth": 0.500002,
+                      "Italic": 0.0,
+                      "Width": 0.500002,
+                      "Height": 0.644444,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    },
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "Tag": "CellBottomPad0:1",
+                      "TotalHeight": 0.17499999999999993,
+                      "TotalWidth": 0.500002,
+                      "Italic": 0.0,
+                      "Width": 0.500002,
+                      "Height": 0.17499999999999993,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    }
+                  ],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "Tag": "Cell0:1",
+                  "TotalHeight": 0.99444400000000011,
+                  "TotalWidth": 0.500002,
+                  "Italic": 0.0,
+                  "Width": 0.500002,
+                  "Height": 0.175,
+                  "Depth": 0.81944400000000006,
+                  "Shift": 0.0
+                },
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "Tag": "CellRightPad0:1",
+                  "TotalHeight": 0.994444,
+                  "TotalWidth": 0.175,
+                  "Italic": 0.0,
+                  "Width": 0.175,
+                  "Height": 0.994444,
+                  "Depth": 0.0,
+                  "Shift": 0.81944400000000006
+                }
+              ],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "Tag": "Row:0",
+              "TotalHeight": 0.99444400000000011,
+              "TotalWidth": 1.7000039999999998,
+              "Italic": 0.0,
+              "Width": 1.7000039999999998,
+              "Height": 0.175,
+              "Depth": 0.81944400000000006,
+              "Shift": 0.0
+            },
+            {
+              "Children": [],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "Tag": null,
+              "TotalHeight": 0.175,
+              "TotalWidth": 0.0,
+              "Italic": 0.0,
+              "Width": 0.0,
+              "Height": 0.175,
+              "Depth": 0.0,
+              "Shift": 0.0
+            },
+            {
+              "Children": [],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "Tag": null,
+              "TotalHeight": 0.175,
+              "TotalWidth": 0.0,
+              "Italic": 0.0,
+              "Width": 0.0,
+              "Height": 0.175,
+              "Depth": 0.0,
+              "Shift": 0.0
+            },
+            {
+              "Children": [
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "Tag": "CellLeftPad1:0",
+                  "TotalHeight": 0.994444,
+                  "TotalWidth": 0.175,
+                  "Italic": 0.0,
+                  "Width": 0.175,
+                  "Height": 0.994444,
+                  "Depth": 0.0,
+                  "Shift": 0.81944400000000006
+                },
+                {
+                  "Children": [
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "Tag": "CellTopPad1:0",
+                      "TotalHeight": 0.17499999999999993,
+                      "TotalWidth": 0.500002,
+                      "Italic": 0.0,
+                      "Width": 0.500002,
+                      "Height": 0.17499999999999993,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    },
+                    {
+                      "Character": {
+                        "Character": "2",
+                        "Font": "pack://application:,,,/WpfMath;component/Fonts/cmr10.ttf",
+                        "Size": 1.0,
+                        "Metrics": {
+                          "Width": 0.500002,
+                          "Height": 0.644444,
+                          "Depth": 0.0,
+                          "Italic": 0.0
+                        },
+                        "FontId": 1
+                      },
+                      "Children": [],
+                      "Source": {
+                        "Start": 18,
+                        "End": 19,
+                        "Length": 1,
+                        "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}"
+                      },
+                      "Foreground": null,
+                      "Background": null,
+                      "Tag": "innercell",
+                      "TotalHeight": 0.644444,
+                      "TotalWidth": 0.500002,
+                      "Italic": 0.0,
+                      "Width": 0.500002,
+                      "Height": 0.644444,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    },
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "Tag": "CellBottomPad1:0",
+                      "TotalHeight": 0.17499999999999993,
+                      "TotalWidth": 0.500002,
+                      "Italic": 0.0,
+                      "Width": 0.500002,
+                      "Height": 0.17499999999999993,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    }
+                  ],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "Tag": "Cell1:0",
+                  "TotalHeight": 0.99444400000000011,
+                  "TotalWidth": 0.500002,
+                  "Italic": 0.0,
+                  "Width": 0.500002,
+                  "Height": 0.175,
+                  "Depth": 0.81944400000000006,
+                  "Shift": 0.0
+                },
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "Tag": "CellRightPad1:0",
+                  "TotalHeight": 0.994444,
+                  "TotalWidth": 0.175,
+                  "Italic": 0.0,
+                  "Width": 0.175,
+                  "Height": 0.994444,
+                  "Depth": 0.0,
+                  "Shift": 0.81944400000000006
+                },
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "Tag": "CellLeftPad1:1",
+                  "TotalHeight": 0.994444,
+                  "TotalWidth": 0.175,
+                  "Italic": 0.0,
+                  "Width": 0.175,
+                  "Height": 0.994444,
+                  "Depth": 0.0,
+                  "Shift": 0.81944400000000006
+                },
+                {
+                  "Children": [
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "Tag": "CellTopPad1:1",
+                      "TotalHeight": 0.17499999999999993,
+                      "TotalWidth": 0.500002,
+                      "Italic": 0.0,
+                      "Width": 0.500002,
+                      "Height": 0.17499999999999993,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    },
+                    {
+                      "Character": {
+                        "Character": "2",
+                        "Font": "pack://application:,,,/WpfMath;component/Fonts/cmr10.ttf",
+                        "Size": 1.0,
+                        "Metrics": {
+                          "Width": 0.500002,
+                          "Height": 0.644444,
+                          "Depth": 0.0,
+                          "Italic": 0.0
+                        },
+                        "FontId": 1
+                      },
+                      "Children": [],
+                      "Source": {
+                        "Start": 22,
+                        "End": 23,
+                        "Length": 1,
+                        "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}"
+                      },
+                      "Foreground": null,
+                      "Background": null,
+                      "Tag": "innercell",
+                      "TotalHeight": 0.644444,
+                      "TotalWidth": 0.500002,
+                      "Italic": 0.0,
+                      "Width": 0.500002,
+                      "Height": 0.644444,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    },
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "Tag": "CellBottomPad1:1",
+                      "TotalHeight": 0.17499999999999993,
+                      "TotalWidth": 0.500002,
+                      "Italic": 0.0,
+                      "Width": 0.500002,
+                      "Height": 0.17499999999999993,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    }
+                  ],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "Tag": "Cell1:1",
+                  "TotalHeight": 0.99444400000000011,
+                  "TotalWidth": 0.500002,
+                  "Italic": 0.0,
+                  "Width": 0.500002,
+                  "Height": 0.175,
+                  "Depth": 0.81944400000000006,
+                  "Shift": 0.0
+                },
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "Tag": "CellRightPad1:1",
+                  "TotalHeight": 0.994444,
+                  "TotalWidth": 0.175,
+                  "Italic": 0.0,
+                  "Width": 0.175,
+                  "Height": 0.994444,
+                  "Depth": 0.0,
+                  "Shift": 0.81944400000000006
+                }
+              ],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "Tag": "Row:1",
+              "TotalHeight": 0.99444400000000011,
+              "TotalWidth": 1.7000039999999998,
+              "Italic": 0.0,
+              "Width": 1.7000039999999998,
+              "Height": 0.175,
+              "Depth": 0.81944400000000006,
+              "Shift": 0.0
+            },
+            {
+              "Children": [],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "Tag": null,
+              "TotalHeight": 0.175,
+              "TotalWidth": 0.0,
+              "Italic": 0.0,
+              "Width": 0.0,
+              "Height": 0.175,
+              "Depth": 0.0,
+              "Shift": 0.0
+            }
+          ],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "Tag": null,
+          "TotalHeight": 2.6888880000000004,
+          "TotalWidth": 1.700004,
+          "Italic": 0.0,
+          "Width": 1.700004,
+          "Height": 2.6888880000000004,
+          "Depth": 0.0,
+          "Shift": 1.2194440000000002
+        },
+        {
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "Tag": null,
+          "TotalHeight": 0.0,
+          "TotalWidth": 0.04375,
+          "Italic": 0.0,
+          "Width": 0.04375,
+          "Height": 0.0,
+          "Depth": 0.0,
+          "Shift": 0.0
+        }
+      ],
+      "Source": {
+        "Start": 9,
+        "End": 23,
+        "Length": 14,
+        "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}"
+      },
+      "Foreground": null,
+      "Background": null,
+      "Tag": null,
+      "TotalHeight": 2.6888880000000004,
+      "TotalWidth": 1.787504,
+      "Italic": 0.0,
+      "Width": 1.787504,
+      "Height": 1.4694440000000002,
+      "Depth": 1.2194440000000002,
+      "Shift": -0.16666666666666666
+    },
+    {
+      "Character": {
+        "Character": "#",
+        "Font": "pack://application:,,,/WpfMath;component/Fonts/cmex10.ttf",
+        "Size": 1.0,
+        "Metrics": {
+          "Width": 0.583336,
+          "Height": 0.039999,
+          "Depth": 2.9600315,
+          "Italic": 0.0
+        },
+        "FontId": 2
+      },
+      "Children": [],
+      "Source": null,
+      "Foreground": null,
+      "Background": null,
+      "Tag": null,
+      "TotalHeight": 3.0000305,
+      "TotalWidth": 0.583336,
+      "Italic": 0.0,
+      "Width": 0.583336,
+      "Height": 0.039999,
+      "Depth": 2.9600315,
+      "Shift": -1.7194440000000002
+    }
+  ],
+  "Source": {
+    "Start": 9,
+    "End": 23,
+    "Length": 14,
+    "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}"
+  },
+  "Foreground": null,
+  "Background": null,
+  "Tag": null,
+  "TotalHeight": 3.0000305,
+  "TotalWidth": 2.954176,
+  "Italic": 0.0,
+  "Width": 2.954176,
+  "Height": 1.759443,
+  "Depth": 1.2405874999999997,
+  "Shift": 0.0
+}
