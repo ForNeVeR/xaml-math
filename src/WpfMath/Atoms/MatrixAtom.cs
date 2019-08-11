@@ -48,26 +48,29 @@ namespace WpfMath.Atoms
             var rowHeights = new double[rowCount];
             var columnWidths = new double[maxColumnCount];
 
-            // Create a vertical box to hold the rows and their cells
-            var resultBox = new VerticalBox();
-
+            var rowBoxes = new List<HorizontalBox>();
             for (int i = 0; i < rowCount; i++)
             {
-                var verticalPadding = new StrutBox(0.0, VerticalPadding / 2, 0, 0);
-                var row = CreateRowBox(environment, i, maxColumnCount, rowHeights, columnWidths);
-
-                resultBox.Add(verticalPadding);
-                resultBox.Add(row);
-                resultBox.Add(verticalPadding);
+                rowBoxes.Add(CreateRowBox(environment, i, maxColumnCount, rowHeights, columnWidths));
             }
 
-            var matrixCellGaps = CalculateCellGaps(resultBox, rowHeights, columnWidths);
+            var matrixCellGaps = CalculateCellGaps(rowBoxes, rowHeights, columnWidths);
+
+            var rowsContainer = new VerticalBox();
+            foreach (var row in rowBoxes)
+            {
+                var verticalPadding = new StrutBox(0.0, VerticalPadding / 2, 0, 0);
+
+                rowsContainer.Add(verticalPadding);
+                rowsContainer.Add(row);
+                rowsContainer.Add(verticalPadding);
+            }
 
             var rows = 0;
             var columns = 0;
-            for (int i = 0; i < resultBox.Children.Count; i++)
+            for (int i = 0; i < rowsContainer.Children.Count; i++)
             {
-                var Matrixrowitem = resultBox.Children[i];
+                var Matrixrowitem = rowsContainer.Children[i];
 
                 if (Matrixrowitem is HorizontalBox && Matrixrowitem.Tag.ToString() == $"Row:{rows}")
                 {
@@ -95,7 +98,7 @@ namespace WpfMath.Atoms
                                         }
                                         if (nextrowcolitem is StrutBox && nextrowcolitem.Tag.ToString() == rightstructboxtag)
                                         {
-                                            nextrowcolitem.Width +=2* matrixCellGaps[rows][columns].Item1;
+                                            nextrowcolitem.Width +=2* matrixCellGaps[rows][columns].Horizontal;
                                             rowwidth += nextrowcolitem.TotalWidth;
                                         }
                                         break;
@@ -105,12 +108,12 @@ namespace WpfMath.Atoms
                                     {
                                         if (prevrowcolitem is StrutBox && prevrowcolitem.Tag.ToString() == leftstructboxtag)
                                         {
-                                            prevrowcolitem.Width +=2* matrixCellGaps[rows][columns].Item1;
+                                            prevrowcolitem.Width +=2* matrixCellGaps[rows][columns].Horizontal;
                                             rowwidth += prevrowcolitem.TotalWidth;
                                         }
                                         if (nextrowcolitem is StrutBox && nextrowcolitem.Tag.ToString() == rightstructboxtag)
                                         {
-                                            //nextrowcolitem.Width += MatrixCellGaps[a][b].Item1;
+                                            //nextrowcolitem.Width += matrixCellGaps[a][b].Horizontal;
                                             rowwidth += nextrowcolitem.TotalWidth;
                                         }
                                         break;
@@ -120,12 +123,12 @@ namespace WpfMath.Atoms
                                     {
                                         if (prevrowcolitem is StrutBox && prevrowcolitem.Tag.ToString() == leftstructboxtag)
                                         {
-                                            prevrowcolitem.Width += matrixCellGaps[rows][columns].Item1;
+                                            prevrowcolitem.Width += matrixCellGaps[rows][columns].Horizontal;
                                             rowwidth += prevrowcolitem.TotalWidth;
                                         }
                                         if (nextrowcolitem is StrutBox && nextrowcolitem.Tag.ToString() == rightstructboxtag)
                                         {
-                                            nextrowcolitem.Width += matrixCellGaps[rows][columns].Item1;
+                                            nextrowcolitem.Width += matrixCellGaps[rows][columns].Horizontal;
                                             rowwidth += nextrowcolitem.TotalWidth;
                                         }
                                         break;
@@ -172,7 +175,7 @@ namespace WpfMath.Atoms
                                             {
                                                 if (prevcellitem.Tag.ToString() == topstructboxtag)
                                                 {
-                                                    prevcellitem.Height +=2* matrixCellGaps[rows][columns].Item2;
+                                                    prevcellitem.Height +=2* matrixCellGaps[rows][columns].Vertical;
                                                     //prevcellitem.Background = Brushes.Aquamarine;
                                                     cellheight += prevcellitem.TotalHeight;
                                                     if (prevcellitem.Height > (currowcolitem.Height / 2))
@@ -182,7 +185,7 @@ namespace WpfMath.Atoms
                                                 }
                                                 if (nextcellitem.Tag.ToString() == bottomstructboxtag)
                                                 {
-                                                    //nextcellitem.Height += MatrixCellGaps[a][b].Item2;
+                                                    //nextcellitem.Height += matrixCellGaps[a][b].Vertical;
                                                     //nextcellitem.Background = Brushes.BurlyWood;
                                                     cellheight += nextcellitem.TotalHeight;
                                                 }
@@ -192,7 +195,7 @@ namespace WpfMath.Atoms
                                             {
                                                 if (prevcellitem.Tag.ToString() == topstructboxtag)
                                                 {
-                                                    prevcellitem.Height += matrixCellGaps[rows][columns].Item2;
+                                                    prevcellitem.Height += matrixCellGaps[rows][columns].Vertical;
                                                     //prevcellitem.Background = Brushes.Aquamarine;
                                                     cellheight += prevcellitem.TotalHeight;
                                                     if (prevcellitem.Height > (currowcolitem.Height / 2))
@@ -202,7 +205,7 @@ namespace WpfMath.Atoms
                                                 }
                                                 if (nextcellitem.Tag.ToString() == bottomstructboxtag)
                                                 {
-                                                    nextcellitem.Height += matrixCellGaps[rows][columns].Item2;
+                                                    nextcellitem.Height += matrixCellGaps[rows][columns].Vertical;
                                                     //nextcellitem.Background = Brushes.BurlyWood;
                                                     cellheight += nextcellitem.TotalHeight;
                                                 }
@@ -234,7 +237,7 @@ namespace WpfMath.Atoms
                                             {
                                                 if (prevcellitem.Tag.ToString() == topstructboxtag)
                                                 {
-                                                    //prevcellitem.Height += MatrixCellGaps[a][b].Item2;
+                                                    //prevcellitem.Height += matrixCellGaps[a][b].Vertical;
                                                     //prevcellitem.Background = Brushes.Aquamarine;
                                                     cellheight += prevcellitem.TotalHeight;
                                                     if (prevcellitem.Height > (currowcolitem.Height / 2))
@@ -244,7 +247,7 @@ namespace WpfMath.Atoms
                                                 }
                                                 if (nextcellitem.Tag.ToString() == bottomstructboxtag)
                                                 {
-                                                    nextcellitem.Height +=2* matrixCellGaps[rows][columns].Item2;
+                                                    nextcellitem.Height +=2* matrixCellGaps[rows][columns].Vertical;
                                                     //nextcellitem.Background = Brushes.BurlyWood;
                                                     cellheight += nextcellitem.TotalHeight;
                                                 }
@@ -256,13 +259,13 @@ namespace WpfMath.Atoms
 
                                     if (prevrowcolitem is StrutBox && prevrowcolitem.Tag.ToString() == leftstructboxtag)
                                     {
-                                        prevrowcolitem.Shift += matrixCellGaps[rows][columns].Item2;
+                                        prevrowcolitem.Shift += matrixCellGaps[rows][columns].Vertical;
                                     }
                                     if (nextrowcolitem is StrutBox && nextrowcolitem.Tag.ToString() == rightstructboxtag)
                                     {
-                                        nextrowcolitem.Shift += matrixCellGaps[rows][columns].Item2;
+                                        nextrowcolitem.Shift += matrixCellGaps[rows][columns].Vertical;
                                     }
-                                    //currowcolitem.Shift -= MatrixCellGaps[a][b].Item2; ;
+                                    //currowcolitem.Shift -= matrixCellGaps[a][b].Vertical; ;
                                 }
 
 
@@ -283,7 +286,7 @@ namespace WpfMath.Atoms
             double sigmaDepth = 0;
             double sigmaHeight = 0;
             double adjwidth = 0;
-            foreach (var item in resultBox.Children)
+            foreach (var item in rowsContainer.Children)
             {
                 sigmaTotalHeight += item.TotalHeight;
                 sigmaHeight += item.Height;
@@ -296,15 +299,15 @@ namespace WpfMath.Atoms
 
             double adjustedTotalHeight = rowHeights.Sum()+ (rowCount * VerticalPadding);
 
-            resultBox.Depth = 0;
-            resultBox.Height = adjustedTotalHeight>sigmaTotalHeight?adjustedTotalHeight:sigmaTotalHeight;
-            resultBox.Width = adjwidth>resultBox.TotalWidth?adjwidth:resultBox.TotalWidth;
-            var enviroYDiff = axis>= resultBox.TotalHeight ? - (axis- resultBox.TotalHeight)/2: ( resultBox.TotalHeight-axis) / 2;
-            resultBox.Shift = enviroYDiff;
+            rowsContainer.Depth = 0;
+            rowsContainer.Height = adjustedTotalHeight>sigmaTotalHeight?adjustedTotalHeight:sigmaTotalHeight;
+            rowsContainer.Width = adjwidth>rowsContainer.TotalWidth?adjwidth:rowsContainer.TotalWidth;
+            var enviroYDiff = axis>= rowsContainer.TotalHeight ? - (axis- rowsContainer.TotalHeight)/2: ( rowsContainer.TotalHeight-axis) / 2;
+            rowsContainer.Shift = enviroYDiff;
 
             var finalbox = new HorizontalBox() ;
             finalbox.Add(new StrutBox(HorizontalPadding/8, 0, 0, 0));
-            finalbox.Add(resultBox);
+            finalbox.Add(rowsContainer);
             finalbox.Add(new StrutBox(HorizontalPadding/8, 0, 0, 0));
 
             return finalbox;
@@ -367,54 +370,51 @@ namespace WpfMath.Atoms
             return rowBox;
         }
 
-        /// <summary>
-        /// Calculates the left-right gaps (Tuple.Item1) and top-bottom gaps (Tuple.Item2) for the rows.
-        /// </summary>
-        private static List<List<Tuple<double, double>>> CalculateCellGaps(
-            VerticalBox resultBox,
+        private static List<List<CellGaps>> CalculateCellGaps(
+            IEnumerable<HorizontalBox> rows,
             double[] rowHeights,
             double[] columnWidths)
         {
-            var rows = 0;
+            var rowIndex = 0;
             var columns = 0;
 
-            var matrixCellGaps = new List<List<Tuple<double, double>>>();
-            foreach (var Matrixrowitem in resultBox.Children)
+            var matrixCellGaps = new List<List<CellGaps>>();
+            foreach (var row in rows)
             {
-                List<Tuple<double, double>> RowGaps = new List<Tuple<double, double>>();
+                var rowGaps = new List<CellGaps>();
 
-                if (Matrixrowitem is HorizontalBox && Matrixrowitem.Tag.ToString() == $"Row:{rows}")
+                for (int j = 0; j < row.Children.Count; j++)
                 {
-                    for (int j = 0; j < ((HorizontalBox) Matrixrowitem).Children.Count; j++)
+                    var rowcolitem = row.Children[j];
+                    if (rowcolitem is StrutBox)
                     {
-                        var rowcolitem = ((HorizontalBox) Matrixrowitem).Children[j];
-                        if (rowcolitem is StrutBox)
-                        {
-                            rowcolitem.Height = rowHeights[rows];
-                        }
-                        else if (rowcolitem is VerticalBox && rowcolitem.Tag.ToString() == $"Cell{rows}:{columns}")
-                        {
-                            double cellVShift = rowHeights[rows] - rowcolitem.TotalHeight;
-
-                            double cellHShift = columnWidths[columns] - rowcolitem.TotalWidth;
-                            ((HorizontalBox) Matrixrowitem).Children[j - 1].Shift =
-                                rowcolitem.Depth; // + (cellVShift / 2);//.Width += cellHShift / 2;
-                            ((HorizontalBox) Matrixrowitem).Children[j + 1].Shift =
-                                rowcolitem.Depth; // +(cellVShift / 2);// Width += cellHShift / 2;
-                            //rowcolitem.Shift =  cellVShift/2;
-                            RowGaps.Add(new Tuple<double, double>(cellHShift / 2, cellVShift / 2));
-
-                            columns++;
-                        }
+                        rowcolitem.Height = rowHeights[rowIndex];
                     }
+                    else if (rowcolitem is VerticalBox && rowcolitem.Tag.ToString() == $"Cell{rowIndex}:{columns}")
+                    {
+                        double cellVShift = rowHeights[rowIndex] - rowcolitem.TotalHeight;
 
-                    columns = 0;
-                    rows++;
-                    matrixCellGaps.Add(RowGaps);
+                        double cellHShift = columnWidths[columns] - rowcolitem.TotalWidth;
+                        row.Children[j - 1].Shift = rowcolitem.Depth;
+                        row.Children[j + 1].Shift = rowcolitem.Depth;
+                        rowGaps.Add(new CellGaps {Horizontal = cellHShift / 2, Vertical = cellVShift / 2});
+
+                        columns++;
+                    }
                 }
+
+                columns = 0;
+                rowIndex++;
+                matrixCellGaps.Add(rowGaps);
             }
 
             return matrixCellGaps;
+        }
+
+        private struct CellGaps
+        {
+            public double Horizontal { get; set; }
+            public double Vertical { get; set; }
         }
     }
 }
