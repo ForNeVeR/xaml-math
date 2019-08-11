@@ -107,3 +107,7 @@ let casesBox() =
 [<Fact>]
 let nestedMatrixBox() =
     verifyBox @"\matrix{ 1 & 2 & 3 \\ 4 & {\matrix{ 5 \\ 6 }} & 7 }"
+
+[<Fact>]
+let wideItemInMatrixBox() =
+    verifyBox @"x = \pmatrix{0 & -r & 0 \\ 0 & 0 & -r sin^2(\theta)}"
