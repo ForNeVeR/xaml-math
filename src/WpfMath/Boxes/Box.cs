@@ -52,8 +52,6 @@ namespace WpfMath.Boxes
             set;
         }
 
-        public object Tag{get; set;}
-
         /// <summary>Total height of the box, including the <see cref="Depth"/>.</summary>
         public double TotalHeight => Height + Depth;
 
