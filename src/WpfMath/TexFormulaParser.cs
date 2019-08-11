@@ -389,7 +389,12 @@ namespace WpfMath
                         var matrixsource = ReadElement(value, ref position);
 
                         var cells = GetMatrixData(formula, matrixsource);
-                        return new CasesAtom(matrixsource, new MatrixAtom(matrixsource, cells, matrixCellAlignment: MatrixCellAlignment.Left));
+                        var matrix = new MatrixAtom(matrixsource, cells, MatrixCellAlignment.Left);
+                        return new FencedAtom(
+                            matrixsource,
+                            matrix,
+                            GetDelimiterSymbol("lbrace", null),
+                            null);
                     }
 
                 case "frac":
@@ -450,7 +455,12 @@ namespace WpfMath
                         var matrixsource = ReadElement(value, ref position);
 
                         var cells = GetMatrixData(formula, matrixsource);
-                        return new PmatrixAtom(matrixsource, new MatrixAtom(matrixsource, cells));
+                        var matrix = new MatrixAtom(matrixsource, cells);
+                        return new FencedAtom(
+                            matrixsource,
+                            matrix,
+                            GetDelimiterSymbol("lbrack", null),
+                            GetDelimiterSymbol("rbrack", null));
                     }
 
                 case "right":

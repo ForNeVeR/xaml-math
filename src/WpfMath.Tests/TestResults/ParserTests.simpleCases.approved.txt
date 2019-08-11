@@ -334,6 +334,14 @@
         "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
       }
     },
+    "LeftDelimeter": {
+      "IsDelimeter": true,
+      "Name": "lbrace",
+      "IsTextSymbol": false,
+      "Type": "Opening",
+      "Source": null
+    },
+    "RightDelimeter": null,
     "Type": "Ordinary",
     "Source": {
       "Start": 7,

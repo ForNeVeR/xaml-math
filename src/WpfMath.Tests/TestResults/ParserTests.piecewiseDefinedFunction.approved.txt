@@ -574,6 +574,14 @@
             "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
           }
         },
+        "LeftDelimeter": {
+          "IsDelimeter": true,
+          "Name": "lbrace",
+          "IsTextSymbol": false,
+          "Type": "Opening",
+          "Source": null
+        },
+        "RightDelimeter": null,
         "Type": "Ordinary",
         "Source": {
           "Start": 14,

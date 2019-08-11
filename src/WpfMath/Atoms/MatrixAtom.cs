@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Windows.Media;
 using WpfMath.Boxes;
 
 namespace WpfMath.Atoms
@@ -34,10 +35,6 @@ namespace WpfMath.Atoms
 
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
-            var texFont = environment.MathFont;
-            var style = environment.Style;
-            var axis = texFont.GetAxisHeight(style);
-
             var rowCount = MatrixCells.Count;
             var maxColumnCount = MatrixCells.Max(row => row.Count);
 
@@ -55,44 +52,21 @@ namespace WpfMath.Atoms
             var rowsContainer = new VerticalBox();
             foreach (var row in rowBoxes)
             {
-                var verticalPadding = new StrutBox(0.0, VerticalPadding / 2, 0, 0);
-
-                rowsContainer.Add(verticalPadding);
                 rowsContainer.Add(row);
-                rowsContainer.Add(verticalPadding);
             }
 
+            rowsContainer.Depth = rowsContainer.Height / 2;
             ApplyCellSizes(rowBoxes, matrixCellGaps);
 
-            double sigmaTotalHeight = 0;
-            double sigmaDepth = 0;
-            double sigmaHeight = 0;
-            double adjwidth = 0;
-            foreach (var item in rowsContainer.Children)
-            {
-                sigmaTotalHeight += item.TotalHeight;
-                sigmaHeight += item.Height;
-                sigmaDepth += item.Depth;
-                if (item.TotalWidth>adjwidth)
-                {
-                    adjwidth = item.TotalWidth;
-                }
-            }
+            var adjustedWidth = rowBoxes.Max(r => r.Width);
+            var adjustedHeight = rowHeights.Sum();
 
-            double adjustedTotalHeight = rowHeights.Sum()+ (rowCount * VerticalPadding);
+            rowsContainer.Depth = adjustedHeight / 2;
+            rowsContainer.Height = adjustedHeight / 2;
+            rowsContainer.Width = adjustedWidth;
+            rowsContainer.Shift = 0;
 
-            rowsContainer.Depth = 0;
-            rowsContainer.Height = adjustedTotalHeight>sigmaTotalHeight?adjustedTotalHeight:sigmaTotalHeight;
-            rowsContainer.Width = adjwidth>rowsContainer.TotalWidth?adjwidth:rowsContainer.TotalWidth;
-            var enviroYDiff = axis>= rowsContainer.TotalHeight ? - (axis- rowsContainer.TotalHeight)/2: ( rowsContainer.TotalHeight-axis) / 2;
-            rowsContainer.Shift = enviroYDiff;
-
-            var finalbox = new HorizontalBox() ;
-            finalbox.Add(new StrutBox(HorizontalPadding/8, 0, 0, 0));
-            finalbox.Add(rowsContainer);
-            finalbox.Add(new StrutBox(HorizontalPadding/8, 0, 0, 0));
-
-            return finalbox;
+            return rowsContainer;
         }
 
         private HorizontalBox CreateRowBox(
@@ -129,9 +103,9 @@ namespace WpfMath.Atoms
                 //cell box holder
                 var rowcolbox = new VerticalBox() {Tag = $"Cell{rowIndex}:{j}"};
 
-                var celltoppad = new StrutBox(rowcellbox.TotalWidth, VerticalPadding / 2, 0, 0) {Tag = $"CellTopPad{rowIndex}:{j}",};
+                var celltoppad = new StrutBox(rowcellbox.TotalWidth, VerticalPadding / 2, 0, 0) {Tag = $"CellTopPad{rowIndex}:{j}"};
                 var cellbottompad = new StrutBox(rowcellbox.TotalWidth, VerticalPadding / 2, 0, 0)
-                    {Tag = $"CellBottomPad{rowIndex}:{j}",};
+                    {Tag = $"CellBottomPad{rowIndex}:{j}"};
                 rowcolbox.Add(celltoppad);
                 rowcolbox.Add(rowcellbox);
                 rowcolbox.Add(cellbottompad);
@@ -199,11 +173,11 @@ namespace WpfMath.Atoms
                 double rowwidth = 0;
                 for (int j = 0; j < row.Children.Count; j++)
                 {
-                    var currowcolitem = ((HorizontalBox) row).Children[j];
-                    var prevrowcolitem = j > 0 ? ((HorizontalBox) row).Children[j - 1] : ((HorizontalBox) row).Children[j];
-                    var nextrowcolitem = j < ((HorizontalBox) row).Children.Count - 1
-                        ? ((HorizontalBox) row).Children[j + 1]
-                        : ((HorizontalBox) row).Children[j];
+                    var currowcolitem = row.Children[j];
+                    var prevrowcolitem = j > 0 ? row.Children[j - 1] : row.Children[j];
+                    var nextrowcolitem = j < row.Children.Count - 1
+                        ? row.Children[j + 1]
+                        : row.Children[j];
 
                     if (currowcolitem is VerticalBox && Regex.IsMatch(currowcolitem.Tag.ToString(), @"Cell[0-9]+:[0-9]+"))
                     {

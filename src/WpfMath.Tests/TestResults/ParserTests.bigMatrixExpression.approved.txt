@@ -372,6 +372,20 @@
                     "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
                   }
                 },
+                "LeftDelimeter": {
+                  "IsDelimeter": true,
+                  "Name": "lbrack",
+                  "IsTextSymbol": false,
+                  "Type": "Opening",
+                  "Source": null
+                },
+                "RightDelimeter": {
+                  "IsDelimeter": true,
+                  "Name": "rbrack",
+                  "IsTextSymbol": false,
+                  "Type": "Closing",
+                  "Source": null
+                },
                 "Type": "Ordinary",
                 "Source": {
                   "Start": 47,
@@ -772,6 +786,20 @@
                     "Length": 80,
                     "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
                   }
+                },
+                "LeftDelimeter": {
+                  "IsDelimeter": true,
+                  "Name": "lbrack",
+                  "IsTextSymbol": false,
+                  "Type": "Opening",
+                  "Source": null
+                },
+                "RightDelimeter": {
+                  "IsDelimeter": true,
+                  "Name": "rbrack",
+                  "IsTextSymbol": false,
+                  "Type": "Closing",
+                  "Source": null
                 },
                 "Type": "Ordinary",
                 "Source": {
@@ -1205,6 +1233,20 @@
                     "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
                   }
                 },
+                "LeftDelimeter": {
+                  "IsDelimeter": true,
+                  "Name": "lbrack",
+                  "IsTextSymbol": false,
+                  "Type": "Opening",
+                  "Source": null
+                },
+                "RightDelimeter": {
+                  "IsDelimeter": true,
+                  "Name": "rbrack",
+                  "IsTextSymbol": false,
+                  "Type": "Closing",
+                  "Source": null
+                },
                 "Type": "Ordinary",
                 "Source": {
                   "Start": 206,
@@ -1225,6 +1267,20 @@
             "Length": 267,
             "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
           }
+        },
+        "LeftDelimeter": {
+          "IsDelimeter": true,
+          "Name": "lbrack",
+          "IsTextSymbol": false,
+          "Type": "Opening",
+          "Source": null
+        },
+        "RightDelimeter": {
+          "IsDelimeter": true,
+          "Name": "rbrack",
+          "IsTextSymbol": false,
+          "Type": "Closing",
+          "Source": null
         },
         "Type": "Ordinary",
         "Source": {
