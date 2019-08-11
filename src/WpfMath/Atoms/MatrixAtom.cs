@@ -386,12 +386,9 @@ namespace WpfMath.Atoms
                 for (int j = 0; j < row.Children.Count; j++)
                 {
                     var rowcolitem = row.Children[j];
-                    if (rowcolitem is StrutBox)
+                    if (rowcolitem is VerticalBox && rowcolitem.Tag.ToString() == $"Cell{rowIndex}:{columns}")
                     {
-                        rowcolitem.Height = rowHeights[rowIndex];
-                    }
-                    else if (rowcolitem is VerticalBox && rowcolitem.Tag.ToString() == $"Cell{rowIndex}:{columns}")
-                    {
+                        // TODO[F]: require the vertical box list as input
                         double cellVShift = rowHeights[rowIndex] - rowcolitem.TotalHeight;
 
                         double cellHShift = columnWidths[columns] - rowcolitem.TotalWidth;
