@@ -45,9 +45,6 @@ namespace WpfMath.Atoms
             var rowCount = MatrixCells.Count;
             var maxColumnCount = MatrixCells.Max(row => row.Count);
 
-            //Region for adjustment vars
-            double maxrowWidth = 0;
-
             //stores the max cell height for each row
             var RowsMaxCellHeight = new List<double>();
             for (int i = 0; i < rowCount; i++)
@@ -66,7 +63,7 @@ namespace WpfMath.Atoms
             for (int i = 0; i < rowCount; i++)
             {
                 //row top pad
-                resultBox.Add(new StrutBox(maxrowWidth, VerticalPadding / 2, 0, 0));
+                resultBox.Add(new StrutBox(0.0, VerticalPadding / 2, 0, 0));
 
                 var rowbox =  new HorizontalBox() {Tag= $"Row:{i}",};
 
@@ -116,7 +113,7 @@ namespace WpfMath.Atoms
                 rowbox.Shift = 0;
                 resultBox.Add(rowbox);
                 //row bottom pad
-                resultBox.Add(new StrutBox(maxrowWidth, VerticalPadding / 2, 0, 0));
+                resultBox.Add(new StrutBox(0.0, VerticalPadding / 2, 0, 0));
             }
 
             int rows = 0;
