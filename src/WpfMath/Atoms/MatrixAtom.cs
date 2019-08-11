@@ -355,6 +355,9 @@ namespace WpfMath.Atoms
             double[] rowHeights,
             double[] columnWidths)
         {
+            // TODO[F]: remove rowIndex parameter altogether with Tags
+            // TODO[F]: remove rowHeights and colunmWidths arguments (calculate them outside)
+            // TODO[F]: return IEnumerable<Box> from here and make the outside code to control the paddings
             var rowBox = new HorizontalBox {Tag = $"Row:{rowIndex}",};
 
             for (int j = 0; j < maxColumnCount; j++)
