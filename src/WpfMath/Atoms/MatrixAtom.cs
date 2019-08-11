@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using WpfMath.Boxes;
 
@@ -38,9 +39,6 @@ namespace WpfMath.Atoms
             var rowCount = MatrixCells.Count;
             var maxColumnCount = MatrixCells.Max(row => row.Count);
 
-            var rowHeights = new double[rowCount];
-            var columnWidths = new double[maxColumnCount];
-
             var rowBoxes = new List<HorizontalBox>();
             for (int rowIndex = 0; rowIndex < rowCount; rowIndex++)
             {
@@ -50,7 +48,7 @@ namespace WpfMath.Atoms
                 // TODO[F]: Get rid of rowBoxes, rowIndex, columnIndex
 
                 var columnIndex = 0;
-                foreach (var rowItem in CreateRowCellBoxes(environment, rowIndex, maxColumnCount, rowHeights, columnWidths))
+                foreach (var rowItem in CreateRowCellBoxes(environment, rowIndex, maxColumnCount))
                 {
                     //cell left pad
                     var cellleftpad = new StrutBox(HorizontalPadding / 2, 0, 0, 0)
@@ -85,6 +83,7 @@ namespace WpfMath.Atoms
                 }
             }
 
+            var (rowHeights, columnWidths) = CalculateDimensions(rowBoxes, maxColumnCount);
             var matrixCellGaps = CalculateCellGaps(rowBoxes, rowHeights, columnWidths);
 
             var rowsContainer = new VerticalBox();
@@ -109,13 +108,9 @@ namespace WpfMath.Atoms
         private IEnumerable<Box> CreateRowCellBoxes(
             TexEnvironment environment,
             int rowIndex,
-            int maxColumnCount,
-            double[] rowHeights,
-            double[] columnWidths)
+            int maxColumnCount)
         {
-            // TODO[F]: remove rowIndex parameter altogether with Tags
-            // TODO[F]: remove rowHeights and columnWidths arguments (calculate them outside)
-
+            // TODO[F]: remove the rowIndex parameter altogether with Tags
             for (int j = 0; j < maxColumnCount; j++)
             {
                 var rowCellBox = MatrixCells[rowIndex][j] == null
@@ -123,13 +118,21 @@ namespace WpfMath.Atoms
                     : MatrixCells[rowIndex][j].CreateBox(environment);
                 rowCellBox.Tag = "innercell"; // TODO[F]: This is dangerous: we may set the value for the cachec StrutBox.Empty
                 yield return rowCellBox;
-
-                var cellHeight = rowCellBox.TotalHeight + VerticalPadding;
-                rowHeights[rowIndex] = Math.Max(rowHeights[rowIndex], cellHeight);
-
-                var columnWidth = rowCellBox.TotalWidth;
-                columnWidths[j] = Math.Max(columnWidths[j], columnWidth);
             }
+        }
+
+        /// <summary>
+        /// Calculates the height of each row and the width of each column and returns arrays of those.
+        /// </summary>
+        private (double[] RowHeights, double[] ColumnWidths) CalculateDimensions(
+            List<HorizontalBox> matrix,
+            int columnCount)
+        {
+            var rowHeights = matrix.Select(row => row.TotalHeight).ToArray();
+            var columnWidths = Enumerable.Range(0, columnCount)
+                .Select(column => matrix.Select(row => row.Children[1 + 3 * column]).Max(cell => cell.TotalWidth))
+                .ToArray();
+            return (rowHeights, columnWidths);
         }
 
         private static List<List<CellGaps>> CalculateCellGaps(

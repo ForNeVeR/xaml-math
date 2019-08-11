@@ -542,7 +542,7 @@
                   "Width": 0.175,
                   "Height": 0.0,
                   "Depth": 0.0,
-                  "Shift": 1.0542234
+                  "Shift": 1.0542234000000001
                 },
                 {
                   "Children": [
@@ -552,11 +552,11 @@
                       "Foreground": null,
                       "Background": null,
                       "Tag": "CellTopPad1:0",
-                      "TotalHeight": 0.40977939999999985,
+                      "TotalHeight": 0.40977939999999996,
                       "TotalWidth": 0.500002,
                       "Italic": 0.0,
                       "Width": 0.500002,
-                      "Height": 0.40977939999999985,
+                      "Height": 0.40977939999999996,
                       "Depth": 0.0,
                       "Shift": 0.0
                     },
@@ -597,11 +597,11 @@
                       "Foreground": null,
                       "Background": null,
                       "Tag": "CellBottomPad1:0",
-                      "TotalHeight": 0.40977939999999985,
+                      "TotalHeight": 0.40977939999999996,
                       "TotalWidth": 0.500002,
                       "Italic": 0.0,
                       "Width": 0.500002,
-                      "Height": 0.40977939999999985,
+                      "Height": 0.40977939999999996,
                       "Depth": 0.0,
                       "Shift": 0.0
                     }
@@ -630,7 +630,7 @@
                   "Width": 0.175,
                   "Height": 0.0,
                   "Depth": 0.0,
-                  "Shift": 1.0542234
+                  "Shift": 1.0542234000000001
                 },
                 {
                   "Children": [],
@@ -644,7 +644,7 @@
                   "Width": 0.55335875,
                   "Height": 0.0,
                   "Depth": 0.0,
-                  "Shift": 1.0542234
+                  "Shift": 1.0542234000000001
                 },
                 {
                   "Children": [
@@ -654,11 +654,11 @@
                       "Foreground": null,
                       "Background": null,
                       "Tag": "CellTopPad1:1",
-                      "TotalHeight": 0.40977939999999985,
+                      "TotalHeight": 0.40977939999999996,
                       "TotalWidth": 0.500002,
                       "Italic": 0.0,
                       "Width": 0.500002,
-                      "Height": 0.40977939999999985,
+                      "Height": 0.40977939999999996,
                       "Depth": 0.0,
                       "Shift": 0.0
                     },
@@ -699,11 +699,11 @@
                       "Foreground": null,
                       "Background": null,
                       "Tag": "CellBottomPad1:1",
-                      "TotalHeight": 0.40977939999999985,
+                      "TotalHeight": 0.40977939999999996,
                       "TotalWidth": 0.500002,
                       "Italic": 0.0,
                       "Width": 0.500002,
-                      "Height": 0.40977939999999985,
+                      "Height": 0.40977939999999996,
                       "Depth": 0.0,
                       "Shift": 0.0
                     }
@@ -732,7 +732,7 @@
                   "Width": 0.55335875,
                   "Height": 0.0,
                   "Depth": 0.0,
-                  "Shift": 1.0542234
+                  "Shift": 1.0542234000000001
                 },
                 {
                   "Children": [],
@@ -756,11 +756,11 @@
                       "Foreground": null,
                       "Background": null,
                       "Tag": "CellTopPad1:2",
-                      "TotalHeight": 0.17499999999999988,
+                      "TotalHeight": 0.175,
                       "TotalWidth": 4.2924428999999993,
                       "Italic": 0.0,
                       "Width": 4.2924428999999993,
-                      "Height": 0.17499999999999988,
+                      "Height": 0.175,
                       "Depth": 0.0,
                       "Shift": 0.0
                     },
@@ -1230,11 +1230,11 @@
                       "Foreground": null,
                       "Background": null,
                       "Tag": "CellBottomPad1:2",
-                      "TotalHeight": 0.17499999999999988,
+                      "TotalHeight": 0.175,
                       "TotalWidth": 4.2924428999999993,
                       "Italic": 0.0,
                       "Width": 4.2924428999999993,
-                      "Height": 0.17499999999999988,
+                      "Height": 0.175,
                       "Depth": 0.0,
                       "Shift": 0.0
                     }
@@ -1288,12 +1288,12 @@
           "Foreground": null,
           "Background": null,
           "Tag": null,
-          "TotalHeight": 2.4806708,
+          "TotalHeight": 2.4806708000000004,
           "TotalWidth": 7.0991643999999994,
           "Italic": 0.0,
           "Width": 7.0991643999999994,
-          "Height": 1.2403354,
-          "Depth": 1.2403354,
+          "Height": 1.2403354000000002,
+          "Depth": 1.2403354000000002,
           "Shift": 0.0
         },
         {
