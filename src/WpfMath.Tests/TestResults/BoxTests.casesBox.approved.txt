@@ -2,13 +2,13 @@
   "Children": [
     {
       "Character": {
-        "Character": "(",
+        "Character": "½",
         "Font": "pack://application:,,,/WpfMath;component/Fonts/cmex10.ttf",
         "Size": 1.0,
         "Metrics": {
-          "Width": 0.80556,
+          "Width": 0.750002,
           "Height": 0.039999,
-          "Depth": 2.9600315,
+          "Depth": 2.360025,
           "Italic": 0.0
         },
         "FontId": 2
@@ -18,13 +18,13 @@
       "Foreground": null,
       "Background": null,
       "Tag": null,
-      "TotalHeight": 3.0000305,
-      "TotalWidth": 0.80556,
+      "TotalHeight": 2.4000239999999997,
+      "TotalWidth": 0.750002,
       "Italic": 0.0,
-      "Width": 0.80556,
+      "Width": 0.750002,
       "Height": 0.039999,
-      "Depth": 2.9600315,
-      "Shift": -1.71001625
+      "Depth": 2.360025,
+      "Shift": -1.410013
     },
     {
       "Stretch": 0.0,
@@ -47,34 +47,20 @@
         {
           "Children": [
             {
-              "Children": [],
-              "Source": null,
-              "Foreground": null,
-              "Background": null,
-              "Tag": "CellLeftPad0:0",
-              "TotalHeight": 0.0,
-              "TotalWidth": 0.175,
-              "Italic": 0.0,
-              "Width": 0.175,
-              "Height": 0.0,
-              "Depth": 0.0,
-              "Shift": 0.60555500000000007
-            },
-            {
               "Children": [
                 {
                   "Children": [],
                   "Source": null,
                   "Foreground": null,
                   "Background": null,
-                  "Tag": "CellTopPad0:0",
+                  "Tag": null,
                   "TotalHeight": 0.175,
-                  "TotalWidth": 0.52859,
+                  "TotalWidth": 0.0,
                   "Italic": 0.0,
-                  "Width": 0.52859,
+                  "Width": 0.0,
                   "Height": 0.175,
                   "Depth": 0.0,
-                  "Shift": 0.0
+                  "Shift": 0.35
                 },
                 {
                   "Character": {
@@ -98,7 +84,7 @@
                   },
                   "Foreground": null,
                   "Background": null,
-                  "Tag": "innercell",
+                  "Tag": null,
                   "TotalHeight": 0.430555,
                   "TotalWidth": 0.52859,
                   "Italic": 0.0,
@@ -112,26 +98,26 @@
                   "Source": null,
                   "Foreground": null,
                   "Background": null,
-                  "Tag": "CellBottomPad0:0",
+                  "Tag": null,
                   "TotalHeight": 0.175,
-                  "TotalWidth": 0.52859,
+                  "TotalWidth": 0.0,
                   "Italic": 0.0,
-                  "Width": 0.52859,
+                  "Width": 0.0,
                   "Height": 0.175,
                   "Depth": 0.0,
-                  "Shift": 0.0
+                  "Shift": 0.35
                 }
               ],
               "Source": null,
               "Foreground": null,
               "Background": null,
-              "Tag": "Cell0:0",
+              "Tag": null,
               "TotalHeight": 0.78055500000000011,
               "TotalWidth": 0.52859,
               "Italic": 0.0,
               "Width": 0.52859,
-              "Height": 0.175,
-              "Depth": 0.60555500000000007,
+              "Height": 0.78055500000000011,
+              "Depth": 0.0,
               "Shift": 0.0
             },
             {
@@ -139,14 +125,14 @@
               "Source": null,
               "Foreground": null,
               "Background": null,
-              "Tag": "CellRightPad0:0",
+              "Tag": null,
               "TotalHeight": 0.0,
               "TotalWidth": 0.175,
               "Italic": 0.0,
               "Width": 0.175,
               "Height": 0.0,
               "Depth": 0.0,
-              "Shift": 0.60555500000000007
+              "Shift": 0.0
             }
           ],
           "Source": null,
@@ -154,29 +140,15 @@
           "Background": null,
           "Tag": null,
           "TotalHeight": 0.78055500000000011,
-          "TotalWidth": 0.87859,
+          "TotalWidth": 0.70358999999999994,
           "Italic": 0.0,
-          "Width": 0.87859,
-          "Height": 0.175,
-          "Depth": 0.60555500000000007,
+          "Width": 0.70358999999999994,
+          "Height": 0.78055500000000011,
+          "Depth": 0.0,
           "Shift": 0.0
         },
         {
           "Children": [
-            {
-              "Children": [],
-              "Source": null,
-              "Foreground": null,
-              "Background": null,
-              "Tag": "CellLeftPad1:0",
-              "TotalHeight": 0.0,
-              "TotalWidth": 0.175,
-              "Italic": 0.0,
-              "Width": 0.175,
-              "Height": 0.0,
-              "Depth": 0.0,
-              "Shift": 0.869445
-            },
             {
               "Children": [
                 {
@@ -184,14 +156,14 @@
                   "Source": null,
                   "Foreground": null,
                   "Background": null,
-                  "Tag": "CellTopPad1:0",
+                  "Tag": null,
                   "TotalHeight": 0.175,
-                  "TotalWidth": 0.429167,
+                  "TotalWidth": 0.0,
                   "Italic": 0.0,
-                  "Width": 0.429167,
+                  "Width": 0.0,
                   "Height": 0.175,
                   "Depth": 0.0,
-                  "Shift": 0.0
+                  "Shift": 0.35
                 },
                 {
                   "Character": {
@@ -215,7 +187,7 @@
                   },
                   "Foreground": null,
                   "Background": null,
-                  "Tag": "innercell",
+                  "Tag": null,
                   "TotalHeight": 0.694445,
                   "TotalWidth": 0.429167,
                   "Italic": 0.0,
@@ -229,26 +201,26 @@
                   "Source": null,
                   "Foreground": null,
                   "Background": null,
-                  "Tag": "CellBottomPad1:0",
+                  "Tag": null,
                   "TotalHeight": 0.175,
-                  "TotalWidth": 0.429167,
+                  "TotalWidth": 0.0,
                   "Italic": 0.0,
-                  "Width": 0.429167,
+                  "Width": 0.0,
                   "Height": 0.175,
                   "Depth": 0.0,
-                  "Shift": 0.0
+                  "Shift": 0.35
                 }
               ],
               "Source": null,
               "Foreground": null,
               "Background": null,
-              "Tag": "Cell1:0",
+              "Tag": null,
               "TotalHeight": 1.044445,
               "TotalWidth": 0.429167,
               "Italic": 0.0,
               "Width": 0.429167,
-              "Height": 0.175,
-              "Depth": 0.869445,
+              "Height": 1.044445,
+              "Depth": 0.0,
               "Shift": 0.0
             },
             {
@@ -256,14 +228,14 @@
               "Source": null,
               "Foreground": null,
               "Background": null,
-              "Tag": "CellRightPad1:0",
+              "Tag": null,
               "TotalHeight": 0.0,
               "TotalWidth": 0.274423,
               "Italic": 0.0,
               "Width": 0.274423,
               "Height": 0.0,
               "Depth": 0.0,
-              "Shift": 0.869445
+              "Shift": 0.0
             }
           ],
           "Source": null,
@@ -271,29 +243,15 @@
           "Background": null,
           "Tag": null,
           "TotalHeight": 1.044445,
-          "TotalWidth": 0.87859,
+          "TotalWidth": 0.70358999999999994,
           "Italic": 0.0,
-          "Width": 0.87859,
-          "Height": 0.175,
-          "Depth": 0.869445,
+          "Width": 0.70358999999999994,
+          "Height": 1.044445,
+          "Depth": 0.0,
           "Shift": 0.0
         },
         {
           "Children": [
-            {
-              "Children": [],
-              "Source": null,
-              "Foreground": null,
-              "Background": null,
-              "Tag": "CellLeftPad2:0",
-              "TotalHeight": 0.0,
-              "TotalWidth": 0.175,
-              "Italic": 0.0,
-              "Width": 0.175,
-              "Height": 0.0,
-              "Depth": 0.0,
-              "Shift": 0.60555500000000007
-            },
             {
               "Children": [
                 {
@@ -301,14 +259,14 @@
                   "Source": null,
                   "Foreground": null,
                   "Background": null,
-                  "Tag": "CellTopPad2:0",
+                  "Tag": null,
                   "TotalHeight": 0.175,
-                  "TotalWidth": 0.432756,
+                  "TotalWidth": 0.0,
                   "Italic": 0.0,
-                  "Width": 0.432756,
+                  "Width": 0.0,
                   "Height": 0.175,
                   "Depth": 0.0,
-                  "Shift": 0.0
+                  "Shift": 0.35
                 },
                 {
                   "Character": {
@@ -332,7 +290,7 @@
                   },
                   "Foreground": null,
                   "Background": null,
-                  "Tag": "innercell",
+                  "Tag": null,
                   "TotalHeight": 0.430555,
                   "TotalWidth": 0.432756,
                   "Italic": 0.0,
@@ -346,26 +304,26 @@
                   "Source": null,
                   "Foreground": null,
                   "Background": null,
-                  "Tag": "CellBottomPad2:0",
+                  "Tag": null,
                   "TotalHeight": 0.175,
-                  "TotalWidth": 0.432756,
+                  "TotalWidth": 0.0,
                   "Italic": 0.0,
-                  "Width": 0.432756,
+                  "Width": 0.0,
                   "Height": 0.175,
                   "Depth": 0.0,
-                  "Shift": 0.0
+                  "Shift": 0.35
                 }
               ],
               "Source": null,
               "Foreground": null,
               "Background": null,
-              "Tag": "Cell2:0",
+              "Tag": null,
               "TotalHeight": 0.78055500000000011,
               "TotalWidth": 0.432756,
               "Italic": 0.0,
               "Width": 0.432756,
-              "Height": 0.175,
-              "Depth": 0.60555500000000007,
+              "Height": 0.78055500000000011,
+              "Depth": 0.0,
               "Shift": 0.0
             },
             {
@@ -373,14 +331,14 @@
               "Source": null,
               "Foreground": null,
               "Background": null,
-              "Tag": "CellRightPad2:0",
+              "Tag": null,
               "TotalHeight": 0.0,
               "TotalWidth": 0.270834,
               "Italic": 0.0,
               "Width": 0.270834,
               "Height": 0.0,
               "Depth": 0.0,
-              "Shift": 0.60555500000000007
+              "Shift": 0.0
             }
           ],
           "Source": null,
@@ -388,11 +346,11 @@
           "Background": null,
           "Tag": null,
           "TotalHeight": 0.78055500000000011,
-          "TotalWidth": 0.87859,
+          "TotalWidth": 0.70358999999999994,
           "Italic": 0.0,
-          "Width": 0.87859,
-          "Height": 0.175,
-          "Depth": 0.60555500000000007,
+          "Width": 0.70358999999999994,
+          "Height": 0.78055500000000011,
+          "Depth": 0.0,
           "Shift": 0.0
         }
       ],
@@ -405,12 +363,12 @@
       "Foreground": null,
       "Background": null,
       "Tag": null,
-      "TotalHeight": 2.605555,
-      "TotalWidth": 0.87859,
+      "TotalHeight": 2.6055550000000003,
+      "TotalWidth": 0.70358999999999994,
       "Italic": 0.0,
-      "Width": 0.87859,
-      "Height": 1.3027775,
-      "Depth": 1.3027775,
+      "Width": 0.70358999999999994,
+      "Height": 1.5527775000000001,
+      "Depth": 1.0527775000000001,
       "Shift": 0.0
     },
     {
@@ -439,11 +397,11 @@
   "Foreground": null,
   "Background": null,
   "Tag": null,
-  "TotalHeight": 3.05279275,
-  "TotalWidth": 1.68415,
+  "TotalHeight": 2.6055550000000003,
+  "TotalWidth": 1.453592,
   "Italic": 0.0,
-  "Width": 1.68415,
-  "Height": 1.75001525,
-  "Depth": 1.3027775,
+  "Width": 1.453592,
+  "Height": 1.5527775000000001,
+  "Depth": 1.0527775000000001,
   "Shift": 0.0
 }
