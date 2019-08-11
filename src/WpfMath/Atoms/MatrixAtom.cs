@@ -55,10 +55,9 @@ namespace WpfMath.Atoms
                 rowsContainer.Add(row);
             }
 
-            rowsContainer.Depth = rowsContainer.Height / 2;
             ApplyCellSizes(rowBoxes, matrixCellGaps);
 
-            var adjustedWidth = rowBoxes.Max(r => r.Width);
+            var adjustedWidth = rowBoxes.Max(r => r.TotalWidth);
             var adjustedHeight = rowHeights.Sum();
 
             rowsContainer.Depth = adjustedHeight / 2;
@@ -79,7 +78,7 @@ namespace WpfMath.Atoms
             // TODO[F]: remove rowIndex parameter altogether with Tags
             // TODO[F]: remove rowHeights and colunmWidths arguments (calculate them outside)
             // TODO[F]: return IEnumerable<Box> from here and make the outside code to control the paddings
-            var rowBox = new HorizontalBox {Tag = $"Row:{rowIndex}",};
+            var rowBox = new HorizontalBox();
 
             for (int j = 0; j < maxColumnCount; j++)
             {
