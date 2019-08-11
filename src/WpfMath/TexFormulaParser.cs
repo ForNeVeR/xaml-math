@@ -298,55 +298,6 @@ namespace WpfMath
             return value.Segment(start, position - start - 1);
         }
 
-        private string ReadGroup(string str, char leftchar, char rightchar, int startPosition)
-        {
-            StringBuilder sb = new StringBuilder();
-            if (startPosition == str.Length)
-            {
-                throw new TexParseException("illegal end!");
-            }
-            int deepness = 0; bool groupfound = false;
-            var start = startPosition;
-            if (str[start] == leftchar)
-            {
-                start++;
-                while (start < str.Length && groupfound == false)
-                {
-                    if (str[start] == leftchar)
-                    {
-                        deepness++;
-                        sb.Append(leftchar);
-                    }
-                    else if (str[start] == rightchar)
-                    {
-                        if (deepness == 0)
-                        {
-                            groupfound = true;
-                        }
-                        else
-                        {
-                            deepness--;
-                            sb.Append(rightchar);
-                        }
-                    }
-                    else
-                    {
-                        sb.Append(str[start]);
-                    }
-                    start++;
-                }
-            }
-
-            if (groupfound)
-            {
-                return sb.ToString();
-            }
-            else
-            {
-                throw new TexParseException("missing->>" + rightchar);
-            }
-        }
-
         /// <summary>Reads an element: typically, a curly brace-enclosed value group or a singular value.</summary>
         /// <exception cref="TexParseException">Will be thrown for ill-formed groups.</exception>
         private static SourceSpan ReadElement(SourceSpan value, ref int position)
@@ -612,10 +563,11 @@ namespace WpfMath
                 }
                 else if (curchar == leftGroupChar)
                 {
-                    var nestedgroup = ReadGroup(matrixsource.ToString(), leftGroupChar, rightGroupChar, i);
+                    var nestedSpan = ReadElementGroup(matrixsource, ref i, leftGroupChar, rightGroupChar);
 
-                    rowdata[rows][cols].builder.Append("{" + nestedgroup + "}");
-                    i += nestedgroup.Length + 1;
+                    rowdata[rows][cols].builder.Append("{" + nestedSpan + "}");
+                    // Compensate for i getting incremented in the loop:
+                    --i; // TODO[F]: Fix this by rethinking the parser
                 }
                 else if (curchar == '&')
                 {
