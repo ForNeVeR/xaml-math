@@ -53,56 +53,12 @@ namespace WpfMath.Atoms
 
             for (int i = 0; i < rowCount; i++)
             {
-                //row top pad
-                resultBox.Add(new StrutBox(0.0, VerticalPadding / 2, 0, 0));
+                var verticalPadding = new StrutBox(0.0, VerticalPadding / 2, 0, 0);
+                var row = CreateRowBox(environment, i, maxColumnCount, rowHeights, columnWidths);
 
-                var rowbox =  new HorizontalBox() {Tag= $"Row:{i}",};
-
-                for (int j = 0; j < maxColumnCount; j++)
-                {
-                    //cell left pad
-                    var cellleftpad = new StrutBox(HorizontalPadding / 2, 0, 0, 0)
-                    {
-                        Tag = $"CellLeftPad{i}:{j}",
-                        Shift =0,
-                    };
-
-                    //cell right pad
-                    var cellrightpad = new StrutBox(HorizontalPadding / 2, 0, 0, 0)
-                    {
-                        Tag = $"CellRightPad{i}:{j}",
-                        Shift = 0,
-                    };
-
-                    //cell box
-                    var rowcellbox = MatrixCells[i][j] == null ? StrutBox.Empty : MatrixCells[i][j].CreateBox(environment);
-                    rowcellbox.Tag = "innercell";
-                    //cell box holder
-                    var rowcolbox = new VerticalBox() { Tag = $"Cell{i}:{j}" };
-
-                    var celltoppad = new StrutBox(rowcellbox.TotalWidth, VerticalPadding / 2, 0, 0){Tag = $"CellTopPad{i}:{j}",};
-                    var cellbottompad = new StrutBox(rowcellbox.TotalWidth, VerticalPadding / 2, 0, 0){Tag = $"CellBottomPad{i}:{j}",};
-                    rowcolbox.Add(celltoppad);
-                    rowcolbox.Add(rowcellbox);
-                    rowcolbox.Add(cellbottompad);
-
-                    rowcolbox.Width = rowcellbox.TotalWidth;
-
-                    rowbox.Add(cellleftpad);
-                    rowbox.Add(rowcolbox);
-                    rowbox.Add(cellrightpad);
-
-                    var cellHeight = rowcellbox.TotalHeight + VerticalPadding;
-                    rowHeights[i] = Math.Max(rowHeights[i], cellHeight);
-
-                    var columnWidth = rowcellbox.TotalWidth;
-                    columnWidths[j] = Math.Max(columnWidths[j], columnWidth);
-                }
-
-                rowbox.Shift = 0;
-                resultBox.Add(rowbox);
-                //row bottom pad
-                resultBox.Add(new StrutBox(0.0, VerticalPadding / 2, 0, 0));
+                resultBox.Add(verticalPadding);
+                resultBox.Add(row);
+                resultBox.Add(verticalPadding);
             }
 
             int rows = 0;
@@ -390,6 +346,60 @@ namespace WpfMath.Atoms
             finalbox.Add(new StrutBox(HorizontalPadding/8, 0, 0, 0));
 
             return finalbox;
+        }
+
+        private HorizontalBox CreateRowBox(
+            TexEnvironment environment,
+            int rowIndex,
+            int maxColumnCount,
+            double[] rowHeights,
+            double[] columnWidths)
+        {
+            var rowBox = new HorizontalBox {Tag = $"Row:{rowIndex}",};
+
+            for (int j = 0; j < maxColumnCount; j++)
+            {
+                //cell left pad
+                var cellleftpad = new StrutBox(HorizontalPadding / 2, 0, 0, 0)
+                {
+                    Tag = $"CellLeftPad{rowIndex}:{j}",
+                    Shift = 0,
+                };
+
+                //cell right pad
+                var cellrightpad = new StrutBox(HorizontalPadding / 2, 0, 0, 0)
+                {
+                    Tag = $"CellRightPad{rowIndex}:{j}",
+                    Shift = 0,
+                };
+
+                //cell box
+                var rowcellbox = MatrixCells[rowIndex][j] == null ? StrutBox.Empty : MatrixCells[rowIndex][j].CreateBox(environment);
+                rowcellbox.Tag = "innercell";
+                //cell box holder
+                var rowcolbox = new VerticalBox() {Tag = $"Cell{rowIndex}:{j}"};
+
+                var celltoppad = new StrutBox(rowcellbox.TotalWidth, VerticalPadding / 2, 0, 0) {Tag = $"CellTopPad{rowIndex}:{j}",};
+                var cellbottompad = new StrutBox(rowcellbox.TotalWidth, VerticalPadding / 2, 0, 0)
+                    {Tag = $"CellBottomPad{rowIndex}:{j}",};
+                rowcolbox.Add(celltoppad);
+                rowcolbox.Add(rowcellbox);
+                rowcolbox.Add(cellbottompad);
+
+                rowcolbox.Width = rowcellbox.TotalWidth;
+
+                rowBox.Add(cellleftpad);
+                rowBox.Add(rowcolbox);
+                rowBox.Add(cellrightpad);
+
+                var cellHeight = rowcellbox.TotalHeight + VerticalPadding;
+                rowHeights[rowIndex] = Math.Max(rowHeights[rowIndex], cellHeight);
+
+                var columnWidth = rowcellbox.TotalWidth;
+                columnWidths[j] = Math.Max(columnWidths[j], columnWidth);
+            }
+
+            return rowBox;
         }
     }
 }
