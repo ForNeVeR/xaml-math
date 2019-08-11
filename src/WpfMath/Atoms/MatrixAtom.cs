@@ -13,15 +13,13 @@ namespace WpfMath.Atoms
         public MatrixAtom(
             SourceSpan source,
             List<List<Atom>> cells,
-            VerticalAlignment verticalAlignment = VerticalAlignment.Center,
-            HorizontalAlignment horizontalAlignment = HorizontalAlignment.Center,
+            MatrixCellAlignment matrixCellAlignment = MatrixCellAlignment.Center,
             double verticalPadding = 0.35,
             double horizontalPadding = 0.35) : base(source)
         {
             MatrixCells = new ReadOnlyCollection<ReadOnlyCollection<Atom>>(
                 cells.Select(row => new ReadOnlyCollection<Atom>(row)).ToList());
-            HorizontalAlignment = horizontalAlignment;
-            VerticalAlignment = verticalAlignment;
+            MatrixCellAlignment = matrixCellAlignment;
             VerticalPadding = verticalPadding;
             HorizontalPadding = horizontalPadding;
         }
@@ -32,9 +30,7 @@ namespace WpfMath.Atoms
 
         public double HorizontalPadding { get; }
 
-        public VerticalAlignment VerticalAlignment { get; }
-
-        public HorizontalAlignment HorizontalAlignment { get; }
+        public MatrixCellAlignment MatrixCellAlignment { get; }
 
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
@@ -87,9 +83,9 @@ namespace WpfMath.Atoms
                             var leftstructboxtag = $"CellLeftPad{rows}:{columns}";
                             var rightstructboxtag = $"CellRightPad{rows}:{columns}";
 
-                            switch (HorizontalAlignment)
+                            switch (MatrixCellAlignment)
                             {
-                                case HorizontalAlignment.Left:
+                                case MatrixCellAlignment.Left:
                                     {
                                         if (prevrowcolitem is StrutBox && prevrowcolitem.Tag.ToString() == leftstructboxtag)
                                         {
@@ -104,22 +100,7 @@ namespace WpfMath.Atoms
                                         break;
                                     }
 
-                                case HorizontalAlignment.Right:
-                                    {
-                                        if (prevrowcolitem is StrutBox && prevrowcolitem.Tag.ToString() == leftstructboxtag)
-                                        {
-                                            prevrowcolitem.Width +=2* matrixCellGaps[rows][columns].Horizontal;
-                                            rowwidth += prevrowcolitem.TotalWidth;
-                                        }
-                                        if (nextrowcolitem is StrutBox && nextrowcolitem.Tag.ToString() == rightstructboxtag)
-                                        {
-                                            //nextrowcolitem.Width += matrixCellGaps[a][b].Horizontal;
-                                            rowwidth += nextrowcolitem.TotalWidth;
-                                        }
-                                        break;
-                                    }
-
-                                case HorizontalAlignment.Center:
+                                case MatrixCellAlignment.Center:
                                     {
                                         if (prevrowcolitem is StrutBox && prevrowcolitem.Tag.ToString() == leftstructboxtag)
                                         {
@@ -133,26 +114,6 @@ namespace WpfMath.Atoms
                                         }
                                         break;
                                     }
-
-                                //case HorizontalAlignment.Stretch:
-                                //    {
-                                //        if (prevrowcolitem is StrutBox && prevrowcolitem.Tag.ToString() == leftstructboxtag)
-                                //        {
-                                //            prevrowcolitem.Width = 0;
-                                //            prevrowcolitem.Italic = 0;
-                                //            rowwidth += prevrowcolitem.TotalWidth;
-                                //        }
-                                //        if (nextrowcolitem is StrutBox && nextrowcolitem.Tag.ToString() == rightstructboxtag)
-                                //        {
-                                //            nextrowcolitem.Width = 0;
-                                //            nextrowcolitem.Italic = 0;
-                                //            rowwidth += nextrowcolitem.TotalWidth;
-                                //        }
-                                //        break;
-                                //    }
-
-                                default:
-                                    break;
                             }
 
                             double cellheight = 0;
@@ -169,92 +130,21 @@ namespace WpfMath.Atoms
                                     var topstructboxtag = $"CellTopPad{rows}:{columns}";
                                     var bottomstructboxtag = $"CellBottomPad{rows}:{columns}";
 
-                                    switch (VerticalAlignment)
+                                    if (prevcellitem.Tag.ToString() == topstructboxtag)
                                     {
-                                        case VerticalAlignment.Bottom:
-                                            {
-                                                if (prevcellitem.Tag.ToString() == topstructboxtag)
-                                                {
-                                                    prevcellitem.Height +=2* matrixCellGaps[rows][columns].Vertical;
-                                                    //prevcellitem.Background = Brushes.Aquamarine;
-                                                    cellheight += prevcellitem.TotalHeight;
-                                                    if (prevcellitem.Height > (currowcolitem.Height / 2))
-                                                    {
+                                        prevcellitem.Height += matrixCellGaps[rows][columns].Vertical;
+                                        //prevcellitem.Background = Brushes.Aquamarine;
+                                        cellheight += prevcellitem.TotalHeight;
+                                        if (prevcellitem.Height > (currowcolitem.Height / 2))
+                                        {
 
-                                                    }
-                                                }
-                                                if (nextcellitem.Tag.ToString() == bottomstructboxtag)
-                                                {
-                                                    //nextcellitem.Height += matrixCellGaps[a][b].Vertical;
-                                                    //nextcellitem.Background = Brushes.BurlyWood;
-                                                    cellheight += nextcellitem.TotalHeight;
-                                                }
-                                                break;
-                                            }
-                                        case VerticalAlignment.Center:
-                                            {
-                                                if (prevcellitem.Tag.ToString() == topstructboxtag)
-                                                {
-                                                    prevcellitem.Height += matrixCellGaps[rows][columns].Vertical;
-                                                    //prevcellitem.Background = Brushes.Aquamarine;
-                                                    cellheight += prevcellitem.TotalHeight;
-                                                    if (prevcellitem.Height > (currowcolitem.Height / 2))
-                                                    {
-
-                                                    }
-                                                }
-                                                if (nextcellitem.Tag.ToString() == bottomstructboxtag)
-                                                {
-                                                    nextcellitem.Height += matrixCellGaps[rows][columns].Vertical;
-                                                    //nextcellitem.Background = Brushes.BurlyWood;
-                                                    cellheight += nextcellitem.TotalHeight;
-                                                }
-                                                break;
-                                            }
-                                        //case VerticalAlignment.Stretch:
-                                        //    {
-                                        //        if (prevcellitem.Tag.ToString() == topstructboxtag)
-                                        //        {
-                                        //            prevcellitem.Height = 0;
-                                        //            prevcellitem.Depth = 0;
-                                        //            //prevcellitem.Background = Brushes.Aquamarine;
-                                        //            cellheight += prevcellitem.TotalHeight;
-                                        //            if (prevcellitem.Height > (currowcolitem.Height / 2))
-                                        //            {
-
-                                        //            }
-                                        //        }
-                                        //        if (nextcellitem.Tag.ToString() == bottomstructboxtag)
-                                        //        {
-                                        //            nextcellitem.Height = 0;
-                                        //            nextcellitem.Depth = 0;
-                                        //            //nextcellitem.Background = Brushes.BurlyWood;
-                                        //            cellheight += nextcellitem.TotalHeight;
-                                        //        }
-                                        //        break;
-                                        //    }
-                                        case VerticalAlignment.Top:
-                                            {
-                                                if (prevcellitem.Tag.ToString() == topstructboxtag)
-                                                {
-                                                    //prevcellitem.Height += matrixCellGaps[a][b].Vertical;
-                                                    //prevcellitem.Background = Brushes.Aquamarine;
-                                                    cellheight += prevcellitem.TotalHeight;
-                                                    if (prevcellitem.Height > (currowcolitem.Height / 2))
-                                                    {
-
-                                                    }
-                                                }
-                                                if (nextcellitem.Tag.ToString() == bottomstructboxtag)
-                                                {
-                                                    nextcellitem.Height +=2* matrixCellGaps[rows][columns].Vertical;
-                                                    //nextcellitem.Background = Brushes.BurlyWood;
-                                                    cellheight += nextcellitem.TotalHeight;
-                                                }
-                                                break;
-                                            }
-                                        default:
-                                            break;
+                                        }
+                                    }
+                                    if (nextcellitem.Tag.ToString() == bottomstructboxtag)
+                                    {
+                                        nextcellitem.Height += matrixCellGaps[rows][columns].Vertical;
+                                        //nextcellitem.Background = Brushes.BurlyWood;
+                                        cellheight += nextcellitem.TotalHeight;
                                     }
 
                                     if (prevrowcolitem is StrutBox && prevrowcolitem.Tag.ToString() == leftstructboxtag)

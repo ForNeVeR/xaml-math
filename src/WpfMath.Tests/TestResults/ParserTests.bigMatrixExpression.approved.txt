@@ -363,8 +363,7 @@
                   ],
                   "VerticalPadding": 0.35,
                   "HorizontalPadding": 0.35,
-                  "VerticalAlignment": "Center",
-                  "HorizontalAlignment": "Center",
+                  "MatrixCellAlignment": "Center",
                   "Type": "Ordinary",
                   "Source": {
                     "Start": 47,
@@ -765,8 +764,7 @@
                   ],
                   "VerticalPadding": 0.35,
                   "HorizontalPadding": 0.35,
-                  "VerticalAlignment": "Center",
-                  "HorizontalAlignment": "Center",
+                  "MatrixCellAlignment": "Center",
                   "Type": "Ordinary",
                   "Source": {
                     "Start": 112,
@@ -1198,8 +1196,7 @@
                   ],
                   "VerticalPadding": 0.35,
                   "HorizontalPadding": 0.35,
-                  "VerticalAlignment": "Center",
-                  "HorizontalAlignment": "Center",
+                  "MatrixCellAlignment": "Center",
                   "Type": "Ordinary",
                   "Source": {
                     "Start": 206,
@@ -1220,8 +1217,7 @@
           ],
           "VerticalPadding": 0.35,
           "HorizontalPadding": 0.35,
-          "VerticalAlignment": "Center",
-          "HorizontalAlignment": "Center",
+          "MatrixCellAlignment": "Center",
           "Type": "Ordinary",
           "Source": {
             "Start": 38,

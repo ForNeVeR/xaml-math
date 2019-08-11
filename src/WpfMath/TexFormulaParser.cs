@@ -389,7 +389,7 @@ namespace WpfMath
                         var matrixsource = ReadElement(value, ref position);
 
                         var cells = GetMatrixData(formula, matrixsource);
-                        return new CasesAtom(matrixsource, new MatrixAtom(matrixsource, cells, horizontalAlignment: HorizontalAlignment.Left));
+                        return new CasesAtom(matrixsource, new MatrixAtom(matrixsource, cells, matrixCellAlignment: MatrixCellAlignment.Left));
                     }
 
                 case "frac":

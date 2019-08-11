@@ -565,8 +565,7 @@
           ],
           "VerticalPadding": 0.35,
           "HorizontalPadding": 0.35,
-          "VerticalAlignment": "Center",
-          "HorizontalAlignment": "Left",
+          "MatrixCellAlignment": "Left",
           "Type": "Ordinary",
           "Source": {
             "Start": 14,

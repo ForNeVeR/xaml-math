@@ -97,9 +97,13 @@ let private verifyBox source =
     verifyObject box
 
 [<Fact>]
-let simpleMatrixAtomBox() =
+let simpleMatrixBox() =
     verifyBox @"\pmatrix{2 & 2 \\ 2 & 2}"
 
 [<Fact>]
-let nestedMatrixAtomBox() =
+let casesBox() =
+    verifyBox @"\cases{a \\ b \\ c}"
+
+[<Fact>]
+let nestedMatrixBox() =
     verifyBox @"\matrix{ 1 & 2 & 3 \\ 4 & {\matrix{ 5 \\ 6 }} & 7 }"

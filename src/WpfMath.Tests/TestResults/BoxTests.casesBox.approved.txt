@@ -1,0 +1,663 @@
+﻿{
+  "Children": [
+    {
+      "Children": [
+        {
+          "Character": {
+            "Character": "8",
+            "Font": "pack://application:,,,/WpfMath;component/Fonts/cmex10.ttf",
+            "Size": 1.0,
+            "Metrics": {
+              "Width": 0.888891,
+              "Height": 0.0,
+              "Depth": 0.900009,
+              "Italic": 0.0
+            },
+            "FontId": 2
+          },
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "Tag": null,
+          "TotalHeight": 0.900009,
+          "TotalWidth": 0.888891,
+          "Italic": 0.0,
+          "Width": 0.888891,
+          "Height": 0.0,
+          "Depth": 0.900009,
+          "Shift": 0.0
+        },
+        {
+          "Character": {
+            "Character": ">",
+            "Font": "pack://application:,,,/WpfMath;component/Fonts/cmex10.ttf",
+            "Size": 1.0,
+            "Metrics": {
+              "Width": 0.888891,
+              "Height": 0.0,
+              "Depth": 0.300003,
+              "Italic": 0.0
+            },
+            "FontId": 2
+          },
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "Tag": null,
+          "TotalHeight": 0.300003,
+          "TotalWidth": 0.888891,
+          "Italic": 0.0,
+          "Width": 0.888891,
+          "Height": 0.0,
+          "Depth": 0.300003,
+          "Shift": 0.0
+        },
+        {
+          "Character": {
+            "Character": "<",
+            "Font": "pack://application:,,,/WpfMath;component/Fonts/cmex10.ttf",
+            "Size": 1.0,
+            "Metrics": {
+              "Width": 0.888891,
+              "Height": 0.0,
+              "Depth": 1.800018,
+              "Italic": 0.0
+            },
+            "FontId": 2
+          },
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "Tag": null,
+          "TotalHeight": 1.800018,
+          "TotalWidth": 0.888891,
+          "Italic": 0.0,
+          "Width": 0.888891,
+          "Height": 0.0,
+          "Depth": 1.800018,
+          "Shift": 0.0
+        },
+        {
+          "Character": {
+            "Character": ">",
+            "Font": "pack://application:,,,/WpfMath;component/Fonts/cmex10.ttf",
+            "Size": 1.0,
+            "Metrics": {
+              "Width": 0.888891,
+              "Height": 0.0,
+              "Depth": 0.300003,
+              "Italic": 0.0
+            },
+            "FontId": 2
+          },
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "Tag": null,
+          "TotalHeight": 0.300003,
+          "TotalWidth": 0.888891,
+          "Italic": 0.0,
+          "Width": 0.888891,
+          "Height": 0.0,
+          "Depth": 0.300003,
+          "Shift": 0.0
+        },
+        {
+          "Character": {
+            "Character": ":",
+            "Font": "pack://application:,,,/WpfMath;component/Fonts/cmex10.ttf",
+            "Size": 1.0,
+            "Metrics": {
+              "Width": 0.888891,
+              "Height": 0.0,
+              "Depth": 0.900009,
+              "Italic": 0.0
+            },
+            "FontId": 2
+          },
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "Tag": null,
+          "TotalHeight": 0.900009,
+          "TotalWidth": 0.888891,
+          "Italic": 0.0,
+          "Width": 0.888891,
+          "Height": 0.0,
+          "Depth": 0.900009,
+          "Shift": 0.0
+        }
+      ],
+      "Source": null,
+      "Foreground": null,
+      "Background": null,
+      "Tag": null,
+      "TotalHeight": 4.200042,
+      "TotalWidth": 0.888891,
+      "Italic": 0.0,
+      "Width": 0.888891,
+      "Height": 0.0,
+      "Depth": 4.200042,
+      "Shift": -1.9527775
+    },
+    {
+      "Children": [
+        {
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "Tag": null,
+          "TotalHeight": 0.0,
+          "TotalWidth": 0.04375,
+          "Italic": 0.0,
+          "Width": 0.04375,
+          "Height": 0.0,
+          "Depth": 0.0,
+          "Shift": 0.0
+        },
+        {
+          "Children": [
+            {
+              "Children": [],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "Tag": null,
+              "TotalHeight": 0.175,
+              "TotalWidth": 0.0,
+              "Italic": 0.0,
+              "Width": 0.0,
+              "Height": 0.175,
+              "Depth": 0.0,
+              "Shift": 0.0
+            },
+            {
+              "Children": [
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "Tag": "CellLeftPad0:0",
+                  "TotalHeight": 0.0,
+                  "TotalWidth": 0.175,
+                  "Italic": 0.0,
+                  "Width": 0.175,
+                  "Height": 0.0,
+                  "Depth": 0.0,
+                  "Shift": 0.60555500000000007
+                },
+                {
+                  "Children": [
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "Tag": "CellTopPad0:0",
+                      "TotalHeight": 0.17499999999999993,
+                      "TotalWidth": 0.52859,
+                      "Italic": 0.0,
+                      "Width": 0.52859,
+                      "Height": 0.17499999999999993,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    },
+                    {
+                      "Character": {
+                        "Character": "a",
+                        "Font": "pack://application:,,,/WpfMath;component/Fonts/cmmi10.ttf",
+                        "Size": 1.0,
+                        "Metrics": {
+                          "Width": 0.52859,
+                          "Height": 0.430555,
+                          "Depth": 0.0,
+                          "Italic": 0.0
+                        },
+                        "FontId": 0
+                      },
+                      "Children": [],
+                      "Source": {
+                        "Start": 7,
+                        "End": 8,
+                        "Length": 1,
+                        "Source": "\\cases{a \\\\ b \\\\ c}"
+                      },
+                      "Foreground": null,
+                      "Background": null,
+                      "Tag": "innercell",
+                      "TotalHeight": 0.430555,
+                      "TotalWidth": 0.52859,
+                      "Italic": 0.0,
+                      "Width": 0.52859,
+                      "Height": 0.430555,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    },
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "Tag": "CellBottomPad0:0",
+                      "TotalHeight": 0.17499999999999993,
+                      "TotalWidth": 0.52859,
+                      "Italic": 0.0,
+                      "Width": 0.52859,
+                      "Height": 0.17499999999999993,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    }
+                  ],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "Tag": "Cell0:0",
+                  "TotalHeight": 0.78055500000000011,
+                  "TotalWidth": 0.52859,
+                  "Italic": 0.0,
+                  "Width": 0.52859,
+                  "Height": 0.175,
+                  "Depth": 0.60555500000000007,
+                  "Shift": 0.0
+                },
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "Tag": "CellRightPad0:0",
+                  "TotalHeight": 0.0,
+                  "TotalWidth": 0.175,
+                  "Italic": 0.0,
+                  "Width": 0.175,
+                  "Height": 0.0,
+                  "Depth": 0.0,
+                  "Shift": 0.60555500000000007
+                }
+              ],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "Tag": "Row:0",
+              "TotalHeight": 0.78055500000000011,
+              "TotalWidth": 0.87859,
+              "Italic": 0.0,
+              "Width": 0.87859,
+              "Height": 0.175,
+              "Depth": 0.60555500000000007,
+              "Shift": 0.0
+            },
+            {
+              "Children": [],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "Tag": null,
+              "TotalHeight": 0.175,
+              "TotalWidth": 0.0,
+              "Italic": 0.0,
+              "Width": 0.0,
+              "Height": 0.175,
+              "Depth": 0.0,
+              "Shift": 0.0
+            },
+            {
+              "Children": [],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "Tag": null,
+              "TotalHeight": 0.175,
+              "TotalWidth": 0.0,
+              "Italic": 0.0,
+              "Width": 0.0,
+              "Height": 0.175,
+              "Depth": 0.0,
+              "Shift": 0.0
+            },
+            {
+              "Children": [
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "Tag": "CellLeftPad1:0",
+                  "TotalHeight": 0.0,
+                  "TotalWidth": 0.175,
+                  "Italic": 0.0,
+                  "Width": 0.175,
+                  "Height": 0.0,
+                  "Depth": 0.0,
+                  "Shift": 0.869445
+                },
+                {
+                  "Children": [
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "Tag": "CellTopPad1:0",
+                      "TotalHeight": 0.175,
+                      "TotalWidth": 0.429167,
+                      "Italic": 0.0,
+                      "Width": 0.429167,
+                      "Height": 0.175,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    },
+                    {
+                      "Character": {
+                        "Character": "b",
+                        "Font": "pack://application:,,,/WpfMath;component/Fonts/cmmi10.ttf",
+                        "Size": 1.0,
+                        "Metrics": {
+                          "Width": 0.429167,
+                          "Height": 0.694445,
+                          "Depth": 0.0,
+                          "Italic": 0.0
+                        },
+                        "FontId": 0
+                      },
+                      "Children": [],
+                      "Source": {
+                        "Start": 12,
+                        "End": 13,
+                        "Length": 1,
+                        "Source": "\\cases{a \\\\ b \\\\ c}"
+                      },
+                      "Foreground": null,
+                      "Background": null,
+                      "Tag": "innercell",
+                      "TotalHeight": 0.694445,
+                      "TotalWidth": 0.429167,
+                      "Italic": 0.0,
+                      "Width": 0.429167,
+                      "Height": 0.694445,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    },
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "Tag": "CellBottomPad1:0",
+                      "TotalHeight": 0.175,
+                      "TotalWidth": 0.429167,
+                      "Italic": 0.0,
+                      "Width": 0.429167,
+                      "Height": 0.175,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    }
+                  ],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "Tag": "Cell1:0",
+                  "TotalHeight": 1.044445,
+                  "TotalWidth": 0.429167,
+                  "Italic": 0.0,
+                  "Width": 0.429167,
+                  "Height": 0.175,
+                  "Depth": 0.869445,
+                  "Shift": 0.0
+                },
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "Tag": "CellRightPad1:0",
+                  "TotalHeight": 0.0,
+                  "TotalWidth": 0.274423,
+                  "Italic": 0.0,
+                  "Width": 0.274423,
+                  "Height": 0.0,
+                  "Depth": 0.0,
+                  "Shift": 0.869445
+                }
+              ],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "Tag": "Row:1",
+              "TotalHeight": 1.044445,
+              "TotalWidth": 0.87859,
+              "Italic": 0.0,
+              "Width": 0.87859,
+              "Height": 0.175,
+              "Depth": 0.869445,
+              "Shift": 0.0
+            },
+            {
+              "Children": [],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "Tag": null,
+              "TotalHeight": 0.175,
+              "TotalWidth": 0.0,
+              "Italic": 0.0,
+              "Width": 0.0,
+              "Height": 0.175,
+              "Depth": 0.0,
+              "Shift": 0.0
+            },
+            {
+              "Children": [],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "Tag": null,
+              "TotalHeight": 0.175,
+              "TotalWidth": 0.0,
+              "Italic": 0.0,
+              "Width": 0.0,
+              "Height": 0.175,
+              "Depth": 0.0,
+              "Shift": 0.0
+            },
+            {
+              "Children": [
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "Tag": "CellLeftPad2:0",
+                  "TotalHeight": 0.0,
+                  "TotalWidth": 0.175,
+                  "Italic": 0.0,
+                  "Width": 0.175,
+                  "Height": 0.0,
+                  "Depth": 0.0,
+                  "Shift": 0.60555500000000007
+                },
+                {
+                  "Children": [
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "Tag": "CellTopPad2:0",
+                      "TotalHeight": 0.17499999999999993,
+                      "TotalWidth": 0.432756,
+                      "Italic": 0.0,
+                      "Width": 0.432756,
+                      "Height": 0.17499999999999993,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    },
+                    {
+                      "Character": {
+                        "Character": "c",
+                        "Font": "pack://application:,,,/WpfMath;component/Fonts/cmmi10.ttf",
+                        "Size": 1.0,
+                        "Metrics": {
+                          "Width": 0.432756,
+                          "Height": 0.430555,
+                          "Depth": 0.0,
+                          "Italic": 0.0
+                        },
+                        "FontId": 0
+                      },
+                      "Children": [],
+                      "Source": {
+                        "Start": 17,
+                        "End": 18,
+                        "Length": 1,
+                        "Source": "\\cases{a \\\\ b \\\\ c}"
+                      },
+                      "Foreground": null,
+                      "Background": null,
+                      "Tag": "innercell",
+                      "TotalHeight": 0.430555,
+                      "TotalWidth": 0.432756,
+                      "Italic": 0.0,
+                      "Width": 0.432756,
+                      "Height": 0.430555,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    },
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "Tag": "CellBottomPad2:0",
+                      "TotalHeight": 0.17499999999999993,
+                      "TotalWidth": 0.432756,
+                      "Italic": 0.0,
+                      "Width": 0.432756,
+                      "Height": 0.17499999999999993,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    }
+                  ],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "Tag": "Cell2:0",
+                  "TotalHeight": 0.78055500000000011,
+                  "TotalWidth": 0.432756,
+                  "Italic": 0.0,
+                  "Width": 0.432756,
+                  "Height": 0.175,
+                  "Depth": 0.60555500000000007,
+                  "Shift": 0.0
+                },
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "Tag": "CellRightPad2:0",
+                  "TotalHeight": 0.0,
+                  "TotalWidth": 0.270834,
+                  "Italic": 0.0,
+                  "Width": 0.270834,
+                  "Height": 0.0,
+                  "Depth": 0.0,
+                  "Shift": 0.60555500000000007
+                }
+              ],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "Tag": "Row:2",
+              "TotalHeight": 0.78055500000000011,
+              "TotalWidth": 0.87859,
+              "Italic": 0.0,
+              "Width": 0.87859,
+              "Height": 0.175,
+              "Depth": 0.60555500000000007,
+              "Shift": 0.0
+            },
+            {
+              "Children": [],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "Tag": null,
+              "TotalHeight": 0.175,
+              "TotalWidth": 0.0,
+              "Italic": 0.0,
+              "Width": 0.0,
+              "Height": 0.175,
+              "Depth": 0.0,
+              "Shift": 0.0
+            }
+          ],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "Tag": null,
+          "TotalHeight": 3.655555,
+          "TotalWidth": 0.87859,
+          "Italic": 0.0,
+          "Width": 0.87859,
+          "Height": 3.655555,
+          "Depth": 0.0,
+          "Shift": 1.7027775
+        },
+        {
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "Tag": null,
+          "TotalHeight": 0.0,
+          "TotalWidth": 0.04375,
+          "Italic": 0.0,
+          "Width": 0.04375,
+          "Height": 0.0,
+          "Depth": 0.0,
+          "Shift": 0.0
+        }
+      ],
+      "Source": {
+        "Start": 7,
+        "End": 18,
+        "Length": 11,
+        "Source": "\\cases{a \\\\ b \\\\ c}"
+      },
+      "Foreground": null,
+      "Background": null,
+      "Tag": null,
+      "TotalHeight": 3.655555,
+      "TotalWidth": 0.96608999999999989,
+      "Italic": 0.0,
+      "Width": 0.96608999999999989,
+      "Height": 1.9527775,
+      "Depth": 1.7027775,
+      "Shift": -0.125
+    }
+  ],
+  "Source": {
+    "Start": 7,
+    "End": 18,
+    "Length": 11,
+    "Source": "\\cases{a \\\\ b \\\\ c}"
+  },
+  "Foreground": null,
+  "Background": null,
+  "Tag": null,
+  "TotalHeight": 4.325042,
+  "TotalWidth": 1.854981,
+  "Italic": 0.0,
+  "Width": 1.854981,
+  "Height": 2.0777775,
+  "Depth": 2.2472645,
+  "Shift": 0.0
+}

@@ -1,10 +1,9 @@
 namespace WpfMath
 {
-    public enum HorizontalAlignment
+    public enum MatrixCellAlignment
     {
-        Center,
         Left,
-        Right,
+        Center
     }
 
     public enum TexDelimeterType
@@ -96,12 +95,4 @@ namespace WpfMath
         Pica = 4,
         Mu = 5
     }
-
-    public enum VerticalAlignment
-    {
-        Bottom,
-        Center,
-        Top,
-    }
-
 }
