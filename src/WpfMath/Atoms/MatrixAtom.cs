@@ -42,9 +42,47 @@ namespace WpfMath.Atoms
             var columnWidths = new double[maxColumnCount];
 
             var rowBoxes = new List<HorizontalBox>();
-            for (int i = 0; i < rowCount; i++)
+            for (int rowIndex = 0; rowIndex < rowCount; rowIndex++)
             {
-                rowBoxes.Add(CreateRowBox(environment, i, maxColumnCount, rowHeights, columnWidths));
+                var rowBox = new HorizontalBox();
+                rowBoxes.Add(rowBox);
+
+                // TODO[F]: Get rid of rowBoxes, rowIndex, columnIndex
+
+                var columnIndex = 0;
+                foreach (var rowItem in CreateRowCellBoxes(environment, rowIndex, maxColumnCount, rowHeights, columnWidths))
+                {
+                    //cell left pad
+                    var cellleftpad = new StrutBox(HorizontalPadding / 2, 0, 0, 0)
+                    {
+                        Tag = $"CellLeftPad{rowIndex}:{columnIndex}",
+                        Shift = 0,
+                    };
+
+                    //cell right pad
+                    var cellrightpad = new StrutBox(HorizontalPadding / 2, 0, 0, 0)
+                    {
+                        Tag = $"CellRightPad{rowIndex}:{columnIndex}",
+                        Shift = 0,
+                    };
+
+                    //cell box holder
+                    var rowcolbox = new VerticalBox() {Tag = $"Cell{rowIndex}:{columnIndex}"};
+
+                    var celltoppad = new StrutBox(rowItem.TotalWidth, VerticalPadding / 2, 0, 0) {Tag = $"CellTopPad{rowIndex}:{columnIndex}"};
+                    var cellbottompad = new StrutBox(rowItem.TotalWidth, VerticalPadding / 2, 0, 0)
+                        {Tag = $"CellBottomPad{rowIndex}:{columnIndex}"};
+
+                    rowcolbox.Add(celltoppad);
+                    rowcolbox.Add(rowItem);
+                    rowcolbox.Add(cellbottompad);
+
+                    rowBox.Add(cellleftpad);
+                    rowBox.Add(rowcolbox);
+                    rowBox.Add(cellrightpad);
+
+                    ++columnIndex;
+                }
             }
 
             var matrixCellGaps = CalculateCellGaps(rowBoxes, rowHeights, columnWidths);
@@ -68,7 +106,7 @@ namespace WpfMath.Atoms
             return rowsContainer;
         }
 
-        private HorizontalBox CreateRowBox(
+        private IEnumerable<Box> CreateRowCellBoxes(
             TexEnvironment environment,
             int rowIndex,
             int maxColumnCount,
@@ -76,53 +114,22 @@ namespace WpfMath.Atoms
             double[] columnWidths)
         {
             // TODO[F]: remove rowIndex parameter altogether with Tags
-            // TODO[F]: remove rowHeights and colunmWidths arguments (calculate them outside)
-            // TODO[F]: return IEnumerable<Box> from here and make the outside code to control the paddings
-            var rowBox = new HorizontalBox();
+            // TODO[F]: remove rowHeights and columnWidths arguments (calculate them outside)
 
             for (int j = 0; j < maxColumnCount; j++)
             {
-                //cell left pad
-                var cellleftpad = new StrutBox(HorizontalPadding / 2, 0, 0, 0)
-                {
-                    Tag = $"CellLeftPad{rowIndex}:{j}",
-                    Shift = 0,
-                };
+                var rowCellBox = MatrixCells[rowIndex][j] == null
+                    ? StrutBox.Empty
+                    : MatrixCells[rowIndex][j].CreateBox(environment);
+                rowCellBox.Tag = "innercell"; // TODO[F]: This is dangerous: we may set the value for the cachec StrutBox.Empty
+                yield return rowCellBox;
 
-                //cell right pad
-                var cellrightpad = new StrutBox(HorizontalPadding / 2, 0, 0, 0)
-                {
-                    Tag = $"CellRightPad{rowIndex}:{j}",
-                    Shift = 0,
-                };
-
-                //cell box
-                var rowcellbox = MatrixCells[rowIndex][j] == null ? StrutBox.Empty : MatrixCells[rowIndex][j].CreateBox(environment);
-                rowcellbox.Tag = "innercell";
-                //cell box holder
-                var rowcolbox = new VerticalBox() {Tag = $"Cell{rowIndex}:{j}"};
-
-                var celltoppad = new StrutBox(rowcellbox.TotalWidth, VerticalPadding / 2, 0, 0) {Tag = $"CellTopPad{rowIndex}:{j}"};
-                var cellbottompad = new StrutBox(rowcellbox.TotalWidth, VerticalPadding / 2, 0, 0)
-                    {Tag = $"CellBottomPad{rowIndex}:{j}"};
-                rowcolbox.Add(celltoppad);
-                rowcolbox.Add(rowcellbox);
-                rowcolbox.Add(cellbottompad);
-
-                rowcolbox.Width = rowcellbox.TotalWidth;
-
-                rowBox.Add(cellleftpad);
-                rowBox.Add(rowcolbox);
-                rowBox.Add(cellrightpad);
-
-                var cellHeight = rowcellbox.TotalHeight + VerticalPadding;
+                var cellHeight = rowCellBox.TotalHeight + VerticalPadding;
                 rowHeights[rowIndex] = Math.Max(rowHeights[rowIndex], cellHeight);
 
-                var columnWidth = rowcellbox.TotalWidth;
+                var columnWidth = rowCellBox.TotalWidth;
                 columnWidths[j] = Math.Max(columnWidths[j], columnWidth);
             }
-
-            return rowBox;
         }
 
         private static List<List<CellGaps>> CalculateCellGaps(
