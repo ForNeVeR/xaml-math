@@ -45,18 +45,9 @@ namespace WpfMath.Atoms
             var rowCount = MatrixCells.Count;
             var maxColumnCount = MatrixCells.Max(row => row.Count);
 
-            //stores the max cell height for each row
-            var RowsMaxCellHeight = new List<double>();
-            for (int i = 0; i < rowCount; i++)
-            {
-                RowsMaxCellHeight.Add(0);
-            }
-            //stores the max cell width for each column
-            var ColumnsMaxCellWidth = new List<double>();
-            for (int i = 0; i < maxColumnCount; i++)
-            {
-                ColumnsMaxCellWidth.Add(0);
-            }
+            var rowHeights = new double[rowCount];
+            var columnWidths = new double[maxColumnCount];
+
             //Create a vertical box to hold the rows and their cells
             var resultBox = new VerticalBox();
 
@@ -69,7 +60,6 @@ namespace WpfMath.Atoms
 
                 for (int j = 0; j < maxColumnCount; j++)
                 {
-                    double maxrowHeight = 0;
                     //cell left pad
                     var cellleftpad = new StrutBox(HorizontalPadding / 2, 0, 0, 0)
                     {
@@ -86,7 +76,6 @@ namespace WpfMath.Atoms
 
                     //cell box
                     var rowcellbox = MatrixCells[i][j] == null ? StrutBox.Empty : MatrixCells[i][j].CreateBox(environment);
-                    ColumnsMaxCellWidth[j] = rowcellbox.TotalWidth > ColumnsMaxCellWidth[j] ? rowcellbox.TotalWidth : ColumnsMaxCellWidth[j];
                     rowcellbox.Tag = "innercell";
                     //cell box holder
                     var rowcolbox = new VerticalBox() { Tag = $"Cell{i}:{j}" };
@@ -97,17 +86,17 @@ namespace WpfMath.Atoms
                     rowcolbox.Add(rowcellbox);
                     rowcolbox.Add(cellbottompad);
 
-                    //maxrowHeight += rowcolbox.TotalHeight;
-                    maxrowHeight += rowcellbox.TotalHeight + VerticalPadding;
                     rowcolbox.Width = rowcellbox.TotalWidth;
-                    //rowcolbox.Height = maxrowHeight;
 
                     rowbox.Add(cellleftpad);
                     rowbox.Add(rowcolbox);
                     rowbox.Add(cellrightpad);
 
-                    RowsMaxCellHeight[i] = maxrowHeight > RowsMaxCellHeight[i] ? maxrowHeight : RowsMaxCellHeight[i];
+                    var cellHeight = rowcellbox.TotalHeight + VerticalPadding;
+                    rowHeights[i] = Math.Max(rowHeights[i], cellHeight);
 
+                    var columnWidth = rowcellbox.TotalWidth;
+                    columnWidths[j] = Math.Max(columnWidths[j], columnWidth);
                 }
 
                 rowbox.Shift = 0;
@@ -133,13 +122,13 @@ namespace WpfMath.Atoms
                         var rowcolitem = ((HorizontalBox)Matrixrowitem).Children[j];
                         if (rowcolitem is StrutBox)
                         {
-                            rowcolitem.Height = RowsMaxCellHeight[rows];
+                            rowcolitem.Height = rowHeights[rows];
                         }
                         else if(rowcolitem is VerticalBox && rowcolitem.Tag.ToString() == $"Cell{rows}:{columns}")
                         {
-                            double cellVShift = RowsMaxCellHeight[rows] - rowcolitem.TotalHeight;
+                            double cellVShift = rowHeights[rows] - rowcolitem.TotalHeight;
 
-                            double cellHShift = ColumnsMaxCellWidth[columns]-rowcolitem.TotalWidth;
+                            double cellHShift = columnWidths[columns]-rowcolitem.TotalWidth;
                             ((HorizontalBox)Matrixrowitem).Children[j - 1].Shift = rowcolitem.Depth;// + (cellVShift / 2);//.Width += cellHShift / 2;
                             ((HorizontalBox)Matrixrowitem).Children[j + 1].Shift = rowcolitem.Depth;// +(cellVShift / 2);// Width += cellHShift / 2;
                             //rowcolitem.Shift =  cellVShift/2;
@@ -387,7 +376,7 @@ namespace WpfMath.Atoms
                 }
             }
 
-            double adjustedTotalHeight = RowsMaxCellHeight.Sum()+ (rowCount * VerticalPadding);
+            double adjustedTotalHeight = rowHeights.Sum()+ (rowCount * VerticalPadding);
 
             resultBox.Depth = 0;
             resultBox.Height = adjustedTotalHeight>sigmaTotalHeight?adjustedTotalHeight:sigmaTotalHeight;
