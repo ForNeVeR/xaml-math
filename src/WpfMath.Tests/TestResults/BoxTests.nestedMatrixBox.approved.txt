@@ -875,11 +875,11 @@
   "Foreground": null,
   "Background": null,
   "Tag": null,
-  "TotalHeight": 3.333332,
+  "TotalHeight": 3.3333319999999995,
   "TotalWidth": 2.9000059999999994,
   "Italic": 0.0,
   "Width": 2.9000059999999994,
-  "Height": 1.666666,
-  "Depth": 1.666666,
+  "Height": 1.6666659999999998,
+  "Depth": 1.6666659999999998,
   "Shift": 0.0
 }

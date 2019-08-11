@@ -86,21 +86,17 @@ namespace WpfMath.Atoms
             var (rowHeights, columnWidths) = CalculateDimensions(rowBoxes, maxColumnCount);
             var matrixCellGaps = CalculateCellGaps(rowBoxes, rowHeights, columnWidths);
 
+            ApplyCellSizes(rowBoxes, matrixCellGaps);
+
             var rowsContainer = new VerticalBox();
             foreach (var row in rowBoxes)
             {
                 rowsContainer.Add(row);
             }
 
-            ApplyCellSizes(rowBoxes, matrixCellGaps);
-
-            var adjustedWidth = rowBoxes.Max(r => r.TotalWidth);
-            var adjustedHeight = rowHeights.Sum();
-
-            rowsContainer.Depth = adjustedHeight / 2;
-            rowsContainer.Height = adjustedHeight / 2;
-            rowsContainer.Width = adjustedWidth;
-            rowsContainer.Shift = 0;
+            var height = rowsContainer.TotalHeight;
+            rowsContainer.Depth = height / 2;
+            rowsContainer.Height = height / 2;
 
             return rowsContainer;
         }
@@ -140,6 +136,7 @@ namespace WpfMath.Atoms
             double[] rowHeights,
             double[] columnWidths)
         {
+            // TODO[F]: Pass here only the right boxes collection
             var rowIndex = 0;
             var columns = 0;
 
