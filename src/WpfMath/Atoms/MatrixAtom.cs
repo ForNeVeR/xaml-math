@@ -62,115 +62,7 @@ namespace WpfMath.Atoms
                 rowsContainer.Add(verticalPadding);
             }
 
-            var rows = 0;
-            var columns = 0;
-            for (int i = 0; i < rowsContainer.Children.Count; i++)
-            {
-                var Matrixrowitem = rowsContainer.Children[i];
-
-                if (Matrixrowitem is HorizontalBox && Matrixrowitem.Tag.ToString() == $"Row:{rows}")
-                {
-                    double rowwidth = 0;
-                    for (int j = 0; j < ((HorizontalBox)Matrixrowitem).Children.Count; j++)
-                    {
-                        var currowcolitem = ((HorizontalBox)Matrixrowitem).Children[j];
-                        var prevrowcolitem = j > 0 ? ((HorizontalBox)Matrixrowitem).Children[j - 1] : ((HorizontalBox)Matrixrowitem).Children[j];
-                        var nextrowcolitem = j < ((HorizontalBox)Matrixrowitem).Children.Count-1 ? ((HorizontalBox)Matrixrowitem).Children[j + 1] : ((HorizontalBox)Matrixrowitem).Children[j];
-
-                        if (currowcolitem is VerticalBox&& Regex.IsMatch(currowcolitem.Tag.ToString(), @"Cell[0-9]+:[0-9]+"))
-                        {
-                            rowwidth += currowcolitem.TotalWidth;
-                            var leftstructboxtag = $"CellLeftPad{rows}:{columns}";
-                            var rightstructboxtag = $"CellRightPad{rows}:{columns}";
-
-                            switch (MatrixCellAlignment)
-                            {
-                                case MatrixCellAlignment.Left:
-                                    {
-                                        if (prevrowcolitem is StrutBox && prevrowcolitem.Tag.ToString() == leftstructboxtag)
-                                        {
-                                            //prevrowcolitem.Width += MatrixCellGaps[a][b].Item1;
-                                            rowwidth += prevrowcolitem.TotalWidth;
-                                        }
-                                        if (nextrowcolitem is StrutBox && nextrowcolitem.Tag.ToString() == rightstructboxtag)
-                                        {
-                                            nextrowcolitem.Width +=2* matrixCellGaps[rows][columns].Horizontal;
-                                            rowwidth += nextrowcolitem.TotalWidth;
-                                        }
-                                        break;
-                                    }
-
-                                case MatrixCellAlignment.Center:
-                                    {
-                                        if (prevrowcolitem is StrutBox && prevrowcolitem.Tag.ToString() == leftstructboxtag)
-                                        {
-                                            prevrowcolitem.Width += matrixCellGaps[rows][columns].Horizontal;
-                                            rowwidth += prevrowcolitem.TotalWidth;
-                                        }
-                                        if (nextrowcolitem is StrutBox && nextrowcolitem.Tag.ToString() == rightstructboxtag)
-                                        {
-                                            nextrowcolitem.Width += matrixCellGaps[rows][columns].Horizontal;
-                                            rowwidth += nextrowcolitem.TotalWidth;
-                                        }
-                                        break;
-                                    }
-                            }
-
-                            double cellheight = 0;
-                            //check the vertical cell gap size and increase appropriately
-                            for (int k = 0; k < ((VerticalBox)currowcolitem).Children.Count; k++)
-                            {
-                                var curcellitem = ((VerticalBox)currowcolitem).Children[k];
-                                var prevcellitem =k>0? ((VerticalBox)currowcolitem).Children[k-1]:((VerticalBox)currowcolitem).Children[k];
-                                var nextcellitem =k<(((VerticalBox)currowcolitem).Children.Count -1)? ((VerticalBox)currowcolitem).Children[k+1]:((VerticalBox)currowcolitem).Children[k];
-
-                                if (curcellitem.Tag.ToString() == "innercell" )
-                                {
-                                    cellheight += curcellitem.TotalHeight;
-                                    var topstructboxtag = $"CellTopPad{rows}:{columns}";
-                                    var bottomstructboxtag = $"CellBottomPad{rows}:{columns}";
-
-                                    if (prevcellitem.Tag.ToString() == topstructboxtag)
-                                    {
-                                        prevcellitem.Height += matrixCellGaps[rows][columns].Vertical;
-                                        //prevcellitem.Background = Brushes.Aquamarine;
-                                        cellheight += prevcellitem.TotalHeight;
-                                        if (prevcellitem.Height > (currowcolitem.Height / 2))
-                                        {
-
-                                        }
-                                    }
-                                    if (nextcellitem.Tag.ToString() == bottomstructboxtag)
-                                    {
-                                        nextcellitem.Height += matrixCellGaps[rows][columns].Vertical;
-                                        //nextcellitem.Background = Brushes.BurlyWood;
-                                        cellheight += nextcellitem.TotalHeight;
-                                    }
-
-                                    if (prevrowcolitem is StrutBox && prevrowcolitem.Tag.ToString() == leftstructboxtag)
-                                    {
-                                        prevrowcolitem.Shift += matrixCellGaps[rows][columns].Vertical;
-                                    }
-                                    if (nextrowcolitem is StrutBox && nextrowcolitem.Tag.ToString() == rightstructboxtag)
-                                    {
-                                        nextrowcolitem.Shift += matrixCellGaps[rows][columns].Vertical;
-                                    }
-                                    //currowcolitem.Shift -= matrixCellGaps[a][b].Vertical; ;
-                                }
-
-
-                            }
-                            //currowcolitem.Height = cellheight;
-                            columns++;
-                        }
-                    }
-
-                    Matrixrowitem.Width = rowwidth;
-                    columns = 0;
-                    rows++;
-                }
-
-            }
+            ApplyCellSizes(rowBoxes, matrixCellGaps);
 
             double sigmaTotalHeight = 0;
             double sigmaDepth = 0;
@@ -296,6 +188,124 @@ namespace WpfMath.Atoms
             }
 
             return matrixCellGaps;
+        }
+
+        private void ApplyCellSizes(List<HorizontalBox> rowBoxes, List<List<CellGaps>> matrixCellGaps)
+        {
+            var rows = 0;
+            var columns = 0;
+            foreach (var row in rowBoxes)
+            {
+                double rowwidth = 0;
+                for (int j = 0; j < row.Children.Count; j++)
+                {
+                    var currowcolitem = ((HorizontalBox) row).Children[j];
+                    var prevrowcolitem = j > 0 ? ((HorizontalBox) row).Children[j - 1] : ((HorizontalBox) row).Children[j];
+                    var nextrowcolitem = j < ((HorizontalBox) row).Children.Count - 1
+                        ? ((HorizontalBox) row).Children[j + 1]
+                        : ((HorizontalBox) row).Children[j];
+
+                    if (currowcolitem is VerticalBox && Regex.IsMatch(currowcolitem.Tag.ToString(), @"Cell[0-9]+:[0-9]+"))
+                    {
+                        rowwidth += currowcolitem.TotalWidth;
+                        var leftstructboxtag = $"CellLeftPad{rows}:{columns}";
+                        var rightstructboxtag = $"CellRightPad{rows}:{columns}";
+
+                        switch (MatrixCellAlignment)
+                        {
+                            case MatrixCellAlignment.Left:
+                            {
+                                if (prevrowcolitem is StrutBox && prevrowcolitem.Tag.ToString() == leftstructboxtag)
+                                {
+                                    //prevrowcolitem.Width += MatrixCellGaps[a][b].Item1;
+                                    rowwidth += prevrowcolitem.TotalWidth;
+                                }
+
+                                if (nextrowcolitem is StrutBox && nextrowcolitem.Tag.ToString() == rightstructboxtag)
+                                {
+                                    nextrowcolitem.Width += 2 * matrixCellGaps[rows][columns].Horizontal;
+                                    rowwidth += nextrowcolitem.TotalWidth;
+                                }
+
+                                break;
+                            }
+
+                            case MatrixCellAlignment.Center:
+                            {
+                                if (prevrowcolitem is StrutBox && prevrowcolitem.Tag.ToString() == leftstructboxtag)
+                                {
+                                    prevrowcolitem.Width += matrixCellGaps[rows][columns].Horizontal;
+                                    rowwidth += prevrowcolitem.TotalWidth;
+                                }
+
+                                if (nextrowcolitem is StrutBox && nextrowcolitem.Tag.ToString() == rightstructboxtag)
+                                {
+                                    nextrowcolitem.Width += matrixCellGaps[rows][columns].Horizontal;
+                                    rowwidth += nextrowcolitem.TotalWidth;
+                                }
+
+                                break;
+                            }
+                        }
+
+                        double cellheight = 0;
+                        //check the vertical cell gap size and increase appropriately
+                        for (int k = 0; k < ((VerticalBox) currowcolitem).Children.Count; k++)
+                        {
+                            var curcellitem = ((VerticalBox) currowcolitem).Children[k];
+                            var prevcellitem = k > 0
+                                ? ((VerticalBox) currowcolitem).Children[k - 1]
+                                : ((VerticalBox) currowcolitem).Children[k];
+                            var nextcellitem = k < (((VerticalBox) currowcolitem).Children.Count - 1)
+                                ? ((VerticalBox) currowcolitem).Children[k + 1]
+                                : ((VerticalBox) currowcolitem).Children[k];
+
+                            if (curcellitem.Tag.ToString() == "innercell")
+                            {
+                                cellheight += curcellitem.TotalHeight;
+                                var topstructboxtag = $"CellTopPad{rows}:{columns}";
+                                var bottomstructboxtag = $"CellBottomPad{rows}:{columns}";
+
+                                if (prevcellitem.Tag.ToString() == topstructboxtag)
+                                {
+                                    prevcellitem.Height += matrixCellGaps[rows][columns].Vertical;
+                                    //prevcellitem.Background = Brushes.Aquamarine;
+                                    cellheight += prevcellitem.TotalHeight;
+                                    if (prevcellitem.Height > (currowcolitem.Height / 2))
+                                    {
+                                    }
+                                }
+
+                                if (nextcellitem.Tag.ToString() == bottomstructboxtag)
+                                {
+                                    nextcellitem.Height += matrixCellGaps[rows][columns].Vertical;
+                                    //nextcellitem.Background = Brushes.BurlyWood;
+                                    cellheight += nextcellitem.TotalHeight;
+                                }
+
+                                if (prevrowcolitem is StrutBox && prevrowcolitem.Tag.ToString() == leftstructboxtag)
+                                {
+                                    prevrowcolitem.Shift += matrixCellGaps[rows][columns].Vertical;
+                                }
+
+                                if (nextrowcolitem is StrutBox && nextrowcolitem.Tag.ToString() == rightstructboxtag)
+                                {
+                                    nextrowcolitem.Shift += matrixCellGaps[rows][columns].Vertical;
+                                }
+
+                                //currowcolitem.Shift -= matrixCellGaps[a][b].Vertical; ;
+                            }
+                        }
+
+                        //currowcolitem.Height = cellheight;
+                        columns++;
+                    }
+                }
+
+                row.Width = rowwidth;
+                columns = 0;
+                rows++;
+            }
         }
 
         private struct CellGaps
