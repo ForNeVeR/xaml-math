@@ -493,7 +493,7 @@ namespace WpfMath
         /// Retrives the cells of a matrix from a given source.
         /// </summary>
         /// <param name="matrixsource">The source to retrieve the 2D-Array of atoms from.</param>
-        private List<List<Atom>> GetMatrixData(TexFormula formula, SourceSpan matrixsource, bool allowEmptyCells = true, bool parseasArrays = false)
+        private List<List<Atom>> GetMatrixData(TexFormula formula, SourceSpan matrixsource)
         {
             // rowindent: how many characters the next row should skip for its sourcespan to start
             var rowdata = new List<List<(StringBuilder builder, int rowindent)>>
@@ -598,17 +598,10 @@ namespace WpfMath
                         {
                             var cellsource = matrixsource.Segment(matrixsrcstart, cellitem.Length);// new SourceSpan(cellitem, matrixsrcstart, cellitem.Length);
                             var cellformula = Parse(cellsource, formula.TextStyle);
-                            if (allowEmptyCells)
+                            if (cellformula.RootAtom == null)
                             {
-                                if (cellformula.RootAtom == null)
-                                {
-                                    cellsource = new SourceSpan(" ", 0, 1);
-                                    rowcellatoms.Add(new NullAtom(cellsource));
-                                }
-                                else
-                                {
-                                    rowcellatoms.Add(cellformula.RootAtom);
-                                }
+                                cellsource = new SourceSpan(" ", 0, 1);
+                                rowcellatoms.Add(new NullAtom(cellsource));
                             }
                             else
                             {
@@ -642,20 +635,13 @@ namespace WpfMath
                 }
             }
 
-            if (parseasArrays)
+            if (colsvalid == matrixcells.Count)
             {
                 return matrixcells;
             }
             else
             {
-                if (colsvalid == matrixcells.Count)
-                {
-                    return matrixcells;
-                }
-                else
-                {
-                    throw new TexParseException("The column numbers are not equal.");
-                }
+                throw new TexParseException("The column numbers are not equal.");
             }
         }
 
