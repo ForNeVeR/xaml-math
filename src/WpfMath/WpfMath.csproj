@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Sunburst.NET.Sdk.WPF.Patched/1.0.49">
     <PropertyGroup>
-        <TargetFramework>net40</TargetFramework>
+        <TargetFramework>net452</TargetFramework>
         <LangVersion>7.2</LangVersion>
         <DebugType>Full</DebugType>
     </PropertyGroup>
@@ -11,10 +11,10 @@
         <AssemblyVersion>0.6.0</AssemblyVersion>
     </PropertyGroup>
     <ItemGroup>
-        <EmbeddedResource Include="Data/*"/>
-        <Resource Include="Fonts\cmex10.ttf"/>
-        <Resource Include="Fonts\cmmi10.ttf"/>
-        <Resource Include="Fonts\cmr10.ttf"/>
-        <Resource Include="Fonts\cmsy10.ttf"/>
+        <EmbeddedResource Include="Data/*" />
+        <Resource Include="Fonts\cmex10.ttf" />
+        <Resource Include="Fonts\cmmi10.ttf" />
+        <Resource Include="Fonts\cmr10.ttf" />
+        <Resource Include="Fonts\cmsy10.ttf" />
     </ItemGroup>
 </Project>
