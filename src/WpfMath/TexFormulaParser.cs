@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Media;
 using WpfMath.Atoms;
 using WpfMath.Exceptions;
+using WpfMath.Parsers;
 
 namespace WpfMath
 {
@@ -133,6 +134,16 @@ namespace WpfMath
 
         private static bool ShouldSkipWhiteSpace(string style) => style != TexUtilities.TextStyleName;
 
+        /// <summary>A registry for additional commands.</summary>
+        private readonly IReadOnlyDictionary<string, ICommandParser> _commandRegistry;
+
+        internal TexFormulaParser(IReadOnlyDictionary<string, ICommandParser> commandRegistry)
+        {
+            _commandRegistry = commandRegistry;
+        }
+
+        public TexFormulaParser() : this(StandardCommands.Dictionary) {}
+
         public TexFormula Parse(string value, string textStyle = null)
         {
             Debug.WriteLine(value);
@@ -140,7 +151,7 @@ namespace WpfMath
             return Parse(new SourceSpan(value, 0, value.Length), ref position, false, textStyle);
         }
 
-        private TexFormula Parse(SourceSpan value, string textStyle)
+        internal TexFormula Parse(SourceSpan value, string textStyle)
         {
             int localPostion = 0;
             return Parse(value, ref localPostion, false, textStyle);
@@ -296,7 +307,7 @@ namespace WpfMath
 
         /// <summary>Reads an element: typically, a curly brace-enclosed value group or a singular value.</summary>
         /// <exception cref="TexParseException">Will be thrown for ill-formed groups.</exception>
-        private static SourceSpan ReadElement(SourceSpan value, ref int position)
+        internal static SourceSpan ReadElement(SourceSpan value, ref int position)
         {
             SkipWhiteSpace(value, ref position);
 
@@ -402,12 +413,6 @@ namespace WpfMath
                         source = value.Segment(start, position - start);
                         return new Radical(source, sqrtFormula.RootAtom, degreeFormula?.RootAtom);
                     }
-                case "underline":
-                    {
-                        var underlineFormula = this.Parse(ReadElement(value, ref position), formula.TextStyle);
-                        source = value.Segment(start, position - start);
-                        return new UnderlinedAtom(source, underlineFormula.RootAtom);
-                    }
                 case "color":
                     {
                         var colorName = ReadElement(value, ref position);
@@ -432,6 +437,14 @@ namespace WpfMath
 
                         throw new TexParseException($"Color {colorName} not found");
                     }
+            }
+
+            if (_commandRegistry.TryGetValue(command, out var parser))
+            {
+                var context = new CommandContext(this, formula, value, start, position);
+                var parseResult = parser.ProcessCommand(context);
+                position = parseResult.NextPosition;
+                return parseResult.Atom;
             }
 
             throw new TexParseException("Invalid command.");
