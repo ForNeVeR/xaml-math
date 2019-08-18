@@ -34,7 +34,6 @@ namespace WpfMath
         /// </summary>
         private static readonly HashSet<string> embeddedCommands = new HashSet<string>
         {
-            "cases",
             "color",
             "colorbox",
             "frac",
@@ -343,23 +342,6 @@ namespace WpfMath
             SourceSpan source;
             switch (command)
             {
-                case "cases":
-                    {
-                        if (position == value.Length)
-                            throw new TexParseException("illegal end!");
-                        SkipWhiteSpace(value, ref position);
-
-                        var matrixsource = ReadElement(value, ref position);
-
-                        var cells = GetMatrixData(formula, matrixsource);
-                        var matrix = new MatrixAtom(matrixsource, cells, MatrixCellAlignment.Left);
-                        return new FencedAtom(
-                            matrixsource,
-                            matrix,
-                            GetDelimiterSymbol("lbrace", null),
-                            null);
-                    }
-
                 case "frac":
                     {
                         var numeratorFormula = this.Parse(ReadElement(value, ref position), formula.TextStyle);
@@ -511,7 +493,8 @@ namespace WpfMath
         /// Retrives the cells of a matrix from a given source.
         /// </summary>
         /// <param name="matrixsource">The source to retrieve the 2D-Array of atoms from.</param>
-        private List<List<Atom>> GetMatrixData(TexFormula formula, SourceSpan matrixsource)
+        // TODO[F]: Remove this method completely, shouldn't be internal
+        internal List<List<Atom>> GetMatrixData(TexFormula formula, SourceSpan matrixsource)
         {
             // rowindent: how many characters the next row should skip for its sourcespan to start
             var rowdata = new List<List<(StringBuilder builder, int rowindent)>>
