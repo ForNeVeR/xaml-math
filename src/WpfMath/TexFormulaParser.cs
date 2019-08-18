@@ -38,9 +38,7 @@ namespace WpfMath
             "colorbox",
             "frac",
             "left",
-            "matrix",
             "overline",
-            "pmatrix",
             "right",
             "sqrt"
         };
@@ -371,43 +369,12 @@ namespace WpfMath
                         source = value.Segment(start, position - start);
                         return new FencedAtom(source, internals.Body, opening, closing);
                     }
-
-                case "matrix":
-                    {
-                        if (position == value.Length)
-                            throw new TexParseException("illegal end!");
-                        SkipWhiteSpace(value, ref position);
-
-                        var matrixsource = ReadElement(value, ref position);
-
-                        var cells = GetMatrixData(formula, matrixsource);
-                        return new MatrixAtom(matrixsource, cells);
-                    }
-
                 case "overline":
                     {
                         var overlineFormula = this.Parse(ReadElement(value, ref position), formula.TextStyle);
                         source = value.Segment(start, position - start);
                         return new OverlinedAtom(source, overlineFormula.RootAtom);
                     }
-
-                case "pmatrix":
-                    {
-                        if (position == value.Length)
-                            throw new TexParseException("illegal end!");
-                        SkipWhiteSpace(value, ref position);
-
-                        var matrixsource = ReadElement(value, ref position);
-
-                        var cells = GetMatrixData(formula, matrixsource);
-                        var matrix = new MatrixAtom(matrixsource, cells);
-                        return new FencedAtom(
-                            matrixsource,
-                            matrix,
-                            GetDelimiterSymbol("lbrack", null),
-                            GetDelimiterSymbol("rbrack", null));
-                    }
-
                 case "right":
                     {
                         if (!allowClosingDelimiter)

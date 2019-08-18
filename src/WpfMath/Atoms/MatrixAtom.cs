@@ -12,7 +12,7 @@ namespace WpfMath.Atoms
         public MatrixAtom(
             SourceSpan source,
             List<List<Atom>> cells,
-            MatrixCellAlignment matrixCellAlignment = MatrixCellAlignment.Center,
+            MatrixCellAlignment matrixCellAlignment,
             double verticalPadding = 0.35,
             double horizontalPadding = 0.35) : base(source)
         {

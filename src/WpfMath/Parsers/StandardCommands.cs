@@ -23,7 +23,9 @@ namespace WpfMath.Parsers
 
         public static IReadOnlyDictionary<string, ICommandParser> Dictionary = new Dictionary<string, ICommandParser>
         {
-            ["cases"] = new MatrixCommandParser(),
+            ["cases"] = new MatrixCommandParser("lbrace", null, MatrixCellAlignment.Left),
+            ["matrix"] = new MatrixCommandParser(null, null, MatrixCellAlignment.Center),
+            ["pmatrix"] = new MatrixCommandParser("lbrack", "rbrack", MatrixCellAlignment.Center),
             ["underline"] = new UnderlineCommand()
         };
     }
