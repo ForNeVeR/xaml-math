@@ -1,0 +1,14 @@
+using System.Collections.Generic;
+
+namespace WpfMath.Parsers
+{
+    internal class DefaultCommandEnvironment : ICommandEnvironment
+    {
+        public static readonly ICommandEnvironment Instance = new DefaultCommandEnvironment();
+
+        public IReadOnlyDictionary<string, ICommandParser> AvailableCommands { get; } =
+            new Dictionary<string, ICommandParser>();
+
+        public ICommandEnvironment CreateChildEnvironment() => Instance;
+    }
+}

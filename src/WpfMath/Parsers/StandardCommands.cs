@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using WpfMath.Atoms;
+using WpfMath.Parsers.Matrices;
 
 namespace WpfMath.Parsers
 {
@@ -13,7 +14,8 @@ namespace WpfMath.Parsers
                 var position = context.ArgumentsStartPosition;
                 var underlineFormula = context.Parser.Parse(
                     TexFormulaParser.ReadElement(source, ref position),
-                    context.Formula.TextStyle);
+                    context.Formula.TextStyle,
+                    context.Environment);
                 var start = context.CommandNameStartPosition;
                 var atomSource = source.Segment(start, position - start);
                 var atom = new UnderlinedAtom(atomSource, underlineFormula.RootAtom);

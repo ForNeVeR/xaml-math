@@ -12,6 +12,9 @@ namespace WpfMath.Parsers
         /// <summary>Current formula that is being constructed.</summary>
         public TexFormula Formula { get; }
 
+        /// <summary>An environment in which the command should be parsed.</summary>
+        public ICommandEnvironment Environment { get; }
+
         /// <summary>Source of the current command: includes both the command name and the arguments.</summary>
         public SourceSpan CommandSource { get; }
 
@@ -26,10 +29,17 @@ namespace WpfMath.Parsers
         /// </summary>
         public int ArgumentsStartPosition { get; }
 
-        public CommandContext(TexFormulaParser parser, TexFormula formula, SourceSpan commandSource, int commandNameStartPosition, int argumentsStartPosition)
+        public CommandContext(
+            TexFormulaParser parser,
+            TexFormula formula,
+            ICommandEnvironment environment,
+            SourceSpan commandSource,
+            int commandNameStartPosition,
+            int argumentsStartPosition)
         {
             Parser = parser;
             Formula = formula;
+            Environment = environment;
             CommandSource = commandSource;
             CommandNameStartPosition = commandNameStartPosition;
             ArgumentsStartPosition = argumentsStartPosition;
@@ -38,7 +48,7 @@ namespace WpfMath.Parsers
 
     internal class CommandProcessingResult
     {
-        /// <summary>A parsed atom.</summary>
+        /// <summary>A parsed atom. May be <c>null</c>.</summary>
         public Atom Atom { get; }
 
         /// <summary>
