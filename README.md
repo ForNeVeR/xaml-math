@@ -92,7 +92,7 @@ Documentation
 - [Licensing history][docs-licensing-history]
 
 Build and Maintenance Instructions
-------------------
+----------------------------------
 
 Build the project using [MSBuild][msbuild] or any compatible environment (e.g. Visual Studio 2017 or Rider). WPF-Math requires C# 7.2 support. Build script:
 
