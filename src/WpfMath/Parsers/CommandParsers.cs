@@ -9,11 +9,11 @@ namespace WpfMath.Parsers
         /// <summary>TeX formula parser that calls the command.</summary>
         public TexFormulaParser Parser { get; }
 
-        /// <summary>Current formula.</summary>
+        /// <summary>Current formula that is being constructed.</summary>
         public TexFormula Formula { get; }
 
-        /// <summary>Source of the current formula. Includes both command name and the arguments.</summary>
-        public SourceSpan FormulaSource { get; }
+        /// <summary>Source of the current command: includes both the command name and the arguments.</summary>
+        public SourceSpan CommandSource { get; }
 
         /// <summary>
         /// A position inside of source where the command name start. Useful to provide the source information, not for
@@ -26,11 +26,11 @@ namespace WpfMath.Parsers
         /// </summary>
         public int ArgumentsStartPosition { get; }
 
-        public CommandContext(TexFormulaParser parser, TexFormula formula, SourceSpan formulaSource, int commandNameStartPosition, int argumentsStartPosition)
+        public CommandContext(TexFormulaParser parser, TexFormula formula, SourceSpan commandSource, int commandNameStartPosition, int argumentsStartPosition)
         {
             Parser = parser;
             Formula = formula;
-            FormulaSource = formulaSource;
+            CommandSource = commandSource;
             CommandNameStartPosition = commandNameStartPosition;
             ArgumentsStartPosition = argumentsStartPosition;
         }
@@ -42,7 +42,7 @@ namespace WpfMath.Parsers
         public Atom Atom { get; }
 
         /// <summary>
-        /// A position pointing to the part of the <see cref="CommandContext.FormulaSource"/> where the parsing should
+        /// A position pointing to the part of the <see cref="CommandContext.CommandSource"/> where the parsing should
         /// proceed.
         /// </summary>
         public int NextPosition { get; }
@@ -54,7 +54,10 @@ namespace WpfMath.Parsers
         }
     }
 
-    /// <summary>A command parser interface. Inheritors of this class can perform parsing</summary>
+    /// <summary>
+    /// A parser for a particular command that should read the command name and its arguments and produce an
+    /// <see cref="Atom"/>, and also move the parser position towards the end.
+    /// </summary>
     internal interface ICommandParser
     {
         /// <summary>Parsing of the command arguments.</summary>

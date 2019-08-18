@@ -9,7 +9,7 @@ namespace WpfMath.Parsers
         {
             public CommandProcessingResult ProcessCommand(CommandContext context)
             {
-                var source = context.FormulaSource;
+                var source = context.CommandSource;
                 var position = context.ArgumentsStartPosition;
                 var underlineFormula = context.Parser.Parse(
                     TexFormulaParser.ReadElement(source, ref position),

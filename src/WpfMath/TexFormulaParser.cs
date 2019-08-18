@@ -27,8 +27,21 @@ namespace WpfMath
         private const char superScriptChar = '^';
         private const char primeChar = '\'';
 
-        // Information used for parsing
-        private static HashSet<string> commands;
+        /// <summary>
+        /// A set of names of the commands that are embedded in the parser itself, <see cref="ProcessCommand"/>.
+        /// These're not the additional commands that may be supplied via <see cref="_commandRegistry"/>.
+        /// </summary>
+        private static readonly HashSet<string> embeddedCommands = new HashSet<string>
+        {
+            "color",
+            "colorbox",
+            "frac",
+            "left",
+            "overline",
+            "right",
+            "sqrt"
+        };
+
         private static IList<string> symbols;
         private static IList<string> delimeters;
         private static HashSet<string> textStyles;
@@ -74,18 +87,6 @@ namespace WpfMath
                 if (!UriParser.IsKnownScheme("pack"))
                     UriParser.Register(new GenericUriParser(GenericUriParserOptions.GenericAuthority), "pack", -1);
             }
-
-            commands = new HashSet<string>
-            {
-                "color",
-                "colorbox",
-                "frac",
-                "left",
-                "overline",
-                "right",
-                "sqrt",
-                "underline"
-            };
 
             var formulaSettingsParser = new TexPredefinedFormulaSettingsParser();
             symbols = formulaSettingsParser.GetSymbolMappings();
@@ -443,6 +444,10 @@ namespace WpfMath
             {
                 var context = new CommandContext(this, formula, value, start, position);
                 var parseResult = parser.ProcessCommand(context);
+                if (parseResult.NextPosition <= position)
+                    throw new TexParseException(
+                        $"Incorrect parser behavior for command {command}: NextPosition = {parseResult.NextPosition}, position = {position}. Parser did not made any progress.");
+
                 position = parseResult.NextPosition;
                 return parseResult.Atom;
             }
@@ -532,7 +537,7 @@ namespace WpfMath
                 var source = new SourceSpan(formulaSource.Source, formulaSource.Start, position);
                 formula.Add(atom, source);
             }
-            else if (commands.Contains(command))
+            else if (embeddedCommands.Contains(command) || _commandRegistry.ContainsKey(command))
             {
                 // Command was found.
                 var commandAtom = this.ProcessCommand(
