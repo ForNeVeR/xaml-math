@@ -652,9 +652,9 @@
                 }
               ],
               "Source": {
-                "Start": 35,
-                "End": 43,
-                "Length": 8,
+                "Start": 28,
+                "End": 44,
+                "Length": 16,
                 "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }"
               },
               "Foreground": null,
@@ -815,9 +815,9 @@
     }
   ],
   "Source": {
-    "Start": 8,
-    "End": 50,
-    "Length": 42,
+    "Start": 1,
+    "End": 51,
+    "Length": 50,
     "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }"
   },
   "Foreground": null,

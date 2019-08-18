@@ -572,9 +572,9 @@
           "MatrixCellAlignment": "Center",
           "Type": "Ordinary",
           "Source": {
-            "Start": 28,
-            "End": 87,
-            "Length": 59,
+            "Start": 21,
+            "End": 88,
+            "Length": 67,
             "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
           }
         },
@@ -823,9 +823,9 @@
           "MatrixCellAlignment": "Center",
           "Type": "Ordinary",
           "Source": {
-            "Start": 120,
-            "End": 139,
-            "Length": 19,
+            "Start": 113,
+            "End": 140,
+            "Length": 27,
             "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
           }
         },
@@ -1021,9 +1021,9 @@
           "MatrixCellAlignment": "Center",
           "Type": "Ordinary",
           "Source": {
-            "Start": 167,
-            "End": 185,
-            "Length": 18,
+            "Start": 160,
+            "End": 186,
+            "Length": 26,
             "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
           }
         },

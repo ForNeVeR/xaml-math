@@ -328,9 +328,9 @@
       "MatrixCellAlignment": "Left",
       "Type": "Ordinary",
       "Source": {
-        "Start": 7,
-        "End": 38,
-        "Length": 31,
+        "Start": 1,
+        "End": 39,
+        "Length": 38,
         "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
       }
     },
@@ -344,9 +344,9 @@
     "RightDelimeter": null,
     "Type": "Ordinary",
     "Source": {
-      "Start": 7,
-      "End": 38,
-      "Length": 31,
+      "Start": 1,
+      "End": 39,
+      "Length": 38,
       "Source": "\\cases{x,&if x > 0;\\cr -x,& otherwise.}"
     }
   }

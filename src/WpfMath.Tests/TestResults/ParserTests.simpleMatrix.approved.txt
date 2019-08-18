@@ -140,9 +140,9 @@
     "MatrixCellAlignment": "Center",
     "Type": "Ordinary",
     "Source": {
-      "Start": 8,
-      "End": 30,
-      "Length": 22,
+      "Start": 1,
+      "End": 31,
+      "Length": 30,
       "Source": "\\matrix{4&78&3 \\\\ 5 & 9  & 82 }"
     }
   }

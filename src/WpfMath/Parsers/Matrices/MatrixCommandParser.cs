@@ -30,9 +30,12 @@ namespace WpfMath.Parsers.Matrices
             if (position == source.Length)
                 throw new TexParseException("illegal end!");
 
-            var matrixSource = TexFormulaParser.ReadElement(source, ref position);
+            var cellsSource = TexFormulaParser.ReadElement(source, ref position);
+            var matrixSource = context.CommandSource.Segment(
+                context.CommandNameStartPosition,
+                position - context.CommandNameStartPosition);
 
-            var cells = ReadMatrixCells(context.Parser, context.Formula, matrixSource, context.Environment);
+            var cells = ReadMatrixCells(context.Parser, context.Formula, cellsSource, context.Environment);
             var matrix = new MatrixAtom(matrixSource, cells, _cellAlignment);
 
             SymbolAtom GetDelimiter(string name) =>

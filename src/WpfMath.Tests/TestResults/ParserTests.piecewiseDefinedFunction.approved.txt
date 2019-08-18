@@ -578,9 +578,9 @@
           "MatrixCellAlignment": "Left",
           "Type": "Ordinary",
           "Source": {
-            "Start": 14,
-            "End": 105,
-            "Length": 91,
+            "Start": 8,
+            "End": 106,
+            "Length": 98,
             "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
           }
         },
@@ -594,9 +594,9 @@
         "RightDelimeter": null,
         "Type": "Ordinary",
         "Source": {
-          "Start": 14,
-          "End": 105,
-          "Length": 91,
+          "Start": 8,
+          "End": 106,
+          "Length": 98,
           "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
         }
       }
@@ -604,8 +604,8 @@
     "Type": "Ordinary",
     "Source": {
       "Start": 7,
-      "End": 112,
-      "Length": 105,
+      "End": 113,
+      "Length": 106,
       "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
     }
   }

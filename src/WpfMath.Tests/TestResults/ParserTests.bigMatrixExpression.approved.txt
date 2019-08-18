@@ -366,9 +366,9 @@
                   "MatrixCellAlignment": "Center",
                   "Type": "Ordinary",
                   "Source": {
-                    "Start": 47,
-                    "End": 98,
-                    "Length": 51,
+                    "Start": 39,
+                    "End": 99,
+                    "Length": 60,
                     "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
                   }
                 },
@@ -388,9 +388,9 @@
                 },
                 "Type": "Ordinary",
                 "Source": {
-                  "Start": 47,
-                  "End": 98,
-                  "Length": 51,
+                  "Start": 39,
+                  "End": 99,
+                  "Length": 60,
                   "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
                 }
               }
@@ -781,9 +781,9 @@
                   "MatrixCellAlignment": "Center",
                   "Type": "Ordinary",
                   "Source": {
-                    "Start": 112,
-                    "End": 192,
-                    "Length": 80,
+                    "Start": 104,
+                    "End": 193,
+                    "Length": 89,
                     "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
                   }
                 },
@@ -803,9 +803,9 @@
                 },
                 "Type": "Ordinary",
                 "Source": {
-                  "Start": 112,
-                  "End": 192,
-                  "Length": 80,
+                  "Start": 104,
+                  "End": 193,
+                  "Length": 89,
                   "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
                 }
               }
@@ -1227,9 +1227,9 @@
                   "MatrixCellAlignment": "Center",
                   "Type": "Ordinary",
                   "Source": {
-                    "Start": 206,
-                    "End": 304,
-                    "Length": 98,
+                    "Start": 198,
+                    "End": 305,
+                    "Length": 107,
                     "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
                   }
                 },
@@ -1249,9 +1249,9 @@
                 },
                 "Type": "Ordinary",
                 "Source": {
-                  "Start": 206,
-                  "End": 304,
-                  "Length": 98,
+                  "Start": 198,
+                  "End": 305,
+                  "Length": 107,
                   "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
                 }
               }
@@ -1262,9 +1262,9 @@
           "MatrixCellAlignment": "Center",
           "Type": "Ordinary",
           "Source": {
-            "Start": 38,
-            "End": 305,
-            "Length": 267,
+            "Start": 30,
+            "End": 306,
+            "Length": 276,
             "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
           }
         },
@@ -1284,9 +1284,9 @@
         },
         "Type": "Ordinary",
         "Source": {
-          "Start": 38,
-          "End": 305,
-          "Length": 267,
+          "Start": 30,
+          "End": 306,
+          "Length": 276,
           "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
         }
       }
@@ -1294,8 +1294,8 @@
     "Type": "Ordinary",
     "Source": {
       "Start": 29,
-      "End": 334,
-      "Length": 305,
+      "End": 335,
+      "Length": 306,
       "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
     }
   }

@@ -456,9 +456,9 @@
         }
       ],
       "Source": {
-        "Start": 9,
-        "End": 23,
-        "Length": 14,
+        "Start": 1,
+        "End": 24,
+        "Length": 23,
         "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}"
       },
       "Foreground": null,
@@ -513,9 +513,9 @@
     }
   ],
   "Source": {
-    "Start": 9,
-    "End": 23,
-    "Length": 14,
+    "Start": 1,
+    "End": 24,
+    "Length": 23,
     "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}"
   },
   "Foreground": null,

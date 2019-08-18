@@ -335,9 +335,9 @@
         }
       ],
       "Source": {
-        "Start": 7,
-        "End": 18,
-        "Length": 11,
+        "Start": 1,
+        "End": 19,
+        "Length": 18,
         "Source": "\\cases{a \\\\ b \\\\ c}"
       },
       "Foreground": null,
@@ -367,9 +367,9 @@
     }
   ],
   "Source": {
-    "Start": 7,
-    "End": 18,
-    "Length": 11,
+    "Start": 1,
+    "End": 19,
+    "Length": 18,
     "Source": "\\cases{a \\\\ b \\\\ c}"
   },
   "Foreground": null,

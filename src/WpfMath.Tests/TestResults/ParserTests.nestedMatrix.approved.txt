@@ -196,9 +196,9 @@
             "MatrixCellAlignment": "Center",
             "Type": "Ordinary",
             "Source": {
-              "Start": 31,
-              "End": 39,
-              "Length": 8,
+              "Start": 24,
+              "End": 40,
+              "Length": 16,
               "Source": "\\matrix{4&78&3\\\\ 57 & {\\matrix{78 \\\\ 12}}  & 20782 }"
             }
           },
@@ -206,9 +206,9 @@
           "RightType": "Ordinary",
           "Type": "Ordinary",
           "Source": {
-            "Start": 31,
-            "End": 39,
-            "Length": 8,
+            "Start": 24,
+            "End": 40,
+            "Length": 16,
             "Source": "\\matrix{4&78&3\\\\ 57 & {\\matrix{78 \\\\ 12}}  & 20782 }"
           }
         },
@@ -296,9 +296,9 @@
     "MatrixCellAlignment": "Center",
     "Type": "Ordinary",
     "Source": {
-      "Start": 8,
-      "End": 51,
-      "Length": 43,
+      "Start": 1,
+      "End": 52,
+      "Length": 51,
       "Source": "\\matrix{4&78&3\\\\ 57 & {\\matrix{78 \\\\ 12}}  & 20782 }"
     }
   }
