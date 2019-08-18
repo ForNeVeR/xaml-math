@@ -230,9 +230,9 @@
                 ],
                 "Type": "Ordinary",
                 "Source": {
-                  "Start": 19,
+                  "Start": 14,
                   "End": 46,
-                  "Length": 27,
+                  "Length": 32,
                   "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
                 }
               }
@@ -282,9 +282,9 @@
                 ],
                 "Type": "Ordinary",
                 "Source": {
-                  "Start": 49,
+                  "Start": 14,
                   "End": 54,
-                  "Length": 5,
+                  "Length": 40,
                   "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
                 }
               },
@@ -399,9 +399,9 @@
                 ],
                 "Type": "Ordinary",
                 "Source": {
-                  "Start": 55,
+                  "Start": 14,
                   "End": 84,
-                  "Length": 29,
+                  "Length": 70,
                   "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
                 }
               }
@@ -555,11 +555,21 @@
                 ],
                 "Type": "Ordinary",
                 "Source": {
-                  "Start": 91,
+                  "Start": 14,
                   "End": 102,
-                  "Length": 11,
+                  "Length": 88,
                   "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
                 }
+              }
+            ],
+            [
+              {
+                "Type": "Ordinary",
+                "Source": null
+              },
+              {
+                "Type": "Ordinary",
+                "Source": null
               }
             ]
           ],

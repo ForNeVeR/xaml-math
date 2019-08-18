@@ -339,9 +339,9 @@
                         }
                       ],
                       "Source": {
-                        "Start": 16,
+                        "Start": 13,
                         "End": 20,
-                        "Length": 4,
+                        "Length": 7,
                         "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
                       },
                       "Foreground": null,
@@ -995,8 +995,8 @@
                             }
                           ],
                           "Source": {
-                            "Start": 7,
-                            "End": 9,
+                            "Start": 28,
+                            "End": 30,
                             "Length": 2,
                             "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
                           },
@@ -1147,9 +1147,9 @@
                         }
                       ],
                       "Source": {
-                        "Start": 34,
+                        "Start": 13,
                         "End": 51,
-                        "Length": 17,
+                        "Length": 38,
                         "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
                       },
                       "Foreground": null,

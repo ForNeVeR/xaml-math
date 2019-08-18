@@ -60,36 +60,24 @@ namespace WpfMath.Parsers.Matrices
             SourceSpan source,
             ICommandEnvironment parentEnvironment)
         {
-            var rowAtoms = new List<List<Atom>> { new List<Atom>() }; // enter first row by default
+            var rows = new List<List<Atom>> { new List<Atom>() }; // enter first row by default
 
             // Commands from the environment will add all the finished cells to the matrix body, but the last one should
             // be extracted here.
-            var environment = CreateMatrixEnvironment(rowAtoms, parentEnvironment);
+            var environment = new MatrixInternalEnvironment(parentEnvironment, rows);
             var lastCellAtom = parser.Parse(source, formula.TextStyle, environment).RootAtom;
             if (lastCellAtom != null)
             {
-                var lastRow = rowAtoms.LastOrDefault();
+                var lastRow = rows.LastOrDefault();
                 if (lastRow == null)
-                    rowAtoms.Add(lastRow = new List<Atom>());
+                    rows.Add(lastRow = new List<Atom>());
 
                 lastRow.Add(lastCellAtom);
             }
 
-            MakeRectangular(rowAtoms);
+            MakeRectangular(rows);
 
-            return rowAtoms;
-        }
-
-        private ICommandEnvironment CreateMatrixEnvironment(List<List<Atom>> rows, ICommandEnvironment environment)
-        {
-            var nextRowCommand = new NextRowCommand(rows);
-            var commands = new Dictionary<string, ICommandParser>
-            {
-                ["&"] = new NextCellCommand(rows), // TODO[F]: should work without `\`
-                [@"\"] = nextRowCommand,
-                ["cr"] = nextRowCommand
-            };
-            return new NonRecursiveEnvironment(environment.CreateChildEnvironment(), commands);
+            return rows;
         }
 
         private void MakeRectangular(List<List<Atom>> rowAtoms)

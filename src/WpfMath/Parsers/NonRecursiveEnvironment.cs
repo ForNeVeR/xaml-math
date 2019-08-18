@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace WpfMath.Parsers
 {
-    internal class NonRecursiveEnvironment : ICommandEnvironment
+    internal abstract class NonRecursiveEnvironment : ICommandEnvironment
     {
         private readonly ICommandEnvironment _environment;
 
@@ -17,5 +17,7 @@ namespace WpfMath.Parsers
         public IReadOnlyDictionary<string, ICommandParser> AvailableCommands { get; }
 
         public ICommandEnvironment CreateChildEnvironment() => _environment;
+
+        public abstract bool ProcessUnknownCharacter(TexFormula formula, char character);
     }
 }

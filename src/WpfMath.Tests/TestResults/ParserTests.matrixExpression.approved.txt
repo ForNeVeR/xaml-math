@@ -260,8 +260,8 @@
                     "SuperscriptAtom": null,
                     "Type": "Ordinary",
                     "Source": {
-                      "Start": 2,
-                      "End": 5,
+                      "Start": 22,
+                      "End": 25,
                       "Length": 3,
                       "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
                     }
@@ -296,8 +296,8 @@
                     "SuperscriptAtom": null,
                     "Type": "Ordinary",
                     "Source": {
-                      "Start": 6,
-                      "End": 9,
+                      "Start": 26,
+                      "End": 29,
                       "Length": 3,
                       "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
                     }
@@ -344,8 +344,8 @@
                     "SuperscriptAtom": null,
                     "Type": "Ordinary",
                     "Source": {
-                      "Start": 12,
-                      "End": 15,
+                      "Start": 32,
+                      "End": 35,
                       "Length": 3,
                       "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
                     }
@@ -380,8 +380,8 @@
                     "SuperscriptAtom": null,
                     "Type": "Ordinary",
                     "Source": {
-                      "Start": 16,
-                      "End": 19,
+                      "Start": 36,
+                      "End": 39,
                       "Length": 3,
                       "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
                     }
@@ -389,9 +389,9 @@
                 ],
                 "Type": "Ordinary",
                 "Source": {
-                  "Start": 48,
+                  "Start": 28,
                   "End": 67,
-                  "Length": 19,
+                  "Length": 39,
                   "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
                 }
               }
@@ -430,8 +430,8 @@
                     "SuperscriptAtom": null,
                     "Type": "Ordinary",
                     "Source": {
-                      "Start": 2,
-                      "End": 5,
+                      "Start": 43,
+                      "End": 46,
                       "Length": 3,
                       "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
                     }
@@ -466,8 +466,8 @@
                     "SuperscriptAtom": null,
                     "Type": "Ordinary",
                     "Source": {
-                      "Start": 6,
-                      "End": 9,
+                      "Start": 47,
+                      "End": 50,
                       "Length": 3,
                       "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
                     }
@@ -514,8 +514,8 @@
                     "SuperscriptAtom": null,
                     "Type": "Ordinary",
                     "Source": {
-                      "Start": 12,
-                      "End": 15,
+                      "Start": 53,
+                      "End": 56,
                       "Length": 3,
                       "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
                     }
@@ -550,8 +550,8 @@
                     "SuperscriptAtom": null,
                     "Type": "Ordinary",
                     "Source": {
-                      "Start": 16,
-                      "End": 18,
+                      "Start": 57,
+                      "End": 59,
                       "Length": 2,
                       "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
                     }
@@ -559,9 +559,9 @@
                 ],
                 "Type": "Ordinary",
                 "Source": {
-                  "Start": 69,
+                  "Start": 28,
                   "End": 87,
-                  "Length": 18,
+                  "Length": 59,
                   "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
                 }
               }
@@ -772,8 +772,8 @@
                 "SuperscriptAtom": null,
                 "Type": "Ordinary",
                 "Source": {
-                  "Start": 2,
-                  "End": 5,
+                  "Start": 9,
+                  "End": 12,
                   "Length": 3,
                   "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
                 }
@@ -810,8 +810,8 @@
                 "SuperscriptAtom": null,
                 "Type": "Ordinary",
                 "Source": {
-                  "Start": 2,
-                  "End": 5,
+                  "Start": 16,
+                  "End": 19,
                   "Length": 3,
                   "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
                 }
@@ -970,8 +970,8 @@
                 "SuperscriptAtom": null,
                 "Type": "Ordinary",
                 "Source": {
-                  "Start": 2,
-                  "End": 6,
+                  "Start": 8,
+                  "End": 12,
                   "Length": 4,
                   "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
                 }
@@ -1008,8 +1008,8 @@
                 "SuperscriptAtom": null,
                 "Type": "Ordinary",
                 "Source": {
-                  "Start": 2,
-                  "End": 4,
+                  "Start": 16,
+                  "End": 18,
                   "Length": 2,
                   "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
                 }

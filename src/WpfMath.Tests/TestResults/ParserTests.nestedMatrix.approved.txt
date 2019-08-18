@@ -48,9 +48,9 @@
           ],
           "Type": "Ordinary",
           "Source": {
-            "Start": 10,
+            "Start": 8,
             "End": 12,
-            "Length": 2,
+            "Length": 4,
             "Source": "\\matrix{4&78&3\\\\ 57 & {\\matrix{78 \\\\ 12}}  & 20782 }"
           }
         },
@@ -101,9 +101,9 @@
           ],
           "Type": "Ordinary",
           "Source": {
-            "Start": 16,
+            "Start": 8,
             "End": 20,
-            "Length": 4,
+            "Length": 12,
             "Source": "\\matrix{4&78&3\\\\ 57 & {\\matrix{78 \\\\ 12}}  & 20782 }"
           }
         },
@@ -183,9 +183,9 @@
                   ],
                   "Type": "Ordinary",
                   "Source": {
-                    "Start": 36,
+                    "Start": 31,
                     "End": 39,
-                    "Length": 3,
+                    "Length": 8,
                     "Source": "\\matrix{4&78&3\\\\ 57 & {\\matrix{78 \\\\ 12}}  & 20782 }"
                   }
                 }
@@ -283,9 +283,9 @@
           ],
           "Type": "Ordinary",
           "Source": {
-            "Start": 44,
+            "Start": 8,
             "End": 51,
-            "Length": 7,
+            "Length": 43,
             "Source": "\\matrix{4&78&3\\\\ 57 & {\\matrix{78 \\\\ 12}}  & 20782 }"
           }
         }

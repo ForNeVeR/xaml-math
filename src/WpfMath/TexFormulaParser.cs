@@ -266,14 +266,18 @@ namespace WpfMath
                 }
                 else
                 {
-                    var scriptsAtom = this.AttachScripts(
-                        formula,
-                        value,
-                        ref position,
-                        this.ConvertCharacter(formula, ref position, source),
-                        skipWhiteSpace,
-                        environment);
-                    formula.Add(scriptsAtom, value.Segment(initialPosition, position));
+                    var character = ConvertCharacter(formula, ref position, source, environment);
+                    if (character != null)
+                    {
+                        var scriptsAtom = AttachScripts(
+                            formula,
+                            value,
+                            ref position,
+                            character,
+                            skipWhiteSpace,
+                            environment);
+                        formula.Add(scriptsAtom, value.Segment(initialPosition, position));
+                    }
                 }
             }
 
@@ -721,7 +725,12 @@ namespace WpfMath
             }
         }
 
-        private Atom ConvertCharacter(TexFormula formula, ref int position, SourceSpan source)
+        /// <remarks>May return <c>null</c>.</remarks>
+        private Atom ConvertCharacter(
+            TexFormula formula,
+            ref int position,
+            SourceSpan source,
+            ICommandEnvironment environment)
         {
             var character = source[0];
             position++;
@@ -730,7 +739,12 @@ namespace WpfMath
                 // Character is symbol.
                 var symbolName = symbols.ElementAtOrDefault(character);
                 if (string.IsNullOrEmpty(symbolName))
+                {
+                    if (environment.ProcessUnknownCharacter(formula, character))
+                        return null;
+
                     throw new TexParseException($"Unknown character : '{character}'");
+                }
 
                 try
                 {

@@ -177,9 +177,9 @@
                         ],
                         "Type": "Ordinary",
                         "Source": {
-                          "Start": 63,
+                          "Start": 47,
                           "End": 67,
-                          "Length": 4,
+                          "Length": 20,
                           "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
                         }
                       },
@@ -308,8 +308,8 @@
                             },
                             "Type": "Ordinary",
                             "Source": {
-                              "Start": 7,
-                              "End": 9,
+                              "Start": 41,
+                              "End": 43,
                               "Length": 2,
                               "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
                             }
@@ -353,9 +353,9 @@
                         ],
                         "Type": "Ordinary",
                         "Source": {
-                          "Start": 81,
+                          "Start": 47,
                           "End": 98,
-                          "Length": 17,
+                          "Length": 51,
                           "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
                         }
                       }
@@ -768,9 +768,9 @@
                         ],
                         "Type": "Ordinary",
                         "Source": {
-                          "Start": 165,
+                          "Start": 112,
                           "End": 192,
-                          "Length": 27,
+                          "Length": 80,
                           "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
                         }
                       }

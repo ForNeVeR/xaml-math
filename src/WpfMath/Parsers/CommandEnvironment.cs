@@ -10,5 +10,7 @@ namespace WpfMath.Parsers
             new Dictionary<string, ICommandParser>();
 
         public ICommandEnvironment CreateChildEnvironment() => Instance;
+
+        public bool ProcessUnknownCharacter(TexFormula formula, char character) => false;
     }
 }

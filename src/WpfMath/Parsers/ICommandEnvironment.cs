@@ -19,5 +19,13 @@ namespace WpfMath.Parsers
         /// A child environment that will be applied to the child parsing context (e.g. a nested element group).
         /// </returns>
         ICommandEnvironment CreateChildEnvironment();
+
+        /// <summary>Processes an unknown character found during parsing.</summary>
+        /// <param name="character">The character that wasn't resolved during parsing.</param>
+        /// <returns>
+        /// Should return <c>true</c> if the character was processed by this method. Otherwise, parser will throw an
+        /// exception.
+        /// </returns>
+        bool ProcessUnknownCharacter(TexFormula formula, char character);
     }
 }
