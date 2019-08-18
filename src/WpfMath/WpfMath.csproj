@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Sunburst.NET.Sdk.WPF.Patched/1.0.49">
     <PropertyGroup>
-        <TargetFramework>net40</TargetFramework>
+        <TargetFramework>net452</TargetFramework>
         <LangVersion>7.2</LangVersion>
         <DebugType>Full</DebugType>
     </PropertyGroup>
