@@ -29,6 +29,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{39669369-C
 	ProjectSection(SolutionItems) = preProject
 		docs\example-screenshot.png = docs\example-screenshot.png
 		docs\licensing-history.md = docs\licensing-history.md
+		docs\blurred-text-issue.md = docs\blurred-text-issue.md
+		docs\cleartype.png = docs\cleartype.png
+		docs\default.png = docs\default.png
+		docs\matrices.md = docs\matrices.md
+		docs\prepare-font.md = docs\prepare-font.md
 	EndProjectSection
 EndProject
 Global

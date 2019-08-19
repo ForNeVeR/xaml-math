@@ -85,9 +85,10 @@ You may also pass your own `IElementRenderer` implementation to `TexFormula.Rend
 Documentation
 -------------
 
-- [How to prepare `DefaultTexFont.xml` from the font file][docs-prepare-font]
-
+- [Matrices and Matrix-Like Constructs][docs-matrices]
 - [How to improve blurred formulas][docs-blurred-text-issue]
+
+- [How to prepare `DefaultTexFont.xml` from the font file][docs-prepare-font]
 
 - [Licensing history][docs-licensing-history]
 
@@ -133,6 +134,7 @@ We're very grateful to JMathTeX authors for their work and allowing to redistrib
 [docs-prepare-font]: docs/prepare-font.md
 [docs-blurred-text-issue]: docs/blurred-text-issue.md
 [docs-licensing-history]: docs/licensing-history.md
+[docs-matrices]: docs/matrices.md
 [example]: WpfMath.Example/
 [fonts]: src/WpfMath/Fonts/
 [license]: LICENSE.md
