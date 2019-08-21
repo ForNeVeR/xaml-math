@@ -1,0 +1,90 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "PreviousAtom": null,
+    "Elements": [
+      {
+        "RowAtom": {
+          "PreviousAtom": null,
+          "Elements": [
+            {
+              "Character": "1",
+              "TextStyle": null,
+              "IsDefaultTextStyle": true,
+              "IsTextSymbol": false,
+              "Type": "Ordinary",
+              "Source": {
+                "Start": 12,
+                "End": 13,
+                "Length": 1,
+                "Source": "\\color{red} 1123"
+              }
+            }
+          ],
+          "Type": "Ordinary",
+          "Source": {
+            "Start": 1,
+            "End": 13,
+            "Length": 12,
+            "Source": "\\color{red} 1123"
+          }
+        },
+        "Background": null,
+        "Foreground": "#FFED1B23",
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 1,
+          "End": 13,
+          "Length": 12,
+          "Source": "\\color{red} 1123"
+        }
+      },
+      {
+        "Character": "1",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 13,
+          "End": 14,
+          "Length": 1,
+          "Source": "\\color{red} 1123"
+        }
+      },
+      {
+        "Character": "2",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 14,
+          "End": 15,
+          "Length": 1,
+          "Source": "\\color{red} 1123"
+        }
+      },
+      {
+        "Character": "3",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 15,
+          "End": 16,
+          "Length": 1,
+          "Source": "\\color{red} 1123"
+        }
+      }
+    ],
+    "Type": "Ordinary",
+    "Source": {
+      "Start": 0,
+      "End": 16,
+      "Length": 16,
+      "Source": "\\color{red} 1123"
+    }
+  }
+}

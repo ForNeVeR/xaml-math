@@ -1,5 +1,7 @@
-﻿image: Visual Studio 2017
-
-build_script:
+﻿image:
+    - Visual Studio 2017
+    - Visual Studio 2019
+before_build:
     - nuget restore
+build_script:
     - msbuild /m /p:Configuration=Release WpfMath.sln

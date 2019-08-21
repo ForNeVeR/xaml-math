@@ -6,4 +6,5 @@ bin/
 obj/
 
 *.DotSettings
+*.received.txt
 *.user

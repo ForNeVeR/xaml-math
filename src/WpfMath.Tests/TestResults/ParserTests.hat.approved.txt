@@ -1,0 +1,33 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "Atom": {
+      "BaseAtom": {
+        "Character": "T",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 6,
+          "End": 7,
+          "Length": 1,
+          "Source": "{\\hat T}"
+        }
+      },
+      "AccentAtom": {
+        "IsDelimeter": false,
+        "Name": "hat",
+        "IsTextSymbol": false,
+        "Type": "Accent",
+        "Source": null
+      },
+      "Type": "Ordinary",
+      "Source": null
+    },
+    "LeftType": "Ordinary",
+    "RightType": "Ordinary",
+    "Type": "Ordinary",
+    "Source": null
+  }
+}

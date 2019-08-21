@@ -1,0 +1,16 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "Character": "_",
+    "TextStyle": "text",
+    "IsDefaultTextStyle": false,
+    "IsTextSymbol": false,
+    "Type": "Ordinary",
+    "Source": {
+      "Start": 6,
+      "End": 7,
+      "Length": 1,
+      "Source": "\\text{_}"
+    }
+  }
+}

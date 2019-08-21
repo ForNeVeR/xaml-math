@@ -1,0 +1,51 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "BaseAtom": {
+      "Character": "x",
+      "TextStyle": null,
+      "IsDefaultTextStyle": true,
+      "IsTextSymbol": false,
+      "Type": "Ordinary",
+      "Source": {
+        "Start": 0,
+        "End": 1,
+        "Length": 1,
+        "Source": "x^{y}_{z}"
+      }
+    },
+    "SubscriptAtom": {
+      "Character": "z",
+      "TextStyle": null,
+      "IsDefaultTextStyle": true,
+      "IsTextSymbol": false,
+      "Type": "Ordinary",
+      "Source": {
+        "Start": 7,
+        "End": 8,
+        "Length": 1,
+        "Source": "x^{y}_{z}"
+      }
+    },
+    "SuperscriptAtom": {
+      "Character": "y",
+      "TextStyle": null,
+      "IsDefaultTextStyle": true,
+      "IsTextSymbol": false,
+      "Type": "Ordinary",
+      "Source": {
+        "Start": 3,
+        "End": 4,
+        "Length": 1,
+        "Source": "x^{y}_{z}"
+      }
+    },
+    "Type": "Ordinary",
+    "Source": {
+      "Start": 1,
+      "End": 9,
+      "Length": 8,
+      "Source": "x^{y}_{z}"
+    }
+  }
+}

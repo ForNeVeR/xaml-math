@@ -3,19 +3,18 @@ module WpfMath.Tests.BoxTests
 open System
 
 open FSharp.Core.Fluent
-open DeepEqual.Syntax
 open Xunit
 
 open WpfMath
 open WpfMath.Atoms
 open WpfMath.Boxes
-open WpfMath.Exceptions
-open WpfMath.Tests.Utils
 
 let private parse text =
     let parser = TexFormulaParser()
     let result = parser.Parse text
     result.RootAtom
+
+let private src (string : string) (start : int) (len : int) = SourceSpan(string, start, len)
 
 let private environment =
     let mathFont = DefaultTexFont 20.0
@@ -42,7 +41,7 @@ let ``Box for \text{æ,} should be created successfully``() =
 let ``ScriptsAtom should set Shift on the created box when creating box without any sub- or superscript``() =
     Utils.initializeFontResourceLoading()
 
-    let baseAtom = charSrc 'x' (src "x" 0 1)
+    let baseAtom = CharAtom(src "x" 0 1, 'x')
     let scriptsAtom = ScriptsAtom(null, baseAtom, null, null)
 
     let box = scriptsAtom.CreateBox(environment)

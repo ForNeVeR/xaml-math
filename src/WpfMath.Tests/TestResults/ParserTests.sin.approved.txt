@@ -1,0 +1,103 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "PreviousAtom": null,
+    "Elements": [
+      {
+        "BaseAtom": {
+          "PreviousAtom": null,
+          "Elements": [
+            {
+              "Character": "s",
+              "TextStyle": "mathrm",
+              "IsDefaultTextStyle": false,
+              "IsTextSymbol": false,
+              "Type": "Ordinary",
+              "Source": {
+                "Start": 8,
+                "End": 9,
+                "Length": 1,
+                "Source": "\\mathrm{sin}"
+              }
+            },
+            {
+              "Character": "i",
+              "TextStyle": "mathrm",
+              "IsDefaultTextStyle": false,
+              "IsTextSymbol": false,
+              "Type": "Ordinary",
+              "Source": {
+                "Start": 9,
+                "End": 10,
+                "Length": 1,
+                "Source": "\\mathrm{sin}"
+              }
+            },
+            {
+              "Character": "n",
+              "TextStyle": "mathrm",
+              "IsDefaultTextStyle": false,
+              "IsTextSymbol": false,
+              "Type": "Ordinary",
+              "Source": {
+                "Start": 10,
+                "End": 11,
+                "Length": 1,
+                "Source": "\\mathrm{sin}"
+              }
+            }
+          ],
+          "Type": "Ordinary",
+          "Source": {
+            "Start": 8,
+            "End": 11,
+            "Length": 3,
+            "Source": "\\mathrm{sin}"
+          }
+        },
+        "LowerLimitAtom": null,
+        "UpperLimitAtom": {
+          "Character": "n",
+          "TextStyle": null,
+          "IsDefaultTextStyle": true,
+          "IsTextSymbol": false,
+          "Type": "Ordinary",
+          "Source": {
+            "Start": 6,
+            "End": 7,
+            "Length": 1,
+            "Source": "\\sin^{n} x"
+          }
+        },
+        "UseVerticalLimits": false,
+        "Type": "BigOperator",
+        "Source": {
+          "Start": 8,
+          "End": 9,
+          "Length": 1,
+          "Source": "\\sin^{n} x"
+        }
+      },
+      {
+        "Character": "x",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 9,
+          "End": 10,
+          "Length": 1,
+          "Source": "\\sin^{n} x"
+        }
+      }
+    ],
+    "Type": "Ordinary",
+    "Source": {
+      "Start": 0,
+      "End": 10,
+      "Length": 10,
+      "Source": "\\sin^{n} x"
+    }
+  }
+}
