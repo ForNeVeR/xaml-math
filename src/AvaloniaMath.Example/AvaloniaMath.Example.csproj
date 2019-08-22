@@ -13,8 +13,8 @@
         <EmbeddedResource Include="Assets\*"/>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Avalonia.Desktop" Version="0.7.0"/>
-        <PackageReference Include="Avalonia.ReactiveUI" Version="0.7.0"/>
+        <PackageReference Include="Avalonia.Desktop" Version="0.8.2"/>
+        <PackageReference Include="Avalonia.ReactiveUI" Version="0.8.2"/>
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\AvaloniaMath\AvaloniaMath.csproj"/>

@@ -1,47 +1,60 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+    <PropertyGroup>
+        <PackageId>AvaloniaMath</PackageId>
+        <Title>Avalonia-Math</Title>
+        <Authors>ForNeVeR</Authors>
+        <Description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the Avalonia framework.</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/ForNeVeR/wpf-math</RepositoryUrl>
+        <Copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2019</Copyright>
 
-  <ItemGroup>
-    <None Remove="Data\DefaultTexFont.xml" />
-    <None Remove="Data\GlueSettings.xml" />
-    <None Remove="Data\PredefinedColors.xml" />
-    <None Remove="Data\PredefinedTexFormulas.xml" />
-    <None Remove="Data\TexFormulaSettings.xml" />
-    <None Remove="Data\TexSymbols.xml" />
-    <None Remove="Fonts\cmex10.ttf" />
-    <None Remove="Fonts\cmmi10.ttf" />
-    <None Remove="Fonts\cmr10.ttf" />
-    <None Remove="Fonts\cmsy10.ttf" />
-  </ItemGroup>
+        <VersionPrefix>0.6.0</VersionPrefix>
+        <VersionSuffix>alpha</VersionSuffix>
+        <PackageReleaseNotes>Initial release of the package version for Avalonia.</PackageReleaseNotes>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Data\DefaultTexFont.xml" />
-    <EmbeddedResource Include="Data\GlueSettings.xml" />
-    <EmbeddedResource Include="Data\PredefinedColors.xml" />
-    <EmbeddedResource Include="Data\PredefinedTexFormulas.xml" />
-    <EmbeddedResource Include="Data\TexFormulaSettings.xml" />
-    <EmbeddedResource Include="Data\TexSymbols.xml" />
-    <EmbeddedResource Include="Fonts\cmex10.ttf" />
-    <EmbeddedResource Include="Fonts\cmmi10.ttf" />
-    <EmbeddedResource Include="Fonts\cmr10.ttf" />
-    <EmbeddedResource Include="Fonts\cmsy10.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="**\*.xaml.cs">
-        <DependentUpon>%(Filename)</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="**\*.xaml">
-        <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.7.0" />
-  </ItemGroup>
+    <ItemGroup>
+        <None Remove="Data\DefaultTexFont.xml"/>
+        <None Remove="Data\GlueSettings.xml"/>
+        <None Remove="Data\PredefinedColors.xml"/>
+        <None Remove="Data\PredefinedTexFormulas.xml"/>
+        <None Remove="Data\TexFormulaSettings.xml"/>
+        <None Remove="Data\TexSymbols.xml"/>
+        <None Remove="Fonts\cmex10.ttf"/>
+        <None Remove="Fonts\cmmi10.ttf"/>
+        <None Remove="Fonts\cmr10.ttf"/>
+        <None Remove="Fonts\cmsy10.ttf"/>
+    </ItemGroup>
 
-  <Import Project="..\SharedMath\SharedMath.projitems" Label="Shared" />
+    <ItemGroup>
+        <EmbeddedResource Include="Data\DefaultTexFont.xml"/>
+        <EmbeddedResource Include="Data\GlueSettings.xml"/>
+        <EmbeddedResource Include="Data\PredefinedColors.xml"/>
+        <EmbeddedResource Include="Data\PredefinedTexFormulas.xml"/>
+        <EmbeddedResource Include="Data\TexFormulaSettings.xml"/>
+        <EmbeddedResource Include="Data\TexSymbols.xml"/>
+        <EmbeddedResource Include="Fonts\cmex10.ttf"/>
+        <EmbeddedResource Include="Fonts\cmmi10.ttf"/>
+        <EmbeddedResource Include="Fonts\cmr10.ttf"/>
+        <EmbeddedResource Include="Fonts\cmsy10.ttf"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Update="**\*.xaml.cs">
+            <DependentUpon>%(Filename)</DependentUpon>
+        </Compile>
+        <EmbeddedResource Include="**\*.xaml">
+            <SubType>Designer</SubType>
+        </EmbeddedResource>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="[0.8.0,0.9.0)"/>
+    </ItemGroup>
+
+    <Import Project="..\SharedMath\SharedMath.projitems" Label="Shared"/>
 
 </Project>
