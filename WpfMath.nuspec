@@ -14,8 +14,11 @@
         <releaseNotes>Migrated to .NET 4.5.2; added matrix support; fixed some bugs.</releaseNotes>
         <copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2019</copyright>
         <tags>wpf latex formula</tags>
+        <dependencies>
+            <dependency id="System.ValueTuple" version="4.5.0" />
+        </dependencies>
     </metadata>
     <files>
-        <file src="src\WpfMath\bin\Release\net40\WpfMath.???" target="lib\net40"/>
+        <file src="src\WpfMath\bin\Release\net452\WpfMath.???" target="lib\net452"/>
     </files>
 </package>
