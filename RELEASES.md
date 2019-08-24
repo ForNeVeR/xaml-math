@@ -1,6 +1,22 @@
 Release Notes
 =============
 
+## 0.7.0 (2019-08-24)
+
+Breaking changes:
+
+- [#198: Migrate to .NET 4.5.2][issue-198]
+
+Fixed issues:
+
+- [#141: _ doesn't render inside \text][issue-141]
+- [#171: Make \lbrack and \lbrack commands for parentheses][issue-171]
+- [#172: NullReferenceException on some types of markup][pull-172]
+
+New features:
+
+- [#100: Support for matrix commands][issue-100]
+
 ## 0.6.0 (2018-11-19)
 
 Fixed issues:
@@ -97,11 +113,15 @@ This was the initial published version. It consisted entirely of the original co
 [issue-88]: https://github.com/ForNeVeR/wpf-math/issues/84
 [issue-91]: https://github.com/ForNeVeR/wpf-math/issues/91
 [issue-92]: https://github.com/ForNeVeR/wpf-math/issues/92
+[issue-100]: https://github.com/ForNeVeR/wpf-math/issues/100
 [issue-104]: https://github.com/ForNeVeR/wpf-math/issues/104
 [issue-115]: https://github.com/ForNeVeR/wpf-math/issues/115
 [issue-119]: https://github.com/ForNeVeR/wpf-math/issues/119
 [issue-129]: https://github.com/ForNeVeR/wpf-math/issues/129
+[issue-141]: https://github.com/ForNeVeR/wpf-math/issues/141
 [issue-168]: https://github.com/ForNeVeR/wpf-math/issues/168
+[issue-171]: https://github.com/ForNeVeR/wpf-math/issues/171
+[issue-198]: https://github.com/ForNeVeR/wpf-math/issues/198
 [pull-53]: https://github.com/ForNeVeR/wpf-math/pull/53
 [pull-54]: https://github.com/ForNeVeR/wpf-math/pull/54
 [pull-58]: https://github.com/ForNeVeR/wpf-math/pull/58
@@ -117,3 +137,4 @@ This was the initial published version. It consisted entirely of the original co
 [pull-133]: https://github.com/ForNeVeR/wpf-math/pull/133
 [pull-145]: https://github.com/ForNeVeR/wpf-math/pull/145
 [pull-152]: https://github.com/ForNeVeR/wpf-math/pull/152
+[pull-172]: https://github.com/ForNeVeR/wpf-math/pull/172
