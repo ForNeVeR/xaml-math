@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using WpfMath.Atoms;
 using WpfMath.Boxes;
 
@@ -22,7 +21,7 @@ namespace WpfMath
         }
 
         public Atom BaseAtom { get; }
-        
+
         public Atom DegreeAtom { get; }
         /// <summary>
         /// Gets a value that specifies whether an index was requested.
@@ -33,7 +32,7 @@ namespace WpfMath
         {
             var texFont = environment.MathFont;
             var style = environment.Style;
-            
+
             var axis = texFont.GetAxisHeight(style);
             // Calculate minimum clearance amount.
             double clearance;
@@ -51,7 +50,7 @@ namespace WpfMath
             var totalHeight = baseBox.Height + baseBox.Depth;
             var radicalSignBox = DelimiterFactory.CreateBox(sqrtSymbol, totalHeight + clearance + defaultRuleThickness,environment, Source);
             radicalSignBox.Source = Source;
-            
+
             // Add half of excess height to clearance.
             var delta = radicalSignBox.Depth - (totalHeight + clearance);
             clearance += delta / 2;
@@ -68,14 +67,14 @@ namespace WpfMath
             var horizoverlapbox = new StrutBox(0, 0, 0, 0);
             radicalContainerBox.Add(horizoverlapbox);
             radicalContainerBox.Add(radicalSignBox);
-            
+
             // Create box for root index
-            var  radrootBox =this.DegreeAtom==null?(this.DegreeSpecified? StrutBox.Empty:NullAtom.NullBox): this.DegreeAtom.CreateBox(environment.GetRootStyle());
+            var radrootBox = DegreeAtom == null ? StrutBox.Empty : DegreeAtom.CreateBox(environment.GetRootStyle());
             var bottomShift = scale * (radicalSignBox.Height + radicalSignBox.Depth);
             var rcbItemsdiff = radicalSignBox.TotalHeight -radrootBox.TotalHeight;
             bottomShift = rcbItemsdiff;
             radrootBox.Shift = 0;
-            
+
             if (radrootBox.TotalHeight < radicalSignBox.TotalHeight / 2)
                 bottomShift = (radicalSignBox.TotalHeight / 2)+radrootBox.TotalHeight;
 
@@ -90,7 +89,7 @@ namespace WpfMath
                 radrootBox.Shift = (radicalSignBox.TotalWidth- radrootBox.TotalWidth)/3;
             }
             radicalSignBox.Shift = leftshift;
-            
+
             //increase the left overlap width
             horizoverlapbox.Width = leftshift + radicalSignBox.Width;
 
@@ -100,7 +99,7 @@ namespace WpfMath
             resultBox.Add(radicalContainerBox);
             //adjust the vertical shift of the radicalContainerBox
             radicalContainerBox.Shift = -radicalSignBox.TotalHeight/2 +  2*enviromentYDiff -radicalContainerBox.Depth;
-            
+
             double leftpad=0.0;
             if (radrootBox.TotalWidth < radicalSignBox.TotalWidth )
                 leftpad = leftshift>0?leftshift:0;
