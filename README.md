@@ -34,7 +34,7 @@ namespace ConsoleApplication2
         {
             const string latex = @"\frac{2+2}{2}";
             const string fileName = @"T:\Temp\formula.png";
-            
+
             var parser = new TexFormulaParser();
             var formula = parser.Parse(latex);
             var pngBytes = formula.RenderToPng(20.0, 0.0, 0.0, "Arial");
@@ -60,14 +60,14 @@ namespace ConsoleApplication2
         {
             const string latex = @"\frac{2+2}{2}";
             const string fileName = @"T:\Temp\formula.png";
-            
+
             var parser = new TexFormulaParser();
             var formula = parser.Parse(latex);
             var renderer = formula.GetRenderer(TexStyle.Display, 20.0, "Arial");
             var bitmapSource = renderer.RenderToBitmap(0.0, 0.0);
             Console.WriteLine($"Image width: {bitmapSource.Width}");
             Console.WriteLine($"Image height: {bitmapSource.Height}");
-            
+
             var encoder = new PngBitmapEncoder();
             encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
             using (var target = new FileStream(fileName, FileMode.Create))
@@ -86,10 +86,15 @@ Documentation
 -------------
 
 - [Color support in WPF-Math][docs-colors]
+- [Matrices and Matrix-Like Constructs][docs-matrices]
+- [How to improve blurred formulas][docs-blurred-text-issue]
+
 - [How to prepare `DefaultTexFont.xml` from the font file][docs-prepare-font]
 
-Build Instructions
-------------------
+- [Licensing history][docs-licensing-history]
+
+Build and Maintenance Instructions
+----------------------------------
 
 Build the project using [MSBuild][msbuild] or any compatible environment (e.g. Visual Studio 2017 or Rider). WPF-Math requires C# 7.2 support. Build script:
 
@@ -99,6 +104,8 @@ $ msbuild /p:Configuration=Release
 ```
 
 To run the unit tests, use any xunit-compatible runner (e.g. Visual Studio 2017 or Rider).
+
+To approve the test results if they differ from the existing ones, execute the `scripts/approve-all.ps1` script using PowerShell or PowerShell Core.
 
 To publish the package, execute the following command with [PowerShell][pwsh]:
 
@@ -114,15 +121,24 @@ The library was originally ported from the [JMathTex project][jmathtex], copyrig
 License Notes
 -------------
 
-The project code is licensed under the terms of [MIT license][license]. The original resources from [JMathTeX][jmathtex] (`DefaultTexFont.xml`, `GlueSettings.xml`, `PredefinedTexFormulas.xml`, `TexFormulaSettings.xml`, `TexSymbols.xml`) are taken from the [GPLv2-distributed][gpl] [JMathTeX][jmathtex], but JMathTeX authors have granted permission to redistribute these resourses under the MIT license. See the [wiki][wiki-license-info] for details.
+The project code and all the resources are distributed under the terms of [MIT license][license].
 
 The [fonts][] `cmex10.ttf`, `cmmi10.ttf`, `cmr10.ttf`, and `cmsy10.ttf` and `cmtt10.ttf` are under the [Knuth License][knuth-license].
 
+WPF-Math started as a direct port of [JMathTeX][jmathtex] project written in Java, reusing both code and resources. JMathTeX is distributed under the terms of GNU GPL v2 license. WPF-Math, being a derived work, has a permission from JMathTeX authors to be redistributed under the MIT license. See the [Licensing history][docs-licensing-history] for the details.
+
+We're very grateful to JMathTeX authors for their work and allowing to redistribute the derived library. JMathTeX is written by:
+- Kris Coolsaet
+- Nico Van Cleemput
+- Kurt Vermeulen
+
 [docs-colors]: docs/colors.md
 [docs-prepare-font]: docs/prepare-font.md
+[docs-blurred-text-issue]: docs/blurred-text-issue.md
+[docs-licensing-history]: docs/licensing-history.md
+[docs-matrices]: docs/matrices.md
 [example]: WpfMath.Example/
 [fonts]: src/WpfMath/Fonts/
-[gpl]: docs/JMathTeX-license.txt
 [license]: LICENSE.md
 
 [alex-regueiro]: https://github.com/alexreg
@@ -134,7 +150,6 @@ The [fonts][] `cmex10.ttf`, `cmmi10.ttf`, `cmr10.ttf`, and `cmsy10.ttf` and `cmt
 [msbuild]: https://github.com/Microsoft/msbuild
 [nuget]: https://www.nuget.org/packages/WpfMath/
 [pwsh]: https://github.com/PowerShell/PowerShell
-[wiki-license-info]: https://github.com/ForNeVeR/wpf-math/wiki/Additional-license-info
 
 [badge-appveyor]: https://ci.appveyor.com/api/projects/status/b26m3rpfcgb91gdg/branch/master?svg=true
 [badge-nuget]: https://img.shields.io/nuget/v/WpfMath.svg

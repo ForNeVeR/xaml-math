@@ -249,7 +249,7 @@ namespace WpfMath
             this.Formula.RootAtom = new AccentedAtom(this.source, this.Formula.RootAtom, accentName);
         }
 
-        public void PutDelimiterOver(TexDelimeter delimiter)
+        public void PutDelimiterOver(TexDelimiter delimiter)
         {
             var name = TexFormulaParser.DelimiterNames[(int)delimiter][(int)TexDelimeterType.Over];
             this.Formula.RootAtom = new OverUnderDelimiter(
@@ -262,13 +262,13 @@ namespace WpfMath
                 true);
         }
 
-        public void PutDelimiterOver(TexDelimeter delimiter, string superscriptFormula, TexUnit kernUnit, double kern)
+        public void PutDelimiterOver(TexDelimiter delimiter, string superscriptFormula, TexUnit kernUnit, double kern)
         {
             this.PutDelimiterOver(delimiter, this.formulaParser.Parse(superscriptFormula), kernUnit, kern);
         }
 
         public void PutDelimiterOver(
-            TexDelimeter delimiter,
+            TexDelimiter delimiter,
             TexFormula superscriptFormula,
             TexUnit kernUnit,
             double kern)
@@ -284,7 +284,7 @@ namespace WpfMath
                 true);
         }
 
-        public void PutDelimiterUnder(TexDelimeter delimiter)
+        public void PutDelimiterUnder(TexDelimiter delimiter)
         {
             var name = TexFormulaParser.DelimiterNames[(int)delimiter][(int)TexDelimeterType.Under];
             this.Formula.RootAtom = new OverUnderDelimiter(
@@ -297,12 +297,12 @@ namespace WpfMath
                 false);
         }
 
-        public void PutDelimiterUnder(TexDelimeter delimiter, string subscriptFormula, TexUnit kernUnit, double kern)
+        public void PutDelimiterUnder(TexDelimiter delimiter, string subscriptFormula, TexUnit kernUnit, double kern)
         {
             this.PutDelimiterUnder(delimiter, this.formulaParser.Parse(subscriptFormula), kernUnit, kern);
         }
 
-        public void PutDelimiterUnder(TexDelimeter delimiter, TexFormula subscriptName, TexUnit kernUnit, double kern)
+        public void PutDelimiterUnder(TexDelimiter delimiter, TexFormula subscriptName, TexUnit kernUnit, double kern)
         {
             var name = TexFormulaParser.DelimiterNames[(int)delimiter][(int)TexDelimeterType.Under];
             this.Formula.RootAtom = new OverUnderDelimiter(

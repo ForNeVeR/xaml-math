@@ -1,0 +1,123 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "PreviousAtom": null,
+    "Elements": [
+      {
+        "BaseAtom": {
+          "PreviousAtom": null,
+          "Elements": [
+            {
+              "Character": "2",
+              "TextStyle": null,
+              "IsDefaultTextStyle": true,
+              "IsTextSymbol": false,
+              "Type": "Ordinary",
+              "Source": {
+                "Start": 6,
+                "End": 7,
+                "Length": 1,
+                "Source": "\\left(2+2\\right) + 1"
+              }
+            },
+            {
+              "IsDelimeter": false,
+              "Name": "plus",
+              "IsTextSymbol": false,
+              "Type": "BinaryOperator",
+              "Source": {
+                "Start": 7,
+                "End": 8,
+                "Length": 1,
+                "Source": "\\left(2+2\\right) + 1"
+              }
+            },
+            {
+              "Character": "2",
+              "TextStyle": null,
+              "IsDefaultTextStyle": true,
+              "IsTextSymbol": false,
+              "Type": "Ordinary",
+              "Source": {
+                "Start": 8,
+                "End": 9,
+                "Length": 1,
+                "Source": "\\left(2+2\\right) + 1"
+              }
+            }
+          ],
+          "Type": "Ordinary",
+          "Source": {
+            "Start": 9,
+            "End": 25,
+            "Length": 16,
+            "Source": "\\left(2+2\\right) + 1"
+          }
+        },
+        "LeftDelimeter": {
+          "IsDelimeter": true,
+          "Name": "(",
+          "IsTextSymbol": false,
+          "Type": "Opening",
+          "Source": {
+            "Start": 1,
+            "End": 6,
+            "Length": 5,
+            "Source": "\\left(2+2\\right) + 1"
+          }
+        },
+        "RightDelimeter": {
+          "IsDelimeter": true,
+          "Name": ")",
+          "IsTextSymbol": false,
+          "Type": "Closing",
+          "Source": {
+            "Start": 10,
+            "End": 16,
+            "Length": 6,
+            "Source": "\\left(2+2\\right) + 1"
+          }
+        },
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 1,
+          "End": 16,
+          "Length": 15,
+          "Source": "\\left(2+2\\right) + 1"
+        }
+      },
+      {
+        "IsDelimeter": false,
+        "Name": "plus",
+        "IsTextSymbol": false,
+        "Type": "BinaryOperator",
+        "Source": {
+          "Start": 17,
+          "End": 18,
+          "Length": 1,
+          "Source": "\\left(2+2\\right) + 1"
+        }
+      },
+      {
+        "Character": "1",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 19,
+          "End": 20,
+          "Length": 1,
+          "Source": "\\left(2+2\\right) + 1"
+        }
+      }
+    ],
+    "Type": "Ordinary",
+    "Source": {
+      "Start": 0,
+      "End": 20,
+      "Length": 20,
+      "Source": "\\left(2+2\\right) + 1"
+    }
+  }
+}

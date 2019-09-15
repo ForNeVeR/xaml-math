@@ -1,0 +1,49 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "BaseAtom": {
+      "Character": "a",
+      "TextStyle": null,
+      "IsDefaultTextStyle": true,
+      "IsTextSymbol": false,
+      "Type": "Ordinary",
+      "Source": {
+        "Start": 6,
+        "End": 7,
+        "Length": 1,
+        "Source": "\\left<a\\right>"
+      }
+    },
+    "LeftDelimeter": {
+      "IsDelimeter": true,
+      "Name": "langle",
+      "IsTextSymbol": false,
+      "Type": "Opening",
+      "Source": {
+        "Start": 1,
+        "End": 6,
+        "Length": 5,
+        "Source": "\\left<a\\right>"
+      }
+    },
+    "RightDelimeter": {
+      "IsDelimeter": true,
+      "Name": "rangle",
+      "IsTextSymbol": false,
+      "Type": "Closing",
+      "Source": {
+        "Start": 8,
+        "End": 14,
+        "Length": 6,
+        "Source": "\\left<a\\right>"
+      }
+    },
+    "Type": "Ordinary",
+    "Source": {
+      "Start": 1,
+      "End": 14,
+      "Length": 13,
+      "Source": "\\left<a\\right>"
+    }
+  }
+}

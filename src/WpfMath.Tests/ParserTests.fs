@@ -2,255 +2,178 @@
 
 open Xunit
 
-open WpfMath
-open WpfMath.Atoms
-open WpfMath.Exceptions
-open WpfMath.Tests.Utils
-
-let private ``123`` : Atom seq = [| char '1'; char '2'; char '3' |] |> Seq.map (fun x -> upcast x)
-let ``2+2`` = row [char '2'; symbol "plus"; char '2']
-let ``\mathrm{2+2}`` = row [styledChar '2' rmStyle; symbol "plus"; styledChar '2' rmStyle]
-let ``\lim`` = row [styledChar 'l' rmStyle; styledChar 'i' rmStyle; styledChar 'm' rmStyle]
-let ``\sin`` = row [styledChar 's' rmStyle; styledChar 'i' rmStyle; styledChar 'n' rmStyle]
-let redBrush = brush "#ed1b23"
+open WpfMath.Tests.ApprovalTestUtils
 
 [<Fact>]
-let ``2+2 should be parsed properly`` () =
-    assertParseResult
-    <| "2+2"
-    <| formula ``2+2``
+let ``2+2``() =
+    verifyParseResult "2+2"
 
 [<Theory>]
-[<InlineData("(", ")", "lbrack", "rbrack")>]
-[<InlineData("[", "]", "lsqbrack", "rsqbrack")>]
+[<InlineData("(", ")", "(", ")")>]
+[<InlineData("[", "]", "lbrack", "rbrack")>]
 [<InlineData("{", "}", "lbrace", "rbrace")>]
 [<InlineData("<", ">", "langle", "rangle")>]
-let ``Delimiters should work`` (left : string, right : string, lResult : string, rResult : string) =
-    assertParseResult
+let delimiters(left : string, right : string, lResult : string, rResult : string) =
+    verifyParseResultScenario
+    <| sprintf "%s,%s" lResult rResult
     <| sprintf @"\left%sa\right%s" left right
-    <| (formula <| fenced (openBrace lResult) (char 'a') (closeBrace rResult))
 
 [<Theory>]
 [<InlineData(".", ")", true, false)>]
 [<InlineData("(", ".", false, true)>]
-let ``Empty delimiters should work`` (left : string, right : string, isLeftEmpty : bool, isRightEmpty : bool) =
-    let empty = brace SymbolAtom.EmptyDelimiterName TexAtomType.Ordinary
-    let leftBrace = if isLeftEmpty then empty else (openBrace "lbrack")
-    let rightBrace = if isRightEmpty then empty else (closeBrace "rbrack")
-
-    assertParseResult
+let emptyDelimiters(left : string, right : string, isLeftEmpty : bool, isRightEmpty : bool) =
+    verifyParseResultScenario
+    <| sprintf "(%s,%s,%A,%A)" left right isLeftEmpty isRightEmpty
     <| sprintf @"\left%sa\right%s" left right
-    <| (formula <| fenced leftBrace (char 'a') rightBrace)
 
 [<Fact>]
-let ``Unmatched delimiters should work`` () =
-    assertParseResult
-    <| @"\left)a\right|"
-    <| (formula <| fenced (closeBrace "rbrack") (char 'a') (brace "vert" TexAtomType.Ordinary))
+let unmatchedDelimiters() =
+    verifyParseResult @"\left)a\right|"
 
 [<Fact>]
-let ``Non-existing delimiter should throw exception`` () =
-    let markup = @"\left x\right)"
-    Assert.Throws<TexParseException>(fun () -> TexFormulaParser().Parse(markup) |> ignore)
+let expressionInBraces() =
+    verifyParseResult @"\left(2+2\right)"
 
 [<Fact>]
-let ``Expression in braces should be parsed`` () =
-    assertParseResult
-    <| @"\left(2+2\right)"
-    <| (formula <| fenced (openBrace "lbrack") ``2+2`` (closeBrace "rbrack"))
+let expressionAfterBraces() =
+    verifyParseResult @"\left(2+2\right) + 1"
 
 [<Fact>]
-let ``Expression after the braces should be parsed`` () =
-    assertParseResult
-    <| @"\left(2+2\right) + 1"
-    <| (formula <| row [ fenced (openBrace "lbrack") ``2+2`` (closeBrace "rbrack")
-                         symbol "plus"
-                         char '1' ])
+let textCommand() =
+    verifyParseResult @"\text{test}"
 
 [<Fact>]
-let ``\text command should be supported`` () =
-    assertParseResult
-    <| @"\text{test}"
-    <| (formula <| styledString textStyle "test")
+let spacesInText() =
+    verifyParseResult @"\text{a b c}"
 
 [<Fact>]
-let ``Spaces in \text shouldn't be ignored`` () =
-    assertParseResult
-    <| @"\text{a b c}"
-    <| (formula <| row [textChar 'a'; space; textChar 'b'; space; textChar 'c'])
+let cyrillicText() =
+    verifyParseResult @"\text{абв}"
 
 [<Fact>]
-let ``\text should support Cyrillic`` () =
-    assertParseResult
-    <| @"\text{абв}"
-    <| (formula <| styledString textStyle "абв")
+let underscoreText() =
+    verifyParseResult @"\text{_}"
 
 [<Fact>]
-let ``\mathrm should be parsed properly`` () =
-    assertParseResult
-    <| @"\mathrm{sin}"
-    <| (formula <| row [styledChar 's' rmStyle; styledChar 'i' rmStyle; styledChar 'n' rmStyle])
+let commandsInText() =
+    verifyParseResult @"\text{\alpha \beta \unknowncommand}"
 
 [<Fact>]
-let ``\mathrm should be parsed properly for complex eqs`` () =
-    assertParseResult
-    <| @"\mathrm{\left(2+2\right)} + 1"
-    <| (formula <| row [ fenced (openBrace "lbrack") ``\mathrm{2+2}`` (closeBrace "rbrack")
-                         symbol "plus"
-                         char '1' ])
+let mathrm() =
+    verifyParseResult @"\mathrm{sin}"
 
 [<Fact>]
-let ``\mathit should be parsed properly`` () =
-    assertParseResult
-    <| @"\mathit{sin}"
-    <| (formula <| row [styledChar 's' itStyle; styledChar 'i' itStyle; styledChar 'n' itStyle])
-
+let complexMathrm() =
+    verifyParseResult @"\mathrm{\left(2+2\right)} + 1"
 
 [<Fact>]
-let ``\mathcal should be parsed properly`` () =
-    assertParseResult
-    <| @"\mathcal{sin}"
-    <| (formula <| row [styledChar 's' calStyle; styledChar 'i' calStyle; styledChar 'n' calStyle])
+let mathit() =
+    verifyParseResult @"\mathit{sin}"
 
 [<Fact>]
-let ``\mathrm{} should throw exn`` () =
-    let parser = TexFormulaParser()
-    let methodcall = (fun () -> parser.Parse(@"\mathrm{}") |> ignore)
-    Assert.Throws<TexParseException>(methodcall)
+let mathcal() =
+    verifyParseResult @"\mathcal{sin}"
 
 [<Fact>]
-let ``\lim should be parsed properly`` () =
-    assertParseResult
-    <| @"\lim_{n} x"
-    <| (formula <| row [
-                    opWithScripts ``\lim`` (char 'n') null (Some true)
-                    char 'x'
-                        ])
+let lim() =
+    verifyParseResult @"\lim_{n} x"
 
 [<Fact>]
-let ``{\lim} x should be parsed properly`` () =
-    assertParseResult
-    <| @"{\lim} x"
-    <| (formula <| row [
-                    group (op ``\lim`` (Some true))
-                    char 'x'
-                        ])
+let limInCurlyBraces() =
+    verifyParseResult @"{\lim} x"
 
 [<Fact>]
-let ``\sin should be parsed properly`` () =
-    assertParseResult
-    <| @"\sin^{n} x"
-    <| (formula <| row [
-                    opWithScripts ``\sin`` null (char 'n') (Some false)
-                    char 'x'
-                        ])
+let sin() =
+    verifyParseResult @"\sin^{n} x"
 
 [<Fact>]
-let ``\int f should be parser properly`` () =
-    assertParseResult
-    <| @"\int f"
-    <| (formula <| row [
-                    op (symbolOp "int") (None)
-                    char 'f'
-                        ])
+let intF() =
+    verifyParseResult @"\int f"
 
 [<Fact>]
-let ``{} should be parsed properly`` () =
-    assertParseResult
-    <| @"{}"
-    <| (formula <| group (row []))
+let emptyCurlyBraces() =
+    verifyParseResult @"{}"
 
 [<Fact>]
-let ``Delimiter with scripts should be parsed properly`` () =
-    assertParseResult
-    <| @"\left(2+2\right)_a^b"
-    <| (formula <| scripts (fenced (openBrace "lbrack") ``2+2`` (closeBrace "rbrack")) (char 'a') (char 'b'))
-
-let ``\text doesn't create any SymbolAtoms``() =
-    assertParseResult
-    <| @"\text{2+2}"
-    <| (formula <| row [char '2'; char '+'; char '2'])
+let delimiterWithScripts() =
+    verifyParseResult @"\left(2+2\right)_a^b"
 
 [<Fact>]
-let ``\sqrt should throw a TexParseException``() =
-    assertParseThrows<TexParseException> @"\sqrt"
-
-[<Fact>]
-let ``"\sum_ " should throw a TexParseException``() =
-    assertParseThrows<TexParseException> @"\sum_ "
+let textWithExpression() =
+    verifyParseResult @"\text{2+2}"
 
 [<Theory>]
-[<InlineData(@"\color{red}1123");
-  InlineData(@"\color{red}{1}123");
-  InlineData(@"\color{red} 1123");
-  InlineData(@"\color{red} {1}123")>]
-let ``\color should parse arguments properly``(text : string) : unit =
-    assertParseResult
-    <| text
-    <| (formula (row <| seq { yield upcast foreColor (char '1') redBrush; yield! ``123`` }))
+[<InlineData("{red}1123");
+  InlineData("{red}{1}123");
+  InlineData("{red} 1123");
+  InlineData("{red} {1}123")>]
+let color(text : string) : unit =
+    verifyParseResultScenario
+    <| processSpecialChars text
+    <| sprintf @"\color%s" text
 
 [<Theory>]
-[<InlineData(@"\colorbox{red}1123");
-  InlineData(@"\colorbox{red}{1}123");
-  InlineData(@"\colorbox{red} 1123");
-  InlineData(@"\colorbox{red} {1}123")>]
-let ``\colorbox should parse arguments properly``(text : string) : unit =
-    assertParseResult
-    <| text
-    <| (formula (row <| seq { yield upcast backColor (char '1') redBrush; yield! ``123`` }))
+[<InlineData(@"{red}1123");
+  InlineData(@"{red}{1}123");
+  InlineData(@"{red} 1123");
+  InlineData(@"{red} {1}123")>]
+let colorbox(text : string) : unit =
+    verifyParseResultScenario
+    <| processSpecialChars text
+    <| sprintf @"\colorbox%s" text
 
 [<Theory>]
-[<InlineData(@"\frac2x123");
-  InlineData(@"\frac2{x}123");
-  InlineData(@"\frac{2}x123");
-  InlineData(@"\frac{2}{x}123");
-  InlineData(@"\frac 2 x123");
-  InlineData(@"\frac2 {x}123");
-  InlineData(@"\frac 2{x}123")>]
-let ``\frac should parse arguments properly``(text : string) : unit =
-    assertParseResult
-    <| text
-    <| (formula (row <| seq { yield upcast fraction (char '2') (char 'x'); yield! ``123`` }))
+[<InlineData("2x123");
+  InlineData("2{x}123");
+  InlineData("{2}x123");
+  InlineData("{2}{x}123");
+  InlineData(" 2 x123");
+  InlineData("2 {x}123");
+  InlineData(" 2{x}123")>]
+let frac(text : string) : unit =
+    verifyParseResultScenario
+    <| processSpecialChars text
+    <| sprintf @"\frac%s" text
 
 [<Theory>]
-[<InlineData(@"\overline1123");
-  InlineData(@"\overline{1}123");
-  InlineData(@"\overline 1123");
-  InlineData(@"\overline {1}123")>]
-let ``\overline should parse arguments properly``(text : string) : unit =
-    assertParseResult
-    <| text
-    <| (formula (row <| seq { yield upcast overline(char '1'); yield! ``123`` }))
+[<InlineData("1123");
+  InlineData("{1}123");
+  InlineData(" 1123");
+  InlineData(" {1}123")>]
+let overline(text : string) : unit =
+    verifyParseResultScenario
+    <| processSpecialChars text
+    <| sprintf @"\overline%s" text
 
 [<Theory>]
-[<InlineData(@"\sqrt1123");
-  InlineData(@"\sqrt{1}123");
-  InlineData(@"\sqrt 1123");
-  InlineData(@"\sqrt {1}123")>]
-let ``\sqrt should parse arguments properly``(text : string) : unit =
-    assertParseResult
-    <| text
-    <| (formula (row <| seq { yield upcast radical(char '1'); yield! ``123`` }))
+[<InlineData("1123");
+  InlineData("{1}123");
+  InlineData(" 1123");
+  InlineData(" {1}123")>]
+let sqrt(text : string) : unit =
+    verifyParseResultScenario
+    <| processSpecialChars text
+    <| sprintf @"\sqrt%s" text
 
 [<Theory>]
-[<InlineData(@"\sqrt [2]1123");
-  InlineData(@"\sqrt [ 2]{1}123");
-  InlineData(@"\sqrt[2 ] 1123");
-  InlineData(@"\sqrt[ 2 ] {1}123")>]
-let ``\sqrt should parse optional argument properly``(text : string) : unit =
-    assertParseResult
-    <| text
-    <| (formula (row <| seq { yield upcast radicalWithDegree (char '2') (char '1'); yield! ``123`` }))
+[<InlineData(" [2]1123");
+  InlineData(" [ 2]{1}123");
+  InlineData("[2 ] 1123");
+  InlineData("[ 2 ] {1}123")>]
+let sqrtWithOptArgument(text : string) : unit =
+    verifyParseResultScenario
+    <| processSpecialChars text
+    <| sprintf @"\sqrt%s" text
 
 [<Theory>]
-[<InlineData(@"\underline1123");
-  InlineData(@"\underline{1}123");
-  InlineData(@"\underline 1123");
-  InlineData(@"\underline {1}123")>]
-let ``\underline should parse arguments properly``(text : string) : unit =
-    assertParseResult
-    <| text
-    <| (formula (row <| seq { yield upcast underline(char '1'); yield! ``123`` }))
+[<InlineData("1123");
+  InlineData("{1}123");
+  InlineData(" 1123");
+  InlineData(" {1}123")>]
+let underline(text : string) : unit =
+    verifyParseResultScenario
+    <| processSpecialChars text
+    <| sprintf @"\underline%s" text
 
 [<Theory>]
 [<InlineData("x^y_z");
@@ -259,41 +182,69 @@ let ``\underline should parse arguments properly``(text : string) : unit =
   InlineData("x^{y}_{z}");
   InlineData("x^y_ z");
   InlineData("x ^ {y} _ {z}")>]
-let ``Scripts should be parsed properly``(text : string) : unit =
-    assertParseResult
+let scripts(text : string) : unit =
+    verifyParseResultScenario
+    <| processSpecialChars text
     <| text
-    <| (formula <| scripts (char 'x') (char 'z') (char 'y'))
 
 [<Theory>]
-[<InlineData(@"\text 1123");
-  InlineData(@"\text {1}123")>]
-let ``\text command should support extended argument parsing``(text : string) : unit =
-    assertParseResult
-    <| text
-    <| (formula (row <| seq { yield upcast styledChar '1' textStyle; yield! ``123`` }))
+[<InlineData(" 1123");
+  InlineData(" {1}123")>]
+let textArgumentParsing(text : string) : unit =
+    verifyParseResultScenario
+    <| processSpecialChars text
+    <| sprintf @"\text%s" text
+
+[<Fact>]
+let hat() : unit =
+    verifyParseResult @"{\hat T}"
+
+[<Fact>]
+let integral() =
+    verifyParseResult @"\int_a^b"
+
+[<Fact>]
+let simpleMatrix() =
+    verifyParseResult @"\matrix{4&78&3 \\ 5 & 9  & 82 }"
+
+[<Fact>]
+let simpleCases() =
+    verifyParseResult @"\cases{x,&if x > 0;\cr -x,& otherwise.}"
+
+[<Fact>]
+let nestedMatrix() =
+    verifyParseResult @"\matrix{4&78&3\\ 57 & {\matrix{78 \\ 12}}  & 20782 }"
+
+[<Fact>]
+let piecewiseDefinedFunction() =
+    verifyParseResult @"f(x) = \cases{1/3 & if \thinspace 0\le x\le 1;\cr 2/3 & if \thinspace 3\le x \le 4; \cr 0 & elsewhere.\cr}"
+
+[<Fact>]
+let matrixExpression() =
+    verifyParseResult @"v \times w = \left( \matrix{v_2 w_3 - v_3 w_2 \\ v_3 w_1 - v_1 w_3 \\ v_1 w_2 - v_2 w_1} \right) where v= \left(\matrix{ v_1 \\ v_2 \\ v_3 }\right), w= \left( \matrix{w_1 \\ w_2  \\ w_3} \right)"
+
+[<Fact>]
+let bigMatrixExpression() =
+    verifyParseResult @"\Gamma_{\mu \rho} ^{\sigma}= \pmatrix{\pmatrix{0 & 0 & 0 \\ 0 & -r & 0 \\ 0 & 0 & -r sin^2(\theta)} \\ \pmatrix{0 & \frac{1}{r} & 0 \\ \frac{1}{r} & 0 & 0 \\ 0 & 0 & -\sin(\theta) \cos(\theta)} \\ \pmatrix{0 & 0 & \frac{1}{r} \\ 0 & 0 & \frac{1}{\tan(\theta)} \\ \frac{1}{r} & \frac{1}{\tan(\theta)} & 0 }}"
 
 [<Theory>]
-[<InlineData(@"\color {red} x", "#ed1b23");
-  InlineData(@"\color [gray] {0.5} x", "#808080");
-  InlineData(@"\color [rgb] {0.5, 0.5, 0.5} x", "#808080");
-  InlineData(@"\color [RGB] {128, 128, 128} x", "#808080");
-  InlineData(@"\color [cmyk] {0.5, 0.5, 0.5, 0.5} x", "#404040");
-  InlineData(@"\color [HTML] {abcdef} x", "#abcdef")>]
-let ``Various color models should be supported``(text : string, color : string) : unit =
-    assertParseResult
-    <| text
-    <| (formula (foreColor (char 'x') (brush color)))
+[<InlineData(@"\color {red} x");
+  InlineData(@"\color [gray] {0.5} x");
+  InlineData(@"\color [rgb] {0.5, 0.5, 0.5} x");
+  InlineData(@"\color [RGB] {128, 128, 128} x");
+  InlineData(@"\color [cmyk] {0.5, 0.5, 0.5, 0.5} x");
+  InlineData(@"\color [HTML] {abcdef} x")>]
+let colorModels(text: string): unit =
+    verifyParseResult text
 
 [<Theory>]
-[<InlineData(@"\color {red, 0.1} x", "#ed1b2319");
-  InlineData(@"\color [gray] {0.5, 0.1} x", "#80808019");
-  InlineData(@"\color [argb] {0.1, 0.5, 0.5, 0.5} x", "#80808019");
-  InlineData(@"\color [rgba] {0.5, 0.5, 0.5, 0.1} x", "#80808019");
-  InlineData(@"\color [ARGB] {25, 128, 128, 128} x", "#80808019");
-  InlineData(@"\color [RGBA] {128, 128, 128, 25} x", "#80808019");
-  InlineData(@"\color [cmyk] {0.5, 0.5, 0.5, 0.5, 0.1} x", "#40404019");
-  InlineData(@"\color [HTML] {abcdef19} x", "#abcdef19")>]
-let ``Color models with opacity should be supported``(text : string, color : string) : unit =
-    assertParseResult
-    <| text
-    <| (formula (foreColor (char 'x') (brush color)))
+[<InlineData(@"\color {red, 0.1} x");
+  InlineData(@"\color [gray] {0.5, 0.1} x");
+  InlineData(@"\color [argb] {0.1, 0.5, 0.5, 0.5} x");
+  InlineData(@"\color [rgba] {0.5, 0.5, 0.5, 0.1} x");
+  InlineData(@"\color [ARGB] {25, 128, 128, 128} x");
+  InlineData(@"\color [RGBA] {128, 128, 128, 25} x");
+  InlineData(@"\color [cmyk] {0.5, 0.5, 0.5, 0.5, 0.1} x");
+  InlineData(@"\color [HTML] {abcdef19} x")>]
+let colorModelsWithOpacity(text: string): unit =
+    verifyParseResult text

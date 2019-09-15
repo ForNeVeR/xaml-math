@@ -1,6 +1,38 @@
 Release Notes
 =============
 
+## 0.7.0 (2019-08-24)
+
+Breaking changes:
+
+- [#198: Migrate to .NET 4.5.2][issue-198]
+
+Fixed issues:
+
+- [#141: _ doesn't render inside \text][issue-141]
+- [#171: Make \lbrack and \lbrack commands for parentheses][issue-171]
+- [#172: NullReferenceException on some types of markup][pull-172]
+
+New features:
+
+- [#100: Support for matrix commands][issue-100]
+
+## 0.6.0 (2018-11-19)
+
+Fixed issues:
+
+- [#60: Command arguments passed without braces][issue-60]
+- [#168: Poor exported PNG quality and text cutting][issue-168]
+
+New features:
+
+- [#91: \overline command][issue-91]
+- [#145: Implemented the underline command][pull-145]
+
+Refactorings:
+
+- [#152: Move converters to namespace][pull-152]
+
 ## 0.5 (2018-05-08)
 
 Fixed issues:
@@ -74,15 +106,22 @@ This was the initial published version. It consisted entirely of the original co
 [commit-14c303d]: https://github.com/ForNeVeR/wpf-math/commit/14c303d30eba735af4faa5e72e149c60add00293
 [issue-14]: https://github.com/ForNeVeR/wpf-math/issues/14
 [issue-50]: https://github.com/ForNeVeR/wpf-math/issues/50
+[issue-60]: https://github.com/ForNeVeR/wpf-math/issues/60
 [issue-62]: https://github.com/ForNeVeR/wpf-math/issues/62
 [issue-82]: https://github.com/ForNeVeR/wpf-math/issues/82
 [issue-84]: https://github.com/ForNeVeR/wpf-math/issues/84
 [issue-88]: https://github.com/ForNeVeR/wpf-math/issues/84
+[issue-91]: https://github.com/ForNeVeR/wpf-math/issues/91
 [issue-92]: https://github.com/ForNeVeR/wpf-math/issues/92
+[issue-100]: https://github.com/ForNeVeR/wpf-math/issues/100
 [issue-104]: https://github.com/ForNeVeR/wpf-math/issues/104
 [issue-115]: https://github.com/ForNeVeR/wpf-math/issues/115
 [issue-119]: https://github.com/ForNeVeR/wpf-math/issues/119
 [issue-129]: https://github.com/ForNeVeR/wpf-math/issues/129
+[issue-141]: https://github.com/ForNeVeR/wpf-math/issues/141
+[issue-168]: https://github.com/ForNeVeR/wpf-math/issues/168
+[issue-171]: https://github.com/ForNeVeR/wpf-math/issues/171
+[issue-198]: https://github.com/ForNeVeR/wpf-math/issues/198
 [pull-53]: https://github.com/ForNeVeR/wpf-math/pull/53
 [pull-54]: https://github.com/ForNeVeR/wpf-math/pull/54
 [pull-58]: https://github.com/ForNeVeR/wpf-math/pull/58
@@ -96,3 +135,6 @@ This was the initial published version. It consisted entirely of the original co
 [pull-108]: https://github.com/ForNeVeR/wpf-math/pull/108
 [pull-123]: https://github.com/ForNeVeR/wpf-math/pull/123
 [pull-133]: https://github.com/ForNeVeR/wpf-math/pull/133
+[pull-145]: https://github.com/ForNeVeR/wpf-math/pull/145
+[pull-152]: https://github.com/ForNeVeR/wpf-math/pull/152
+[pull-172]: https://github.com/ForNeVeR/wpf-math/pull/172

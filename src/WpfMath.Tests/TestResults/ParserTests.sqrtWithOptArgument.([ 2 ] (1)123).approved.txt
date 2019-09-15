@@ -1,0 +1,89 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "PreviousAtom": null,
+    "Elements": [
+      {
+        "BaseAtom": {
+          "Character": "1",
+          "TextStyle": null,
+          "IsDefaultTextStyle": true,
+          "IsTextSymbol": false,
+          "Type": "Ordinary",
+          "Source": {
+            "Start": 12,
+            "End": 13,
+            "Length": 1,
+            "Source": "\\sqrt[ 2 ] {1}123"
+          }
+        },
+        "DegreeAtom": {
+          "Character": "2",
+          "TextStyle": null,
+          "IsDefaultTextStyle": true,
+          "IsTextSymbol": false,
+          "Type": "Ordinary",
+          "Source": {
+            "Start": 7,
+            "End": 8,
+            "Length": 1,
+            "Source": "\\sqrt[ 2 ] {1}123"
+          }
+        },
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 1,
+          "End": 14,
+          "Length": 13,
+          "Source": "\\sqrt[ 2 ] {1}123"
+        }
+      },
+      {
+        "Character": "1",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 14,
+          "End": 15,
+          "Length": 1,
+          "Source": "\\sqrt[ 2 ] {1}123"
+        }
+      },
+      {
+        "Character": "2",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 15,
+          "End": 16,
+          "Length": 1,
+          "Source": "\\sqrt[ 2 ] {1}123"
+        }
+      },
+      {
+        "Character": "3",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 16,
+          "End": 17,
+          "Length": 1,
+          "Source": "\\sqrt[ 2 ] {1}123"
+        }
+      }
+    ],
+    "Type": "Ordinary",
+    "Source": {
+      "Start": 0,
+      "End": 17,
+      "Length": 17,
+      "Source": "\\sqrt[ 2 ] {1}123"
+    }
+  }
+}

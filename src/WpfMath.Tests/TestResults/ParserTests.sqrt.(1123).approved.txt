@@ -1,0 +1,77 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "PreviousAtom": null,
+    "Elements": [
+      {
+        "BaseAtom": {
+          "Character": "1",
+          "TextStyle": null,
+          "IsDefaultTextStyle": true,
+          "IsTextSymbol": false,
+          "Type": "Ordinary",
+          "Source": {
+            "Start": 5,
+            "End": 6,
+            "Length": 1,
+            "Source": "\\sqrt1123"
+          }
+        },
+        "DegreeAtom": null,
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 1,
+          "End": 6,
+          "Length": 5,
+          "Source": "\\sqrt1123"
+        }
+      },
+      {
+        "Character": "1",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 6,
+          "End": 7,
+          "Length": 1,
+          "Source": "\\sqrt1123"
+        }
+      },
+      {
+        "Character": "2",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 7,
+          "End": 8,
+          "Length": 1,
+          "Source": "\\sqrt1123"
+        }
+      },
+      {
+        "Character": "3",
+        "TextStyle": null,
+        "IsDefaultTextStyle": true,
+        "IsTextSymbol": false,
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 8,
+          "End": 9,
+          "Length": 1,
+          "Source": "\\sqrt1123"
+        }
+      }
+    ],
+    "Type": "Ordinary",
+    "Source": {
+      "Start": 0,
+      "End": 9,
+      "Length": 9,
+      "Source": "\\sqrt1123"
+    }
+  }
+}
