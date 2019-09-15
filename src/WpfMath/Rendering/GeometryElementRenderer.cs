@@ -45,6 +45,8 @@ namespace WpfMath.Rendering
             _geometry.Children.Add(group);
         }
 
+        public void FinishRendering() {}
+
         private static void ApplyTransformations(IEnumerable<Transformation> transformations, GeometryGroup geometry)
         {
             foreach (var transformation in transformations)

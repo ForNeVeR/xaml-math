@@ -8,38 +8,50 @@ using WpfMath.Rendering.Transformations;
 namespace WpfMath.Rendering
 {
     /// <summary>The renderer that uses WPF drawing context.</summary>
+    /// <remarks>
+    /// The WPF renderer draws all the image elements into two layers: the background and the foreground. Background
+    /// gets drawn immediately into the target context. Foreground gets drawn onto a separate <see cref="DrawingGroup"/>
+    /// that gets merged into the target context during the <see cref="WpfElementRenderer.FinishRendering"/> call.
+    /// </remarks>
     internal class WpfElementRenderer : IElementRenderer
     {
-        private readonly DrawingContext _drawingContext;
+        private readonly DrawingContext _targetContext;
         private readonly double _scale;
 
-        public WpfElementRenderer(DrawingContext drawingContext, double scale)
+        private readonly DrawingGroup _foregroundGroup = new DrawingGroup();
+        private readonly DrawingContext _foregroundContext;
+
+        public WpfElementRenderer(DrawingContext targetContext, double scale)
         {
-            _drawingContext = drawingContext;
+            _targetContext = targetContext;
             _scale = scale;
+
+            _foregroundContext = _foregroundGroup.Append();
         }
 
         public void RenderElement(Box box, double x, double y)
         {
             var guidelines = GenerateGuidelines(box, x, y);
-            _drawingContext.PushGuidelineSet(guidelines);
+            _foregroundContext.PushGuidelineSet(guidelines);
+            _targetContext.PushGuidelineSet(guidelines);
 
             RenderBackground(box, x, y);
             box.RenderTo(this, x, y);
 
-            _drawingContext.Pop();
+            _targetContext.Pop();
+            _foregroundContext.Pop();
         }
 
         public void RenderGlyphRun(Func<double, GlyphRun> scaledGlyphFactory, double x, double y, Brush foreground)
         {
             var glyphRun = scaledGlyphFactory(_scale);
-            _drawingContext.DrawGlyphRun(foreground, glyphRun);
+            _foregroundContext.DrawGlyphRun(foreground, glyphRun);
         }
 
         public void RenderRectangle(Rect rectangle, Brush foreground)
         {
             var scaledRectangle = GeometryHelper.ScaleRectangle(_scale, rectangle);
-            _drawingContext.DrawRectangle(foreground, null, scaledRectangle);
+            _foregroundContext.DrawRectangle(foreground, null, scaledRectangle);
         }
 
         public void RenderTransformed(Box box, Transformation[] transforms, double x, double y)
@@ -47,23 +59,28 @@ namespace WpfMath.Rendering
             var scaledTransformations = transforms.Select(t => t.Scale(_scale)).ToList();
             foreach (var transformation in scaledTransformations)
             {
-                _drawingContext.PushTransform(ToTransform(transformation));
+                _foregroundContext.PushTransform(ToTransform(transformation));
             }
 
             RenderElement(box, x, y);
 
             for (var i = 0; i < scaledTransformations.Count; ++i)
             {
-                _drawingContext.Pop();
+                _foregroundContext.Pop();
             }
+        }
+
+        public void FinishRendering()
+        {
+            _foregroundContext.Close();
+            _targetContext.DrawDrawing(_foregroundGroup);
         }
 
         private void RenderBackground(Box box, double x, double y)
         {
             if (box.Background != null)
             {
-                // Fill background of box with color:
-                _drawingContext.DrawRectangle(
+                _targetContext.DrawRectangle(
                     box.Background,
                     null,
                     new Rect(_scale * x, _scale * (y - box.Height),
