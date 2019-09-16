@@ -135,19 +135,24 @@ namespace WpfMath
         /// <summary>A registry for additional commands.</summary>
         private readonly IReadOnlyDictionary<string, ICommandParser> _commandRegistry;
 
+        private readonly IReadOnlyDictionary<string, IColorParser> _colorModelParsers;
+
         /// <summary>A color parser for cases when the color model isn't specified.</summary>
         private readonly IColorParser _defaultColorParser;
 
         internal TexFormulaParser(
             IReadOnlyDictionary<string, ICommandParser> commandRegistry,
+            IReadOnlyDictionary<string, IColorParser> colorModelParsers,
             IColorParser defaultColorParser)
         {
             _commandRegistry = commandRegistry;
+            _colorModelParsers = colorModelParsers;
             _defaultColorParser = defaultColorParser;
         }
 
         public TexFormulaParser() : this(
             StandardCommands.Dictionary,
+            new Dictionary<string, IColorParser>(),
             PredefinedColorParser.Instance)
         {}
 
@@ -337,6 +342,20 @@ namespace WpfMath
             return value.Segment(start, position - start - 1);
         }
 
+        /// <summary>Reads a char-delimited element group if it exists; returns <c>null</c> if it isn't.</summary>
+        private static SourceSpan ReadElementGroupOptional(
+            SourceSpan value,
+            ref int position,
+            char openChar,
+            char closeChar)
+        {
+            SkipWhiteSpace(value, ref position);
+            if (value[position] != openChar)
+                return null;
+
+            return ReadElementGroup(value, ref position, openChar, closeChar);
+        }
+
         /// <summary>Reads an element: typically, a curly brace-enclosed value group or a singular value.</summary>
         /// <exception cref="TexParseException">Will be thrown for ill-formed groups.</exception>
         internal static SourceSpan ReadElement(SourceSpan value, ref int position)
@@ -465,64 +484,25 @@ namespace WpfMath
                         return new Radical(source, sqrtFormula.RootAtom, degreeFormula?.RootAtom);
                     }
                 case "color":
+                {
+                    //Command to change the foreground color
+                    var color = ReadColorModelData(value, ref position);
+
+                    var bodyValue = ReadElement(value, ref position);
+                    var bodyFormula = Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
+                    source = value.Segment(start, position - start);
+
+                    return new StyledAtom(source, bodyFormula.RootAtom, null, new SolidColorBrush(color));
+                }
+                case "colorbox":
                     {
-                        //Command to change the foreground color
-                        var colorName = ReadElement(value, ref position).ToString();
+                        var color = ReadColorModelData(value, ref position);
+
                         var bodyValue = ReadElement(value, ref position);
                         var bodyFormula = Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
                         source = value.Segment(start, position - start);
 
-                        var color = _defaultColorParser.Parse(new[] {colorName});
-                        if (color != null)
-                        {
-                            return new StyledAtom(
-                                source,
-                                bodyFormula.RootAtom,
-                                null,
-                                new SolidColorBrush(color.Value));
-                        }
-                        else
-                        {
-                            try
-                            {
-                                Color color1 = UserDefinedColorParser.ParseUserColor(colorName);
-                                return new StyledAtom(source, bodyFormula.RootAtom, null, new SolidColorBrush(color1));
-                            }
-                            catch
-                            {
-                                throw new TexParseException($"Color {colorName} could neither be found nor converted.");
-                            }
-                        }
-                    }
-                case "colorbox":
-                    {
-                        var colorName = ReadElement(value, ref position).ToString();
-                        var bodyValue = ReadElement(value, ref position);
-                        var bodyFormula = this.Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
-                        source = value.Segment(start, position - start);
-                        var color = _defaultColorParser.Parse(new[] {colorName});
-
-                        if (color != null)
-                        {
-                            source = value.Segment(start, position - start);
-                            return new StyledAtom(
-                                source,
-                                bodyFormula.RootAtom,
-                                new SolidColorBrush(color.Value),
-                                null);
-                        }
-                        else
-                        {
-                            try
-                            {
-                                Color color1 = UserDefinedColorParser.ParseUserColor(colorName);
-                                return new StyledAtom(source, bodyFormula.RootAtom, new SolidColorBrush(color1), null);
-                            }
-                            catch (Exception ex)
-                            {
-                                throw new TexParseException($"Color {colorName} could neither be found nor converted.");
-                            }
-                        }
+                        return new StyledAtom(source, bodyFormula.RootAtom, new SolidColorBrush(color), null);
                     }
                 }
 
@@ -540,6 +520,32 @@ namespace WpfMath
             }
 
             throw new TexParseException("Invalid command.");
+        }
+
+        /// <summary>Reads an optional square braced color model name, and then a color name.</summary>
+        /// <returns>Returns a color parsed.</returns>
+        /// <exception cref="TexParseException">Gets thrown in case of nonexistent color model or color.</exception>
+        private Color ReadColorModelData(SourceSpan value, ref int position)
+        {
+            var colorModelName = ReadElementGroupOptional(
+                value,
+                ref position,
+                leftBracketChar,
+                rightBracketChar)?.ToString();
+            var colorDefinition = ReadElement(value, ref position).ToString();
+            var colorComponents = colorDefinition.Split(',').Select(c => c.Trim());
+
+            var colorParser = string.IsNullOrEmpty(colorModelName)
+                ? _defaultColorParser
+                : _colorModelParsers.TryGetValue(colorModelName, out var currentColorParser)
+                    ? currentColorParser
+                    : throw new TexParseException($"Unknown color model name: {colorModelName}");
+
+            var color = colorParser.Parse(colorComponents);
+            if (color == null)
+                throw new TexParseException($"Color {colorDefinition} could neither be found nor converted.");
+
+            return color.Value;
         }
 
         private void ProcessEscapeSequence(TexFormula formula,

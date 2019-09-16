@@ -1,6 +1,7 @@
 module WpfMath.Tests.ParserExceptionTests
 
 open System
+open System.Collections.Generic
 
 open Xunit
 
@@ -35,6 +36,20 @@ let ``Incorrect command parser behavior should be detected``(): unit =
              member __.ProcessCommand _ =
                  CommandProcessingResult(SpaceAtom(null), 0) }
     let parserRegistry = Map([| "dummy", incorrectParser |])
-    let parser = TexFormulaParser(parserRegistry, PredefinedColorParser.Instance)
+    let parser = TexFormulaParser(parserRegistry, Dictionary(), PredefinedColorParser.Instance)
     let ex = Assert.Throws<TexParseException>(Action(fun () -> ignore <| parser.Parse("\dummy")))
     Assert.Contains("NextPosition = 0", ex.Message)
+
+[<Theory>]
+[<InlineData(@"\color [nonexistent123] {red} x");
+  InlineData(@"\colorbox [nonexistent123] {red} x")>]
+let ``Nonexistent color model throws a TexParseException``(text: string): unit =
+    let ex = assertParseThrows<TexParseException> text
+    Assert.Contains("nonexistent123", ex.Message)
+
+[<Theory>]
+[<InlineData(@"\color {reddit} x");
+  InlineData(@"\colorbox {reddit} x")>]
+let ``Nonexistent color throws a TexParseException``(text: string): unit =
+    let ex = assertParseThrows<TexParseException> text
+    Assert.Contains("reddit", ex.Message)
