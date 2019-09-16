@@ -243,7 +243,9 @@ let bigMatrixExpression() =
   InlineData(@"\colorbox [cmyk] {0.5, 0.5, 0.5, 0.5} x");
   InlineData(@"\colorbox [HTML] {abcdef} x")>]
 let colorModels(text: string): unit =
-    verifyParseResult text
+    verifyParseResultScenario
+    <| processSpecialChars text
+    <| text
 
 [<Theory>]
 [<InlineData(@"\color {red, 0.1} x");
@@ -265,4 +267,6 @@ let colorModels(text: string): unit =
   InlineData(@"\colorbox [cmyk] {0.5, 0.5, 0.5, 0.5, 0.1} x");
   InlineData(@"\colorbox [HTML] {abcdef19} x")>]
 let colorModelsWithOpacity(text: string): unit =
-    verifyParseResult text
+    verifyParseResultScenario
+    <| processSpecialChars text
+    <| text
