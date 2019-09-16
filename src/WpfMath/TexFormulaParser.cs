@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Media;
 using WpfMath.Atoms;
+using WpfMath.Colors;
 using WpfMath.Exceptions;
 using WpfMath.Parsers;
 
@@ -49,7 +50,6 @@ namespace WpfMath
         private static HashSet<string> textStyles;
         private static readonly IDictionary<string, Func<SourceSpan, TexFormula>> predefinedFormulas =
             new Dictionary<string, Func<SourceSpan, TexFormula>>();
-        private static IDictionary<string, Color> predefinedColors;
 
         private static readonly string[][] delimiterNames =
         {
@@ -68,8 +68,6 @@ namespace WpfMath
         #endregion
         static TexFormulaParser()
         {
-            predefinedColors = new Dictionary<string, Color>();
-
             Initialize();
         }
 
@@ -94,9 +92,6 @@ namespace WpfMath
             symbols = formulaSettingsParser.GetSymbolMappings();
             delimeters = formulaSettingsParser.GetDelimiterMappings();
             textStyles = formulaSettingsParser.GetTextStyles();
-
-            var colorParser = new PredefinedColorParser();
-            colorParser.Parse(predefinedColors);
 
             var predefinedFormulasParser = new TexPredefinedFormulaParser();
             predefinedFormulasParser.Parse(predefinedFormulas);
@@ -140,12 +135,21 @@ namespace WpfMath
         /// <summary>A registry for additional commands.</summary>
         private readonly IReadOnlyDictionary<string, ICommandParser> _commandRegistry;
 
-        internal TexFormulaParser(IReadOnlyDictionary<string, ICommandParser> commandRegistry)
+        /// <summary>A color parser for cases when the color model isn't specified.</summary>
+        private readonly IColorParser _defaultColorParser;
+
+        internal TexFormulaParser(
+            IReadOnlyDictionary<string, ICommandParser> commandRegistry,
+            IColorParser defaultColorParser)
         {
             _commandRegistry = commandRegistry;
+            _defaultColorParser = defaultColorParser;
         }
 
-        public TexFormulaParser() : this(StandardCommands.Dictionary) {}
+        public TexFormulaParser() : this(
+            StandardCommands.Dictionary,
+            PredefinedColorParser.Instance)
+        {}
 
         public TexFormula Parse(string value, string textStyle = null)
         {
@@ -468,9 +472,14 @@ namespace WpfMath
                         var bodyFormula = Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
                         source = value.Segment(start, position - start);
 
-                        if (predefinedColors.TryGetValue(colorName, out Color color))
+                        var color = _defaultColorParser.Parse(new[] {colorName});
+                        if (color != null)
                         {
-                            return new StyledAtom(source, bodyFormula.RootAtom, null, new SolidColorBrush(color));
+                            return new StyledAtom(
+                                source,
+                                bodyFormula.RootAtom,
+                                null,
+                                new SolidColorBrush(color.Value));
                         }
                         else
                         {
@@ -491,11 +500,16 @@ namespace WpfMath
                         var bodyValue = ReadElement(value, ref position);
                         var bodyFormula = this.Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
                         source = value.Segment(start, position - start);
+                        var color = _defaultColorParser.Parse(new[] {colorName});
 
-                        if (predefinedColors.TryGetValue(colorName, out var color))
+                        if (color != null)
                         {
                             source = value.Segment(start, position - start);
-                            return new StyledAtom(source, bodyFormula.RootAtom, new SolidColorBrush(color), null);
+                            return new StyledAtom(
+                                source,
+                                bodyFormula.RootAtom,
+                                new SolidColorBrush(color.Value),
+                                null);
                         }
                         else
                         {
