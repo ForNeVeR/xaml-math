@@ -37,9 +37,7 @@ namespace WpfMath.Atoms
         public RowAtom(SourceSpan source, IList<TexFormula> formulaList)
             : this(
                 source,
-                formulaList
-                    .Where(formula => formula.RootAtom != null)
-                    .Select(formula => formula.RootAtom))
+                formulaList.Select(formula => formula.RootAtom))
         {
         }
 
