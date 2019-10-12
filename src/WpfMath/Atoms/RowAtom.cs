@@ -67,7 +67,7 @@ namespace WpfMath.Atoms
 
         internal RowAtom(SourceSpan source, IEnumerable<Atom> elements)
             : base(source) =>
-            this.Elements = elements.ToList().AsReadOnly();
+            this.Elements = elements.Where(x => x != null ).ToList().AsReadOnly();
 
         public DummyAtom PreviousAtom { get; }
 
@@ -81,6 +81,11 @@ namespace WpfMath.Atoms
 
         public RowAtom Add(Atom atom)
         {
+            if (atom is null)
+            {
+                return new RowAtom(this.Source, this.PreviousAtom, this.Elements);
+            }
+
             var newElements = this.Elements.ToList();
             newElements.Add(atom);
             return new RowAtom(this.Source, this.PreviousAtom, newElements.AsReadOnly());
