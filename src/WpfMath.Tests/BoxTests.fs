@@ -111,3 +111,7 @@ let nestedMatrixBox() =
 [<Fact>]
 let wideItemInMatrixBox() =
     verifyBox @"x = \pmatrix{0 & -r & 0 \\ 0 & 0 & -r sin^2(\theta)}"
+
+[<Fact>]
+let emptyColorbox(): unit =
+    verifyBox @"\colorbox{red}{}"
