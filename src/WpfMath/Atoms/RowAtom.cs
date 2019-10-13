@@ -34,13 +34,6 @@ namespace WpfMath.Atoms
             ligatureKernChangeSet.Set((int)TexAtomType.Punctuation, true);
         }
 
-        public RowAtom(SourceSpan source, IList<TexFormula> formulaList)
-            : this(
-                source,
-                formulaList.Select(formula => formula.RootAtom))
-        {
-        }
-
         public RowAtom(SourceSpan source, Atom baseAtom)
             : this(
                 source,
@@ -79,7 +72,7 @@ namespace WpfMath.Atoms
 
         public RowAtom Add(Atom atom)
         {
-            if (atom is null)
+            if (atom is null) // TODO[F]: Mark the parameter as non-nullable and drop this check whe porting to C# 8
             {
                 return new RowAtom(this.Source, this.PreviousAtom, this.Elements);
             }

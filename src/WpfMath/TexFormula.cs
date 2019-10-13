@@ -10,27 +10,6 @@ namespace WpfMath
     // Represents mathematical formula that can be rendered.
     public sealed class TexFormula
     {
-        public TexFormula(IList<TexFormula> formulaList)
-        {
-            Debug.Assert(formulaList != null);
-
-            if (formulaList.Count == 1)
-                Add(formulaList[0]);
-            else
-                this.RootAtom = new RowAtom(null, formulaList);
-        }
-
-        public TexFormula(TexFormula formula)
-        {
-            Debug.Assert(formula != null);
-
-            Add(formula);
-        }
-
-        public TexFormula()
-        {
-        }
-
         public string TextStyle
         {
             get;
