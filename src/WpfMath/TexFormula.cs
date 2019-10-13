@@ -33,7 +33,6 @@ namespace WpfMath
         public void Add(TexFormula formula, SourceSpan source = null)
         {
             Debug.Assert(formula != null);
-            Debug.Assert(formula.RootAtom != null);
 
             this.Add(
                 formula.RootAtom is RowAtom
@@ -50,7 +49,6 @@ namespace WpfMath
         /// <param name="rowSource">The source that will be set for the resulting row atom.</param>
         internal void Add(Atom atom, SourceSpan rowSource)
         {
-            Debug.Assert(atom != null);
             if (this.RootAtom == null)
             {
                 this.RootAtom = atom;
@@ -91,10 +89,7 @@ namespace WpfMath
 
         internal Box CreateBox(TexEnvironment environment)
         {
-            if (this.RootAtom == null)
-                return StrutBox.Empty;
-            else
-                return this.RootAtom.CreateBox(environment);
+            return this.RootAtom?.CreateBox(environment) ?? StrutBox.Empty;
         }
 
         internal static SystemFont GetSystemFont(string fontName, double size)

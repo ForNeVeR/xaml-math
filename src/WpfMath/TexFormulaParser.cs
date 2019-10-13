@@ -576,9 +576,6 @@ namespace WpfMath
                     ? ConvertRawText(ReadElement(value, ref position), command)
                     : Parse(ReadElement(value, ref position), command, environment.CreateChildEnvironment());
 
-                if (styledFormula.RootAtom == null)
-                    throw new TexParseException("Styled text can't be empty!");
-
                 var atom = AttachScripts(formula, value, ref position, styledFormula.RootAtom, true, environment);
                 var source = new SourceSpan(formulaSource.Source, formulaSource.Start, position);
                 formula.Add(atom, source);
