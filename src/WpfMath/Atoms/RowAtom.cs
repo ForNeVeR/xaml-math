@@ -58,7 +58,8 @@ namespace WpfMath.Atoms
 
         internal RowAtom(SourceSpan source, IEnumerable<Atom> elements)
             : base(source) =>
-            this.Elements = elements.Where(x => x != null ).ToList().AsReadOnly();
+            this.Elements = elements.Where(x => x != null).ToList().AsReadOnly();
+            // TODO[F]: Fix this with C# 8 migration: there shouldn't be nullable atoms in this collection
 
         public DummyAtom PreviousAtom { get; }
 
