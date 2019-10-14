@@ -28,6 +28,11 @@ let ``"\sum_ " should throw a TexParseException``() =
     assertParseThrows<TexParseException> @"\sum_ "
 
 [<Fact>]
+let ``"\frac{}" should throw a TexParseException``(): unit =
+    let ex = assertParseThrows<TexParseException> @"\frac{}"
+    Assert.Equal("An element is missing", ex.Message)
+
+[<Fact>]
 let ``Incorrect command parser behavior should be detected``(): unit =
     let incorrectParser =
         { new ICommandParser with
