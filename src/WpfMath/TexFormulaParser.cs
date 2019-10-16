@@ -572,13 +572,15 @@ namespace WpfMath
                 // Text style was found.
                 SkipWhiteSpace(value, ref position);
 
-                var styledFormula = command == TexUtilities.TextStyleName
-                    ? ConvertRawText(ReadElement(value, ref position), command)
-                    : Parse(ReadElement(value, ref position), command, environment.CreateChildEnvironment());
+                var remainingString = ReadElement(value, ref position);
+                var remaining = command == TexUtilities.TextStyleName
+                    ? ConvertRawText(remainingString, command)
+                    : Parse(remainingString, command, environment.CreateChildEnvironment());
 
-                var atom = AttachScripts(formula, value, ref position, styledFormula.RootAtom, true, environment);
-                var source = new SourceSpan(formulaSource.Source, formulaSource.Start, position);
-                formula.Add(atom, source);
+                var source = value.Segment(start, position - start);
+                var styledAtom = new StyledAtom(source, remaining.RootAtom, null, null);
+                var commandAtom = AttachScripts(formula, value, ref position, styledAtom, true, environment);
+                formula.Add(commandAtom, source);
             }
             else if (embeddedCommands.Contains(command)
                  || environment.AvailableCommands.ContainsKey(command)

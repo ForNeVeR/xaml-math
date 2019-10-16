@@ -115,3 +115,11 @@ let wideItemInMatrixBox() =
 [<Fact>]
 let emptyColorbox(): unit =
     verifyBox @"\colorbox{red}{}"
+
+[<Fact>]
+let emptyMathrm(): unit =
+    verifyBox @"\mathrm{}"
+
+[<Fact>]
+let emptyCommandText(): unit =
+    verifyBox @"\text{}"
