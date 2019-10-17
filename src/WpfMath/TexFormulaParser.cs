@@ -578,8 +578,8 @@ namespace WpfMath
                     : Parse(remainingString, command, environment.CreateChildEnvironment());
 
                 var source = value.Segment(start, position - start);
-                var styledAtom = new StyledAtom(source, remaining.RootAtom, null, null);
-                var commandAtom = AttachScripts(formula, value, ref position, styledAtom, true, environment);
+                var atom = new RowAtom(source, remaining.RootAtom);
+                var commandAtom = AttachScripts(formula, value, ref position, atom, true, environment);
                 formula.Add(commandAtom, source);
             }
             else if (embeddedCommands.Contains(command)
