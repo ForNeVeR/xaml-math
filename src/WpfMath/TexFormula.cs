@@ -89,7 +89,10 @@ namespace WpfMath
 
         internal Box CreateBox(TexEnvironment environment)
         {
-            return this.RootAtom?.CreateBox(environment) ?? StrutBox.Empty;
+            if (this.RootAtom == null)
+                return StrutBox.Empty;
+            else
+                return this.RootAtom.CreateBox(environment);
         }
 
         internal static SystemFont GetSystemFont(string fontName, double size)
