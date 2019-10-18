@@ -25,6 +25,7 @@ namespace WpfMath
             argValueParsers = new Dictionary<string, ArgumentValueParser>();
             actionParsers = new Dictionary<string, ActionParser>();
             formulaParser = new TexFormulaParser();
+            var tempFormulas = new Dictionary<string, TexFormula>();
 
             typeMappings.Add("Formula", typeof(TexFormula));
             typeMappings.Add("string", typeof(string));
@@ -36,19 +37,19 @@ namespace WpfMath
             typeMappings.Add("Unit", typeof(TexUnit));
             typeMappings.Add("AtomType", typeof(TexAtomType));
 
-            actionParsers.Add("CreateFormula", new CreateTeXFormulaParser());
-            actionParsers.Add("MethodInvocation", new MethodInvocationParser());
-            actionParsers.Add("Return", new ReturnParser());
+            actionParsers.Add("CreateFormula", new CreateTeXFormulaParser(tempFormulas));
+            actionParsers.Add("MethodInvocation", new MethodInvocationParser(tempFormulas));
+            actionParsers.Add("Return", new ReturnParser(tempFormulas));
 
-            argValueParsers.Add("Formula", new TeXFormulaValueParser());
-            argValueParsers.Add("string", new StringValueParser());
-            argValueParsers.Add("double", new DoubleValueParser());
-            argValueParsers.Add("int", new IntValueParser());
-            argValueParsers.Add("bool", new BooleanValueParser());
-            argValueParsers.Add("char", new CharValueParser());
-            argValueParsers.Add("Color", new ColorConstantValueParser());
-            argValueParsers.Add("Unit", new EnumParser(typeof(TexUnit)));
-            argValueParsers.Add("AtomType", new EnumParser(typeof(TexAtomType)));
+            argValueParsers.Add("Formula", new TeXFormulaValueParser(tempFormulas));
+            argValueParsers.Add("string", new StringValueParser(tempFormulas));
+            argValueParsers.Add("double", new DoubleValueParser(tempFormulas));
+            argValueParsers.Add("int", new IntValueParser(tempFormulas));
+            argValueParsers.Add("bool", new BooleanValueParser(tempFormulas));
+            argValueParsers.Add("char", new CharValueParser(tempFormulas));
+            argValueParsers.Add("Color", new ColorConstantValueParser(tempFormulas));
+            argValueParsers.Add("Unit", new EnumParser(typeof(TexUnit), tempFormulas));
+            argValueParsers.Add("AtomType", new EnumParser(typeof(TexAtomType), tempFormulas));
         }
 
         private static Type[] GetArgumentTypes(IEnumerable<XElement> args)
@@ -74,7 +75,6 @@ namespace WpfMath
                 var value = curArg.AttributeValue("value");
 
                 var parser = ((ArgumentValueParser)argValueParsers[typeName]);
-                parser.TempFormulas = tempFormulas;
                 result.Add(parser.Parse(value, typeName));
             }
 
@@ -108,14 +108,12 @@ namespace WpfMath
 
         public TexFormula ParseFormula(SourceSpan source, XElement formulaElement)
         {
-            var tempFormulas = new Dictionary<string, TexFormula>();
             foreach (var element in formulaElement.Elements())
             {
                 var parser = actionParsers[element.Name.ToString()];
                 if (parser == null)
                     continue;
 
-                parser.TempFormulas = tempFormulas;
                 parser.Parse(source, element);
                 if (parser is ReturnParser)
                     return ((ReturnParser)parser).Result;
@@ -125,8 +123,8 @@ namespace WpfMath
 
         public class MethodInvocationParser : ActionParser
         {
-            public MethodInvocationParser()
-                : base()
+            public MethodInvocationParser(IDictionary<string, TexFormula> tempFormulas)
+                : base(tempFormulas)
             {
             }
 
@@ -149,8 +147,8 @@ namespace WpfMath
 
         public class CreateTeXFormulaParser : ActionParser
         {
-            public CreateTeXFormulaParser()
-                : base()
+            public CreateTeXFormulaParser(IDictionary<string, TexFormula> tempFormulas)
+                : base(tempFormulas)
             {
             }
 
@@ -174,14 +172,14 @@ namespace WpfMath
                     formula = new TexFormula();
                 }
 
-                this.TempFormulas.Add(name, formula);
+                this.TempFormulas[name] = formula;
             }
         }
 
         public class ReturnParser : ActionParser
         {
-            public ReturnParser()
-                : base()
+            public ReturnParser(IDictionary<string, TexFormula> tempFormulas)
+                : base(tempFormulas)
             {
             }
 
@@ -202,8 +200,8 @@ namespace WpfMath
 
         public class DoubleValueParser : ArgumentValueParser
         {
-            public DoubleValueParser()
-                : base()
+            public DoubleValueParser(IDictionary<string, TexFormula> tempFormulas)
+                : base(tempFormulas)
             {
             }
 
@@ -215,8 +213,8 @@ namespace WpfMath
 
         public class CharValueParser : ArgumentValueParser
         {
-            public CharValueParser()
-                : base()
+            public CharValueParser(IDictionary<string, TexFormula> tempFormulas)
+                : base(tempFormulas)
             {
             }
 
@@ -229,8 +227,8 @@ namespace WpfMath
 
         public class BooleanValueParser : ArgumentValueParser
         {
-            public BooleanValueParser()
-                : base()
+            public BooleanValueParser(IDictionary<string, TexFormula> tempFormulas)
+                : base(tempFormulas)
             {
             }
 
@@ -242,8 +240,8 @@ namespace WpfMath
 
         public class IntValueParser : ArgumentValueParser
         {
-            public IntValueParser()
-                : base()
+            public IntValueParser(IDictionary<string, TexFormula> tempFormulas)
+                : base(tempFormulas)
             {
             }
 
@@ -255,8 +253,8 @@ namespace WpfMath
 
         public class StringValueParser : ArgumentValueParser
         {
-            public StringValueParser()
-                : base()
+            public StringValueParser(IDictionary<string, TexFormula> tempFormulas)
+                : base(tempFormulas)
             {
             }
 
@@ -268,8 +266,8 @@ namespace WpfMath
 
         public class TeXFormulaValueParser : ArgumentValueParser
         {
-            public TeXFormulaValueParser()
-                : base()
+            public TeXFormulaValueParser(IDictionary<string, TexFormula> tempFormulas)
+                : base(tempFormulas)
             {
             }
 
@@ -286,8 +284,8 @@ namespace WpfMath
 
         public class ColorConstantValueParser : ArgumentValueParser
         {
-            public ColorConstantValueParser()
-                : base()
+            public ColorConstantValueParser(IDictionary<string, TexFormula> tempFormulas)
+                : base(tempFormulas)
             {
             }
 
@@ -301,8 +299,8 @@ namespace WpfMath
         {
             private Type enumType;
 
-            public EnumParser(Type enumType)
-                : base()
+            public EnumParser(Type enumType, IDictionary<string, TexFormula> tempFormulas)
+                : base(tempFormulas)
             {
                 this.enumType = enumType;
             }
@@ -315,24 +313,33 @@ namespace WpfMath
 
         public abstract class ActionParser : ParserBase
         {
+            protected  ActionParser(IDictionary<string, TexFormula> tempFormulas)
+                : base(tempFormulas)
+            {}
+
             public abstract void Parse(SourceSpan source, XElement element);
         }
 
         public abstract class ArgumentValueParser : ParserBase
         {
+            protected ArgumentValueParser(IDictionary<string, TexFormula> tempFormulas)
+                : base(tempFormulas)
+            {}
+
             public abstract object Parse(string value, string type);
         }
 
         public abstract class ParserBase
         {
-            public ParserBase()
+            public ParserBase(IDictionary<string, TexFormula> tempFormulas)
             {
+                this.TempFormulas = tempFormulas;
             }
 
             public IDictionary<string, TexFormula> TempFormulas
             {
                 get;
-                set;
+                private set;
             }
         }
     }
