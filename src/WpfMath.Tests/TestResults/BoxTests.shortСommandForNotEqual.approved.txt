@@ -1,0 +1,94 @@
+﻿{
+  "Children": [
+    {
+      "Character": {
+        "Character": "6",
+        "Font": "pack://application:,,,/WpfMath;component/Fonts/cmsy10.ttf",
+        "Size": 1.0,
+        "Metrics": {
+          "Width": 0.0,
+          "Height": 0.694445,
+          "Depth": 0.194443,
+          "Italic": 0.0
+        },
+        "FontId": 3
+      },
+      "Children": [],
+      "Source": {
+        "Start": 1,
+        "End": 4,
+        "Length": 3,
+        "Source": "\\not\\equals"
+      },
+      "Foreground": null,
+      "Background": null,
+      "TotalHeight": 0.888888,
+      "TotalWidth": 0.0,
+      "Italic": 0.0,
+      "Width": 0.0,
+      "Height": 0.694445,
+      "Depth": 0.194443,
+      "Shift": 0.0
+    },
+    {
+      "Stretch": 0.0,
+      "Shrink": 0.0,
+      "Children": [],
+      "Source": null,
+      "Foreground": null,
+      "Background": null,
+      "TotalHeight": 0.0,
+      "TotalWidth": 0.0,
+      "Italic": 0.0,
+      "Width": 0.0,
+      "Height": 0.0,
+      "Depth": 0.0,
+      "Shift": 0.0
+    },
+    {
+      "Character": {
+        "Character": "=",
+        "Font": "pack://application:,,,/WpfMath;component/Fonts/cmr10.ttf",
+        "Size": 1.0,
+        "Metrics": {
+          "Width": 0.777781,
+          "Height": 0.366875,
+          "Depth": -0.133125,
+          "Italic": 0.0
+        },
+        "FontId": 1
+      },
+      "Children": [],
+      "Source": {
+        "Start": 5,
+        "End": 11,
+        "Length": 6,
+        "Source": "\\not\\equals"
+      },
+      "Foreground": null,
+      "Background": null,
+      "TotalHeight": 0.23375,
+      "TotalWidth": 0.777781,
+      "Italic": 0.0,
+      "Width": 0.777781,
+      "Height": 0.366875,
+      "Depth": -0.133125,
+      "Shift": 0.0
+    }
+  ],
+  "Source": {
+    "Start": 4,
+    "End": 15,
+    "Length": 11,
+    "Source": "\\not\\equals"
+  },
+  "Foreground": null,
+  "Background": null,
+  "TotalHeight": 0.888888,
+  "TotalWidth": 0.777781,
+  "Italic": 0.0,
+  "Width": 0.777781,
+  "Height": 0.694445,
+  "Depth": 0.194443,
+  "Shift": 0.0
+}
