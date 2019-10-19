@@ -66,7 +66,7 @@ namespace WpfMath
             return result.ToArray();
         }
 
-        private static object[] GetArgumentValues(IDictionary<string, TexFormula> tempFormulas, IEnumerable<XElement> args)
+        private static object[] GetArgumentValues(IEnumerable<XElement> args)
         {
             var result = new List<object>();
             foreach (var curArg in args)
@@ -138,7 +138,7 @@ namespace WpfMath
                 Debug.Assert(formula != null);
 
                 var argTypes = GetArgumentTypes(args);
-                var argValues = GetArgumentValues(this.TempFormulas, args);
+                var argValues = GetArgumentValues(args);
 
                 var helper = new TexFormulaHelper(formula, source);
                 typeof(TexFormulaHelper).GetMethod(methodName, argTypes).Invoke(helper, argValues);
@@ -158,7 +158,7 @@ namespace WpfMath
                 var args = element.Elements("Argument");
 
                 var argTypes = GetArgumentTypes(args);
-                var argValues = GetArgumentValues(this.TempFormulas, args);
+                var argValues = GetArgumentValues(args);
 
                 Debug.Assert(argValues.Length == 1 || argValues.Length == 0);
                 TexFormula formula = null;
