@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Media;
@@ -33,6 +33,7 @@ namespace WpfMath
         public void Add(TexFormula formula, SourceSpan source = null)
         {
             Debug.Assert(formula != null);
+            Debug.Assert(formula.RootAtom != null);
 
             this.Add(
                 formula.RootAtom is RowAtom
