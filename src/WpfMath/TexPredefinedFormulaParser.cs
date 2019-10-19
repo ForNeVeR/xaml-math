@@ -172,7 +172,7 @@ namespace WpfMath
                     formula = new TexFormula();
                 }
 
-                this.TempFormulas[name] = formula;
+                this.TempFormulas.Add(name, formula);
             }
         }
 
@@ -195,6 +195,7 @@ namespace WpfMath
                 var result = this.TempFormulas[name];
                 Debug.Assert(result != null);
                 this.Result = result;
+                this.TempFormulas.Clear();
             }
         }
 
