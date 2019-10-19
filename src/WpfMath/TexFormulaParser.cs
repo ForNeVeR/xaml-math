@@ -152,7 +152,7 @@ namespace WpfMath
 
         public TexFormulaParser() : this(
             StandardCommands.Dictionary,
-            new Dictionary<string, IColorParser>(),
+            StandardColorParsers.Dictionary,
             PredefinedColorParser.Instance)
         {}
 

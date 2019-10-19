@@ -6,7 +6,7 @@ using System.Xml.Linq;
 
 namespace WpfMath.Colors
 {
-    internal class PredefinedColorParser : IColorParser
+    internal class PredefinedColorParser : SingleComponentColorParser
     {
         private const string ResourceName = TexUtilities.ResourcesDataDirectory + "PredefinedColors.xml";
         public static readonly PredefinedColorParser Instance = new PredefinedColorParser(ResourceName);
@@ -22,24 +22,12 @@ namespace WpfMath.Colors
             }
         }
 
-        public Color? Parse(IEnumerable<string> components)
+        protected override Color? ParseSingleComponent(string component)
         {
-            // Return a color iff components contain only one element, and it is contained in the _colors dictionary.
-            var firstItem = true;
-            Color? color = null;
-            foreach (var component in components)
-            {
-                if (!firstItem)
-                    return null;
+            if (_colors.TryGetValue(component, out var color))
+                return color;
 
-                var colorName = component;
-                if (_colors.TryGetValue(colorName, out var parsedColor))
-                    color = parsedColor;
-
-                firstItem = false;
-            }
-
-            return color;
+            return null;
         }
 
         private Dictionary<string, Color> Parse(XElement rootElement)
