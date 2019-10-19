@@ -3,7 +3,7 @@ using System.Windows.Media;
 
 namespace WpfMath.Colors
 {
-    /// <summary>A parser for colors.</summary>
+    /// <summary>A parser for colors in commands like \color and \colorbox.</summary>
     public interface IColorParser
     {
         /// <summary>Parses the color components.</summary>
