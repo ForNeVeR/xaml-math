@@ -543,7 +543,8 @@ namespace WpfMath
 
             var color = colorParser.Parse(colorComponents);
             if (color == null)
-                throw new TexParseException($"Color {colorDefinition} could neither be found nor converted.");
+                throw new TexParseException(
+                    $"Color {colorDefinition} could not be parsed by the {colorModelName ?? "default"} color model.");
 
             return color.Value;
         }
