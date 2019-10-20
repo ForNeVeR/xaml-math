@@ -7,7 +7,8 @@ namespace WpfMath.Colors
         public static IReadOnlyDictionary<string, IColorParser> Dictionary = new Dictionary<string, IColorParser>
         {
             ["gray"] = new GrayscaleColorParser(),
-            ["HTML"] = new HtmlColorParser()
+            ["HTML"] = new HtmlColorParser(),
+            ["RGB"] = new RgbColorParser()
         };
     }
 }
