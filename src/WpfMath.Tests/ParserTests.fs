@@ -226,3 +226,47 @@ let matrixExpression() =
 [<Fact>]
 let bigMatrixExpression() =
     verifyParseResult @"\Gamma_{\mu \rho} ^{\sigma}= \pmatrix{\pmatrix{0 & 0 & 0 \\ 0 & -r & 0 \\ 0 & 0 & -r sin^2(\theta)} \\ \pmatrix{0 & \frac{1}{r} & 0 \\ \frac{1}{r} & 0 & 0 \\ 0 & 0 & -\sin(\theta) \cos(\theta)} \\ \pmatrix{0 & 0 & \frac{1}{r} \\ 0 & 0 & \frac{1}{\tan(\theta)} \\ \frac{1}{r} & \frac{1}{\tan(\theta)} & 0 }}"
+
+[<Theory>]
+[<InlineData(@"\color {red} x");
+  InlineData(@"\color [] {red} x");
+  InlineData(@"\color [gray] {0.5} x");
+  InlineData(@"\color [rgb] {0.5, 0.5, 0.5} x");
+  InlineData(@"\color [RGB] {128, 128, 128} x");
+  InlineData(@"\color [cmyk] {0.5, 0.5, 0.5, 0.5} x");
+  InlineData(@"\color [HTML] {abcdef} x");
+  InlineData(@"\colorbox {red} x");
+  InlineData(@"\colorbox [] {red} x");
+  InlineData(@"\colorbox [gray] {0.5} x");
+  InlineData(@"\colorbox [rgb] {0.5, 0.5, 0.5} x");
+  InlineData(@"\colorbox [RGB] {128, 128, 128} x");
+  InlineData(@"\colorbox [cmyk] {0.5, 0.5, 0.5, 0.5} x");
+  InlineData(@"\colorbox [HTML] {abcdef} x")>]
+let colorModels(text: string): unit =
+    verifyParseResultScenario
+    <| processSpecialChars text
+    <| text
+
+[<Theory>]
+[<InlineData(@"\color {red, 0.1} x");
+  InlineData(@"\color [] {red, 0.1} x");
+  InlineData(@"\color [gray] {0.5, 0.1} x");
+  InlineData(@"\color [argb] {0.1, 0.5, 0.5, 0.5} x");
+  InlineData(@"\color [rgba] {0.5, 0.5, 0.5, 0.1} x");
+  InlineData(@"\color [ARGB] {25, 128, 128, 128} x");
+  InlineData(@"\color [RGBA] {128, 128, 128, 25} x");
+  InlineData(@"\color [cmyk] {0.5, 0.5, 0.5, 0.5, 0.1} x");
+  InlineData(@"\color [HTML] {abcdef19} x");
+  InlineData(@"\colorbox {red, 0.1} x");
+  InlineData(@"\colorbox [] {red, 0.1} x");
+  InlineData(@"\colorbox [gray] {0.5, 0.1} x");
+  InlineData(@"\colorbox [argb] {0.1, 0.5, 0.5, 0.5} x");
+  InlineData(@"\colorbox [rgba] {0.5, 0.5, 0.5, 0.1} x");
+  InlineData(@"\colorbox [ARGB] {25, 128, 128, 128} x");
+  InlineData(@"\colorbox [RGBA] {128, 128, 128, 25} x");
+  InlineData(@"\colorbox [cmyk] {0.5, 0.5, 0.5, 0.5, 0.1} x");
+  InlineData(@"\colorbox [HTML] {abcdef19} x")>]
+let colorModelsWithOpacity(text: string): unit =
+    verifyParseResultScenario
+    <| processSpecialChars text
+    <| text

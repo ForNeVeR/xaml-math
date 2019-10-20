@@ -85,6 +85,7 @@ You may also pass your own `IElementRenderer` implementation to `TexFormula.Rend
 Documentation
 -------------
 
+- [Color support in WPF-Math][docs-colors]
 - [Matrices and Matrix-Like Constructs][docs-matrices]
 - [How to improve blurred formulas][docs-blurred-text-issue]
 
@@ -131,6 +132,7 @@ We're very grateful to JMathTeX authors for their work and allowing to redistrib
 - Nico Van Cleemput
 - Kurt Vermeulen
 
+[docs-colors]: docs/colors.md
 [docs-prepare-font]: docs/prepare-font.md
 [docs-blurred-text-issue]: docs/blurred-text-issue.md
 [docs-licensing-history]: docs/licensing-history.md

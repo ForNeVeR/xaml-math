@@ -9,5 +9,5 @@ $ErrorActionPreference = 'Stop'
 Get-ChildItem $TestResultDirectory -Filter "*.received.txt" | ForEach-Object {
     $receivedTestResult = $_.FullName
     $approvedTestResult = $receivedTestResult.Replace('.received.txt', '.approved.txt')
-    Move-Item -Force $receivedTestResult $approvedTestResult
+    Move-Item -Force -LiteralPath $receivedTestResult $approvedTestResult
 }
