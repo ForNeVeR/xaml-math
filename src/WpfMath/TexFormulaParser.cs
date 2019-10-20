@@ -496,15 +496,15 @@ namespace WpfMath
                     return new StyledAtom(source, bodyFormula.RootAtom, null, new SolidColorBrush(color));
                 }
                 case "colorbox":
-                    {
-                        var color = ReadColorModelData(value, ref position);
+                {
+                    var color = ReadColorModelData(value, ref position);
 
-                        var bodyValue = ReadElement(value, ref position);
-                        var bodyFormula = Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
-                        source = value.Segment(start, position - start);
+                    var bodyValue = ReadElement(value, ref position);
+                    var bodyFormula = Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
+                    source = value.Segment(start, position - start);
 
-                        return new StyledAtom(source, bodyFormula.RootAtom, new SolidColorBrush(color), null);
-                    }
+                    return new StyledAtom(source, bodyFormula.RootAtom, new SolidColorBrush(color), null);
+                }
                 }
 
             if (environment.AvailableCommands.TryGetValue(command, out var parser)
