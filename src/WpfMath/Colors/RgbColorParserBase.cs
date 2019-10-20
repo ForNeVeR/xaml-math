@@ -4,15 +4,24 @@ using System.Windows.Media;
 
 namespace WpfMath.Colors
 {
+    /// <summary>Helps to differentiate RGBA and ARGB color models, if necessary.</summary>
+    internal enum AlphaChannelMode
+    {
+        None,
+        AlphaFirst,
+        AlphaLast
+    }
+
     /// <summary>A generic parser class for RGB color.</summary>
     /// <typeparam name="T">Type of component value (e.g. integer or double).</typeparam>
     internal abstract class RgbColorParserBase<T> : FixedComponentCountColorParser where T : struct
     {
-        private readonly bool _supportsAlphaChannel;
+        private readonly AlphaChannelMode _alphaChannelMode;
 
-        protected RgbColorParserBase(bool supportsAlphaChannel) : base(supportsAlphaChannel ? 4 : 3)
+        protected RgbColorParserBase(AlphaChannelMode alphaChannelMode)
+            : base(alphaChannelMode == AlphaChannelMode.None ? 3 : 4)
         {
-            _supportsAlphaChannel = supportsAlphaChannel;
+            _alphaChannelMode = alphaChannelMode;
         }
 
         protected abstract T DefaultAlpha { get; }
@@ -29,12 +38,15 @@ namespace WpfMath.Colors
             }).ToArray();
             var index = 0;
             T? alpha = DefaultAlpha;
-            if (_supportsAlphaChannel)
+            if (_alphaChannelMode == AlphaChannelMode.AlphaFirst)
                 alpha = values[index++];
 
             var r = values[index++];
             var g = values[index++];
-            var b = values[index];
+            var b = values[index++];
+
+            if (_alphaChannelMode == AlphaChannelMode.AlphaLast)
+                alpha = values[index];
 
             return alpha == null || r == null || g == null || b == null
                 ? (Color?) null

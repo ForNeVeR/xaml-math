@@ -4,7 +4,7 @@ namespace WpfMath.Colors
 {
     internal class IntegerRgbColorParser : RgbColorParserBase<byte>
     {
-        public IntegerRgbColorParser(bool supportsAlphaChannel) : base(supportsAlphaChannel)
+        public IntegerRgbColorParser(AlphaChannelMode alphaChannelMode) : base(alphaChannelMode)
         {
         }
 

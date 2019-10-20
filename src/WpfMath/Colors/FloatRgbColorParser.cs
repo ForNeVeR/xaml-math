@@ -5,7 +5,7 @@ namespace WpfMath.Colors
 {
     internal class FloatRgbColorParser : RgbColorParserBase<double>
     {
-        public FloatRgbColorParser(bool supportsAlphaChannel) : base(supportsAlphaChannel)
+        public FloatRgbColorParser(AlphaChannelMode alphaChannelMode) : base(alphaChannelMode)
         {
         }
 
