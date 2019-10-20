@@ -1,29 +1,19 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Media;
 
 namespace WpfMath.Colors
 {
     /// <summary>A base class for color parsers that only require one component.</summary>
-    internal abstract class SingleComponentColorParser : IColorParser
+    internal abstract class SingleComponentColorParser : FixedComponentCountColorParser
     {
-        public Color? Parse(IEnumerable<string> components)
+        protected SingleComponentColorParser() : base(1)
         {
-            // Return a color iff components contain only one element.
-            var firstItem = true;
-            Color? color = null;
-            foreach (var component in components)
-            {
-                if (!firstItem)
-                    return null;
-
-                color = ParseSingleComponent(component);
-
-                firstItem = false;
-            }
-
-            return color;
         }
 
         protected abstract Color? ParseSingleComponent(string component);
+
+        protected override Color? ParseComponents(List<string> components) =>
+            ParseSingleComponent(components.Single());
     }
 }

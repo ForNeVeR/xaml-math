@@ -5,19 +5,19 @@ using System.Windows.Media;
 
 namespace WpfMath.Colors
 {
-    public class RgbColorParser : IColorParser
+    internal class RgbColorParser : FixedComponentCountColorParser
     {
-        public Color? Parse(IEnumerable<string> components)
+        public RgbColorParser() : base(3)
         {
-            var rgbStrings = components.ToList();
-            if (rgbStrings.Count != 3)
-                return null;
+        }
 
-            var rgb = rgbStrings.Select(x =>
-                {
-                    var success = byte.TryParse(x, NumberStyles.None, CultureInfo.InvariantCulture, out var val);
-                    return success ? (byte?) val : null;
-                }).ToArray();
+        protected override Color? ParseComponents(List<string> components)
+        {
+            var rgb = components.Select(x =>
+            {
+                var success = byte.TryParse(x, NumberStyles.None, CultureInfo.InvariantCulture, out var val);
+                return success ? (byte?) val : null;
+            }).ToArray();
             var r = rgb[0];
             var g = rgb[1];
             var b = rgb[2];

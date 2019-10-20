@@ -6,6 +6,7 @@ namespace WpfMath.Colors
     {
         public static IReadOnlyDictionary<string, IColorParser> Dictionary = new Dictionary<string, IColorParser>
         {
+            ["cmyk"] = new CmykColorParser(),
             ["gray"] = new GrayscaleColorParser(),
             ["HTML"] = new HtmlColorParser(),
             ["RGB"] = new RgbColorParser()
