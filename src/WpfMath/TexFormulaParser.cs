@@ -16,7 +16,7 @@ namespace WpfMath
     // TODO: Use TextReader for lexing.
     public class TexFormulaParser
     {
-        #region Special characters for parsing
+        // Special characters for parsing
         private const char escapeChar = '\\';
 
         internal const char leftGroupChar = '{';
@@ -27,8 +27,6 @@ namespace WpfMath
         private const char subScriptChar = '_';
         private const char superScriptChar = '^';
         private const char primeChar = '\'';
-        #endregion
-        #region Information used for parsing
 
         /// <summary>
         /// A set of names of the commands that are embedded in the parser itself, <see cref="ProcessCommand"/>.
@@ -65,7 +63,7 @@ namespace WpfMath
             new[] { "vert", "vert" },
             new[] { "Vert", "Vert" }
         };
-        #endregion
+
         static TexFormulaParser()
         {
             Initialize();
