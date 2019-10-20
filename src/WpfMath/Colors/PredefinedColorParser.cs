@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace WpfMath.Colors
 {
-    internal class PredefinedColorParser : IColorParser
+    public class PredefinedColorParser : IColorParser
     {
         private const string ResourceName = TexUtilities.ResourcesDataDirectory + "PredefinedColors.xml";
         public static readonly PredefinedColorParser Instance = new PredefinedColorParser(ResourceName);

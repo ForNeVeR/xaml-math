@@ -148,8 +148,12 @@ namespace WpfMath
             _defaultColorParser = defaultColorParser;
         }
 
+        public TexFormulaParser(
+            IReadOnlyDictionary<string, IColorParser> colorModelParsers,
+            IColorParser defaultColorParser) : this(StandardCommands.Dictionary, colorModelParsers, defaultColorParser)
+        {}
+
         public TexFormulaParser() : this(
-            StandardCommands.Dictionary,
             StandardColorParsers.Dictionary,
             PredefinedColorParser.Instance)
         {}
