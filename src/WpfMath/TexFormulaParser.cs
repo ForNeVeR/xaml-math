@@ -483,7 +483,6 @@ namespace WpfMath
                     }
                 case "color":
                 {
-                    //Command to change the foreground color
                     var color = ReadColorModelData(value, ref position);
 
                     var bodyValue = ReadElement(value, ref position);
