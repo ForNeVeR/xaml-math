@@ -10,7 +10,7 @@ namespace WpfMath.Colors
             if (component.Length != 6)
                 return null;
 
-            var colorCode = int.Parse(component, NumberStyles.HexNumber);
+            var colorCode = int.Parse(component, NumberStyles.HexNumber, CultureInfo.InvariantCulture);
             var r = (byte) ((colorCode & 0xFF0000) >> 16);
             var g = (byte) ((colorCode & 0xFF00) >> 8);
             var b = (byte) (colorCode & 0xFF);
