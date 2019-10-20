@@ -5,6 +5,12 @@ namespace WpfMath.Colors
 {
     internal class FloatRgbColorParser : RgbColorParserBase<double>
     {
+        public FloatRgbColorParser(bool supportsAlphaChannel) : base(supportsAlphaChannel)
+        {
+        }
+
+        protected override double DefaultAlpha => 1.0;
+
         protected override (bool, double) TryParseComponent(string component)
         {
             var success = double.TryParse(

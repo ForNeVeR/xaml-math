@@ -1,0 +1,39 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "RowAtom": {
+      "PreviousAtom": null,
+      "Elements": [
+        {
+          "Character": "x",
+          "TextStyle": null,
+          "IsDefaultTextStyle": true,
+          "IsTextSymbol": false,
+          "Type": "Ordinary",
+          "Source": {
+            "Start": 37,
+            "End": 38,
+            "Length": 1,
+            "Source": "\\colorbox [ARGB] {25, 128, 128, 128} x"
+          }
+        }
+      ],
+      "Type": "Ordinary",
+      "Source": {
+        "Start": 1,
+        "End": 38,
+        "Length": 37,
+        "Source": "\\colorbox [ARGB] {25, 128, 128, 128} x"
+      }
+    },
+    "Background": "#19808080",
+    "Foreground": null,
+    "Type": "Ordinary",
+    "Source": {
+      "Start": 1,
+      "End": 38,
+      "Length": 37,
+      "Source": "\\colorbox [ARGB] {25, 128, 128, 128} x"
+    }
+  }
+}
