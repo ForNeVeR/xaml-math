@@ -9,7 +9,8 @@ namespace WpfMath.Colors
             ["cmyk"] = new CmykColorParser(),
             ["gray"] = new GrayscaleColorParser(),
             ["HTML"] = new HtmlColorParser(),
-            ["RGB"] = new RgbColorParser()
+            ["RGB"] = new IntegerRgbColorParser(),
+            ["rgb"] = new FloatRgbColorParser()
         };
     }
 }
