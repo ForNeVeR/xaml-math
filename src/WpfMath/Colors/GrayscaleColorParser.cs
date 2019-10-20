@@ -15,8 +15,12 @@ namespace WpfMath.Colors
             if (componentList.Count != 1 && !hasAlpha)
                 return null;
 
-            var gradation = double.Parse(componentList[0], CultureInfo.InvariantCulture);
-            if (gradation < 0.0 || gradation > 1.0)
+            var success = double.TryParse(
+                componentList[0],
+                NumberStyles.AllowDecimalPoint,
+                CultureInfo.InvariantCulture,
+                out var gradation);
+            if (!success || gradation < 0.0 || gradation > 1.0)
                 return null;
 
             double? alpha = 1.0;

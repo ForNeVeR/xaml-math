@@ -12,7 +12,9 @@ namespace WpfMath.Colors
             if (!isRgb && !isRgba)
                 return null;
 
-            var colorCode = int.Parse(component, NumberStyles.HexNumber, CultureInfo.InvariantCulture);
+            if (!int.TryParse(component, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out var colorCode))
+                return null;
+
             if (isRgb)
             {
                 var r = (byte) ((colorCode & 0xFF0000) >> 16);

@@ -53,3 +53,17 @@ let ``Nonexistent color model throws a TexParseException``(text: string): unit =
 let ``Nonexistent color throws a TexParseException``(text: string): unit =
     let ex = assertParseThrows<TexParseException> text
     Assert.Contains("reddit", ex.Message)
+
+[<Theory>]
+[<InlineData(@"\color [gray] {x} x", "gray");
+  InlineData(@"\color [gray] {1.01} x", "gray");
+  InlineData(@"\color [argb] {2, 0.5, 0.5, 0.5} x", "argb");
+  InlineData(@"\color [argb] {x, 0.5, 0.5, 0.5} x", "argb");
+  InlineData(@"\color [ARGB] {256, 128, 128, 128} x", "ARGB");
+  InlineData(@"\color [ARGB] {x, 128, 128, 128} x", "ARGB");
+  InlineData(@"\color [cmyk] {2, 0.5, 0.5, 0.5, 0.1} x", "cmyk");
+  InlineData(@"\color [cmyk] {x, 0.5, 0.5, 0.5, 0.1} x", "cmyk");
+  InlineData(@"\color [HTML] {wwwwwwww} x", "HTML")>]
+let ``Invalid color numbers throw exceptions``(formula: string, colorModel: string): unit =
+    let ex = assertParseThrows<TexParseException> formula
+    Assert.Contains(colorModel, ex.Message)
