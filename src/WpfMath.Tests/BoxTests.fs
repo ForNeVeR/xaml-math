@@ -2,7 +2,6 @@ module WpfMath.Tests.BoxTests
 
 open System
 
-open FSharp.Core.Fluent
 open Xunit
 
 open WpfMath
@@ -57,7 +56,7 @@ let ``RowAtom creates boxes with proper sources``() =
     let parser = TexFormulaParser()
     let formula = parser.Parse source
     let box = formula.CreateBox environment :?> HorizontalBox
-    let chars = box.Children.filter (fun x -> x :? CharBox)
+    let chars = box.Children |> Seq.filter (fun x -> x :? CharBox)
     Assert.Collection (
         chars,
         Action<_>(fun (x: Box) -> Assert.Equal(src 0 1, x.Source)),
@@ -74,9 +73,8 @@ let ``BigOperatorAtom creates a box with proper sources``() =
 
     let charBoxes =
         box.Children
-            .filter(fun x -> x :? HorizontalBox)
-            .collect(fun x -> x.Children.filter (fun y -> y :? CharBox))
-            .toList()
+            |> Seq.filter (fun x -> x :? HorizontalBox)
+            |> Seq.collect (fun x -> (x.Children |> Seq.filter (fun y -> y :? CharBox)))
 
     Assert.Collection (
         charBoxes,

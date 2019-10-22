@@ -1,7 +1,9 @@
-﻿<Project Sdk="Sunburst.NET.Sdk.WPF.Patched/1.0.49">
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
-        <TargetFramework>net452</TargetFramework>
+        <TargetFrameworks>netcoreapp3.0;net461</TargetFrameworks>
+        <LangVersion>8.0</LangVersion>
+        <UseWpf>true</UseWpf>
         <DebugType>Full</DebugType>
     </PropertyGroup>
     <ItemGroup>
