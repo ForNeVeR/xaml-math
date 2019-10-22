@@ -1,5 +1,4 @@
 ﻿image:
-    - Visual Studio 2017
     - Visual Studio 2019
 before_build:
     - nuget restore
@@ -7,4 +6,5 @@ before_build:
 before_test:
     - nuget install xunit.runner.console -version 2.4.1
 test_script:
-    - xunit.runner.console.2.4.1\tools\net46\xunit.console.exe src\WpfMath.Tests\bin\Debug\net461\WpfMath.Tests.dll
+    - xunit.runner.console.2.4.1\tools\xunit.console.exe src\WpfMath.Tests\bin\Debug\net461\WpfMath.Tests.dll
+    - xunit.runner.console.2.4.1\tools\xunit.console.exe src\WpfMath.Tests\bin\Debug\netcoreapp3.0\WpfMath.Tests.dll
