@@ -98,7 +98,7 @@
             "Font": "pack://application:,,,/WpfMath;component/Fonts/cmex10.ttf",
             "Size": 1.0,
             "Metrics": {
-              "Width": 0.52778099999999994,
+              "Width": 0.527781,
               "Height": 0.039999,
               "Depth": 2.360025,
               "Italic": 0.0
@@ -110,9 +110,9 @@
           "Foreground": null,
           "Background": null,
           "TotalHeight": 2.4000239999999997,
-          "TotalWidth": 0.52778099999999994,
+          "TotalWidth": 0.527781,
           "Italic": 0.0,
-          "Width": 0.52778099999999994,
+          "Width": 0.527781,
           "Height": 0.039999,
           "Depth": 2.360025,
           "Shift": -1.410013
@@ -1250,7 +1250,7 @@
             "Font": "pack://application:,,,/WpfMath;component/Fonts/cmex10.ttf",
             "Size": 1.0,
             "Metrics": {
-              "Width": 0.52778099999999994,
+              "Width": 0.527781,
               "Height": 0.039999,
               "Depth": 2.360025,
               "Italic": 0.0
@@ -1262,9 +1262,9 @@
           "Foreground": null,
           "Background": null,
           "TotalHeight": 2.4000239999999997,
-          "TotalWidth": 0.52778099999999994,
+          "TotalWidth": 0.527781,
           "Italic": 0.0,
-          "Width": 0.52778099999999994,
+          "Width": 0.527781,
           "Height": 0.039999,
           "Depth": 2.360025,
           "Shift": -1.410013
