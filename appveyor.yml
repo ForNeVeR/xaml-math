@@ -1,6 +1,6 @@
 ﻿image:
     - Visual Studio 2019
 build_script:
-    - dotnet build -c Release
+    - dotnet build
 test_script:
-    - dotnet test -c Release
+    - dotnet test
