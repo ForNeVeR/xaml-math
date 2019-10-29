@@ -31,6 +31,11 @@ let ``"\frac{}" should throw a TexParseException``(): unit =
     Assert.Equal("An element is missing", ex.Message)
 
 [<Fact>]
+let ``"\binom{}" should throw a TexParseException``(): unit =
+    let ex = assertParseThrows<TexParseException> @"\binom{}"
+    Assert.Equal("An element is missing", ex.Message)
+
+[<Fact>]
 let ``Incorrect command parser behavior should be detected``(): unit =
     let incorrectParser =
         { new ICommandParser with

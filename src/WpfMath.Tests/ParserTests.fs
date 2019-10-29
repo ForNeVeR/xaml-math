@@ -1,4 +1,4 @@
-﻿module WpfMath.Tests.ParserTests
+module WpfMath.Tests.ParserTests
 
 open Xunit
 
@@ -174,6 +174,19 @@ let underline(text : string) : unit =
     verifyParseResultScenario
     <| processSpecialChars text
     <| sprintf @"\underline%s" text
+
+[<Theory>]
+[<InlineData("2x123");
+  InlineData("2{x}123");
+  InlineData("{2}x123");
+  InlineData("{2}{x}123");
+  InlineData(" 2 x123");
+  InlineData("2 {x}123");
+  InlineData(" 2{x}123")>]
+let binom(text : string) : unit =
+    verifyParseResultScenario
+    <| processSpecialChars text
+    <| sprintf @"\binom%s" text
 
 [<Theory>]
 [<InlineData("x^y_z");
