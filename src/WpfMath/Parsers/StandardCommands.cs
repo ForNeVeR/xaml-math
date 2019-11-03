@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using WpfMath.Atoms;
 using WpfMath.Parsers.Matrices;
 
@@ -50,13 +51,46 @@ namespace WpfMath.Parsers
             }
         }
 
+        private class NewLineCommand: ICommandParser
+        {
+            private readonly List<List<Atom>> _rows;
+
+//            public NewLineCommand(List<List<Atom>> rows)
+            public NewLineCommand()
+            {
+//                _rows = rows;
+                _rows = new List<List<Atom>> {new List<Atom>()};
+            }
+
+            internal static void NextCell(List<List<Atom>> rows, TexFormula formula)
+            {
+                var currentAtom = formula.RootAtom ?? new NullAtom();
+                formula.RootAtom = null;
+
+                var lastRow = rows.Last();
+                lastRow.Add(currentAtom);
+            }
+
+            public CommandProcessingResult ProcessCommand(CommandContext context)
+            {
+
+                NextCell(_rows, context.Formula);
+                _rows.Add(new List<Atom>());
+
+
+                return new CommandProcessingResult(null, context.ArgumentsStartPosition);
+            }
+
+        }
+
         public static IReadOnlyDictionary<string, ICommandParser> Dictionary = new Dictionary<string, ICommandParser>
         {
             ["cases"] = new MatrixCommandParser("lbrace", null, MatrixCellAlignment.Left),
             ["matrix"] = new MatrixCommandParser(null, null, MatrixCellAlignment.Center),
             ["pmatrix"] = new MatrixCommandParser("lbrack", "rbrack", MatrixCellAlignment.Center),
             ["underline"] = new UnderlineCommand(),
-            ["binom"] = new BinomCommand()
+            ["binom"] = new BinomCommand(),
+            [@"\"] = new NewLineCommand()
         };
     }
 }
