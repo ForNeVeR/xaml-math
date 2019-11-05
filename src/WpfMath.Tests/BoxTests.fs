@@ -123,3 +123,7 @@ let emptyMathrm(): unit =
 [<Fact>]
 let emptyCommandText(): unit =
     verifyBox @"\text{}"
+
+[<Fact>]
+let emptyColorRed(): unit =
+    verifyBox @"\color{red}{}"
