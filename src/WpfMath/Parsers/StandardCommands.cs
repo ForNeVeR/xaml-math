@@ -1,8 +1,6 @@
 using System.Collections.Generic;
-using System.Linq;
 using WpfMath.Atoms;
 using WpfMath.Parsers.Matrices;
-
 namespace WpfMath.Parsers
 {
     internal static class StandardCommands
@@ -51,34 +49,34 @@ namespace WpfMath.Parsers
             }
         }
 
-        private class NewLineCommand: ICommandParser
+        private class NewLineCommand : ICommandParser
         {
-            private readonly List<List<Atom>> _rows;
-
-//            public NewLineCommand(List<List<Atom>> rows)
-            public NewLineCommand()
-            {
-//                _rows = rows;
-                _rows = new List<List<Atom>> {new List<Atom>()};
-            }
-
-            internal static void NextCell(List<List<Atom>> rows, TexFormula formula)
-            {
-                var currentAtom = formula.RootAtom ?? new NullAtom();
-                formula.RootAtom = null;
-
-                var lastRow = rows.Last();
-                lastRow.Add(currentAtom);
-            }
 
             public CommandProcessingResult ProcessCommand(CommandContext context)
             {
+                var source = context.CommandSource;
+                var position = context.ArgumentsStartPosition;
 
-                NextCell(_rows, context.Formula);
-                _rows.Add(new List<Atom>());
+
+                var prevFormulaAtom = context.Formula.RootAtom;
+
+                var upRow = new List<Atom>();
+                upRow.Add(prevFormulaAtom);
+                var rows = new List<List<Atom>> {upRow};
+
+                var inside = context.Parser.Parse(
+                    TexFormulaParser.ReadElement(source, ref position),
+                    context.Formula.TextStyle,
+                    context.Environment);
+                var downRow = new List<Atom>();
+                downRow.Add(inside.RootAtom);
+                rows.Add(downRow);
 
 
-                return new CommandProcessingResult(null, context.ArgumentsStartPosition);
+                var start = context.CommandNameStartPosition;
+                var atomSource = source.Segment(start, position - start);
+                var atom = new MatrixAtom(atomSource, rows, MatrixCellAlignment.Center);
+                return new CommandProcessingResult(atom, position);
             }
 
         }

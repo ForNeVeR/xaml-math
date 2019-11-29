@@ -105,8 +105,10 @@ namespace WpfMath.Example
             var testFormula8 = @"f(x) = \cases{1/3 & if \thinspace 0\le x\le 1;\cr 2/3 & if \thinspace 3\le x \le 4; \cr 0 & elsewhere.\cr}";
             var testFormula9 = @"v \times w = \left( \matrix{v_2 w_3 - v_3 w_2 \\ v_3 w_1 - v_1 w_3 \\ v_1 w_2 - v_2 w_1} \right) where v= \left(\matrix{ v_1 \\ v_2 \\ v_3 }\right), w= \left( \matrix{w_1 \\ w_2  \\ w_3} \right)";
             var testFormula10 = @"\Gamma_{\mu \rho} ^{\sigma}= \pmatrix{\pmatrix{0 & 0 & 0 \\ 0 & -r & 0 \\ 0 & 0 & -r sin^2(\theta)} \\ \pmatrix{0 & \frac{1}{r} & 0 \\ \frac{1}{r} & 0 & 0 \\ 0 & 0 & -\sin(\theta) \cos(\theta)} \\ \pmatrix{0 & 0 & \frac{1}{r} \\ 0 & 0 & \frac{1}{\tan(\theta)} \\ \frac{1}{r} & \frac{1}{\tan(\theta)} & 0 }}";
+            var testFormula11 = @"1|2|3 \\{ 3|4|5 \\{ 6|7|8 \\{9|0|10}}}";
+            var testFormula12 = @"1|2|3 \\{ 3|4|5} \\{ 6|7|8}";
 
-            this.inputTextBox.Text = testFormula10;
+            this.inputTextBox.Text = testFormula12;
         }
 
         private void Window_Closed(object sender, EventArgs e)
