@@ -57,10 +57,13 @@ namespace WpfMath.Parsers
         /// </summary>
         public int NextPosition { get; }
 
-        public CommandProcessingResult(Atom atom, int nextPosition)
+        public AtomAppendMode AppendMode { get; }
+
+        public CommandProcessingResult(Atom atom, int nextPosition, AtomAppendMode appendMode = AtomAppendMode.Add)
         {
             Atom = atom;
             NextPosition = nextPosition;
+            AppendMode = appendMode;
         }
     }
 

@@ -446,7 +446,7 @@ namespace WpfMath
             Parse(ReadElement(value, ref position), formula.TextStyle, environment.CreateChildEnvironment());
 
         /// <remarks>May return <c>null</c> for commands that produce no atoms.</remarks>
-        private Atom ProcessCommand(
+        private (AtomAppendMode, Atom) ProcessCommand(
             TexFormula formula,
             SourceSpan value,
             ref int position,
@@ -471,7 +471,7 @@ namespace WpfMath
                             formula.TextStyle,
                             environment.CreateChildEnvironment());
                         source = value.Segment(start, position - start);
-                        return new FractionAtom(source, numeratorFormula.RootAtom, denominatorFormula.RootAtom, true);
+                        return (AtomAppendMode.Add, new FractionAtom(source, numeratorFormula.RootAtom, denominatorFormula.RootAtom, true));
                     }
                 case "left":
                     {
@@ -483,7 +483,7 @@ namespace WpfMath
                         var internals = ParseUntilDelimiter(value, ref position, formula.TextStyle, environment);
                         var closing = internals.ClosingDelimiter;
                         source = value.Segment(start, position - start);
-                        return new FencedAtom(source, internals.Body, opening, closing);
+                        return (AtomAppendMode.Add, new FencedAtom(source, internals.Body, opening, closing));
                     }
                 case "overline":
                     {
@@ -492,7 +492,7 @@ namespace WpfMath
                             formula.TextStyle,
                             environment.CreateChildEnvironment());
                         source = value.Segment(start, position - start);
-                        return new OverlinedAtom(source, overlineFormula.RootAtom);
+                        return (AtomAppendMode.Add, new OverlinedAtom(source, overlineFormula.RootAtom));
                     }
                 case "right":
                     {
@@ -506,7 +506,7 @@ namespace WpfMath
                         var closing = ParseDelimiter(value, start, ref position);
 
                         closedDelimiter = true;
-                        return closing;
+                        return (AtomAppendMode.Add, closing);
                     }
                 case "sqrt":
                     {
@@ -529,7 +529,7 @@ namespace WpfMath
                             environment.CreateChildEnvironment());
 
                         source = value.Segment(start, position - start);
-                        return new Radical(source, sqrtFormula.RootAtom, degreeFormula?.RootAtom);
+                        return (AtomAppendMode.Add, new Radical(source, sqrtFormula.RootAtom, degreeFormula?.RootAtom));
                     }
                 case "color":
                 {
@@ -539,7 +539,7 @@ namespace WpfMath
                     var bodyFormula = Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
                     source = value.Segment(start, position - start);
 
-                    return new StyledAtom(source, bodyFormula.RootAtom, null, new SolidColorBrush(color));
+                    return (AtomAppendMode.Add, new StyledAtom(source, bodyFormula.RootAtom, null, new SolidColorBrush(color)));
                 }
                 case "colorbox":
                 {
@@ -549,7 +549,7 @@ namespace WpfMath
                     var bodyFormula = Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
                     source = value.Segment(start, position - start);
 
-                    return new StyledAtom(source, bodyFormula.RootAtom, new SolidColorBrush(color), null);
+                    return (AtomAppendMode.Add, new StyledAtom(source, bodyFormula.RootAtom, new SolidColorBrush(color), null));
                 }
                 }
 
@@ -563,7 +563,7 @@ namespace WpfMath
                         $"Incorrect parser behavior for command {command}: NextPosition = {parseResult.NextPosition}, position = {position}. Parser did not made any progress.");
 
                 position = parseResult.NextPosition;
-                return parseResult.Atom;
+                return (parseResult.AppendMode, parseResult.Atom);
             }
 
             throw new TexParseException("Invalid command.");
@@ -662,7 +662,7 @@ namespace WpfMath
                  || _commandRegistry.ContainsKey(command))
             {
                 // Command was found.
-                var commandAtom = ProcessCommand(
+                var (appendMode, commandAtom) = ProcessCommand(
                     formula,
                     value,
                     ref position,
@@ -684,7 +684,15 @@ namespace WpfMath
                             environment);
 
                     var source = new SourceSpan(formulaSource.Source, formulaSource.Start, commandAtom.Source.End);
-                    formula.Add(commandAtom, source);
+                    switch (appendMode)
+                    {
+                        case AtomAppendMode.Add:
+                            formula.Add(commandAtom, source);
+                            break;
+                        case AtomAppendMode.Replace:
+                            formula.RootAtom = commandAtom;
+                            break;
+                    }
                 }
             }
             else

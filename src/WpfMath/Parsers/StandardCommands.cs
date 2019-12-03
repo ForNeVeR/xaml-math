@@ -76,7 +76,7 @@ namespace WpfMath.Parsers
                 var start = context.CommandNameStartPosition;
                 var atomSource = source.Segment(start, position - start);
                 var atom = new MatrixAtom(atomSource, rows, MatrixCellAlignment.Center);
-                return new CommandProcessingResult(atom, position);
+                return new CommandProcessingResult(atom, position, AtomAppendMode.Replace);
             }
 
         }
