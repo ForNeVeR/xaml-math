@@ -95,63 +95,6 @@ namespace WpfMath.Parsers
             }
         }
 
-        private class BeginNamedEnvirnoment: ICommandParser
-        {
-            public CommandProcessingResult ProcessCommand(CommandContext context)
-            {
-                var source = context.CommandSource;
-                var position = context.ArgumentsStartPosition;
-                var name = context.Parser.Parse(
-                            TexFormulaParser.ReadElement(source, ref position),
-                            context.Formula.TextStyle,
-                            context.Environment);
-
-                var body = context.Parser.Parse(
-                            TexFormulaParser.ReadElement(source, ref position),
-                            context.Formula.TextStyle,
-                            context.Environment.CreateChildEnvironment());
-                var start = context.CommandNameStartPosition;
-                var atomSource = source.Segment(start, position - start);
-                var nameAtom = new List<Atom> { name.RootAtom };
-                var bottomAtom = new List<Atom> { body.RootAtom };
-                var atoms = new List<List<Atom>> { nameAtom, bottomAtom };
-                var matrixAtom = new MatrixAtom(atomSource, atoms, MatrixCellAlignment.Center);
-                var left = new SymbolAtom(atomSource, "(", TexAtomType.Opening, true);
-                var right = new SymbolAtom(atomSource, ")", TexAtomType.Closing, true);
-                var fencedAtom = new FencedAtom(atomSource, matrixAtom, left, right);
-                return new CommandProcessingResult(fencedAtom, position);
-            }
-        }
-
-        private class EndNamedEnvirnoment : ICommandParser
-        {
-            public CommandProcessingResult ProcessCommand(CommandContext context)
-            {
-
-                var source = context.CommandSource;
-                var position = context.ArgumentsStartPosition;
-                var name = context.Parser.Parse(
-                            TexFormulaParser.ReadElement(source, ref position),
-                            context.Formula.TextStyle,
-                            context.Environment);
-
-                var body = context.Parser.Parse(
-                            TexFormulaParser.ReadElement(source, ref position),
-                            context.Formula.TextStyle,
-                            context.Environment.CreateChildEnvironment());
-                var start = context.CommandNameStartPosition;
-                var atomSource = source.Segment(start, position - start);
-                var nameAtom = new List<Atom> { name.RootAtom };
-                var bottomAtom = new List<Atom> { body.RootAtom };
-                var atoms = new List<List<Atom>> { nameAtom, bottomAtom };
-                var matrixAtom = new MatrixAtom(atomSource, atoms, MatrixCellAlignment.Center);
-                var left = new SymbolAtom(atomSource, "(", TexAtomType.Opening, true);
-                var right = new SymbolAtom(atomSource, ")", TexAtomType.Closing, true);
-                var fencedAtom = new FencedAtom(atomSource, matrixAtom, left, right);
-                return new CommandProcessingResult(fencedAtom, position);
-            }
-        }
-
         public static IReadOnlyDictionary<string, ICommandParser> Dictionary = new Dictionary<string, ICommandParser>
         {
             [@"\"] = new NewLineCommand(),
@@ -160,11 +103,7 @@ namespace WpfMath.Parsers
             ["matrix"] = new MatrixCommandParser(null, null, MatrixCellAlignment.Center),
             ["pmatrix"] = new MatrixCommandParser("lbrack", "rbrack", MatrixCellAlignment.Center),
             ["underline"] = new UnderlineCommand(),
-            ["binom"] = new BinomCommand(),
-            ["begin"] = new BeginNamedEnvirnoment(),
-            ["end"] = new EndNamedEnvirnoment(),
-
-
+            ["binom"] = new BinomCommand()
         };
     }
 }
