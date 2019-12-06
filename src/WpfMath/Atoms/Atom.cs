@@ -1,19 +1,26 @@
+using System.Collections.Generic;
 using WpfMath.Boxes;
-
 namespace WpfMath.Atoms
 {
     // Atom (smallest unit) of TexFormula.
     internal abstract class Atom
     {
-        protected Atom(SourceSpan source, TexAtomType type = TexAtomType.Ordinary)
+        protected Atom(SourceSpan source, IEnumerable<Atom> children, TexAtomType type = TexAtomType.Ordinary)
         {
             this.Source = source;
             this.Type = type;
+            this.Children = children;
+        }
+
+        protected Atom(SourceSpan source, TexAtomType type = TexAtomType.Ordinary): this(source, new List<Atom>(), type)
+        {
         }
 
         public TexAtomType Type { get; }
 
-        public SourceSpan Source { get; }
+        public SourceSpan Source { get; set; }
+
+        public IEnumerable<Atom> Children { get; protected set; }
 
         public Box CreateBox(TexEnvironment environment)
         {

@@ -46,24 +46,26 @@ namespace WpfMath.Atoms
         public RowAtom(SourceSpan source)
             : base(source)
         {
-            this.Elements = new List<Atom>().AsReadOnly();
+            this.Children = new List<Atom>().AsReadOnly();
         }
 
         private RowAtom(SourceSpan source, DummyAtom previousAtom, ReadOnlyCollection<Atom> elements)
             : base(source)
         {
             this.PreviousAtom = previousAtom;
-            this.Elements = elements;
+            this.Children = elements;
         }
 
         internal RowAtom(SourceSpan source, IEnumerable<Atom> elements)
-            : base(source) =>
-            this.Elements = elements.Where(x => x != null).ToList().AsReadOnly();
+            : base(source)
+        {
+            this.Children = elements.Where(x => x != null).ToList().AsReadOnly(); ;
+        }
             // TODO[F]: Fix this with C# 8 migration: there shouldn't be nullable atoms in this collection
 
         public DummyAtom PreviousAtom { get; }
 
-        public ReadOnlyCollection<Atom> Elements { get; }
+        public ReadOnlyCollection<Atom> Elements => (ReadOnlyCollection<Atom>)this.Children;
 
         public Atom WithPreviousAtom(DummyAtom previousAtom) =>
             new RowAtom(this.Source, previousAtom, this.Elements);

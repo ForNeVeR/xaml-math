@@ -153,9 +153,27 @@ namespace WpfMath
                 formulaParser.Parse(upperLimitFormula), useVerticalLimits);
         }
 
+        public int MoveOffset(Atom atom, int pos)
+        {
+            atom.Source = new SourceSpan(atom.Source.Source, pos, atom.Source.Length);
+            int currentPos = pos;
+            foreach (var child in atom.Children)
+            {
+                currentPos = MoveOffset(child, currentPos);
+            }
+            return pos + atom.Source.Length;
+        }
+
         public void AddOperator(string operatorFormula, bool useVerticalLimits)
         {
-            AddOperator(formulaParser.Parse(operatorFormula), null, null, useVerticalLimits);
+            var formula = formulaParser.Parse(operatorFormula);
+            formula.RootAtom.Source = new SourceSpan(source.Source, source.Start, formula.RootAtom.Source.Length);
+            var pos = source.Start+1;
+            foreach(var e in formula.RootAtom.Children)
+            {
+                pos = MoveOffset(e, pos);
+            }
+            AddOperator(formula, null, null, useVerticalLimits);
         }
 
         public void AddOperator(TexFormula operatorFormula, TexFormula lowerLimitFormula, TexFormula upperLimitFormula)
@@ -174,7 +192,7 @@ namespace WpfMath
             TexFormula upperLimitFormula,
             bool useVerticalLimits)
         {
-            this.Add(
+                this.Add(
                 new BigOperatorAtom(
                     operatorFormula?.RootAtom?.Source,
                     operatorFormula?.RootAtom,
