@@ -1,5 +1,7 @@
 ﻿image:
     - Visual Studio 2019
+before_build:
+    - cinst dotnetcore --version 3.1.0
 build_script:
     - dotnet build
 test_script:
