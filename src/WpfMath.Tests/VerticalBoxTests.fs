@@ -12,7 +12,7 @@ open WpfMath.Rendering
 
 type VerticalBoxTests() =
     [<Fact>]
-    member __.``VerticalBox rendering calls to RenderElement for each child``() =
+    member _.``VerticalBox rendering calls to RenderElement for each child``() =
         let x = 0.5
         let y = 1.0
 

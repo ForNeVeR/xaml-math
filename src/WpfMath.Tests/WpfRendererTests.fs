@@ -19,10 +19,10 @@ type WpfRendererTests() =
     let renderer = WpfElementRenderer(context, 1.0) :> IElementRenderer
 
     [<Fact>]
-    member __.``WpfElementRenderer.RenderElement delegates to element.RenderTo``() : unit =
+    member _.``WpfElementRenderer.RenderElement delegates to element.RenderTo``() : unit =
         let box = Mock.Of<Box>()
         renderer.RenderElement(box, 1.0, 2.0)
         Mock.Verify(<@ box.RenderTo(renderer, 1.0, 2.0) @>, once)
 
     interface IDisposable with
-        member __.Dispose() = (context :> IDisposable).Dispose()
+        member _.Dispose() = (context :> IDisposable).Dispose()
