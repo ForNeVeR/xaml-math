@@ -1,5 +1,6 @@
 module WpfMath.Tests.ApprovalTestUtils
 
+open System.Globalization
 open System.Text
 open System.Reflection
 open System.Windows.Media
@@ -44,9 +45,27 @@ type private GlyphTypefaceConverter() =
         else
             writer.WriteValue(typeface.FontUri)
 
-let private jsonSettings = JsonSerializerSettings (ContractResolver = InnerPropertyContractResolver(),
+/// This converter should provide the same results on both .NET 4.6.1 and .NET Core 3.0 which is important for approval
+/// tests. The roundtrippable double formatting (used by default) differs between these frameworks.
+type private UniversalDoubleConverter() =
+    inherit JsonConverter()
+    override _.CanConvert ``type`` = ``type`` = typeof<float>
+
+    override _.CanRead = false
+    override _.ReadJson(_, _, _, _) = failwith "Not supported"
+
+    override _.WriteJson(writer, value, _) =
+        let doubleValue = value :?> float
+        let stringified = doubleValue.ToString("0.0###############", CultureInfo.InvariantCulture)
+        writer.WriteRawValue stringified
+
+let private jsonSettings = JsonSerializerSettings(ContractResolver = InnerPropertyContractResolver(),
                                                   Formatting = Formatting.Indented,
-                                                  Converters = [| StringEnumConverter(); GlyphTypefaceConverter() |])
+                                                  Converters = [|
+                                                      StringEnumConverter()
+                                                      GlyphTypefaceConverter()
+                                                      UniversalDoubleConverter()
+                                                  |])
 
 let private serialize o =
     JsonConvert.SerializeObject(o, jsonSettings)
