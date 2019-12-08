@@ -2,7 +2,6 @@
     <PropertyGroup>
         <TargetFrameworks>netcoreapp3.0;net461</TargetFrameworks>
         <IsPackable>false</IsPackable>
-        <LangVersion>4.7</LangVersion>
         <UseWpf>true</UseWpf>
         <DebugType>Full</DebugType>
         <Deterministic>false</Deterministic>
