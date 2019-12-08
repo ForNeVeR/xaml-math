@@ -1,3 +1,4 @@
+using System;
 using System.Globalization;
 
 namespace WpfMath.Colors
@@ -10,10 +11,10 @@ namespace WpfMath.Colors
 
         protected override byte DefaultAlpha => 255;
 
-        protected override (bool, byte) TryParseComponent(string component)
+        protected override Tuple<bool, byte> TryParseComponent(string component)
         {
             var success = byte.TryParse(component, NumberStyles.None, CultureInfo.InvariantCulture, out var val);
-            return (success, val);
+            return Tuple.Create(success, val);
         }
 
         protected override byte GetByteValue(byte val) => val;

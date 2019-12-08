@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using WpfMath.Boxes;
+using WpfMath.Utils;
 
 namespace WpfMath.Atoms
 {
@@ -48,7 +49,8 @@ namespace WpfMath.Atoms
         /// <summary>
         /// Calculates the height of each row and the width of each column and returns arrays of those.
         /// </summary>
-        private (double[] RowHeights, double[] ColumnWidths) CalculateDimensions(
+        /// <returns>A tuple of RowHeights and ColumnWidths arrays.</returns>
+        private Tuple<double[], double[]> CalculateDimensions(
             List<List<Box>> matrix,
             int columnCount)
         {
@@ -64,7 +66,7 @@ namespace WpfMath.Atoms
                 }
             }
 
-            return (rowHeights, columnWidths);
+            return Tuple.Create(rowHeights, columnWidths);
         }
 
         private static List<List<CellGaps>> CalculateCellGaps(
@@ -107,14 +109,14 @@ namespace WpfMath.Atoms
                     var cell = matrix[i][j];
 
                     var cellContainer = new VerticalBox();
-                    var (topPadding, bottomPadding) = GetVerticalPadding(i, j);
+                    var (topPadding, bottomPadding) = GetTopBottomPadding(i, j);
                     cellContainer.Add(topPadding);
                     cellContainer.Add(cell);
                     cellContainer.Add(bottomPadding);
                     cellContainer.Height = cellContainer.TotalHeight;
                     cellContainer.Depth = 0;
 
-                    var (leftPadding, rightPadding) = GetHorizontalPadding(i, j);
+                    var (leftPadding, rightPadding) = GetLeftRightPadding(i, j);
                     if (leftPadding != null) rowContainer.Add(leftPadding);
                     rowContainer.Add(cellContainer);
                     rowContainer.Add(rightPadding);
@@ -130,15 +132,15 @@ namespace WpfMath.Atoms
 
             return rowsContainer;
 
-            (Box TopPadding, Box BottomPadding) GetVerticalPadding(int i, int j)
+            Tuple<Box, Box> GetTopBottomPadding(int i, int j)
             {
                 var value = matrixCellGaps[i][j].Vertical;
                 var topBox = new StrutBox(0.0, VerticalPadding / 2 + value, 0.0, VerticalPadding);
                 var bottomBox = new StrutBox(0.0, VerticalPadding / 2 + value, 0.0, VerticalPadding);
-                return (topBox, bottomBox);
+                return new Tuple<Box, Box>(topBox, bottomBox);
             }
 
-            (Box LeftPadding, Box RightPadding) GetHorizontalPadding(int i, int j)
+            Tuple<Box, Box> GetLeftRightPadding(int i, int j)
             {
                 var value = matrixCellGaps[i][j].Horizontal;
                 var leftPadding = MatrixCellAlignment == MatrixCellAlignment.Left ? 0.0 : value;
@@ -147,7 +149,7 @@ namespace WpfMath.Atoms
                     ? null
                     : new StrutBox(HorizontalPadding / 2 + leftPadding, 0.0, 0.0, 0.0);
                 var rightBox = new StrutBox(HorizontalPadding / 2 + rightPadding, 0.0, 0.0, 0.0);
-                return (leftBox, rightBox);
+                return new Tuple<Box, Box>(leftBox, rightBox);
             }
         }
 
