@@ -12,7 +12,7 @@ open WpfMath.Rendering
 
 type HorizontalBoxTests() =
     [<Fact>]
-    member __.``HorizontalBox rendering calls to RenderElement for each child``() =
+    member _.``HorizontalBox rendering calls to RenderElement for each child``() =
         let x = 0.5
         let y = 1.0
 

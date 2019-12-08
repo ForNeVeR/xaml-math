@@ -19,13 +19,13 @@ type GeometryElementRendererTests() =
     let renderer = GeometryElementRenderer(geometry, 1.0) :> IElementRenderer
 
     [<Fact>]
-    member __.``GeometryElementRenderer.RenderElement delegates to element.RenderTo``() : unit =
+    member _.``GeometryElementRenderer.RenderElement delegates to element.RenderTo``() : unit =
         let box = Mock.Of<Box>()
         renderer.RenderElement(box, 1.0, 2.0)
         Mock.Verify(<@ box.RenderTo(renderer, 1.0, 2.0) @>, once)
 
     [<Fact>]
-    member __.``GeometryElementRenderer.RenderGlyphRun adds a PathGeometry group``() : unit =
+    member _.``GeometryElementRenderer.RenderGlyphRun adds a PathGeometry group``() : unit =
         let font = DefaultTexFont 20.0
         let environment = TexEnvironment(TexStyle.Display, font, font)
         let char = environment.MathFont.GetDefaultCharInfo('x', TexStyle.Display).Value
@@ -38,13 +38,13 @@ type GeometryElementRendererTests() =
         Assert.IsType<PathGeometry>(Seq.exactlyOne group.Children) |> ignore
 
     [<Fact>]
-    member __.``GeometryElementRenderer.RenderRectangle adds a RectangleGeometry``() : unit =
+    member _.``GeometryElementRenderer.RenderRectangle adds a RectangleGeometry``() : unit =
         let rect = Rect(1.0, 2.0, 3.0, 4.0)
         renderer.RenderRectangle(rect, null)
 
         Assert.IsType<RectangleGeometry>(Seq.exactlyOne geometry.Children) |> ignore
 
     [<Fact>]
-    member __.``GeometryElementRenderer.RenderTransformed adds a GeometryGroup``() : unit =
+    member _.``GeometryElementRenderer.RenderTransformed adds a GeometryGroup``() : unit =
         renderer.RenderTransformed(HorizontalBox(), [| Transformation.Translate(1.0, 1.0) |], 0.0, 0.0)
         Assert.IsType<GeometryGroup>(Seq.exactlyOne geometry.Children) |> ignore

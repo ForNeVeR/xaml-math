@@ -96,14 +96,12 @@ Documentation
 Build and Maintenance Instructions
 ----------------------------------
 
-Build the project using [MSBuild][msbuild] or any compatible environment (e.g. Visual Studio 2017 or Rider). WPF-Math requires C# 7.2 support. Build script:
+Build the project using .NET Core SDK 3.1. WPF-Math requires C# 8 and F# 4.7 support. Here's the build and test script:
 
 ```console
-$ nuget restore
-$ msbuild /p:Configuration=Release
+$ dotnet build --configuration Release
+$ dotnet test
 ```
-
-To run the unit tests, use any xunit-compatible runner (e.g. Visual Studio 2017 or Rider).
 
 To approve the test results if they differ from the existing ones, execute the `scripts/approve-all.ps1` script using PowerShell or PowerShell Core.
 

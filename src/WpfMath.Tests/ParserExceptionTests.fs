@@ -34,7 +34,7 @@ let ``"\frac{}" should throw a TexParseException``(): unit =
 let ``Incorrect command parser behavior should be detected``(): unit =
     let incorrectParser =
         { new ICommandParser with
-             member __.ProcessCommand _ =
+             member _.ProcessCommand _ =
                  CommandProcessingResult(SpaceAtom(null), 0) }
     let parserRegistry = Map([| "dummy", incorrectParser |])
     let parser = TexFormulaParser(parserRegistry, Dictionary(), PredefinedColorParser.Instance)

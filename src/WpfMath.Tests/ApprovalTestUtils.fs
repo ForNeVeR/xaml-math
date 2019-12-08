@@ -19,7 +19,7 @@ do ()
 
 type private InnerPropertyContractResolver() =
     inherit DefaultContractResolver()
-    member private __.DoCreateProperty(p, ms) =
+    member private _.DoCreateProperty(p, ms) =
         base.CreateProperty(p, ms, Readable = true)
 
     override this.CreateProperties(``type``, memberSerialization) =
@@ -32,12 +32,12 @@ type private InnerPropertyContractResolver() =
 
 type private GlyphTypefaceConverter() =
     inherit JsonConverter()
-    override __.CanConvert ``type`` = ``type`` = typeof<GlyphTypeface>
+    override _.CanConvert ``type`` = ``type`` = typeof<GlyphTypeface>
 
-    override __.CanRead = false
-    override __.ReadJson(_, _, _, _) = failwith "Not supported"
+    override _.CanRead = false
+    override _.ReadJson(_, _, _, _) = failwith "Not supported"
 
-    override __.WriteJson(writer, value, _) =
+    override _.WriteJson(writer, value, _) =
         let typeface = value :?> GlyphTypeface
         if isNull typeface then
             writer.WriteNull()
