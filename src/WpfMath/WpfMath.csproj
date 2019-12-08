@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
     <PropertyGroup>
-        <TargetFrameworks>netcoreapp3.0;net461</TargetFrameworks>
+        <TargetFrameworks>netcoreapp3.0;net452</TargetFrameworks>
         <LangVersion>8.0</LangVersion>
         <UseWpf>true</UseWpf>
         <OutputType>Library</OutputType>
@@ -18,8 +18,5 @@
         <Resource Include="Fonts\cmmi10.ttf" />
         <Resource Include="Fonts\cmr10.ttf" />
         <Resource Include="Fonts\cmsy10.ttf" />
-    </ItemGroup>
-    <ItemGroup>
-      <PackageReference Condition="'$(TargetFramework)'=='net461'" Include="System.ValueTuple" Version="4.4.0" />
     </ItemGroup>
 </Project>

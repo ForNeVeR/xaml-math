@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Media;
+using WpfMath.Utils;
 
 namespace WpfMath.Colors
 {
@@ -26,7 +28,7 @@ namespace WpfMath.Colors
 
         protected abstract T DefaultAlpha { get; }
 
-        protected abstract (bool, T) TryParseComponent(string component);
+        protected abstract Tuple<bool, T> TryParseComponent(string component);
         protected abstract byte GetByteValue(T val);
 
         protected override Color? ParseComponents(List<string> components)
