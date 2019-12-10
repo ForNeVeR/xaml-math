@@ -7,10 +7,18 @@
         <DebugType>Full</DebugType>
     </PropertyGroup>
     <PropertyGroup>
+        <PackageId>WpfMath</PackageId>
+        <Version>0.8.0</Version>
+        <Title>WPF-Math</Title>
+        <Authors>ForNeVeR</Authors>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/ForNeVeR/wpf-math</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/ForNeVeR/wpf-math.git</RepositoryUrl>
         <AssemblyTitle>WPF-Math</AssemblyTitle>
+        <PackageReleaseNotes>Migrated to .NET 4.5.2; added matrix support; fixed some bugs.</PackageReleaseNotes>
+        <PackageTags>wpf;latex;formula</PackageTags>
         <Description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the WPF framework.</Description>
         <Copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2019</Copyright>
-        <AssemblyVersion>0.7.0</AssemblyVersion>
     </PropertyGroup>
     <ItemGroup>
         <EmbeddedResource Include="Data/*" />

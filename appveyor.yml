@@ -3,5 +3,7 @@
                                  # VS2019
 build_script:
     - dotnet build
+after_build:
+    - dotnet pack
 test_script:
     - dotnet test

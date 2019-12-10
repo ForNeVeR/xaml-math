@@ -15,12 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		LICENSE.md = LICENSE.md
 		README.md = README.md
 		RELEASES.md = RELEASES.md
-		WpfMath.nuspec = WpfMath.nuspec
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{853A4436-C44F-4A61-878D-1B85CE43DB31}"
-	ProjectSection(SolutionItems) = preProject
-		scripts\nuget-pack.ps1 = scripts\nuget-pack.ps1
 	EndProjectSection
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WpfMath.Tests", "src\WpfMath.Tests\WpfMath.Tests.fsproj", "{F19E5FB1-EE6B-4A48-A522-41F30676BE41}"
@@ -61,7 +55,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{853A4436-C44F-4A61-878D-1B85CE43DB31} = {D9341AA3-BF7C-4CC1-8E11-82258967B82F}
 		{39669369-C4F6-4AC6-9D35-B4B6086FF172} = {D9341AA3-BF7C-4CC1-8E11-82258967B82F}
 	EndGlobalSection
 EndGlobal

@@ -5,6 +5,7 @@
         <LangVersion>8.0</LangVersion>
         <UseWpf>true</UseWpf>
         <DebugType>Full</DebugType>
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
     <ItemGroup>
         <ProjectReference Include="../WpfMath/WpfMath.csproj"/>
