@@ -651,8 +651,15 @@ namespace WpfMath
                 // Predefined formula was found.
                 var predefinedFormula = factory(formulaSource);
                 var atom = AttachScripts(formula, value, ref position, predefinedFormula.RootAtom, true, environment);
-                var source = new SourceSpan(formulaSource.Source, formulaSource.Start, predefinedFormula.RootAtom.Source.Length + 1);
-                formula.Add(atom, source);
+                if (atom.Source != null)
+                {
+                    var source = new SourceSpan(formulaSource.Source, formulaSource.Start, predefinedFormula.RootAtom.Source.Length + 1);
+                    formula.Add(atom, source);
+                }
+                else
+                {
+                    formula.Add(atom, formulaSource);
+                }
             }
             else if (command.Equals("nbsp"))
             {
