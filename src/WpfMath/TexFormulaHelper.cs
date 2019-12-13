@@ -155,23 +155,30 @@ namespace WpfMath
 
         public int MoveOffset(Atom atom, int pos)
         {
-            atom.Source = new SourceSpan(atom.Source.Source, pos, atom.Source.Length);
-            int currentPos = pos;
-            foreach (var child in atom.Children)
+            if (atom.Source != null)
             {
-                currentPos = MoveOffset(child, currentPos);
+                atom.Source = new SourceSpan(atom.Source.Source, pos, atom.Source.Length);
+                int currentPos = pos;
+                foreach (var child in atom.Children)
+                {
+                    currentPos = MoveOffset(child, currentPos);
+                }
+                return pos + atom.Source.Length;
             }
-            return pos + atom.Source.Length;
+            return pos;
         }
 
         public void AddOperator(string operatorFormula, bool useVerticalLimits)
         {
             var formula = formulaParser.Parse(operatorFormula);
-            formula.RootAtom.Source = new SourceSpan(source.Source, source.Start, formula.RootAtom.Source.Length);
-            var pos = source.Start+1;
-            foreach(var e in formula.RootAtom.Children)
+            if (formula?.RootAtom.Source != null)
             {
-                pos = MoveOffset(e, pos);
+                formula.RootAtom.Source = new SourceSpan(source.Source, source.Start, formula.RootAtom.Source.Length);
+                var pos = source.Start + 1;
+                foreach (var e in formula.RootAtom.Children)
+                {
+                    pos = MoveOffset(e, pos);
+                }
             }
             AddOperator(formula, null, null, useVerticalLimits);
         }
