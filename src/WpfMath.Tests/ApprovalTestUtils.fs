@@ -31,32 +31,26 @@ type private InnerPropertyContractResolver() =
             |> Seq.map (fun p -> this.DoCreateProperty(p, memberSerialization))
         )
 
-type private GlyphTypefaceConverter() =
-    inherit JsonConverter()
-    override _.CanConvert ``type`` = ``type`` = typeof<GlyphTypeface>
-
+[<AbstractClass>]
+type ReadOnlyJsonConverter<'a>() =
+    inherit JsonConverter<'a>()
     override _.CanRead = false
-    override _.ReadJson(_, _, _, _) = failwith "Not supported"
+    override _.ReadJson(_, _, _, _, _) = failwith "Not supported"
 
-    override _.WriteJson(writer, value, _) =
-        let typeface = value :?> GlyphTypeface
-        if isNull typeface then
+type private GlyphTypefaceConverter() =
+    inherit ReadOnlyJsonConverter<GlyphTypeface>()
+    override _.WriteJson(writer: JsonWriter, value: GlyphTypeface, _: JsonSerializer) =
+        if isNull value then
             writer.WriteNull()
         else
-            writer.WriteValue(typeface.FontUri)
+            writer.WriteValue(value.FontUri)
 
 /// This converter should provide the same results on both .NET 4.6.1 and .NET Core 3.0 which is important for approval
 /// tests. The roundtrippable double formatting (used by default) differs between these frameworks.
 type private UniversalDoubleConverter() =
-    inherit JsonConverter()
-    override _.CanConvert ``type`` = ``type`` = typeof<float>
-
-    override _.CanRead = false
-    override _.ReadJson(_, _, _, _) = failwith "Not supported"
-
-    override _.WriteJson(writer, value, _) =
-        let doubleValue = value :?> float
-        let stringified = doubleValue.ToString("0.0###############", CultureInfo.InvariantCulture)
+    inherit ReadOnlyJsonConverter<float>()
+    override _.WriteJson(writer: JsonWriter, value: float, _: JsonSerializer) =
+        let stringified = value.ToString("0.0###############", CultureInfo.InvariantCulture)
         writer.WriteRawValue stringified
 
 let private jsonSettings = JsonSerializerSettings(ContractResolver = InnerPropertyContractResolver(),
