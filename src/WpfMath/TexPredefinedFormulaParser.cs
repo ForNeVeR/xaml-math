@@ -25,7 +25,7 @@ namespace WpfMath
             argValueParsers = new Dictionary<string, ArgumentValueParser>();
             actionParsers = new Dictionary<string, ActionParser>();
             formulaParser = new TexFormulaParser();
-            var tempFormulas = new Dictionary<string, TexFormula>();
+            var sharedCacheFormulas = new Dictionary<string, TexFormula>();
 
             typeMappings.Add("Formula", typeof(TexFormula));
             typeMappings.Add("string", typeof(string));
@@ -37,19 +37,19 @@ namespace WpfMath
             typeMappings.Add("Unit", typeof(TexUnit));
             typeMappings.Add("AtomType", typeof(TexAtomType));
 
-            actionParsers.Add("CreateFormula", new CreateTeXFormulaParser(tempFormulas));
-            actionParsers.Add("MethodInvocation", new MethodInvocationParser(tempFormulas));
-            actionParsers.Add("Return", new ReturnParser(tempFormulas));
+            actionParsers.Add("CreateFormula", new CreateTeXFormulaParser(sharedCacheFormulas));
+            actionParsers.Add("MethodInvocation", new MethodInvocationParser(sharedCacheFormulas));
+            actionParsers.Add("Return", new ReturnParser(sharedCacheFormulas));
 
-            argValueParsers.Add("Formula", new TeXFormulaValueParser(tempFormulas));
-            argValueParsers.Add("string", new StringValueParser(tempFormulas));
-            argValueParsers.Add("double", new DoubleValueParser(tempFormulas));
-            argValueParsers.Add("int", new IntValueParser(tempFormulas));
-            argValueParsers.Add("bool", new BooleanValueParser(tempFormulas));
-            argValueParsers.Add("char", new CharValueParser(tempFormulas));
-            argValueParsers.Add("Color", new ColorConstantValueParser(tempFormulas));
-            argValueParsers.Add("Unit", new EnumParser(typeof(TexUnit), tempFormulas));
-            argValueParsers.Add("AtomType", new EnumParser(typeof(TexAtomType), tempFormulas));
+            argValueParsers.Add("Formula", new TeXFormulaValueParser(sharedCacheFormulas));
+            argValueParsers.Add("string", new StringValueParser(sharedCacheFormulas));
+            argValueParsers.Add("double", new DoubleValueParser(sharedCacheFormulas));
+            argValueParsers.Add("int", new IntValueParser(sharedCacheFormulas));
+            argValueParsers.Add("bool", new BooleanValueParser(sharedCacheFormulas));
+            argValueParsers.Add("char", new CharValueParser(sharedCacheFormulas));
+            argValueParsers.Add("Color", new ColorConstantValueParser(sharedCacheFormulas));
+            argValueParsers.Add("Unit", new EnumParser(typeof(TexUnit), sharedCacheFormulas));
+            argValueParsers.Add("AtomType", new EnumParser(typeof(TexAtomType), sharedCacheFormulas));
         }
 
         private static Type[] GetArgumentTypes(IEnumerable<XElement> args)
@@ -123,8 +123,8 @@ namespace WpfMath
 
         public class MethodInvocationParser : ActionParser
         {
-            public MethodInvocationParser(IDictionary<string, TexFormula> tempFormulas)
-                : base(tempFormulas)
+            public MethodInvocationParser(IDictionary<string, TexFormula> sharedCacheFormulas)
+                : base(sharedCacheFormulas)
             {
             }
 
@@ -134,7 +134,7 @@ namespace WpfMath
                 var objectName = element.AttributeValue("formula");
                 var args = element.Elements("Argument");
 
-                var formula = this.TempFormulas[objectName];
+                var formula = this.SharedCacheFormulas[objectName];
                 Debug.Assert(formula != null);
 
                 var argTypes = GetArgumentTypes(args);
@@ -147,8 +147,8 @@ namespace WpfMath
 
         public class CreateTeXFormulaParser : ActionParser
         {
-            public CreateTeXFormulaParser(IDictionary<string, TexFormula> tempFormulas)
-                : base(tempFormulas)
+            public CreateTeXFormulaParser(IDictionary<string, TexFormula> sharedCacheFormulas)
+                : base(sharedCacheFormulas)
             {
             }
 
@@ -172,14 +172,14 @@ namespace WpfMath
                     formula = new TexFormula();
                 }
 
-                this.TempFormulas.Add(name, formula);
+                this.SharedCacheFormulas.Add(name, formula);
             }
         }
 
         public class ReturnParser : ActionParser
         {
-            public ReturnParser(IDictionary<string, TexFormula> tempFormulas)
-                : base(tempFormulas)
+            public ReturnParser(IDictionary<string, TexFormula> sharedCacheFormulas)
+                : base(sharedCacheFormulas)
             {
             }
 
@@ -192,17 +192,17 @@ namespace WpfMath
             public override void Parse(SourceSpan source, XElement element)
             {
                 var name = element.AttributeValue("name");
-                var result = this.TempFormulas[name];
+                var result = this.SharedCacheFormulas[name];
                 Debug.Assert(result != null);
                 this.Result = result;
-                this.TempFormulas.Clear();
+                this.SharedCacheFormulas.Clear();
             }
         }
 
         public class DoubleValueParser : ArgumentValueParser
         {
-            public DoubleValueParser(IDictionary<string, TexFormula> tempFormulas)
-                : base(tempFormulas)
+            public DoubleValueParser(IDictionary<string, TexFormula> sharedCacheFormulas)
+                : base(sharedCacheFormulas)
             {
             }
 
@@ -214,8 +214,8 @@ namespace WpfMath
 
         public class CharValueParser : ArgumentValueParser
         {
-            public CharValueParser(IDictionary<string, TexFormula> tempFormulas)
-                : base(tempFormulas)
+            public CharValueParser(IDictionary<string, TexFormula> sharedCacheFormulas)
+                : base(sharedCacheFormulas)
             {
             }
 
@@ -228,8 +228,8 @@ namespace WpfMath
 
         public class BooleanValueParser : ArgumentValueParser
         {
-            public BooleanValueParser(IDictionary<string, TexFormula> tempFormulas)
-                : base(tempFormulas)
+            public BooleanValueParser(IDictionary<string, TexFormula> sharedCacheFormulas)
+                : base(sharedCacheFormulas)
             {
             }
 
@@ -241,8 +241,8 @@ namespace WpfMath
 
         public class IntValueParser : ArgumentValueParser
         {
-            public IntValueParser(IDictionary<string, TexFormula> tempFormulas)
-                : base(tempFormulas)
+            public IntValueParser(IDictionary<string, TexFormula> sharedCacheFormulas)
+                : base(sharedCacheFormulas)
             {
             }
 
@@ -254,8 +254,8 @@ namespace WpfMath
 
         public class StringValueParser : ArgumentValueParser
         {
-            public StringValueParser(IDictionary<string, TexFormula> tempFormulas)
-                : base(tempFormulas)
+            public StringValueParser(IDictionary<string, TexFormula> sharedCacheFormulas)
+                : base(sharedCacheFormulas)
             {
             }
 
@@ -267,8 +267,8 @@ namespace WpfMath
 
         public class TeXFormulaValueParser : ArgumentValueParser
         {
-            public TeXFormulaValueParser(IDictionary<string, TexFormula> tempFormulas)
-                : base(tempFormulas)
+            public TeXFormulaValueParser(IDictionary<string, TexFormula> sharedCacheFormulas)
+                : base(sharedCacheFormulas)
             {
             }
 
@@ -277,7 +277,7 @@ namespace WpfMath
                 if (value == null)
                     return null;
 
-                var formula = this.TempFormulas[value];
+                var formula = this.SharedCacheFormulas[value];
                 Debug.Assert(formula != null);
                 return (TexFormula)formula;
             }
@@ -285,8 +285,8 @@ namespace WpfMath
 
         public class ColorConstantValueParser : ArgumentValueParser
         {
-            public ColorConstantValueParser(IDictionary<string, TexFormula> tempFormulas)
-                : base(tempFormulas)
+            public ColorConstantValueParser(IDictionary<string, TexFormula> sharedCacheFormulas)
+                : base(sharedCacheFormulas)
             {
             }
 
@@ -300,8 +300,8 @@ namespace WpfMath
         {
             private Type enumType;
 
-            public EnumParser(Type enumType, IDictionary<string, TexFormula> tempFormulas)
-                : base(tempFormulas)
+            public EnumParser(Type enumType, IDictionary<string, TexFormula> sharedCacheFormulas)
+                : base(sharedCacheFormulas)
             {
                 this.enumType = enumType;
             }
@@ -314,8 +314,8 @@ namespace WpfMath
 
         public abstract class ActionParser : ParserBase
         {
-            protected  ActionParser(IDictionary<string, TexFormula> tempFormulas)
-                : base(tempFormulas)
+            protected  ActionParser(IDictionary<string, TexFormula> sharedCacheFormulas)
+                : base(sharedCacheFormulas)
             {}
 
             public abstract void Parse(SourceSpan source, XElement element);
@@ -323,8 +323,8 @@ namespace WpfMath
 
         public abstract class ArgumentValueParser : ParserBase
         {
-            protected ArgumentValueParser(IDictionary<string, TexFormula> tempFormulas)
-                : base(tempFormulas)
+            protected ArgumentValueParser(IDictionary<string, TexFormula> sharedCacheFormulas)
+                : base(sharedCacheFormulas)
             {}
 
             public abstract object Parse(string value, string type);
@@ -332,12 +332,12 @@ namespace WpfMath
 
         public abstract class ParserBase
         {
-            public ParserBase(IDictionary<string, TexFormula> tempFormulas)
+            public ParserBase(IDictionary<string, TexFormula> sharedCacheFormulas)
             {
-                this.TempFormulas = tempFormulas;
+                this.SharedCacheFormulas = sharedCacheFormulas;
             }
 
-            public IDictionary<string, TexFormula> TempFormulas
+            public IDictionary<string, TexFormula> SharedCacheFormulas
             {
                 get;
                 private set;
