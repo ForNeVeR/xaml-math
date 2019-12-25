@@ -1,6 +1,5 @@
 ﻿image:
-    - Visual Studio 2019 Preview # TODO[F]: Temporary while there's no .NET Core 3.1 in the Appveyor default image for
-                                 # VS2019
+    - Visual Studio 2019
 build_script:
     - dotnet build
 after_build:
