@@ -32,6 +32,33 @@ There are two helpful toolsets to work with our TTF files:
 
    That will generate `filename.ttx` (XML).
 
+## General parameters
+
+First section of the file contains the general parameters relevant to all of the fonts in the file. Here's an example of this section:
+
+```xml
+<Parameters num1="0.676508" num2="0.393732" num3="0.443731" denom1="0.685951" denom2="0.344841"
+	sup1="0.412892" sup2="0.362892" sup3="0.288889" sub1="0.15" sub2="0.247217" supdrop="0.386108"
+	subdrop="0.05" axisheight="0.25" defaultrulethickness="0.039999" bigopspacing1="0.111112"
+	bigopspacing2="0.166667" bigopspacing3="0.2" bigopspacing4="0.6" bigopspacing5="0.1" />
+```
+
+All of these parameters can be directly extracted from the `*.tpl` files created by `tftopl`. Please note that not each TFM will contain all of the parameters; the result should be a combination of the parameters extracted from different font files.
+
+For example, in Computer Modern of size 10, only one file includes the parameters
+
+```
+(FONTDIMEN
+   (NUM1 R 0.676508)
+   (NUM2 R 0.393732)
+   (NUM3 R 0.443731)
+)
+```
+
+and only one file (another one) includes the parameters such as `BIGOPSPACING1`.`
+
+## Per-font settings
+
 For example, there's the following in `DefaultTexFont.xml`:
 
 ```xml
