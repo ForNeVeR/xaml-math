@@ -32,7 +32,8 @@ There are two helpful toolsets to work with our TTF files:
 
    That will generate `filename.ttx` (XML).
 
-## General parameters
+Parameters
+----------
 
 First section of the file contains the general parameters relevant to all of the fonts in the file. Here's an example of this section:
 
@@ -57,7 +58,22 @@ For example, in Computer Modern of size 10, only one file includes the parameter
 
 and only one file (another one) includes the parameters such as `BIGOPSPACING1`.`
 
-## Per-font settings
+General settings
+----------------
+
+```xml
+<GeneralSettings mufontid="3" spacefontid="1" scriptfactor="0.7" scriptscriptfactor="0.5" />
+```
+
+This section describes the following parameters:
+
+- `mufontid`: an identifier of the font whose `block` size will be considered equal to TeX's `mu` (math unit)
+- `spacefontid`: an identifier of the font whose `space` size will be considered as the default space size
+- `scriptfactor`: a relative size of the elements inside of a script (superscript/subscript) element
+- `scriptscriptfactor`: a relative size of the elements inside of a high-order script (i.e. a superscript/subscript inside of another script) element
+
+Per-font settings
+-----------------
 
 For example, there's the following in `DefaultTexFont.xml`:
 
