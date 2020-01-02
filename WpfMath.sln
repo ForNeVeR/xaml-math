@@ -34,6 +34,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{BE4BA1DB-B8BC-4718-AA9D-23B0191C9323}"
 ProjectSection(SolutionItems) = preProject
 	scripts\approve-all.ps1 = scripts\approve-all.ps1
+	scripts\verify-encoding.ps1 = scripts\verify-encoding.ps1
 EndProjectSection
 EndProject
 Global

@@ -3,6 +3,7 @@
 build_script:
     - dotnet build
 after_build:
+    - pwsh: ./scripts/verify-encoding.ps1
     - dotnet pack
 test_script:
     - dotnet test
