@@ -1,4 +1,4 @@
-﻿namespace WpfMath.Rendering.Transformations
+namespace WpfMath.Rendering.Transformations
 {
     /// <summary>Kind of a geometrical transformation.</summary>
     public enum TransformationKind

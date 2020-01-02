@@ -1,4 +1,4 @@
-﻿namespace WpfMath
+namespace WpfMath
 {
     internal static class TexUtilities
     {

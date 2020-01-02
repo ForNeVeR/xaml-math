@@ -1,4 +1,4 @@
-﻿module WpfMath.Tests.Utils
+module WpfMath.Tests.Utils
 
 open System
 open System.Windows

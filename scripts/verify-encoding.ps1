@@ -4,13 +4,13 @@
 #>
 param (
     $SourceRoot = "$PSScriptRoot/..",
-    $Autofix = $false
+    [switch] $Autofix
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-# For PowerShell to process git ls-tree output properly we need to set up the output encoding:
+# For PowerShell to  properly process the UTF-8 output from git ls-tree we need to set up the output encoding:
 [Console]::OutputEncoding = [Text.Encoding]::UTF8
 
 $allFiles = git -c core.quotepath=off ls-tree -r HEAD --name-only
@@ -32,19 +32,18 @@ try {
         $fullPath = Resolve-Path -LiteralPath $file
         $bytes = [IO.File]::ReadAllBytes($fullPath) | Select-Object -First $bom.Length
         $bytesEqualsBom = @(Compare-Object $bytes $bom -SyncWindow 0).Length -eq 0
-        if ($bytesEqualsBom) {
-            $errors += @($file)
-        }
-
-        if ($Autofix) {
+        if ($bytesEqualsBom -and $Autofix) {
             $fullContent = [IO.File]::ReadAllBytes($fullPath)
             $newContent = $fullContent | Select-Object -Skip $bom.Length
-            Set-Content $file $newContent
+            [IO.File]::WriteAllBytes($fullPath, $newContent)
+            Write-Output "Removed UTF-8 BOM from file $file"
+        } elseif  ($bytesEqualsBom) {
+            $errors += @($file)
         }
     }
 
-    if ($errors.Length -and -not $Autofix) {
-        throw "The follwing $($errors.Length) files have UTF-8 BOM:`n" + ($errors -join "`n")
+    if ($errors.Length) {
+        throw "The following $($errors.Length) files have UTF-8 BOM:`n" + ($errors -join "`n")
     }
 } finally {
     Pop-Location

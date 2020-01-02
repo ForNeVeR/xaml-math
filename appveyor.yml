@@ -1,4 +1,4 @@
-﻿image:
+image:
     - Visual Studio 2019
 build_script:
     - dotnet build

@@ -1,4 +1,4 @@
-﻿using System.Windows.Media.Imaging;
+using System.Windows.Media.Imaging;
 using System.IO;
 
 namespace WpfMath
