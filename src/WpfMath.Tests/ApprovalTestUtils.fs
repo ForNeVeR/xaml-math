@@ -1,6 +1,8 @@
 module WpfMath.Tests.ApprovalTestUtils
 
+open System
 open System.Globalization
+open System.IO
 open System.Text
 open System.Reflection
 open System.Windows.Media
@@ -8,15 +10,27 @@ open System.Windows.Media
 open ApprovalTests
 open ApprovalTests.Namers
 open ApprovalTests.Reporters
+open ApprovalTests.Writers
 open Newtonsoft.Json
 open Newtonsoft.Json.Converters
 open Newtonsoft.Json.Serialization
 
 open WpfMath
 
+type private BomlessFileWriter(data: string, ?extensionWithoutDot: string) =
+    inherit ApprovalTextWriter(data, defaultArg extensionWithoutDot "txt")
+    override this.WriteReceivedFile(received: string): string =
+        Directory.CreateDirectory(Path.GetDirectoryName(received)) |> ignore
+        File.WriteAllText(received, this.Data)
+        received
+
 [<assembly: UseReporter(typeof<DiffReporter>)>]
 [<assembly: UseApprovalSubdirectory("TestResults")>]
-do ()
+do
+    WriterFactory.TextWriterCreator <- Func<_, _>(fun data -> upcast BomlessFileWriter(data))
+    WriterFactory.TextWriterWithExtensionCreator <- Func<_, _, _>(fun data extensionWithoutDot ->
+        upcast BomlessFileWriter(data, extensionWithoutDot)
+    )
 
 type private InnerPropertyContractResolver() =
     inherit DefaultContractResolver()
