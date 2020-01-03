@@ -13,9 +13,14 @@ open WpfMath.Parsers
 open WpfMath.Tests.Utils
 
 [<Fact>]
-let ``Non-existing delimiter should throw exception``() =
+let ``Non-existing delimiter should throw a TexParseException``(): unit =
     let markup = @"\left x\right)"
-    assertParseThrows<TexParseException> markup
+    assertParseThrows<TexParseException> markup |> ignore
+
+[<Fact>]
+let ``Non-existing escaped delimiter should throw a TexParseException``(): unit =
+    let markup = @"\left\x\right)"
+    assertParseThrows<TexParseException> markup |> ignore
 
 [<Fact>]
 let ``\sqrt should throw a TexParseException``() =
