@@ -32,7 +32,7 @@ let ``{ shouldn't be considered as a valid delimiter``(): unit =
 let ``\ shouldn't be considered as a valid delimiter``(): unit =
     let markup = @"\left\"
     let ex = assertParseThrows<TexParseException> markup
-    Assert.Contains("An element is missing", ex.Message)
+    Assert.Contains("unfinished escape sequence", ex.Message, StringComparison.InvariantCultureIgnoreCase)
 
 [<Fact>]
 let ``\sqrt should throw a TexParseException``() =

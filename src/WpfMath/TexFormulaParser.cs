@@ -359,6 +359,38 @@ namespace WpfMath
             return ReadElementGroup(value, ref position, openChar, closeChar);
         }
 
+        private static SourceSpan ReadEscapeSequence(SourceSpan value, ref int position)
+        {
+            if (value[position] != escapeChar)
+                throw new Exception($"Invalid state: {nameof(ReadEscapeSequence)} called for a value without escape character ({value})");
+
+            position++;
+            var start = position;
+            while (position < value.Length)
+            {
+                var ch = value[position];
+                var isEnd = position == value.Length - 1;
+                if (!char.IsLetter(ch) || isEnd)
+                {
+                    // Escape sequence has ended
+                    // Or it's a symbol. Assuming in this case it will only be a single char.
+                    if ((isEnd && char.IsLetter(ch)) || position - start == 0)
+                    {
+                        position++;
+                    }
+                    break;
+                }
+
+                position++;
+            }
+
+            var length = position - start;
+            if (length == 0)
+                throw new TexParseException($"Unfinished escape sequence (value: \"{value}\", index {position})");
+
+            return value.Segment(start, length);
+        }
+
         /// <summary>
         /// Reads an element: typically, a curly brace-enclosed value group, a singular value or a character sequence
         /// prefixed by a backslash.
@@ -366,48 +398,17 @@ namespace WpfMath
         /// <exception cref="TexParseException">Will be thrown for ill-formed groups.</exception>
         internal static SourceSpan ReadElement(SourceSpan value, ref int position)
         {
-            if (position < value.Length)
-            {
-                if (value[position] == leftGroupChar)
-                    return ReadElementGroup(value, ref position, leftGroupChar, rightGroupChar);
-                else if (value[position] == escapeChar)
-                {
-                    position++;
-                    var start = position;
+            SkipWhiteSpace(value, ref position);
 
-                    if (position < value.Length)
-                    {
-                        if (!Char.IsLetter(value[position]))
-                        {
-                            position++;
-                            return value.Segment(start, 1);
-                        }
-                        else
-                        {
-                            bool elementfound = false;
-                            while (position < value.Length && elementfound == false)
-                            {
-                                if (!Char.IsLetter(value[position]))
-                                {
-                                    elementfound = true;
-                                    position--;
-                                }
-                                position++;
-                            }
-                            if (elementfound)
-                                return value.Segment(start-1, position - start+1);
-                            else
-                                throw new TexParseException("An element is missing");
-                        }
-                    }
-                    else
-                        throw new TexParseException("An element is missing");
-                }
-                else
-                    return value.Segment(position++, 1);
-            }
-            else
+            if (position == value.Length)
                 throw new TexParseException("An element is missing");
+
+            return value[position] switch
+            {
+                leftGroupChar => ReadElementGroup(value, ref position, leftGroupChar, rightGroupChar),
+                escapeChar => ReadEscapeSequence(value, ref position),
+                _ => value.Segment(position++, 1)
+            };
         }
 
         private TexFormula ReadScript(
@@ -610,27 +611,8 @@ namespace WpfMath
             ICommandEnvironment environment)
         {
             var initialSrcPosition = position;
-            position++;
-            var start = position;
-            while (position < value.Length)
-            {
-                var ch = value[position];
-                var isEnd = position == value.Length - 1;
-                if (!char.IsLetter(ch) || isEnd)
-                {
-                    // Escape sequence has ended
-                    // Or it's a symbol. Assuming in this case it will only be a single char.
-                    if ((isEnd && char.IsLetter(ch)) || position - start == 0)
-                    {
-                        position++;
-                    }
-                    break;
-                }
-
-                position++;
-            }
-
-            var commandSpan = value.Segment(start, position - start);
+            var commandSpan = ReadEscapeSequence(value, ref position);
+            var commandNameStart = position + 1; // 1 for backslash
             var command = commandSpan.ToString();
             var formulaSource = new SourceSpan(value.Source, initialSrcPosition, commandSpan.End);
 
@@ -678,10 +660,9 @@ namespace WpfMath
                     ? ConvertRawText(ReadElement(value, ref position), command)
                     : Parse(ReadElement(value, ref position), command, environment.CreateChildEnvironment());
 
-                var source = value.Segment(start, position - start);
-                var atom = styledFormula.RootAtom ?? new NullAtom(source);
+                var atom = styledFormula.RootAtom ?? new NullAtom(commandSpan);
                 var commandAtom = AttachScripts(formula, value, ref position, atom, true, environment);
-                formula.Add(commandAtom, source);
+                formula.Add(commandAtom, commandSpan);
             }
             else if (embeddedCommands.Contains(command)
                  || environment.AvailableCommands.ContainsKey(command)
