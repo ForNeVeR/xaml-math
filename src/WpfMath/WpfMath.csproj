@@ -19,6 +19,8 @@
         <PackageTags>wpf;latex;formula</PackageTags>
         <Description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the WPF framework.</Description>
         <Copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2019</Copyright>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
     <ItemGroup>
         <EmbeddedResource Include="Data/*" />
