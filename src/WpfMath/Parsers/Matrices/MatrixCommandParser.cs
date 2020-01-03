@@ -30,7 +30,7 @@ namespace WpfMath.Parsers.Matrices
             if (position == source.Length)
                 throw new TexParseException("illegal end!");
 
-            var cellsSource = TexFormulaParser.ReadArgument(source, ref position);
+            var cellsSource = TexFormulaParser.ReadElement(source, ref position);
             var matrixSource = context.CommandSource.Segment(
                 context.CommandNameStartPosition,
                 position - context.CommandNameStartPosition);

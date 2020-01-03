@@ -253,7 +253,7 @@ namespace WpfMath
                 }
                 else if (ch == leftGroupChar)
                 {
-                    var groupValue = ReadArgument(value, ref position);
+                    var groupValue = ReadElement(value, ref position);
                     var parsedGroup = Parse(groupValue, textStyle, environment.CreateChildEnvironment());
                     var innerGroupAtom = parsedGroup.RootAtom ?? new RowAtom(groupValue);
                     var groupAtom = new TypedAtom(
@@ -318,7 +318,7 @@ namespace WpfMath
             return formula;
         }
 
-        internal static SourceSpan ReadArgumentGroup(SourceSpan value, ref int position, char openChar, char closeChar)
+        internal static SourceSpan ReadElementGroup(SourceSpan value, ref int position, char openChar, char closeChar)
         {
             if (position == value.Length || value[position] != openChar)
                 throw new TexParseException("missing '" + openChar + "'!");
@@ -356,17 +356,20 @@ namespace WpfMath
             if (value[position] != openChar)
                 return null;
 
-            return ReadArgumentGroup(value, ref position, openChar, closeChar);
+            return ReadElementGroup(value, ref position, openChar, closeChar);
         }
 
-        /// <summary>Reads an argument: typically, a curly brace-enclosed value group, a singular value or an escaped sequence of letters/a character.</summary>
+        /// <summary>
+        /// Reads an element: typically, a curly brace-enclosed value group, a singular value or a character sequence
+        /// prefixed by a backslash.
+        /// </summary>
         /// <exception cref="TexParseException">Will be thrown for ill-formed groups.</exception>
-        internal static SourceSpan ReadArgument(SourceSpan value, ref int position)
+        internal static SourceSpan ReadElement(SourceSpan value, ref int position)
         {
             if (position < value.Length)
             {
                 if (value[position] == leftGroupChar)
-                    return ReadArgumentGroup(value, ref position, leftGroupChar, rightGroupChar);
+                    return ReadElementGroup(value, ref position, leftGroupChar, rightGroupChar);
                 else if (value[position] == escapeChar)
                 {
                     position++;
@@ -394,17 +397,17 @@ namespace WpfMath
                             if (elementfound)
                                 return value.Segment(start-1, position - start+1);
                             else
-                                throw new TexParseException("An argument is missing");
+                                throw new TexParseException("An element is missing");
                         }
                     }
                     else
-                        throw new TexParseException("An argument is missing");
+                        throw new TexParseException("An element is missing");
                 }
                 else
                     return value.Segment(position++, 1);
             }
             else
-                throw new TexParseException("An argument is missing");
+                throw new TexParseException("An element is missing");
         }
 
         private TexFormula ReadScript(
@@ -412,7 +415,7 @@ namespace WpfMath
             SourceSpan value,
             ref int position,
             ICommandEnvironment environment) =>
-            Parse(ReadArgument(value, ref position), formula.TextStyle, environment.CreateChildEnvironment());
+            Parse(ReadElement(value, ref position), formula.TextStyle, environment.CreateChildEnvironment());
 
         /// <remarks>May return <c>null</c> for commands that produce no atoms.</remarks>
         private Atom ProcessCommand(
@@ -432,11 +435,11 @@ namespace WpfMath
                 case "frac":
                     {
                         var numeratorFormula = Parse(
-                            ReadArgument(value, ref position),
+                            ReadElement(value, ref position),
                             formula.TextStyle,
                             environment.CreateChildEnvironment());
                         var denominatorFormula = Parse(
-                            ReadArgument(value, ref position),
+                            ReadElement(value, ref position),
                             formula.TextStyle,
                             environment.CreateChildEnvironment());
                         source = value.Segment(start, position - start);
@@ -448,7 +451,7 @@ namespace WpfMath
                         if (position == value.Length)
                             throw new TexParseException("`left` command should be passed a delimiter");
 
-                        string delimiter = ReadArgument(value, ref position).ToString().Trim();
+                        string delimiter = ReadElement(value, ref position).ToString().Trim();
 
                         var left = position;
 
@@ -476,7 +479,7 @@ namespace WpfMath
                 case "overline":
                     {
                         var overlineFormula = Parse(
-                            ReadArgument(value, ref position),
+                            ReadElement(value, ref position),
                             formula.TextStyle,
                             environment.CreateChildEnvironment());
                         source = value.Segment(start, position - start);
@@ -491,7 +494,7 @@ namespace WpfMath
                         if (position == value.Length)
                             throw new TexParseException("`right` command should be passed a delimiter");
 
-                        string delimiter = ReadArgument(value, ref position).ToString().Trim();
+                        string delimiter = ReadElement(value, ref position).ToString().Trim();
 
                         SymbolAtom closing = null;
                         if (delimiter.Length == 1)
@@ -521,13 +524,13 @@ namespace WpfMath
                         {
                             // Degree of radical is specified.
                             degreeFormula = Parse(
-                                ReadArgumentGroup(value, ref position, leftBracketChar, rightBracketChar),
+                                ReadElementGroup(value, ref position, leftBracketChar, rightBracketChar),
                                 formula.TextStyle,
                                 environment.CreateChildEnvironment());
                         }
 
                         var sqrtFormula = this.Parse(
-                            ReadArgument(value, ref position),
+                            ReadElement(value, ref position),
                             formula.TextStyle,
                             environment.CreateChildEnvironment());
 
@@ -538,7 +541,7 @@ namespace WpfMath
                 {
                     var color = ReadColorModelData(value, ref position);
 
-                    var bodyValue = ReadArgument(value, ref position);
+                    var bodyValue = ReadElement(value, ref position);
                     var bodyFormula = Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
                     source = value.Segment(start, position - start);
 
@@ -548,7 +551,7 @@ namespace WpfMath
                 {
                     var color = ReadColorModelData(value, ref position);
 
-                    var bodyValue = ReadArgument(value, ref position);
+                    var bodyValue = ReadElement(value, ref position);
                     var bodyFormula = Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
                     source = value.Segment(start, position - start);
 
@@ -582,7 +585,7 @@ namespace WpfMath
                 ref position,
                 leftBracketChar,
                 rightBracketChar)?.ToString();
-            var colorDefinition = ReadArgument(value, ref position).ToString();
+            var colorDefinition = ReadElement(value, ref position).ToString();
             var colorComponents = colorDefinition.Split(',').Select(c => c.Trim());
 
             var colorParser = string.IsNullOrEmpty(colorModelName)
@@ -672,8 +675,8 @@ namespace WpfMath
                 SkipWhiteSpace(value, ref position);
 
                 var styledFormula = command == TexUtilities.TextStyleName
-                    ? ConvertRawText(ReadArgument(value, ref position), command)
-                    : Parse(ReadArgument(value, ref position), command, environment.CreateChildEnvironment());
+                    ? ConvertRawText(ReadElement(value, ref position), command)
+                    : Parse(ReadElement(value, ref position), command, environment.CreateChildEnvironment());
 
                 var source = value.Segment(start, position - start);
                 var atom = styledFormula.RootAtom ?? new NullAtom(source);
