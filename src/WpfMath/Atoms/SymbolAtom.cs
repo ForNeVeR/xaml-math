@@ -35,30 +35,24 @@ namespace WpfMath.Atoms
             validSymbolTypes.Set((int)TexAtomType.Accent, true);
         }
 
-        public static SymbolAtom GetAtom(string name, SourceSpan source)
+        public static bool TryGetAtom(string name, SourceSpan source, out SymbolAtom atom)
         {
-            try
+            if (!symbols.TryGetValue(name, out var factory))
             {
-                var symbol = symbols[name](source);
-                return new SymbolAtom(source, symbol, symbol.Type);
+                atom = null;
+                return false;
             }
-            catch (KeyNotFoundException)
-            {
-                throw new SymbolNotFoundException(name);
-            }
+
+            var symbol = factory(source);
+            atom = new SymbolAtom(source, symbol, symbol.Type);
+            return true;
         }
 
-        public static bool TryGetAtom(SourceSpan name, out SymbolAtom atom)
-        {
-            if (symbols.TryGetValue(name.ToString(), out var temp))
-            {
-                var symbol = temp(name);
-                atom = new SymbolAtom(name, symbol, symbol.Type);
-                return true;
-            }
-            atom = null;
-            return false;
-        }
+        public static SymbolAtom GetAtom(string name, SourceSpan source) =>
+            TryGetAtom(name, source, out var atom) ? atom : throw new SymbolNotFoundException(name);
+
+        public static bool TryGetAtom(SourceSpan name, out SymbolAtom atom) =>
+            TryGetAtom(name.ToString(), name, out atom);
 
         public SymbolAtom(SourceSpan source, SymbolAtom symbolAtom, TexAtomType type)
             : base(source, type)

@@ -361,7 +361,8 @@ namespace WpfMath
 
         private static SourceSpan ReadEscapeSequence(SourceSpan value, ref int position)
         {
-            if (value[position] != escapeChar)
+            var initialPosition = position;
+            if (value[initialPosition] != escapeChar)
                 throw new Exception($"Invalid state: {nameof(ReadEscapeSequence)} called for a value without escape character ({value})");
 
             position++;
@@ -384,11 +385,37 @@ namespace WpfMath
                 position++;
             }
 
-            var length = position - start;
-            if (length == 0)
+            var length = position - initialPosition;
+            if (length <= 1)
                 throw new TexParseException($"Unfinished escape sequence (value: \"{value}\", index {position})");
 
-            return value.Segment(start, length);
+            return value.Segment(initialPosition, length);
+        }
+
+        private SymbolAtom ParseDelimiter(SourceSpan value, int start, ref int position)
+        {
+            var delimiter = ReadElement(value, ref position);
+
+            string delimiterName;
+            if (delimiter.Length == 1)
+                delimiterName = GetDelimeterMapping(delimiter[0]);
+            else
+            {
+                if (delimiter[0] != escapeChar)
+                    throw new Exception($"Incorrect parser state: delimiter should start from {escapeChar}: {delimiter}");
+
+                // Here goes the fancy business: for non-alphanumeric commands (e.g. \{, \\ etc.) we need to pass them
+                // through GetDelimeterMapping, but for alphanumeric ones, we don't.
+                delimiterName = delimiter.Segment(1).ToString(); // skip an escape character
+                if (delimiterName.Length == 1 && !char.IsLetterOrDigit(delimiterName[0]))
+                    delimiterName = GetDelimeterMapping(delimiterName[0]);
+            }
+
+            var delimiterSource = value.Segment(start, position - start); // will map the whole "\left(" to a delimiter atom created
+            if (delimiterName == null || !SymbolAtom.TryGetAtom(delimiterName, delimiterSource, out var atom) || !atom.IsDelimeter)
+                throw new TexParseException($"Cannot find delimiter {delimiter}");
+
+            return atom;
         }
 
         /// <summary>
@@ -452,27 +479,8 @@ namespace WpfMath
                         if (position == value.Length)
                             throw new TexParseException("`left` command should be passed a delimiter");
 
-                        string delimiter = ReadElement(value, ref position).ToString().Trim();
-
-                        var left = position;
-
+                        var opening = ParseDelimiter(value, start, ref position);
                         var internals = ParseUntilDelimiter(value, ref position, formula.TextStyle, environment);
-
-                        SymbolAtom opening = null;
-                        if (delimiter.Length == 1)
-                        {
-                            opening = GetDelimiterSymbol(
-                            GetDelimeterMapping(delimiter[0]),
-                            value.Segment(start, left - start));
-                        }
-                        if (delimiter.Length > 1)
-                        {
-                            opening = GetDelimiterSymbol(
-                            delimiter.Replace('\\', ' ').Trim(), value.Segment(start, left - start));
-                        }
-                        if (opening == null)
-                            throw new TexParseException($"Cannot find delimiter named {delimiter}");
-
                         var closing = internals.ClosingDelimiter;
                         source = value.Segment(start, position - start);
                         return new FencedAtom(source, internals.Body, opening, closing);
@@ -495,22 +503,7 @@ namespace WpfMath
                         if (position == value.Length)
                             throw new TexParseException("`right` command should be passed a delimiter");
 
-                        string delimiter = ReadElement(value, ref position).ToString().Trim();
-
-                        SymbolAtom closing = null;
-                        if (delimiter.Length == 1)
-                        {
-                            closing = GetDelimiterSymbol(
-                            GetDelimeterMapping(delimiter[0]),
-                            value.Segment(start, position - start));
-                        }
-                        if (delimiter.Length > 1)
-                        {
-                            closing = GetDelimiterSymbol(
-                            delimiter.Replace('\\', ' ').Trim(), value.Segment(start, position - start));
-                        }
-                        if (closing == null)
-                            throw new TexParseException($"Cannot find delimiter named {delimiter}");
+                        var closing = ParseDelimiter(value, start, ref position);
 
                         closedDelimiter = true;
                         return closing;
@@ -611,8 +604,7 @@ namespace WpfMath
             ICommandEnvironment environment)
         {
             var initialSrcPosition = position;
-            var commandSpan = ReadEscapeSequence(value, ref position);
-            var commandNameStart = position + 1; // 1 for backslash
+            var commandSpan = ReadEscapeSequence(value, ref position).Segment(1);
             var command = commandSpan.ToString();
             var formulaSource = new SourceSpan(value.Source, initialSrcPosition, commandSpan.End);
 
