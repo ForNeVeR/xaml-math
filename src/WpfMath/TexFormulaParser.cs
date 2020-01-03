@@ -652,9 +652,10 @@ namespace WpfMath
                     ? ConvertRawText(ReadElement(value, ref position), command)
                     : Parse(ReadElement(value, ref position), command, environment.CreateChildEnvironment());
 
-                var atom = styledFormula.RootAtom ?? new NullAtom(commandSpan);
+                var source = value.Segment(commandSpan.Start, position - commandSpan.Start);
+                var atom = styledFormula.RootAtom ?? new NullAtom(source);
                 var commandAtom = AttachScripts(formula, value, ref position, atom, true, environment);
-                formula.Add(commandAtom, commandSpan);
+                formula.Add(commandAtom, source);
             }
             else if (embeddedCommands.Contains(command)
                  || environment.AvailableCommands.ContainsKey(command)

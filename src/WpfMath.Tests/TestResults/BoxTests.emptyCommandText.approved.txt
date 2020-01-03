@@ -2,8 +2,8 @@
   "Children": [],
   "Source": {
     "Start": 1,
-    "End": 5,
-    "Length": 4,
+    "End": 7,
+    "Length": 6,
     "Source": "\\text{}"
   },
   "Foreground": null,
