@@ -104,7 +104,7 @@ namespace WpfMath
             }
             catch (KeyNotFoundException)
             {
-                throw new TexParseException(new DelimiterMappingNotFoundException(character).Message);
+                throw new DelimiterMappingNotFoundException(character);
             }
         }
 
