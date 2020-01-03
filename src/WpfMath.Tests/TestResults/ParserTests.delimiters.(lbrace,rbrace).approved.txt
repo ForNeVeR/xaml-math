@@ -8,10 +8,10 @@
       "IsTextSymbol": false,
       "Type": "Ordinary",
       "Source": {
-        "Start": 6,
-        "End": 7,
+        "Start": 7,
+        "End": 8,
         "Length": 1,
-        "Source": "\\left{a\\right}"
+        "Source": "\\left\\{a\\right\\}"
       }
     },
     "LeftDelimeter": {
@@ -21,9 +21,9 @@
       "Type": "Opening",
       "Source": {
         "Start": 1,
-        "End": 6,
-        "Length": 5,
-        "Source": "\\left{a\\right}"
+        "End": 7,
+        "Length": 6,
+        "Source": "\\left\\{a\\right\\}"
       }
     },
     "RightDelimeter": {
@@ -32,18 +32,18 @@
       "IsTextSymbol": false,
       "Type": "Closing",
       "Source": {
-        "Start": 8,
-        "End": 14,
-        "Length": 6,
-        "Source": "\\left{a\\right}"
+        "Start": 9,
+        "End": 16,
+        "Length": 7,
+        "Source": "\\left\\{a\\right\\}"
       }
     },
     "Type": "Ordinary",
     "Source": {
       "Start": 1,
-      "End": 14,
-      "Length": 13,
-      "Source": "\\left{a\\right}"
+      "End": 16,
+      "Length": 15,
+      "Source": "\\left\\{a\\right\\}"
     }
   }
 }

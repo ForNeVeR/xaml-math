@@ -11,8 +11,9 @@ let ``2+2``() =
 [<Theory>]
 [<InlineData("(", ")", "(", ")")>]
 [<InlineData("[", "]", "lbrack", "rbrack")>]
-[<InlineData("{", "}", "lbrace", "rbrace")>]
+[<InlineData(@"\{", @"\}", "lbrace", "rbrace")>]
 [<InlineData("<", ">", "langle", "rangle")>]
+[<InlineData(@"\vert ", @"\vert", "vert", "vert")>]
 let delimiters(left : string, right : string, lResult : string, rResult : string) =
     verifyParseResultScenario
     <| sprintf "%s,%s" lResult rResult

@@ -23,6 +23,12 @@ let ``Non-existing escaped delimiter should throw a TexParseException``(): unit 
     assertParseThrows<TexParseException> markup |> ignore
 
 [<Fact>]
+let ``{ shouldn't be considered as a valid delimiter``(): unit =
+    let markup = @"\left{"
+    let ex = assertParseThrows<TexParseException> markup
+    Assert.Contains("Illegal end,  missing '}'", ex.Message)
+
+[<Fact>]
 let ``\sqrt should throw a TexParseException``() =
     assertParseThrows<TexParseException> @"\sqrt"
 
