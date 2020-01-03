@@ -29,6 +29,12 @@ let ``{ shouldn't be considered as a valid delimiter``(): unit =
     Assert.Contains("Illegal end,  missing '}'", ex.Message)
 
 [<Fact>]
+let ``\ shouldn't be considered as a valid delimiter``(): unit =
+    let markup = @"\left\"
+    let ex = assertParseThrows<TexParseException> markup
+    Assert.Contains("An element is missing", ex.Message)
+
+[<Fact>]
 let ``\sqrt should throw a TexParseException``() =
     assertParseThrows<TexParseException> @"\sqrt"
 

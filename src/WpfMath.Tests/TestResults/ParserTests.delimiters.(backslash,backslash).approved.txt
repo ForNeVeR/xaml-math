@@ -1,0 +1,49 @@
+﻿{
+  "TextStyle": null,
+  "RootAtom": {
+    "BaseAtom": {
+      "Character": "a",
+      "TextStyle": null,
+      "IsDefaultTextStyle": true,
+      "IsTextSymbol": false,
+      "Type": "Ordinary",
+      "Source": {
+        "Start": 8,
+        "End": 9,
+        "Length": 1,
+        "Source": "\\left\\\\ a\\right\\\\"
+      }
+    },
+    "LeftDelimeter": {
+      "IsDelimeter": true,
+      "Name": "backslash",
+      "IsTextSymbol": false,
+      "Type": "Ordinary",
+      "Source": {
+        "Start": 1,
+        "End": 7,
+        "Length": 6,
+        "Source": "\\left\\\\ a\\right\\\\"
+      }
+    },
+    "RightDelimeter": {
+      "IsDelimeter": true,
+      "Name": "backslash",
+      "IsTextSymbol": false,
+      "Type": "Ordinary",
+      "Source": {
+        "Start": 10,
+        "End": 17,
+        "Length": 7,
+        "Source": "\\left\\\\ a\\right\\\\"
+      }
+    },
+    "Type": "Ordinary",
+    "Source": {
+      "Start": 1,
+      "End": 17,
+      "Length": 16,
+      "Source": "\\left\\\\ a\\right\\\\"
+    }
+  }
+}
