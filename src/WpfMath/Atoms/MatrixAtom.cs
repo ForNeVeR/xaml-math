@@ -10,15 +10,17 @@ namespace WpfMath.Atoms
     /// <summary>An atom representing a tabular arrangement of atoms.</summary>
     internal class MatrixAtom : Atom
     {
+        public const double DefaultPadding = 0.35;
+
         public MatrixAtom(
             SourceSpan source,
-            List<List<Atom>> cells,
+            IEnumerable<IEnumerable<Atom>> cells,
             MatrixCellAlignment matrixCellAlignment,
-            double verticalPadding = 0.35,
-            double horizontalPadding = 0.35) : base(source)
+            double verticalPadding = DefaultPadding,
+            double horizontalPadding = DefaultPadding) : base(source)
         {
             MatrixCells = new ReadOnlyCollection<ReadOnlyCollection<Atom>>(
-                cells.Select(row => new ReadOnlyCollection<Atom>(row)).ToList());
+                cells.Select(row => new ReadOnlyCollection<Atom>(row.ToList())).ToList());
             MatrixCellAlignment = matrixCellAlignment;
             VerticalPadding = verticalPadding;
             HorizontalPadding = horizontalPadding;

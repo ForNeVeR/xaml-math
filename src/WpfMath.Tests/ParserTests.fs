@@ -289,3 +289,11 @@ let colorModelsWithOpacity(text: string): unit =
 [<Fact>]
 let multilineFormula(): unit =
     verifyParseResult @"line 1\\line 2\\line 3"
+
+[<Theory>]
+[<InlineData(@"\matrix{line 1}\\line 2");
+  InlineData(@"\pmatrix{line 1}\\line 2")>]
+let newLineAfterMatrix(text: string): unit =
+    verifyParseResultScenario
+    <| processSpecialChars text
+    <| text

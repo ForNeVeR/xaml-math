@@ -699,7 +699,10 @@ namespace WpfMath
                             true,
                             environment);
 
-                    var source = new SourceSpan(formulaSource.Source, formulaSource.Start, commandAtom.Source.End);
+                    var source = new SourceSpan(
+                        formulaSource.Source,
+                        formulaSource.Start,
+                        commandAtom.Source?.End ?? position);
                     switch (appendMode)
                     {
                         case AtomAppendMode.Add:

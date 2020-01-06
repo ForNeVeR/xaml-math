@@ -55,25 +55,38 @@ namespace WpfMath.Parsers
             public CommandProcessingResult ProcessCommand(CommandContext context)
             {
                 var source = context.CommandSource;
-                var position = context.ArgumentsStartPosition;
                 var prevFormulaAtom = context.Formula.RootAtom;
 
-                var topRow = new List<Atom>();
-                topRow.Add(prevFormulaAtom);
-                var rows = new List<List<Atom>> {topRow};
-
-                var newContent = context.Parser.Parse(
-                    TexFormulaParser.ReadElement(source, ref position),
+                var nextLineAtom = context.Parser.Parse(
+                    source.Segment(context.ArgumentsStartPosition),
                     context.Formula.TextStyle,
-                    context.Environment);
+                    context.Environment).RootAtom;
 
-                var bottomRow = new List<Atom>();
-                bottomRow.Add(newContent.RootAtom);
-                rows.Add(bottomRow);
+                // An optimization: if the new content itself is a matrix with suitable parameters, then we won't
+                // wrap it into another formula, but will combine it with the content on top.
+                var newMatrix = nextLineAtom is MatrixAtom m
+                    && m.MatrixCellAlignment == MatrixCellAlignment.Left
+                    && m.HorizontalPadding == MatrixAtom.DefaultPadding
+                    && m.VerticalPadding == MatrixAtom.DefaultPadding
+                    ? m
+                    : null;
 
-                var start = context.CommandNameStartPosition;
-                var atomSource = source.Segment(start, position - start);
-                var atom = new MatrixAtom(atomSource, rows, MatrixCellAlignment.Center);
+                var topRow = new[] {prevFormulaAtom};
+                var rows = new List<IEnumerable<Atom>> {topRow};
+                if (newMatrix != null)
+                {
+                    rows.AddRange(newMatrix.MatrixCells);
+                }
+                else
+                {
+                    var bottomRow = new[] {nextLineAtom};
+                    rows.Add(bottomRow);
+                }
+
+                // We'll always use source = null for the resulting matrix, because it's a structural element and not a
+                // useful atom generated from any particular sources.
+                var atom = new MatrixAtom(null, rows, MatrixCellAlignment.Left);
+                var position = source.Length; // we always parse the provided source until the end
                 return new CommandProcessingResult(atom, position, AtomAppendMode.Replace);
             }
         }
