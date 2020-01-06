@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using WpfMath.Atoms;
 using WpfMath.Parsers.Matrices;
+
 namespace WpfMath.Parsers
 {
     internal static class StandardCommands
@@ -51,44 +52,40 @@ namespace WpfMath.Parsers
 
         private class NewLineCommand : ICommandParser
         {
-
             public CommandProcessingResult ProcessCommand(CommandContext context)
             {
                 var source = context.CommandSource;
                 var position = context.ArgumentsStartPosition;
-
-
                 var prevFormulaAtom = context.Formula.RootAtom;
 
-                var upRow = new List<Atom>();
-                upRow.Add(prevFormulaAtom);
-                var rows = new List<List<Atom>> {upRow};
+                var topRow = new List<Atom>();
+                topRow.Add(prevFormulaAtom);
+                var rows = new List<List<Atom>> {topRow};
 
-                var inside = context.Parser.Parse(
+                var newContent = context.Parser.Parse(
                     TexFormulaParser.ReadElement(source, ref position),
                     context.Formula.TextStyle,
                     context.Environment);
-                var downRow = new List<Atom>();
-                downRow.Add(inside.RootAtom);
-                rows.Add(downRow);
 
+                var bottomRow = new List<Atom>();
+                bottomRow.Add(newContent.RootAtom);
+                rows.Add(bottomRow);
 
                 var start = context.CommandNameStartPosition;
                 var atomSource = source.Segment(start, position - start);
                 var atom = new MatrixAtom(atomSource, rows, MatrixCellAlignment.Center);
                 return new CommandProcessingResult(atom, position, AtomAppendMode.Replace);
             }
-
         }
 
         public static IReadOnlyDictionary<string, ICommandParser> Dictionary = new Dictionary<string, ICommandParser>
         {
+            [@"\"] = new NewLineCommand(),
+            ["binom"] = new BinomCommand(),
             ["cases"] = new MatrixCommandParser("lbrace", null, MatrixCellAlignment.Left),
             ["matrix"] = new MatrixCommandParser(null, null, MatrixCellAlignment.Center),
             ["pmatrix"] = new MatrixCommandParser("lbrack", "rbrack", MatrixCellAlignment.Center),
-            ["underline"] = new UnderlineCommand(),
-            ["binom"] = new BinomCommand(),
-            [@"\"] = new NewLineCommand()
+            ["underline"] = new UnderlineCommand()
         };
     }
 }
