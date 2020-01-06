@@ -285,3 +285,7 @@ let colorModelsWithOpacity(text: string): unit =
     verifyParseResultScenario
     <| processSpecialChars text
     <| text
+
+[<Fact>]
+let multilineFormula(): unit =
+    verifyParseResult @"line 1\\line 2\\line 3"
