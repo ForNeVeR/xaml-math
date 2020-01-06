@@ -50,6 +50,11 @@ namespace WpfMath.Parsers
             }
         }
 
+        /// <summary>
+        /// This command will parse the remaining part of the input string, and add it onto the new line of the
+        /// formula. The new line is created as <see cref="MatrixAtom"/>; the command will try to reuse the
+        /// existing atoms if possible.
+        /// </summary>
         private class NewLineCommand : ICommandParser
         {
             public CommandProcessingResult ProcessCommand(CommandContext context)
