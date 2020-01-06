@@ -27,7 +27,7 @@ type private BomlessFileWriter(data: string, ?extensionWithoutDot: string) =
 [<assembly: UseReporter(typeof<DiffReporter>)>]
 [<assembly: UseApprovalSubdirectory("TestResults")>]
 do
-    WriterFactory.TextWriterCreator <- Func<_, _>(fun data -> upcast BomlessFileWriter(data))
+    WriterFactory.TextWriterCreator <- Func<_, _>(fun data -> upcast BomlessFileWriter data)
     WriterFactory.TextWriterWithExtensionCreator <- Func<_, _, _>(fun data extensionWithoutDot ->
         upcast BomlessFileWriter(data, extensionWithoutDot)
     )
