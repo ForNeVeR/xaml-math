@@ -471,9 +471,9 @@ namespace WpfMath
                             formula.TextStyle,
                             environment.CreateChildEnvironment());
                         source = value.Segment(start, position - start);
-                        return Tuple.Create(
+                        return new Tuple<AtomAppendMode, Atom>(
                             AtomAppendMode.Add,
-                            (Atom)new FractionAtom(
+                            new FractionAtom(
                                 source,
                                 numeratorFormula.RootAtom,
                                 denominatorFormula.RootAtom,

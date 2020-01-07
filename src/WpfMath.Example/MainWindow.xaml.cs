@@ -108,7 +108,7 @@ namespace WpfMath.Example
             var testFormula11 = @"1|2|3 \\{ 3|4|5 \\{ 6|7|8 \\{9|0|10}}}";
             var testFormula12 = @"1|2|3 \\{ 3|4|5} \\{ 6|7|8}";
 
-            this.inputTextBox.Text = testFormula12;
+            this.inputTextBox.Text = testFormula10;
         }
 
         private void Window_Closed(object sender, EventArgs e)
