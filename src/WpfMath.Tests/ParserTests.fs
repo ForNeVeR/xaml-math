@@ -57,6 +57,10 @@ let underscoreText() =
     verifyParseResult @"\text{_}"
 
 [<Fact>]
+let oneNonAsciiSymbolText() =
+    verifyParseResult @"\text{А}_{\text{И}}"
+
+[<Fact>]
 let commandsInText() =
     verifyParseResult @"\text{\alpha \beta \unknowncommand}"
 
