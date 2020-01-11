@@ -8,13 +8,14 @@ open Xunit
 open WpfMath
 open WpfMath.Atoms
 open WpfMath.Boxes
+open WpfMath.Tests.ApprovalTestUtils
 
 let private parse text =
     let parser = TexFormulaParser()
     let result = parser.Parse text
     result.RootAtom
 
-let private src (string : string) (start : int) (len : int) = SourceSpan(string, start, len)
+let private src (string: string) (start: int) (len: int) = SourceSpan(string, start, len)
 
 let private environment =
     let mathFont = DefaultTexFont 20.0
@@ -56,12 +57,12 @@ let ``RowAtom creates boxes with proper sources``() =
     let parser = TexFormulaParser()
     let formula = parser.Parse source
     let box = formula.CreateBox environment :?> HorizontalBox
-    let chars = box.Children.filter(fun x -> x :? CharBox)
-    Assert.Collection(
+    let chars = box.Children.filter (fun x -> x :? CharBox)
+    Assert.Collection (
         chars,
-        Action<_>(fun (x : Box) -> Assert.Equal(src 0 1, x.Source)),
-        Action<_>(fun (x : Box) -> Assert.Equal(src 1 1, x.Source)),
-        Action<_>(fun (x : Box) -> Assert.Equal(src 2 1, x.Source)))
+        Action<_>(fun (x: Box) -> Assert.Equal(src 0 1, x.Source)),
+        Action<_>(fun (x: Box) -> Assert.Equal(src 1 1, x.Source)),
+        Action<_>(fun (x: Box) -> Assert.Equal(src 2 1, x.Source)))
 
 [<Fact>]
 let ``BigOperatorAtom creates a box with proper sources``() =
@@ -74,14 +75,14 @@ let ``BigOperatorAtom creates a box with proper sources``() =
     let charBoxes =
         box.Children
             .filter(fun x -> x :? HorizontalBox)
-            .collect(fun x -> x.Children.filter(fun y -> y :? CharBox))
+            .collect(fun x -> x.Children.filter (fun y -> y :? CharBox))
             .toList()
 
-    Assert.Collection(
+    Assert.Collection (
         charBoxes,
-        Action<_>(fun (x : Box) -> Assert.Equal(src 7 1, x.Source)),
-        Action<_>(fun (x : Box) -> Assert.Equal(src 1 3, x.Source)),
-        Action<_>(fun (x : Box) -> Assert.Equal(src 5 1, x.Source)))
+        Action<_>(fun (x: Box) -> Assert.Equal(src 7 1, x.Source)),
+        Action<_>(fun (x: Box) -> Assert.Equal(src 1 3, x.Source)),
+        Action<_>(fun (x: Box) -> Assert.Equal(src 5 1, x.Source)))
 
 [<Fact>]
 let ``Cyrillic followed by Latin should be rendered properly``() =
@@ -89,3 +90,48 @@ let ``Cyrillic followed by Latin should be rendered properly``() =
     let atom = parse @"\text{Ц}V"
     let box = atom.CreateBox environment
     Assert.NotNull(box)
+
+let private verifyBox source =
+    let atom = parse source
+    let box = atom.CreateBox environment
+    verifyObject box
+
+[<Fact>]
+let simpleMatrixBox() =
+    verifyBox @"\pmatrix{2 & 2 \\ 2 & 2}"
+
+[<Fact>]
+let casesBox() =
+    verifyBox @"\cases{a \\ b \\ c}"
+
+[<Fact>]
+let nestedMatrixBox() =
+    verifyBox @"\matrix{ 1 & 2 & 3 \\ 4 & {\matrix{ 5 \\ 6 }} & 7 }"
+
+[<Fact>]
+let wideItemInMatrixBox() =
+    verifyBox @"x = \pmatrix{0 & -r & 0 \\ 0 & 0 & -r sin^2(\theta)}"
+
+[<Fact>]
+let shortСommandForThinspace(): unit =
+    verifyBox @"\,"
+
+[<Fact>]
+let shortСommandForNotEqual(): unit =
+    verifyBox @"\neq"
+
+[<Fact>]
+let emptyColorbox(): unit =
+    verifyBox @"\colorbox{red}{}"
+
+[<Fact>]
+let emptyMathrm(): unit =
+    verifyBox @"\mathrm{}"
+
+[<Fact>]
+let emptyCommandText(): unit =
+    verifyBox @"\text{}"
+
+[<Fact>]
+let emptyColorRed(): unit =
+    verifyBox @"\color{red}{}"

@@ -1,0 +1,1305 @@
+{
+  "Children": [
+    {
+      "Character": {
+        "Character": "x",
+        "Font": "pack://application:,,,/WpfMath;component/Fonts/cmmi10.ttf",
+        "Size": 1.0,
+        "Metrics": {
+          "Width": 0.571528,
+          "Height": 0.430555,
+          "Depth": 0.0,
+          "Italic": 0.0
+        },
+        "FontId": 0
+      },
+      "Children": [],
+      "Source": {
+        "Start": 0,
+        "End": 1,
+        "Length": 1,
+        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+      },
+      "Foreground": null,
+      "Background": null,
+      "TotalHeight": 0.430555,
+      "TotalWidth": 0.571528,
+      "Italic": 0.0,
+      "Width": 0.571528,
+      "Height": 0.430555,
+      "Depth": 0.0,
+      "Shift": 0.0
+    },
+    {
+      "Stretch": 0.277778611111111,
+      "Shrink": 0.0,
+      "Children": [],
+      "Source": null,
+      "Foreground": null,
+      "Background": null,
+      "TotalHeight": 0.0,
+      "TotalWidth": 0.277778611111111,
+      "Italic": 0.0,
+      "Width": 0.277778611111111,
+      "Height": 0.0,
+      "Depth": 0.0,
+      "Shift": 0.0
+    },
+    {
+      "Character": {
+        "Character": "=",
+        "Font": "pack://application:,,,/WpfMath;component/Fonts/cmr10.ttf",
+        "Size": 1.0,
+        "Metrics": {
+          "Width": 0.777781,
+          "Height": 0.366875,
+          "Depth": -0.133125,
+          "Italic": 0.0
+        },
+        "FontId": 1
+      },
+      "Children": [],
+      "Source": {
+        "Start": 2,
+        "End": 3,
+        "Length": 1,
+        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+      },
+      "Foreground": null,
+      "Background": null,
+      "TotalHeight": 0.23375,
+      "TotalWidth": 0.777781,
+      "Italic": 0.0,
+      "Width": 0.777781,
+      "Height": 0.366875,
+      "Depth": -0.133125,
+      "Shift": 0.0
+    },
+    {
+      "Stretch": 0.277778611111111,
+      "Shrink": 0.0,
+      "Children": [],
+      "Source": null,
+      "Foreground": null,
+      "Background": null,
+      "TotalHeight": 0.0,
+      "TotalWidth": 0.277778611111111,
+      "Italic": 0.0,
+      "Width": 0.277778611111111,
+      "Height": 0.0,
+      "Depth": 0.0,
+      "Shift": 0.0
+    },
+    {
+      "Children": [
+        {
+          "Character": {
+            "Character": "·",
+            "Font": "pack://application:,,,/WpfMath;component/Fonts/cmex10.ttf",
+            "Size": 1.0,
+            "Metrics": {
+              "Width": 0.527781,
+              "Height": 0.039999,
+              "Depth": 2.360025,
+              "Italic": 0.0
+            },
+            "FontId": 2
+          },
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "TotalHeight": 2.400024,
+          "TotalWidth": 0.527781,
+          "Italic": 0.0,
+          "Width": 0.527781,
+          "Height": 0.039999,
+          "Depth": 2.360025,
+          "Shift": -1.410013
+        },
+        {
+          "Stretch": 0.0,
+          "Shrink": 0.0,
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "TotalHeight": 0.0,
+          "TotalWidth": 0.0,
+          "Italic": 0.0,
+          "Width": 0.0,
+          "Height": 0.0,
+          "Depth": 0.0,
+          "Shift": 0.0
+        },
+        {
+          "Children": [
+            {
+              "Children": [
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "TotalHeight": 0.0,
+                  "TotalWidth": 0.175,
+                  "Italic": 0.0,
+                  "Width": 0.175,
+                  "Height": 0.0,
+                  "Depth": 0.0,
+                  "Shift": 0.0
+                },
+                {
+                  "Children": [
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "TotalHeight": 0.186112,
+                      "TotalWidth": 0.0,
+                      "Italic": 0.0,
+                      "Width": 0.0,
+                      "Height": 0.186112,
+                      "Depth": 0.0,
+                      "Shift": 0.35
+                    },
+                    {
+                      "Character": {
+                        "Character": "0",
+                        "Font": "pack://application:,,,/WpfMath;component/Fonts/cmr10.ttf",
+                        "Size": 1.0,
+                        "Metrics": {
+                          "Width": 0.500002,
+                          "Height": 0.644444,
+                          "Depth": 0.0,
+                          "Italic": 0.0
+                        },
+                        "FontId": 1
+                      },
+                      "Children": [],
+                      "Source": {
+                        "Start": 13,
+                        "End": 14,
+                        "Length": 1,
+                        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                      },
+                      "Foreground": null,
+                      "Background": null,
+                      "TotalHeight": 0.644444,
+                      "TotalWidth": 0.500002,
+                      "Italic": 0.0,
+                      "Width": 0.500002,
+                      "Height": 0.644444,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    },
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "TotalHeight": 0.186112,
+                      "TotalWidth": 0.0,
+                      "Italic": 0.0,
+                      "Width": 0.0,
+                      "Height": 0.186112,
+                      "Depth": 0.0,
+                      "Shift": 0.35
+                    }
+                  ],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "TotalHeight": 1.016668,
+                  "TotalWidth": 0.500002,
+                  "Italic": 0.0,
+                  "Width": 0.500002,
+                  "Height": 1.016668,
+                  "Depth": 0.0,
+                  "Shift": 0.0
+                },
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "TotalHeight": 0.0,
+                  "TotalWidth": 0.175,
+                  "Italic": 0.0,
+                  "Width": 0.175,
+                  "Height": 0.0,
+                  "Depth": 0.0,
+                  "Shift": 0.0
+                },
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "TotalHeight": 0.0,
+                  "TotalWidth": 0.175,
+                  "Italic": 0.0,
+                  "Width": 0.175,
+                  "Height": 0.0,
+                  "Depth": 0.0,
+                  "Shift": 0.0
+                },
+                {
+                  "Children": [
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "TotalHeight": 0.175,
+                      "TotalWidth": 0.0,
+                      "Italic": 0.0,
+                      "Width": 0.0,
+                      "Height": 0.175,
+                      "Depth": 0.0,
+                      "Shift": 0.35
+                    },
+                    {
+                      "Children": [
+                        {
+                          "Character": {
+                            "Character": "¡",
+                            "Font": "pack://application:,,,/WpfMath;component/Fonts/cmsy10.ttf",
+                            "Size": 1.0,
+                            "Metrics": {
+                              "Width": 0.777781,
+                              "Height": 0.583334,
+                              "Depth": 0.083334,
+                              "Italic": 0.0
+                            },
+                            "FontId": 3
+                          },
+                          "Children": [],
+                          "Source": {
+                            "Start": 17,
+                            "End": 18,
+                            "Length": 1,
+                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                          },
+                          "Foreground": null,
+                          "Background": null,
+                          "TotalHeight": 0.666668,
+                          "TotalWidth": 0.777781,
+                          "Italic": 0.0,
+                          "Width": 0.777781,
+                          "Height": 0.583334,
+                          "Depth": 0.083334,
+                          "Shift": 0.0
+                        },
+                        {
+                          "Stretch": 0.0,
+                          "Shrink": 0.0,
+                          "Children": [],
+                          "Source": null,
+                          "Foreground": null,
+                          "Background": null,
+                          "TotalHeight": 0.0,
+                          "TotalWidth": 0.0,
+                          "Italic": 0.0,
+                          "Width": 0.0,
+                          "Height": 0.0,
+                          "Depth": 0.0,
+                          "Shift": 0.0
+                        },
+                        {
+                          "Character": {
+                            "Character": "r",
+                            "Font": "pack://application:,,,/WpfMath;component/Fonts/cmmi10.ttf",
+                            "Size": 1.0,
+                            "Metrics": {
+                              "Width": 0.4511595,
+                              "Height": 0.430555,
+                              "Depth": 0.0,
+                              "Italic": 0.027779
+                            },
+                            "FontId": 0
+                          },
+                          "Children": [],
+                          "Source": {
+                            "Start": 18,
+                            "End": 19,
+                            "Length": 1,
+                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                          },
+                          "Foreground": null,
+                          "Background": null,
+                          "TotalHeight": 0.430555,
+                          "TotalWidth": 0.4789385,
+                          "Italic": 0.027779,
+                          "Width": 0.4511595,
+                          "Height": 0.430555,
+                          "Depth": 0.0,
+                          "Shift": 0.0
+                        }
+                      ],
+                      "Source": {
+                        "Start": 13,
+                        "End": 20,
+                        "Length": 7,
+                        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                      },
+                      "Foreground": null,
+                      "Background": null,
+                      "TotalHeight": 0.666668,
+                      "TotalWidth": 1.2567195,
+                      "Italic": 0.027779,
+                      "Width": 1.2289405,
+                      "Height": 0.583334,
+                      "Depth": 0.083334,
+                      "Shift": 0.0
+                    },
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "TotalHeight": 0.175,
+                      "TotalWidth": 0.0,
+                      "Italic": 0.0,
+                      "Width": 0.0,
+                      "Height": 0.175,
+                      "Depth": 0.0,
+                      "Shift": 0.35
+                    }
+                  ],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "TotalHeight": 1.016668,
+                  "TotalWidth": 1.2289405,
+                  "Italic": 0.0,
+                  "Width": 1.2289405,
+                  "Height": 1.016668,
+                  "Depth": 0.0,
+                  "Shift": 0.0
+                },
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "TotalHeight": 0.0,
+                  "TotalWidth": 0.175,
+                  "Italic": 0.0,
+                  "Width": 0.175,
+                  "Height": 0.0,
+                  "Depth": 0.0,
+                  "Shift": 0.0
+                },
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "TotalHeight": 0.0,
+                  "TotalWidth": 2.07122045,
+                  "Italic": 0.0,
+                  "Width": 2.07122045,
+                  "Height": 0.0,
+                  "Depth": 0.0,
+                  "Shift": 0.0
+                },
+                {
+                  "Children": [
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "TotalHeight": 0.186112,
+                      "TotalWidth": 0.0,
+                      "Italic": 0.0,
+                      "Width": 0.0,
+                      "Height": 0.186112,
+                      "Depth": 0.0,
+                      "Shift": 0.35
+                    },
+                    {
+                      "Character": {
+                        "Character": "0",
+                        "Font": "pack://application:,,,/WpfMath;component/Fonts/cmr10.ttf",
+                        "Size": 1.0,
+                        "Metrics": {
+                          "Width": 0.500002,
+                          "Height": 0.644444,
+                          "Depth": 0.0,
+                          "Italic": 0.0
+                        },
+                        "FontId": 1
+                      },
+                      "Children": [],
+                      "Source": {
+                        "Start": 22,
+                        "End": 23,
+                        "Length": 1,
+                        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                      },
+                      "Foreground": null,
+                      "Background": null,
+                      "TotalHeight": 0.644444,
+                      "TotalWidth": 0.500002,
+                      "Italic": 0.0,
+                      "Width": 0.500002,
+                      "Height": 0.644444,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    },
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "TotalHeight": 0.186112,
+                      "TotalWidth": 0.0,
+                      "Italic": 0.0,
+                      "Width": 0.0,
+                      "Height": 0.186112,
+                      "Depth": 0.0,
+                      "Shift": 0.35
+                    }
+                  ],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "TotalHeight": 1.016668,
+                  "TotalWidth": 0.500002,
+                  "Italic": 0.0,
+                  "Width": 0.500002,
+                  "Height": 1.016668,
+                  "Depth": 0.0,
+                  "Shift": 0.0
+                },
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "TotalHeight": 0.0,
+                  "TotalWidth": 2.07122045,
+                  "Italic": 0.0,
+                  "Width": 2.07122045,
+                  "Height": 0.0,
+                  "Depth": 0.0,
+                  "Shift": 0.0
+                }
+              ],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "TotalHeight": 1.016668,
+              "TotalWidth": 7.0713854,
+              "Italic": 0.0,
+              "Width": 7.0713854,
+              "Height": 1.016668,
+              "Depth": 0.0,
+              "Shift": 0.0
+            },
+            {
+              "Children": [
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "TotalHeight": 0.0,
+                  "TotalWidth": 0.175,
+                  "Italic": 0.0,
+                  "Width": 0.175,
+                  "Height": 0.0,
+                  "Depth": 0.0,
+                  "Shift": 0.0
+                },
+                {
+                  "Children": [
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "TotalHeight": 0.4097794,
+                      "TotalWidth": 0.0,
+                      "Italic": 0.0,
+                      "Width": 0.0,
+                      "Height": 0.4097794,
+                      "Depth": 0.0,
+                      "Shift": 0.35
+                    },
+                    {
+                      "Character": {
+                        "Character": "0",
+                        "Font": "pack://application:,,,/WpfMath;component/Fonts/cmr10.ttf",
+                        "Size": 1.0,
+                        "Metrics": {
+                          "Width": 0.500002,
+                          "Height": 0.644444,
+                          "Depth": 0.0,
+                          "Italic": 0.0
+                        },
+                        "FontId": 1
+                      },
+                      "Children": [],
+                      "Source": {
+                        "Start": 27,
+                        "End": 28,
+                        "Length": 1,
+                        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                      },
+                      "Foreground": null,
+                      "Background": null,
+                      "TotalHeight": 0.644444,
+                      "TotalWidth": 0.500002,
+                      "Italic": 0.0,
+                      "Width": 0.500002,
+                      "Height": 0.644444,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    },
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "TotalHeight": 0.4097794,
+                      "TotalWidth": 0.0,
+                      "Italic": 0.0,
+                      "Width": 0.0,
+                      "Height": 0.4097794,
+                      "Depth": 0.0,
+                      "Shift": 0.35
+                    }
+                  ],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "TotalHeight": 1.4640028,
+                  "TotalWidth": 0.500002,
+                  "Italic": 0.0,
+                  "Width": 0.500002,
+                  "Height": 1.4640028,
+                  "Depth": 0.0,
+                  "Shift": 0.0
+                },
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "TotalHeight": 0.0,
+                  "TotalWidth": 0.175,
+                  "Italic": 0.0,
+                  "Width": 0.175,
+                  "Height": 0.0,
+                  "Depth": 0.0,
+                  "Shift": 0.0
+                },
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "TotalHeight": 0.0,
+                  "TotalWidth": 0.55335875,
+                  "Italic": 0.0,
+                  "Width": 0.55335875,
+                  "Height": 0.0,
+                  "Depth": 0.0,
+                  "Shift": 0.0
+                },
+                {
+                  "Children": [
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "TotalHeight": 0.4097794,
+                      "TotalWidth": 0.0,
+                      "Italic": 0.0,
+                      "Width": 0.0,
+                      "Height": 0.4097794,
+                      "Depth": 0.0,
+                      "Shift": 0.35
+                    },
+                    {
+                      "Character": {
+                        "Character": "0",
+                        "Font": "pack://application:,,,/WpfMath;component/Fonts/cmr10.ttf",
+                        "Size": 1.0,
+                        "Metrics": {
+                          "Width": 0.500002,
+                          "Height": 0.644444,
+                          "Depth": 0.0,
+                          "Italic": 0.0
+                        },
+                        "FontId": 1
+                      },
+                      "Children": [],
+                      "Source": {
+                        "Start": 31,
+                        "End": 32,
+                        "Length": 1,
+                        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                      },
+                      "Foreground": null,
+                      "Background": null,
+                      "TotalHeight": 0.644444,
+                      "TotalWidth": 0.500002,
+                      "Italic": 0.0,
+                      "Width": 0.500002,
+                      "Height": 0.644444,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    },
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "TotalHeight": 0.4097794,
+                      "TotalWidth": 0.0,
+                      "Italic": 0.0,
+                      "Width": 0.0,
+                      "Height": 0.4097794,
+                      "Depth": 0.0,
+                      "Shift": 0.35
+                    }
+                  ],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "TotalHeight": 1.4640028,
+                  "TotalWidth": 0.500002,
+                  "Italic": 0.0,
+                  "Width": 0.500002,
+                  "Height": 1.4640028,
+                  "Depth": 0.0,
+                  "Shift": 0.0
+                },
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "TotalHeight": 0.0,
+                  "TotalWidth": 0.55335875,
+                  "Italic": 0.0,
+                  "Width": 0.55335875,
+                  "Height": 0.0,
+                  "Depth": 0.0,
+                  "Shift": 0.0
+                },
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "TotalHeight": 0.0,
+                  "TotalWidth": 0.175,
+                  "Italic": 0.0,
+                  "Width": 0.175,
+                  "Height": 0.0,
+                  "Depth": 0.0,
+                  "Shift": 0.0
+                },
+                {
+                  "Children": [
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "TotalHeight": 0.175,
+                      "TotalWidth": 0.0,
+                      "Italic": 0.0,
+                      "Width": 0.0,
+                      "Height": 0.175,
+                      "Depth": 0.0,
+                      "Shift": 0.35
+                    },
+                    {
+                      "Children": [
+                        {
+                          "Character": {
+                            "Character": "¡",
+                            "Font": "pack://application:,,,/WpfMath;component/Fonts/cmsy10.ttf",
+                            "Size": 1.0,
+                            "Metrics": {
+                              "Width": 0.777781,
+                              "Height": 0.583334,
+                              "Depth": 0.083334,
+                              "Italic": 0.0
+                            },
+                            "FontId": 3
+                          },
+                          "Children": [],
+                          "Source": {
+                            "Start": 35,
+                            "End": 36,
+                            "Length": 1,
+                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                          },
+                          "Foreground": null,
+                          "Background": null,
+                          "TotalHeight": 0.666668,
+                          "TotalWidth": 0.777781,
+                          "Italic": 0.0,
+                          "Width": 0.777781,
+                          "Height": 0.583334,
+                          "Depth": 0.083334,
+                          "Shift": 0.0
+                        },
+                        {
+                          "Stretch": 0.0,
+                          "Shrink": 0.0,
+                          "Children": [],
+                          "Source": null,
+                          "Foreground": null,
+                          "Background": null,
+                          "TotalHeight": 0.0,
+                          "TotalWidth": 0.0,
+                          "Italic": 0.0,
+                          "Width": 0.0,
+                          "Height": 0.0,
+                          "Depth": 0.0,
+                          "Shift": 0.0
+                        },
+                        {
+                          "Character": {
+                            "Character": "r",
+                            "Font": "pack://application:,,,/WpfMath;component/Fonts/cmmi10.ttf",
+                            "Size": 1.0,
+                            "Metrics": {
+                              "Width": 0.4511595,
+                              "Height": 0.430555,
+                              "Depth": 0.0,
+                              "Italic": 0.027779
+                            },
+                            "FontId": 0
+                          },
+                          "Children": [],
+                          "Source": {
+                            "Start": 36,
+                            "End": 37,
+                            "Length": 1,
+                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                          },
+                          "Foreground": null,
+                          "Background": null,
+                          "TotalHeight": 0.430555,
+                          "TotalWidth": 0.4789385,
+                          "Italic": 0.027779,
+                          "Width": 0.4511595,
+                          "Height": 0.430555,
+                          "Depth": 0.0,
+                          "Shift": 0.0
+                        },
+                        {
+                          "Stretch": 0.0,
+                          "Shrink": 0.0,
+                          "Children": [],
+                          "Source": null,
+                          "Foreground": null,
+                          "Background": null,
+                          "TotalHeight": 0.0,
+                          "TotalWidth": 0.0,
+                          "Italic": 0.0,
+                          "Width": 0.0,
+                          "Height": 0.0,
+                          "Depth": 0.0,
+                          "Shift": 0.0
+                        },
+                        {
+                          "Character": {
+                            "Character": "s",
+                            "Font": "pack://application:,,,/WpfMath;component/Fonts/cmmi10.ttf",
+                            "Size": 1.0,
+                            "Metrics": {
+                              "Width": 0.46875,
+                              "Height": 0.430555,
+                              "Depth": 0.0,
+                              "Italic": 0.0
+                            },
+                            "FontId": 0
+                          },
+                          "Children": [],
+                          "Source": {
+                            "Start": 38,
+                            "End": 39,
+                            "Length": 1,
+                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                          },
+                          "Foreground": null,
+                          "Background": null,
+                          "TotalHeight": 0.430555,
+                          "TotalWidth": 0.46875,
+                          "Italic": 0.0,
+                          "Width": 0.46875,
+                          "Height": 0.430555,
+                          "Depth": 0.0,
+                          "Shift": 0.0
+                        },
+                        {
+                          "Stretch": 0.0,
+                          "Shrink": 0.0,
+                          "Children": [],
+                          "Source": null,
+                          "Foreground": null,
+                          "Background": null,
+                          "TotalHeight": 0.0,
+                          "TotalWidth": 0.0,
+                          "Italic": 0.0,
+                          "Width": 0.0,
+                          "Height": 0.0,
+                          "Depth": 0.0,
+                          "Shift": 0.0
+                        },
+                        {
+                          "Character": {
+                            "Character": "i",
+                            "Font": "pack://application:,,,/WpfMath;component/Fonts/cmmi10.ttf",
+                            "Size": 1.0,
+                            "Metrics": {
+                              "Width": 0.344513,
+                              "Height": 0.659525,
+                              "Depth": 0.0,
+                              "Italic": 0.0
+                            },
+                            "FontId": 0
+                          },
+                          "Children": [],
+                          "Source": {
+                            "Start": 39,
+                            "End": 40,
+                            "Length": 1,
+                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                          },
+                          "Foreground": null,
+                          "Background": null,
+                          "TotalHeight": 0.659525,
+                          "TotalWidth": 0.344513,
+                          "Italic": 0.0,
+                          "Width": 0.344513,
+                          "Height": 0.659525,
+                          "Depth": 0.0,
+                          "Shift": 0.0
+                        },
+                        {
+                          "Stretch": 0.0,
+                          "Shrink": 0.0,
+                          "Children": [],
+                          "Source": null,
+                          "Foreground": null,
+                          "Background": null,
+                          "TotalHeight": 0.0,
+                          "TotalWidth": 0.0,
+                          "Italic": 0.0,
+                          "Width": 0.0,
+                          "Height": 0.0,
+                          "Depth": 0.0,
+                          "Shift": 0.0
+                        },
+                        {
+                          "Children": [
+                            {
+                              "Character": {
+                                "Character": "n",
+                                "Font": "pack://application:,,,/WpfMath;component/Fonts/cmmi10.ttf",
+                                "Size": 1.0,
+                                "Metrics": {
+                                  "Width": 0.600235,
+                                  "Height": 0.430555,
+                                  "Depth": 0.0,
+                                  "Italic": 0.0
+                                },
+                                "FontId": 0
+                              },
+                              "Children": [],
+                              "Source": {
+                                "Start": 40,
+                                "End": 41,
+                                "Length": 1,
+                                "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                              },
+                              "Foreground": null,
+                              "Background": null,
+                              "TotalHeight": 0.430555,
+                              "TotalWidth": 0.600235,
+                              "Italic": 0.0,
+                              "Width": 0.600235,
+                              "Height": 0.430555,
+                              "Depth": 0.0,
+                              "Shift": 0.0
+                            },
+                            {
+                              "Children": [
+                                {
+                                  "Character": {
+                                    "Character": "2",
+                                    "Font": "pack://application:,,,/WpfMath;component/Fonts/cmr10.ttf",
+                                    "Size": 0.7,
+                                    "Metrics": {
+                                      "Width": 0.3500014,
+                                      "Height": 0.4511108,
+                                      "Depth": 0.0,
+                                      "Italic": 0.0
+                                    },
+                                    "FontId": 1
+                                  },
+                                  "Children": [],
+                                  "Source": {
+                                    "Start": 42,
+                                    "End": 43,
+                                    "Length": 1,
+                                    "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                                  },
+                                  "Foreground": null,
+                                  "Background": null,
+                                  "TotalHeight": 0.4511108,
+                                  "TotalWidth": 0.3500014,
+                                  "Italic": 0.0,
+                                  "Width": 0.3500014,
+                                  "Height": 0.4511108,
+                                  "Depth": 0.0,
+                                  "Shift": 0.0
+                                },
+                                {
+                                  "Children": [],
+                                  "Source": null,
+                                  "Foreground": null,
+                                  "Background": null,
+                                  "TotalHeight": 0.0,
+                                  "TotalWidth": 0.025,
+                                  "Italic": 0.0,
+                                  "Width": 0.025,
+                                  "Height": 0.0,
+                                  "Depth": 0.0,
+                                  "Shift": 0.0
+                                }
+                              ],
+                              "Source": null,
+                              "Foreground": null,
+                              "Background": null,
+                              "TotalHeight": 0.4511108,
+                              "TotalWidth": 0.3750014,
+                              "Italic": 0.0,
+                              "Width": 0.3750014,
+                              "Height": 0.4511108,
+                              "Depth": 0.0,
+                              "Shift": -0.412892
+                            }
+                          ],
+                          "Source": {
+                            "Start": 28,
+                            "End": 30,
+                            "Length": 2,
+                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                          },
+                          "Foreground": null,
+                          "Background": null,
+                          "TotalHeight": 0.8640028,
+                          "TotalWidth": 0.9752364,
+                          "Italic": 0.0,
+                          "Width": 0.9752364,
+                          "Height": 0.8640028,
+                          "Depth": 0.0,
+                          "Shift": 0.0
+                        },
+                        {
+                          "Stretch": 0.0,
+                          "Shrink": 0.0,
+                          "Children": [],
+                          "Source": null,
+                          "Foreground": null,
+                          "Background": null,
+                          "TotalHeight": 0.0,
+                          "TotalWidth": 0.0,
+                          "Italic": 0.0,
+                          "Width": 0.0,
+                          "Height": 0.0,
+                          "Depth": 0.0,
+                          "Shift": 0.0
+                        },
+                        {
+                          "Character": {
+                            "Character": "(",
+                            "Font": "pack://application:,,,/WpfMath;component/Fonts/cmr10.ttf",
+                            "Size": 1.0,
+                            "Metrics": {
+                              "Width": 0.38889,
+                              "Height": 0.75,
+                              "Depth": 0.25,
+                              "Italic": 0.0
+                            },
+                            "FontId": 1
+                          },
+                          "Children": [],
+                          "Source": {
+                            "Start": 43,
+                            "End": 44,
+                            "Length": 1,
+                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                          },
+                          "Foreground": null,
+                          "Background": null,
+                          "TotalHeight": 1.0,
+                          "TotalWidth": 0.38889,
+                          "Italic": 0.0,
+                          "Width": 0.38889,
+                          "Height": 0.75,
+                          "Depth": 0.25,
+                          "Shift": 0.0
+                        },
+                        {
+                          "Stretch": 0.0,
+                          "Shrink": 0.0,
+                          "Children": [],
+                          "Source": null,
+                          "Foreground": null,
+                          "Background": null,
+                          "TotalHeight": 0.0,
+                          "TotalWidth": 0.0,
+                          "Italic": 0.0,
+                          "Width": 0.0,
+                          "Height": 0.0,
+                          "Depth": 0.0,
+                          "Shift": 0.0
+                        },
+                        {
+                          "Character": {
+                            "Character": "µ",
+                            "Font": "pack://application:,,,/WpfMath;component/Fonts/cmmi10.ttf",
+                            "Size": 1.0,
+                            "Metrics": {
+                              "Width": 0.469444,
+                              "Height": 0.694445,
+                              "Depth": 0.0,
+                              "Italic": 0.027779
+                            },
+                            "FontId": 0
+                          },
+                          "Children": [],
+                          "Source": {
+                            "Start": 45,
+                            "End": 50,
+                            "Length": 5,
+                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                          },
+                          "Foreground": null,
+                          "Background": null,
+                          "TotalHeight": 0.694445,
+                          "TotalWidth": 0.497223,
+                          "Italic": 0.027779,
+                          "Width": 0.469444,
+                          "Height": 0.694445,
+                          "Depth": 0.0,
+                          "Shift": 0.0
+                        },
+                        {
+                          "Stretch": 0.0,
+                          "Shrink": 0.0,
+                          "Children": [],
+                          "Source": null,
+                          "Foreground": null,
+                          "Background": null,
+                          "TotalHeight": 0.0,
+                          "TotalWidth": 0.0,
+                          "Italic": 0.0,
+                          "Width": 0.0,
+                          "Height": 0.0,
+                          "Depth": 0.0,
+                          "Shift": 0.0
+                        },
+                        {
+                          "Character": {
+                            "Character": ")",
+                            "Font": "pack://application:,,,/WpfMath;component/Fonts/cmr10.ttf",
+                            "Size": 1.0,
+                            "Metrics": {
+                              "Width": 0.38889,
+                              "Height": 0.75,
+                              "Depth": 0.25,
+                              "Italic": 0.0
+                            },
+                            "FontId": 1
+                          },
+                          "Children": [],
+                          "Source": {
+                            "Start": 50,
+                            "End": 51,
+                            "Length": 1,
+                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                          },
+                          "Foreground": null,
+                          "Background": null,
+                          "TotalHeight": 1.0,
+                          "TotalWidth": 0.38889,
+                          "Italic": 0.0,
+                          "Width": 0.38889,
+                          "Height": 0.75,
+                          "Depth": 0.25,
+                          "Shift": 0.0
+                        }
+                      ],
+                      "Source": {
+                        "Start": 13,
+                        "End": 51,
+                        "Length": 38,
+                        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                      },
+                      "Foreground": null,
+                      "Background": null,
+                      "TotalHeight": 1.1140028,
+                      "TotalWidth": 4.2924429,
+                      "Italic": 0.027779,
+                      "Width": 4.2646639,
+                      "Height": 0.8640028,
+                      "Depth": 0.25,
+                      "Shift": 0.0
+                    },
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "TotalHeight": 0.175,
+                      "TotalWidth": 0.0,
+                      "Italic": 0.0,
+                      "Width": 0.0,
+                      "Height": 0.175,
+                      "Depth": 0.0,
+                      "Shift": 0.35
+                    }
+                  ],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "TotalHeight": 1.4640028,
+                  "TotalWidth": 4.2646639,
+                  "Italic": 0.0,
+                  "Width": 4.2646639,
+                  "Height": 1.4640028,
+                  "Depth": 0.0,
+                  "Shift": 0.0
+                },
+                {
+                  "Children": [],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "TotalHeight": 0.0,
+                  "TotalWidth": 0.175,
+                  "Italic": 0.0,
+                  "Width": 0.175,
+                  "Height": 0.0,
+                  "Depth": 0.0,
+                  "Shift": 0.0
+                }
+              ],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "TotalHeight": 1.4640028,
+              "TotalWidth": 7.0713854,
+              "Italic": 0.0,
+              "Width": 7.0713854,
+              "Height": 1.4640028,
+              "Depth": 0.0,
+              "Shift": 0.0
+            }
+          ],
+          "Source": {
+            "Start": 5,
+            "End": 52,
+            "Length": 47,
+            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+          },
+          "Foreground": null,
+          "Background": null,
+          "TotalHeight": 2.4806708,
+          "TotalWidth": 7.0713854,
+          "Italic": 0.0,
+          "Width": 7.0713854,
+          "Height": 1.4903354,
+          "Depth": 0.9903354,
+          "Shift": 0.0
+        },
+        {
+          "Stretch": 0.0,
+          "Shrink": 0.0,
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "TotalHeight": 0.0,
+          "TotalWidth": 0.0,
+          "Italic": 0.0,
+          "Width": 0.0,
+          "Height": 0.0,
+          "Depth": 0.0,
+          "Shift": 0.0
+        },
+        {
+          "Character": {
+            "Character": "¸",
+            "Font": "pack://application:,,,/WpfMath;component/Fonts/cmex10.ttf",
+            "Size": 1.0,
+            "Metrics": {
+              "Width": 0.527781,
+              "Height": 0.039999,
+              "Depth": 2.360025,
+              "Italic": 0.0
+            },
+            "FontId": 2
+          },
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "TotalHeight": 2.400024,
+          "TotalWidth": 0.527781,
+          "Italic": 0.0,
+          "Width": 0.527781,
+          "Height": 0.039999,
+          "Depth": 2.360025,
+          "Shift": -1.410013
+        }
+      ],
+      "Source": {
+        "Start": 5,
+        "End": 52,
+        "Length": 47,
+        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+      },
+      "Foreground": null,
+      "Background": null,
+      "TotalHeight": 2.4806708,
+      "TotalWidth": 8.1269474,
+      "Italic": 0.0,
+      "Width": 8.1269474,
+      "Height": 1.4903354,
+      "Depth": 0.9903354,
+      "Shift": 0.0
+    }
+  ],
+  "Source": {
+    "Start": 4,
+    "End": 56,
+    "Length": 52,
+    "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+  },
+  "Foreground": null,
+  "Background": null,
+  "TotalHeight": 2.4806708,
+  "TotalWidth": 10.0318136222222,
+  "Italic": 0.0,
+  "Width": 10.0318136222222,
+  "Height": 1.4903354,
+  "Depth": 0.9903354,
+  "Shift": 0.0
+}

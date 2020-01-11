@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Media;
@@ -10,27 +10,6 @@ namespace WpfMath
     // Represents mathematical formula that can be rendered.
     public sealed class TexFormula
     {
-        public TexFormula(IList<TexFormula> formulaList)
-        {
-            Debug.Assert(formulaList != null);
-
-            if (formulaList.Count == 1)
-                Add(formulaList[0]);
-            else
-                this.RootAtom = new RowAtom(null, formulaList);
-        }
-
-        public TexFormula(TexFormula formula)
-        {
-            Debug.Assert(formula != null);
-
-            Add(formula);
-        }
-
-        public TexFormula()
-        {
-        }
-
         public string TextStyle
         {
             get;
@@ -71,7 +50,6 @@ namespace WpfMath
         /// <param name="rowSource">The source that will be set for the resulting row atom.</param>
         internal void Add(Atom atom, SourceSpan rowSource)
         {
-            Debug.Assert(atom != null);
             if (this.RootAtom == null)
             {
                 this.RootAtom = atom;

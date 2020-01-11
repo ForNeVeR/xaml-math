@@ -1,0 +1,39 @@
+{
+  "TextStyle": null,
+  "RootAtom": {
+    "BaseAtom": {
+      "Character": "А",
+      "TextStyle": "text",
+      "IsDefaultTextStyle": false,
+      "IsTextSymbol": false,
+      "Type": "Ordinary",
+      "Source": {
+        "Start": 6,
+        "End": 7,
+        "Length": 1,
+        "Source": "\\text{А}_{\\text{И}}"
+      }
+    },
+    "SubscriptAtom": {
+      "Character": "И",
+      "TextStyle": "text",
+      "IsDefaultTextStyle": false,
+      "IsTextSymbol": false,
+      "Type": "Ordinary",
+      "Source": {
+        "Start": 16,
+        "End": 17,
+        "Length": 1,
+        "Source": "\\text{А}_{\\text{И}}"
+      }
+    },
+    "SuperscriptAtom": null,
+    "Type": "Ordinary",
+    "Source": {
+      "Start": 8,
+      "End": 19,
+      "Length": 11,
+      "Source": "\\text{А}_{\\text{И}}"
+    }
+  }
+}

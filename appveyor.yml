@@ -1,7 +1,10 @@
-﻿image:
-    - Visual Studio 2017
+image:
     - Visual Studio 2019
 before_build:
-    - nuget restore
+    - pwsh: ./scripts/verify-encoding.ps1
 build_script:
-    - msbuild /m /p:Configuration=Release WpfMath.sln
+    - dotnet build
+after_build:
+    - dotnet pack
+test_script:
+    - dotnet test

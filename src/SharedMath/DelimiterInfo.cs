@@ -1,4 +1,4 @@
-﻿using WpfMath.Atoms;
+using WpfMath.Atoms;
 
 namespace WpfMath
 {

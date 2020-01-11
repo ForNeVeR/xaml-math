@@ -1,0 +1,13 @@
+{
+  "Children": [],
+  "Source": null,
+  "Foreground": null,
+  "Background": null,
+  "TotalHeight": 0.0,
+  "TotalWidth": 0.166667166666667,
+  "Italic": 0.0,
+  "Width": 0.166667166666667,
+  "Height": 0.0,
+  "Depth": 0.0,
+  "Shift": 0.0
+}

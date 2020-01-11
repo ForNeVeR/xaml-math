@@ -1,0 +1,18 @@
+{
+  "Children": [],
+  "Source": {
+    "Start": 1,
+    "End": 16,
+    "Length": 15,
+    "Source": "\\colorbox{red}{}"
+  },
+  "Foreground": null,
+  "Background": "#FFED1B23",
+  "TotalHeight": 0.0,
+  "TotalWidth": 0.0,
+  "Italic": 0.0,
+  "Width": 0.0,
+  "Height": 0.0,
+  "Depth": 0.0,
+  "Shift": 0.0
+}

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Media;
 using WpfMath.Rendering;
@@ -52,45 +52,35 @@ namespace WpfMath.Boxes
             set;
         }
 
-        public double TotalHeight
-        {
-            get { return this.Height + this.Depth; }
-        }
+        /// <summary>Total height of the box, including the <see cref="Depth"/>.</summary>
+        public double TotalHeight => Height + Depth;
 
-        public double TotalWidth
-        {
-            get { return this.Width + this.Italic; }
-        }
+        /// <summary>Total width of the box, including the <see cref="Italic"/>.</summary>
+        public double TotalWidth => Width + Italic;
 
-        public double Italic
-        {
-            get;
-            set;
-        }
+        /// <summary>
+        /// The additional width of the box that is taken by italic elements (e.g. letter elements that are protruding
+        /// from the right of the base box.
+        /// </summary>
+        public double Italic { get; set; }
 
-        public double Width
-        {
-            get;
-            set;
-        }
+        /// <summary>The base width of the box.</summary>
+        public double Width { get; set; }
 
-        public double Height
-        {
-            get;
-            set;
-        }
+        /// <summary>The base height of the box.</summary>
+        public double Height { get; set; }
 
-        public double Depth
-        {
-            get;
-            set;
-        }
+        /// <summary>
+        /// The depth of the box: the height of the additional elements that are protruding from the bottom side of the
+        /// box.
+        /// </summary>
+        public double Depth { get; set; }
 
-        public double Shift
-        {
-            get;
-            set;
-        }
+        /// <summary>
+        /// The shift of the box: an auxiliary value that has a box-specific meaning (e.g. a vertical shift in a
+        /// <see cref="HorizontalBox"/>, or a horizontal shift in a <see cref="VerticalBox"/>).
+        /// </summary>
+        public double Shift { get; set; }
 
         public abstract void RenderTo(IElementRenderer renderer, double x, double y);
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -46,8 +46,11 @@ namespace WpfMath
             }
         }
 
-        public void RenderFormulaTo(IElementRenderer renderer, double x, double y) =>
+        public void RenderFormulaTo(IElementRenderer renderer, double x, double y)
+        {
             renderer.RenderElement(Box, x / Scale, y / Scale + Box.Height);
+            renderer.FinishRendering();
+        }
 
         public Geometry RenderToGeometry(double x, double y)
         {

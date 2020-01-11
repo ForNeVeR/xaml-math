@@ -5,12 +5,7 @@ namespace WpfMath.Boxes
     // Box representing whitespace.
     internal class StrutBox : Box
     {
-        private static readonly StrutBox emptyStrutBox = new StrutBox(0, 0, 0, 0);
-
-        public static StrutBox Empty
-        {
-            get { return emptyStrutBox; }
-        }
+        public static StrutBox Empty { get; } = new StrutBox(0, 0, 0, 0);
 
         public StrutBox(double width, double height, double depth, double shift)
         {

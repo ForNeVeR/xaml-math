@@ -2,11 +2,11 @@ How to prepare `DefaultTexFont.xml` from the font file
 ======================================================
 
 This document describes the correspondence between the font files we use and
-data in `DefaultTexFont.xml`. The conrete approach (i.e. script files to
+data in `DefaultTexFont.xml`. The concrete approach (i.e. script files to
 regenerate XML data) hasn't been reproduced yet, although we were able to get
 nearly all the required information.
 
-Data in our XML files is often inaccurate and/or seemlingly generated from other
+Data in our XML files is often inaccurate and/or seemingly generated from other
 TTF files than the files in the repository. Be prepared for that. When in doubt,
 refer to [the original TFM files][tfm] (they seem to correspond to our data
 better than the TFM files generated from our TTF files).
@@ -67,7 +67,7 @@ To get these values from the `cmmi10.tpl` file, search for the following:
 
 Here, `CHARWD` corresponds to `width`, `CHARHT` corresponds to `height`,
 `CHARDP` corresponds to `depth`, and `CHARIC` corresponds to `italic`. Any of
-them could be ommited.
+them could be omitted.
 
 The kerning section can also be reconstructed from the `*.tpl` file.
 

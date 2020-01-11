@@ -11,7 +11,6 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\AccentedAtom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\Atom.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Atoms\BigDelimeterAtom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\BigOperatorAtom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\CharAtom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\CharSymbol.cs" />
