@@ -30,11 +30,12 @@ namespace WpfMath.Atoms
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
             var newEnvironment = environment.Clone();
-            if (this.Background != null)
-                newEnvironment.Background = this.Background;
             if (this.Foreground != null)
                 newEnvironment.Foreground = this.Foreground;
-            return this.RowAtom.CreateBox(newEnvironment);
+            var childBox = this.RowAtom.CreateBox(newEnvironment);
+            if (Background != null)
+                childBox.Background = Background;
+            return childBox;
         }
 
         public override TexAtomType GetLeftType()
