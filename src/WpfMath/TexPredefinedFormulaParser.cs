@@ -337,11 +337,7 @@ namespace WpfMath
                 this.SharedCacheFormulas = sharedCacheFormulas;
             }
 
-            public IDictionary<string, TexFormula> SharedCacheFormulas
-            {
-                get;
-                private set;
-            }
+            public IDictionary<string, TexFormula> SharedCacheFormulas { get; }
         }
     }
 }
