@@ -1,4 +1,4 @@
-﻿{
+{
   "Children": [],
   "Source": null,
   "Foreground": null,
