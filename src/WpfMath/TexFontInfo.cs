@@ -140,7 +140,6 @@ namespace WpfMath
             return this.XHeight * factor;
         }
 
-        /// <summary>Return the character metrics or <c>null</c> if the metrics weren't found.</summary>
         public Result<double[]> GetMetrics(char character)
         {
             if (this.metrics.Length <= character || this.metrics[character] == null)
