@@ -141,7 +141,13 @@ namespace WpfMath
                 var argValues = GetArgumentValues(args);
 
                 var helper = new TexFormulaHelper(formula, source);
-                typeof(TexFormulaHelper).GetMethod(methodName, argTypes)!.Invoke(helper, argValues);
+                var methodInvocation = typeof(TexFormulaHelper).GetMethod(methodName, argTypes)!;
+
+                // Since PredefinedTexFormulas can be used again when MethodInvocation is executed,
+                // we need to protect ourselves from re-adding the key-value to the SharedCacheFormulas
+                this.SharedCacheFormulas.Remove(objectName);
+                methodInvocation.Invoke(helper, argValues);
+                this.SharedCacheFormulas[objectName] = formula;
             }
         }
 

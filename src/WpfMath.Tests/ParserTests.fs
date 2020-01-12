@@ -87,6 +87,10 @@ let lim() =
 [<Fact>]
 let limInCurlyBraces() =
     verifyParseResult @"{\lim} x"
+    
+[<Fact>]
+let limsup() =
+    verifyParseResult @"\limsup"
 
 [<Fact>]
 let sin() =
