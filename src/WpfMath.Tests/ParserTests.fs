@@ -301,3 +301,7 @@ let newLineAfterMatrix(text: string): unit =
     verifyParseResultScenario
     <| processSpecialChars text
     <| text
+
+[<Fact>]
+let predefinedFormula() =
+    verifyParseResult @"\sin{\pi}"

@@ -1,0 +1,289 @@
+{
+  "TextStyle": null,
+  "RootAtom": {
+    "PreviousAtom": null,
+    "Elements": [
+      {
+        "BaseAtom": {
+          "PreviousAtom": null,
+          "Elements": [
+            {
+              "Character": "s",
+              "TextStyle": "mathrm",
+              "IsDefaultTextStyle": false,
+              "IsTextSymbol": false,
+              "Type": "Ordinary",
+              "Source": {
+                "Start": 1,
+                "End": 2,
+                "Length": 1,
+                "Source": "\\mathrm{sin}"
+              },
+              "Children": []
+            },
+            {
+              "Character": "i",
+              "TextStyle": "mathrm",
+              "IsDefaultTextStyle": false,
+              "IsTextSymbol": false,
+              "Type": "Ordinary",
+              "Source": {
+                "Start": 2,
+                "End": 3,
+                "Length": 1,
+                "Source": "\\mathrm{sin}"
+              },
+              "Children": []
+            },
+            {
+              "Character": "n",
+              "TextStyle": "mathrm",
+              "IsDefaultTextStyle": false,
+              "IsTextSymbol": false,
+              "Type": "Ordinary",
+              "Source": {
+                "Start": 3,
+                "End": 4,
+                "Length": 1,
+                "Source": "\\mathrm{sin}"
+              },
+              "Children": []
+            }
+          ],
+          "Type": "Ordinary",
+          "Source": {
+            "Start": 0,
+            "End": 3,
+            "Length": 3,
+            "Source": "\\sin{\\pi}"
+          },
+          "Children": [
+            {
+              "Character": "s",
+              "TextStyle": "mathrm",
+              "IsDefaultTextStyle": false,
+              "IsTextSymbol": false,
+              "Type": "Ordinary",
+              "Source": {
+                "Start": 1,
+                "End": 2,
+                "Length": 1,
+                "Source": "\\mathrm{sin}"
+              },
+              "Children": []
+            },
+            {
+              "Character": "i",
+              "TextStyle": "mathrm",
+              "IsDefaultTextStyle": false,
+              "IsTextSymbol": false,
+              "Type": "Ordinary",
+              "Source": {
+                "Start": 2,
+                "End": 3,
+                "Length": 1,
+                "Source": "\\mathrm{sin}"
+              },
+              "Children": []
+            },
+            {
+              "Character": "n",
+              "TextStyle": "mathrm",
+              "IsDefaultTextStyle": false,
+              "IsTextSymbol": false,
+              "Type": "Ordinary",
+              "Source": {
+                "Start": 3,
+                "End": 4,
+                "Length": 1,
+                "Source": "\\mathrm{sin}"
+              },
+              "Children": []
+            }
+          ]
+        },
+        "LowerLimitAtom": null,
+        "UpperLimitAtom": null,
+        "UseVerticalLimits": false,
+        "Type": "BigOperator",
+        "Source": {
+          "Start": 0,
+          "End": 3,
+          "Length": 3,
+          "Source": "\\sin{\\pi}"
+        },
+        "Children": []
+      },
+      {
+        "Atom": {
+          "IsDelimeter": false,
+          "Name": "pi",
+          "IsTextSymbol": false,
+          "Type": "Ordinary",
+          "Source": {
+            "Start": 6,
+            "End": 8,
+            "Length": 2,
+            "Source": "\\sin{\\pi}"
+          },
+          "Children": []
+        },
+        "LeftType": "Ordinary",
+        "RightType": "Ordinary",
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 6,
+          "End": 8,
+          "Length": 2,
+          "Source": "\\sin{\\pi}"
+        },
+        "Children": []
+      }
+    ],
+    "Type": "Ordinary",
+    "Source": {
+      "Start": 0,
+      "End": 9,
+      "Length": 9,
+      "Source": "\\sin{\\pi}"
+    },
+    "Children": [
+      {
+        "BaseAtom": {
+          "PreviousAtom": null,
+          "Elements": [
+            {
+              "Character": "s",
+              "TextStyle": "mathrm",
+              "IsDefaultTextStyle": false,
+              "IsTextSymbol": false,
+              "Type": "Ordinary",
+              "Source": {
+                "Start": 1,
+                "End": 2,
+                "Length": 1,
+                "Source": "\\mathrm{sin}"
+              },
+              "Children": []
+            },
+            {
+              "Character": "i",
+              "TextStyle": "mathrm",
+              "IsDefaultTextStyle": false,
+              "IsTextSymbol": false,
+              "Type": "Ordinary",
+              "Source": {
+                "Start": 2,
+                "End": 3,
+                "Length": 1,
+                "Source": "\\mathrm{sin}"
+              },
+              "Children": []
+            },
+            {
+              "Character": "n",
+              "TextStyle": "mathrm",
+              "IsDefaultTextStyle": false,
+              "IsTextSymbol": false,
+              "Type": "Ordinary",
+              "Source": {
+                "Start": 3,
+                "End": 4,
+                "Length": 1,
+                "Source": "\\mathrm{sin}"
+              },
+              "Children": []
+            }
+          ],
+          "Type": "Ordinary",
+          "Source": {
+            "Start": 0,
+            "End": 3,
+            "Length": 3,
+            "Source": "\\sin{\\pi}"
+          },
+          "Children": [
+            {
+              "Character": "s",
+              "TextStyle": "mathrm",
+              "IsDefaultTextStyle": false,
+              "IsTextSymbol": false,
+              "Type": "Ordinary",
+              "Source": {
+                "Start": 1,
+                "End": 2,
+                "Length": 1,
+                "Source": "\\mathrm{sin}"
+              },
+              "Children": []
+            },
+            {
+              "Character": "i",
+              "TextStyle": "mathrm",
+              "IsDefaultTextStyle": false,
+              "IsTextSymbol": false,
+              "Type": "Ordinary",
+              "Source": {
+                "Start": 2,
+                "End": 3,
+                "Length": 1,
+                "Source": "\\mathrm{sin}"
+              },
+              "Children": []
+            },
+            {
+              "Character": "n",
+              "TextStyle": "mathrm",
+              "IsDefaultTextStyle": false,
+              "IsTextSymbol": false,
+              "Type": "Ordinary",
+              "Source": {
+                "Start": 3,
+                "End": 4,
+                "Length": 1,
+                "Source": "\\mathrm{sin}"
+              },
+              "Children": []
+            }
+          ]
+        },
+        "LowerLimitAtom": null,
+        "UpperLimitAtom": null,
+        "UseVerticalLimits": false,
+        "Type": "BigOperator",
+        "Source": {
+          "Start": 0,
+          "End": 3,
+          "Length": 3,
+          "Source": "\\sin{\\pi}"
+        },
+        "Children": []
+      },
+      {
+        "Atom": {
+          "IsDelimeter": false,
+          "Name": "pi",
+          "IsTextSymbol": false,
+          "Type": "Ordinary",
+          "Source": {
+            "Start": 6,
+            "End": 8,
+            "Length": 2,
+            "Source": "\\sin{\\pi}"
+          },
+          "Children": []
+        },
+        "LeftType": "Ordinary",
+        "RightType": "Ordinary",
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 6,
+          "End": 8,
+          "Length": 2,
+          "Source": "\\sin{\\pi}"
+        },
+        "Children": []
+      }
+    ]
+  }
+}
