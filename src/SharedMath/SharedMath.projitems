@@ -19,6 +19,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\FixedCharAtom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\FractionAtom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\IRow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\MatrixAtom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\NullAtom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\OverlinedAtom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\OverUnderDelimiter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\PhantomAtom.cs" />
@@ -36,6 +38,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Boxes\OverUnderBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Boxes\StrutBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Boxes\VerticalBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Colors\FloatRgbColorParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Colors\IntegerRgbColorParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Colors\StandardColorParsers.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharFont.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DefaultTexFont.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DelimiterFactory.cs" />
@@ -52,6 +57,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)Glue.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GlueSettingsParser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ITeXFont.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Parsers\AtomAppendMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Parsers\CommandParsers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Parsers\DefaultCommandEnvironment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Parsers\ICommandEnvironment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Parsers\Matrices\MatrixCommandParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Parsers\Matrices\MatrixInternalEnvironment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Parsers\Matrices\NextRowCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Parsers\NonRecursiveEnvironment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Parsers\StandardCommands.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SourceSpan.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SymbolMappingNotFoundException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SymbolNotFoundException.cs" />
