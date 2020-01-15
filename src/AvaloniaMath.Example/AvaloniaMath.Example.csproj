@@ -2,6 +2,9 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFrameworks>netcoreapp2.0;net461</TargetFrameworks>
+        <LangVersion>8.0</LangVersion>
+        <DebugType>Full</DebugType>
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
     <ItemGroup>
         <Compile Update="**\*.xaml.cs">
