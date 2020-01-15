@@ -96,7 +96,7 @@ Documentation
 Build and Maintenance Instructions
 ----------------------------------
 
-Build the project using .NET Core SDK 3.1. WPF-Math requires C# 8 and F# 4.7 support. Here's the build and test script:
+Build the project using [.NET Core SDK 3.1][dotnet-core-sdk]. WPF-Math requires C# 8 and F# 4.7 support. Here's the build and test script:
 
 ```console
 $ dotnet build --configuration Release
@@ -141,6 +141,7 @@ We're very grateful to JMathTeX authors for their work and allowing to redistrib
 
 [alex-regueiro]: https://github.com/alexreg
 [appveyor]: https://ci.appveyor.com/project/ForNeVeR/wpf-math/branch/master
+[dotnet-core-sdk]: https://dotnet.microsoft.com/download
 [github]: https://github.com/ForNeVeR/wpf-math
 [jmathtex]: http://jmathtex.sourceforge.net/
 [knuth-license]: http://ctan.org/license/knuth
