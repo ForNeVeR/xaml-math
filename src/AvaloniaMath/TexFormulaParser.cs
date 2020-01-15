@@ -545,14 +545,6 @@ namespace WpfMath
                             AtomAppendMode.Add,
                             new Radical(source, sqrtFormula.RootAtom, degreeFormula?.RootAtom));
                     }
-                /* TODO: What?
-                case "underline":
-                    {
-                        var underlineFormula = this.Parse(ReadElement(value, ref position), formula.TextStyle);
-                        source = value.Segment(start, position - start);
-                        return new UnderlinedAtom(source, underlineFormula.RootAtom);
-                    }
-                */
                 case "color":
                 {
                     var color = ReadColorModelData(value, ref position);
