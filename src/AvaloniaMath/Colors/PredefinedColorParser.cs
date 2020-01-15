@@ -54,7 +54,7 @@ namespace WpfMath.Colors
             if (alpha == null)
                 return null;
 
-            color = new Color(alpha.Value, color.B, color.G, color.R);
+            color = Color.FromArgb(alpha.Value, color.R, color.G, color.B);
             return color;
         }
 
