@@ -1,0 +1,832 @@
+{
+  "Children": [
+    {
+      "Children": [
+        {
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "TotalHeight": 0.0,
+          "TotalWidth": 0.175,
+          "Italic": 0.0,
+          "Width": 0.175,
+          "Height": 0.0,
+          "Depth": 0.0,
+          "Shift": 0.0
+        },
+        {
+          "Children": [
+            {
+              "Children": [],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "TotalHeight": 0.175,
+              "TotalWidth": 0.0,
+              "Italic": 0.0,
+              "Width": 0.0,
+              "Height": 0.175,
+              "Depth": 0.0,
+              "Shift": 0.35
+            },
+            {
+              "Character": {
+                "Character": "1",
+                "Font": "pack://application:,,,/WpfMath;component/Fonts/cmr10.ttf",
+                "Size": 1.0,
+                "Metrics": {
+                  "Width": 0.500002,
+                  "Height": 0.644444,
+                  "Depth": 0.0,
+                  "Italic": 0.0
+                },
+                "FontId": 1
+              },
+              "Children": [],
+              "Source": {
+                "Start": 9,
+                "End": 10,
+                "Length": 1,
+                "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }"
+              },
+              "Foreground": null,
+              "Background": null,
+              "TotalHeight": 0.644444,
+              "TotalWidth": 0.500002,
+              "Italic": 0.0,
+              "Width": 0.500002,
+              "Height": 0.644444,
+              "Depth": 0.0,
+              "Shift": 0.0
+            },
+            {
+              "Children": [],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "TotalHeight": 0.175,
+              "TotalWidth": 0.0,
+              "Italic": 0.0,
+              "Width": 0.0,
+              "Height": 0.175,
+              "Depth": 0.0,
+              "Shift": 0.35
+            }
+          ],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "TotalHeight": 0.994444,
+          "TotalWidth": 0.500002,
+          "Italic": 0.0,
+          "Width": 0.500002,
+          "Height": 0.994444,
+          "Depth": 0.0,
+          "Shift": 0.0
+        },
+        {
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "TotalHeight": 0.0,
+          "TotalWidth": 0.175,
+          "Italic": 0.0,
+          "Width": 0.175,
+          "Height": 0.0,
+          "Depth": 0.0,
+          "Shift": 0.0
+        },
+        {
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "TotalHeight": 0.0,
+          "TotalWidth": 0.35,
+          "Italic": 0.0,
+          "Width": 0.35,
+          "Height": 0.0,
+          "Depth": 0.0,
+          "Shift": 0.0
+        },
+        {
+          "Children": [
+            {
+              "Children": [],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "TotalHeight": 0.175,
+              "TotalWidth": 0.0,
+              "Italic": 0.0,
+              "Width": 0.0,
+              "Height": 0.175,
+              "Depth": 0.0,
+              "Shift": 0.35
+            },
+            {
+              "Character": {
+                "Character": "2",
+                "Font": "pack://application:,,,/WpfMath;component/Fonts/cmr10.ttf",
+                "Size": 1.0,
+                "Metrics": {
+                  "Width": 0.500002,
+                  "Height": 0.644444,
+                  "Depth": 0.0,
+                  "Italic": 0.0
+                },
+                "FontId": 1
+              },
+              "Children": [],
+              "Source": {
+                "Start": 13,
+                "End": 14,
+                "Length": 1,
+                "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }"
+              },
+              "Foreground": null,
+              "Background": null,
+              "TotalHeight": 0.644444,
+              "TotalWidth": 0.500002,
+              "Italic": 0.0,
+              "Width": 0.500002,
+              "Height": 0.644444,
+              "Depth": 0.0,
+              "Shift": 0.0
+            },
+            {
+              "Children": [],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "TotalHeight": 0.175,
+              "TotalWidth": 0.0,
+              "Italic": 0.0,
+              "Width": 0.0,
+              "Height": 0.175,
+              "Depth": 0.0,
+              "Shift": 0.35
+            }
+          ],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "TotalHeight": 0.994444,
+          "TotalWidth": 0.500002,
+          "Italic": 0.0,
+          "Width": 0.500002,
+          "Height": 0.994444,
+          "Depth": 0.0,
+          "Shift": 0.0
+        },
+        {
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "TotalHeight": 0.0,
+          "TotalWidth": 0.35,
+          "Italic": 0.0,
+          "Width": 0.35,
+          "Height": 0.0,
+          "Depth": 0.0,
+          "Shift": 0.0
+        },
+        {
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "TotalHeight": 0.0,
+          "TotalWidth": 0.175,
+          "Italic": 0.0,
+          "Width": 0.175,
+          "Height": 0.0,
+          "Depth": 0.0,
+          "Shift": 0.0
+        },
+        {
+          "Children": [
+            {
+              "Children": [],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "TotalHeight": 0.175,
+              "TotalWidth": 0.0,
+              "Italic": 0.0,
+              "Width": 0.0,
+              "Height": 0.175,
+              "Depth": 0.0,
+              "Shift": 0.35
+            },
+            {
+              "Character": {
+                "Character": "3",
+                "Font": "pack://application:,,,/WpfMath;component/Fonts/cmr10.ttf",
+                "Size": 1.0,
+                "Metrics": {
+                  "Width": 0.500002,
+                  "Height": 0.644444,
+                  "Depth": 0.0,
+                  "Italic": 0.0
+                },
+                "FontId": 1
+              },
+              "Children": [],
+              "Source": {
+                "Start": 17,
+                "End": 18,
+                "Length": 1,
+                "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }"
+              },
+              "Foreground": null,
+              "Background": null,
+              "TotalHeight": 0.644444,
+              "TotalWidth": 0.500002,
+              "Italic": 0.0,
+              "Width": 0.500002,
+              "Height": 0.644444,
+              "Depth": 0.0,
+              "Shift": 0.0
+            },
+            {
+              "Children": [],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "TotalHeight": 0.175,
+              "TotalWidth": 0.0,
+              "Italic": 0.0,
+              "Width": 0.0,
+              "Height": 0.175,
+              "Depth": 0.0,
+              "Shift": 0.35
+            }
+          ],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "TotalHeight": 0.994444,
+          "TotalWidth": 0.500002,
+          "Italic": 0.0,
+          "Width": 0.500002,
+          "Height": 0.994444,
+          "Depth": 0.0,
+          "Shift": 0.0
+        },
+        {
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "TotalHeight": 0.0,
+          "TotalWidth": 0.175,
+          "Italic": 0.0,
+          "Width": 0.175,
+          "Height": 0.0,
+          "Depth": 0.0,
+          "Shift": 0.0
+        }
+      ],
+      "Source": null,
+      "Foreground": null,
+      "Background": null,
+      "TotalHeight": 0.994444,
+      "TotalWidth": 2.900006,
+      "Italic": 0.0,
+      "Width": 2.900006,
+      "Height": 0.994444,
+      "Depth": 0.0,
+      "Shift": 0.0
+    },
+    {
+      "Children": [
+        {
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "TotalHeight": 0.0,
+          "TotalWidth": 0.175,
+          "Italic": 0.0,
+          "Width": 0.175,
+          "Height": 0.0,
+          "Depth": 0.0,
+          "Shift": 0.0
+        },
+        {
+          "Children": [
+            {
+              "Children": [],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "TotalHeight": 0.847222,
+              "TotalWidth": 0.0,
+              "Italic": 0.0,
+              "Width": 0.0,
+              "Height": 0.847222,
+              "Depth": 0.0,
+              "Shift": 0.35
+            },
+            {
+              "Character": {
+                "Character": "4",
+                "Font": "pack://application:,,,/WpfMath;component/Fonts/cmr10.ttf",
+                "Size": 1.0,
+                "Metrics": {
+                  "Width": 0.500002,
+                  "Height": 0.644444,
+                  "Depth": 0.0,
+                  "Italic": 0.0
+                },
+                "FontId": 1
+              },
+              "Children": [],
+              "Source": {
+                "Start": 22,
+                "End": 23,
+                "Length": 1,
+                "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }"
+              },
+              "Foreground": null,
+              "Background": null,
+              "TotalHeight": 0.644444,
+              "TotalWidth": 0.500002,
+              "Italic": 0.0,
+              "Width": 0.500002,
+              "Height": 0.644444,
+              "Depth": 0.0,
+              "Shift": 0.0
+            },
+            {
+              "Children": [],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "TotalHeight": 0.847222,
+              "TotalWidth": 0.0,
+              "Italic": 0.0,
+              "Width": 0.0,
+              "Height": 0.847222,
+              "Depth": 0.0,
+              "Shift": 0.35
+            }
+          ],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "TotalHeight": 2.338888,
+          "TotalWidth": 0.500002,
+          "Italic": 0.0,
+          "Width": 0.500002,
+          "Height": 2.338888,
+          "Depth": 0.0,
+          "Shift": 0.0
+        },
+        {
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "TotalHeight": 0.0,
+          "TotalWidth": 0.175,
+          "Italic": 0.0,
+          "Width": 0.175,
+          "Height": 0.0,
+          "Depth": 0.0,
+          "Shift": 0.0
+        },
+        {
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "TotalHeight": 0.0,
+          "TotalWidth": 0.175,
+          "Italic": 0.0,
+          "Width": 0.175,
+          "Height": 0.0,
+          "Depth": 0.0,
+          "Shift": 0.0
+        },
+        {
+          "Children": [
+            {
+              "Children": [],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "TotalHeight": 0.175,
+              "TotalWidth": 0.0,
+              "Italic": 0.0,
+              "Width": 0.0,
+              "Height": 0.175,
+              "Depth": 0.0,
+              "Shift": 0.35
+            },
+            {
+              "Children": [
+                {
+                  "Children": [
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "TotalHeight": 0.0,
+                      "TotalWidth": 0.175,
+                      "Italic": 0.0,
+                      "Width": 0.175,
+                      "Height": 0.0,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    },
+                    {
+                      "Children": [
+                        {
+                          "Children": [],
+                          "Source": null,
+                          "Foreground": null,
+                          "Background": null,
+                          "TotalHeight": 0.175,
+                          "TotalWidth": 0.0,
+                          "Italic": 0.0,
+                          "Width": 0.0,
+                          "Height": 0.175,
+                          "Depth": 0.0,
+                          "Shift": 0.35
+                        },
+                        {
+                          "Character": {
+                            "Character": "5",
+                            "Font": "pack://application:,,,/WpfMath;component/Fonts/cmr10.ttf",
+                            "Size": 1.0,
+                            "Metrics": {
+                              "Width": 0.500002,
+                              "Height": 0.644444,
+                              "Depth": 0.0,
+                              "Italic": 0.0
+                            },
+                            "FontId": 1
+                          },
+                          "Children": [],
+                          "Source": {
+                            "Start": 36,
+                            "End": 37,
+                            "Length": 1,
+                            "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }"
+                          },
+                          "Foreground": null,
+                          "Background": null,
+                          "TotalHeight": 0.644444,
+                          "TotalWidth": 0.500002,
+                          "Italic": 0.0,
+                          "Width": 0.500002,
+                          "Height": 0.644444,
+                          "Depth": 0.0,
+                          "Shift": 0.0
+                        },
+                        {
+                          "Children": [],
+                          "Source": null,
+                          "Foreground": null,
+                          "Background": null,
+                          "TotalHeight": 0.175,
+                          "TotalWidth": 0.0,
+                          "Italic": 0.0,
+                          "Width": 0.0,
+                          "Height": 0.175,
+                          "Depth": 0.0,
+                          "Shift": 0.35
+                        }
+                      ],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "TotalHeight": 0.994444,
+                      "TotalWidth": 0.500002,
+                      "Italic": 0.0,
+                      "Width": 0.500002,
+                      "Height": 0.994444,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    },
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "TotalHeight": 0.0,
+                      "TotalWidth": 0.175,
+                      "Italic": 0.0,
+                      "Width": 0.175,
+                      "Height": 0.0,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    }
+                  ],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "TotalHeight": 0.994444,
+                  "TotalWidth": 0.850002,
+                  "Italic": 0.0,
+                  "Width": 0.850002,
+                  "Height": 0.994444,
+                  "Depth": 0.0,
+                  "Shift": 0.0
+                },
+                {
+                  "Children": [
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "TotalHeight": 0.0,
+                      "TotalWidth": 0.175,
+                      "Italic": 0.0,
+                      "Width": 0.175,
+                      "Height": 0.0,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    },
+                    {
+                      "Children": [
+                        {
+                          "Children": [],
+                          "Source": null,
+                          "Foreground": null,
+                          "Background": null,
+                          "TotalHeight": 0.175,
+                          "TotalWidth": 0.0,
+                          "Italic": 0.0,
+                          "Width": 0.0,
+                          "Height": 0.175,
+                          "Depth": 0.0,
+                          "Shift": 0.35
+                        },
+                        {
+                          "Character": {
+                            "Character": "6",
+                            "Font": "pack://application:,,,/WpfMath;component/Fonts/cmr10.ttf",
+                            "Size": 1.0,
+                            "Metrics": {
+                              "Width": 0.500002,
+                              "Height": 0.644444,
+                              "Depth": 0.0,
+                              "Italic": 0.0
+                            },
+                            "FontId": 1
+                          },
+                          "Children": [],
+                          "Source": {
+                            "Start": 41,
+                            "End": 42,
+                            "Length": 1,
+                            "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }"
+                          },
+                          "Foreground": null,
+                          "Background": null,
+                          "TotalHeight": 0.644444,
+                          "TotalWidth": 0.500002,
+                          "Italic": 0.0,
+                          "Width": 0.500002,
+                          "Height": 0.644444,
+                          "Depth": 0.0,
+                          "Shift": 0.0
+                        },
+                        {
+                          "Children": [],
+                          "Source": null,
+                          "Foreground": null,
+                          "Background": null,
+                          "TotalHeight": 0.175,
+                          "TotalWidth": 0.0,
+                          "Italic": 0.0,
+                          "Width": 0.0,
+                          "Height": 0.175,
+                          "Depth": 0.0,
+                          "Shift": 0.35
+                        }
+                      ],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "TotalHeight": 0.994444,
+                      "TotalWidth": 0.500002,
+                      "Italic": 0.0,
+                      "Width": 0.500002,
+                      "Height": 0.994444,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    },
+                    {
+                      "Children": [],
+                      "Source": null,
+                      "Foreground": null,
+                      "Background": null,
+                      "TotalHeight": 0.0,
+                      "TotalWidth": 0.175,
+                      "Italic": 0.0,
+                      "Width": 0.175,
+                      "Height": 0.0,
+                      "Depth": 0.0,
+                      "Shift": 0.0
+                    }
+                  ],
+                  "Source": null,
+                  "Foreground": null,
+                  "Background": null,
+                  "TotalHeight": 0.994444,
+                  "TotalWidth": 0.850002,
+                  "Italic": 0.0,
+                  "Width": 0.850002,
+                  "Height": 0.994444,
+                  "Depth": 0.0,
+                  "Shift": 0.0
+                }
+              ],
+              "Source": {
+                "Start": 28,
+                "End": 44,
+                "Length": 16,
+                "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }"
+              },
+              "Foreground": null,
+              "Background": null,
+              "TotalHeight": 1.988888,
+              "TotalWidth": 0.850002,
+              "Italic": 0.0,
+              "Width": 0.850002,
+              "Height": 1.244444,
+              "Depth": 0.744444,
+              "Shift": 0.0
+            },
+            {
+              "Children": [],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "TotalHeight": 0.175,
+              "TotalWidth": 0.0,
+              "Italic": 0.0,
+              "Width": 0.0,
+              "Height": 0.175,
+              "Depth": 0.0,
+              "Shift": 0.35
+            }
+          ],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "TotalHeight": 2.338888,
+          "TotalWidth": 0.850002,
+          "Italic": 0.0,
+          "Width": 0.850002,
+          "Height": 2.338888,
+          "Depth": 0.0,
+          "Shift": 0.0
+        },
+        {
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "TotalHeight": 0.0,
+          "TotalWidth": 0.175,
+          "Italic": 0.0,
+          "Width": 0.175,
+          "Height": 0.0,
+          "Depth": 0.0,
+          "Shift": 0.0
+        },
+        {
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "TotalHeight": 0.0,
+          "TotalWidth": 0.175,
+          "Italic": 0.0,
+          "Width": 0.175,
+          "Height": 0.0,
+          "Depth": 0.0,
+          "Shift": 0.0
+        },
+        {
+          "Children": [
+            {
+              "Children": [],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "TotalHeight": 0.847222,
+              "TotalWidth": 0.0,
+              "Italic": 0.0,
+              "Width": 0.0,
+              "Height": 0.847222,
+              "Depth": 0.0,
+              "Shift": 0.35
+            },
+            {
+              "Character": {
+                "Character": "7",
+                "Font": "pack://application:,,,/WpfMath;component/Fonts/cmr10.ttf",
+                "Size": 1.0,
+                "Metrics": {
+                  "Width": 0.500002,
+                  "Height": 0.644444,
+                  "Depth": 0.0,
+                  "Italic": 0.0
+                },
+                "FontId": 1
+              },
+              "Children": [],
+              "Source": {
+                "Start": 48,
+                "End": 49,
+                "Length": 1,
+                "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }"
+              },
+              "Foreground": null,
+              "Background": null,
+              "TotalHeight": 0.644444,
+              "TotalWidth": 0.500002,
+              "Italic": 0.0,
+              "Width": 0.500002,
+              "Height": 0.644444,
+              "Depth": 0.0,
+              "Shift": 0.0
+            },
+            {
+              "Children": [],
+              "Source": null,
+              "Foreground": null,
+              "Background": null,
+              "TotalHeight": 0.847222,
+              "TotalWidth": 0.0,
+              "Italic": 0.0,
+              "Width": 0.0,
+              "Height": 0.847222,
+              "Depth": 0.0,
+              "Shift": 0.35
+            }
+          ],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "TotalHeight": 2.338888,
+          "TotalWidth": 0.500002,
+          "Italic": 0.0,
+          "Width": 0.500002,
+          "Height": 2.338888,
+          "Depth": 0.0,
+          "Shift": 0.0
+        },
+        {
+          "Children": [],
+          "Source": null,
+          "Foreground": null,
+          "Background": null,
+          "TotalHeight": 0.0,
+          "TotalWidth": 0.175,
+          "Italic": 0.0,
+          "Width": 0.175,
+          "Height": 0.0,
+          "Depth": 0.0,
+          "Shift": 0.0
+        }
+      ],
+      "Source": null,
+      "Foreground": null,
+      "Background": null,
+      "TotalHeight": 2.338888,
+      "TotalWidth": 2.900006,
+      "Italic": 0.0,
+      "Width": 2.900006,
+      "Height": 2.338888,
+      "Depth": 0.0,
+      "Shift": 0.0
+    }
+  ],
+  "Source": {
+    "Start": 1,
+    "End": 51,
+    "Length": 50,
+    "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }"
+  },
+  "Foreground": null,
+  "Background": null,
+  "TotalHeight": 3.333332,
+  "TotalWidth": 2.900006,
+  "Italic": 0.0,
+  "Width": 2.900006,
+  "Height": 1.916666,
+  "Depth": 1.416666,
+  "Shift": 0.0
+}

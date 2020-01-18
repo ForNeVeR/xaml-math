@@ -10,7 +10,7 @@
 
     <Grid RowDefinitions="auto,auto,*,100,200">
     
-        <TextBox Name="formula" Text="L = \int_a^b \sqrt[4]{ \left| \sum_{i,j=1}^ng_{ij}\left(\gamma(t)\right) \left[\frac{d}{dt}x^i\circ\gamma(t) \right] \left{\frac{d}{dt}x^j\circ\gamma(t) \right} \right|}dt"/>
+        <TextBox Name="formula" Text="L = \int_a^b \sqrt[4]{ \left| \sum_{i,j=1}^ng_{ij}\left(\gamma(t)\right) \left[\frac{d}{dt}x^i\circ\gamma(t) \right] \left\{ \frac{d}{dt}x^j\circ\gamma(t) \right\} \right|}dt"/>
         <Slider Grid.Row="1" Minimum="1" Maximum="100" Value="20" Name="zoom"/>
 
         <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto">

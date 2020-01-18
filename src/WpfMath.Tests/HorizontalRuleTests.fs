@@ -14,7 +14,7 @@ type HorizontalRuleTests() =
     static do Utils.initializeFontResourceLoading()
 
     [<Fact>]
-    member __.``HorizontalRule rendering calls to RenderRect``() =
+    member _.``HorizontalRule rendering calls to RenderRect``() =
         let font = DefaultTexFont 20.0
         let environment = TexEnvironment(TexStyle.Display, font, font)
         let x = 0.5

@@ -1,4 +1,4 @@
-﻿using WpfMath.Rendering;
+using WpfMath.Rendering;
 using WpfMath.Rendering.Transformations;
 
 namespace WpfMath.Boxes

@@ -1,4 +1,4 @@
-﻿namespace WpfMath.Exceptions
+namespace WpfMath.Exceptions
 {
     public class TexNotSupportedException : TexException
     {

@@ -22,13 +22,13 @@ type OverUnderBoxTests() =
     let overUnderBox = OverUnderBox(baseBox, delimiterBox, scriptBox, 1.0, true)
 
     [<Fact>]
-    member __.``OverUnderBox rendering calls to RenderElement for base and script``() =
+    member _.``OverUnderBox rendering calls to RenderElement for base and script``() =
         overUnderBox.RenderTo(mockedRenderer, x, y)
         Mock.Verify(<@ mockedRenderer.RenderElement(baseBox, x, any()) @>, once)
         Mock.Verify(<@ mockedRenderer.RenderTransformed(delimiterBox, any(), any(), any()) @>, once)
         Mock.Verify(<@ mockedRenderer.RenderElement(scriptBox, x, any()) @>, once)
 
     [<Fact>]
-    member __.``OverUnderBox rendering calls to RenderTransformed for delimiter``() =
+    member _.``OverUnderBox rendering calls to RenderTransformed for delimiter``() =
         overUnderBox.RenderTo(mockedRenderer, x, y)
         Mock.Verify(<@ mockedRenderer.RenderTransformed(delimiterBox, any(), any(), any()) @>, once)

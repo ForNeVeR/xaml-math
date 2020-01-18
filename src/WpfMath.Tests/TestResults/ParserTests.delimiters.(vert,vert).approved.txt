@@ -1,0 +1,49 @@
+{
+  "TextStyle": null,
+  "RootAtom": {
+    "BaseAtom": {
+      "Character": "a",
+      "TextStyle": null,
+      "IsDefaultTextStyle": true,
+      "IsTextSymbol": false,
+      "Type": "Ordinary",
+      "Source": {
+        "Start": 11,
+        "End": 12,
+        "Length": 1,
+        "Source": "\\left\\vert a\\right\\vert"
+      }
+    },
+    "LeftDelimeter": {
+      "IsDelimeter": true,
+      "Name": "vert",
+      "IsTextSymbol": false,
+      "Type": "Ordinary",
+      "Source": {
+        "Start": 1,
+        "End": 10,
+        "Length": 9,
+        "Source": "\\left\\vert a\\right\\vert"
+      }
+    },
+    "RightDelimeter": {
+      "IsDelimeter": true,
+      "Name": "vert",
+      "IsTextSymbol": false,
+      "Type": "Ordinary",
+      "Source": {
+        "Start": 13,
+        "End": 23,
+        "Length": 10,
+        "Source": "\\left\\vert a\\right\\vert"
+      }
+    },
+    "Type": "Ordinary",
+    "Source": {
+      "Start": 1,
+      "End": 23,
+      "Length": 22,
+      "Source": "\\left\\vert a\\right\\vert"
+    }
+  }
+}

@@ -1,6 +1,38 @@
 Release Notes
 =============
 
+## 0.8.0 (2020-01-03)
+
+New features:
+
+- [#165: Extended color support for \color and \colorbox][issue-165], see [the documentation][docs.colors]
+- [#174: \binom command][issue-174]
+- [#209: WPF support on .NET Core 3.0][issue-209]
+- [#226: Add TFM into nuspec][issue-226]
+
+Fixed issues:
+
+- [#128: \colorbox renders radical index invisible][issue-128]
+- [#158: \color{red} crashes parser][issue-158]
+- [#203: `\colorbox{red}{}` crashes the parser][issue-203]
+- [#212: `\mathrm{}` shouldn't throw exn][pull-212]
+
+## 0.7.0 (2019-08-24)
+
+Breaking changes:
+
+- [#198: Migrate to .NET 4.5.2][issue-198]
+
+Fixed issues:
+
+- [#141: _ doesn't render inside \text][issue-141]
+- [#171: Make \lbrack and \lbrack commands for parentheses][issue-171]
+- [#172: NullReferenceException on some types of markup][pull-172]
+
+New features:
+
+- [#100: Support for matrix commands][issue-100]
+
 ## 0.6.0 (2018-11-19)
 
 Fixed issues:
@@ -87,6 +119,8 @@ The most interesting ones are:
 
 This was the initial published version. It consisted entirely of the original code from the Launchpad projectsite.
 
+[docs.colors]: docs/colors.md
+
 [commit-14c303d]: https://github.com/ForNeVeR/wpf-math/commit/14c303d30eba735af4faa5e72e149c60add00293
 [issue-14]: https://github.com/ForNeVeR/wpf-math/issues/14
 [issue-50]: https://github.com/ForNeVeR/wpf-math/issues/50
@@ -97,11 +131,22 @@ This was the initial published version. It consisted entirely of the original co
 [issue-88]: https://github.com/ForNeVeR/wpf-math/issues/84
 [issue-91]: https://github.com/ForNeVeR/wpf-math/issues/91
 [issue-92]: https://github.com/ForNeVeR/wpf-math/issues/92
+[issue-100]: https://github.com/ForNeVeR/wpf-math/issues/100
 [issue-104]: https://github.com/ForNeVeR/wpf-math/issues/104
 [issue-115]: https://github.com/ForNeVeR/wpf-math/issues/115
 [issue-119]: https://github.com/ForNeVeR/wpf-math/issues/119
+[issue-128]: https://github.com/ForNeVeR/wpf-math/issues/128
 [issue-129]: https://github.com/ForNeVeR/wpf-math/issues/129
+[issue-141]: https://github.com/ForNeVeR/wpf-math/issues/141
+[issue-158]: https://github.com/ForNeVeR/wpf-math/issues/158
+[issue-165]: https://github.com/ForNeVeR/wpf-math/issues/165
 [issue-168]: https://github.com/ForNeVeR/wpf-math/issues/168
+[issue-171]: https://github.com/ForNeVeR/wpf-math/issues/171
+[issue-174]: https://github.com/ForNeVeR/wpf-math/issues/174
+[issue-198]: https://github.com/ForNeVeR/wpf-math/issues/198
+[issue-203]: https://github.com/ForNeVeR/wpf-math/issues/203
+[issue-209]: https://github.com/ForNeVeR/wpf-math/issues/209
+[issue-226]: https://github.com/ForNeVeR/wpf-math/issues/226
 [pull-53]: https://github.com/ForNeVeR/wpf-math/pull/53
 [pull-54]: https://github.com/ForNeVeR/wpf-math/pull/54
 [pull-58]: https://github.com/ForNeVeR/wpf-math/pull/58
@@ -117,3 +162,5 @@ This was the initial published version. It consisted entirely of the original co
 [pull-133]: https://github.com/ForNeVeR/wpf-math/pull/133
 [pull-145]: https://github.com/ForNeVeR/wpf-math/pull/145
 [pull-152]: https://github.com/ForNeVeR/wpf-math/pull/152
+[pull-172]: https://github.com/ForNeVeR/wpf-math/pull/172
+[pull-212]: https://github.com/ForNeVeR/wpf-math/pull/212

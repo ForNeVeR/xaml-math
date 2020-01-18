@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -44,6 +44,8 @@ namespace WpfMath.Rendering
             nestedRenderer.RenderElement(box, x, y);
             _geometry.Children.Add(group);
         }
+
+        public void FinishRendering() {}
 
         private static void ApplyTransformations(IEnumerable<Transformation> transformations, GeometryGroup geometry)
         {

@@ -90,28 +90,30 @@ You may also pass your own `IElementRenderer` implementation to `TexFormula.Rend
 Documentation
 -------------
 
-- [How to prepare `DefaultTexFont.xml` from the font file][docs-prepare-font]
-
+- [Color support in WPF-Math][docs-colors]
+- [Matrices and Matrix-Like Constructs][docs-matrices]
 - [How to improve blurred formulas][docs-blurred-text-issue]
+
+- [How to prepare `DefaultTexFont.xml` from the font file][docs-prepare-font]
 
 - [Licensing history][docs-licensing-history]
 
-Build Instructions
-------------------
+Build and Maintenance Instructions
+----------------------------------
 
-Build the project using [MSBuild][msbuild] or any compatible environment (e.g. Visual Studio 2017 or Rider). WPF-Math requires C# 7.2 support. Build script:
+Build the project using .NET Core SDK 3.1. WPF-Math requires C# 8 and F# 4.7 support. Here's the build and test script:
 
 ```console
-$ nuget restore
-$ msbuild /p:Configuration=Release
+$ dotnet build --configuration Release
+$ dotnet test
 ```
 
-To run the unit tests, use any xunit-compatible runner (e.g. Visual Studio 2017 or Rider).
+To approve the test results if they differ from the existing ones, execute the `scripts/approve-all.ps1` script using PowerShell or PowerShell Core.
 
-To publish the package, execute the following command with [PowerShell][pwsh]:
+To publish the package, execute the following command:
 
 ```console
-$ pwsh scripts/nuget-pack.ps1
+$ dotnet pack --configuration Release
 ```
 
 History
@@ -133,9 +135,11 @@ We're very grateful to JMathTeX authors for their work and allowing to redistrib
 - Nico Van Cleemput
 - Kurt Vermeulen
 
+[docs-colors]: docs/colors.md
 [docs-prepare-font]: docs/prepare-font.md
 [docs-blurred-text-issue]: docs/blurred-text-issue.md
 [docs-licensing-history]: docs/licensing-history.md
+[docs-matrices]: docs/matrices.md
 [example]: WpfMath.Example/
 [fonts]: src/WpfMath/Fonts/
 [license]: LICENSE.md
@@ -150,7 +154,6 @@ We're very grateful to JMathTeX authors for their work and allowing to redistrib
 [msbuild]: https://github.com/Microsoft/msbuild
 [nuget-avalonia]: https://www.nuget.org/packages/AvaloniaMath/
 [nuget-wpf]: https://www.nuget.org/packages/WpfMath/
-[pwsh]: https://github.com/PowerShell/PowerShell
 
 [badge-appveyor]: https://ci.appveyor.com/api/projects/status/b26m3rpfcgb91gdg/branch/master?svg=true
 [badge-nuget-avalonia]: https://img.shields.io/nuget/v/AvaloniaMath.svg

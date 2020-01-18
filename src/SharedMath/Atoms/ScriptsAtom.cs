@@ -81,7 +81,8 @@ namespace WpfMath.Atoms
                 shiftUp = resultBox.Height - texFont.GetSupDrop(superscriptStyle.Style);
                 shiftDown = resultBox.Depth + texFont.GetSubDrop(subscriptStyle.Style);
             }
-            else if (this.BaseAtom is CharSymbol charSymbol)
+            else if (this.BaseAtom is CharSymbol charSymbol
+                     && charSymbol.IsSupportedByFont(texFont, style))
             {
                 var charFont = charSymbol.GetCharFont(texFont).Value;
                 if (!charSymbol.IsTextSymbol || !texFont.HasSpace(charFont.FontId))

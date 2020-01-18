@@ -1,4 +1,4 @@
-﻿module WpfMath.Tests.Utils
+module WpfMath.Tests.Utils
 
 open System
 open System.Windows
@@ -17,4 +17,3 @@ let initializeFontResourceLoading =
 let assertParseThrows<'ex when 'ex :> exn> formula =
     let parser = TexFormulaParser()
     Assert.Throws<'ex>(Func<obj>(fun () -> upcast parser.Parse(formula)))
-

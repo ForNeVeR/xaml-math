@@ -77,6 +77,9 @@ namespace WpfMath.Rendering
             }
         }
 
+        public void FinishRendering()
+        { }
+
         private void RenderBackground(Box box, double x, double y)
         {
             if (box.Background != null)

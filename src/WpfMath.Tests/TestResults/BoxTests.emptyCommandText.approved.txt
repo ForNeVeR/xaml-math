@@ -1,0 +1,18 @@
+{
+  "Children": [],
+  "Source": {
+    "Start": 1,
+    "End": 7,
+    "Length": 6,
+    "Source": "\\text{}"
+  },
+  "Foreground": null,
+  "Background": null,
+  "TotalHeight": 0.0,
+  "TotalWidth": 0.0,
+  "Italic": 0.0,
+  "Width": 0.0,
+  "Height": 0.0,
+  "Depth": 0.0,
+  "Shift": 0.0
+}

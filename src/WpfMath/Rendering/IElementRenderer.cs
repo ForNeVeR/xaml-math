@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows;
 using System.Windows.Media;
 using WpfMath.Boxes;
@@ -38,5 +38,15 @@ namespace WpfMath.Rendering
         /// <param name="x">An X coordinate of the top left corner.</param>
         /// <param name="y">An Y coordinate of the top left corner.</param>
         void RenderTransformed(Box box, Transformation[] transforms, double x, double y);
+
+        /// <summary>
+        /// Finalize the rendered image. Should always be called before using the rendering results. Should only be
+        /// called once per context instance.
+        /// </summary>
+        /// <remarks>
+        /// Required for some of the renderers to perform the final work on the image. E.g. the WPF renderer will merge
+        /// the background and the foreground image layers in this method.
+        /// </remarks>
+        void FinishRendering();
     }
 }
