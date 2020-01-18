@@ -77,18 +77,6 @@ namespace WpfMath
 
         private static void Initialize()
         {
-            /* TODO: What?
-            //
-            // If start application isn't WPF, pack isn't registered by defaultTexFontParser
-            //
-            if (Application.ResourceAssembly == null)
-            {
-                Application.ResourceAssembly = Assembly.GetExecutingAssembly();
-                if (!UriParser.IsKnownScheme("pack"))
-                    UriParser.Register(new GenericUriParser(GenericUriParserOptions.GenericAuthority), "pack", -1);
-            }
-            */
-
             var formulaSettingsParser = new TexPredefinedFormulaSettingsParser();
             symbols = formulaSettingsParser.GetSymbolMappings();
             delimeters = formulaSettingsParser.GetDelimiterMappings();
