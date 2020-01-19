@@ -169,7 +169,7 @@ namespace WpfMath
                 }
                 else
                 {
-                    formula = new TexFormula();
+                    formula = new TexFormula { Source = source };
                 }
 
                 this.SharedCacheFormulas.Add(name, formula);

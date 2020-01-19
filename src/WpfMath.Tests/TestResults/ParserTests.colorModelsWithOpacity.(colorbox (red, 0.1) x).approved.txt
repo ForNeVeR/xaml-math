@@ -14,7 +14,8 @@
             "Start": 21,
             "End": 22,
             "Length": 1,
-            "Source": "\\colorbox {red, 0.1} x"
+            "Source": "\\colorbox {red, 0.1} x",
+            "SourceName": "User input"
           }
         }
       ],
@@ -23,7 +24,8 @@
         "Start": 1,
         "End": 22,
         "Length": 21,
-        "Source": "\\colorbox {red, 0.1} x"
+        "Source": "\\colorbox {red, 0.1} x",
+        "SourceName": "User input"
       }
     },
     "Background": "#1AED1B23",
@@ -33,7 +35,15 @@
       "Start": 1,
       "End": 22,
       "Length": 21,
-      "Source": "\\colorbox {red, 0.1} x"
+      "Source": "\\colorbox {red, 0.1} x",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 22,
+    "Length": 22,
+    "Source": "\\colorbox {red, 0.1} x",
+    "SourceName": "User input"
   }
 }

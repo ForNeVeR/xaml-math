@@ -17,7 +17,8 @@
                 "Start": 8,
                 "End": 9,
                 "Length": 1,
-                "Source": "\\mathrm{sin}"
+                "Source": "\\mathrm{sin}",
+                "SourceName": "Predefined formula fragment"
               }
             },
             {
@@ -30,7 +31,8 @@
                 "Start": 9,
                 "End": 10,
                 "Length": 1,
-                "Source": "\\mathrm{sin}"
+                "Source": "\\mathrm{sin}",
+                "SourceName": "Predefined formula fragment"
               }
             },
             {
@@ -43,7 +45,8 @@
                 "Start": 10,
                 "End": 11,
                 "Length": 1,
-                "Source": "\\mathrm{sin}"
+                "Source": "\\mathrm{sin}",
+                "SourceName": "Predefined formula fragment"
               }
             }
           ],
@@ -52,7 +55,8 @@
             "Start": 8,
             "End": 11,
             "Length": 3,
-            "Source": "\\mathrm{sin}"
+            "Source": "\\mathrm{sin}",
+            "SourceName": "Predefined formula fragment"
           }
         },
         "LowerLimitAtom": null,
@@ -66,7 +70,8 @@
             "Start": 6,
             "End": 7,
             "Length": 1,
-            "Source": "\\sin^{n} x"
+            "Source": "\\sin^{n} x",
+            "SourceName": "User input"
           }
         },
         "UseVerticalLimits": false,
@@ -75,7 +80,8 @@
           "Start": 8,
           "End": 9,
           "Length": 1,
-          "Source": "\\sin^{n} x"
+          "Source": "\\sin^{n} x",
+          "SourceName": "User input"
         }
       },
       {
@@ -88,7 +94,8 @@
           "Start": 9,
           "End": 10,
           "Length": 1,
-          "Source": "\\sin^{n} x"
+          "Source": "\\sin^{n} x",
+          "SourceName": "User input"
         }
       }
     ],
@@ -97,7 +104,15 @@
       "Start": 0,
       "End": 10,
       "Length": 10,
-      "Source": "\\sin^{n} x"
+      "Source": "\\sin^{n} x",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 10,
+    "Length": 10,
+    "Source": "\\sin^{n} x",
+    "SourceName": "User input"
   }
 }

@@ -14,7 +14,8 @@
             "Start": 28,
             "End": 29,
             "Length": 1,
-            "Source": "\\colorbox [HTML] {abcdef19} x"
+            "Source": "\\colorbox [HTML] {abcdef19} x",
+            "SourceName": "User input"
           }
         }
       ],
@@ -23,7 +24,8 @@
         "Start": 1,
         "End": 29,
         "Length": 28,
-        "Source": "\\colorbox [HTML] {abcdef19} x"
+        "Source": "\\colorbox [HTML] {abcdef19} x",
+        "SourceName": "User input"
       }
     },
     "Background": "#19000000",
@@ -33,7 +35,15 @@
       "Start": 1,
       "End": 29,
       "Length": 28,
-      "Source": "\\colorbox [HTML] {abcdef19} x"
+      "Source": "\\colorbox [HTML] {abcdef19} x",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 29,
+    "Length": 29,
+    "Source": "\\colorbox [HTML] {abcdef19} x",
+    "SourceName": "User input"
   }
 }

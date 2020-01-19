@@ -4,39 +4,39 @@ namespace WpfMath
 {
     internal class TexFormulaHelper
     {
-        private readonly TexFormulaParser formulaParser;
-        private readonly SourceSpan source;
+        private readonly TexFormulaParser _formulaParser;
+        private readonly SourceSpan _source;
 
         public TexFormulaHelper(TexFormula formula, SourceSpan source)
         {
-            this.formulaParser = new TexFormulaParser();
+            this._formulaParser = new TexFormulaParser();
             this.Formula = formula;
-            this.source = source;
+            this._source = source;
         }
 
         public TexFormula Formula { get; }
 
-        // TODO[F]: Review the cases where the formula gets constructed from this.Formula.RootAtom wrapped in something
-        // (e.g. SetFixedTypes): in these cases, it looks like we should clean the SourceSpan inside of a formula and
-        // set it for the new root atom only?
+        private TexFormula ParseFormula(string source) =>
+            _formulaParser.Parse(new SourceSpan("Predefined formula fragment", source, 0, source.Length));
+
         public void SetFixedTypes(TexAtomType leftType, TexAtomType rightType)
         {
-            this.Formula.RootAtom = new TypedAtom(this.source, this.Formula.RootAtom, leftType, rightType);
+            this.Formula.RootAtom = new TypedAtom(this._source, this.Formula.RootAtom, leftType, rightType);
         }
 
         public void CenterOnAxis()
         {
-            this.Formula.RootAtom = new VerticalCenteredAtom(this.source, this.Formula.RootAtom);
+            this.Formula.RootAtom = new VerticalCenteredAtom(this._source, this.Formula.RootAtom);
         }
 
         public void AddAccent(string formula, string accentName)
         {
-            AddAccent(formulaParser.Parse(formula), accentName);
+            AddAccent(ParseFormula(formula), accentName);
         }
 
         public void AddAccent(TexFormula baseAtom, string accentName)
         {
-            this.Add(new AccentedAtom(null, baseAtom?.RootAtom, accentName));
+            this.Add(new AccentedAtom(_source, baseAtom?.RootAtom, accentName));
         }
 
         public void AddAccent(TexFormula baseAtom, TexFormula accent)
@@ -46,7 +46,7 @@ namespace WpfMath
 
         public void AddEmbraced(string formula, char leftChar, char rightChar)
         {
-            AddEmbraced(formulaParser.Parse(formula), leftChar, rightChar);
+            AddEmbraced(ParseFormula(formula), leftChar, rightChar);
         }
 
         public void AddEmbraced(TexFormula formula, char leftChar, char rightChar)
@@ -57,14 +57,14 @@ namespace WpfMath
 
         public void AddEmbraced(string formula, string leftSymbol, string rightSymbol)
         {
-            AddEmbraced(formulaParser.Parse(formula), leftSymbol, rightSymbol);
+            AddEmbraced(ParseFormula(formula), leftSymbol, rightSymbol);
         }
 
         public void AddEmbraced(TexFormula formula, string leftSymbol, string rightSymbol)
         {
             this.Add(
                 new FencedAtom(
-                    null,
+                    _source,
                     formula?.RootAtom,
                     TexFormulaParser.GetDelimiterSymbol(leftSymbol, null),
                     TexFormulaParser.GetDelimiterSymbol(rightSymbol, null)));
@@ -72,24 +72,24 @@ namespace WpfMath
 
         public void AddFraction(string numerator, string denominator, bool drawLine)
         {
-            AddFraction(formulaParser.Parse(numerator), formulaParser.Parse(denominator), drawLine);
+            AddFraction(ParseFormula(numerator), ParseFormula(denominator), drawLine);
         }
 
         public void AddFraction(string numerator, TexFormula denominator, bool drawLine)
         {
-            AddFraction(formulaParser.Parse(numerator), denominator, drawLine);
+            AddFraction(ParseFormula(numerator), denominator, drawLine);
         }
 
         public void AddFraction(string numerator, string denominator, bool drawLine, TexAlignment numeratorAlignment,
             TexAlignment denominatorAlignment)
         {
-            AddFraction(formulaParser.Parse(numerator), formulaParser.Parse(denominator), drawLine, numeratorAlignment,
+            AddFraction(ParseFormula(numerator), ParseFormula(denominator), drawLine, numeratorAlignment,
                 denominatorAlignment);
         }
 
         public void AddFraction(TexFormula numerator, string denominator, bool drawLine)
         {
-            AddFraction(numerator, formulaParser.Parse(denominator), drawLine);
+            AddFraction(numerator, ParseFormula(denominator), drawLine);
         }
 
         public void AddFraction(TexFormula numerator, TexFormula denominator, bool drawLine)
@@ -112,22 +112,22 @@ namespace WpfMath
 
         public void AddRadical(string baseFormula, string nthRoot)
         {
-            AddRadical(formulaParser.Parse(baseFormula), formulaParser.Parse(nthRoot));
+            AddRadical(ParseFormula(baseFormula), ParseFormula(nthRoot));
         }
 
         public void AddRadical(string baseFormula, TexFormula nthRoot)
         {
-            AddRadical(formulaParser.Parse(baseFormula), nthRoot);
+            AddRadical(ParseFormula(baseFormula), nthRoot);
         }
 
         public void AddRadical(string baseFormula)
         {
-            AddRadical(formulaParser.Parse(baseFormula));
+            AddRadical(ParseFormula(baseFormula));
         }
 
         public void AddRadical(TexFormula baseFormula, string degreeFormula)
         {
-            AddRadical(baseFormula, formulaParser.Parse(degreeFormula));
+            AddRadical(baseFormula, ParseFormula(degreeFormula));
         }
 
         public void AddRadical(TexFormula baseFormula)
@@ -142,20 +142,20 @@ namespace WpfMath
 
         public void AddOperator(string operatorFormula, string lowerLimitFormula, string upperLimitFormula)
         {
-            AddOperator(formulaParser.Parse(operatorFormula), formulaParser.Parse(lowerLimitFormula),
-                formulaParser.Parse(upperLimitFormula));
+            AddOperator(ParseFormula(operatorFormula), ParseFormula(lowerLimitFormula),
+                ParseFormula(upperLimitFormula));
         }
 
         public void AddOperator(string operatorFormula, string lowerLimitFormula, string upperLimitFormula,
             bool useVerticalLimits)
         {
-            AddOperator(formulaParser.Parse(operatorFormula), formulaParser.Parse(lowerLimitFormula),
-                formulaParser.Parse(upperLimitFormula), useVerticalLimits);
+            AddOperator(ParseFormula(operatorFormula), ParseFormula(lowerLimitFormula),
+                ParseFormula(upperLimitFormula), useVerticalLimits);
         }
 
         public void AddOperator(string operatorFormula, bool useVerticalLimits)
         {
-            AddOperator(formulaParser.Parse(operatorFormula), null, null, useVerticalLimits);
+            AddOperator(ParseFormula(operatorFormula), null, null, useVerticalLimits);
         }
 
         public void AddOperator(TexFormula operatorFormula, TexFormula lowerLimitFormula, TexFormula upperLimitFormula)
@@ -185,12 +185,12 @@ namespace WpfMath
 
         public void AddPhantom(string formula)
         {
-            AddPhantom(formulaParser.Parse(formula));
+            AddPhantom(ParseFormula(formula));
         }
 
         public void AddPhantom(string formula, bool useWidth, bool useHeight, bool useDepth)
         {
-            AddPhantom(formulaParser.Parse(formula), useWidth, useHeight, useDepth);
+            AddPhantom(ParseFormula(formula), useWidth, useHeight, useDepth);
         }
 
         public void AddPhantom(TexFormula formula)
@@ -231,29 +231,29 @@ namespace WpfMath
 
         public void Add(string formula)
         {
-            Add(formulaParser.Parse(formula));
+            Add(ParseFormula(formula));
         }
 
         public void Add(TexFormula formula)
         {
-            this.Formula.Add(formula, this.source);
+            this.Formula.Add(formula, this._source);
         }
 
         public void Add(Atom atom)
         {
-            this.Formula.Add(atom, this.source);
+            this.Formula.Add(atom, this._source);
         }
 
         public void PutAccentOver(string accentName)
         {
-            this.Formula.RootAtom = new AccentedAtom(this.source, this.Formula.RootAtom, accentName);
+            this.Formula.RootAtom = new AccentedAtom(this._source, this.Formula.RootAtom, accentName);
         }
 
         public void PutDelimiterOver(TexDelimiter delimiter)
         {
             var name = TexFormulaParser.DelimiterNames[(int)delimiter][(int)TexDelimeterType.Over];
             this.Formula.RootAtom = new OverUnderDelimiter(
-                this.source,
+                this._source,
                 this.Formula.RootAtom,
                 null,
                 SymbolAtom.GetAtom(name, null),
@@ -264,7 +264,7 @@ namespace WpfMath
 
         public void PutDelimiterOver(TexDelimiter delimiter, string superscriptFormula, TexUnit kernUnit, double kern)
         {
-            this.PutDelimiterOver(delimiter, this.formulaParser.Parse(superscriptFormula), kernUnit, kern);
+            this.PutDelimiterOver(delimiter, this.ParseFormula(superscriptFormula), kernUnit, kern);
         }
 
         public void PutDelimiterOver(
@@ -275,7 +275,7 @@ namespace WpfMath
         {
             var name = TexFormulaParser.DelimiterNames[(int)delimiter][(int)TexDelimeterType.Over];
             this.Formula.RootAtom = new OverUnderDelimiter(
-                this.source,
+                this._source,
                 this.Formula.RootAtom,
                 superscriptFormula?.RootAtom,
                 SymbolAtom.GetAtom(name, null),
@@ -288,7 +288,7 @@ namespace WpfMath
         {
             var name = TexFormulaParser.DelimiterNames[(int)delimiter][(int)TexDelimeterType.Under];
             this.Formula.RootAtom = new OverUnderDelimiter(
-                this.source,
+                this._source,
                 this.Formula.RootAtom,
                 null,
                 SymbolAtom.GetAtom(name, null),
@@ -299,14 +299,14 @@ namespace WpfMath
 
         public void PutDelimiterUnder(TexDelimiter delimiter, string subscriptFormula, TexUnit kernUnit, double kern)
         {
-            this.PutDelimiterUnder(delimiter, this.formulaParser.Parse(subscriptFormula), kernUnit, kern);
+            this.PutDelimiterUnder(delimiter, this.ParseFormula(subscriptFormula), kernUnit, kern);
         }
 
         public void PutDelimiterUnder(TexDelimiter delimiter, TexFormula subscriptName, TexUnit kernUnit, double kern)
         {
             var name = TexFormulaParser.DelimiterNames[(int)delimiter][(int)TexDelimeterType.Under];
             this.Formula.RootAtom = new OverUnderDelimiter(
-                this.source,
+                this._source,
                 this.Formula.RootAtom,
                 subscriptName?.RootAtom,
                 SymbolAtom.GetAtom(name, null),
@@ -318,7 +318,7 @@ namespace WpfMath
         public void PutOver(TexFormula overFormula, TexUnit overUnit, double overSpace, bool overScriptSize)
         {
             this.Formula.RootAtom = new UnderOverAtom(
-                this.source,
+                this._source,
                 this.Formula.RootAtom,
                 overFormula?.RootAtom,
                 overUnit,
@@ -329,19 +329,19 @@ namespace WpfMath
 
         public void PutOver(string overFormula, TexUnit overUnit, double overSpace, bool overScriptSize)
         {
-            PutOver(overFormula == null ? null : formulaParser.Parse(overFormula), overUnit, overSpace, overScriptSize);
+            PutOver(overFormula == null ? null : ParseFormula(overFormula), overUnit, overSpace, overScriptSize);
         }
 
         public void PutUnder(string underFormula, TexUnit underUnit, double underSpace, bool underScriptSize)
         {
-            PutUnder(underFormula == null ? null : formulaParser.Parse(underFormula), underUnit, underSpace,
+            PutUnder(underFormula == null ? null : ParseFormula(underFormula), underUnit, underSpace,
                 underScriptSize);
         }
 
         public void PutUnder(TexFormula underFormula, TexUnit underUnit, double underSpace, bool underScriptSize)
         {
             this.Formula.RootAtom = new UnderOverAtom(
-                this.source,
+                this._source,
                 this.Formula.RootAtom,
                 underFormula?.RootAtom,
                 underUnit,
@@ -353,15 +353,15 @@ namespace WpfMath
         public void PutUnderAndOver(string underFormula, TexUnit underUnit, double underSpace, bool underScriptSize,
             string over, TexUnit overUnit, double overSpace, bool overScriptSize)
         {
-            PutUnderAndOver(underFormula == null ? null : formulaParser.Parse(underFormula), underUnit, underSpace,
-                underScriptSize, over == null ? null : formulaParser.Parse(over), overUnit, overSpace, overScriptSize);
+            PutUnderAndOver(underFormula == null ? null : ParseFormula(underFormula), underUnit, underSpace,
+                underScriptSize, over == null ? null : ParseFormula(over), overUnit, overSpace, overScriptSize);
         }
 
         public void PutUnderAndOver(TexFormula underFormula, TexUnit underUnit, double underSpace, bool underScriptSize,
             TexFormula over, TexUnit overUnit, double overSpace, bool overScriptSize)
         {
             this.Formula.RootAtom = new UnderOverAtom(
-                this.source,
+                this._source,
                 this.Formula.RootAtom,
                 underFormula?.RootAtom,
                 underUnit,

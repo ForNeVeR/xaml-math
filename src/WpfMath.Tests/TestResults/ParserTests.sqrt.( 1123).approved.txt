@@ -14,7 +14,8 @@
             "Start": 6,
             "End": 7,
             "Length": 1,
-            "Source": "\\sqrt 1123"
+            "Source": "\\sqrt 1123",
+            "SourceName": "User input"
           }
         },
         "DegreeAtom": null,
@@ -23,7 +24,8 @@
           "Start": 1,
           "End": 7,
           "Length": 6,
-          "Source": "\\sqrt 1123"
+          "Source": "\\sqrt 1123",
+          "SourceName": "User input"
         }
       },
       {
@@ -36,7 +38,8 @@
           "Start": 7,
           "End": 8,
           "Length": 1,
-          "Source": "\\sqrt 1123"
+          "Source": "\\sqrt 1123",
+          "SourceName": "User input"
         }
       },
       {
@@ -49,7 +52,8 @@
           "Start": 8,
           "End": 9,
           "Length": 1,
-          "Source": "\\sqrt 1123"
+          "Source": "\\sqrt 1123",
+          "SourceName": "User input"
         }
       },
       {
@@ -62,7 +66,8 @@
           "Start": 9,
           "End": 10,
           "Length": 1,
-          "Source": "\\sqrt 1123"
+          "Source": "\\sqrt 1123",
+          "SourceName": "User input"
         }
       }
     ],
@@ -71,7 +76,15 @@
       "Start": 0,
       "End": 10,
       "Length": 10,
-      "Source": "\\sqrt 1123"
+      "Source": "\\sqrt 1123",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 10,
+    "Length": 10,
+    "Source": "\\sqrt 1123",
+    "SourceName": "User input"
   }
 }

@@ -18,7 +18,8 @@
         "Start": 1,
         "End": 4,
         "Length": 3,
-        "Source": "\\not\\equals"
+        "Source": "\\not\\equals",
+        "SourceName": "User input"
       },
       "Foreground": null,
       "Background": null,
@@ -63,7 +64,8 @@
         "Start": 5,
         "End": 11,
         "Length": 6,
-        "Source": "\\not\\equals"
+        "Source": "\\not\\equals",
+        "SourceName": "User input"
       },
       "Foreground": null,
       "Background": null,
@@ -80,7 +82,8 @@
     "Start": 4,
     "End": 15,
     "Length": 11,
-    "Source": "\\not\\equals"
+    "Source": "\\not\\equals",
+    "SourceName": "User input"
   },
   "Foreground": null,
   "Background": null,

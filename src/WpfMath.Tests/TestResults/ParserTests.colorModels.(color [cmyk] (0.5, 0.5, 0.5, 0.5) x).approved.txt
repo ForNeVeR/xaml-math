@@ -14,7 +14,8 @@
             "Start": 35,
             "End": 36,
             "Length": 1,
-            "Source": "\\color [cmyk] {0.5, 0.5, 0.5, 0.5} x"
+            "Source": "\\color [cmyk] {0.5, 0.5, 0.5, 0.5} x",
+            "SourceName": "User input"
           }
         }
       ],
@@ -23,7 +24,8 @@
         "Start": 1,
         "End": 36,
         "Length": 35,
-        "Source": "\\color [cmyk] {0.5, 0.5, 0.5, 0.5} x"
+        "Source": "\\color [cmyk] {0.5, 0.5, 0.5, 0.5} x",
+        "SourceName": "User input"
       }
     },
     "Background": null,
@@ -33,7 +35,15 @@
       "Start": 1,
       "End": 36,
       "Length": 35,
-      "Source": "\\color [cmyk] {0.5, 0.5, 0.5, 0.5} x"
+      "Source": "\\color [cmyk] {0.5, 0.5, 0.5, 0.5} x",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 36,
+    "Length": 36,
+    "Source": "\\color [cmyk] {0.5, 0.5, 0.5, 0.5} x",
+    "SourceName": "User input"
   }
 }

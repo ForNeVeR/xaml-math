@@ -13,7 +13,8 @@
           "Start": 0,
           "End": 1,
           "Length": 1,
-          "Source": "2+2"
+          "Source": "2+2",
+          "SourceName": "User input"
         }
       },
       {
@@ -25,7 +26,8 @@
           "Start": 1,
           "End": 2,
           "Length": 1,
-          "Source": "2+2"
+          "Source": "2+2",
+          "SourceName": "User input"
         }
       },
       {
@@ -38,7 +40,8 @@
           "Start": 2,
           "End": 3,
           "Length": 1,
-          "Source": "2+2"
+          "Source": "2+2",
+          "SourceName": "User input"
         }
       }
     ],
@@ -47,7 +50,15 @@
       "Start": 0,
       "End": 3,
       "Length": 3,
-      "Source": "2+2"
+      "Source": "2+2",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 3,
+    "Length": 3,
+    "Source": "2+2",
+    "SourceName": "User input"
   }
 }

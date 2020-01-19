@@ -22,6 +22,8 @@ namespace WpfMath
             set;
         }
 
+        public SourceSpan Source { get; set; }
+
         public TexRenderer GetRenderer(TexStyle style, double scale, string systemTextFontName)
         {
             var mathFont = new DefaultTexFont(scale);

@@ -48,7 +48,8 @@
                 "Start": 9,
                 "End": 10,
                 "Length": 1,
-                "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }"
+                "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }",
+                "SourceName": "User input"
               },
               "Foreground": null,
               "Background": null,
@@ -144,7 +145,8 @@
                 "Start": 13,
                 "End": 14,
                 "Length": 1,
-                "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }"
+                "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }",
+                "SourceName": "User input"
               },
               "Foreground": null,
               "Background": null,
@@ -240,7 +242,8 @@
                 "Start": 17,
                 "End": 18,
                 "Length": 1,
-                "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }"
+                "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }",
+                "SourceName": "User input"
               },
               "Foreground": null,
               "Background": null,
@@ -350,7 +353,8 @@
                 "Start": 22,
                 "End": 23,
                 "Length": 1,
-                "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }"
+                "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }",
+                "SourceName": "User input"
               },
               "Foreground": null,
               "Background": null,
@@ -478,7 +482,8 @@
                             "Start": 36,
                             "End": 37,
                             "Length": 1,
-                            "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }"
+                            "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }",
+                            "SourceName": "User input"
                           },
                           "Foreground": null,
                           "Background": null,
@@ -588,7 +593,8 @@
                             "Start": 41,
                             "End": 42,
                             "Length": 1,
-                            "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }"
+                            "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }",
+                            "SourceName": "User input"
                           },
                           "Foreground": null,
                           "Background": null,
@@ -655,7 +661,8 @@
                 "Start": 28,
                 "End": 44,
                 "Length": 16,
-                "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }"
+                "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }",
+                "SourceName": "User input"
               },
               "Foreground": null,
               "Background": null,
@@ -751,7 +758,8 @@
                 "Start": 48,
                 "End": 49,
                 "Length": 1,
-                "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }"
+                "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }",
+                "SourceName": "User input"
               },
               "Foreground": null,
               "Background": null,
@@ -818,7 +826,8 @@
     "Start": 1,
     "End": 51,
     "Length": 50,
-    "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }"
+    "Source": "\\matrix{ 1 & 2 & 3 \\\\ 4 & {\\matrix{ 5 \\\\ 6 }} & 7 }",
+    "SourceName": "User input"
   },
   "Foreground": null,
   "Background": null,

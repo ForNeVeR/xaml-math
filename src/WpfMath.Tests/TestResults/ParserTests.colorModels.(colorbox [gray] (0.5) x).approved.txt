@@ -14,7 +14,8 @@
             "Start": 23,
             "End": 24,
             "Length": 1,
-            "Source": "\\colorbox [gray] {0.5} x"
+            "Source": "\\colorbox [gray] {0.5} x",
+            "SourceName": "User input"
           }
         }
       ],
@@ -23,7 +24,8 @@
         "Start": 1,
         "End": 24,
         "Length": 23,
-        "Source": "\\colorbox [gray] {0.5} x"
+        "Source": "\\colorbox [gray] {0.5} x",
+        "SourceName": "User input"
       }
     },
     "Background": "#FF808080",
@@ -33,7 +35,15 @@
       "Start": 1,
       "End": 24,
       "Length": 23,
-      "Source": "\\colorbox [gray] {0.5} x"
+      "Source": "\\colorbox [gray] {0.5} x",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 24,
+    "Length": 24,
+    "Source": "\\colorbox [gray] {0.5} x",
+    "SourceName": "User input"
   }
 }

@@ -11,7 +11,8 @@
         "Start": 6,
         "End": 7,
         "Length": 1,
-        "Source": "\\left)a\\right|"
+        "Source": "\\left)a\\right|",
+        "SourceName": "User input"
       }
     },
     "LeftDelimeter": {
@@ -23,7 +24,8 @@
         "Start": 1,
         "End": 6,
         "Length": 5,
-        "Source": "\\left)a\\right|"
+        "Source": "\\left)a\\right|",
+        "SourceName": "User input"
       }
     },
     "RightDelimeter": {
@@ -35,7 +37,8 @@
         "Start": 8,
         "End": 14,
         "Length": 6,
-        "Source": "\\left)a\\right|"
+        "Source": "\\left)a\\right|",
+        "SourceName": "User input"
       }
     },
     "Type": "Ordinary",
@@ -43,7 +46,15 @@
       "Start": 1,
       "End": 14,
       "Length": 13,
-      "Source": "\\left)a\\right|"
+      "Source": "\\left)a\\right|",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 14,
+    "Length": 14,
+    "Source": "\\left)a\\right|",
+    "SourceName": "User input"
   }
 }
