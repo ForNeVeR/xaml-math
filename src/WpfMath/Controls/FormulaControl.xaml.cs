@@ -124,6 +124,7 @@ namespace WpfMath.Controls
             // Render formula to visual.
             var visual = new DrawingVisual();
             var renderer = texFormula.GetRenderer(TexStyle.Display, Scale, SystemTextFontName);
+            var formulaSource = texFormula.RootAtom.Source.Source;
 
             var selectionBrush = SelectionBrush;
             if (selectionBrush != null)
@@ -136,7 +137,7 @@ namespace WpfMath.Controls
                     var box = allBoxes[idx];
                     allBoxes.AddRange(box.Children);
                     var source = box.Source;
-                    if (source != null)
+                    if (source != null && source.Source.Equals(formulaSource))
                     {
                         if (selectionStart < source.Start + source.Length && source.Start < selectionEnd)
                         {
