@@ -14,7 +14,8 @@
             "Start": 34,
             "End": 35,
             "Length": 1,
-            "Source": "\\color [RGBA] {128, 128, 128, 25} x"
+            "Source": "\\color [RGBA] {128, 128, 128, 25} x",
+            "SourceName": "User input"
           }
         }
       ],
@@ -23,7 +24,8 @@
         "Start": 1,
         "End": 35,
         "Length": 34,
-        "Source": "\\color [RGBA] {128, 128, 128, 25} x"
+        "Source": "\\color [RGBA] {128, 128, 128, 25} x",
+        "SourceName": "User input"
       }
     },
     "Background": null,
@@ -33,7 +35,15 @@
       "Start": 1,
       "End": 35,
       "Length": 34,
-      "Source": "\\color [RGBA] {128, 128, 128, 25} x"
+      "Source": "\\color [RGBA] {128, 128, 128, 25} x",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 35,
+    "Length": 35,
+    "Source": "\\color [RGBA] {128, 128, 128, 25} x",
+    "SourceName": "User input"
   }
 }

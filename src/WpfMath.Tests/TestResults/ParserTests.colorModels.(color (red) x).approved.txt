@@ -14,7 +14,8 @@
             "Start": 13,
             "End": 14,
             "Length": 1,
-            "Source": "\\color {red} x"
+            "Source": "\\color {red} x",
+            "SourceName": "User input"
           }
         }
       ],
@@ -23,7 +24,8 @@
         "Start": 1,
         "End": 14,
         "Length": 13,
-        "Source": "\\color {red} x"
+        "Source": "\\color {red} x",
+        "SourceName": "User input"
       }
     },
     "Background": null,
@@ -33,7 +35,15 @@
       "Start": 1,
       "End": 14,
       "Length": 13,
-      "Source": "\\color {red} x"
+      "Source": "\\color {red} x",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 14,
+    "Length": 14,
+    "Source": "\\color {red} x",
+    "SourceName": "User input"
   }
 }

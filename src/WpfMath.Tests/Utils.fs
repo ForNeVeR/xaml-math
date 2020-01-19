@@ -14,6 +14,6 @@ let initializeFontResourceLoading =
             if not(UriParser.IsKnownScheme "pack")
             then new Application() |> ignore)
 
-let assertParseThrows<'ex when 'ex :> exn> formula =
+let assertParseThrows<'ex when 'ex :> exn>(formula: string): 'ex =
     let parser = TexFormulaParser()
-    Assert.Throws<'ex>(Func<obj>(fun () -> upcast parser.Parse(formula)))
+    Assert.Throws<'ex>(Func<obj>(fun () -> upcast parser.Parse formula))

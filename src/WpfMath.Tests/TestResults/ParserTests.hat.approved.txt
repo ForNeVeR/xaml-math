@@ -12,7 +12,8 @@
           "Start": 6,
           "End": 7,
           "Length": 1,
-          "Source": "{\\hat T}"
+          "Source": "{\\hat T}",
+          "SourceName": "User input"
         }
       },
       "AccentAtom": {
@@ -23,11 +24,30 @@
         "Source": null
       },
       "Type": "Ordinary",
-      "Source": null
+      "Source": {
+        "Start": 0,
+        "End": 5,
+        "Length": 5,
+        "Source": "{\\hat T}",
+        "SourceName": "User input"
+      }
     },
     "LeftType": "Ordinary",
     "RightType": "Ordinary",
     "Type": "Ordinary",
-    "Source": null
+    "Source": {
+      "Start": 0,
+      "End": 5,
+      "Length": 5,
+      "Source": "{\\hat T}",
+      "SourceName": "User input"
+    }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 8,
+    "Length": 8,
+    "Source": "{\\hat T}",
+    "SourceName": "User input"
   }
 }

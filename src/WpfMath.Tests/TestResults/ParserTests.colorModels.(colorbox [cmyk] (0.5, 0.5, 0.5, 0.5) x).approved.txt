@@ -14,7 +14,8 @@
             "Start": 38,
             "End": 39,
             "Length": 1,
-            "Source": "\\colorbox [cmyk] {0.5, 0.5, 0.5, 0.5} x"
+            "Source": "\\colorbox [cmyk] {0.5, 0.5, 0.5, 0.5} x",
+            "SourceName": "User input"
           }
         }
       ],
@@ -23,7 +24,8 @@
         "Start": 1,
         "End": 39,
         "Length": 38,
-        "Source": "\\colorbox [cmyk] {0.5, 0.5, 0.5, 0.5} x"
+        "Source": "\\colorbox [cmyk] {0.5, 0.5, 0.5, 0.5} x",
+        "SourceName": "User input"
       }
     },
     "Background": "#FF404040",
@@ -33,7 +35,15 @@
       "Start": 1,
       "End": 39,
       "Length": 38,
-      "Source": "\\colorbox [cmyk] {0.5, 0.5, 0.5, 0.5} x"
+      "Source": "\\colorbox [cmyk] {0.5, 0.5, 0.5, 0.5} x",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 39,
+    "Length": 39,
+    "Source": "\\colorbox [cmyk] {0.5, 0.5, 0.5, 0.5} x",
+    "SourceName": "User input"
   }
 }

@@ -18,7 +18,8 @@
         "Start": 0,
         "End": 1,
         "Length": 1,
-        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}",
+        "SourceName": "User input"
       },
       "Foreground": null,
       "Background": null,
@@ -63,7 +64,8 @@
         "Start": 2,
         "End": 3,
         "Length": 1,
-        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}",
+        "SourceName": "User input"
       },
       "Foreground": null,
       "Background": null,
@@ -182,7 +184,8 @@
                         "Start": 13,
                         "End": 14,
                         "Length": 1,
-                        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}",
+                        "SourceName": "User input"
                       },
                       "Foreground": null,
                       "Background": null,
@@ -280,7 +283,8 @@
                             "Start": 17,
                             "End": 18,
                             "Length": 1,
-                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}",
+                            "SourceName": "User input"
                           },
                           "Foreground": null,
                           "Background": null,
@@ -325,7 +329,8 @@
                             "Start": 18,
                             "End": 19,
                             "Length": 1,
-                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}",
+                            "SourceName": "User input"
                           },
                           "Foreground": null,
                           "Background": null,
@@ -342,7 +347,8 @@
                         "Start": 13,
                         "End": 20,
                         "Length": 7,
-                        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}",
+                        "SourceName": "User input"
                       },
                       "Foreground": null,
                       "Background": null,
@@ -438,7 +444,8 @@
                         "Start": 22,
                         "End": 23,
                         "Length": 1,
-                        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}",
+                        "SourceName": "User input"
                       },
                       "Foreground": null,
                       "Background": null,
@@ -548,7 +555,8 @@
                         "Start": 27,
                         "End": 28,
                         "Length": 1,
-                        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}",
+                        "SourceName": "User input"
                       },
                       "Foreground": null,
                       "Background": null,
@@ -644,7 +652,8 @@
                         "Start": 31,
                         "End": 32,
                         "Length": 1,
-                        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}",
+                        "SourceName": "User input"
                       },
                       "Foreground": null,
                       "Background": null,
@@ -742,7 +751,8 @@
                             "Start": 35,
                             "End": 36,
                             "Length": 1,
-                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}",
+                            "SourceName": "User input"
                           },
                           "Foreground": null,
                           "Background": null,
@@ -787,7 +797,8 @@
                             "Start": 36,
                             "End": 37,
                             "Length": 1,
-                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}",
+                            "SourceName": "User input"
                           },
                           "Foreground": null,
                           "Background": null,
@@ -832,7 +843,8 @@
                             "Start": 38,
                             "End": 39,
                             "Length": 1,
-                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}",
+                            "SourceName": "User input"
                           },
                           "Foreground": null,
                           "Background": null,
@@ -877,7 +889,8 @@
                             "Start": 39,
                             "End": 40,
                             "Length": 1,
-                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}",
+                            "SourceName": "User input"
                           },
                           "Foreground": null,
                           "Background": null,
@@ -924,7 +937,8 @@
                                 "Start": 40,
                                 "End": 41,
                                 "Length": 1,
-                                "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                                "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}",
+                                "SourceName": "User input"
                               },
                               "Foreground": null,
                               "Background": null,
@@ -956,7 +970,8 @@
                                     "Start": 42,
                                     "End": 43,
                                     "Length": 1,
-                                    "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                                    "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}",
+                                    "SourceName": "User input"
                                   },
                                   "Foreground": null,
                                   "Background": null,
@@ -998,7 +1013,8 @@
                             "Start": 28,
                             "End": 30,
                             "Length": 2,
-                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}",
+                            "SourceName": "User input"
                           },
                           "Foreground": null,
                           "Background": null,
@@ -1043,7 +1059,8 @@
                             "Start": 43,
                             "End": 44,
                             "Length": 1,
-                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}",
+                            "SourceName": "User input"
                           },
                           "Foreground": null,
                           "Background": null,
@@ -1088,7 +1105,8 @@
                             "Start": 45,
                             "End": 50,
                             "Length": 5,
-                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}",
+                            "SourceName": "User input"
                           },
                           "Foreground": null,
                           "Background": null,
@@ -1133,7 +1151,8 @@
                             "Start": 50,
                             "End": 51,
                             "Length": 1,
-                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}",
+                            "SourceName": "User input"
                           },
                           "Foreground": null,
                           "Background": null,
@@ -1150,7 +1169,8 @@
                         "Start": 13,
                         "End": 51,
                         "Length": 38,
-                        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+                        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}",
+                        "SourceName": "User input"
                       },
                       "Foreground": null,
                       "Background": null,
@@ -1217,7 +1237,8 @@
             "Start": 5,
             "End": 52,
             "Length": 47,
-            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+            "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}",
+            "SourceName": "User input"
           },
           "Foreground": null,
           "Background": null,
@@ -1274,7 +1295,8 @@
         "Start": 5,
         "End": 52,
         "Length": 47,
-        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+        "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}",
+        "SourceName": "User input"
       },
       "Foreground": null,
       "Background": null,
@@ -1291,7 +1313,8 @@
     "Start": 4,
     "End": 56,
     "Length": 52,
-    "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}"
+    "Source": "x = \\pmatrix{0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)}",
+    "SourceName": "User input"
   },
   "Foreground": null,
   "Background": null,

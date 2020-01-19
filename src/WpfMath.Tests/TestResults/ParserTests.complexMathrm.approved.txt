@@ -17,7 +17,8 @@
                 "Start": 14,
                 "End": 15,
                 "Length": 1,
-                "Source": "\\mathrm{\\left(2+2\\right)} + 1"
+                "Source": "\\mathrm{\\left(2+2\\right)} + 1",
+                "SourceName": "User input"
               }
             },
             {
@@ -29,7 +30,8 @@
                 "Start": 15,
                 "End": 16,
                 "Length": 1,
-                "Source": "\\mathrm{\\left(2+2\\right)} + 1"
+                "Source": "\\mathrm{\\left(2+2\\right)} + 1",
+                "SourceName": "User input"
               }
             },
             {
@@ -42,7 +44,8 @@
                 "Start": 16,
                 "End": 17,
                 "Length": 1,
-                "Source": "\\mathrm{\\left(2+2\\right)} + 1"
+                "Source": "\\mathrm{\\left(2+2\\right)} + 1",
+                "SourceName": "User input"
               }
             }
           ],
@@ -51,7 +54,8 @@
             "Start": 9,
             "End": 33,
             "Length": 24,
-            "Source": "\\mathrm{\\left(2+2\\right)} + 1"
+            "Source": "\\mathrm{\\left(2+2\\right)} + 1",
+            "SourceName": "User input"
           }
         },
         "LeftDelimeter": {
@@ -63,7 +67,8 @@
             "Start": 9,
             "End": 14,
             "Length": 5,
-            "Source": "\\mathrm{\\left(2+2\\right)} + 1"
+            "Source": "\\mathrm{\\left(2+2\\right)} + 1",
+            "SourceName": "User input"
           }
         },
         "RightDelimeter": {
@@ -75,7 +80,8 @@
             "Start": 18,
             "End": 24,
             "Length": 6,
-            "Source": "\\mathrm{\\left(2+2\\right)} + 1"
+            "Source": "\\mathrm{\\left(2+2\\right)} + 1",
+            "SourceName": "User input"
           }
         },
         "Type": "Ordinary",
@@ -83,7 +89,8 @@
           "Start": 9,
           "End": 24,
           "Length": 15,
-          "Source": "\\mathrm{\\left(2+2\\right)} + 1"
+          "Source": "\\mathrm{\\left(2+2\\right)} + 1",
+          "SourceName": "User input"
         }
       },
       {
@@ -95,7 +102,8 @@
           "Start": 26,
           "End": 27,
           "Length": 1,
-          "Source": "\\mathrm{\\left(2+2\\right)} + 1"
+          "Source": "\\mathrm{\\left(2+2\\right)} + 1",
+          "SourceName": "User input"
         }
       },
       {
@@ -108,7 +116,8 @@
           "Start": 28,
           "End": 29,
           "Length": 1,
-          "Source": "\\mathrm{\\left(2+2\\right)} + 1"
+          "Source": "\\mathrm{\\left(2+2\\right)} + 1",
+          "SourceName": "User input"
         }
       }
     ],
@@ -117,7 +126,15 @@
       "Start": 0,
       "End": 29,
       "Length": 29,
-      "Source": "\\mathrm{\\left(2+2\\right)} + 1"
+      "Source": "\\mathrm{\\left(2+2\\right)} + 1",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 29,
+    "Length": 29,
+    "Source": "\\mathrm{\\left(2+2\\right)} + 1",
+    "SourceName": "User input"
   }
 }

@@ -13,7 +13,8 @@
           "Start": 0,
           "End": 1,
           "Length": 1,
-          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+          "SourceName": "User input"
         }
       },
       {
@@ -25,7 +26,8 @@
           "Start": 3,
           "End": 8,
           "Length": 5,
-          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+          "SourceName": "User input"
         }
       },
       {
@@ -38,7 +40,8 @@
           "Start": 9,
           "End": 10,
           "Length": 1,
-          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+          "SourceName": "User input"
         }
       },
       {
@@ -50,7 +53,8 @@
           "Start": 11,
           "End": 12,
           "Length": 1,
-          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+          "SourceName": "User input"
         }
       },
       {
@@ -71,7 +75,8 @@
                         "Start": 28,
                         "End": 29,
                         "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input"
                       }
                     },
                     "SubscriptAtom": {
@@ -84,7 +89,8 @@
                         "Start": 30,
                         "End": 31,
                         "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input"
                       }
                     },
                     "SuperscriptAtom": null,
@@ -93,7 +99,8 @@
                       "Start": 1,
                       "End": 4,
                       "Length": 3,
-                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                      "SourceName": "User input"
                     }
                   },
                   {
@@ -107,7 +114,8 @@
                         "Start": 32,
                         "End": 33,
                         "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input"
                       }
                     },
                     "SubscriptAtom": {
@@ -120,7 +128,8 @@
                         "Start": 34,
                         "End": 35,
                         "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input"
                       }
                     },
                     "SuperscriptAtom": null,
@@ -129,7 +138,8 @@
                       "Start": 5,
                       "End": 8,
                       "Length": 3,
-                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                      "SourceName": "User input"
                     }
                   },
                   {
@@ -141,7 +151,8 @@
                       "Start": 36,
                       "End": 37,
                       "Length": 1,
-                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                      "SourceName": "User input"
                     }
                   },
                   {
@@ -155,7 +166,8 @@
                         "Start": 38,
                         "End": 39,
                         "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input"
                       }
                     },
                     "SubscriptAtom": {
@@ -168,7 +180,8 @@
                         "Start": 40,
                         "End": 41,
                         "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input"
                       }
                     },
                     "SuperscriptAtom": null,
@@ -177,7 +190,8 @@
                       "Start": 11,
                       "End": 14,
                       "Length": 3,
-                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                      "SourceName": "User input"
                     }
                   },
                   {
@@ -191,7 +205,8 @@
                         "Start": 42,
                         "End": 43,
                         "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input"
                       }
                     },
                     "SubscriptAtom": {
@@ -204,7 +219,8 @@
                         "Start": 44,
                         "End": 45,
                         "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input"
                       }
                     },
                     "SuperscriptAtom": null,
@@ -213,7 +229,8 @@
                       "Start": 15,
                       "End": 18,
                       "Length": 3,
-                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                      "SourceName": "User input"
                     }
                   }
                 ],
@@ -222,7 +239,8 @@
                   "Start": 28,
                   "End": 46,
                   "Length": 18,
-                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                  "SourceName": "User input"
                 }
               }
             ],
@@ -241,7 +259,8 @@
                         "Start": 49,
                         "End": 50,
                         "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input"
                       }
                     },
                     "SubscriptAtom": {
@@ -254,7 +273,8 @@
                         "Start": 51,
                         "End": 52,
                         "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input"
                       }
                     },
                     "SuperscriptAtom": null,
@@ -263,7 +283,8 @@
                       "Start": 22,
                       "End": 25,
                       "Length": 3,
-                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                      "SourceName": "User input"
                     }
                   },
                   {
@@ -277,7 +298,8 @@
                         "Start": 53,
                         "End": 54,
                         "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input"
                       }
                     },
                     "SubscriptAtom": {
@@ -290,7 +312,8 @@
                         "Start": 55,
                         "End": 56,
                         "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input"
                       }
                     },
                     "SuperscriptAtom": null,
@@ -299,7 +322,8 @@
                       "Start": 26,
                       "End": 29,
                       "Length": 3,
-                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                      "SourceName": "User input"
                     }
                   },
                   {
@@ -311,7 +335,8 @@
                       "Start": 57,
                       "End": 58,
                       "Length": 1,
-                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                      "SourceName": "User input"
                     }
                   },
                   {
@@ -325,7 +350,8 @@
                         "Start": 59,
                         "End": 60,
                         "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input"
                       }
                     },
                     "SubscriptAtom": {
@@ -338,7 +364,8 @@
                         "Start": 61,
                         "End": 62,
                         "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input"
                       }
                     },
                     "SuperscriptAtom": null,
@@ -347,7 +374,8 @@
                       "Start": 32,
                       "End": 35,
                       "Length": 3,
-                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                      "SourceName": "User input"
                     }
                   },
                   {
@@ -361,7 +389,8 @@
                         "Start": 63,
                         "End": 64,
                         "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input"
                       }
                     },
                     "SubscriptAtom": {
@@ -374,7 +403,8 @@
                         "Start": 65,
                         "End": 66,
                         "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input"
                       }
                     },
                     "SuperscriptAtom": null,
@@ -383,7 +413,8 @@
                       "Start": 36,
                       "End": 39,
                       "Length": 3,
-                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                      "SourceName": "User input"
                     }
                   }
                 ],
@@ -392,7 +423,8 @@
                   "Start": 28,
                   "End": 67,
                   "Length": 39,
-                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                  "SourceName": "User input"
                 }
               }
             ],
@@ -411,7 +443,8 @@
                         "Start": 70,
                         "End": 71,
                         "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input"
                       }
                     },
                     "SubscriptAtom": {
@@ -424,7 +457,8 @@
                         "Start": 72,
                         "End": 73,
                         "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input"
                       }
                     },
                     "SuperscriptAtom": null,
@@ -433,7 +467,8 @@
                       "Start": 43,
                       "End": 46,
                       "Length": 3,
-                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                      "SourceName": "User input"
                     }
                   },
                   {
@@ -447,7 +482,8 @@
                         "Start": 74,
                         "End": 75,
                         "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input"
                       }
                     },
                     "SubscriptAtom": {
@@ -460,7 +496,8 @@
                         "Start": 76,
                         "End": 77,
                         "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input"
                       }
                     },
                     "SuperscriptAtom": null,
@@ -469,7 +506,8 @@
                       "Start": 47,
                       "End": 50,
                       "Length": 3,
-                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                      "SourceName": "User input"
                     }
                   },
                   {
@@ -481,7 +519,8 @@
                       "Start": 78,
                       "End": 79,
                       "Length": 1,
-                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                      "SourceName": "User input"
                     }
                   },
                   {
@@ -495,7 +534,8 @@
                         "Start": 80,
                         "End": 81,
                         "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input"
                       }
                     },
                     "SubscriptAtom": {
@@ -508,7 +548,8 @@
                         "Start": 82,
                         "End": 83,
                         "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input"
                       }
                     },
                     "SuperscriptAtom": null,
@@ -517,7 +558,8 @@
                       "Start": 53,
                       "End": 56,
                       "Length": 3,
-                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                      "SourceName": "User input"
                     }
                   },
                   {
@@ -531,7 +573,8 @@
                         "Start": 84,
                         "End": 85,
                         "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input"
                       }
                     },
                     "SubscriptAtom": {
@@ -544,7 +587,8 @@
                         "Start": 86,
                         "End": 87,
                         "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input"
                       }
                     },
                     "SuperscriptAtom": null,
@@ -553,7 +597,8 @@
                       "Start": 57,
                       "End": 59,
                       "Length": 2,
-                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                      "SourceName": "User input"
                     }
                   }
                 ],
@@ -562,7 +607,8 @@
                   "Start": 28,
                   "End": 87,
                   "Length": 59,
-                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                  "SourceName": "User input"
                 }
               }
             ]
@@ -575,7 +621,8 @@
             "Start": 21,
             "End": 88,
             "Length": 67,
-            "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+            "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+            "SourceName": "User input"
           }
         },
         "LeftDelimeter": {
@@ -587,7 +634,8 @@
             "Start": 14,
             "End": 19,
             "Length": 5,
-            "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+            "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+            "SourceName": "User input"
           }
         },
         "RightDelimeter": {
@@ -599,7 +647,8 @@
             "Start": 90,
             "End": 96,
             "Length": 6,
-            "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+            "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+            "SourceName": "User input"
           }
         },
         "Type": "Ordinary",
@@ -607,7 +656,8 @@
           "Start": 14,
           "End": 96,
           "Length": 82,
-          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+          "SourceName": "User input"
         }
       },
       {
@@ -620,7 +670,8 @@
           "Start": 97,
           "End": 98,
           "Length": 1,
-          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+          "SourceName": "User input"
         }
       },
       {
@@ -633,7 +684,8 @@
           "Start": 98,
           "End": 99,
           "Length": 1,
-          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+          "SourceName": "User input"
         }
       },
       {
@@ -646,7 +698,8 @@
           "Start": 99,
           "End": 100,
           "Length": 1,
-          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+          "SourceName": "User input"
         }
       },
       {
@@ -659,7 +712,8 @@
           "Start": 100,
           "End": 101,
           "Length": 1,
-          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+          "SourceName": "User input"
         }
       },
       {
@@ -672,7 +726,8 @@
           "Start": 101,
           "End": 102,
           "Length": 1,
-          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+          "SourceName": "User input"
         }
       },
       {
@@ -685,7 +740,8 @@
           "Start": 103,
           "End": 104,
           "Length": 1,
-          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+          "SourceName": "User input"
         }
       },
       {
@@ -697,7 +753,8 @@
           "Start": 104,
           "End": 105,
           "Length": 1,
-          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+          "SourceName": "User input"
         }
       },
       {
@@ -715,7 +772,8 @@
                     "Start": 121,
                     "End": 122,
                     "Length": 1,
-                    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                    "SourceName": "User input"
                   }
                 },
                 "SubscriptAtom": {
@@ -728,7 +786,8 @@
                     "Start": 123,
                     "End": 124,
                     "Length": 1,
-                    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                    "SourceName": "User input"
                   }
                 },
                 "SuperscriptAtom": null,
@@ -737,7 +796,8 @@
                   "Start": 2,
                   "End": 5,
                   "Length": 3,
-                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                  "SourceName": "User input"
                 }
               }
             ],
@@ -753,7 +813,8 @@
                     "Start": 128,
                     "End": 129,
                     "Length": 1,
-                    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                    "SourceName": "User input"
                   }
                 },
                 "SubscriptAtom": {
@@ -766,7 +827,8 @@
                     "Start": 130,
                     "End": 131,
                     "Length": 1,
-                    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                    "SourceName": "User input"
                   }
                 },
                 "SuperscriptAtom": null,
@@ -775,7 +837,8 @@
                   "Start": 9,
                   "End": 12,
                   "Length": 3,
-                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                  "SourceName": "User input"
                 }
               }
             ],
@@ -791,7 +854,8 @@
                     "Start": 135,
                     "End": 136,
                     "Length": 1,
-                    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                    "SourceName": "User input"
                   }
                 },
                 "SubscriptAtom": {
@@ -804,7 +868,8 @@
                     "Start": 137,
                     "End": 138,
                     "Length": 1,
-                    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                    "SourceName": "User input"
                   }
                 },
                 "SuperscriptAtom": null,
@@ -813,7 +878,8 @@
                   "Start": 16,
                   "End": 19,
                   "Length": 3,
-                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                  "SourceName": "User input"
                 }
               }
             ]
@@ -826,7 +892,8 @@
             "Start": 113,
             "End": 140,
             "Length": 27,
-            "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+            "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+            "SourceName": "User input"
           }
         },
         "LeftDelimeter": {
@@ -838,7 +905,8 @@
             "Start": 107,
             "End": 112,
             "Length": 5,
-            "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+            "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+            "SourceName": "User input"
           }
         },
         "RightDelimeter": {
@@ -850,7 +918,8 @@
             "Start": 141,
             "End": 147,
             "Length": 6,
-            "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+            "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+            "SourceName": "User input"
           }
         },
         "Type": "Ordinary",
@@ -858,7 +927,8 @@
           "Start": 107,
           "End": 147,
           "Length": 40,
-          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+          "SourceName": "User input"
         }
       },
       {
@@ -870,7 +940,8 @@
           "Start": 147,
           "End": 148,
           "Length": 1,
-          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+          "SourceName": "User input"
         }
       },
       {
@@ -883,7 +954,8 @@
           "Start": 149,
           "End": 150,
           "Length": 1,
-          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+          "SourceName": "User input"
         }
       },
       {
@@ -895,7 +967,8 @@
           "Start": 150,
           "End": 151,
           "Length": 1,
-          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+          "SourceName": "User input"
         }
       },
       {
@@ -913,7 +986,8 @@
                     "Start": 167,
                     "End": 168,
                     "Length": 1,
-                    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                    "SourceName": "User input"
                   }
                 },
                 "SubscriptAtom": {
@@ -926,7 +1000,8 @@
                     "Start": 169,
                     "End": 170,
                     "Length": 1,
-                    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                    "SourceName": "User input"
                   }
                 },
                 "SuperscriptAtom": null,
@@ -935,7 +1010,8 @@
                   "Start": 1,
                   "End": 4,
                   "Length": 3,
-                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                  "SourceName": "User input"
                 }
               }
             ],
@@ -951,7 +1027,8 @@
                     "Start": 174,
                     "End": 175,
                     "Length": 1,
-                    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                    "SourceName": "User input"
                   }
                 },
                 "SubscriptAtom": {
@@ -964,7 +1041,8 @@
                     "Start": 176,
                     "End": 177,
                     "Length": 1,
-                    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                    "SourceName": "User input"
                   }
                 },
                 "SuperscriptAtom": null,
@@ -973,7 +1051,8 @@
                   "Start": 8,
                   "End": 12,
                   "Length": 4,
-                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                  "SourceName": "User input"
                 }
               }
             ],
@@ -989,7 +1068,8 @@
                     "Start": 182,
                     "End": 183,
                     "Length": 1,
-                    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                    "SourceName": "User input"
                   }
                 },
                 "SubscriptAtom": {
@@ -1002,7 +1082,8 @@
                     "Start": 184,
                     "End": 185,
                     "Length": 1,
-                    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                    "SourceName": "User input"
                   }
                 },
                 "SuperscriptAtom": null,
@@ -1011,7 +1092,8 @@
                   "Start": 16,
                   "End": 18,
                   "Length": 2,
-                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                  "SourceName": "User input"
                 }
               }
             ]
@@ -1024,7 +1106,8 @@
             "Start": 160,
             "End": 186,
             "Length": 26,
-            "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+            "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+            "SourceName": "User input"
           }
         },
         "LeftDelimeter": {
@@ -1036,7 +1119,8 @@
             "Start": 153,
             "End": 158,
             "Length": 5,
-            "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+            "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+            "SourceName": "User input"
           }
         },
         "RightDelimeter": {
@@ -1048,7 +1132,8 @@
             "Start": 188,
             "End": 194,
             "Length": 6,
-            "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+            "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+            "SourceName": "User input"
           }
         },
         "Type": "Ordinary",
@@ -1056,7 +1141,8 @@
           "Start": 153,
           "End": 194,
           "Length": 41,
-          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+          "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+          "SourceName": "User input"
         }
       }
     ],
@@ -1065,7 +1151,15 @@
       "Start": 152,
       "End": 346,
       "Length": 194,
-      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)"
+      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 194,
+    "Length": 194,
+    "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+    "SourceName": "User input"
   }
 }

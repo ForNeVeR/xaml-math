@@ -10,7 +10,8 @@
         "Start": 1,
         "End": 4,
         "Length": 3,
-        "Source": "\\int_a^b"
+        "Source": "\\int_a^b",
+        "SourceName": "User input"
       }
     },
     "LowerLimitAtom": {
@@ -23,7 +24,8 @@
         "Start": 5,
         "End": 6,
         "Length": 1,
-        "Source": "\\int_a^b"
+        "Source": "\\int_a^b",
+        "SourceName": "User input"
       }
     },
     "UpperLimitAtom": {
@@ -36,7 +38,8 @@
         "Start": 7,
         "End": 8,
         "Length": 1,
-        "Source": "\\int_a^b"
+        "Source": "\\int_a^b",
+        "SourceName": "User input"
       }
     },
     "UseVerticalLimits": null,
@@ -45,7 +48,15 @@
       "Start": 0,
       "End": 8,
       "Length": 8,
-      "Source": "\\int_a^b"
+      "Source": "\\int_a^b",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 8,
+    "Length": 8,
+    "Source": "\\int_a^b",
+    "SourceName": "User input"
   }
 }

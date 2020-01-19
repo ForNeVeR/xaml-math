@@ -4,7 +4,8 @@
     "Start": 1,
     "End": 7,
     "Length": 6,
-    "Source": "\\text{}"
+    "Source": "\\text{}",
+    "SourceName": "User input"
   },
   "Foreground": null,
   "Background": null,

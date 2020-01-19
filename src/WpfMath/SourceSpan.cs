@@ -4,8 +4,9 @@ namespace WpfMath
 {
     public class SourceSpan : IEquatable<SourceSpan>
     {
-        public SourceSpan(string source, int start, int length)
+        public SourceSpan(string sourceName, string source, int start, int length)
         {
+            SourceName = sourceName;
             this.Source = source;
             this.Start = start;
             this.Length = length;
@@ -21,16 +22,22 @@ namespace WpfMath
 
         public string Source { get; }
 
+        /// <summary>A name identifying the source (e.g. a user input, or some sort of macro body).</summary>
+        public string SourceName { get; }
+
         public char this[int index] => this.Source[this.Start + index];
 
-        public SourceSpan Segment(int start) => new SourceSpan(this.Source, this.Start + start, this.Length - start);
-        public SourceSpan Segment(int start, int length) => new SourceSpan(this.Source, this.Start + start, length);
+        public SourceSpan Segment(int start) => new SourceSpan(SourceName, this.Source, this.Start + start, this.Length - start);
+        public SourceSpan Segment(int start, int length) => new SourceSpan(SourceName, this.Source, this.Start + start, length);
 
         public bool Equals(SourceSpan other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return this.Start == other.Start && this.Length == other.Length && string.Equals(this.Source, other.Source);
+            return this.Start == other.Start
+                && this.Length == other.Length
+                && string.Equals(this.Source, other.Source, StringComparison.Ordinal)
+                && string.Equals(SourceName, other.SourceName, StringComparison.Ordinal);
         }
 
         public override bool Equals(object obj)
@@ -45,9 +52,10 @@ namespace WpfMath
         {
             unchecked
             {
-                var hashCode = this.Start;
-                hashCode = (hashCode * 397) ^ this.Length;
-                hashCode = (hashCode * 397) ^ (this.Source != null ? this.Source.GetHashCode() : 0);
+                var hashCode = Start;
+                hashCode = (hashCode * 397) ^ Length;
+                hashCode = (hashCode * 397) ^ (Source != null ? Source.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (SourceName != null ? SourceName.GetHashCode() : 0);
                 return hashCode;
             }
         }

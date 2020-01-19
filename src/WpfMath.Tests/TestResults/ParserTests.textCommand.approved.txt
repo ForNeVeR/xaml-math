@@ -13,7 +13,8 @@
           "Start": 6,
           "End": 7,
           "Length": 1,
-          "Source": "\\text{test}"
+          "Source": "\\text{test}",
+          "SourceName": "User input"
         }
       },
       {
@@ -26,7 +27,8 @@
           "Start": 7,
           "End": 8,
           "Length": 1,
-          "Source": "\\text{test}"
+          "Source": "\\text{test}",
+          "SourceName": "User input"
         }
       },
       {
@@ -39,7 +41,8 @@
           "Start": 8,
           "End": 9,
           "Length": 1,
-          "Source": "\\text{test}"
+          "Source": "\\text{test}",
+          "SourceName": "User input"
         }
       },
       {
@@ -52,7 +55,8 @@
           "Start": 9,
           "End": 10,
           "Length": 1,
-          "Source": "\\text{test}"
+          "Source": "\\text{test}",
+          "SourceName": "User input"
         }
       }
     ],
@@ -61,7 +65,15 @@
       "Start": 6,
       "End": 10,
       "Length": 4,
-      "Source": "\\text{test}"
+      "Source": "\\text{test}",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 11,
+    "Length": 11,
+    "Source": "\\text{test}",
+    "SourceName": "User input"
   }
 }

@@ -14,7 +14,8 @@
             "Start": 37,
             "End": 38,
             "Length": 1,
-            "Source": "\\colorbox [ARGB] {25, 128, 128, 128} x"
+            "Source": "\\colorbox [ARGB] {25, 128, 128, 128} x",
+            "SourceName": "User input"
           }
         }
       ],
@@ -23,7 +24,8 @@
         "Start": 1,
         "End": 38,
         "Length": 37,
-        "Source": "\\colorbox [ARGB] {25, 128, 128, 128} x"
+        "Source": "\\colorbox [ARGB] {25, 128, 128, 128} x",
+        "SourceName": "User input"
       }
     },
     "Background": "#19808080",
@@ -33,7 +35,15 @@
       "Start": 1,
       "End": 38,
       "Length": 37,
-      "Source": "\\colorbox [ARGB] {25, 128, 128, 128} x"
+      "Source": "\\colorbox [ARGB] {25, 128, 128, 128} x",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 38,
+    "Length": 38,
+    "Source": "\\colorbox [ARGB] {25, 128, 128, 128} x",
+    "SourceName": "User input"
   }
 }

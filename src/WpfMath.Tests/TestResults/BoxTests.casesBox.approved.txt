@@ -77,7 +77,8 @@
                     "Start": 7,
                     "End": 8,
                     "Length": 1,
-                    "Source": "\\cases{a \\\\ b \\\\ c}"
+                    "Source": "\\cases{a \\\\ b \\\\ c}",
+                    "SourceName": "User input"
                   },
                   "Foreground": null,
                   "Background": null,
@@ -174,7 +175,8 @@
                     "Start": 12,
                     "End": 13,
                     "Length": 1,
-                    "Source": "\\cases{a \\\\ b \\\\ c}"
+                    "Source": "\\cases{a \\\\ b \\\\ c}",
+                    "SourceName": "User input"
                   },
                   "Foreground": null,
                   "Background": null,
@@ -271,7 +273,8 @@
                     "Start": 17,
                     "End": 18,
                     "Length": 1,
-                    "Source": "\\cases{a \\\\ b \\\\ c}"
+                    "Source": "\\cases{a \\\\ b \\\\ c}",
+                    "SourceName": "User input"
                   },
                   "Foreground": null,
                   "Background": null,
@@ -338,7 +341,8 @@
         "Start": 1,
         "End": 19,
         "Length": 18,
-        "Source": "\\cases{a \\\\ b \\\\ c}"
+        "Source": "\\cases{a \\\\ b \\\\ c}",
+        "SourceName": "User input"
       },
       "Foreground": null,
       "Background": null,
@@ -370,7 +374,8 @@
     "Start": 1,
     "End": 19,
     "Length": 18,
-    "Source": "\\cases{a \\\\ b \\\\ c}"
+    "Source": "\\cases{a \\\\ b \\\\ c}",
+    "SourceName": "User input"
   },
   "Foreground": null,
   "Background": null,

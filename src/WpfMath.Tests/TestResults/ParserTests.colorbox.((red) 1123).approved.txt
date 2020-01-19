@@ -17,7 +17,8 @@
                 "Start": 15,
                 "End": 16,
                 "Length": 1,
-                "Source": "\\colorbox{red} 1123"
+                "Source": "\\colorbox{red} 1123",
+                "SourceName": "User input"
               }
             }
           ],
@@ -26,7 +27,8 @@
             "Start": 1,
             "End": 16,
             "Length": 15,
-            "Source": "\\colorbox{red} 1123"
+            "Source": "\\colorbox{red} 1123",
+            "SourceName": "User input"
           }
         },
         "Background": "#FFED1B23",
@@ -36,7 +38,8 @@
           "Start": 1,
           "End": 16,
           "Length": 15,
-          "Source": "\\colorbox{red} 1123"
+          "Source": "\\colorbox{red} 1123",
+          "SourceName": "User input"
         }
       },
       {
@@ -49,7 +52,8 @@
           "Start": 16,
           "End": 17,
           "Length": 1,
-          "Source": "\\colorbox{red} 1123"
+          "Source": "\\colorbox{red} 1123",
+          "SourceName": "User input"
         }
       },
       {
@@ -62,7 +66,8 @@
           "Start": 17,
           "End": 18,
           "Length": 1,
-          "Source": "\\colorbox{red} 1123"
+          "Source": "\\colorbox{red} 1123",
+          "SourceName": "User input"
         }
       },
       {
@@ -75,7 +80,8 @@
           "Start": 18,
           "End": 19,
           "Length": 1,
-          "Source": "\\colorbox{red} 1123"
+          "Source": "\\colorbox{red} 1123",
+          "SourceName": "User input"
         }
       }
     ],
@@ -84,7 +90,15 @@
       "Start": 0,
       "End": 19,
       "Length": 19,
-      "Source": "\\colorbox{red} 1123"
+      "Source": "\\colorbox{red} 1123",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 19,
+    "Length": 19,
+    "Source": "\\colorbox{red} 1123",
+    "SourceName": "User input"
   }
 }

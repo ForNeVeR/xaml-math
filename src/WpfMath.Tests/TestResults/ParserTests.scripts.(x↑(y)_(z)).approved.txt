@@ -11,7 +11,8 @@
         "Start": 0,
         "End": 1,
         "Length": 1,
-        "Source": "x^{y}_{z}"
+        "Source": "x^{y}_{z}",
+        "SourceName": "User input"
       }
     },
     "SubscriptAtom": {
@@ -24,7 +25,8 @@
         "Start": 7,
         "End": 8,
         "Length": 1,
-        "Source": "x^{y}_{z}"
+        "Source": "x^{y}_{z}",
+        "SourceName": "User input"
       }
     },
     "SuperscriptAtom": {
@@ -37,7 +39,8 @@
         "Start": 3,
         "End": 4,
         "Length": 1,
-        "Source": "x^{y}_{z}"
+        "Source": "x^{y}_{z}",
+        "SourceName": "User input"
       }
     },
     "Type": "Ordinary",
@@ -45,7 +48,15 @@
       "Start": 1,
       "End": 9,
       "Length": 8,
-      "Source": "x^{y}_{z}"
+      "Source": "x^{y}_{z}",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 9,
+    "Length": 9,
+    "Source": "x^{y}_{z}",
+    "SourceName": "User input"
   }
 }

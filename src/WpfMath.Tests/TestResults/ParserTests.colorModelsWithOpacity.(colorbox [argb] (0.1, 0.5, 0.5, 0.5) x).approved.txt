@@ -14,7 +14,8 @@
             "Start": 38,
             "End": 39,
             "Length": 1,
-            "Source": "\\colorbox [argb] {0.1, 0.5, 0.5, 0.5} x"
+            "Source": "\\colorbox [argb] {0.1, 0.5, 0.5, 0.5} x",
+            "SourceName": "User input"
           }
         }
       ],
@@ -23,7 +24,8 @@
         "Start": 1,
         "End": 39,
         "Length": 38,
-        "Source": "\\colorbox [argb] {0.1, 0.5, 0.5, 0.5} x"
+        "Source": "\\colorbox [argb] {0.1, 0.5, 0.5, 0.5} x",
+        "SourceName": "User input"
       }
     },
     "Background": "#1A808080",
@@ -33,7 +35,15 @@
       "Start": 1,
       "End": 39,
       "Length": 38,
-      "Source": "\\colorbox [argb] {0.1, 0.5, 0.5, 0.5} x"
+      "Source": "\\colorbox [argb] {0.1, 0.5, 0.5, 0.5} x",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 39,
+    "Length": 39,
+    "Source": "\\colorbox [argb] {0.1, 0.5, 0.5, 0.5} x",
+    "SourceName": "User input"
   }
 }

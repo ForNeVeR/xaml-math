@@ -14,7 +14,8 @@
             "Start": 29,
             "End": 30,
             "Length": 1,
-            "Source": "\\color [RGB] {128, 128, 128} x"
+            "Source": "\\color [RGB] {128, 128, 128} x",
+            "SourceName": "User input"
           }
         }
       ],
@@ -23,7 +24,8 @@
         "Start": 1,
         "End": 30,
         "Length": 29,
-        "Source": "\\color [RGB] {128, 128, 128} x"
+        "Source": "\\color [RGB] {128, 128, 128} x",
+        "SourceName": "User input"
       }
     },
     "Background": null,
@@ -33,7 +35,15 @@
       "Start": 1,
       "End": 30,
       "Length": 29,
-      "Source": "\\color [RGB] {128, 128, 128} x"
+      "Source": "\\color [RGB] {128, 128, 128} x",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 30,
+    "Length": 30,
+    "Source": "\\color [RGB] {128, 128, 128} x",
+    "SourceName": "User input"
   }
 }
