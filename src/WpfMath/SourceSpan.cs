@@ -23,6 +23,11 @@ namespace WpfMath
         public string Source { get; }
 
         /// <summary>A name identifying the source (e.g. a user input, or some sort of macro body).</summary>
+        /// <remarks>
+        /// The name stored here is purely informative, and included to better distinguish various sources in case of
+        /// complex formulas, when the resulting formula is composed of multiple text sources (where body of any macro
+        /// or a macro-like construct is considered as a separate text source).
+        /// </remarks>
         public string SourceName { get; }
 
         public char this[int index] => this.Source[this.Start + index];
