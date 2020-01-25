@@ -12,11 +12,29 @@ namespace WpfMath.Example
 {
     public partial class MainWindow : Window
     {
-        private TexFormulaParser formulaParser;
+        private readonly TexFormulaParser _formulaParser = new TexFormulaParser();
+
+        private static ComboBoxItem DemoFormula(string name, string text) =>
+            new ComboBoxItem { Content = name, DataContext = text };
+
+        private readonly IList<ComboBoxItem> _testFormulas = new[]
+        {
+            DemoFormula("Integral 1", @"\int_0^{\infty}{x^{2n} e^{-a x^2} dx} = \frac{2n-1}{2a} \int_0^{\infty}{x^{2(n-1)} e^{-a x^2} dx} = \frac{(2n-1)!!}{2^{n+1}} \sqrt{\frac{\pi}{a^{2n+1}}}"),
+            DemoFormula("Integral 2", @"\int_a^b{f(x) dx} = (b - a) \sum_{n = 1}^{\infty}  {\sum_{m = 1}^{2^n  - 1} { ( { - 1} )^{m + 1} } } 2^{ - n} f(a + m ( {b - a}  )2^{-n} )"),
+            DemoFormula("Integral 3", @"L = \int_a^\infty \sqrt[4]{ \left\vert \sum_{i,j=1}^ng_{ij}\left\(\gamma(t)\right\) \left\[\frac{d}{dt}x^i\circ\gamma(t) \right\] \left\{\frac{d}{dt}x^j\circ\gamma(t) \right\} \right\|}dt"),
+            DemoFormula("Number matrix", @"\matrix{4&78&3 \\ 5 & 9  & 82 }"),
+            DemoFormula("Nested matrix", @"\matrix{4&78&3\\ 57 & {\matrix{78 \\ 12}}  & 20782 }"),
+            DemoFormula("Cases", @"f(x) = \cases{1/3 & if \thinspace 0\le x\le 1;\cr 2/3 & if \thinspace 3\le x \le 4; \cr 0 & elsewhere.\cr}"),
+            DemoFormula("Matrix and new lines", @"v \times w = \left( \matrix{v_2 w_3 - v_3 w_2 \\ v_3 w_1 - v_1 w_3 \\ v_1 w_2 - v_2 w_1} \right) \\ \matrix{where & v= \left(\matrix{ v_1 \\ v_2 \\ v_3 }\right), \\ & w= \left( \matrix{w_1 \\ w_2  \\ w_3} \right)}"),
+            DemoFormula("Big matrix", @"\Gamma_{\mu \rho} ^{\sigma}= \pmatrix{\pmatrix{0 & 0 & 0 \\ 0 & -r & 0 \\ 0 & 0 & -r sin^2(\theta)} \\ \pmatrix{0 & \frac{1}{r} & 0 \\ \frac{1}{r} & 0 & 0 \\ 0 & 0 & -\sin(\theta) \cos(\theta)} \\ \pmatrix{0 & 0 & \frac{1}{r} \\ 0 & 0 & \frac{1}{\tan(\theta)} \\ \frac{1}{r} & \frac{1}{\tan(\theta)} & 0 }}")
+        };
 
         public MainWindow()
         {
             InitializeComponent();
+
+            comboBox.ItemsSource = _testFormulas;
+            comboBox.SelectedIndex = 0;
         }
 
         private TexFormula ParseFormula(string input)
@@ -25,7 +43,7 @@ namespace WpfMath.Example
             TexFormula formula = null;
             try
             {
-                formula = this.formulaParser.Parse(input);
+                formula = this._formulaParser.Parse(input);
             }
             catch (Exception ex)
             {
@@ -91,27 +109,6 @@ namespace WpfMath.Example
 
             return builder.ToString();
         }
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            this.formulaParser = new TexFormulaParser();
-            var testFormulas = new List<string>();
-            testFormulas.Add("\\int_0^{\\infty}{x^{2n} e^{-a x^2} dx} = \\frac{2n-1}{2a} \\int_0^{\\infty}{x^{2(n-1)} e^{-a x^2} dx} = \\frac{(2n-1)!!}{2^{n+1}} \\sqrt{\\frac{\\pi}{a^{2n+1}}}");
-            testFormulas.Add("\\int_a^b{f(x) dx} = (b - a) \\sum_{n = 1}^{\\infty}  {\\sum_{m = 1}^{2^n  - 1} { ( { - 1} )^{m + 1} } } 2^{ - n} f(a + m ( {b - a}  )2^{-n} )");
-            testFormulas.Add(@"L = \int_a^\infty \sqrt[4]{ \left\vert \sum_{i,j=1}^ng_{ij}\left\(\gamma(t)\right\) \left\[\frac{d}{dt}x^i\circ\gamma(t) \right\] \left\{\frac{d}{dt}x^j\circ\gamma(t) \right\} \right\|}dt");
-            //matrix examples
-            testFormulas.Add(@"\matrix{4&78&3 \\ 5 & 9  & 82 }");
-            testFormulas.Add(@"\cases{x,&if x > 0;\cr -x,& otherwise.}");
-            testFormulas.Add(@"\matrix{4&78&3\\ 57 & {\matrix{78 \\ 12}}  & 20782 }");
-            testFormulas.Add(@"\cases{y>78 & if12<=x<125 \\ y=0 & otherwise; }");
-            testFormulas.Add(@"f(x) = \cases{1/3 & if \thinspace 0\le x\le 1;\cr 2/3 & if \thinspace 3\le x \le 4; \cr 0 & elsewhere.\cr}");
-            testFormulas.Add(@"v \times w = \left( \matrix{v_2 w_3 - v_3 w_2 \\ v_3 w_1 - v_1 w_3 \\ v_1 w_2 - v_2 w_1} \right) where v= \left(\matrix{ v_1 \\ v_2 \\ v_3 }\right), w= \left( \matrix{w_1 \\ w_2  \\ w_3} \right)");
-            testFormulas.Add(@"\Gamma_{\mu \rho} ^{\sigma}= \pmatrix{\pmatrix{0 & 0 & 0 \\ 0 & -r & 0 \\ 0 & 0 & -r sin^2(\theta)} \\ \pmatrix{0 & \frac{1}{r} & 0 \\ \frac{1}{r} & 0 & 0 \\ 0 & 0 & -\sin(\theta) \cos(\theta)} \\ \pmatrix{0 & 0 & \frac{1}{r} \\ 0 & 0 & \frac{1}{\tan(\theta)} \\ \frac{1}{r} & \frac{1}{\tan(\theta)} & 0 }}");
-            testFormulas.Add(@"1|2|3 \\{ 3|4|5 \\{ 6|7|8 \\{9|0|10}}}");
-            testFormulas.Add(@"1|2|3 \\{ 3|4|5} \\{ 6|7|8}");
-            this.comboBox.ItemsSource = testFormulas;
-            this.comboBox.SelectedIndex = 0;
-            this.inputTextBox.Text = comboBox.Text;
-        }
 
         private void Window_Closed(object sender, EventArgs e)
         {
@@ -126,8 +123,8 @@ namespace WpfMath.Example
 
         private void ComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string text = (sender as ComboBox).SelectedItem as string;
-            this.inputTextBox.Text = text;
+            var item = (ComboBoxItem) ((ComboBox) sender).SelectedItem;
+            inputTextBox.Text = (string)item.DataContext;
         }
     }
 }
