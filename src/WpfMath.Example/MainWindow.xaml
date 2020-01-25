@@ -16,15 +16,10 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-
-        <DockPanel Margin="10,10,10,0" Grid.Row="1" Grid.Column="0">
+        <DockPanel Margin="10,10,10,0" Grid.Row="0" Grid.Column="0">
             <ComboBox DockPanel.Dock="Left" Width="150"
                       Name="FormulaSelector" SelectionChanged="FormulaTextBox_OnSelectionChanged" />
             <Button DockPanel.Dock="Right" Content="_Save"
@@ -33,7 +28,7 @@
                      Name="InputTextBox" SelectionChanged="inputTextBox_SelectionChanged" />
         </DockPanel>
 
-        <Label Margin="10,0,10,10" Grid.Row="2" Grid.Column="0">
+        <Label Margin="10,0,10,10" Grid.Row="1" Grid.Column="0">
             <Label.Style>
                 <Style TargetType="Label">
                     <Style.Triggers>
@@ -50,7 +45,7 @@
             </Label.Style>
         </Label>
 
-        <Grid Margin="0,0,0,10" Grid.Row="3" Grid.Column="0">
+        <Grid Margin="0,0,0,10" Grid.Row="2" Grid.Column="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
@@ -62,7 +57,7 @@
                 AutoToolTipPlacement="BottomRight" AutoToolTipPrecision="2" />
         </Grid>
 
-        <Border Margin="10,0,10,10" BorderBrush="LightGray" BorderThickness="1" Grid.Row="4" Grid.Column="0">
+        <Border Margin="10,0,10,10" BorderBrush="LightGray" BorderThickness="1" Grid.Row="3" Grid.Column="0">
             <ScrollViewer Padding="4" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
                 <controls:FormulaControl Name="Formula" Formula="{Binding Text, ElementName = InputTextBox, NotifyOnValidationError=True}"
                                          SelectionBrush="LightBlue"
