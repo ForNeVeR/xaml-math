@@ -113,15 +113,12 @@ namespace WpfMath
 
         private TexFontMetrics GetFontMetrics(char c, Typeface typeface)
         {
-
-            var formattedText = new FormattedText()
+            var formattedText = new FormattedText
             {
                 Text = c.ToString(),
                 Typeface = typeface,
                 TextAlignment=TextAlignment.Left
-
             };
-
             return new TexFontMetrics(formattedText.Constraint.Width, formattedText.Constraint.Height, 0.0, formattedText.Constraint.Width, 1.0);
         }
 

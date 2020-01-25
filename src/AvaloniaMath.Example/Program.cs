@@ -1,6 +1,6 @@
-using System;
 using Avalonia;
 using Avalonia.Logging.Serilog;
+using Avalonia.ReactiveUI;
 using AvaloniaMath.Example.ViewModels;
 using AvaloniaMath.Example.Views;
 

@@ -12,31 +12,32 @@ using WpfMath.Exceptions;
 
 namespace AvaloniaMath.Controls
 {
-    class FormulaBlock : Control
+    public class FormulaBlock : Control
     {
         private static TexFormulaParser s_formulaParser = new TexFormulaParser();
         private TexFormula _texFormula;
         private TexRenderer _texRenderer;
 
-        public static readonly StyledProperty<String> FormulaProperty =
-            AvaloniaProperty.Register<FormulaBlock, string>(nameof(Formula),
-                "", false, BindingMode.TwoWay);
+        public static readonly StyledProperty<string> FormulaProperty =
+            AvaloniaProperty.Register<FormulaBlock, string>(
+                nameof(Formula), string.Empty, false, BindingMode.TwoWay);
 
-        public static readonly StyledProperty<double> ScaleProperty = AvaloniaProperty.Register<FormulaBlock, double>(
-            nameof(Scale), 20d, false, BindingMode.Default);
+        public static readonly StyledProperty<double> ScaleProperty =
+            AvaloniaProperty.Register<FormulaBlock, double>(
+                nameof(Scale), 20d, false, BindingMode.Default);
 
         public static readonly StyledProperty<string> SystemTextFontNameProperty =
             AvaloniaProperty.Register<FormulaBlock, string>(
                 nameof(SystemTextFontName), "Arial", false, BindingMode.Default);
 
-        public static readonly StyledProperty<bool> HasErrorProperty = AvaloniaProperty.Register<FormulaBlock, bool>(nameof(HasError));
+        public static readonly StyledProperty<bool> HasErrorProperty =
+            AvaloniaProperty.Register<FormulaBlock, bool>(nameof(HasError));
 
-        public static readonly StyledProperty<ObservableCollection<Exception>> ErrorsProperty = AvaloniaProperty.Register<FormulaBlock, ObservableCollection<Exception>>(
-            "Errors");
+        public static readonly StyledProperty<ObservableCollection<Exception>> ErrorsProperty =
+            AvaloniaProperty.Register<FormulaBlock, ObservableCollection<Exception>>(nameof(Errors));
 
-        public static readonly StyledProperty<ControlTemplate> ErrorTemplateProperty = AvaloniaProperty.Register<FormulaBlock, ControlTemplate>
-        ("ErrorTemplate");
-
+        public static readonly StyledProperty<ControlTemplate> ErrorTemplateProperty =
+            AvaloniaProperty.Register<FormulaBlock, ControlTemplate>(nameof(ErrorTemplate));
 
         /// <summary>
         /// Initializes static members of the <see cref="FormulaBlock"/> class.
@@ -44,11 +45,11 @@ namespace AvaloniaMath.Controls
         static FormulaBlock()
         {
             ClipToBoundsProperty.OverrideDefaultValue<FormulaBlock>(true);
-            
+
             AffectsRender<FormulaBlock>(
                 FormulaProperty,
                 ScaleProperty);
-            
+
         }
         /// <summary>
         /// Initializes a new instance of the <see cref="FormulaBlock"/> class.
@@ -64,7 +65,6 @@ namespace AvaloniaMath.Controls
                     InvalidateFormattedText();
                     InvalidateMeasure();
                 });
-
         }
 
         public string Formula
@@ -102,7 +102,7 @@ namespace AvaloniaMath.Controls
             get { return GetValue(ErrorTemplateProperty); }
             set { SetValue(ErrorTemplateProperty, value); }
         }
-        
+
         public override void Render(DrawingContext context)
         {
             base.Render(context);
@@ -113,7 +113,7 @@ namespace AvaloniaMath.Controls
             }
         }
 
-        
+
         /// <summary>
         /// Invalidates <see cref="FormattedText"/>.
         /// </summary>
@@ -124,15 +124,14 @@ namespace AvaloniaMath.Controls
                 // TODO only parse on formula change
                 _texFormula = s_formulaParser.Parse(Formula);
                 _texRenderer = _texFormula.GetRenderer(TexStyle.Display, Scale, SystemTextFontName);
-        
+
                 HasError = false;
                 Errors.Clear();
-               
             }
             catch (TexException e)
             {
                 SetError(e);
-            }           
+            }
         }
 
         /// <summary>

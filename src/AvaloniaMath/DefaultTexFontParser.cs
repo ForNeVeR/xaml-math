@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
-using System.Text;
 
 using Avalonia.Media;
 using System.Xml.Linq;
@@ -15,7 +14,6 @@ namespace WpfMath
         private static readonly string resourceName = TexUtilities.ResourcesDataDirectory + "DefaultTexFont.xml";
 
         private const int fontIdCount = 4;
-        private const string fontsDirectory = "Fonts/";
 
         private static readonly IDictionary<string, int> rangeTypeMappings;
         private static readonly IDictionary<string, ICharChildParser> charChildParsers;
@@ -218,12 +216,11 @@ namespace WpfMath
             }
         }
 
-        private Typeface CreateFont(string name)
+        private static Typeface CreateFont(string name)
         {
             // Load font from embedded resource.
-            var fontName = System.IO.Path.GetFileNameWithoutExtension(name);
-            FontFamily ff = new FontFamily(fontName,
-                      new Uri($"resm:AvaloniaMath.Fonts.{name}?assembly=AvaloniaMath#{fontName}"));
+            var fontName = name.Substring(0, name.LastIndexOf('.'));
+            var ff = FontFamily.Parse($"avares://AvaloniaMath/Fonts#{fontName}");
             return new Typeface(ff, 12);
         }
 
