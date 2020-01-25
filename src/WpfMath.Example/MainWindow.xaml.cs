@@ -33,8 +33,8 @@ namespace WpfMath.Example
         {
             InitializeComponent();
 
-            comboBox.ItemsSource = _testFormulas;
-            comboBox.SelectedIndex = 0;
+            FormulaSelector.ItemsSource = _testFormulas;
+            FormulaSelector.SelectedIndex = 0;
         }
 
         private TexFormula ParseFormula(string input)
@@ -65,9 +65,9 @@ namespace WpfMath.Example
             if (result == false) return;
 
             // Create formula object from input text.
-            var formula = ParseFormula(inputTextBox.Text);
+            var formula = ParseFormula(InputTextBox.Text);
             if (formula == null) return;
-            var renderer = formula.GetRenderer(TexStyle.Display, this.formula.Scale, "Arial");
+            var renderer = formula.GetRenderer(TexStyle.Display, this.Formula.Scale, "Arial");
 
             // Open stream
             var filename = saveFileDialog.FileName;
@@ -117,14 +117,14 @@ namespace WpfMath.Example
 
         private void inputTextBox_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            formula.SelectionStart = inputTextBox.SelectionStart;
-            formula.SelectionLength = inputTextBox.SelectionLength;
+            Formula.SelectionStart = InputTextBox.SelectionStart;
+            Formula.SelectionLength = InputTextBox.SelectionLength;
         }
 
-        private void ComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void FormulaTextBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var item = (ComboBoxItem) ((ComboBox) sender).SelectedItem;
-            inputTextBox.Text = (string)item.DataContext;
+            InputTextBox.Text = (string)item.DataContext;
         }
     }
 }
