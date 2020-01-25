@@ -21,7 +21,7 @@ namespace WpfMath.Utils
         {
             if (!Equals(value, default) && error != null)
             {
-                throw new ArgumentException(nameof(error), $"Invalid {nameof(Result)} constructor call");
+                throw new ArgumentException($"Invalid {nameof(Result)} constructor call", nameof(error));
             }
 
             this.value = value;
