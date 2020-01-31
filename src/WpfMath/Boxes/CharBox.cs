@@ -1,5 +1,7 @@
+using System.Linq;
 using System.Windows;
 using System.Windows.Media;
+using WpfMath.Exceptions;
 using WpfMath.Rendering;
 
 namespace WpfMath.Boxes
@@ -26,7 +28,14 @@ namespace WpfMath.Boxes
         internal GlyphRun GetGlyphRun(double scale, double x, double y)
         {
             var typeface = this.Character.Font;
-            var glyphIndex = typeface.CharacterToGlyphMap[this.Character.Character];
+            var characterInt = (int)this.Character.Character;
+            if (!typeface.CharacterToGlyphMap.TryGetValue(characterInt, out var glyphIndex))
+            {
+                var fontName = typeface.FamilyNames.Values.First();
+                var characterHex = characterInt.ToString("X4");
+                throw new TexCharacterMappingNotFoundException(
+                    $"The {fontName} font does not support '{this.Character.Character}' (U+{characterHex}) character.");
+            }
             var glyphRun = new GlyphRun(typeface, 0, false, this.Character.Size * scale,
                 new ushort[] { glyphIndex }, new Point(x * scale, y * scale),
                 new double[] { typeface.AdvanceWidths[glyphIndex] }, null, null, null, null, null, null);
