@@ -268,7 +268,10 @@ namespace WpfMath
                             + superScriptChar + "\", \"" + subScriptChar + "\" and \""
                             + primeChar + "\" can't be the first character!");
                     else
-                        throw new TexParseException("Double scripts found! Try using more braces.");
+                    {
+                        var scriptsAtom = this.AttachScripts(formula, value, ref position, new RowAtom(value), true, environment);
+                        formula.Add(scriptsAtom, value.Segment(initialPosition, position));
+                    }
                 }
                 else
                 {

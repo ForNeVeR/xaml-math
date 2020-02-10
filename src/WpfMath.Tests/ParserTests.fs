@@ -29,6 +29,10 @@ let emptyDelimiters(left : string, right : string, isLeftEmpty : bool, isRightEm
     <| sprintf @"\left%sa\right%s" left right
 
 [<Fact>]
+let subScripts() =
+    verifyParseResult @"\hat{a}_{b\sigma}"
+
+[<Fact>]
 let unmatchedDelimiters() =
     verifyParseResult @"\left)a\right|"
 
