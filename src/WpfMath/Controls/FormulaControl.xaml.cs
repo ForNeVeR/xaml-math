@@ -128,15 +128,16 @@ namespace WpfMath.Controls
             if (formulaSource != null)
             {
                 var selectionBrush = SelectionBrush;
-                if (selectionBrush != null)
+                var allBoxes = new List<Box>(renderer.Box.Children);
+                var selectionStart = SelectionStart;
+                var selectionEnd = selectionStart + SelectionLength;
+                for (var idx = 0; idx < allBoxes.Count; idx++)
                 {
-                    var allBoxes = new List<Box>(renderer.Box.Children);
-                    var selectionStart = SelectionStart;
-                    var selectionEnd = selectionStart + SelectionLength;
-                    for (var idx = 0; idx < allBoxes.Count; idx++)
+                    var box = allBoxes[idx];
+                    box.Foreground = this.Foreground;
+                    allBoxes.AddRange(box.Children);
+                    if (selectionBrush != null)
                     {
-                        var box = allBoxes[idx];
-                        allBoxes.AddRange(box.Children);
                         var source = box.Source;
                         if (source == null ||
                             !source.SourceName.Equals(formulaSource.SourceName, StringComparison.Ordinal) ||
