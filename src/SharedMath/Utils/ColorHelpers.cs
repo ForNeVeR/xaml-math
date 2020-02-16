@@ -20,7 +20,7 @@ namespace WpfMath.Utils
             predefinedRgbColors = GetPredefinedColors(doc.Root);
         }
 
-        public static bool TryCmykColorParse(
+        public static bool TryParseCmykColor(
             IEnumerable<string> components,
             out (byte r, byte g, byte b, byte a) color)
         {
@@ -48,7 +48,7 @@ namespace WpfMath.Utils
             return true;
         }
 
-        public static bool TryGrayscaleColorParse(
+        public static bool TryParseGrayscaleColor(
             IEnumerable<string> components,
             out (byte r, byte g, byte b, byte a) color)
         {
@@ -76,7 +76,7 @@ namespace WpfMath.Utils
             return true;
         }
 
-        public static bool TryPredefinedColorParse(
+        public static bool TryParsePredefinedColor(
             IEnumerable<string> components,
             out (byte r, byte g, byte b, byte a) color)
         {
@@ -107,7 +107,7 @@ namespace WpfMath.Utils
             return true;
         }
 
-        public static bool TryHtmlColorParse(
+        public static bool TryParseHtmlColor(
             string component,
             out (byte r, byte g, byte b, byte a) color)
         {

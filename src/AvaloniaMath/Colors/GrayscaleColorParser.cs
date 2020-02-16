@@ -7,7 +7,7 @@ namespace WpfMath.Colors
     internal class GrayscaleColorParser : IColorParser
     {
         public Color? Parse(IEnumerable<string> components)
-            => ColorHelpers.TryGrayscaleColorParse(components, out var color)
+            => ColorHelpers.TryParseGrayscaleColor(components, out var color)
                 ? Color.FromArgb(color.a, color.r, color.g, color.b)
                 : (Color?)null;
     }
