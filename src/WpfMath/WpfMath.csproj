@@ -29,5 +29,8 @@
         <Resource Include="Fonts\cmr10.ttf" />
         <Resource Include="Fonts\cmsy10.ttf" />
     </ItemGroup>
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net452' ">
+        <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+    </ItemGroup>
     <Import Project="..\SharedMath\SharedMath.projitems" Label="Shared" />
 </Project>

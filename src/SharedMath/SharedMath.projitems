@@ -75,6 +75,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)TexFontUtilities.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TexFormulaHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TexSymbolParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\ColorHelpers.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\Result.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)XmlUtilities.cs" />
   </ItemGroup>
