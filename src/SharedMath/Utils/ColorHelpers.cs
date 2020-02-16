@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Xml.Linq;
+using WpfMath.Colors;
 
 namespace WpfMath.Utils
 {
@@ -150,6 +151,38 @@ namespace WpfMath.Utils
 
         public static byte ConvertToByteRgbComponent(double val) =>
             (byte) Math.Round(255.0 * val, MidpointRounding.AwayFromZero);
+
+        internal static bool TryParseRgbColor<T>(
+            IReadOnlyList<string> components,
+            AlphaChannelMode alphaChannelMode,
+            T defaultAlpha,
+            Func<string, T?> tryParseComponent,
+            Func<T, byte> getByteValue,
+            out (byte r, byte g, byte b, byte a) color)
+            where T : struct
+        {
+            color = default;
+            var values = components
+                .Select(tryParseComponent)
+                .ToArray();
+
+            var index = 0;
+            var alpha = alphaChannelMode == AlphaChannelMode.AlphaFirst
+                ? values[index++]
+                : defaultAlpha;
+
+            var r = values[index++];
+            var g = values[index++];
+            var b = values[index++];
+
+            if (alphaChannelMode == AlphaChannelMode.AlphaLast)
+                alpha = values[index];
+
+            if (!(alpha.HasValue && r.HasValue && g.HasValue && b.HasValue))
+                return false;
+            color = (getByteValue(r.Value), getByteValue(g.Value), getByteValue(b.Value), getByteValue(alpha.Value));
+            return true;
+        }
 
         private static Dictionary<string, (byte r, byte g, byte b)> GetPredefinedColors(XElement rootElement)
         {
