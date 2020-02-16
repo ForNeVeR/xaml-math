@@ -2,11 +2,23 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
+using System.Xml.Linq;
 
 namespace WpfMath.Utils
 {
     internal static class ColorHelpers
     {
+        private static readonly IReadOnlyDictionary<string, (byte r, byte g, byte b)> predefinedRgbColors;
+
+        static ColorHelpers()
+        {
+            const string resourceName = TexUtilities.ResourcesDataDirectory + "PredefinedColors.xml";
+            using var resource = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName);
+            var doc = XDocument.Load(resource);
+            predefinedRgbColors = GetPredefinedColors(doc.Root);
+        }
+
         public static bool TryCmykColorParse(
             IEnumerable<string> components,
             out (byte r, byte g, byte b, byte a) color)
@@ -80,6 +92,43 @@ namespace WpfMath.Utils
             return true;
         }
 
+        public static bool TryPredefinedColorParse(
+            IEnumerable<string> components,
+            out (byte r, byte g, byte b, byte a) color)
+        {
+            color = default;
+            var componentList = components.ToList();
+            var hasAlphaComponent = componentList.Count == 2;
+            if (componentList.Count != 1 && !hasAlphaComponent)
+                return false;
+
+            var colorName = componentList[0];
+            if (!predefinedRgbColors.TryGetValue(colorName, out var predefinedRgbColor))
+                return false;
+
+            byte? alpha = 255;
+            if (hasAlphaComponent)
+            {
+                var alphaFraction = double.TryParse(
+                    componentList[1],
+                    NumberStyles.AllowDecimalPoint,
+                    CultureInfo.InvariantCulture,
+                    out var a)
+                    ? (double?) a
+                    : null;
+                if (alphaFraction == null || alphaFraction < 0.0 || alphaFraction > 1.0)
+                    return false;
+
+                alpha = (byte) Math.Round(255.0 * a, MidpointRounding.AwayFromZero);
+            }
+
+            if (alpha == null)
+                return false;
+
+            color = (predefinedRgbColor.r, predefinedRgbColor.g, predefinedRgbColor.b, alpha.Value);
+            return true;
+        }
+
         public static bool TryHtmlColorParse(
             string component,
             out (byte r, byte g, byte b, byte a) color)
@@ -108,6 +157,21 @@ namespace WpfMath.Utils
                 color.a = (byte) (colorCode & 0xFF);
             }
             return true;
+        }
+
+        private static Dictionary<string, (byte r, byte g, byte b)> GetPredefinedColors(XElement rootElement)
+        {
+            var colors = new Dictionary<string, (byte r, byte g, byte b)>();
+            foreach (var colorElement in rootElement.Elements("color"))
+            {
+                var name = colorElement.AttributeValue("name");
+                var r = colorElement.AttributeValue("r");
+                var g = colorElement.AttributeValue("g");
+                var b = colorElement.AttributeValue("b");
+                colors.Add(name, (Convert.ToByte(r), Convert.ToByte(g), Convert.ToByte(b)));
+            }
+
+            return colors;
         }
     }
 }
