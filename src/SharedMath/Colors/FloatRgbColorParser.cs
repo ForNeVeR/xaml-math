@@ -1,4 +1,3 @@
-using System;
 using System.Globalization;
 using WpfMath.Utils;
 
@@ -12,15 +11,8 @@ namespace WpfMath.Colors
 
         protected override double DefaultAlpha => 1.0;
 
-        protected override Tuple<bool, double> TryParseComponent(string component)
-        {
-            var success = double.TryParse(
-                component,
-                NumberStyles.AllowDecimalPoint,
-                CultureInfo.InvariantCulture,
-                out var value);
-            return Tuple.Create(success && value >= 0.0 && value <= 1.0, value);
-        }
+        protected override double? ParseColorComponent(string component)
+            => ColorHelpers.ParseFloatColorComponent(component, NumberStyles.AllowDecimalPoint);
 
         protected override byte GetByteValue(double val)
             => ColorHelpers.ConvertToByteRgbComponent(val);

@@ -20,16 +20,14 @@ namespace WpfMath.Colors
 
         protected abstract T DefaultAlpha { get; }
 
-        protected abstract Tuple<bool, T> TryParseComponent(string component);
+        protected abstract T? ParseColorComponent(string component);
         protected abstract byte GetByteValue(T val);
 
         protected override Color? ParseComponents(List<string> components)
         {
-            var values = components.Select(x =>
-            {
-                var (success, val) = TryParseComponent(x);
-                return success ? (T?) val : null;
-            }).ToArray();
+            var values = components
+                .Select(ParseColorComponent)
+                .ToArray();
             var index = 0;
             T? alpha = DefaultAlpha;
             if (_alphaChannelMode == AlphaChannelMode.AlphaFirst)

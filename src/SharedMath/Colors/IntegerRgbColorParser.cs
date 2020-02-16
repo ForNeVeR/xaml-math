@@ -1,5 +1,5 @@
-using System;
 using System.Globalization;
+using WpfMath.Utils;
 
 namespace WpfMath.Colors
 {
@@ -11,11 +11,8 @@ namespace WpfMath.Colors
 
         protected override byte DefaultAlpha => 255;
 
-        protected override Tuple<bool, byte> TryParseComponent(string component)
-        {
-            var success = byte.TryParse(component, NumberStyles.None, CultureInfo.InvariantCulture, out var val);
-            return Tuple.Create(success, val);
-        }
+        protected override byte? ParseColorComponent(string component)
+            => ColorHelpers.ParseByteColorComponent(component, NumberStyles.None);
 
         protected override byte GetByteValue(byte val) => val;
     }
