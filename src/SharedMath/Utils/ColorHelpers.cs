@@ -46,10 +46,10 @@ namespace WpfMath.Utils
             if (c == null || m == null || y == null || k == null || aFraction == null)
                 return false;
 
-            color.r = (byte) Math.Round(255.0 * (1.0 - c.Value) * (1.0 - k.Value), MidpointRounding.AwayFromZero);
-            color.g = (byte) Math.Round(255.0 * (1.0 - m.Value) * (1.0 - k.Value), MidpointRounding.AwayFromZero);
-            color.b = (byte) Math.Round(255.0 * (1.0 - y.Value) * (1.0 - k.Value), MidpointRounding.AwayFromZero);
-            color.a = (byte) Math.Round(255.0 * aFraction.Value, MidpointRounding.AwayFromZero);
+            color.r = ConvertToByteRgbComponent((1.0 - c.Value) * (1.0 - k.Value));
+            color.g = ConvertToByteRgbComponent((1.0 - m.Value) * (1.0 - k.Value));
+            color.b = ConvertToByteRgbComponent((1.0 - y.Value) * (1.0 - k.Value));
+            color.a = ConvertToByteRgbComponent(aFraction.Value);
             return true;
         }
 
@@ -84,7 +84,7 @@ namespace WpfMath.Utils
             if (alpha == null)
                 return false;
 
-            var colorValue = (byte) Math.Round(gradation * 255.0, MidpointRounding.AwayFromZero);
+            var colorValue = ConvertToByteRgbComponent(gradation);
             color.r = colorValue;
             color.g = colorValue;
             color.b = colorValue;
@@ -119,7 +119,7 @@ namespace WpfMath.Utils
                 if (alphaFraction == null || alphaFraction < 0.0 || alphaFraction > 1.0)
                     return false;
 
-                alpha = (byte) Math.Round(255.0 * a, MidpointRounding.AwayFromZero);
+                alpha = ConvertToByteRgbComponent(a);
             }
 
             if (alpha == null)
@@ -158,6 +158,9 @@ namespace WpfMath.Utils
             }
             return true;
         }
+
+        public static byte ConvertToByteRgbComponent(double val) =>
+            (byte) Math.Round(255.0 * val, MidpointRounding.AwayFromZero);
 
         private static Dictionary<string, (byte r, byte g, byte b)> GetPredefinedColors(XElement rootElement)
         {

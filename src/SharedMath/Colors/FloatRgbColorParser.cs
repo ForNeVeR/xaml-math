@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using WpfMath.Utils;
 
 namespace WpfMath.Colors
 {
@@ -21,7 +22,7 @@ namespace WpfMath.Colors
             return Tuple.Create(success && value >= 0.0 && value <= 1.0, value);
         }
 
-        protected override byte GetByteValue(double val) =>
-            (byte) Math.Round(255.0 * val, MidpointRounding.AwayFromZero);
+        protected override byte GetByteValue(double val)
+            => ColorHelpers.ConvertToByteRgbComponent(val);
     }
 }
