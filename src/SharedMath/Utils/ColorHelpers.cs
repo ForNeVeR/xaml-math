@@ -21,16 +21,15 @@ namespace WpfMath.Utils
         }
 
         public static bool TryParseCmykColor(
-            IEnumerable<string> components,
+            IReadOnlyList<string> components,
             out (byte r, byte g, byte b, byte a) color)
         {
             color = default;
-            var componentList = components.ToList();
-            var hasAlpha = componentList.Count == 5;
-            if (componentList.Count != 4 && !hasAlpha)
+            var hasAlpha = components.Count == 5;
+            if (components.Count != 4 && !hasAlpha)
                 return false;
 
-            var cmyk = componentList
+            var cmyk = components
                 .Select(x=> ParseFloatColorComponent(x, NumberStyles.AllowExponent | NumberStyles.AllowDecimalPoint))
                 .ToArray();
             var c = cmyk[0];
@@ -49,21 +48,20 @@ namespace WpfMath.Utils
         }
 
         public static bool TryParseGrayscaleColor(
-            IEnumerable<string> components,
+            IReadOnlyList<string> components,
             out (byte r, byte g, byte b, byte a) color)
         {
             color = default;
-            var componentList = components.ToList();
-            var hasAlpha = componentList.Count == 2;
-            if (componentList.Count != 1 && !hasAlpha)
+            var hasAlpha = components.Count == 2;
+            if (components.Count != 1 && !hasAlpha)
                 return false;
 
-            var gradation = ParseFloatColorComponent(componentList[0], NumberStyles.AllowDecimalPoint);
+            var gradation = ParseFloatColorComponent(components[0], NumberStyles.AllowDecimalPoint);
             if (!gradation.HasValue)
                 return false;
 
             var alpha = hasAlpha
-                ? ParseFloatColorComponent(componentList[1], NumberStyles.AllowDecimalPoint)
+                ? ParseFloatColorComponent(components[1], NumberStyles.AllowDecimalPoint)
                 : 1.0;
             if (!alpha.HasValue)
                 return false;
@@ -77,23 +75,22 @@ namespace WpfMath.Utils
         }
 
         public static bool TryParsePredefinedColor(
-            IEnumerable<string> components,
+            IReadOnlyList<string> components,
             out (byte r, byte g, byte b, byte a) color)
         {
             color = default;
-            var componentList = components.ToList();
-            var hasAlphaComponent = componentList.Count == 2;
-            if (componentList.Count != 1 && !hasAlphaComponent)
+            var hasAlphaComponent = components.Count == 2;
+            if (components.Count != 1 && !hasAlphaComponent)
                 return false;
 
-            var colorName = componentList[0];
+            var colorName = components[0];
             if (!predefinedRgbColors.TryGetValue(colorName, out var predefinedRgbColor))
                 return false;
 
             byte? alpha = 255;
             if (hasAlphaComponent)
             {
-                var alphaFraction = ParseFloatColorComponent(componentList[1], NumberStyles.AllowDecimalPoint);
+                var alphaFraction = ParseFloatColorComponent(components[1], NumberStyles.AllowDecimalPoint);
                 if (!alphaFraction.HasValue)
                     return false;
 

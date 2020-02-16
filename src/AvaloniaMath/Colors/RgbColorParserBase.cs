@@ -21,7 +21,7 @@ namespace WpfMath.Colors
         protected abstract T? ParseColorComponent(string component);
         protected abstract byte GetByteValue(T val);
 
-        protected override Color? ParseComponents(List<string> components)
+        protected override Color? ParseComponents(IReadOnlyList<string> components)
             => ColorHelpers.TryParseRgbColor(
                 components,
                 _alphaChannelMode,

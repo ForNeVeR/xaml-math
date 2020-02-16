@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Media;
 
 namespace WpfMath.Colors
@@ -14,12 +13,9 @@ namespace WpfMath.Colors
             _componentCount = componentCount;
         }
 
-        protected abstract Color? ParseComponents(List<string> components);
+        protected abstract Color? ParseComponents(IReadOnlyList<string> components);
 
-        public Color? Parse(IEnumerable<string> components)
-        {
-            var componentList = components.ToList();
-            return componentList.Count == _componentCount ? ParseComponents(componentList) : null;
-        }
+        public Color? Parse(IReadOnlyList<string> components)
+            => components.Count == _componentCount ? ParseComponents(components) : null;
     }
 }

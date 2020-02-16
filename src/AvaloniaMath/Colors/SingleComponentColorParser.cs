@@ -13,7 +13,7 @@ namespace WpfMath.Colors
 
         protected abstract Color? ParseSingleComponent(string component);
 
-        protected override Color? ParseComponents(List<string> components) =>
+        protected override Color? ParseComponents(IReadOnlyList<string> components) =>
             ParseSingleComponent(components.Single());
     }
 }
