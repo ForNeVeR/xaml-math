@@ -38,6 +38,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Boxes\OverUnderBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Boxes\StrutBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Boxes\VerticalBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Colors\AlphaChannelMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Colors\FloatRgbColorParser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Colors\IntegerRgbColorParser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Colors\StandardColorParsers.cs" />
@@ -76,8 +77,5 @@
     <Compile Include="$(MSBuildThisFileDirectory)TexSymbolParser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\Result.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)XmlUtilities.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Converters\" />
   </ItemGroup>
 </Project>

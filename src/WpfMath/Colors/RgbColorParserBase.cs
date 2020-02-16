@@ -6,14 +6,6 @@ using WpfMath.Utils;
 
 namespace WpfMath.Colors
 {
-    /// <summary>Helps to differentiate RGBA and ARGB color models, if necessary.</summary>
-    internal enum AlphaChannelMode
-    {
-        None,
-        AlphaFirst,
-        AlphaLast
-    }
-
     /// <summary>A generic parser class for RGB color.</summary>
     /// <typeparam name="T">Type of component value (e.g. integer or double).</typeparam>
     internal abstract class RgbColorParserBase<T> : FixedComponentCountColorParser where T : struct
