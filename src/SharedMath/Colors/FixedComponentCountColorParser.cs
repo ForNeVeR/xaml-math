@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Avalonia.Media;
 
 namespace WpfMath.Colors
 {
@@ -13,9 +12,9 @@ namespace WpfMath.Colors
             _componentCount = componentCount;
         }
 
-        protected abstract Color? ParseComponents(IReadOnlyList<string> components);
+        protected abstract RgbaColor? ParseComponents(IReadOnlyList<string> components);
 
-        public Color? Parse(IReadOnlyList<string> components)
+        public RgbaColor? Parse(IReadOnlyList<string> components)
             => components.Count == _componentCount ? ParseComponents(components) : null;
     }
 }

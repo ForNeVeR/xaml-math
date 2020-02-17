@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Windows.Media;
 using WpfMath.Utils;
 
 namespace WpfMath.Colors
@@ -21,7 +20,7 @@ namespace WpfMath.Colors
         protected abstract T? ParseColorComponent(string component);
         protected abstract byte GetByteValue(T val);
 
-        protected override Color? ParseComponents(IReadOnlyList<string> components)
+        protected override RgbaColor? ParseComponents(IReadOnlyList<string> components)
             => ColorHelpers.TryParseRgbColor(
                 components,
                 _alphaChannelMode,
@@ -29,7 +28,7 @@ namespace WpfMath.Colors
                 ParseColorComponent,
                 GetByteValue,
                 out var color)
-                ? Color.FromArgb(color.A, color.R, color.G, color.B)
-                : (Color?)null;
+                ? color
+                : (RgbaColor?)null;
     }
 }

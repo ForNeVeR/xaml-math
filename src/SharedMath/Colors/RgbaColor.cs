@@ -1,6 +1,6 @@
 namespace WpfMath.Colors
 {
-    internal struct RgbaColor
+    public struct RgbaColor
     {
         public byte R { get; set; }
 

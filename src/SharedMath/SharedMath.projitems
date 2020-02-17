@@ -39,9 +39,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)Boxes\StrutBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Boxes\VerticalBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Colors\AlphaChannelMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Colors\CmykColorParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Colors\FixedComponentCountColorParser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Colors\FloatRgbColorParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Colors\GrayscaleColorParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Colors\HtmlColorParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Colors\IColorParser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Colors\IntegerRgbColorParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Colors\PredefinedColorParser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Colors\RgbaColor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Colors\RgbColorParserBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Colors\SingleComponentColorParser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Colors\StandardColorParsers.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CharFont.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DefaultTexFont.cs" />

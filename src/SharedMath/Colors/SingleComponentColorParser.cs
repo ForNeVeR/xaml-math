@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Avalonia.Media;
 
 namespace WpfMath.Colors
 {
@@ -11,9 +10,9 @@ namespace WpfMath.Colors
         {
         }
 
-        protected abstract Color? ParseSingleComponent(string component);
+        protected abstract RgbaColor? ParseSingleComponent(string component);
 
-        protected override Color? ParseComponents(IReadOnlyList<string> components) =>
+        protected override RgbaColor? ParseComponents(IReadOnlyList<string> components) =>
             ParseSingleComponent(components.Single());
     }
 }

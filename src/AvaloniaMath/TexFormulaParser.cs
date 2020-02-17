@@ -543,7 +543,7 @@ namespace WpfMath
 
                     return new Tuple<AtomAppendMode, Atom>(
                         AtomAppendMode.Add,
-                        new StyledAtom(source, bodyFormula.RootAtom, null, new SolidColorBrush(color)));
+                        new StyledAtom(source, bodyFormula.RootAtom, null, new SolidColorBrush(Color.FromArgb(color.A, color.R, color.G, color.B))));
                 }
                 case "colorbox":
                 {
@@ -555,7 +555,7 @@ namespace WpfMath
 
                     return new Tuple<AtomAppendMode, Atom>(
                         AtomAppendMode.Add,
-                        new StyledAtom(source, bodyFormula.RootAtom, new SolidColorBrush(color), null));
+                        new StyledAtom(source, bodyFormula.RootAtom, new SolidColorBrush(Color.FromArgb(color.A, color.R, color.G, color.B)), null));
                 }
                 }
 
@@ -578,7 +578,7 @@ namespace WpfMath
         /// <summary>Reads an optional square braced color model name, and then a color name.</summary>
         /// <returns>Returns a color parsed.</returns>
         /// <exception cref="TexParseException">Gets thrown in case of nonexistent color model or color.</exception>
-        private Color ReadColorModelData(SourceSpan value, ref int position)
+        private RgbaColor ReadColorModelData(SourceSpan value, ref int position)
         {
             var colorModelName = ReadElementGroupOptional(
                 value,
