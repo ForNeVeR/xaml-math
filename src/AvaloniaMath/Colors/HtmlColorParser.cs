@@ -7,7 +7,7 @@ namespace WpfMath.Colors
     {
         protected override Color? ParseSingleComponent(string component)
             => ColorHelpers.TryParseHtmlColor(component, out var color)
-                ? Color.FromArgb(color.a, color.r, color.g, color.b)
+                ? Color.FromArgb(color.A, color.R, color.G, color.B)
                 : (Color?)null;
     }
 }

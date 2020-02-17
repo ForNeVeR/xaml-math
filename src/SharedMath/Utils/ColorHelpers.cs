@@ -10,7 +10,7 @@ namespace WpfMath.Utils
 {
     internal static class ColorHelpers
     {
-        private static readonly IReadOnlyDictionary<string, (byte r, byte g, byte b)> predefinedRgbColors;
+        private static readonly IReadOnlyDictionary<string, RgbaColor> predefinedRgbColors;
 
         static ColorHelpers()
         {
@@ -20,9 +20,7 @@ namespace WpfMath.Utils
             predefinedRgbColors = GetPredefinedColors(doc.Root);
         }
 
-        public static bool TryParseCmykColor(
-            IReadOnlyList<string> components,
-            out (byte r, byte g, byte b, byte a) color)
+        public static bool TryParseCmykColor(IReadOnlyList<string> components, out RgbaColor color)
         {
             color = default;
             var hasAlpha = components.Count == 5;
@@ -37,19 +35,17 @@ namespace WpfMath.Utils
             var y = cmyk[2];
             var k = cmyk[3];
             var aFraction = hasAlpha ? cmyk[4] : 1.0;
-            if (c == null || m == null || y == null || k == null || aFraction == null)
+            if (!(c.HasValue && m.HasValue && y.HasValue && k.HasValue && aFraction.HasValue))
                 return false;
 
-            color.r = ConvertToByteRgbComponent((1.0 - c.Value) * (1.0 - k.Value));
-            color.g = ConvertToByteRgbComponent((1.0 - m.Value) * (1.0 - k.Value));
-            color.b = ConvertToByteRgbComponent((1.0 - y.Value) * (1.0 - k.Value));
-            color.a = ConvertToByteRgbComponent(aFraction.Value);
+            color.R = ConvertToByteRgbComponent((1.0 - c.Value) * (1.0 - k.Value));
+            color.G = ConvertToByteRgbComponent((1.0 - m.Value) * (1.0 - k.Value));
+            color.B = ConvertToByteRgbComponent((1.0 - y.Value) * (1.0 - k.Value));
+            color.A = ConvertToByteRgbComponent(aFraction.Value);
             return true;
         }
 
-        public static bool TryParseGrayscaleColor(
-            IReadOnlyList<string> components,
-            out (byte r, byte g, byte b, byte a) color)
+        public static bool TryParseGrayscaleColor(IReadOnlyList<string> components, out RgbaColor color)
         {
             color = default;
             var hasAlpha = components.Count == 2;
@@ -67,16 +63,14 @@ namespace WpfMath.Utils
                 return false;
 
             var colorValue = ConvertToByteRgbComponent(gradation.Value);
-            color.r = colorValue;
-            color.g = colorValue;
-            color.b = colorValue;
-            color.a = (byte) Math.Round(alpha.Value * 255.0, MidpointRounding.AwayFromZero);
+            color.R = colorValue;
+            color.G = colorValue;
+            color.B = colorValue;
+            color.A = ConvertToByteRgbComponent(alpha.Value);
             return true;
         }
 
-        public static bool TryParsePredefinedColor(
-            IReadOnlyList<string> components,
-            out (byte r, byte g, byte b, byte a) color)
+        public static bool TryParsePredefinedColor(IReadOnlyList<string> components, out RgbaColor color)
         {
             color = default;
             var hasAlphaComponent = components.Count == 2;
@@ -100,13 +94,12 @@ namespace WpfMath.Utils
             if (!alpha.HasValue)
                 return false;
 
-            color = (predefinedRgbColor.r, predefinedRgbColor.g, predefinedRgbColor.b, alpha.Value);
+            color = predefinedRgbColor;
+            color.A = alpha.Value;
             return true;
         }
 
-        public static bool TryParseHtmlColor(
-            string component,
-            out (byte r, byte g, byte b, byte a) color)
+        public static bool TryParseHtmlColor(string component, out RgbaColor color)
         {
             color = default;
             var isRgb = component.Length == 6;
@@ -119,17 +112,17 @@ namespace WpfMath.Utils
 
             if (isRgb)
             {
-                color.r = (byte) ((colorCode & 0xFF0000) >> 16);
-                color.g = (byte) ((colorCode & 0xFF00) >> 8);
-                color.b = (byte) (colorCode & 0xFF);
-                color.a = 0xFF;
+                color.R = (byte) ((colorCode & 0xFF0000) >> 16);
+                color.G = (byte) ((colorCode & 0xFF00) >> 8);
+                color.B = (byte) (colorCode & 0xFF);
+                color.A = 0xFF;
             }
             else
             {
-                color.r = (byte) ((colorCode & 0xFF0000) >> 24);
-                color.g = (byte) ((colorCode & 0xFF00) >> 16);
-                color.b = (byte) ((colorCode & 0xFF) >> 8);
-                color.a = (byte) (colorCode & 0xFF);
+                color.R = (byte) ((colorCode & 0xFF0000) >> 24);
+                color.G = (byte) ((colorCode & 0xFF00) >> 16);
+                color.B = (byte) ((colorCode & 0xFF) >> 8);
+                color.A = (byte) (colorCode & 0xFF);
             }
             return true;
         }
@@ -155,7 +148,7 @@ namespace WpfMath.Utils
             T defaultAlpha,
             Func<string, T?> tryParseComponent,
             Func<T, byte> getByteValue,
-            out (byte r, byte g, byte b, byte a) color)
+            out RgbaColor color)
             where T : struct
         {
             color = default;
@@ -177,20 +170,20 @@ namespace WpfMath.Utils
 
             if (!(alpha.HasValue && r.HasValue && g.HasValue && b.HasValue))
                 return false;
-            color = (getByteValue(r.Value), getByteValue(g.Value), getByteValue(b.Value), getByteValue(alpha.Value));
+            color = new RgbaColor(getByteValue(alpha.Value), getByteValue(r.Value), getByteValue(g.Value), getByteValue(b.Value));
             return true;
         }
 
-        private static Dictionary<string, (byte r, byte g, byte b)> GetPredefinedColors(XElement rootElement)
+        private static Dictionary<string, RgbaColor> GetPredefinedColors(XElement rootElement)
         {
-            var colors = new Dictionary<string, (byte r, byte g, byte b)>();
+            var colors = new Dictionary<string, RgbaColor>();
             foreach (var colorElement in rootElement.Elements("color"))
             {
                 var name = colorElement.AttributeValue("name");
                 var r = colorElement.AttributeValue("r");
                 var g = colorElement.AttributeValue("g");
                 var b = colorElement.AttributeValue("b");
-                colors.Add(name, (Convert.ToByte(r), Convert.ToByte(g), Convert.ToByte(b)));
+                colors.Add(name, new RgbaColor(Convert.ToByte(r), Convert.ToByte(g), Convert.ToByte(b)));
             }
 
             return colors;

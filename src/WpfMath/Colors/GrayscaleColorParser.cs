@@ -8,7 +8,7 @@ namespace WpfMath.Colors
     {
         public Color? Parse(IReadOnlyList<string> components)
             => ColorHelpers.TryParseGrayscaleColor(components, out var color)
-                ? Color.FromArgb(color.a, color.r, color.g, color.b)
+                ? Color.FromArgb(color.A, color.R, color.G, color.B)
                 : (Color?)null;
     }
 }
