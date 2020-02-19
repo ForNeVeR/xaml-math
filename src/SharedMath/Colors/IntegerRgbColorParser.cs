@@ -11,8 +11,8 @@ namespace WpfMath.Colors
 
         protected override byte DefaultAlpha => 255;
 
-        protected override byte? ParseColorComponent(string component)
-            => ColorHelpers.ParseByteColorComponent(component, NumberStyles.None);
+        protected override byte? ParseColorComponent(string component) =>
+            ColorHelpers.ParseByteColorComponent(component, NumberStyles.None);
 
         protected override byte GetByteValue(byte val) => val;
     }

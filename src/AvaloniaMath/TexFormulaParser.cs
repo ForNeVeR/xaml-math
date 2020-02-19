@@ -2,14 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
-using System.Windows;
 using Avalonia.Media;
 using WpfMath.Atoms;
 using WpfMath.Colors;
 using WpfMath.Exceptions;
 using WpfMath.Parsers;
-using WpfMath.Utils;
 
 namespace WpfMath
 {

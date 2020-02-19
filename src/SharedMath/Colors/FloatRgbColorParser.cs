@@ -11,10 +11,10 @@ namespace WpfMath.Colors
 
         protected override double DefaultAlpha => 1.0;
 
-        protected override double? ParseColorComponent(string component)
-            => ColorHelpers.ParseFloatColorComponent(component, NumberStyles.AllowDecimalPoint);
+        protected override double? ParseColorComponent(string component) =>
+            ColorHelpers.ParseFloatColorComponent(component, NumberStyles.AllowDecimalPoint);
 
-        protected override byte GetByteValue(double val)
-            => ColorHelpers.ConvertToByteRgbComponent(val);
+        protected override byte GetByteValue(double val) =>
+            ColorHelpers.ConvertToByteRgbComponent(val);
     }
 }

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using WpfMath.Utils;
+using System.Linq;
 
 namespace WpfMath.Colors
 {
@@ -21,14 +21,34 @@ namespace WpfMath.Colors
         protected abstract byte GetByteValue(T val);
 
         protected override RgbaColor? ParseComponents(IReadOnlyList<string> components)
-            => ColorHelpers.TryParseRgbColor(
-                components,
-                _alphaChannelMode,
-                DefaultAlpha,
-                ParseColorComponent,
-                GetByteValue,
-                out var color)
-                ? color
-                : (RgbaColor?)null;
+        {
+            var values = components
+                .Select(ParseColorComponent)
+                .ToArray();
+
+            var index = 0;
+            var alpha = _alphaChannelMode == AlphaChannelMode.AlphaFirst
+                ? values[index++]
+                : DefaultAlpha;
+
+            var r = values[index++];
+            var g = values[index++];
+            var b = values[index++];
+
+            if (_alphaChannelMode == AlphaChannelMode.AlphaLast)
+                alpha = values[index];
+
+            if (!(alpha.HasValue && r.HasValue && g.HasValue && b.HasValue))
+                return null;
+
+            var color = new RgbaColor
+            {
+                R = GetByteValue(r.Value),
+                G = GetByteValue(g.Value),
+                B = GetByteValue(b.Value),
+                A = GetByteValue(alpha.Value),
+            };
+            return color;
+        }
     }
 }
