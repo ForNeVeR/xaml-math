@@ -10,11 +10,7 @@ namespace WpfMath.Colors
 
         public byte A { get; set; }
 
-        public RgbaColor(byte r, byte g, byte b)
-            : this(0xFF, r, g, b)
-        {}
-
-        public RgbaColor(byte a, byte r, byte g, byte b)
+        public RgbaColor(byte r, byte g, byte b, byte a = 0xFF)
         {
             this.R = r;
             this.G = g;
