@@ -349,7 +349,7 @@ namespace WpfMath
             char closeChar)
         {
             SkipWhiteSpace(value, ref position);
-            if (value[position] != openChar)
+            if (position == value.Length || value[position] != openChar)
                 return null;
 
             return ReadElementGroup(value, ref position, openChar, closeChar);
