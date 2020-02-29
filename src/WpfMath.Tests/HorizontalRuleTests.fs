@@ -1,13 +1,14 @@
 namespace WpfMath.Tests
 
 open System.Windows
-open System.Windows.Media
 
 open Foq
 open Xunit
 
+open System
 open WpfMath
 open WpfMath.Boxes
+open WpfMath.Colors
 open WpfMath.Rendering
 
 type HorizontalRuleTests() =
@@ -28,4 +29,4 @@ type HorizontalRuleTests() =
         horizontalRule.RenderTo(mockedRenderer, x, y)
 
         let expectedRect = Rect(x, y -  thickness, width, thickness)
-        Mock.Verify(<@ mockedRenderer.RenderRectangle(expectedRect, Brushes.Black) @>, once)
+        Mock.Verify(<@ mockedRenderer.RenderRectangle(expectedRect, Nullable(RgbaColor.Black)) @>, once)

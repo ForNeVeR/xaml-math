@@ -1,4 +1,4 @@
-using Avalonia.Media;
+using WpfMath.Colors;
 
 namespace WpfMath
 {
@@ -13,7 +13,7 @@ namespace WpfMath
         {
         }
 
-        private TexEnvironment(TexStyle style, ITeXFont mathFont, ITeXFont textFont, Brush background, Brush foreground)
+        private TexEnvironment(TexStyle style, ITeXFont mathFont, ITeXFont textFont, RgbaColor? background, RgbaColor? foreground)
         {
             if (style == TexStyle.Display || style == TexStyle.Text ||
                 style == TexStyle.Script || style == TexStyle.ScriptScript)
@@ -41,13 +41,13 @@ namespace WpfMath
 
         public ITeXFont TextFont { get; }
 
-        public Brush Background
+        public RgbaColor? Background
         {
             get;
             set;
         }
 
-        public Brush Foreground
+        public RgbaColor? Foreground
         {
             get;
             set;

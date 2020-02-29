@@ -9,6 +9,7 @@ open Xunit
 
 open WpfMath
 open WpfMath.Boxes
+open WpfMath.Colors
 open WpfMath.Rendering
 open WpfMath.Rendering.Transformations
 
@@ -32,7 +33,7 @@ type GeometryElementRendererTests() =
         let charBox = CharBox(environment, char)
         let glyphRun = charBox.GetGlyphRun(1.0, 0.0, 0.0)
         let factory = Func<double, GlyphRun>(fun s -> glyphRun)
-        renderer.RenderGlyphRun(factory, 0.0, 0.0, Brushes.Black)
+        renderer.RenderGlyphRun(factory, 0.0, 0.0, RgbaColor.Black)
 
         let group = Seq.exactlyOne geometry.Children :?> GeometryGroup
         Assert.IsType<PathGeometry>(Seq.exactlyOne group.Children) |> ignore
@@ -40,7 +41,7 @@ type GeometryElementRendererTests() =
     [<Fact>]
     member _.``GeometryElementRenderer.RenderRectangle adds a RectangleGeometry``() : unit =
         let rect = Rect(1.0, 2.0, 3.0, 4.0)
-        renderer.RenderRectangle(rect, null)
+        renderer.RenderRectangle(rect, Nullable<RgbaColor>())
 
         Assert.IsType<RectangleGeometry>(Seq.exactlyOne geometry.Children) |> ignore
 

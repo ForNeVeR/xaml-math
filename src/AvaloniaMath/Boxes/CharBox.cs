@@ -1,6 +1,6 @@
-using System.Windows;
 using Avalonia;
 using Avalonia.Media;
+using WpfMath.Colors;
 using WpfMath.Rendering;
 
 namespace WpfMath.Boxes
@@ -26,10 +26,10 @@ namespace WpfMath.Boxes
 
         internal GlyphRun GetGlyphRun(double scale, double x, double y)
         {
-            
+
             var fontStyle = FontStyle.Normal;
             var fontWeight = FontWeight.Normal;
-            
+
             if (Character.Font.Style.HasFlag(FontStyle.Italic))
             {
                 fontStyle |= FontStyle.Italic;
@@ -39,7 +39,7 @@ namespace WpfMath.Boxes
             {
                 fontWeight |= FontWeight.Bold;
             }
-            
+
             // TODO: Implement font decoration after Avalonia adds support.
             /*
             Underline;
@@ -56,7 +56,7 @@ namespace WpfMath.Boxes
             //      new ushort[] { glyphIndex }, new Point(x * scale, y * scale),
             //      new double[] { typeface.AdvanceWidths[glyphIndex] }, null, null, null, null, null, null);
 
-            
+
 
             var glyphRun = new GlyphRun(typeface,this.Character.Size * scale,
            //      new Point(x * scale, 0),Character.Character);
@@ -68,8 +68,7 @@ namespace WpfMath.Boxes
 
         public override void RenderTo(IElementRenderer renderer, double x, double y)
         {
-            var color = (IBrush)this.Foreground ?? Brushes.Black;
-
+            var color = this.Foreground ?? RgbaColor.Black;
             renderer.RenderGlyphRun(scale => this.GetGlyphRun(scale, x, y), x, y, color);
         }
 

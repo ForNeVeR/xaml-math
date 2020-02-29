@@ -5,7 +5,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using WpfMath.Boxes;
+using WpfMath.Colors;
 using WpfMath.Exceptions;
+using WpfMath.Utils;
 
 namespace WpfMath.Controls
 {
@@ -125,8 +127,7 @@ namespace WpfMath.Controls
             var visual = new DrawingVisual();
             var renderer = texFormula.GetRenderer(TexStyle.Display, Scale, SystemTextFontName);
 
-            var selectionBrush = SelectionBrush;
-            if (selectionBrush != null)
+            if (SelectionBrush is SolidColorBrush selectionBrush)
             {
                 var allBoxes = new List<Box>(renderer.Box.Children);
                 var selectionStart = SelectionStart;
@@ -141,7 +142,7 @@ namespace WpfMath.Controls
                         if (selectionStart < source.Start + source.Length && source.Start < selectionEnd)
                         {
                             if (box is CharBox)
-                                box.Background = selectionBrush;
+                                box.Background = selectionBrush.Color.ToInternalColor();
                         }
                     }
                 }

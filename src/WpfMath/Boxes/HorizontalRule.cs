@@ -1,5 +1,5 @@
 using System.Windows;
-using System.Windows.Media;
+using WpfMath.Colors;
 using WpfMath.Rendering;
 
 namespace WpfMath.Boxes
@@ -18,7 +18,7 @@ namespace WpfMath.Boxes
 
         public override void RenderTo(IElementRenderer renderer, double x, double y)
         {
-            var color = this.Foreground ?? Brushes.Black;
+            var color = this.Foreground ?? RgbaColor.Black;
             var rectangle = new Rect(x, y - this.Height, this.Width, this.Height);
             renderer.RenderRectangle(rectangle, color);
         }

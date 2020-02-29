@@ -28,12 +28,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\RowAtom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\ScriptsAtom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\SpaceAtom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\StyledAtom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\SymbolAtom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\TypedAtom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\UnderlinedAtom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\UnderOverAtom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\VerticalCenteredAtom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Boxes\Box.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Boxes\GlueBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Boxes\HorizontalBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Boxes\OverBar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Boxes\OverUnderBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Boxes\StrutBox.cs" />
@@ -48,6 +51,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Colors\IntegerRgbColorParser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Colors\PredefinedColorParser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Colors\RgbaColor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Colors\RgbaColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Colors\RgbColorParserBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Colors\SingleComponentColorParser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Colors\StandardColorParsers.cs" />
@@ -80,6 +84,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)SymbolMappingNotFoundException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SymbolNotFoundException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TexEnums.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TexEnvironment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TexFontMetrics.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TexFontUtilities.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TexFormulaHelper.cs" />

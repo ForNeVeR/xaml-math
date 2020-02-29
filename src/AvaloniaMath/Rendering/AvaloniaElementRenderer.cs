@@ -2,7 +2,9 @@ using System;
 using System.Linq;
 using Avalonia;
 using Avalonia.Media;
+using AvaloniaMath.Utils;
 using WpfMath.Boxes;
+using WpfMath.Colors;
 using WpfMath.Rendering.Transformations;
 
 namespace WpfMath.Rendering
@@ -30,13 +32,14 @@ namespace WpfMath.Rendering
           //  _drawingContext.Pop();
         }
 
-        public void RenderGlyphRun(Func<double, GlyphRun> scaledGlyphFactory, double x, double y, IBrush foreground)
+        public void RenderGlyphRun(Func<double, GlyphRun> scaledGlyphFactory, double x, double y, RgbaColor foregroundColor)
         {
             var glyphRun = scaledGlyphFactory(_scale);
             //_drawingContext.DrawGlyphRun(foreground, glyphRun);
 
             if (glyphRun.Font.FontSize >= 0.0)
             {
+                var brush = new SolidColorBrush(foregroundColor.ToAvaloniaColor());
                 var tf = glyphRun.Font;
 
                 var ft = new FormattedText
@@ -49,16 +52,17 @@ namespace WpfMath.Rendering
 
                 // TODO fix baseline text display
                 var origin = glyphRun.Position.WithY(glyphRun.Position.Y-tf.FontSize*0.75);
-                
-                _drawingContext.DrawText(foreground, origin, ft);
-                
+
+                _drawingContext.DrawText(brush, origin, ft);
             }
         }
 
-        public void RenderRectangle(Rect rectangle, IBrush foreground)
+        public void RenderRectangle(Rect rectangle, RgbaColor? foregroundColor)
         {
+            // TODO: foregroundColor can be null?
+            var brush = new SolidColorBrush(foregroundColor.Value.ToAvaloniaColor());
             var scaledRectangle = GeometryHelper.ScaleRectangle(_scale, rectangle);
-            _drawingContext.FillRectangle(foreground, scaledRectangle);
+            _drawingContext.FillRectangle(brush, scaledRectangle);
         }
 
         public void RenderTransformed(Box box, Transformation[] transforms, double x, double y)
@@ -82,11 +86,12 @@ namespace WpfMath.Rendering
 
         private void RenderBackground(Box box, double x, double y)
         {
-            if (box.Background != null)
+            if (box.Background.HasValue)
             {
+                var brush = new SolidColorBrush(box.Background.Value.ToAvaloniaColor());
                 // Fill background of box with color:
                 _drawingContext.FillRectangle(
-                    box.Background,
+                    brush,
                     new Rect(_scale * x, _scale * (y - box.Height),
                         _scale * box.TotalWidth,
                         _scale * box.TotalHeight));

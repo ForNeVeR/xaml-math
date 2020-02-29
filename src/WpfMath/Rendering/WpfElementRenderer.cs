@@ -3,7 +3,9 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 using WpfMath.Boxes;
+using WpfMath.Colors;
 using WpfMath.Rendering.Transformations;
+using WpfMath.Utils;
 
 namespace WpfMath.Rendering
 {
@@ -42,16 +44,19 @@ namespace WpfMath.Rendering
             _foregroundContext.Pop();
         }
 
-        public void RenderGlyphRun(Func<double, GlyphRun> scaledGlyphFactory, double x, double y, Brush foreground)
+        public void RenderGlyphRun(Func<double, GlyphRun> scaledGlyphFactory, double x, double y, RgbaColor foregroundColor)
         {
+            var brush = new SolidColorBrush(foregroundColor.ToWpfColor());
             var glyphRun = scaledGlyphFactory(_scale);
-            _foregroundContext.DrawGlyphRun(foreground, glyphRun);
+            _foregroundContext.DrawGlyphRun(brush, glyphRun);
         }
 
-        public void RenderRectangle(Rect rectangle, Brush foreground)
+        public void RenderRectangle(Rect rectangle, RgbaColor? foregroundColor)
         {
+            // TODO: foregroundColor can be null?
+            var brush = new SolidColorBrush(foregroundColor.Value.ToWpfColor());
             var scaledRectangle = GeometryHelper.ScaleRectangle(_scale, rectangle);
-            _foregroundContext.DrawRectangle(foreground, null, scaledRectangle);
+            _foregroundContext.DrawRectangle(brush, null, scaledRectangle);
         }
 
         public void RenderTransformed(Box box, Transformation[] transforms, double x, double y)
@@ -78,10 +83,11 @@ namespace WpfMath.Rendering
 
         private void RenderBackground(Box box, double x, double y)
         {
-            if (box.Background != null)
+            if (box.Background.HasValue)
             {
+                var brush = new SolidColorBrush(box.Background.Value.ToWpfColor());
                 _targetContext.DrawRectangle(
-                    box.Background,
+                    brush,
                     null,
                     new Rect(_scale * x, _scale * (y - box.Height),
                         _scale * box.TotalWidth,

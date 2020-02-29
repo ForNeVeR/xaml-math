@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Media;
 using WpfMath.Atoms;
 using WpfMath.Boxes;
+using WpfMath.Colors;
 
 namespace WpfMath
 {
@@ -64,27 +65,27 @@ namespace WpfMath
             }
         }
 
-        public void SetForeground(Brush brush)
+        public void SetForeground(RgbaColor? color)
         {
             if (this.RootAtom is StyledAtom sa)
             {
-                this.RootAtom = sa.Clone(foreground: brush);
+                this.RootAtom = sa.Clone(foreground: color);
             }
             else
             {
-                this.RootAtom = new StyledAtom(this.RootAtom?.Source, this.RootAtom, null, brush);
+                this.RootAtom = new StyledAtom(this.RootAtom?.Source, this.RootAtom, null, color);
             }
         }
 
-        public void SetBackground(Brush brush)
+        public void SetBackground(RgbaColor? color)
         {
             if (this.RootAtom is StyledAtom sa)
             {
-                this.RootAtom = sa.Clone(background: brush);
+                this.RootAtom = sa.Clone(background: color);
             }
             else
             {
-                this.RootAtom = new StyledAtom(this.RootAtom?.Source, this.RootAtom, brush, null);
+                this.RootAtom = new StyledAtom(this.RootAtom?.Source, this.RootAtom, color, null);
             }
         }
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 using WpfMath.Boxes;
+using WpfMath.Colors;
 using WpfMath.Rendering.Transformations;
 
 namespace WpfMath.Rendering
@@ -22,14 +23,14 @@ namespace WpfMath.Rendering
 
         public void RenderElement(Box box, double x, double y) => box.RenderTo(this, x, y);
 
-        public void RenderGlyphRun(Func<double, GlyphRun> scaledGlyphFactory, double x, double y, Brush foreground)
+        public void RenderGlyphRun(Func<double, GlyphRun> scaledGlyphFactory, double x, double y, RgbaColor foregroundColor)
         {
             var glyph = scaledGlyphFactory(_scale);
             var glyphGeometry = glyph.BuildGeometry();
             _geometry.Children.Add(glyphGeometry);
         }
 
-        public void RenderRectangle(Rect rectangle, Brush foreground)
+        public void RenderRectangle(Rect rectangle, RgbaColor? foregroundColor)
         {
             var rectangleGeometry = new RectangleGeometry(GeometryHelper.ScaleRectangle(_scale, rectangle));
             _geometry.Children.Add(rectangleGeometry);

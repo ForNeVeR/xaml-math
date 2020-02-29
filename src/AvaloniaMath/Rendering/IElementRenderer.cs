@@ -1,7 +1,7 @@
 using System;
 using Avalonia;
-using Avalonia.Media;
 using WpfMath.Boxes;
+using WpfMath.Colors;
 using WpfMath.Rendering.Transformations;
 
 namespace WpfMath.Rendering
@@ -23,14 +23,14 @@ namespace WpfMath.Rendering
         /// <param name="scaledGlyphFactory">Function to generate a glyph run for the chosen scale.</param>
         /// <param name="x">An X coordinate of the top left corner.</param>
         /// <param name="y">An Y coordinate of the top left corner.</param>
-        /// <param name="foreground">Glyph foreground color.</param>
+        /// <param name="foregroundColor">Glyph foreground color.</param>
         // TODO[F]: Scale the GlyphRun in the implementations, replace the factory with the initial (unscaled) GlyphRun
-        void RenderGlyphRun(Func<double, GlyphRun> scaledGlyphFactory, double x, double y, IBrush foreground);
+        void RenderGlyphRun(Func<double, GlyphRun> scaledGlyphFactory, double x, double y, RgbaColor foregroundColor);
 
         /// <summary>Renders a rectangle.</summary>
         /// <param name="rectangle">Rectangle to render.</param>
-        /// <param name="foreground">Rectangle foreground color.</param>
-        void RenderRectangle(Rect rectangle, IBrush foreground);
+        /// <param name="foregroundColor">Rectangle foreground color.</param>
+        void RenderRectangle(Rect rectangle, RgbaColor? foregroundColor);
 
         /// <summary>Renders a box applying the geometry transforms.</summary>
         /// <param name="box">A box to render.</param>

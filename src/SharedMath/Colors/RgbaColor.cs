@@ -1,7 +1,12 @@
+using System.ComponentModel;
+
 namespace WpfMath.Colors
 {
+    [TypeConverter(typeof(RgbaColorConverter))]
     public struct RgbaColor
     {
+        public static RgbaColor Black { get; } = new RgbaColor(0, 0, 0);
+
         public byte R { get; set; }
 
         public byte G { get; set; }
@@ -16,6 +21,15 @@ namespace WpfMath.Colors
             this.G = g;
             this.B = b;
             this.A = a;
+        }
+
+        public uint ToUint32() =>
+            ((uint)A << 24) | ((uint)R << 16) | ((uint)G << 8) | (uint)B;
+
+        public override string ToString()
+        {
+            var argb = ToUint32();
+            return $"#{argb:X8}";
         }
     }
 }

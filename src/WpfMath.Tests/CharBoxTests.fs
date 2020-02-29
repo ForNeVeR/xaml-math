@@ -1,8 +1,5 @@
 namespace WpfMath.Tests
 
-open System.Windows
-open System.Windows.Media
-
 open Foq
 open Xunit
 
@@ -10,7 +7,7 @@ open WpfMath
 open WpfMath.Boxes
 open WpfMath.Rendering
 open WpfMath.Exceptions
-open System
+open WpfMath.Colors
 
 type CharBoxTests() =
     static do Utils.initializeFontResourceLoading()
@@ -26,7 +23,7 @@ type CharBoxTests() =
         let mockedRenderer = Mock.Of<IElementRenderer>()
         let charBox = CharBox(environment, char)
         charBox.RenderTo(mockedRenderer, x, y)
-        Mock.Verify(<@ mockedRenderer.RenderGlyphRun(any(), x, y, Brushes.Black) @>, once)
+        Mock.Verify(<@ mockedRenderer.RenderGlyphRun(any(), x, y, RgbaColor.Black) @>, once)
 
     [<Fact>]
     member _.``Currently unsupporteded characters like "Å" should result in TexCharacterMappingNotFoundException``() =

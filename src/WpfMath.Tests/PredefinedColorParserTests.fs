@@ -1,7 +1,5 @@
 module WpfMath.Tests.PredefinedColorParserTests
 
-open System.Windows.Media
-
 open Xunit
 
 open WpfMath.Colors
