@@ -29,4 +29,4 @@ type HorizontalRuleTests() =
         horizontalRule.RenderTo(mockedRenderer, x, y)
 
         let expectedRect = Rect(x, y -  thickness, width, thickness)
-        Mock.Verify(<@ mockedRenderer.RenderRectangle(expectedRect, Nullable(RgbaColor.Black)) @>, once)
+        Mock.Verify(<@ mockedRenderer.RenderRectangle(expectedRect, Nullable(ArgbColor.Black)) @>, once)

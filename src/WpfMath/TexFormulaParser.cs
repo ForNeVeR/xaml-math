@@ -587,7 +587,7 @@ namespace WpfMath
         /// <summary>Reads an optional square braced color model name, and then a color name.</summary>
         /// <returns>Returns a color parsed.</returns>
         /// <exception cref="TexParseException">Gets thrown in case of nonexistent color model or color.</exception>
-        private RgbaColor ReadColorModelData(SourceSpan value, ref int position)
+        private ArgbColor ReadColorModelData(SourceSpan value, ref int position)
         {
             var colorModelName = ReadElementGroupOptional(
                 value,

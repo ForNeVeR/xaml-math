@@ -12,7 +12,7 @@ namespace WpfMath.Colors
         private const string ResourceName = TexUtilities.ResourcesDataDirectory + "PredefinedColors.xml";
         public static readonly PredefinedColorParser Instance = new PredefinedColorParser(ResourceName);
 
-        private static IReadOnlyDictionary<string, RgbaColor> _colors;
+        private static IReadOnlyDictionary<string, ArgbColor> _colors;
 
         private PredefinedColorParser(string resourceName)
         {
@@ -21,7 +21,7 @@ namespace WpfMath.Colors
             _colors = Parse(doc.Root);
         }
 
-        public RgbaColor? Parse(IReadOnlyList<string> components)
+        public ArgbColor? Parse(IReadOnlyList<string> components)
         {
             var hasAlphaComponent = components.Count == 2;
             if (components.Count != 1 && !hasAlphaComponent)
@@ -48,16 +48,16 @@ namespace WpfMath.Colors
             return color;
         }
 
-        private static Dictionary<string, RgbaColor> Parse(XElement rootElement)
+        private static Dictionary<string, ArgbColor> Parse(XElement rootElement)
         {
-            var colors = new Dictionary<string, RgbaColor>();
+            var colors = new Dictionary<string, ArgbColor>();
             foreach (var colorElement in rootElement.Elements("color"))
             {
                 var name = colorElement.AttributeValue("name");
                 var r = colorElement.AttributeValue("r");
                 var g = colorElement.AttributeValue("g");
                 var b = colorElement.AttributeValue("b");
-                colors.Add(name, new RgbaColor(Convert.ToByte(r), Convert.ToByte(g), Convert.ToByte(b)));
+                colors.Add(name, new ArgbColor(Convert.ToByte(r), Convert.ToByte(g), Convert.ToByte(b)));
             }
 
             return colors;

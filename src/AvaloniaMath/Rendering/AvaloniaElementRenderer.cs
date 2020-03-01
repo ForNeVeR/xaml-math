@@ -32,7 +32,7 @@ namespace WpfMath.Rendering
           //  _drawingContext.Pop();
         }
 
-        public void RenderGlyphRun(Func<double, GlyphRun> scaledGlyphFactory, double x, double y, RgbaColor foregroundColor)
+        public void RenderGlyphRun(Func<double, GlyphRun> scaledGlyphFactory, double x, double y, ArgbColor foregroundColor)
         {
             var glyphRun = scaledGlyphFactory(_scale);
             //_drawingContext.DrawGlyphRun(foreground, glyphRun);
@@ -57,7 +57,7 @@ namespace WpfMath.Rendering
             }
         }
 
-        public void RenderRectangle(Rect rectangle, RgbaColor? foregroundColor)
+        public void RenderRectangle(Rect rectangle, ArgbColor? foregroundColor)
         {
             // TODO: foregroundColor can be null?
             var brush = new SolidColorBrush(foregroundColor.Value.ToAvaloniaColor());

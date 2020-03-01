@@ -6,7 +6,7 @@ namespace WpfMath.Colors
 {
     internal class GrayscaleColorParser : IColorParser
     {
-        public RgbaColor? Parse(IReadOnlyList<string> components)
+        public ArgbColor? Parse(IReadOnlyList<string> components)
         {
             var hasAlpha = components.Count == 2;
             if (components.Count != 1 && !hasAlpha)
@@ -23,7 +23,7 @@ namespace WpfMath.Colors
                 return null;
 
             var colorValue = ColorHelpers.ConvertToByteRgbComponent(gradation.Value);
-            var color = new RgbaColor
+            var color = new ArgbColor
             {
                 R = colorValue,
                 G = colorValue,

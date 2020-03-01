@@ -5,10 +5,10 @@ namespace WpfMath.Utils
 
     internal static class ColorExtensions
     {
-        public static Color ToWpfColor(this RgbaColor value) =>
+        public static Color ToWpfColor(this ArgbColor value) =>
             Color.FromArgb(value.A, value.R, value.G, value.B);
 
-        public static RgbaColor ToInternalColor(this Color value) =>
-            new RgbaColor(value.R, value.G, value.B, value.A);
+        public static ArgbColor ToInternalColor(this Color value) =>
+            new ArgbColor(value.A, value.R, value.G, value.B);
     }
 }

@@ -10,9 +10,9 @@ namespace WpfMath.Colors
         {
         }
 
-        protected abstract RgbaColor? ParseSingleComponent(string component);
+        protected abstract ArgbColor? ParseSingleComponent(string component);
 
-        protected override RgbaColor? ParseComponents(IReadOnlyList<string> components) =>
+        protected override ArgbColor? ParseComponents(IReadOnlyList<string> components) =>
             ParseSingleComponent(components.Single());
     }
 }

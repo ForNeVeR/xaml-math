@@ -13,7 +13,7 @@ namespace WpfMath
         {
         }
 
-        private TexEnvironment(TexStyle style, ITeXFont mathFont, ITeXFont textFont, RgbaColor? background, RgbaColor? foreground)
+        private TexEnvironment(TexStyle style, ITeXFont mathFont, ITeXFont textFont, ArgbColor? background, ArgbColor? foreground)
         {
             if (style == TexStyle.Display || style == TexStyle.Text ||
                 style == TexStyle.Script || style == TexStyle.ScriptScript)
@@ -41,13 +41,13 @@ namespace WpfMath
 
         public ITeXFont TextFont { get; }
 
-        public RgbaColor? Background
+        public ArgbColor? Background
         {
             get;
             set;
         }
 
-        public RgbaColor? Foreground
+        public ArgbColor? Foreground
         {
             get;
             set;

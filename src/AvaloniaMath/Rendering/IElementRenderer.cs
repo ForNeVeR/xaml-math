@@ -25,12 +25,12 @@ namespace WpfMath.Rendering
         /// <param name="y">An Y coordinate of the top left corner.</param>
         /// <param name="foregroundColor">Glyph foreground color.</param>
         // TODO[F]: Scale the GlyphRun in the implementations, replace the factory with the initial (unscaled) GlyphRun
-        void RenderGlyphRun(Func<double, GlyphRun> scaledGlyphFactory, double x, double y, RgbaColor foregroundColor);
+        void RenderGlyphRun(Func<double, GlyphRun> scaledGlyphFactory, double x, double y, ArgbColor foregroundColor);
 
         /// <summary>Renders a rectangle.</summary>
         /// <param name="rectangle">Rectangle to render.</param>
         /// <param name="foregroundColor">Rectangle foreground color.</param>
-        void RenderRectangle(Rect rectangle, RgbaColor? foregroundColor);
+        void RenderRectangle(Rect rectangle, ArgbColor? foregroundColor);
 
         /// <summary>Renders a box applying the geometry transforms.</summary>
         /// <param name="box">A box to render.</param>

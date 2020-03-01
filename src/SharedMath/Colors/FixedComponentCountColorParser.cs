@@ -12,9 +12,9 @@ namespace WpfMath.Colors
             _componentCount = componentCount;
         }
 
-        protected abstract RgbaColor? ParseComponents(IReadOnlyList<string> components);
+        protected abstract ArgbColor? ParseComponents(IReadOnlyList<string> components);
 
-        public RgbaColor? Parse(IReadOnlyList<string> components)
+        public ArgbColor? Parse(IReadOnlyList<string> components)
             => components.Count == _componentCount ? ParseComponents(components) : null;
     }
 }

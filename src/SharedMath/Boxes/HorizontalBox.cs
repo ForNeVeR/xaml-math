@@ -38,7 +38,7 @@ namespace WpfMath.Boxes
             this.Add(box);
         }
 
-        public HorizontalBox(RgbaColor? foreground, RgbaColor? background)
+        public HorizontalBox(ArgbColor? foreground, ArgbColor? background)
             : base(foreground, background)
         {
         }

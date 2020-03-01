@@ -7,7 +7,7 @@ namespace WpfMath.Colors
 {
     internal class CmykColorParser : IColorParser
     {
-        public RgbaColor? Parse(IReadOnlyList<string> components)
+        public ArgbColor? Parse(IReadOnlyList<string> components)
         {
             var hasAlpha = components.Count == 5;
             if (components.Count != 4 && !hasAlpha)
@@ -24,7 +24,7 @@ namespace WpfMath.Colors
             if (!(c.HasValue && m.HasValue && y.HasValue && k.HasValue && aFraction.HasValue))
                 return null;
 
-            var color = new RgbaColor
+            var color = new ArgbColor
             {
                 R = ColorHelpers.ConvertToByteRgbComponent((1.0 - c.Value) * (1.0 - k.Value)),
                 G = ColorHelpers.ConvertToByteRgbComponent((1.0 - m.Value) * (1.0 - k.Value)),

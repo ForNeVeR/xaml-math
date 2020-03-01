@@ -50,8 +50,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Colors\IColorParser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Colors\IntegerRgbColorParser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Colors\PredefinedColorParser.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Colors\RgbaColor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Colors\RgbaColorConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Colors\ArgbColor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Colors\ArgbColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Colors\RgbColorParserBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Colors\SingleComponentColorParser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Colors\StandardColorParsers.cs" />

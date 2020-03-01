@@ -21,7 +21,7 @@ namespace WpfMath.Boxes
         {
         }
 
-        protected Box(RgbaColor? foreground, RgbaColor? background)
+        protected Box(ArgbColor? foreground, ArgbColor? background)
         {
             this.children = new List<Box>();
             this.childrenReadOnly = new ReadOnlyCollection<Box>(this.children);
@@ -40,13 +40,13 @@ namespace WpfMath.Boxes
             set;
         }
 
-        public RgbaColor? Foreground
+        public ArgbColor? Foreground
         {
             get;
             set;
         }
 
-        public RgbaColor? Background
+        public ArgbColor? Background
         {
             get;
             set;

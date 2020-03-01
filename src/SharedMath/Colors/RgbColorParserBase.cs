@@ -20,7 +20,7 @@ namespace WpfMath.Colors
         protected abstract T? ParseColorComponent(string component);
         protected abstract byte GetByteValue(T val);
 
-        protected override RgbaColor? ParseComponents(IReadOnlyList<string> components)
+        protected override ArgbColor? ParseComponents(IReadOnlyList<string> components)
         {
             var values = components
                 .Select(ParseColorComponent)
@@ -41,7 +41,7 @@ namespace WpfMath.Colors
             if (!(alpha.HasValue && r.HasValue && g.HasValue && b.HasValue))
                 return null;
 
-            var color = new RgbaColor
+            var color = new ArgbColor
             {
                 R = GetByteValue(r.Value),
                 G = GetByteValue(g.Value),

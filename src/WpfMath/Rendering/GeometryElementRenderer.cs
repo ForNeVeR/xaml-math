@@ -23,14 +23,14 @@ namespace WpfMath.Rendering
 
         public void RenderElement(Box box, double x, double y) => box.RenderTo(this, x, y);
 
-        public void RenderGlyphRun(Func<double, GlyphRun> scaledGlyphFactory, double x, double y, RgbaColor foregroundColor)
+        public void RenderGlyphRun(Func<double, GlyphRun> scaledGlyphFactory, double x, double y, ArgbColor foregroundColor)
         {
             var glyph = scaledGlyphFactory(_scale);
             var glyphGeometry = glyph.BuildGeometry();
             _geometry.Children.Add(glyphGeometry);
         }
 
-        public void RenderRectangle(Rect rectangle, RgbaColor? foregroundColor)
+        public void RenderRectangle(Rect rectangle, ArgbColor? foregroundColor)
         {
             var rectangleGeometry = new RectangleGeometry(GeometryHelper.ScaleRectangle(_scale, rectangle));
             _geometry.Children.Add(rectangleGeometry);

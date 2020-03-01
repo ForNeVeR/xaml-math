@@ -6,7 +6,7 @@ namespace WpfMath.Atoms
     // Atom specifying graphical style.
     internal class StyledAtom : Atom, IRow
     {
-        public StyledAtom(SourceSpan source, Atom atom, RgbaColor? backgroundColor, RgbaColor? foregroundColor)
+        public StyledAtom(SourceSpan source, Atom atom, ArgbColor? backgroundColor, ArgbColor? foregroundColor)
             : base(source)
         {
             this.RowAtom = new RowAtom(source, atom);
@@ -17,9 +17,9 @@ namespace WpfMath.Atoms
         // RowAtom to which colors are applied.
         public RowAtom RowAtom { get; }
 
-        public RgbaColor? Background { get; }
+        public ArgbColor? Background { get; }
 
-        public RgbaColor? Foreground { get; }
+        public ArgbColor? Foreground { get; }
 
         public Atom WithPreviousAtom(DummyAtom previousAtom)
         {
@@ -50,8 +50,8 @@ namespace WpfMath.Atoms
 
         public StyledAtom Clone(
             RowAtom rowAtom = null,
-            RgbaColor? background = null,
-            RgbaColor? foreground = null)
+            ArgbColor? background = null,
+            ArgbColor? foreground = null)
         {
             return new StyledAtom(
                 this.Source,

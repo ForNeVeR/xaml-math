@@ -23,7 +23,7 @@ type CharBoxTests() =
         let mockedRenderer = Mock.Of<IElementRenderer>()
         let charBox = CharBox(environment, char)
         charBox.RenderTo(mockedRenderer, x, y)
-        Mock.Verify(<@ mockedRenderer.RenderGlyphRun(any(), x, y, RgbaColor.Black) @>, once)
+        Mock.Verify(<@ mockedRenderer.RenderGlyphRun(any(), x, y, ArgbColor.Black) @>, once)
 
     [<Fact>]
     member _.``Currently unsupporteded characters like "Å" should result in TexCharacterMappingNotFoundException``() =

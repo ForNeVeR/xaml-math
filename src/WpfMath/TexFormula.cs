@@ -65,7 +65,7 @@ namespace WpfMath
             }
         }
 
-        public void SetForeground(RgbaColor? color)
+        public void SetForeground(ArgbColor? color)
         {
             if (this.RootAtom is StyledAtom sa)
             {
@@ -77,7 +77,7 @@ namespace WpfMath
             }
         }
 
-        public void SetBackground(RgbaColor? color)
+        public void SetBackground(ArgbColor? color)
         {
             if (this.RootAtom is StyledAtom sa)
             {
