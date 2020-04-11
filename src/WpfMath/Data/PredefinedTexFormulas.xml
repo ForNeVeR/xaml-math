@@ -375,6 +375,15 @@
     <Return name="f" />
   </Formula>
 
+  <Formula name="mod" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{mod}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+  
   <Formula name="tanh" enabled="true">
     <CreateFormula name="f" />
     <MethodInvocation name="AddOperator" formula="f">
