@@ -86,7 +86,7 @@ namespace WpfMath.Rendering
             {
                 // Fill background of box with color:
                 _drawingContext.FillRectangle(
-                    box.Background,
+                    (Brush)box.Background.Value,
                     new Rect(_scale * x, _scale * (y - box.Height),
                         _scale * box.TotalWidth,
                         _scale * box.TotalHeight));

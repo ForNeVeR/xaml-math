@@ -4,6 +4,7 @@ using System.Linq;
 using Avalonia.Media;
 using WpfMath.Atoms;
 using WpfMath.Boxes;
+using WpfMath.Utils;
 
 namespace WpfMath
 {
@@ -64,7 +65,7 @@ namespace WpfMath
             }
         }
 
-        public void SetForeground(Brush brush)
+        public void SetForeground(IBrushContainer brush)
         {
             if (this.RootAtom is StyledAtom sa)
             {
@@ -76,7 +77,7 @@ namespace WpfMath
             }
         }
 
-        public void SetBackground(Brush brush)
+        public void SetBackground(IBrushContainer brush)
         {
             if (this.RootAtom is StyledAtom sa)
             {

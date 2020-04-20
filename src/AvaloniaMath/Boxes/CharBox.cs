@@ -1,4 +1,3 @@
-using System.Windows;
 using Avalonia;
 using Avalonia.Media;
 using WpfMath.Rendering;
@@ -68,8 +67,7 @@ namespace WpfMath.Boxes
 
         public override void RenderTo(IElementRenderer renderer, double x, double y)
         {
-            var color = (IBrush)this.Foreground ?? Brushes.Black;
-
+            var color = (IBrush)this.Foreground?.Value ?? Brushes.Black;
             renderer.RenderGlyphRun(scale => this.GetGlyphRun(scale, x, y), x, y, color);
         }
 

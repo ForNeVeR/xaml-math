@@ -28,12 +28,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\RowAtom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\ScriptsAtom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\SpaceAtom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Atoms\StyledAtom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\SymbolAtom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\TypedAtom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\UnderlinedAtom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\UnderOverAtom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Atoms\VerticalCenteredAtom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Boxes\Box.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Boxes\GlueBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Boxes\HorizontalBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Boxes\OverBar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Boxes\OverUnderBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Boxes\StrutBox.cs" />
@@ -80,11 +83,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)SymbolMappingNotFoundException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SymbolNotFoundException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TexEnums.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TexEnvironment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TexFontMetrics.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TexFontUtilities.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TexFormulaHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TexSymbolParser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\ColorHelpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\IBrushContainer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\Result.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)XmlUtilities.cs" />
   </ItemGroup>

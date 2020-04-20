@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows.Media;
 using WpfMath.Rendering;
+using WpfMath.Utils;
 
 namespace WpfMath.Boxes
 {
@@ -21,7 +21,7 @@ namespace WpfMath.Boxes
         {
         }
 
-        protected Box(Brush foreground, Brush background)
+        protected Box(IBrushContainer foreground, IBrushContainer background)
         {
             this.children = new List<Box>();
             this.childrenReadOnly = new ReadOnlyCollection<Box>(this.children);
@@ -40,13 +40,13 @@ namespace WpfMath.Boxes
             set;
         }
 
-        public Brush Foreground
+        public IBrushContainer Foreground
         {
             get;
             set;
         }
 
-        public Brush Background
+        public IBrushContainer Background
         {
             get;
             set;

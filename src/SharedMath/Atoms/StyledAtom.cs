@@ -1,12 +1,12 @@
-using Avalonia.Media;
 using WpfMath.Boxes;
+using WpfMath.Utils;
 
 namespace WpfMath.Atoms
 {
     // Atom specifying graphical style.
     internal class StyledAtom : Atom, IRow
     {
-        public StyledAtom(SourceSpan source, Atom atom, Brush backgroundColor, Brush foregroundColor)
+        public StyledAtom(SourceSpan source, Atom atom, IBrushContainer backgroundColor, IBrushContainer foregroundColor)
             : base(source)
         {
             this.RowAtom = new RowAtom(source, atom);
@@ -17,9 +17,9 @@ namespace WpfMath.Atoms
         // RowAtom to which colors are applied.
         public RowAtom RowAtom { get; }
 
-        public Brush Background { get; }
+        public IBrushContainer Background { get; }
 
-        public Brush Foreground { get; }
+        public IBrushContainer Foreground { get; }
 
         public Atom WithPreviousAtom(DummyAtom previousAtom)
         {
@@ -50,8 +50,8 @@ namespace WpfMath.Atoms
 
         public StyledAtom Clone(
             RowAtom rowAtom = null,
-            Brush background = null,
-            Brush foreground = null)
+            IBrushContainer background = null,
+            IBrushContainer foreground = null)
         {
             return new StyledAtom(
                 this.Source,

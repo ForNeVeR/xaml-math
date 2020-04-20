@@ -18,7 +18,7 @@ namespace WpfMath.Boxes
 
         public override void RenderTo(IElementRenderer renderer, double x, double y)
         {
-            var color = (IBrush)Foreground ?? Brushes.Black;
+            var color = (IBrush)Foreground?.Value ?? Brushes.Black;
             var rectangle = new Rect(x, y - this.Height, this.Width, this.Height);
             renderer.RenderRectangle(rectangle, color);
         }

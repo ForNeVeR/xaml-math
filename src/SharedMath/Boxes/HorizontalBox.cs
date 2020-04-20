@@ -1,6 +1,6 @@
 using System;
-using Avalonia.Media;
 using WpfMath.Rendering;
+using WpfMath.Utils;
 
 namespace WpfMath.Boxes
 {
@@ -38,7 +38,7 @@ namespace WpfMath.Boxes
             this.Add(box);
         }
 
-        public HorizontalBox(Brush foreground, Brush background)
+        public HorizontalBox(IBrushContainer foreground, IBrushContainer background)
             : base(foreground, background)
         {
         }
