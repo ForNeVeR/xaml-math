@@ -17,7 +17,7 @@ namespace WpfMath
         public TexFormula Formula { get; }
 
         private TexFormula ParseFormula(string source) =>
-            _formulaParser.Parse(new SourceSpan("Predefined formula fragment", source, 0, source.Length));
+            _formulaParser.Parse(new SourceSpan("Predefined formula fragment", source, 0, source.Length), origin: this._source);
 
         public void SetFixedTypes(TexAtomType leftType, TexAtomType rightType)
         {

@@ -151,26 +151,26 @@ namespace WpfMath
         public TexFormulaParser(
             IReadOnlyDictionary<string, IColorParser> colorModelParsers,
             IColorParser defaultColorParser) : this(StandardCommands.Dictionary, colorModelParsers, defaultColorParser)
-        {}
+        { }
 
         public TexFormulaParser() : this(
             StandardColorParsers.Dictionary,
             PredefinedColorParser.Instance)
-        {}
+        { }
 
         public TexFormula Parse(string value, string textStyle = null) =>
             Parse(new SourceSpan("User input", value, 0, value.Length), textStyle);
 
-        public TexFormula Parse(SourceSpan value, string textStyle = null)
+        public TexFormula Parse(SourceSpan value, string textStyle = null, SourceSpan origin = null)
         {
             var position = 0;
-            return Parse(value, ref position, false, textStyle, DefaultCommandEnvironment.Instance);
+            return Parse(value, ref position, false, textStyle, DefaultCommandEnvironment.Instance, origin);
         }
 
-        internal TexFormula Parse(SourceSpan value, string textStyle, ICommandEnvironment environment)
+        internal TexFormula Parse(SourceSpan value, string textStyle, ICommandEnvironment environment, SourceSpan origin = null)
         {
             int localPostion = 0;
-            return Parse(value, ref localPostion, false, textStyle, environment);
+            return Parse(value, ref localPostion, false, textStyle, environment, origin);
         }
 
         private DelimiterInfo ParseUntilDelimiter(
@@ -218,7 +218,8 @@ namespace WpfMath
             ref int position,
             bool allowClosingDelimiter,
             string textStyle,
-            ICommandEnvironment environment)
+            ICommandEnvironment environment,
+            SourceSpan origin = null)
         {
             var formula = new TexFormula { Source = value, TextStyle = textStyle };
             var closedDelimiter = false;
@@ -245,7 +246,8 @@ namespace WpfMath
                         ref position,
                         allowClosingDelimiter,
                         ref closedDelimiter,
-                        environment);
+                        environment,
+                        origin);
                 }
                 else if (ch == leftGroupChar)
                 {
@@ -276,7 +278,7 @@ namespace WpfMath
                 }
                 else
                 {
-                    var character = ConvertCharacter(formula, ref position, source, environment);
+                    var character = ConvertCharacter(formula, ref position, source, environment, origin);
                     if (character != null)
                     {
                         var scriptsAtom = AttachScripts(
@@ -305,7 +307,7 @@ namespace WpfMath
                 var ch = value[position];
                 var source = value.Segment(position, 1);
                 var atom = IsWhiteSpace(ch)
-                    ? (Atom) new SpaceAtom(source)
+                    ? (Atom)new SpaceAtom(source)
                     : new CharAtom(source, ch, textStyle);
                 position++;
                 formula.Add(atom, value.Segment(initialPosition, position - initialPosition));
@@ -540,30 +542,30 @@ namespace WpfMath
                             new Radical(source, sqrtFormula.RootAtom, degreeFormula?.RootAtom));
                     }
                 case "color":
-                {
-                    var color = ReadColorModelData(value, ref position);
+                    {
+                        var color = ReadColorModelData(value, ref position);
 
-                    var bodyValue = ReadElement(value, ref position);
-                    var bodyFormula = Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
-                    source = value.Segment(start, position - start);
+                        var bodyValue = ReadElement(value, ref position);
+                        var bodyFormula = Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
+                        source = value.Segment(start, position - start);
 
-                    return new Tuple<AtomAppendMode, Atom>(
-                        AtomAppendMode.Add,
-                        new StyledAtom(source, bodyFormula.RootAtom, null, new SolidColorBrush(color)));
-                }
+                        return new Tuple<AtomAppendMode, Atom>(
+                            AtomAppendMode.Add,
+                            new StyledAtom(source, bodyFormula.RootAtom, null, new SolidColorBrush(color)));
+                    }
                 case "colorbox":
-                {
-                    var color = ReadColorModelData(value, ref position);
+                    {
+                        var color = ReadColorModelData(value, ref position);
 
-                    var bodyValue = ReadElement(value, ref position);
-                    var bodyFormula = Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
-                    source = value.Segment(start, position - start);
+                        var bodyValue = ReadElement(value, ref position);
+                        var bodyFormula = Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
+                        source = value.Segment(start, position - start);
 
-                    return new Tuple<AtomAppendMode, Atom>(
-                        AtomAppendMode.Add,
-                        new StyledAtom(source, bodyFormula.RootAtom, new SolidColorBrush(color), null));
-                }
-                }
+                        return new Tuple<AtomAppendMode, Atom>(
+                            AtomAppendMode.Add,
+                            new StyledAtom(source, bodyFormula.RootAtom, new SolidColorBrush(color), null));
+                    }
+            }
 
             if (environment.AvailableCommands.TryGetValue(command, out var parser)
                 || _commandRegistry.TryGetValue(command, out parser))
@@ -613,7 +615,8 @@ namespace WpfMath
             ref int position,
             bool allowClosingDelimiter,
             ref bool closedDelimiter,
-            ICommandEnvironment environment)
+            ICommandEnvironment environment,
+            SourceSpan origin)
         {
             var initialSrcPosition = position;
             var commandSpan = ReadEscapeSequence(value, ref position).Segment(1);
@@ -662,7 +665,7 @@ namespace WpfMath
 
                 var styledFormula = command == TexUtilities.TextStyleName
                     ? ConvertRawText(ReadElement(value, ref position), command)
-                    : Parse(ReadElement(value, ref position), command, environment.CreateChildEnvironment());
+                    : Parse(ReadElement(value, ref position), command, environment.CreateChildEnvironment(), origin);
 
                 var source = value.Segment(commandSpan.Start, position - commandSpan.Start);
                 var atom = styledFormula.RootAtom ?? new NullAtom(source);
@@ -833,7 +836,8 @@ namespace WpfMath
             TexFormula formula,
             ref int position,
             SourceSpan source,
-            ICommandEnvironment environment)
+            ICommandEnvironment environment,
+            SourceSpan origin)
         {
             var character = source[0];
             position++;
@@ -863,7 +867,7 @@ namespace WpfMath
             }
             else // Character is alpha-numeric or should be rendered as text.
             {
-                return new CharAtom(source, character, formula.TextStyle);
+                return new CharAtom(origin ?? source, character, formula.TextStyle);
             }
         }
 
