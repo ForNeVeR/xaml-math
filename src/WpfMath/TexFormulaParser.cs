@@ -618,7 +618,7 @@ namespace WpfMath
             var initialSrcPosition = position;
             var commandSpan = ReadEscapeSequence(value, ref position).Segment(1);
             var command = commandSpan.ToString();
-            var formulaSource = new SourceSpan(value.SourceName, value.Source, initialSrcPosition, commandSpan.End);
+            var formulaSource = new SourceSpan(value.SourceName, value.Source, initialSrcPosition, commandSpan.End - initialSrcPosition);
 
             SymbolAtom symbolAtom = null;
             if (SymbolAtom.TryGetAtom(commandSpan, out symbolAtom))
