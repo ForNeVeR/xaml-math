@@ -42,7 +42,7 @@
         <Compile Include="TransformationTests.fs" />
         <Compile Include="VerticalBoxTests.fs" />
         <Compile Include="WpfRendererTests.fs" />
-        <Compile Include="BrushContainerTests.fs" />
+        <Compile Include="WpfBrushTests.fs" />
         <None Include="TestResults/*.txt" />
     </ItemGroup>
 </Project>

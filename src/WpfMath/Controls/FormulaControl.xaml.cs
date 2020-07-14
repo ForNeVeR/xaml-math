@@ -6,7 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using WpfMath.Boxes;
 using WpfMath.Exceptions;
-using WpfMath.Utils;
+using WpfMath.Rendering;
 
 namespace WpfMath.Controls
 {
@@ -142,7 +142,7 @@ namespace WpfMath.Controls
                         if (selectionStart < source.Start + source.Length && source.Start < selectionEnd)
                         {
                             if (box is CharBox)
-                                box.Background = BrushContainer.FromBrush(selectionBrush);
+                                box.Background = WpfBrush.FromBrush(selectionBrush);
                         }
                     }
                 }

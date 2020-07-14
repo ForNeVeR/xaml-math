@@ -13,7 +13,7 @@ namespace WpfMath
         {
         }
 
-        private TexEnvironment(TexStyle style, ITeXFont mathFont, ITeXFont textFont, IBrushContainer background, IBrushContainer foreground)
+        private TexEnvironment(TexStyle style, ITeXFont mathFont, ITeXFont textFont, IPlatformBrush background, IPlatformBrush foreground)
         {
             if (style == TexStyle.Display || style == TexStyle.Text ||
                 style == TexStyle.Script || style == TexStyle.ScriptScript)
@@ -41,13 +41,13 @@ namespace WpfMath
 
         public ITeXFont TextFont { get; }
 
-        public IBrushContainer Background
+        public IPlatformBrush Background
         {
             get;
             set;
         }
 
-        public IBrushContainer Foreground
+        public IPlatformBrush Foreground
         {
             get;
             set;

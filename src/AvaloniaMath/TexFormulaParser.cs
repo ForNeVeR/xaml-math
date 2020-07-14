@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using AvaloniaMath.Rendering;
 using WpfMath.Atoms;
 using WpfMath.Colors;
 using WpfMath.Exceptions;
 using WpfMath.Parsers;
-using WpfMath.Utils;
 
 namespace WpfMath
 {
@@ -540,7 +540,7 @@ namespace WpfMath
 
                     return new Tuple<AtomAppendMode, Atom>(
                         AtomAppendMode.Add,
-                        new StyledAtom(source, bodyFormula.RootAtom, null, BrushContainer.FromColor(color)));
+                        new StyledAtom(source, bodyFormula.RootAtom, null, AvaloniaBrush.FromColor(color)));
                 }
                 case "colorbox":
                 {
@@ -552,7 +552,7 @@ namespace WpfMath
 
                     return new Tuple<AtomAppendMode, Atom>(
                         AtomAppendMode.Add,
-                        new StyledAtom(source, bodyFormula.RootAtom, BrushContainer.FromColor(color), null));
+                        new StyledAtom(source, bodyFormula.RootAtom, AvaloniaBrush.FromColor(color), null));
                 }
                 }
 

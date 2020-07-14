@@ -1,5 +1,6 @@
 using Avalonia;
 using Avalonia.Media;
+using AvaloniaMath.Rendering;
 using WpfMath.Rendering;
 
 namespace WpfMath.Boxes
@@ -18,7 +19,7 @@ namespace WpfMath.Boxes
 
         public override void RenderTo(IElementRenderer renderer, double x, double y)
         {
-            var color = (IBrush)Foreground?.Value ?? Brushes.Black;
+            var color = ((AvaloniaBrush) Foreground)?.Get() ?? Brushes.Black;
             var rectangle = new Rect(x, y - this.Height, this.Width, this.Height);
             renderer.RenderRectangle(rectangle, color);
         }

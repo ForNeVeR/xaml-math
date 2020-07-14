@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Avalonia;
 using Avalonia.Media;
+using AvaloniaMath.Rendering;
 using WpfMath.Boxes;
 using WpfMath.Rendering.Transformations;
 
@@ -86,7 +87,7 @@ namespace WpfMath.Rendering
             {
                 // Fill background of box with color:
                 _drawingContext.FillRectangle(
-                    (Brush)box.Background.Value,
+                    ((AvaloniaBrush)box.Background)?.Get(),
                     new Rect(_scale * x, _scale * (y - box.Height),
                         _scale * box.TotalWidth,
                         _scale * box.TotalHeight));

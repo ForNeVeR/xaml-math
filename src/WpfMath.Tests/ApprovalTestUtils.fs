@@ -16,7 +16,7 @@ open Newtonsoft.Json.Converters
 open Newtonsoft.Json.Serialization
 
 open WpfMath
-open WpfMath.Utils
+open WpfMath.Rendering
 
 type private BomlessFileWriter(data: string, ?extensionWithoutDot: string) =
     inherit ApprovalTextWriter(data, defaultArg extensionWithoutDot "txt")
@@ -68,13 +68,13 @@ type private UniversalDoubleConverter() =
         let stringified = value.ToString("0.0###############", CultureInfo.InvariantCulture)
         writer.WriteRawValue stringified
 
-type private IBrushContainerConverter() =
-    inherit ReadOnlyJsonConverter<IBrushContainer>()
-    override _.WriteJson(writer: JsonWriter, value: IBrushContainer, _: JsonSerializer) =
+type private WpfBrushConverter() =
+    inherit ReadOnlyJsonConverter<WpfBrush>()
+    override _.WriteJson(writer: JsonWriter, value: WpfBrush, _: JsonSerializer) =
         let stringified =
-            match value.Value with
+            match value.Get() with
             | null -> null
-            | _ -> value.Value.ToString()
+            | _ -> value.Get().ToString()
         writer.WriteValue stringified
 
 let private jsonSettings = JsonSerializerSettings(ContractResolver = InnerPropertyContractResolver(),
@@ -83,7 +83,7 @@ let private jsonSettings = JsonSerializerSettings(ContractResolver = InnerProper
                                                       StringEnumConverter()
                                                       GlyphTypefaceConverter()
                                                       UniversalDoubleConverter()
-                                                      IBrushContainerConverter()
+                                                      WpfBrushConverter()
                                                   |])
 
 let private serialize o =

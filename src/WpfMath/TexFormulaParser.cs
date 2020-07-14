@@ -8,6 +8,7 @@ using WpfMath.Atoms;
 using WpfMath.Colors;
 using WpfMath.Exceptions;
 using WpfMath.Parsers;
+using WpfMath.Rendering;
 using WpfMath.Utils;
 
 namespace WpfMath
@@ -552,7 +553,7 @@ namespace WpfMath
 
                     return new Tuple<AtomAppendMode, Atom>(
                         AtomAppendMode.Add,
-                        new StyledAtom(source, bodyFormula.RootAtom, null, BrushContainer.FromColor(color)));
+                        new StyledAtom(source, bodyFormula.RootAtom, null, WpfBrush.FromColor(color)));
                 }
                 case "colorbox":
                 {
@@ -564,7 +565,7 @@ namespace WpfMath
 
                     return new Tuple<AtomAppendMode, Atom>(
                         AtomAppendMode.Add,
-                        new StyledAtom(source, bodyFormula.RootAtom, BrushContainer.FromColor(color), null));
+                        new StyledAtom(source, bodyFormula.RootAtom, WpfBrush.FromColor(color), null));
                 }
                 }
 

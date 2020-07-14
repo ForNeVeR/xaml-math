@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Avalonia.Media;
 using WpfMath.Atoms;
 using WpfMath.Boxes;
 using WpfMath.Utils;
@@ -65,7 +64,7 @@ namespace WpfMath
             }
         }
 
-        public void SetForeground(IBrushContainer brush)
+        public void SetForeground(IPlatformBrush brush)
         {
             if (this.RootAtom is StyledAtom sa)
             {
@@ -77,7 +76,7 @@ namespace WpfMath
             }
         }
 
-        public void SetBackground(IBrushContainer brush)
+        public void SetBackground(IPlatformBrush brush)
         {
             if (this.RootAtom is StyledAtom sa)
             {
