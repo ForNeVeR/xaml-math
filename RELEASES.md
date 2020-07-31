@@ -7,14 +7,14 @@ New features:
 
 - [#59: Extended delimiter support][issue-59]: e.g. `\left\\`
 - [#149: Newline command support][issue-149]: try using `\\` outside of a matrix
-- [#252: Support for \{ and \} commands][pull-252]
+- [#252: Support for \\{ and \\} commands][pull-252]
 
 Fixed issues:
 
-- [#139: Exception thrown by \,][issue-139]
+- [#139: Exception thrown by \\,][issue-139]
 - [#151: Wrong sources detected for complex predefined formulae][issue-151]
-- [#248: Wrong exception gets thrown for \text{∅}][issue-248]
 - [#225: \text doesn't work with indices if there's only one Cyrillic letter][issue-225]
+- [#248: Wrong exception gets thrown for \text{∅}][issue-248]
 - [#253: Added equal padding to all sides when saving to bitmap][pull-253]
 - [#257: IndexOutOfRangeException throws when using \color][issue-257]
 
@@ -119,10 +119,10 @@ Changes:
 Fixed issues:
 
 - [#14: Extensible delimiters (\left and \right)][issue-14] _(not completely fixed, but in a usable state already)_
-- #15: Add formula control to the library
-- #38: Cannot change text style
-- #32: Add mathematical functions
-- #24: Integral sign displays incorrectly
+- [#15: Add formula control to the library][issue-15]
+- [#38: Cannot change text style][issue-38]
+- [#32: Add mathematical functions][issue-32]
+- [#24: Integral sign displays incorrectly][issue-24]
 
 ## 0.2.0 (2017-02-16)
 
@@ -134,12 +134,16 @@ The most interesting ones are:
 
 ## 0.1.0 (2017-02-11)
 
-This was the initial published version. It consisted entirely of the original code from the Launchpad projectsite.
+This was the initially published version. It consisted entirely of the original code from the Launchpad project site.
 
 [docs.colors]: docs/colors.md
 
 [commit-14c303d]: https://github.com/ForNeVeR/wpf-math/commit/14c303d30eba735af4faa5e72e149c60add00293
 [issue-14]: https://github.com/ForNeVeR/wpf-math/issues/14
+[issue-15]: https://github.com/ForNeVeR/wpf-math/issues/15
+[issue-24]: https://github.com/ForNeVeR/wpf-math/issues/24
+[issue-32]: https://github.com/ForNeVeR/wpf-math/issues/32
+[issue-38]: https://github.com/ForNeVeR/wpf-math/issues/38
 [issue-50]: https://github.com/ForNeVeR/wpf-math/issues/50
 [issue-59]: https://github.com/ForNeVeR/wpf-math/issues/59
 [issue-60]: https://github.com/ForNeVeR/wpf-math/issues/60
