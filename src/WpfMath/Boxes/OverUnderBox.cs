@@ -3,23 +3,23 @@ using WpfMath.Rendering.Transformations;
 
 namespace WpfMath.Boxes
 {
-    // Box representing other box with delimeter and script box over or under it.
+    // Box representing other box with delimiter and script box over or under it.
     internal class OverUnderBox : Box
     {
-        public OverUnderBox(Box baseBox, Box delimeterBox, Box scriptBox, double kern, bool over)
+        public OverUnderBox(Box baseBox, Box delimiterBox, Box scriptBox, double kern, bool over)
             : base()
         {
             this.BaseBox = baseBox;
-            this.DelimeterBox = delimeterBox;
+            this.DelimiterBox = delimiterBox;
             this.ScriptBox = scriptBox;
             this.Kern = kern;
             this.Over = over;
 
             // Calculate dimensions of box.
             this.Width = baseBox.Width;
-            this.Height = baseBox.Height + (over ? delimeterBox.Width : 0) +
+            this.Height = baseBox.Height + (over ? delimiterBox.Width : 0) +
                 (over && scriptBox != null ? scriptBox.Height + scriptBox.Depth + kern : 0);
-            this.Depth = baseBox.Depth + (over ? 0 : delimeterBox.Width) +
+            this.Depth = baseBox.Depth + (over ? 0 : delimiterBox.Width) +
                 (!over && scriptBox != null ? scriptBox.Height + scriptBox.Depth + kern : 0.0);
         }
 
@@ -29,7 +29,7 @@ namespace WpfMath.Boxes
             private set;
         }
 
-        public Box DelimeterBox
+        public Box DelimiterBox
         {
             get;
             private set;
@@ -62,9 +62,9 @@ namespace WpfMath.Boxes
             if (this.Over)
             {
                 // Draw delimeter and script boxes over base box.
-                var centerY = y - this.BaseBox.Height - this.DelimeterBox.Width;
-                var translationX = x + this.DelimeterBox.Width / 2;
-                var translationY = centerY + this.DelimeterBox.Width / 2;
+                var centerY = y - this.BaseBox.Height - this.DelimiterBox.Width;
+                var translationX = x + this.DelimiterBox.Width / 2;
+                var translationY = centerY + this.DelimiterBox.Width / 2;
 
                 RenderDelimiter(translationX, translationY);
 
@@ -74,9 +74,9 @@ namespace WpfMath.Boxes
             else
             {
                 // Draw delimeter and script boxes under base box.
-                var centerY = y + this.BaseBox.Depth + this.DelimeterBox.Width;
-                var translationX = x + this.DelimeterBox.Width / 2;
-                var translationY = centerY - this.DelimeterBox.Width / 2;
+                var centerY = y + this.BaseBox.Depth + this.DelimiterBox.Width;
+                var translationX = x + this.DelimiterBox.Width / 2;
+                var translationY = centerY - this.DelimiterBox.Width / 2;
 
                 RenderDelimiter(translationX, translationY);
 
@@ -93,10 +93,10 @@ namespace WpfMath.Boxes
                 };
 
                 renderer.RenderTransformed(
-                    this.DelimeterBox,
+                    this.DelimiterBox,
                     transformations,
-                    -this.DelimeterBox.Width / 2,
-                    -this.DelimeterBox.Depth + this.DelimeterBox.Width / 2);
+                    -this.DelimiterBox.Width / 2,
+                    -this.DelimiterBox.Depth + this.DelimiterBox.Width / 2);
             }
 
             void RenderScriptBox(double yPosition)
