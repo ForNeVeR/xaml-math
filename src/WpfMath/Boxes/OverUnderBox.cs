@@ -20,7 +20,7 @@ namespace WpfMath.Boxes
             this.Height = baseBox.Height + (over ? delimeterBox.Width : 0) +
                 (over && scriptBox != null ? scriptBox.Height + scriptBox.Depth + kern : 0);
             this.Depth = baseBox.Depth + (over ? 0 : delimeterBox.Width) +
-                (!over && scriptBox == null ? 0 : scriptBox.Height + scriptBox.Depth + kern);
+                (!over && scriptBox != null ? scriptBox.Height + scriptBox.Depth + kern : 0.0);
         }
 
         public Box BaseBox
