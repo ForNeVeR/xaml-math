@@ -17,9 +17,9 @@ namespace WpfMath.Boxes
 
             // Calculate dimensions of box.
             this.Width = baseBox.Width;
-            this.Height = baseBox.Height + (over ? delimiterBox.Width : 0) +
-                (over && scriptBox != null ? scriptBox.Height + scriptBox.Depth + kern : 0);
-            this.Depth = baseBox.Depth + (over ? 0 : delimiterBox.Width) +
+            this.Height = baseBox.Height + (over ? delimiterBox.Width : 0.0) +
+                (over && scriptBox != null ? scriptBox.Height + scriptBox.Depth + kern : 0.0);
+            this.Depth = baseBox.Depth + (over ? 0.0 : delimiterBox.Width) +
                 (!over && scriptBox != null ? scriptBox.Height + scriptBox.Depth + kern : 0.0);
         }
 

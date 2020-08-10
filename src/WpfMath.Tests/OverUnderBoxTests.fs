@@ -30,5 +30,5 @@ type OverUnderBoxTests() =
         Mock.Verify(<@ mockedRenderer.RenderTransformed(delimiterBox, any(), any(), any()) @>, once)
 
     [<Fact>]
-    member _.``OverUnderBox should be successfully constructed a box for over == false and scriptBox == null``() =
+    member _.``OverUnderBox should be successfully constructed for over = false and scriptBox = null``() =
         OverUnderBox(baseBox, delimiterBox, null, 0.0, false) |> ignore
