@@ -2,8 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Media;
 
-#nullable disable
-
 namespace WpfMath.Colors
 {
     /// <summary>A base class for color parsers that only require one component.</summary>

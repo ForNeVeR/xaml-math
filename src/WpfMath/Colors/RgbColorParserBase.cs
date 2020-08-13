@@ -4,8 +4,6 @@ using System.Linq;
 using System.Windows.Media;
 using WpfMath.Utils;
 
-#nullable disable
-
 namespace WpfMath.Colors
 {
     /// <summary>Helps to differentiate RGBA and ARGB color models, if necessary.</summary>

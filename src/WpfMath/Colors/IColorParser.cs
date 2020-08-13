@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using System.Windows.Media;
 
-#nullable disable
-
 namespace WpfMath.Colors
 {
     /// <summary>A parser for colors in commands like \color and \colorbox.</summary>
