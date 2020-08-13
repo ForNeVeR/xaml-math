@@ -1,6 +1,8 @@
 using System.Windows;
 using System.Windows.Media;
 
+#nullable disable
+
 namespace WpfMath.Rendering
 {
     internal static class GeometryHelper

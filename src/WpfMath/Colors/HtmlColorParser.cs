@@ -1,6 +1,8 @@
 using System.Globalization;
 using System.Windows.Media;
 
+#nullable disable
+
 namespace WpfMath.Colors
 {
     internal class HtmlColorParser : SingleComponentColorParser

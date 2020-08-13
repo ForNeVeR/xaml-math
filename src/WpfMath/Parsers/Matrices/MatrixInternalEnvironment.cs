@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using WpfMath.Atoms;
 
+#nullable disable
+
 namespace WpfMath.Parsers.Matrices
 {
     internal class MatrixInternalEnvironment : NonRecursiveEnvironment

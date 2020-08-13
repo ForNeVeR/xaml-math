@@ -6,6 +6,8 @@ using System.Reflection;
 using System.Windows.Media;
 using System.Xml.Linq;
 
+#nullable disable
+
 namespace WpfMath.Colors
 {
     public class PredefinedColorParser : IColorParser

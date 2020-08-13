@@ -5,6 +5,8 @@ using System.Windows.Media.Imaging;
 using WpfMath.Boxes;
 using WpfMath.Rendering;
 
+#nullable disable
+
 namespace WpfMath
 {
     public class TexRenderer

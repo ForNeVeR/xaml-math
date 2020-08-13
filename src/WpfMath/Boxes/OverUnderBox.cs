@@ -1,6 +1,8 @@
 using WpfMath.Rendering;
 using WpfMath.Rendering.Transformations;
 
+#nullable disable
+
 namespace WpfMath.Boxes
 {
     // Box representing other box with delimiter and script box over or under it.

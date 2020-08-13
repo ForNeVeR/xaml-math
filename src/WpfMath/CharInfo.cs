@@ -1,5 +1,7 @@
 using System.Windows.Media;
 
+#nullable disable
+
 namespace WpfMath
 {
     // Single character togeter with information about font and metrics.

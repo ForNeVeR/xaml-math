@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 
+#nullable disable
+
 namespace WpfMath
 {
     internal static class XmlUtilities

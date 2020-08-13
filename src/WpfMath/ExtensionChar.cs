@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+#nullable disable
+
 namespace WpfMath
 {
     // Extension character that contains character information for each of its parts.

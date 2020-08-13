@@ -5,6 +5,8 @@ using System.Windows.Media;
 using WpfMath.Atoms;
 using WpfMath.Boxes;
 
+#nullable disable
+
 namespace WpfMath
 {
     // Represents mathematical formula that can be rendered.

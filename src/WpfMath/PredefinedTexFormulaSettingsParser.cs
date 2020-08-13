@@ -6,6 +6,8 @@ using System.Reflection;
 using System.Text;
 using System.Xml.Linq;
 
+#nullable disable
+
 namespace WpfMath
 {
     // Parses settings for predefined formulas from XML file.

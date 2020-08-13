@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using WpfMath.Boxes;
 
+#nullable disable
+
 namespace WpfMath
 {
     // Creates boxes containing delimeter symbol that exists in different sizes.

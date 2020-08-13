@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using WpfMath.Boxes;
 
+#nullable disable
+
 namespace WpfMath.Atoms
 {
     // Atom representing horizontal row of other atoms, separated by glue.

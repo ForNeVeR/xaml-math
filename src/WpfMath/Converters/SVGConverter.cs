@@ -6,6 +6,8 @@ using System.Windows.Media;
 using System.Globalization;
 using System.Diagnostics;
 
+#nullable disable
+
 namespace WpfMath.Converters
 {
     public class SVGConverter

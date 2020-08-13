@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using WpfMath.Atoms;
 
+#nullable disable
+
 namespace WpfMath.Parsers.Matrices
 {
     internal class NextRowCommand : ICommandParser

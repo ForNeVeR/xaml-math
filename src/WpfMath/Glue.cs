@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using WpfMath.Boxes;
 
+#nullable disable
+
 namespace WpfMath
 {
     // Represents glueElement for holding together boxes.

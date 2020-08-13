@@ -1,5 +1,7 @@
 using WpfMath.Atoms;
 
+#nullable disable
+
 namespace WpfMath
 {
     // Atom consisting of child atoms displayed in horizontal row with glueElement between them.

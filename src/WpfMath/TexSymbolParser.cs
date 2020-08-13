@@ -5,6 +5,8 @@ using System.Reflection;
 using System.Xml.Linq;
 using WpfMath.Atoms;
 
+#nullable disable
+
 namespace WpfMath
 {
     // Parse definitions of symbols from XML files.

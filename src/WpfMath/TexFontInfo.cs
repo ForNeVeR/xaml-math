@@ -4,6 +4,8 @@ using System.Windows.Media;
 using WpfMath.Exceptions;
 using WpfMath.Utils;
 
+#nullable disable
+
 namespace WpfMath
 {
     // Specifies all information about single font.

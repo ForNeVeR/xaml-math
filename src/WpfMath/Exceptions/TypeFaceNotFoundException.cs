@@ -1,3 +1,5 @@
+#nullable disable
+
 namespace WpfMath.Exceptions
 {
     public class TypeFaceNotFoundException : TexException

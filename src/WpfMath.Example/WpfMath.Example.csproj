@@ -6,8 +6,15 @@
         <UseWpf>true</UseWpf>
         <DebugType>Full</DebugType>
         <IsPackable>false</IsPackable>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
     <ItemGroup>
-        <ProjectReference Include="../WpfMath/WpfMath.csproj"/>
+        <ProjectReference Include="../WpfMath/WpfMath.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Nullable" Version="1.2.1">
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        <PrivateAssets>all</PrivateAssets>
+      </PackageReference>
     </ItemGroup>
 </Project>

@@ -1,5 +1,7 @@
 using WpfMath.Atoms;
 
+#nullable disable
+
 namespace WpfMath
 {
     /// <summary>

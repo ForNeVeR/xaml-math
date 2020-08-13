@@ -7,6 +7,8 @@ using System.Windows.Media;
 using WpfMath.Boxes;
 using WpfMath.Exceptions;
 
+#nullable disable
+
 namespace WpfMath.Controls
 {
     /// <summary>

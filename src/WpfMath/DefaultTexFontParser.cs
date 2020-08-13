@@ -7,6 +7,8 @@ using System.Windows;
 using System.Windows.Media;
 using System.Xml.Linq;
 
+#nullable disable
+
 namespace WpfMath
 {
     // Parses information for DefaultTeXFont settings from XML file.

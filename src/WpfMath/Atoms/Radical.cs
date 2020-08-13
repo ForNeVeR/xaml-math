@@ -2,6 +2,8 @@ using System;
 using WpfMath.Atoms;
 using WpfMath.Boxes;
 
+#nullable disable
+
 namespace WpfMath
 {
     /// <summary>

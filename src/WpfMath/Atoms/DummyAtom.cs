@@ -1,6 +1,8 @@
 using WpfMath.Boxes;
 using WpfMath.Utils;
 
+#nullable disable
+
 namespace WpfMath.Atoms
 {
     // Dummy atom representing atom whose type can change or which can be replaced by a ligature.

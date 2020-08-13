@@ -1,3 +1,5 @@
+#nullable disable
+
 namespace WpfMath
 {
     internal static class TexUtilities

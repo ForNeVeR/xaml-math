@@ -3,6 +3,8 @@ using System.Linq;
 using WpfMath.Atoms;
 using WpfMath.Exceptions;
 
+#nullable disable
+
 namespace WpfMath.Parsers.Matrices
 {
     /// <summary>A parser for matrix-like constructs.</summary>

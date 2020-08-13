@@ -21,9 +21,16 @@
         <Copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2020</Copyright>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <WarningsAsErrors>nullable</WarningsAsErrors>
+        <Nullable Condition="'$(TargetFramework)' == 'netcoreapp3.0'">enable</Nullable>
+        <Nullable Condition="'$(TargetFramework)' == 'net452'">annotations</Nullable>
     </PropertyGroup>
     <ItemGroup>
         <EmbeddedResource Include="Data/*" />
+        <PackageReference Include="Nullable" Version="1.2.1">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <Resource Include="Fonts\cmex10.ttf" />
         <Resource Include="Fonts\cmmi10.ttf" />
         <Resource Include="Fonts\cmr10.ttf" />

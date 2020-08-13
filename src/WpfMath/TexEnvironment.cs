@@ -1,5 +1,7 @@
 using System.Windows.Media;
 
+#nullable disable
+
 namespace WpfMath
 {
     // Specifies current graphical parameters used to create boxes.

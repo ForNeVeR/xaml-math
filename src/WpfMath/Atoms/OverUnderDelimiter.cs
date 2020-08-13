@@ -2,6 +2,8 @@ using System;
 using WpfMath.Atoms;
 using WpfMath.Boxes;
 
+#nullable disable
+
 namespace WpfMath
 {
     // Atom representing other atom with delimeter and script atoms over or under it.

@@ -1,6 +1,8 @@
 using System;
 using WpfMath.Boxes;
 
+#nullable disable
+
 namespace WpfMath.Atoms
 {
     // Atom representing other atom with atoms optionally over and under it.

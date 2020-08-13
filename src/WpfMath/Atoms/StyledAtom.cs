@@ -1,6 +1,8 @@
 using System.Windows.Media;
 using WpfMath.Boxes;
 
+#nullable disable
+
 namespace WpfMath.Atoms
 {
     // Atom specifying graphical style.

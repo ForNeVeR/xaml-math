@@ -1,5 +1,7 @@
 using WpfMath.Boxes;
 
+#nullable disable
+
 namespace WpfMath.Atoms
 {
     // Atom representing other atom with custom left and right types.

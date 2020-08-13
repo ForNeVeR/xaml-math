@@ -1,5 +1,7 @@
 using WpfMath.Boxes;
 
+#nullable disable
+
 namespace WpfMath.Atoms
 {
     // Atom representing fraction, with or without separation line.

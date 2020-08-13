@@ -5,6 +5,8 @@ using System.Text;
 using System.Windows;
 using System.Windows.Media;
 
+#nullable disable
+
 namespace WpfMath.Controls
 {
     public class VisualContainerElement : FrameworkElement

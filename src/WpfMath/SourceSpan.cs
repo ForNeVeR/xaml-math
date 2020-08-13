@@ -1,5 +1,7 @@
 using System;
 
+#nullable disable
+
 namespace WpfMath
 {
     public class SourceSpan : IEquatable<SourceSpan>

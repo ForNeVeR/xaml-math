@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using WpfMath.Utils;
 
+#nullable disable
+
 namespace WpfMath.Atoms
 {
     // Atom representing symbol (non-alphanumeric character).

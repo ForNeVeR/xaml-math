@@ -1,3 +1,5 @@
+#nullable disable
+
 namespace WpfMath.Boxes
 {
     // Box representing other box with horizontal rule above it.

@@ -4,6 +4,8 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Media;
 
+#nullable disable
+
 namespace WpfMath.Colors
 {
     internal class CmykColorParser : IColorParser

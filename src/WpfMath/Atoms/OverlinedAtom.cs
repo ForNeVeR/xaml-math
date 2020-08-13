@@ -1,5 +1,7 @@
 using WpfMath.Boxes;
 
+#nullable disable
+
 namespace WpfMath.Atoms
 {
     // Atom representing other atom with horizontal rule above it.

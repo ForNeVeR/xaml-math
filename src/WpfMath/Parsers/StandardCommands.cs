@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using WpfMath.Atoms;
 using WpfMath.Parsers.Matrices;
 
+#nullable disable
+
 namespace WpfMath.Parsers
 {
     internal static class StandardCommands

@@ -5,6 +5,8 @@ using System.Linq;
 using WpfMath.Boxes;
 using WpfMath.Utils;
 
+#nullable disable
+
 namespace WpfMath.Atoms
 {
     /// <summary>An atom representing a tabular arrangement of atoms.</summary>

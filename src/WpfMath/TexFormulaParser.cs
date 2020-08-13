@@ -10,6 +10,8 @@ using WpfMath.Exceptions;
 using WpfMath.Parsers;
 using WpfMath.Utils;
 
+#nullable disable
+
 namespace WpfMath
 {
     // TODO: Put all error strings into resources.

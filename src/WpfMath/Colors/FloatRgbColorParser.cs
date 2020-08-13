@@ -1,6 +1,8 @@
 using System;
 using System.Globalization;
 
+#nullable disable
+
 namespace WpfMath.Colors
 {
     internal class FloatRgbColorParser : RgbColorParserBase<double>

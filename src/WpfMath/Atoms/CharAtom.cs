@@ -1,5 +1,7 @@
 using WpfMath.Utils;
 
+#nullable disable
+
 namespace WpfMath.Atoms
 {
     // Atom representing single character in specific text style.

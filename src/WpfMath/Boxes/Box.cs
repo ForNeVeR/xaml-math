@@ -3,6 +3,8 @@ using System.Collections.ObjectModel;
 using System.Windows.Media;
 using WpfMath.Rendering;
 
+#nullable disable
+
 namespace WpfMath.Boxes
 {
     // Represents graphical box that is part of math expression, and can itself contain child boxes.

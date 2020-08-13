@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using WpfMath.Exceptions;
 using WpfMath.Utils;
 
+#nullable disable
+
 namespace WpfMath
 {
     // Default implementation of ITeXFont that reads all font information from XML file.

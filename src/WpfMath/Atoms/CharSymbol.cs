@@ -1,6 +1,8 @@
 using WpfMath.Boxes;
 using WpfMath.Utils;
 
+#nullable disable
+
 namespace WpfMath.Atoms
 {
     // Atom representing single character that can be marked as text symbol.

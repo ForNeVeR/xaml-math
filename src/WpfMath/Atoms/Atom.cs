@@ -1,5 +1,7 @@
 using WpfMath.Boxes;
 
+#nullable disable
+
 namespace WpfMath.Atoms
 {
     // Atom (smallest unit) of TexFormula.

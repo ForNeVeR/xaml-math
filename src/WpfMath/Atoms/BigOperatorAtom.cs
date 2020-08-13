@@ -1,6 +1,8 @@
 using System;
 using WpfMath.Boxes;
 
+#nullable disable
+
 namespace WpfMath.Atoms
 {
     // Atom representing big operator with optional limits.

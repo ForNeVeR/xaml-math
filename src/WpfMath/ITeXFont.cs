@@ -1,5 +1,7 @@
 using WpfMath.Utils;
 
+#nullable disable
+
 namespace WpfMath
 {
     // Font that specifies how TexFormula objects are rendered.

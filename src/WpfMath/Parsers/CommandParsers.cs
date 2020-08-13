@@ -1,6 +1,8 @@
 using WpfMath.Atoms;
 using WpfMath.Exceptions;
 
+#nullable disable
+
 namespace WpfMath.Parsers
 {
     /// <summary>A context that will be passed to the command parser.</summary>

@@ -2,6 +2,8 @@ using System;
 using System.Windows.Media;
 using WpfMath.Rendering;
 
+#nullable disable
+
 namespace WpfMath.Boxes
 {
     // Box containing horizontal stack of child boxes.

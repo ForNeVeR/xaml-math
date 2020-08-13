@@ -7,6 +7,8 @@ using System.Reflection;
 using System.Windows.Media;
 using System.Xml.Linq;
 
+#nullable disable
+
 namespace WpfMath
 {
     // Parses definitions of predefined formulas from XML file.

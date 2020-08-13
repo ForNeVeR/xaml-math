@@ -6,6 +6,8 @@ using System.Windows.Media;
 using WpfMath.Boxes;
 using WpfMath.Rendering.Transformations;
 
+#nullable disable
+
 namespace WpfMath.Rendering
 {
     /// <summary>A renderer that renders the elements to a provided <see cref="GeometryGroup"/> instance.</summary>

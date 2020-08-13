@@ -1,5 +1,7 @@
 using System;
 
+#nullable disable
+
 namespace WpfMath.Exceptions
 {
     public class TexParseException : TexException
