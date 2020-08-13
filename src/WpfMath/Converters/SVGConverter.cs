@@ -6,8 +6,6 @@ using System.Windows.Media;
 using System.Globalization;
 using System.Diagnostics;
 
-#nullable disable
-
 namespace WpfMath.Converters
 {
     public class SVGConverter
@@ -17,8 +15,7 @@ namespace WpfMath.Converters
         public string ConvertGeometry(Geometry geometry)
         {
             StringBuilder svgOutput = new StringBuilder();
-            GeometryGroup group = geometry as GeometryGroup;
-            if (group != null)
+            if (geometry is GeometryGroup group)
             {
                 AddGeometry(svgOutput, group);
             }
@@ -78,75 +75,69 @@ namespace WpfMath.Converters
 
                 foreach (PathSegment ps in pf.Segments)
                 {
-                    if (ps is PolyLineSegment)
+                    if (ps is PolyLineSegment plSeg)
                     {
-                        PolyLineSegment seg = ps as PolyLineSegment;
-                        for (int i = 0; i < seg.Points.Count; ++i)
+                        for (int i = 0; i < plSeg.Points.Count; ++i)
                         {
                             svgString.Append("L ");
-                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i].X);
-                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i].Y);
+                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", plSeg.Points[i].X);
+                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", plSeg.Points[i].Y);
                         }
                     }
-                    else if (ps is PolyBezierSegment)
+                    else if (ps is PolyBezierSegment pbSeg)
                     {
-                        PolyBezierSegment seg = ps as PolyBezierSegment;
-                        for (int i = 0; i < seg.Points.Count; i += 3)
+                        for (int i = 0; i < pbSeg.Points.Count; i += 3)
                         {
                             svgString.Append("C ");
-                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i].X);
-                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i].Y);
+                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", pbSeg.Points[i].X);
+                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", pbSeg.Points[i].Y);
 
-                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i + 1].X);
-                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i + 1].Y);
+                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", pbSeg.Points[i + 1].X);
+                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", pbSeg.Points[i + 1].Y);
 
-                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i + 2].X);
-                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i + 2].Y);
+                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", pbSeg.Points[i + 2].X);
+                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", pbSeg.Points[i + 2].Y);
                         }
                     }
-                    else if (ps is LineSegment)
+                    else if (ps is LineSegment lSeg)
                     {
-                        LineSegment seg = ps as LineSegment;
                         svgString.Append("L ");
-                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Point.X);
-                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Point.Y);
+                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", lSeg.Point.X);
+                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", lSeg.Point.Y);
                     }
-                    else if (ps is BezierSegment)
+                    else if (ps is BezierSegment bSeg)
                     {
-                        BezierSegment seg = ps as BezierSegment;
                         svgString.Append("C ");
-                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Point1.X);
-                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Point1.Y);
+                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", bSeg.Point1.X);
+                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", bSeg.Point1.Y);
 
-                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Point2.X);
-                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Point2.Y);
+                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", bSeg.Point2.X);
+                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", bSeg.Point2.Y);
 
-                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Point3.X);
-                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Point3.Y);
+                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", bSeg.Point3.X);
+                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", bSeg.Point3.Y);
                     }
-                    else if (ps is QuadraticBezierSegment)
+                    else if (ps is QuadraticBezierSegment qbSeg)
                     {
                         //Untested: BuildGeometry converts quadratic bezier to cubic
-                        QuadraticBezierSegment seg = ps as QuadraticBezierSegment;
                         svgString.Append("Q ");
-                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Point1.X);
-                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Point1.Y);
+                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", qbSeg.Point1.X);
+                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", qbSeg.Point1.Y);
 
-                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Point2.X);
-                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Point2.Y);
+                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", qbSeg.Point2.X);
+                        svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", qbSeg.Point2.Y);
                     }
-                    else if (ps is PolyQuadraticBezierSegment)
+                    else if (ps is PolyQuadraticBezierSegment pqbSeg)
                     {
                         //Untested: BuildGeometry converts quadratic bezier to cubic
-                        PolyQuadraticBezierSegment seg = ps as PolyQuadraticBezierSegment;
-                        for (int i = 0; i < seg.Points.Count; i += 2)
+                        for (int i = 0; i < pqbSeg.Points.Count; i += 2)
                         {
                             svgString.Append("Q ");
-                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i].X);
-                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i].Y);
+                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", pqbSeg.Points[i].X);
+                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", pqbSeg.Points[i].Y);
 
-                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i + 1].X);
-                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", seg.Points[i + 1].Y);
+                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", pqbSeg.Points[i + 1].X);
+                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", pqbSeg.Points[i + 1].Y);
                         }
                     }
                     else
