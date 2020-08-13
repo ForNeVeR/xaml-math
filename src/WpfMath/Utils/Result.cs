@@ -1,13 +1,11 @@
 using System;
 
-#nullable disable
-
 namespace WpfMath.Utils
 {
     internal static class Result
     {
         public static Result<TValue> Ok<TValue>(TValue value) => new Result<TValue>(value, null);
-        public static Result<TValue> Error<TValue>(Exception error) => new Result<TValue>(default, error);
+        public static Result<TValue> Error<TValue>(Exception error) => new Result<TValue>(default!, error); // Nullable: CS8604; can't be avoided with generics without constraints
     }
 
     internal readonly struct Result<TValue>
@@ -15,11 +13,11 @@ namespace WpfMath.Utils
         private readonly TValue value;
 
         public TValue Value => this.Error == null ? this.value : throw this.Error;
-        public Exception Error { get; }
+        public Exception? Error { get; }
 
         public bool IsSuccess => this.Error == null;
 
-        public Result(TValue value, Exception error)
+        public Result(TValue value, Exception? error)
         {
             if (!Equals(value, default) && error != null)
             {
@@ -32,6 +30,6 @@ namespace WpfMath.Utils
 
         public Result<TProduct> Map<TProduct>(Func<TValue, TProduct> mapper) => this.IsSuccess
             ? Result.Ok(mapper(this.Value))
-            : Result.Error<TProduct>(this.Error);
+            : Result.Error<TProduct>(this.Error!); // Nullable: CS8604, could be resolved by inlining IsSuccess
     }
 }
