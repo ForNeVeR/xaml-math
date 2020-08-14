@@ -1,7 +1,5 @@
 using WpfMath.Boxes;
 
-#nullable disable
-
 namespace WpfMath.Atoms
 {
     // Atom representing other atom that is not rendered.
@@ -12,8 +10,8 @@ namespace WpfMath.Atoms
         private readonly bool useDepth;
 
         public PhantomAtom(
-            SourceSpan source,
-            Atom baseAtom,
+            SourceSpan? source,
+            Atom? baseAtom,
             bool useWidth = true,
             bool useHeight = true,
             bool useDepth = true)

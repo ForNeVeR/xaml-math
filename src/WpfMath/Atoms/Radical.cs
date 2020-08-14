@@ -2,8 +2,6 @@ using System;
 using WpfMath.Atoms;
 using WpfMath.Boxes;
 
-#nullable disable
-
 namespace WpfMath
 {
     /// <summary>
@@ -15,16 +13,16 @@ namespace WpfMath
 
         private const double scale = 0.55;
 
-        public Radical(SourceSpan source, Atom baseAtom, Atom degreeAtom = null)
+        public Radical(SourceSpan? source, Atom? baseAtom, Atom? degreeAtom = null)
             : base(source)
         {
             this.BaseAtom = baseAtom;
             this.DegreeAtom = degreeAtom;
         }
 
-        public Atom BaseAtom { get; }
+        public Atom? BaseAtom { get; }
 
-        public Atom DegreeAtom { get; }
+        public Atom? DegreeAtom { get; }
 
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
@@ -41,7 +39,7 @@ namespace WpfMath
             clearance = defaultRuleThickness + Math.Abs(clearance) / 4;
 
             // Create box for base atom, in cramped style.
-            var baseBox = this.BaseAtom.CreateBox(environment.GetCrampedStyle());
+            var baseBox = this.BaseAtom!.CreateBox(environment.GetCrampedStyle()); // Nullable TODO: See whether BaseAtom is really always non-null here
 
             // Create box for radical sign.
             var totalHeight = baseBox.Height + baseBox.Depth;

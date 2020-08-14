@@ -1,8 +1,6 @@
 using System;
 using WpfMath.Boxes;
 
-#nullable disable
-
 namespace WpfMath.Atoms
 {
     // Atom representing scripts to attach to other atom.
@@ -10,7 +8,7 @@ namespace WpfMath.Atoms
     {
         private static readonly SpaceAtom scriptSpaceAtom = new SpaceAtom(null, TexUnit.Point, 0.5, 0, 0);
 
-        public ScriptsAtom(SourceSpan source, Atom baseAtom, Atom subscriptAtom, Atom superscriptAtom)
+        public ScriptsAtom(SourceSpan? source, Atom? baseAtom, Atom? subscriptAtom, Atom? superscriptAtom)
             : base(source)
         {
             this.BaseAtom = baseAtom;
@@ -18,11 +16,11 @@ namespace WpfMath.Atoms
             this.SuperscriptAtom = superscriptAtom;
         }
 
-        public Atom BaseAtom { get; }
+        public Atom? BaseAtom { get; }
 
-        public Atom SubscriptAtom { get; }
+        public Atom? SubscriptAtom { get; }
 
-        public Atom SuperscriptAtom { get; }
+        public Atom? SuperscriptAtom { get; }
 
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
@@ -59,9 +57,9 @@ namespace WpfMath.Atoms
             var delta = 0d;
             double shiftUp, shiftDown;
 
-            if (this.BaseAtom is AccentedAtom)
+            if (this.BaseAtom is AccentedAtom accentedAtom)
             {
-                var accentedBox = ((AccentedAtom)this.BaseAtom).BaseAtom.CreateBox(environment.GetCrampedStyle());
+                var accentedBox = accentedAtom.BaseAtom!.CreateBox(environment.GetCrampedStyle());  // Nullable TODO: This probably needs null checking
                 shiftUp = accentedBox.Height - texFont.GetSupDrop(superscriptStyle.Style);
                 shiftDown = accentedBox.Depth + texFont.GetSubDrop(subscriptStyle.Style);
             }
@@ -104,10 +102,10 @@ namespace WpfMath.Atoms
                 shiftDown = baseBox.Depth + texFont.GetSubDrop(subscriptStyle.Style);
             }
 
-            Box superscriptBox = null;
-            Box superscriptContainerBox = null;
-            Box subscriptBox = null;
-            Box subscriptContainerBox = null;
+            Box? superscriptBox = null;
+            Box? superscriptContainerBox = null;
+            Box? subscriptBox = null;
+            Box? subscriptContainerBox = null;
 
             if (this.SuperscriptAtom != null)
             {
@@ -143,7 +141,7 @@ namespace WpfMath.Atoms
             // Check if only superscript is set.
             if (subscriptBox == null)
             {
-                superscriptContainerBox.Shift = -shiftUp;
+                superscriptContainerBox!.Shift = -shiftUp; // Nullable TODO: Check whether superscriptContainerBox is really always non-null here
                 resultBox.Add(superscriptContainerBox);
                 return resultBox;
             }
@@ -151,7 +149,8 @@ namespace WpfMath.Atoms
             // Check if only subscript is set.
             if (superscriptBox == null)
             {
-                subscriptContainerBox.Shift = Math.Max(Math.Max(shiftDown, texFont.GetSub1(style)), subscriptBox.Height - 4 *
+                // Nullable TODO: Check whether subscriptContainerBox is really always non-null here
+                subscriptContainerBox!.Shift = Math.Max(Math.Max(shiftDown, texFont.GetSub1(style)), subscriptBox.Height - 4 *
                     Math.Abs(texFont.GetXHeight(style, lastFontId)) / 5);
                 resultBox.Add(subscriptContainerBox);
                 return resultBox;
@@ -180,7 +179,7 @@ namespace WpfMath.Atoms
 
             // Create box containing both superscript and subscript.
             var scriptsBox = new VerticalBox();
-            superscriptContainerBox.Shift = delta;
+            superscriptContainerBox!.Shift = delta; // Nullable TODO: Check whether superscriptContainerBox is really always non-null here
             scriptsBox.Add(superscriptContainerBox);
             scriptsBox.Add(new StrutBox(0, scriptsInterSpace, 0, 0));
             scriptsBox.Add(subscriptContainerBox);
@@ -193,12 +192,12 @@ namespace WpfMath.Atoms
 
         public override TexAtomType GetLeftType()
         {
-            return this.BaseAtom.GetLeftType();
+            return this.BaseAtom!.GetLeftType(); // Nullable TODO: This probably needs null checking
         }
 
         public override TexAtomType GetRightType()
         {
-            return this.BaseAtom.GetRightType();
+            return this.BaseAtom!.GetRightType(); // Nullable TODO: This probably needs null checking
         }
     }
 }
