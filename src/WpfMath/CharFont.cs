@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-#nullable disable
-
 namespace WpfMath
 {
     // Single character together with specific font.

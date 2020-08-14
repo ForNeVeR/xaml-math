@@ -1,7 +1,5 @@
 using WpfMath.Utils;
 
-#nullable disable
-
 namespace WpfMath
 {
     // Font that specifies how TexFormula objects are rendered.
@@ -16,7 +14,7 @@ namespace WpfMath
 
         ExtensionChar GetExtension(CharInfo charInfo, TexStyle style);
 
-        CharFont GetLigature(CharFont leftChar, CharFont rightChar);
+        CharFont? GetLigature(CharFont leftChar, CharFont rightChar);
 
         CharInfo GetNextLargerCharInfo(CharInfo charInfo, TexStyle style);
 

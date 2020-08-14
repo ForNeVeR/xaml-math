@@ -4,8 +4,6 @@ using System.Windows.Media;
 using WpfMath.Exceptions;
 using WpfMath.Utils;
 
-#nullable disable
-
 namespace WpfMath
 {
     // Specifies all information about single font.
@@ -115,11 +113,10 @@ namespace WpfMath
             return kern * factor;
         }
 
-        public CharFont GetLigature(char left, char right)
+        public CharFont? GetLigature(char left, char right)
         {
             Tuple<char, char> tpl = Tuple.Create(left, right);
-            char ch;
-            return this.ligatures.TryGetValue(tpl, out ch) ? new CharFont(ch, this.FontId) : null;
+            return this.ligatures.TryGetValue(tpl, out char ch) ? new CharFont(ch, this.FontId) : null;
         }
 
         public CharFont GetNextLarger(char character)

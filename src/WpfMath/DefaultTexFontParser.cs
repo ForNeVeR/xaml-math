@@ -7,8 +7,6 @@ using System.Windows;
 using System.Windows.Media;
 using System.Xml.Linq;
 
-#nullable disable
-
 namespace WpfMath
 {
     // Parses information for DefaultTeXFont settings from XML file.
@@ -52,8 +50,11 @@ namespace WpfMath
 
         public DefaultTexFontParser()
         {
-            var doc = XDocument.Load(new System.IO.StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)));
+            var doc = XDocument.Load(new System.IO.StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)!)); // Nullable: CS8604: Possibly just throw if the resource is missing?
             this.rootElement = doc.Root;
+
+            this.parsedTextStyles = new Dictionary<string, CharFont[]>();
+
             ParseTextStyleMappings();
         }
 
@@ -197,8 +198,6 @@ namespace WpfMath
 
         private void ParseTextStyleMappings()
         {
-            this.parsedTextStyles = new Dictionary<string, CharFont[]>();
-
             var textStyleMappings = rootElement.Element("TextStyleMappings");
             if (textStyleMappings == null)
                 throw new InvalidOperationException("Cannot find TextStyleMappings element.");

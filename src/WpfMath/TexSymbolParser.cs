@@ -5,8 +5,6 @@ using System.Reflection;
 using System.Xml.Linq;
 using WpfMath.Atoms;
 
-#nullable disable
-
 namespace WpfMath
 {
     // Parse definitions of symbols from XML files.
@@ -40,9 +38,8 @@ namespace WpfMath
         public TexSymbolParser()
         {
             // for 3.5
-            var doc = XDocument.Load(new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)));
+            var doc = XDocument.Load(new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)!)); // Nullable: CS8604: Possibly just throw if the resource is missing?
             this.rootElement = doc.Root;
-
         }
 
         public IDictionary<string, Func<SourceSpan, SymbolAtom>> GetSymbols()

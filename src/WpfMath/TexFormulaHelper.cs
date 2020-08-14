@@ -1,7 +1,5 @@
 using WpfMath.Atoms;
 
-#nullable disable
-
 namespace WpfMath
 {
     internal class TexFormulaHelper
@@ -134,10 +132,10 @@ namespace WpfMath
 
         public void AddRadical(TexFormula baseFormula)
         {
-            AddRadical(baseFormula, (TexFormula)null);
+            AddRadical(baseFormula, (TexFormula?)null);
         }
 
-        public void AddRadical(TexFormula baseFormula, TexFormula degreeFormula)
+        public void AddRadical(TexFormula baseFormula, TexFormula? degreeFormula)
         {
             this.Add(new Radical(null, baseFormula?.RootAtom, degreeFormula?.RootAtom));
         }
@@ -172,8 +170,8 @@ namespace WpfMath
 
         public void AddOperator(
             TexFormula operatorFormula,
-            TexFormula lowerLimitFormula,
-            TexFormula upperLimitFormula,
+            TexFormula? lowerLimitFormula,
+            TexFormula? upperLimitFormula,
             bool useVerticalLimits)
         {
             this.Add(
@@ -317,7 +315,7 @@ namespace WpfMath
                 false);
         }
 
-        public void PutOver(TexFormula overFormula, TexUnit overUnit, double overSpace, bool overScriptSize)
+        public void PutOver(TexFormula? overFormula, TexUnit overUnit, double overSpace, bool overScriptSize)
         {
             this.Formula.RootAtom = new UnderOverAtom(
                 this._source,
@@ -329,18 +327,18 @@ namespace WpfMath
                 true);
         }
 
-        public void PutOver(string overFormula, TexUnit overUnit, double overSpace, bool overScriptSize)
+        public void PutOver(string? overFormula, TexUnit overUnit, double overSpace, bool overScriptSize)
         {
             PutOver(overFormula == null ? null : ParseFormula(overFormula), overUnit, overSpace, overScriptSize);
         }
 
-        public void PutUnder(string underFormula, TexUnit underUnit, double underSpace, bool underScriptSize)
+        public void PutUnder(string? underFormula, TexUnit underUnit, double underSpace, bool underScriptSize)
         {
             PutUnder(underFormula == null ? null : ParseFormula(underFormula), underUnit, underSpace,
                 underScriptSize);
         }
 
-        public void PutUnder(TexFormula underFormula, TexUnit underUnit, double underSpace, bool underScriptSize)
+        public void PutUnder(TexFormula? underFormula, TexUnit underUnit, double underSpace, bool underScriptSize)
         {
             this.Formula.RootAtom = new UnderOverAtom(
                 this._source,
@@ -352,15 +350,15 @@ namespace WpfMath
                 false);
         }
 
-        public void PutUnderAndOver(string underFormula, TexUnit underUnit, double underSpace, bool underScriptSize,
-            string over, TexUnit overUnit, double overSpace, bool overScriptSize)
+        public void PutUnderAndOver(string? underFormula, TexUnit underUnit, double underSpace, bool underScriptSize,
+            string? over, TexUnit overUnit, double overSpace, bool overScriptSize)
         {
             PutUnderAndOver(underFormula == null ? null : ParseFormula(underFormula), underUnit, underSpace,
                 underScriptSize, over == null ? null : ParseFormula(over), overUnit, overSpace, overScriptSize);
         }
 
-        public void PutUnderAndOver(TexFormula underFormula, TexUnit underUnit, double underSpace, bool underScriptSize,
-            TexFormula over, TexUnit overUnit, double overSpace, bool overScriptSize)
+        public void PutUnderAndOver(TexFormula? underFormula, TexUnit underUnit, double underSpace, bool underScriptSize,
+            TexFormula? over, TexUnit overUnit, double overSpace, bool overScriptSize)
         {
             this.Formula.RootAtom = new UnderOverAtom(
                 this._source,

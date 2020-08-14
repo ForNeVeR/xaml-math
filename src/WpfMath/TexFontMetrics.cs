@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-#nullable disable
-
 namespace WpfMath
 {
     // Specifies font metrics for single character.

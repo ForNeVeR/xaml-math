@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using WpfMath.Exceptions;
 using WpfMath.Utils;
 
-#nullable disable
-
 namespace WpfMath
 {
     // Default implementation of ITeXFont that reads all font information from XML file.
@@ -73,7 +71,7 @@ namespace WpfMath
             // Create character for each part of extension.
             var fontInfo = fontInfoList[charInfo.FontId];
             var extension = fontInfo.GetExtension(charInfo.Character);
-            var parts = new CharInfo[extension.Length];
+            var parts = new CharInfo?[extension.Length];
             for (int i = 0; i < extension.Length; i++)
             {
                 if (extension[i] == (int)TexCharKind.None)
@@ -94,7 +92,7 @@ namespace WpfMath
                 parts[TexFontUtilities.ExtensionBottom], parts[TexFontUtilities.ExtensionRepeat]);
         }
 
-        public CharFont GetLigature(CharFont leftCharFont, CharFont rightCharFont)
+        public CharFont? GetLigature(CharFont leftCharFont, CharFont rightCharFont)
         {
             if (leftCharFont.FontId != rightCharFont.FontId)
                 return null;

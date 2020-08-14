@@ -1,7 +1,5 @@
 using System.Windows.Media;
 
-#nullable disable
-
 namespace WpfMath
 {
     // Specifies current graphical parameters used to create boxes.
@@ -15,7 +13,7 @@ namespace WpfMath
         {
         }
 
-        private TexEnvironment(TexStyle style, ITeXFont mathFont, ITeXFont textFont, Brush background, Brush foreground)
+        private TexEnvironment(TexStyle style, ITeXFont mathFont, ITeXFont textFont, Brush? background, Brush? foreground)
         {
             if (style == TexStyle.Display || style == TexStyle.Text ||
                 style == TexStyle.Script || style == TexStyle.ScriptScript)
@@ -43,13 +41,13 @@ namespace WpfMath
 
         public ITeXFont TextFont { get; }
 
-        public Brush Background
+        public Brush? Background
         {
             get;
             set;
         }
 
-        public Brush Foreground
+        public Brush? Foreground
         {
             get;
             set;

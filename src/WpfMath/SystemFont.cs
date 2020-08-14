@@ -4,8 +4,6 @@ using System.Windows.Media;
 using WpfMath.Exceptions;
 using WpfMath.Utils;
 
-#nullable disable
-
 namespace WpfMath
 {
     internal class SystemFont : ITeXFont
@@ -26,7 +24,7 @@ namespace WpfMath
         public ExtensionChar GetExtension(CharInfo charInfo, TexStyle style) =>
             throw MethodNotSupported(nameof(GetExtension));
 
-        public CharFont GetLigature(CharFont leftChar, CharFont rightChar) => null;
+        public CharFont? GetLigature(CharFont leftChar, CharFont rightChar) => null;
 
         public CharInfo GetNextLargerCharInfo(CharInfo charInfo, TexStyle style) =>
             throw MethodNotSupported(nameof(GetNextLargerCharInfo));
