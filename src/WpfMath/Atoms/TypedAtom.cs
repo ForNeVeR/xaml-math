@@ -1,13 +1,11 @@
 using WpfMath.Boxes;
 
-#nullable disable
-
 namespace WpfMath.Atoms
 {
     // Atom representing other atom with custom left and right types.
     internal class TypedAtom : Atom
     {
-        public TypedAtom(SourceSpan source, Atom atom, TexAtomType leftType, TexAtomType rightType)
+        public TypedAtom(SourceSpan? source, Atom? atom, TexAtomType leftType, TexAtomType rightType)
             : base(source)
         {
             this.Atom = atom;
@@ -15,14 +13,14 @@ namespace WpfMath.Atoms
             this.RightType = rightType;
         }
 
-        public Atom Atom { get; }
+        public Atom? Atom { get; }
 
         public TexAtomType LeftType { get; }
 
         public TexAtomType RightType { get; }
 
         protected override Box CreateBoxCore(TexEnvironment environment) =>
-            this.Atom.CreateBox(environment);
+            this.Atom!.CreateBox(environment); // Nullable TODO: This probably needs null checking
 
         public override TexAtomType GetLeftType()
         {

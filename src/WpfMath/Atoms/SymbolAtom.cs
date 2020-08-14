@@ -1,9 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using WpfMath.Utils;
-
-#nullable disable
 
 namespace WpfMath.Atoms
 {
@@ -16,7 +15,7 @@ namespace WpfMath.Atoms
         internal const string EmptyDelimiterName = "_emptyDelimiter";
 
         // Dictionary of definitions of all symbols, keyed by name.
-        private static readonly IDictionary<string, Func<SourceSpan, SymbolAtom>> symbols;
+        private static readonly IDictionary<string, Func<SourceSpan?, SymbolAtom>> symbols;
 
         // Set of all valid symbol types.
         private static BitArray validSymbolTypes;
@@ -37,7 +36,7 @@ namespace WpfMath.Atoms
             validSymbolTypes.Set((int)TexAtomType.Accent, true);
         }
 
-        public static bool TryGetAtom(string name, SourceSpan source, out SymbolAtom atom)
+        public static bool TryGetAtom(string name, SourceSpan? source, [NotNullWhen(true)] out SymbolAtom? atom)
         {
             if (!symbols.TryGetValue(name, out var factory))
             {
@@ -50,13 +49,13 @@ namespace WpfMath.Atoms
             return true;
         }
 
-        public static SymbolAtom GetAtom(string name, SourceSpan source) =>
+        public static SymbolAtom GetAtom(string name, SourceSpan? source) =>
             TryGetAtom(name, source, out var atom) ? atom : throw new SymbolNotFoundException(name);
 
-        public static bool TryGetAtom(SourceSpan name, out SymbolAtom atom) =>
+        public static bool TryGetAtom(SourceSpan name, out SymbolAtom? atom) =>
             TryGetAtom(name.ToString(), name, out atom);
 
-        public SymbolAtom(SourceSpan source, SymbolAtom symbolAtom, TexAtomType type)
+        public SymbolAtom(SourceSpan? source, SymbolAtom symbolAtom, TexAtomType type)
             : base(source, type)
         {
             if (!validSymbolTypes[(int)type])
@@ -65,7 +64,7 @@ namespace WpfMath.Atoms
             this.IsDelimeter = symbolAtom.IsDelimeter;
         }
 
-        public SymbolAtom(SourceSpan source, string name, TexAtomType type, bool isDelimeter)
+        public SymbolAtom(SourceSpan? source, string name, TexAtomType type, bool isDelimeter)
             : base(source, type)
         {
             this.Name = name;

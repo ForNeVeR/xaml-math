@@ -42,9 +42,9 @@ namespace WpfMath
             this.rootElement = doc.Root;
         }
 
-        public IDictionary<string, Func<SourceSpan, SymbolAtom>> GetSymbols()
+        public IDictionary<string, Func<SourceSpan?, SymbolAtom>> GetSymbols()
         {
-            var result = new Dictionary<string, Func<SourceSpan, SymbolAtom>>();
+            var result = new Dictionary<string, Func<SourceSpan?, SymbolAtom>>();
 
             foreach (var symbolElement in rootElement.Elements("Symbol"))
             {

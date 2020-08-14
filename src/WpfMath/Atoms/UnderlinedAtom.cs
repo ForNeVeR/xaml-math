@@ -1,19 +1,17 @@
 using WpfMath.Boxes;
 
-#nullable disable
-
 namespace WpfMath.Atoms
 {
     // Atom representing other atom that is underlined.
     internal class UnderlinedAtom : Atom
     {
-        public UnderlinedAtom(SourceSpan source, Atom baseAtom)
+        public UnderlinedAtom(SourceSpan? source, Atom? baseAtom)
             : base(source)
         {
             this.BaseAtom = baseAtom;
         }
 
-        public Atom BaseAtom { get; }
+        public Atom? BaseAtom { get; }
 
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
