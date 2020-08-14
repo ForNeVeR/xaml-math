@@ -8,13 +8,13 @@ namespace WpfMath.Parsers.Matrices
     /// <summary>A parser for matrix-like constructs.</summary>
     internal class MatrixCommandParser : ICommandParser
     {
-        private readonly string _leftDelimiterSymbolName;
-        private readonly string _rightDelimiterSymbolName;
+        private readonly string? _leftDelimiterSymbolName;
+        private readonly string? _rightDelimiterSymbolName;
         private readonly MatrixCellAlignment _cellAlignment;
 
         public MatrixCommandParser(
-            string leftDelimiterSymbolName,
-            string rightDelimiterSymbolName,
+            string? leftDelimiterSymbolName,
+            string? rightDelimiterSymbolName,
             MatrixCellAlignment cellAlignment)
         {
             _leftDelimiterSymbolName = leftDelimiterSymbolName;

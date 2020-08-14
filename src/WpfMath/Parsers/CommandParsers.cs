@@ -1,8 +1,6 @@
 using WpfMath.Atoms;
 using WpfMath.Exceptions;
 
-#nullable disable
-
 namespace WpfMath.Parsers
 {
     /// <summary>A context that will be passed to the command parser.</summary>
@@ -51,7 +49,7 @@ namespace WpfMath.Parsers
     internal class CommandProcessingResult
     {
         /// <summary>A parsed atom. May be <c>null</c>.</summary>
-        public Atom Atom { get; }
+        public Atom? Atom { get; }
 
         /// <summary>
         /// A position pointing to the part of the <see cref="CommandContext.CommandSource"/> where the parsing should
@@ -65,7 +63,7 @@ namespace WpfMath.Parsers
         /// </summary>
         public AtomAppendMode AppendMode { get; }
 
-        public CommandProcessingResult(Atom atom, int nextPosition, AtomAppendMode appendMode = AtomAppendMode.Add)
+        public CommandProcessingResult(Atom? atom, int nextPosition, AtomAppendMode appendMode = AtomAppendMode.Add)
         {
             Atom = atom;
             NextPosition = nextPosition;

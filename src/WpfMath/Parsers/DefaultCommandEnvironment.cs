@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 
-#nullable disable
-
 namespace WpfMath.Parsers
 {
     internal class DefaultCommandEnvironment : ICommandEnvironment
