@@ -4,8 +4,6 @@ using System.Windows.Media;
 using WpfMath.Boxes;
 using WpfMath.Rendering.Transformations;
 
-#nullable disable
-
 namespace WpfMath.Rendering
 {
     /// <summary>Renderer interface for WPF-Math elements.</summary>

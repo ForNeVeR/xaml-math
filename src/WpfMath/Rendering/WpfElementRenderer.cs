@@ -5,8 +5,6 @@ using System.Windows.Media;
 using WpfMath.Boxes;
 using WpfMath.Rendering.Transformations;
 
-#nullable disable
-
 namespace WpfMath.Rendering
 {
     /// <summary>The renderer that uses WPF drawing context.</summary>

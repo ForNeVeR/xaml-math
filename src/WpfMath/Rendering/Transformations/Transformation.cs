@@ -1,5 +1,3 @@
-#nullable disable
-
 namespace WpfMath.Rendering.Transformations
 {
     /// <summary>Geometrical transformation.</summary>
