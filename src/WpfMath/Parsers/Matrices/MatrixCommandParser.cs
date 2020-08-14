@@ -44,8 +44,8 @@ namespace WpfMath.Parsers.Matrices
                     : TexFormulaParser.GetDelimiterSymbol(name, null) ??
                       throw new TexParseException($"The delimiter {name} could not be found");
 
-            var leftDelimiter = GetDelimiter(_leftDelimiterSymbolName);
-            var rightDelimiter = GetDelimiter(_rightDelimiterSymbolName);
+            SymbolAtom? leftDelimiter = GetDelimiter(_leftDelimiterSymbolName);
+            SymbolAtom? rightDelimiter = GetDelimiter(_rightDelimiterSymbolName);
 
             var atom = leftDelimiter == null && rightDelimiter == null
                 ? (Atom) matrix

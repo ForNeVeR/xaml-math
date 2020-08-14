@@ -52,7 +52,7 @@ namespace WpfMath.Atoms
         public static SymbolAtom GetAtom(string name, SourceSpan? source) =>
             TryGetAtom(name, source, out var atom) ? atom : throw new SymbolNotFoundException(name);
 
-        public static bool TryGetAtom(SourceSpan name, out SymbolAtom? atom) =>
+        public static bool TryGetAtom(SourceSpan name, [NotNullWhen(true)] out SymbolAtom? atom) =>
             TryGetAtom(name.ToString(), name, out atom);
 
         public SymbolAtom(SourceSpan? source, SymbolAtom symbolAtom, TexAtomType type)

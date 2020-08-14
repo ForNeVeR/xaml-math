@@ -165,7 +165,7 @@ namespace WpfMath
                 if (argValues.Length == 1)
                 {
                     var parser = new TexFormulaParser();
-                    formula = parser.Parse((string?)argValues[0]);
+                    formula = parser.Parse((string)argValues[0]!); // Nullable TODO: This might need null checking
                 }
                 else
                 {

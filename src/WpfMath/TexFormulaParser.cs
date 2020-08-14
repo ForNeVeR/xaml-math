@@ -10,8 +10,6 @@ using WpfMath.Exceptions;
 using WpfMath.Parsers;
 using WpfMath.Utils;
 
-#nullable disable
-
 namespace WpfMath
 {
     // TODO: Put all error strings into resources.
@@ -45,11 +43,11 @@ namespace WpfMath
             "sqrt"
         };
 
-        private static IList<string> symbols;
-        private static IList<string> delimeters;
-        private static HashSet<string> textStyles;
-        private static readonly IDictionary<string, Func<SourceSpan, TexFormula>> predefinedFormulas =
-            new Dictionary<string, Func<SourceSpan, TexFormula>>();
+        private static IList<string> symbols = new List<string>(); // Nullable: CS8618
+        private static IList<string> delimeters = new List<string>();
+        private static HashSet<string> textStyles = new HashSet<string>();
+        private static readonly IDictionary<string, Func<SourceSpan, TexFormula?>> predefinedFormulas =
+            new Dictionary<string, Func<SourceSpan, TexFormula?>>();
 
         private static readonly string[][] delimiterNames =
         {
@@ -109,7 +107,7 @@ namespace WpfMath
             }
         }
 
-        internal static SymbolAtom GetDelimiterSymbol(string name, SourceSpan source)
+        internal static SymbolAtom? GetDelimiterSymbol(string? name, SourceSpan? source)
         {
             if (name == null)
                 return null;
@@ -130,7 +128,7 @@ namespace WpfMath
             return ch == ' ' || ch == '\t' || ch == '\n' || ch == '\r';
         }
 
-        private static bool ShouldSkipWhiteSpace(string style) => style != TexUtilities.TextStyleName;
+        private static bool ShouldSkipWhiteSpace(string? style) => style != TexUtilities.TextStyleName;
 
         /// <summary>A registry for additional commands.</summary>
         private readonly IReadOnlyDictionary<string, ICommandParser> _commandRegistry;
@@ -160,16 +158,16 @@ namespace WpfMath
             PredefinedColorParser.Instance)
         {}
 
-        public TexFormula Parse(string value, string textStyle = null) =>
+        public TexFormula Parse(string value, string? textStyle = null) =>
             Parse(new SourceSpan("User input", value, 0, value.Length), textStyle);
 
-        public TexFormula Parse(SourceSpan value, string textStyle = null)
+        public TexFormula Parse(SourceSpan value, string? textStyle = null)
         {
             var position = 0;
             return Parse(value, ref position, false, textStyle, DefaultCommandEnvironment.Instance);
         }
 
-        internal TexFormula Parse(SourceSpan value, string textStyle, ICommandEnvironment environment)
+        internal TexFormula Parse(SourceSpan value, string? textStyle, ICommandEnvironment environment)
         {
             int localPostion = 0;
             return Parse(value, ref localPostion, false, textStyle, environment);
@@ -178,7 +176,7 @@ namespace WpfMath
         private DelimiterInfo ParseUntilDelimiter(
             SourceSpan value,
             ref int position,
-            string textStyle,
+            string? textStyle,
             ICommandEnvironment environment)
         {
             var embeddedFormula = Parse(value, ref position, true, textStyle, environment);
@@ -219,7 +217,7 @@ namespace WpfMath
             SourceSpan value,
             ref int position,
             bool allowClosingDelimiter,
-            string textStyle,
+            string? textStyle,
             ICommandEnvironment environment)
         {
             var formula = new TexFormula { Source = value, TextStyle = textStyle };
@@ -344,7 +342,7 @@ namespace WpfMath
         }
 
         /// <summary>Reads a char-delimited element group if it exists; returns <c>null</c> if it isn't.</summary>
-        private static SourceSpan ReadElementGroupOptional(
+        private static SourceSpan? ReadElementGroupOptional(
             SourceSpan value,
             ref int position,
             char openChar,
@@ -444,7 +442,7 @@ namespace WpfMath
             Parse(ReadElement(value, ref position), formula.TextStyle, environment.CreateChildEnvironment());
 
         /// <remarks>May return <c>null</c> for commands that produce no atoms.</remarks>
-        private Tuple<AtomAppendMode, Atom> ProcessCommand(
+        private Tuple<AtomAppendMode, Atom?> ProcessCommand(
             TexFormula formula,
             SourceSpan value,
             ref int position,
@@ -469,7 +467,7 @@ namespace WpfMath
                             formula.TextStyle,
                             environment.CreateChildEnvironment());
                         source = value.Segment(start, position - start);
-                        return new Tuple<AtomAppendMode, Atom>(
+                        return new Tuple<AtomAppendMode, Atom?>(
                             AtomAppendMode.Add,
                             new FractionAtom(
                                 source,
@@ -487,7 +485,7 @@ namespace WpfMath
                         var internals = ParseUntilDelimiter(value, ref position, formula.TextStyle, environment);
                         var closing = internals.ClosingDelimiter;
                         source = value.Segment(start, position - start);
-                        return new Tuple<AtomAppendMode, Atom>(
+                        return new Tuple<AtomAppendMode, Atom?>(
                             AtomAppendMode.Add,
                             new FencedAtom(source, internals.Body, opening, closing));
                     }
@@ -498,7 +496,7 @@ namespace WpfMath
                             formula.TextStyle,
                             environment.CreateChildEnvironment());
                         source = value.Segment(start, position - start);
-                        return new Tuple<AtomAppendMode, Atom>(
+                        return new Tuple<AtomAppendMode, Atom?>(
                             AtomAppendMode.Add,
                             new OverlinedAtom(source, overlineFormula.RootAtom));
                     }
@@ -514,14 +512,14 @@ namespace WpfMath
                         var closing = ParseDelimiter(value, start, ref position);
 
                         closedDelimiter = true;
-                        return new Tuple<AtomAppendMode, Atom>(AtomAppendMode.Add, closing);
+                        return new Tuple<AtomAppendMode, Atom?>(AtomAppendMode.Add, closing);
                     }
                 case "sqrt":
                     {
                         // Command is radical.
                         SkipWhiteSpace(value, ref position);
 
-                        TexFormula degreeFormula = null;
+                        TexFormula? degreeFormula = null;
                         if (value.Length > position && value[position] == leftBracketChar)
                         {
                             // Degree of radical is specified.
@@ -537,7 +535,7 @@ namespace WpfMath
                             environment.CreateChildEnvironment());
 
                         source = value.Segment(start, position - start);
-                        return new Tuple<AtomAppendMode, Atom>(
+                        return new Tuple<AtomAppendMode, Atom?>(
                             AtomAppendMode.Add,
                             new Radical(source, sqrtFormula.RootAtom, degreeFormula?.RootAtom));
                     }
@@ -549,7 +547,7 @@ namespace WpfMath
                     var bodyFormula = Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
                     source = value.Segment(start, position - start);
 
-                    return new Tuple<AtomAppendMode, Atom>(
+                    return new Tuple<AtomAppendMode, Atom?>(
                         AtomAppendMode.Add,
                         new StyledAtom(source, bodyFormula.RootAtom, null, new SolidColorBrush(color)));
                 }
@@ -561,7 +559,7 @@ namespace WpfMath
                     var bodyFormula = Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
                     source = value.Segment(start, position - start);
 
-                    return new Tuple<AtomAppendMode, Atom>(
+                    return new Tuple<AtomAppendMode, Atom?>(
                         AtomAppendMode.Add,
                         new StyledAtom(source, bodyFormula.RootAtom, new SolidColorBrush(color), null));
                 }
@@ -622,8 +620,7 @@ namespace WpfMath
             var command = commandSpan.ToString();
             var formulaSource = new SourceSpan(value.SourceName, value.Source, initialSrcPosition, commandSpan.End);
 
-            SymbolAtom symbolAtom = null;
-            if (SymbolAtom.TryGetAtom(commandSpan, out symbolAtom))
+            if (SymbolAtom.TryGetAtom(commandSpan, out SymbolAtom? symbolAtom))
             {
                 // Symbol was found.
 
@@ -648,7 +645,7 @@ namespace WpfMath
             {
                 // Predefined formula was found.
                 var predefinedFormula = factory(formulaSource);
-                var atom = AttachScripts(formula, value, ref position, predefinedFormula.RootAtom, true, environment);
+                var atom = AttachScripts(formula, value, ref position, predefinedFormula!.RootAtom!, true, environment); // Nullable TODO: This might need null checking
                 formula.Add(atom, formulaSource);
             }
             else if (command.Equals("nbsp"))
@@ -755,7 +752,7 @@ namespace WpfMath
             var primesRowSource = new SourceSpan(
                 value.SourceName,
                 value.Source,
-                primesRowAtom.Source.Start,
+                primesRowAtom.Source!.Start, // Nullable TODO: This might need null checking
                 position - primesRowAtom.Source.Start);
             primesRowAtom = primesRowAtom.WithSource(primesRowSource);
 
@@ -765,8 +762,8 @@ namespace WpfMath
             if (position == value.Length)
                 return atom;
 
-            TexFormula superscriptFormula = null;
-            TexFormula subscriptFormula = null;
+            TexFormula? superscriptFormula = null;
+            TexFormula? subscriptFormula = null;
 
             var ch = value[position];
             if (ch == superScriptChar)
@@ -806,7 +803,7 @@ namespace WpfMath
             var superscriptAtom = superscriptFormula?.RootAtom;
             if (atom.GetRightType() == TexAtomType.BigOperator)
             {
-                var source = value.Segment(atom.Source.Start, position - atom.Source.Start);
+                var source = value.Segment(atom.Source!.Start, position - atom.Source.Start); // Nullable TODO: This might need null checking
                 if (atom is BigOperatorAtom typedAtom)
                 {
                     return new BigOperatorAtom(
@@ -831,7 +828,7 @@ namespace WpfMath
         }
 
         /// <remarks>May return <c>null</c>.</remarks>
-        private Atom ConvertCharacter(
+        private Atom? ConvertCharacter(
             TexFormula formula,
             ref int position,
             SourceSpan source,
