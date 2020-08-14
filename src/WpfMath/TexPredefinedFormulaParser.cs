@@ -7,8 +7,6 @@ using System.Reflection;
 using System.Windows.Media;
 using System.Xml.Linq;
 
-#nullable disable
-
 namespace WpfMath
 {
     // Parses definitions of predefined formulas from XML file.
@@ -68,9 +66,9 @@ namespace WpfMath
             return result.ToArray();
         }
 
-        private static object[] GetArgumentValues(IEnumerable<XElement> args)
+        private static object?[] GetArgumentValues(IEnumerable<XElement> args)
         {
-            var result = new List<object>();
+            var result = new List<object?>();
             foreach (var curArg in args)
             {
                 var typeName = curArg.AttributeValue("type");
@@ -87,11 +85,11 @@ namespace WpfMath
 
         public TexPredefinedFormulaParser()
         {
-            var doc = XDocument.Load(new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)));
+            var doc = XDocument.Load(new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)!)); // Nullable: CS8604: Possibly just throw if the resource is missing?
             this.rootElement = doc.Root;
         }
 
-        public void Parse(IDictionary<string, Func<SourceSpan, TexFormula>> predefinedTeXFormulas)
+        public void Parse(IDictionary<string, Func<SourceSpan, TexFormula?>> predefinedTeXFormulas)
         {
             var rootEnabled = rootElement.AttributeBooleanValue("enabled", true);
             if (rootEnabled)
@@ -108,7 +106,7 @@ namespace WpfMath
             }
         }
 
-        public TexFormula ParseFormula(SourceSpan source, XElement formulaElement)
+        public TexFormula? ParseFormula(SourceSpan source, XElement formulaElement)
         {
             foreach (var element in formulaElement.Elements())
             {
@@ -143,7 +141,7 @@ namespace WpfMath
                 var argValues = GetArgumentValues(args);
 
                 var helper = new TexFormulaHelper(formula, source);
-                typeof(TexFormulaHelper).GetMethod(methodName, argTypes).Invoke(helper, argValues);
+                typeof(TexFormulaHelper).GetMethod(methodName, argTypes)!.Invoke(helper, argValues); // Nullable: Hard to verify here, I guess
             }
         }
 
@@ -163,11 +161,11 @@ namespace WpfMath
                 var argValues = GetArgumentValues(args);
 
                 Debug.Assert(argValues.Length == 1 || argValues.Length == 0);
-                TexFormula formula = null;
+                TexFormula formula;
                 if (argValues.Length == 1)
                 {
                     var parser = new TexFormulaParser();
-                    formula = parser.Parse((string)argValues[0]);
+                    formula = parser.Parse((string?)argValues[0]);
                 }
                 else
                 {
@@ -185,7 +183,7 @@ namespace WpfMath
             {
             }
 
-            public TexFormula Result
+            public TexFormula? Result
             {
                 get;
                 private set;
@@ -274,7 +272,7 @@ namespace WpfMath
             {
             }
 
-            public override object Parse(string value, string type)
+            public override object? Parse(string value, string type)
             {
                 if (value == null)
                     return null;
@@ -292,9 +290,9 @@ namespace WpfMath
             {
             }
 
-            public override object Parse(string value, string type)
+            public override object? Parse(string value, string type)
             {
-                return typeof(Color).GetField(value).GetValue(null);
+                return typeof(Color).GetField(value)!.GetValue(null);
             }
         }
 
@@ -329,7 +327,7 @@ namespace WpfMath
                 : base(sharedCacheFormulas)
             {}
 
-            public abstract object Parse(string value, string type);
+            public abstract object? Parse(string value, string type);
         }
 
         public abstract class ParserBase

@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-#nullable disable
-
 namespace WpfMath
 {
     // Extension character that contains character information for each of its parts.
     internal class ExtensionChar
     {
-        public ExtensionChar(CharInfo top, CharInfo middle, CharInfo bottom, CharInfo repeat)
+        public ExtensionChar(CharInfo? top, CharInfo? middle, CharInfo? bottom, CharInfo? repeat)
         {
             this.Top = top;
             this.Middle = middle;
@@ -18,25 +16,25 @@ namespace WpfMath
             this.Bottom = bottom;
         }
 
-        public CharInfo Top
+        public CharInfo? Top
         {
             get;
             private set;
         }
 
-        public CharInfo Middle
+        public CharInfo? Middle
         {
             get;
             private set;
         }
 
-        public CharInfo Bottom
+        public CharInfo? Bottom
         {
             get;
             private set;
         }
 
-        public CharInfo Repeat
+        public CharInfo? Repeat
         {
             get;
             private set;

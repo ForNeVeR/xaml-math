@@ -6,8 +6,6 @@ using System.Reflection;
 using System.Text;
 using System.Xml.Linq;
 
-#nullable disable
-
 namespace WpfMath
 {
     // Parses settings for predefined formulas from XML file.
@@ -36,7 +34,7 @@ namespace WpfMath
 
         public TexPredefinedFormulaSettingsParser()
         {
-            var doc = XDocument.Load(new System.IO.StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)));
+            var doc = XDocument.Load(new System.IO.StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)!)); // Nullable: CS8604: Possibly just throw if the resource is missing?
             this.rootElement = doc.Root;
         }
 

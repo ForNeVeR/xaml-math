@@ -1,8 +1,6 @@
 using System.Windows.Media.Imaging;
 using System.IO;
 
-#nullable disable
-
 namespace WpfMath
 {
     public static class Extensions
