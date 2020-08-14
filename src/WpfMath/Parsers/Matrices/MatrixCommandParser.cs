@@ -3,8 +3,6 @@ using System.Linq;
 using WpfMath.Atoms;
 using WpfMath.Exceptions;
 
-#nullable disable
-
 namespace WpfMath.Parsers.Matrices
 {
     /// <summary>A parser for matrix-like constructs.</summary>
@@ -40,7 +38,7 @@ namespace WpfMath.Parsers.Matrices
             var cells = ReadMatrixCells(context.Parser, context.Formula, cellsSource, context.Environment);
             var matrix = new MatrixAtom(matrixSource, cells, _cellAlignment);
 
-            SymbolAtom GetDelimiter(string name) =>
+            SymbolAtom? GetDelimiter(string? name) =>
                 name == null
                     ? null
                     : TexFormulaParser.GetDelimiterSymbol(name, null) ??
