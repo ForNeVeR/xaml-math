@@ -7,8 +7,6 @@ using System.Windows.Media;
 using WpfMath.Boxes;
 using WpfMath.Exceptions;
 
-#nullable disable
-
 namespace WpfMath.Controls
 {
     /// <summary>
@@ -17,7 +15,7 @@ namespace WpfMath.Controls
     public partial class FormulaControl : UserControl
     {
         private static TexFormulaParser formulaParser = new TexFormulaParser();
-        private TexFormula texFormula;
+        private TexFormula? texFormula;
 
         public string Formula
         {

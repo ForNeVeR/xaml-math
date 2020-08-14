@@ -5,13 +5,11 @@ using System.Text;
 using System.Windows;
 using System.Windows.Media;
 
-#nullable disable
-
 namespace WpfMath.Controls
 {
     public class VisualContainerElement : FrameworkElement
     {
-        private DrawingVisual visual;
+        private DrawingVisual? visual;
 
         public VisualContainerElement()
             : base()
@@ -19,7 +17,7 @@ namespace WpfMath.Controls
             this.visual = null;
         }
 
-        public DrawingVisual Visual
+        public DrawingVisual? Visual
         {
             get { return this.visual; }
             set
@@ -38,7 +36,7 @@ namespace WpfMath.Controls
             get { return 1; }
         }
 
-        protected override Visual GetVisualChild(int index)
+        protected override Visual? GetVisualChild(int index)
         {
             return this.visual;
         }
