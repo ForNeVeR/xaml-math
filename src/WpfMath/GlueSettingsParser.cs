@@ -6,8 +6,6 @@ using System.Reflection;
 using System.Text;
 using System.Xml.Linq;
 
-#nullable disable
-
 namespace WpfMath
 {
     // Parses information about glue settings from XML file.
@@ -63,8 +61,12 @@ namespace WpfMath
 
         public GlueSettingsParser()
         {
-            var doc = XDocument.Load(new System.IO.StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)));
+            var doc = XDocument.Load(new System.IO.StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)!)); // Nullable: CS8604: Possibly just throw if the resource is missing?
             this.rootElement = doc.Root;
+
+            this.glueTypes = new List<Glue>();
+            this.glueTypeMappings = new Dictionary<string, int>();
+
             ParseGlueTypes();
         }
 
@@ -99,9 +101,6 @@ namespace WpfMath
 
         private void ParseGlueTypes()
         {
-            this.glueTypes = new List<Glue>();
-            this.glueTypeMappings = new Dictionary<string, int>();
-
             int defaultIndex = -1;
             int index = 0;
 
