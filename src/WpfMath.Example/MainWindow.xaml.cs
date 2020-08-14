@@ -37,10 +37,10 @@ namespace WpfMath.Example
             FormulaSelector.SelectedIndex = 0;
         }
 
-        private TexFormula ParseFormula(string input)
+        private TexFormula? ParseFormula(string input)
         {
             // Create formula object from input text.
-            TexFormula formula = null;
+            TexFormula? formula = null;
             try
             {
                 formula = this._formulaParser.Parse(input);

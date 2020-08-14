@@ -12,7 +12,7 @@ namespace WpfMath.Example
     {
         public static new App Current
         {
-            get { return Application.Current as App; }
+            get { return (App) Application.Current; }
         }
 
         private void Application_Startup(object sender, StartupEventArgs e)
