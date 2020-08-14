@@ -1,13 +1,11 @@
 using WpfMath.Utils;
 
-#nullable disable
-
 namespace WpfMath.Atoms
 {
     // Atom representing single character in specific text style.
     internal class CharAtom : CharSymbol
     {
-        public CharAtom(SourceSpan source, char character, string textStyle = null)
+        public CharAtom(SourceSpan? source, char character, string? textStyle = null)
             : base(source)
         {
             this.TextStyle = textStyle;
@@ -17,7 +15,7 @@ namespace WpfMath.Atoms
         public char Character { get; }
 
         // Null means default text style.
-        public string TextStyle { get; }
+        public string? TextStyle { get; }
 
         private bool IsDefaultTextStyle => this.TextStyle == null;
 
@@ -27,7 +25,7 @@ namespace WpfMath.Atoms
         protected override Result<CharInfo> GetCharInfo(ITeXFont texFont, TexStyle style) =>
             this.IsDefaultTextStyle
                 ? texFont.GetDefaultCharInfo(this.Character, style)
-                : texFont.GetCharInfo(this.Character, this.TextStyle, style);
+                : texFont.GetCharInfo(this.Character, this.TextStyle!, style); // Nullable: CS8604, could be resolved by inlining IsDefaultTextStyle
 
         public override Result<CharFont> GetCharFont(ITeXFont texFont) =>
             // Style is irrelevant here.

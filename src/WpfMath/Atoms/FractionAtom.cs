@@ -1,7 +1,5 @@
 using WpfMath.Boxes;
 
-#nullable disable
-
 namespace WpfMath.Atoms
 {
     // Atom representing fraction, with or without separation line.
@@ -25,9 +23,9 @@ namespace WpfMath.Atoms
         private readonly double? lineRelativeThickness;
 
         public FractionAtom(
-            SourceSpan source,
-            Atom numerator,
-            Atom denominator,
+            SourceSpan? source,
+            Atom? numerator,
+            Atom? denominator,
             double relativeThickness,
             TexAlignment numeratorAlignment,
             TexAlignment denominatorAlignment)
@@ -37,9 +35,9 @@ namespace WpfMath.Atoms
         }
 
         public FractionAtom(
-            SourceSpan source,
-            Atom numerator,
-            Atom denominator,
+            SourceSpan? source,
+            Atom? numerator,
+            Atom? denominator,
             bool drawLine,
             TexAlignment numeratorAlignment,
             TexAlignment denominatorAlignment)
@@ -49,15 +47,15 @@ namespace WpfMath.Atoms
             this.denominatorAlignment = CheckAlignment(denominatorAlignment);
         }
 
-        public FractionAtom(SourceSpan source, Atom numerator, Atom denominator, bool drawLine)
+        public FractionAtom(SourceSpan? source, Atom? numerator, Atom? denominator, bool drawLine)
             : this(source, numerator, denominator, drawLine, TexUnit.Pixel, 0d)
         {
         }
 
         public FractionAtom(
-            SourceSpan source,
-            Atom numerator,
-            Atom denominator,
+            SourceSpan? source,
+            Atom? numerator,
+            Atom? denominator,
             TexUnit unit,
             double thickness,
             TexAlignment numeratorAlignment,
@@ -68,15 +66,15 @@ namespace WpfMath.Atoms
             this.denominatorAlignment = CheckAlignment(denominatorAlignment);
         }
 
-        public FractionAtom(SourceSpan source, Atom numerator, Atom denominator, TexUnit unit, double thickness)
+        public FractionAtom(SourceSpan? source, Atom? numerator, Atom? denominator, TexUnit unit, double thickness)
             : this(source, numerator, denominator, false, unit, thickness)
         {
         }
 
         protected FractionAtom(
-            SourceSpan source,
-            Atom numerator,
-            Atom denominator,
+            SourceSpan? source,
+            Atom? numerator,
+            Atom? denominator,
             bool useDefaultThickness,
             TexUnit unit,
             double thickness)
@@ -93,9 +91,9 @@ namespace WpfMath.Atoms
             this.lineThickness = thickness;
         }
 
-        public Atom Numerator { get; }
+        public Atom? Numerator { get; }
 
-        public Atom Denominator { get; }
+        public Atom? Denominator { get; }
 
         protected override Box CreateBoxCore(TexEnvironment environment)
         {

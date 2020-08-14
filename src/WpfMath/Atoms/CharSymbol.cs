@@ -1,14 +1,12 @@
 using WpfMath.Boxes;
 using WpfMath.Utils;
 
-#nullable disable
-
 namespace WpfMath.Atoms
 {
     // Atom representing single character that can be marked as text symbol.
     internal abstract class CharSymbol : Atom
     {
-        protected CharSymbol(SourceSpan source, TexAtomType type = TexAtomType.Ordinary)
+        protected CharSymbol(SourceSpan? source, TexAtomType type = TexAtomType.Ordinary)
             : base(source, type)
         {
             this.IsTextSymbol = false;
