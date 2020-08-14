@@ -23,7 +23,7 @@ namespace WpfMath.Atoms
             this.useDepth = useDepth;
         }
 
-        public Atom WithPreviousAtom(DummyAtom previousAtom) =>
+        public Atom WithPreviousAtom(DummyAtom? previousAtom) =>
             new PhantomAtom(
                 this.Source,
                 this.RowAtom.WithPreviousAtom(previousAtom),

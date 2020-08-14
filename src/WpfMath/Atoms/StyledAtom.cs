@@ -9,7 +9,7 @@ namespace WpfMath.Atoms
         public StyledAtom(SourceSpan? source, Atom? atom, Brush? backgroundColor, Brush? foregroundColor)
             : base(source)
         {
-            this.RowAtom = new RowAtom(source, atom);
+            this.RowAtom = new RowAtom(source, atom!); // Nullable TODO: This definitely needs null checking and is currently wrong
             this.Background = backgroundColor;
             this.Foreground = foregroundColor;
         }
@@ -21,7 +21,7 @@ namespace WpfMath.Atoms
 
         public Brush? Foreground { get; }
 
-        public Atom WithPreviousAtom(DummyAtom previousAtom)
+        public Atom WithPreviousAtom(DummyAtom? previousAtom)
         {
             var rowAtom = this.RowAtom.WithPreviousAtom(previousAtom);
             return new StyledAtom(this.Source, rowAtom, this.Background, this.Foreground);
