@@ -1,7 +1,5 @@
 using WpfMath.Rendering;
 
-#nullable disable
-
 namespace WpfMath.Boxes
 {
     // Box representing whitespace.

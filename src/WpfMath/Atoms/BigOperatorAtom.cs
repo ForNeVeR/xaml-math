@@ -114,7 +114,7 @@ namespace WpfMath.Atoms
             }
 
             // Add box for base atom.
-            resultBox.Add(baseBox);
+            resultBox.Add(baseBox!);
 
             // Create and add box for lower limit.
             if (this.LowerLimitAtom != null)

@@ -4,8 +4,6 @@ using System.Windows.Media;
 using WpfMath.Exceptions;
 using WpfMath.Rendering;
 
-#nullable disable
-
 namespace WpfMath.Boxes
 {
     // Box representing single character.

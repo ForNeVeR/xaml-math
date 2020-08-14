@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using WpfMath.Boxes;
 
 namespace WpfMath.Atoms
@@ -6,6 +7,7 @@ namespace WpfMath.Atoms
     // Atom representing other atom with atoms optionally over and under it.
     internal class UnderOverAtom : Atom
     {
+        [return: NotNullIfNotNull("box")]
         private static Box? ChangeWidth(Box? box, double maxWidth)
         {
             if (box != null && Math.Abs(maxWidth - box.Width) > TexUtilities.FloatPrecision)
@@ -128,7 +130,7 @@ namespace WpfMath.Atoms
             // Create and add box for over atom.
             if (this.OverAtom != null)
             {
-                resultBox.Add(ChangeWidth(overBox, maxWidth));
+                resultBox.Add(ChangeWidth(overBox!, maxWidth));
                 resultBox.Add(new SpaceAtom(null, this.OverSpaceUnit, 0, this.OverSpace, 0).CreateBox(environment));
             }
 
@@ -141,7 +143,7 @@ namespace WpfMath.Atoms
             if (this.UnderAtom != null)
             {
                 resultBox.Add(new SpaceAtom(null, this.OverSpaceUnit, 0, this.UnderSpace, 0).CreateBox(environment));
-                resultBox.Add(ChangeWidth(underBox, maxWidth));
+                resultBox.Add(ChangeWidth(underBox!, maxWidth));
             }
 
             resultBox.Depth = resultBox.Height + resultBox.Depth - totalHeight;

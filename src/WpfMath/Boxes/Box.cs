@@ -3,8 +3,6 @@ using System.Collections.ObjectModel;
 using System.Windows.Media;
 using WpfMath.Rendering;
 
-#nullable disable
-
 namespace WpfMath.Boxes
 {
     // Represents graphical box that is part of math expression, and can itself contain child boxes.
@@ -23,7 +21,7 @@ namespace WpfMath.Boxes
         {
         }
 
-        protected Box(Brush foreground, Brush background)
+        protected Box(Brush? foreground, Brush? background)
         {
             this.children = new List<Box>();
             this.childrenReadOnly = new ReadOnlyCollection<Box>(this.children);
@@ -36,19 +34,19 @@ namespace WpfMath.Boxes
             get { return this.childrenReadOnly; }
         }
 
-        public SourceSpan Source
+        public SourceSpan? Source
         {
             get;
             set;
         }
 
-        public Brush Foreground
+        public Brush? Foreground
         {
             get;
             set;
         }
 
-        public Brush Background
+        public Brush? Background
         {
             get;
             set;

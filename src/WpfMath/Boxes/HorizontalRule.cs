@@ -2,8 +2,6 @@ using System.Windows;
 using System.Windows.Media;
 using WpfMath.Rendering;
 
-#nullable disable
-
 namespace WpfMath.Boxes
 {
     // Box representing horizontal line.

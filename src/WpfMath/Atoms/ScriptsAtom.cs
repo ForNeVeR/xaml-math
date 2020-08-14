@@ -182,7 +182,7 @@ namespace WpfMath.Atoms
             superscriptContainerBox!.Shift = delta; // Nullable TODO: Check whether superscriptContainerBox is really always non-null here
             scriptsBox.Add(superscriptContainerBox);
             scriptsBox.Add(new StrutBox(0, scriptsInterSpace, 0, 0));
-            scriptsBox.Add(subscriptContainerBox);
+            scriptsBox.Add(subscriptContainerBox!);
             scriptsBox.Height = shiftUp + superscriptBox.Height;
             scriptsBox.Depth = shiftDown + subscriptBox.Depth;
             resultBox.Add(scriptsBox);

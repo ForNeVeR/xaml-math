@@ -1,8 +1,6 @@
 using System;
 using WpfMath.Rendering;
 
-#nullable disable
-
 namespace WpfMath.Boxes
 {
     // Box containing vertical stack of child boxes.

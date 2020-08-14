@@ -44,7 +44,7 @@ namespace WpfMath
                     resultBox.Add(new CharBox(environment, extension.Bottom) { Source = source });
 
                 // Insert repeatable part multiple times until box is high enough.
-                var repeatBox = new CharBox(environment, extension.Repeat) { Source = source };
+                var repeatBox = new CharBox(environment, extension.Repeat!) { Source = source }; // Nullable TODO: This probably needs null checking
                 do
                 {
                     if (extension.Top != null && extension.Bottom != null)

@@ -1,14 +1,12 @@
 using WpfMath.Rendering;
 using WpfMath.Rendering.Transformations;
 
-#nullable disable
-
 namespace WpfMath.Boxes
 {
     // Box representing other box with delimiter and script box over or under it.
     internal class OverUnderBox : Box
     {
-        public OverUnderBox(Box baseBox, Box delimiterBox, Box scriptBox, double kern, bool over)
+        public OverUnderBox(Box baseBox, Box delimiterBox, Box? scriptBox, double kern, bool over)
             : base()
         {
             this.BaseBox = baseBox;
@@ -37,7 +35,7 @@ namespace WpfMath.Boxes
             private set;
         }
 
-        public Box ScriptBox
+        public Box? ScriptBox
         {
             get;
             private set;
@@ -71,7 +69,7 @@ namespace WpfMath.Boxes
                 RenderDelimiter(translationX, translationY);
 
                 // Draw script box as superscript.
-                RenderScriptBox(centerY - this.Kern - this.ScriptBox.Depth);
+                RenderScriptBox(centerY - this.Kern - this.ScriptBox!.Depth); // Nullable TODO: This probably needs null checking
             }
             else
             {
@@ -83,7 +81,7 @@ namespace WpfMath.Boxes
                 RenderDelimiter(translationX, translationY);
 
                 // Draw script box as subscript.
-                RenderScriptBox(centerY + this.Kern + this.ScriptBox.Height);
+                RenderScriptBox(centerY + this.Kern + this.ScriptBox!.Height); // Nullable TODO: This probably needs null checking
             }
 
             void RenderDelimiter(double translationX, double translationY)
