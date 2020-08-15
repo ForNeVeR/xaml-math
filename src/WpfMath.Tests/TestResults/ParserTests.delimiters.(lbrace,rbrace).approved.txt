@@ -4,7 +4,6 @@
     "BaseAtom": {
       "Character": "a",
       "TextStyle": null,
-      "IsDefaultTextStyle": true,
       "IsTextSymbol": false,
       "Type": "Ordinary",
       "Source": {

@@ -6,7 +6,6 @@
       {
         "Character": "t",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
@@ -20,7 +19,6 @@
       {
         "Character": "e",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
@@ -34,7 +32,6 @@
       {
         "Character": "s",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
@@ -48,7 +45,6 @@
       {
         "Character": "t",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {

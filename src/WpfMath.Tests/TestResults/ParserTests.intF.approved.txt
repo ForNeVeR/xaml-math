@@ -32,7 +32,6 @@
       {
         "Character": "f",
         "TextStyle": null,
-        "IsDefaultTextStyle": true,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {

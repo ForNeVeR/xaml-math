@@ -4,7 +4,6 @@
     "BaseAtom": {
       "Character": "А",
       "TextStyle": "text",
-      "IsDefaultTextStyle": false,
       "IsTextSymbol": false,
       "Type": "Ordinary",
       "Source": {
@@ -18,7 +17,6 @@
     "SubscriptAtom": {
       "Character": "И",
       "TextStyle": "text",
-      "IsDefaultTextStyle": false,
       "IsTextSymbol": false,
       "Type": "Ordinary",
       "Source": {

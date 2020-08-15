@@ -6,7 +6,6 @@
       {
         "Character": "s",
         "TextStyle": "mathrm",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
@@ -20,7 +19,6 @@
       {
         "Character": "i",
         "TextStyle": "mathrm",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
@@ -34,7 +32,6 @@
       {
         "Character": "n",
         "TextStyle": "mathrm",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {

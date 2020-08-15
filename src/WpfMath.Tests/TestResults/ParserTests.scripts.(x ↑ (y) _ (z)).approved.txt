@@ -4,7 +4,6 @@
     "BaseAtom": {
       "Character": "x",
       "TextStyle": null,
-      "IsDefaultTextStyle": true,
       "IsTextSymbol": false,
       "Type": "Ordinary",
       "Source": {
@@ -18,7 +17,6 @@
     "SubscriptAtom": {
       "Character": "z",
       "TextStyle": null,
-      "IsDefaultTextStyle": true,
       "IsTextSymbol": false,
       "Type": "Ordinary",
       "Source": {
@@ -32,7 +30,6 @@
     "SuperscriptAtom": {
       "Character": "y",
       "TextStyle": null,
-      "IsDefaultTextStyle": true,
       "IsTextSymbol": false,
       "Type": "Ordinary",
       "Source": {

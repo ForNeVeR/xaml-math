@@ -10,7 +10,6 @@
             {
               "Character": "s",
               "TextStyle": "mathrm",
-              "IsDefaultTextStyle": false,
               "IsTextSymbol": false,
               "Type": "Ordinary",
               "Source": {
@@ -24,7 +23,6 @@
             {
               "Character": "i",
               "TextStyle": "mathrm",
-              "IsDefaultTextStyle": false,
               "IsTextSymbol": false,
               "Type": "Ordinary",
               "Source": {
@@ -38,7 +36,6 @@
             {
               "Character": "n",
               "TextStyle": "mathrm",
-              "IsDefaultTextStyle": false,
               "IsTextSymbol": false,
               "Type": "Ordinary",
               "Source": {
@@ -63,7 +60,6 @@
         "UpperLimitAtom": {
           "Character": "n",
           "TextStyle": null,
-          "IsDefaultTextStyle": true,
           "IsTextSymbol": false,
           "Type": "Ordinary",
           "Source": {
@@ -87,7 +83,6 @@
       {
         "Character": "x",
         "TextStyle": null,
-        "IsDefaultTextStyle": true,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {

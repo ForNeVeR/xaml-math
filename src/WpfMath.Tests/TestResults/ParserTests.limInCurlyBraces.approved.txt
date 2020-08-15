@@ -11,7 +11,6 @@
               {
                 "Character": "l",
                 "TextStyle": "mathrm",
-                "IsDefaultTextStyle": false,
                 "IsTextSymbol": false,
                 "Type": "Ordinary",
                 "Source": {
@@ -25,7 +24,6 @@
               {
                 "Character": "i",
                 "TextStyle": "mathrm",
-                "IsDefaultTextStyle": false,
                 "IsTextSymbol": false,
                 "Type": "Ordinary",
                 "Source": {
@@ -39,7 +37,6 @@
               {
                 "Character": "m",
                 "TextStyle": "mathrm",
-                "IsDefaultTextStyle": false,
                 "IsTextSymbol": false,
                 "Type": "Ordinary",
                 "Source": {
@@ -86,7 +83,6 @@
       {
         "Character": "x",
         "TextStyle": null,
-        "IsDefaultTextStyle": true,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {

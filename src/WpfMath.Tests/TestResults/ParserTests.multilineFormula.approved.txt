@@ -9,7 +9,6 @@
             {
               "Character": "l",
               "TextStyle": null,
-              "IsDefaultTextStyle": true,
               "IsTextSymbol": false,
               "Type": "Ordinary",
               "Source": {
@@ -23,7 +22,6 @@
             {
               "Character": "i",
               "TextStyle": null,
-              "IsDefaultTextStyle": true,
               "IsTextSymbol": false,
               "Type": "Ordinary",
               "Source": {
@@ -37,7 +35,6 @@
             {
               "Character": "n",
               "TextStyle": null,
-              "IsDefaultTextStyle": true,
               "IsTextSymbol": false,
               "Type": "Ordinary",
               "Source": {
@@ -51,7 +48,6 @@
             {
               "Character": "e",
               "TextStyle": null,
-              "IsDefaultTextStyle": true,
               "IsTextSymbol": false,
               "Type": "Ordinary",
               "Source": {
@@ -65,7 +61,6 @@
             {
               "Character": "1",
               "TextStyle": null,
-              "IsDefaultTextStyle": true,
               "IsTextSymbol": false,
               "Type": "Ordinary",
               "Source": {
@@ -94,7 +89,6 @@
             {
               "Character": "l",
               "TextStyle": null,
-              "IsDefaultTextStyle": true,
               "IsTextSymbol": false,
               "Type": "Ordinary",
               "Source": {
@@ -108,7 +102,6 @@
             {
               "Character": "i",
               "TextStyle": null,
-              "IsDefaultTextStyle": true,
               "IsTextSymbol": false,
               "Type": "Ordinary",
               "Source": {
@@ -122,7 +115,6 @@
             {
               "Character": "n",
               "TextStyle": null,
-              "IsDefaultTextStyle": true,
               "IsTextSymbol": false,
               "Type": "Ordinary",
               "Source": {
@@ -136,7 +128,6 @@
             {
               "Character": "e",
               "TextStyle": null,
-              "IsDefaultTextStyle": true,
               "IsTextSymbol": false,
               "Type": "Ordinary",
               "Source": {
@@ -150,7 +141,6 @@
             {
               "Character": "2",
               "TextStyle": null,
-              "IsDefaultTextStyle": true,
               "IsTextSymbol": false,
               "Type": "Ordinary",
               "Source": {
@@ -179,7 +169,6 @@
             {
               "Character": "l",
               "TextStyle": null,
-              "IsDefaultTextStyle": true,
               "IsTextSymbol": false,
               "Type": "Ordinary",
               "Source": {
@@ -193,7 +182,6 @@
             {
               "Character": "i",
               "TextStyle": null,
-              "IsDefaultTextStyle": true,
               "IsTextSymbol": false,
               "Type": "Ordinary",
               "Source": {
@@ -207,7 +195,6 @@
             {
               "Character": "n",
               "TextStyle": null,
-              "IsDefaultTextStyle": true,
               "IsTextSymbol": false,
               "Type": "Ordinary",
               "Source": {
@@ -221,7 +208,6 @@
             {
               "Character": "e",
               "TextStyle": null,
-              "IsDefaultTextStyle": true,
               "IsTextSymbol": false,
               "Type": "Ordinary",
               "Source": {
@@ -235,7 +221,6 @@
             {
               "Character": "3",
               "TextStyle": null,
-              "IsDefaultTextStyle": true,
               "IsTextSymbol": false,
               "Type": "Ordinary",
               "Source": {

@@ -10,7 +10,6 @@
             {
               "Character": "2",
               "TextStyle": null,
-              "IsDefaultTextStyle": true,
               "IsTextSymbol": false,
               "Type": "Ordinary",
               "Source": {
@@ -37,7 +36,6 @@
             {
               "Character": "2",
               "TextStyle": null,
-              "IsDefaultTextStyle": true,
               "IsTextSymbol": false,
               "Type": "Ordinary",
               "Source": {
@@ -109,7 +107,6 @@
       {
         "Character": "1",
         "TextStyle": null,
-        "IsDefaultTextStyle": true,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {

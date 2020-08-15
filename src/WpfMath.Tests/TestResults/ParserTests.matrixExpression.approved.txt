@@ -6,7 +6,6 @@
       {
         "Character": "v",
         "TextStyle": null,
-        "IsDefaultTextStyle": true,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
@@ -33,7 +32,6 @@
       {
         "Character": "w",
         "TextStyle": null,
-        "IsDefaultTextStyle": true,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
@@ -68,7 +66,6 @@
                     "BaseAtom": {
                       "Character": "v",
                       "TextStyle": null,
-                      "IsDefaultTextStyle": true,
                       "IsTextSymbol": false,
                       "Type": "Ordinary",
                       "Source": {
@@ -82,7 +79,6 @@
                     "SubscriptAtom": {
                       "Character": "2",
                       "TextStyle": null,
-                      "IsDefaultTextStyle": true,
                       "IsTextSymbol": false,
                       "Type": "Ordinary",
                       "Source": {
@@ -107,7 +103,6 @@
                     "BaseAtom": {
                       "Character": "w",
                       "TextStyle": null,
-                      "IsDefaultTextStyle": true,
                       "IsTextSymbol": false,
                       "Type": "Ordinary",
                       "Source": {
@@ -121,7 +116,6 @@
                     "SubscriptAtom": {
                       "Character": "3",
                       "TextStyle": null,
-                      "IsDefaultTextStyle": true,
                       "IsTextSymbol": false,
                       "Type": "Ordinary",
                       "Source": {
@@ -159,7 +153,6 @@
                     "BaseAtom": {
                       "Character": "v",
                       "TextStyle": null,
-                      "IsDefaultTextStyle": true,
                       "IsTextSymbol": false,
                       "Type": "Ordinary",
                       "Source": {
@@ -173,7 +166,6 @@
                     "SubscriptAtom": {
                       "Character": "3",
                       "TextStyle": null,
-                      "IsDefaultTextStyle": true,
                       "IsTextSymbol": false,
                       "Type": "Ordinary",
                       "Source": {
@@ -198,7 +190,6 @@
                     "BaseAtom": {
                       "Character": "w",
                       "TextStyle": null,
-                      "IsDefaultTextStyle": true,
                       "IsTextSymbol": false,
                       "Type": "Ordinary",
                       "Source": {
@@ -212,7 +203,6 @@
                     "SubscriptAtom": {
                       "Character": "2",
                       "TextStyle": null,
-                      "IsDefaultTextStyle": true,
                       "IsTextSymbol": false,
                       "Type": "Ordinary",
                       "Source": {
@@ -252,7 +242,6 @@
                     "BaseAtom": {
                       "Character": "v",
                       "TextStyle": null,
-                      "IsDefaultTextStyle": true,
                       "IsTextSymbol": false,
                       "Type": "Ordinary",
                       "Source": {
@@ -266,7 +255,6 @@
                     "SubscriptAtom": {
                       "Character": "3",
                       "TextStyle": null,
-                      "IsDefaultTextStyle": true,
                       "IsTextSymbol": false,
                       "Type": "Ordinary",
                       "Source": {
@@ -291,7 +279,6 @@
                     "BaseAtom": {
                       "Character": "w",
                       "TextStyle": null,
-                      "IsDefaultTextStyle": true,
                       "IsTextSymbol": false,
                       "Type": "Ordinary",
                       "Source": {
@@ -305,7 +292,6 @@
                     "SubscriptAtom": {
                       "Character": "1",
                       "TextStyle": null,
-                      "IsDefaultTextStyle": true,
                       "IsTextSymbol": false,
                       "Type": "Ordinary",
                       "Source": {
@@ -343,7 +329,6 @@
                     "BaseAtom": {
                       "Character": "v",
                       "TextStyle": null,
-                      "IsDefaultTextStyle": true,
                       "IsTextSymbol": false,
                       "Type": "Ordinary",
                       "Source": {
@@ -357,7 +342,6 @@
                     "SubscriptAtom": {
                       "Character": "1",
                       "TextStyle": null,
-                      "IsDefaultTextStyle": true,
                       "IsTextSymbol": false,
                       "Type": "Ordinary",
                       "Source": {
@@ -382,7 +366,6 @@
                     "BaseAtom": {
                       "Character": "w",
                       "TextStyle": null,
-                      "IsDefaultTextStyle": true,
                       "IsTextSymbol": false,
                       "Type": "Ordinary",
                       "Source": {
@@ -396,7 +379,6 @@
                     "SubscriptAtom": {
                       "Character": "3",
                       "TextStyle": null,
-                      "IsDefaultTextStyle": true,
                       "IsTextSymbol": false,
                       "Type": "Ordinary",
                       "Source": {
@@ -436,7 +418,6 @@
                     "BaseAtom": {
                       "Character": "v",
                       "TextStyle": null,
-                      "IsDefaultTextStyle": true,
                       "IsTextSymbol": false,
                       "Type": "Ordinary",
                       "Source": {
@@ -450,7 +431,6 @@
                     "SubscriptAtom": {
                       "Character": "1",
                       "TextStyle": null,
-                      "IsDefaultTextStyle": true,
                       "IsTextSymbol": false,
                       "Type": "Ordinary",
                       "Source": {
@@ -475,7 +455,6 @@
                     "BaseAtom": {
                       "Character": "w",
                       "TextStyle": null,
-                      "IsDefaultTextStyle": true,
                       "IsTextSymbol": false,
                       "Type": "Ordinary",
                       "Source": {
@@ -489,7 +468,6 @@
                     "SubscriptAtom": {
                       "Character": "2",
                       "TextStyle": null,
-                      "IsDefaultTextStyle": true,
                       "IsTextSymbol": false,
                       "Type": "Ordinary",
                       "Source": {
@@ -527,7 +505,6 @@
                     "BaseAtom": {
                       "Character": "v",
                       "TextStyle": null,
-                      "IsDefaultTextStyle": true,
                       "IsTextSymbol": false,
                       "Type": "Ordinary",
                       "Source": {
@@ -541,7 +518,6 @@
                     "SubscriptAtom": {
                       "Character": "2",
                       "TextStyle": null,
-                      "IsDefaultTextStyle": true,
                       "IsTextSymbol": false,
                       "Type": "Ordinary",
                       "Source": {
@@ -566,7 +542,6 @@
                     "BaseAtom": {
                       "Character": "w",
                       "TextStyle": null,
-                      "IsDefaultTextStyle": true,
                       "IsTextSymbol": false,
                       "Type": "Ordinary",
                       "Source": {
@@ -580,7 +555,6 @@
                     "SubscriptAtom": {
                       "Character": "1",
                       "TextStyle": null,
-                      "IsDefaultTextStyle": true,
                       "IsTextSymbol": false,
                       "Type": "Ordinary",
                       "Source": {
@@ -663,7 +637,6 @@
       {
         "Character": "w",
         "TextStyle": null,
-        "IsDefaultTextStyle": true,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
@@ -677,7 +650,6 @@
       {
         "Character": "h",
         "TextStyle": null,
-        "IsDefaultTextStyle": true,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
@@ -691,7 +663,6 @@
       {
         "Character": "e",
         "TextStyle": null,
-        "IsDefaultTextStyle": true,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
@@ -705,7 +676,6 @@
       {
         "Character": "r",
         "TextStyle": null,
-        "IsDefaultTextStyle": true,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
@@ -719,7 +689,6 @@
       {
         "Character": "e",
         "TextStyle": null,
-        "IsDefaultTextStyle": true,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
@@ -733,7 +702,6 @@
       {
         "Character": "v",
         "TextStyle": null,
-        "IsDefaultTextStyle": true,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
@@ -765,7 +733,6 @@
                 "BaseAtom": {
                   "Character": "v",
                   "TextStyle": null,
-                  "IsDefaultTextStyle": true,
                   "IsTextSymbol": false,
                   "Type": "Ordinary",
                   "Source": {
@@ -779,7 +746,6 @@
                 "SubscriptAtom": {
                   "Character": "1",
                   "TextStyle": null,
-                  "IsDefaultTextStyle": true,
                   "IsTextSymbol": false,
                   "Type": "Ordinary",
                   "Source": {
@@ -806,7 +772,6 @@
                 "BaseAtom": {
                   "Character": "v",
                   "TextStyle": null,
-                  "IsDefaultTextStyle": true,
                   "IsTextSymbol": false,
                   "Type": "Ordinary",
                   "Source": {
@@ -820,7 +785,6 @@
                 "SubscriptAtom": {
                   "Character": "2",
                   "TextStyle": null,
-                  "IsDefaultTextStyle": true,
                   "IsTextSymbol": false,
                   "Type": "Ordinary",
                   "Source": {
@@ -847,7 +811,6 @@
                 "BaseAtom": {
                   "Character": "v",
                   "TextStyle": null,
-                  "IsDefaultTextStyle": true,
                   "IsTextSymbol": false,
                   "Type": "Ordinary",
                   "Source": {
@@ -861,7 +824,6 @@
                 "SubscriptAtom": {
                   "Character": "3",
                   "TextStyle": null,
-                  "IsDefaultTextStyle": true,
                   "IsTextSymbol": false,
                   "Type": "Ordinary",
                   "Source": {
@@ -947,7 +909,6 @@
       {
         "Character": "w",
         "TextStyle": null,
-        "IsDefaultTextStyle": true,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
@@ -979,7 +940,6 @@
                 "BaseAtom": {
                   "Character": "w",
                   "TextStyle": null,
-                  "IsDefaultTextStyle": true,
                   "IsTextSymbol": false,
                   "Type": "Ordinary",
                   "Source": {
@@ -993,7 +953,6 @@
                 "SubscriptAtom": {
                   "Character": "1",
                   "TextStyle": null,
-                  "IsDefaultTextStyle": true,
                   "IsTextSymbol": false,
                   "Type": "Ordinary",
                   "Source": {
@@ -1020,7 +979,6 @@
                 "BaseAtom": {
                   "Character": "w",
                   "TextStyle": null,
-                  "IsDefaultTextStyle": true,
                   "IsTextSymbol": false,
                   "Type": "Ordinary",
                   "Source": {
@@ -1034,7 +992,6 @@
                 "SubscriptAtom": {
                   "Character": "2",
                   "TextStyle": null,
-                  "IsDefaultTextStyle": true,
                   "IsTextSymbol": false,
                   "Type": "Ordinary",
                   "Source": {
@@ -1061,7 +1018,6 @@
                 "BaseAtom": {
                   "Character": "w",
                   "TextStyle": null,
-                  "IsDefaultTextStyle": true,
                   "IsTextSymbol": false,
                   "Type": "Ordinary",
                   "Source": {
@@ -1075,7 +1031,6 @@
                 "SubscriptAtom": {
                   "Character": "3",
                   "TextStyle": null,
-                  "IsDefaultTextStyle": true,
                   "IsTextSymbol": false,
                   "Type": "Ordinary",
                   "Source": {

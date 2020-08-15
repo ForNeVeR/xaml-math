@@ -17,7 +17,6 @@
     "LowerLimitAtom": {
       "Character": "a",
       "TextStyle": null,
-      "IsDefaultTextStyle": true,
       "IsTextSymbol": false,
       "Type": "Ordinary",
       "Source": {
@@ -31,7 +30,6 @@
     "UpperLimitAtom": {
       "Character": "b",
       "TextStyle": null,
-      "IsDefaultTextStyle": true,
       "IsTextSymbol": false,
       "Type": "Ordinary",
       "Source": {
