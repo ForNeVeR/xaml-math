@@ -120,7 +120,11 @@ namespace WpfMath
                 FlowDirection.LeftToRight,
                 typeface,
                 1.0,
-                Brushes.Black);
+                Brushes.Black
+#if NETCOREAPP3_0
+                , 1
+#endif
+                );
             return new TexFontMetrics(formattedText.Width, formattedText.Height, 0.0, formattedText.Width, 1.0);
         }
 
