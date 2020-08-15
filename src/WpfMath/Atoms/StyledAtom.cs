@@ -9,7 +9,7 @@ namespace WpfMath.Atoms
         public StyledAtom(SourceSpan? source, Atom? atom, Brush? backgroundColor, Brush? foregroundColor)
             : base(source)
         {
-            this.RowAtom = new RowAtom(source, atom!); // Nullable TODO: This definitely needs null checking and is currently wrong
+            this.RowAtom = new RowAtom(source, atom);
             this.Background = backgroundColor;
             this.Foreground = foregroundColor;
         }

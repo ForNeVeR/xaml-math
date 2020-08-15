@@ -34,12 +34,12 @@ namespace WpfMath.Atoms
             ligatureKernChangeSet.Set((int)TexAtomType.Punctuation, true);
         }
 
-        public RowAtom(SourceSpan? source, Atom baseAtom)
+        public RowAtom(SourceSpan? source, Atom? baseAtom)
             : this(
                 source,
                 baseAtom is RowAtom
                     ? (IEnumerable<Atom>) ((RowAtom) baseAtom).Elements
-                    : new[] { baseAtom })
+                    : new[] { baseAtom! }) // Nullable: Seems to require some sort of non-null assertion to make the analyzer happy
         {
         }
 
@@ -56,9 +56,10 @@ namespace WpfMath.Atoms
             this.Elements = elements;
         }
 
-        internal RowAtom(SourceSpan? source, IEnumerable<Atom> elements)
+        internal RowAtom(SourceSpan? source, IEnumerable<Atom?> elements)
             : base(source) =>
-            this.Elements = elements.ToList().AsReadOnly();
+            this.Elements = elements.Where(x => x != null).ToList().AsReadOnly()!;
+            // TODO[F]: Fix this with C# 8 migration: there shouldn't be nullable atoms in this collection
 
         public DummyAtom? PreviousAtom { get; }
 
