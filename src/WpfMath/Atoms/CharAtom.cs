@@ -17,15 +17,13 @@ namespace WpfMath.Atoms
         // Null means default text style.
         public string? TextStyle { get; }
 
-        private bool IsDefaultTextStyle => this.TextStyle == null;
-
         public override ITeXFont GetStyledFont(TexEnvironment environment) =>
             this.TextStyle == TexUtilities.TextStyleName ? environment.TextFont : base.GetStyledFont(environment);
 
         protected override Result<CharInfo> GetCharInfo(ITeXFont texFont, TexStyle style) =>
-            this.IsDefaultTextStyle
+            this.TextStyle == null
                 ? texFont.GetDefaultCharInfo(this.Character, style)
-                : texFont.GetCharInfo(this.Character, this.TextStyle!, style); // Nullable: CS8604, could be resolved by inlining IsDefaultTextStyle
+                : texFont.GetCharInfo(this.Character, this.TextStyle, style);
 
         public override Result<CharFont> GetCharFont(ITeXFont texFont) =>
             // Style is irrelevant here.

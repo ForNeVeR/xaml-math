@@ -48,7 +48,7 @@ namespace WpfMath.Parsers
 
     internal class CommandProcessingResult
     {
-        /// <summary>A parsed atom. May be <c>null</c>.</summary>
+        /// <summary>A parsed atom..</summary>
         public Atom? Atom { get; }
 
         /// <summary>

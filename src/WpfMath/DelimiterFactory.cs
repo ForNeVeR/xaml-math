@@ -43,25 +43,28 @@ namespace WpfMath
                 if (extension.Bottom != null)
                     resultBox.Add(new CharBox(environment, extension.Bottom) { Source = source });
 
-                // Insert repeatable part multiple times until box is high enough.
-                var repeatBox = new CharBox(environment, extension.Repeat!) { Source = source }; // Nullable TODO: This probably needs null checking
-                do
+                if (extension.Repeat != null)
                 {
-                    if (extension.Top != null && extension.Bottom != null)
+                    // Insert repeatable part multiple times until box is high enough.
+                    var repeatBox = new CharBox(environment, extension.Repeat) { Source = source };
+                    do
                     {
-                        resultBox.Add(1, repeatBox);
-                        if (extension.Middle != null)
-                            resultBox.Add(resultBox.Children.Count - 1, repeatBox);
-                    }
-                    else if (extension.Bottom != null)
-                    {
-                        resultBox.Add(0, repeatBox);
-                    }
-                    else
-                    {
-                        resultBox.Add(repeatBox);
-                    }
-                } while (resultBox.Height + resultBox.Depth < minHeight);
+                        if (extension.Top != null && extension.Bottom != null)
+                        {
+                            resultBox.Add(1, repeatBox);
+                            if (extension.Middle != null)
+                                resultBox.Add(resultBox.Children.Count - 1, repeatBox);
+                        }
+                        else if (extension.Bottom != null)
+                        {
+                            resultBox.Add(0, repeatBox);
+                        }
+                        else
+                        {
+                            resultBox.Add(repeatBox);
+                        }
+                    } while (resultBox.Height + resultBox.Depth < minHeight);
+                }
 
                 return resultBox;
             }

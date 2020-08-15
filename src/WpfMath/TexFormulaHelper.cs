@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using WpfMath.Atoms;
 
 namespace WpfMath
@@ -137,7 +138,8 @@ namespace WpfMath
 
         public void AddRadical(TexFormula baseFormula, TexFormula? degreeFormula)
         {
-            this.Add(new Radical(null, baseFormula?.RootAtom, degreeFormula?.RootAtom));
+            Debug.Assert(baseFormula.RootAtom != null);
+            this.Add(new Radical(null, baseFormula.RootAtom, degreeFormula?.RootAtom));
         }
 
         public void AddOperator(string operatorFormula, string lowerLimitFormula, string upperLimitFormula)

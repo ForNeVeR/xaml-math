@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -43,9 +44,9 @@ namespace WpfMath
             "sqrt"
         };
 
-        private static IList<string> symbols = new List<string>(); // Nullable: CS8618
-        private static IList<string> delimeters = new List<string>();
-        private static HashSet<string> textStyles = new HashSet<string>();
+        private static readonly IList<string> symbols;
+        private static readonly IList<string> delimeters;
+        private static readonly HashSet<string> textStyles;
         private static readonly IDictionary<string, Func<SourceSpan, TexFormula?>> predefinedFormulas =
             new Dictionary<string, Func<SourceSpan, TexFormula?>>();
 
@@ -66,16 +67,6 @@ namespace WpfMath
 
         static TexFormulaParser()
         {
-            Initialize();
-        }
-
-        internal static string[][] DelimiterNames
-        {
-            get { return delimiterNames; }
-        }
-
-        private static void Initialize()
-        {
             //
             // If start application isn't WPF, pack isn't registered by defaultTexFontParser
             //
@@ -93,6 +84,11 @@ namespace WpfMath
 
             var predefinedFormulasParser = new TexPredefinedFormulaParser();
             predefinedFormulasParser.Parse(predefinedFormulas);
+        }
+
+        internal static string[][] DelimiterNames
+        {
+            get { return delimiterNames; }
         }
 
         internal static string GetDelimeterMapping(char character)
@@ -535,6 +531,7 @@ namespace WpfMath
                             environment.CreateChildEnvironment());
 
                         source = value.Segment(start, position - start);
+                        Debug.Assert(sqrtFormula.RootAtom != null);
                         return new Tuple<AtomAppendMode, Atom?>(
                             AtomAppendMode.Add,
                             new Radical(source, sqrtFormula.RootAtom, degreeFormula?.RootAtom));
@@ -752,7 +749,7 @@ namespace WpfMath
             var primesRowSource = new SourceSpan(
                 value.SourceName,
                 value.Source,
-                primesRowAtom.Source!.Start, // Nullable TODO: This might need null checking
+                primesRowAtom.Source!.Start,
                 position - primesRowAtom.Source.Start);
             primesRowAtom = primesRowAtom.WithSource(primesRowSource);
 
@@ -803,7 +800,7 @@ namespace WpfMath
             var superscriptAtom = superscriptFormula?.RootAtom;
             if (atom.GetRightType() == TexAtomType.BigOperator)
             {
-                var source = value.Segment(atom.Source!.Start, position - atom.Source.Start); // Nullable TODO: This might need null checking
+                var source = value.Segment(atom.Source!.Start, position - atom.Source.Start);
                 if (atom is BigOperatorAtom typedAtom)
                 {
                     return new BigOperatorAtom(

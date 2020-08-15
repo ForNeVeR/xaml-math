@@ -30,6 +30,6 @@ namespace WpfMath.Utils
 
         public Result<TProduct> Map<TProduct>(Func<TValue, TProduct> mapper) => this.IsSuccess
             ? Result.Ok(mapper(this.Value))
-            : Result.Error<TProduct>(this.Error!); // Nullable: CS8604, could be resolved by inlining IsSuccess
+            : Result.Error<TProduct>(this.Error!);
     }
 }

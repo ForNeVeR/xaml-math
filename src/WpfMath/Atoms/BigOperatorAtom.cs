@@ -91,8 +91,7 @@ namespace WpfMath.Atoms
             // Make all component boxes equally wide.
             var maxWidth = Math.Max(Math.Max(baseBox.Width, upperLimitBox == null ? 0 : upperLimitBox.Width),
                 lowerLimitBox == null ? 0 : lowerLimitBox.Width);
-            if (baseBox != null)
-                baseBox = ChangeWidth(baseBox, maxWidth);
+            baseBox = ChangeWidth(baseBox, maxWidth);
             if (upperLimitBox != null)
                 upperLimitBox = ChangeWidth(upperLimitBox, maxWidth);
             if (lowerLimitBox != null)
@@ -114,7 +113,7 @@ namespace WpfMath.Atoms
             }
 
             // Add box for base atom.
-            resultBox.Add(baseBox!);
+            resultBox.Add(baseBox);
 
             // Create and add box for lower limit.
             if (this.LowerLimitAtom != null)
@@ -127,7 +126,7 @@ namespace WpfMath.Atoms
             }
 
             // Adjust height and depth of result box.
-            var baseBoxHeight = baseBox!.Height;
+            var baseBoxHeight = baseBox.Height;
             var totalHeight = resultBox.Height + resultBox.Depth;
             if (upperLimitBox != null)
                 baseBoxHeight += opSpacing5 + kern + upperLimitBox.Height + upperLimitBox.Depth;

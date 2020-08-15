@@ -57,9 +57,9 @@ namespace WpfMath.Atoms
             var delta = 0d;
             double shiftUp, shiftDown;
 
-            if (this.BaseAtom is AccentedAtom accentedAtom)
+            if (this.BaseAtom is AccentedAtom accentedAtom && accentedAtom.BaseAtom != null)
             {
-                var accentedBox = accentedAtom.BaseAtom!.CreateBox(environment.GetCrampedStyle());  // Nullable TODO: This probably needs null checking
+                var accentedBox = accentedAtom.BaseAtom.CreateBox(environment.GetCrampedStyle());
                 shiftUp = accentedBox.Height - texFont.GetSupDrop(superscriptStyle.Style);
                 shiftDown = accentedBox.Depth + texFont.GetSubDrop(subscriptStyle.Style);
             }
@@ -141,7 +141,10 @@ namespace WpfMath.Atoms
             // Check if only superscript is set.
             if (subscriptBox == null)
             {
-                superscriptContainerBox!.Shift = -shiftUp; // Nullable TODO: Check whether superscriptContainerBox is really always non-null here
+                if (superscriptContainerBox == null)
+                    throw new Exception("ScriptsAtom with neither subscript nor superscript defined");
+
+                superscriptContainerBox.Shift = -shiftUp;
                 resultBox.Add(superscriptContainerBox);
                 return resultBox;
             }
@@ -149,8 +152,10 @@ namespace WpfMath.Atoms
             // Check if only subscript is set.
             if (superscriptBox == null)
             {
-                // Nullable TODO: Check whether subscriptContainerBox is really always non-null here
-                subscriptContainerBox!.Shift = Math.Max(Math.Max(shiftDown, texFont.GetSub1(style)), subscriptBox.Height - 4 *
+                if (subscriptContainerBox == null)
+                    throw new Exception("ScriptsAtom with neither subscript nor superscript defined");
+
+                subscriptContainerBox.Shift = Math.Max(Math.Max(shiftDown, texFont.GetSub1(style)), subscriptBox.Height - 4 *
                     Math.Abs(texFont.GetXHeight(style, lastFontId)) / 5);
                 resultBox.Add(subscriptContainerBox);
                 return resultBox;
@@ -178,11 +183,14 @@ namespace WpfMath.Atoms
             scriptsInterSpace = shiftUp - superscriptBox.Depth + shiftDown - subscriptBox.Height;
 
             // Create box containing both superscript and subscript.
+            if (superscriptContainerBox == null || subscriptContainerBox == null)
+                throw new Exception($"ScriptsAtom with superscriptContainerBox = {superscriptContainerBox} and subscriptContainerBox = {subscriptContainerBox} is not supposed to be here");
+
             var scriptsBox = new VerticalBox();
-            superscriptContainerBox!.Shift = delta; // Nullable TODO: Check whether superscriptContainerBox is really always non-null here
+            superscriptContainerBox.Shift = delta;
             scriptsBox.Add(superscriptContainerBox);
             scriptsBox.Add(new StrutBox(0, scriptsInterSpace, 0, 0));
-            scriptsBox.Add(subscriptContainerBox!);
+            scriptsBox.Add(subscriptContainerBox);
             scriptsBox.Height = shiftUp + superscriptBox.Height;
             scriptsBox.Depth = shiftDown + subscriptBox.Depth;
             resultBox.Add(scriptsBox);

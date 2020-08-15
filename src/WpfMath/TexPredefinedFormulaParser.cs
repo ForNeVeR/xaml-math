@@ -85,7 +85,7 @@ namespace WpfMath
 
         public TexPredefinedFormulaParser()
         {
-            var doc = XDocument.Load(new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)!)); // Nullable: CS8604: Possibly just throw if the resource is missing?
+            var doc = XDocument.Load(new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)!));
             this.rootElement = doc.Root;
         }
 
@@ -141,7 +141,7 @@ namespace WpfMath
                 var argValues = GetArgumentValues(args);
 
                 var helper = new TexFormulaHelper(formula, source);
-                typeof(TexFormulaHelper).GetMethod(methodName, argTypes)!.Invoke(helper, argValues); // Nullable: Hard to verify here, I guess
+                typeof(TexFormulaHelper).GetMethod(methodName, argTypes)!.Invoke(helper, argValues);
             }
         }
 
