@@ -36,7 +36,11 @@ namespace WpfMath.Atoms
             validSymbolTypes.Set((int)TexAtomType.Accent, true);
         }
 
+#if !NET452
         public static bool TryGetAtom(string name, SourceSpan? source, [NotNullWhen(true)] out SymbolAtom? atom)
+#else
+        public static bool TryGetAtom(string name, SourceSpan? source, out SymbolAtom? atom)
+#endif
         {
             if (!symbols.TryGetValue(name, out var factory))
             {
@@ -52,8 +56,11 @@ namespace WpfMath.Atoms
         public static SymbolAtom GetAtom(string name, SourceSpan? source) =>
             TryGetAtom(name, source, out var atom) ? atom : throw new SymbolNotFoundException(name);
 
-        public static bool TryGetAtom(SourceSpan name, [NotNullWhen(true)] out SymbolAtom? atom) =>
-            TryGetAtom(name.ToString(), name, out atom);
+#if !NET452
+        public static bool TryGetAtom(SourceSpan name, [NotNullWhen(true)] out SymbolAtom? atom) => TryGetAtom(name.ToString(), name, out atom);
+#else
+        public static bool TryGetAtom(SourceSpan name, out SymbolAtom? atom) => TryGetAtom(name.ToString(), name, out atom);
+#endif
 
         public SymbolAtom(SourceSpan? source, SymbolAtom symbolAtom, TexAtomType type)
             : base(source, type)

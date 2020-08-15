@@ -7,7 +7,9 @@ namespace WpfMath.Atoms
     // Atom representing other atom with atoms optionally over and under it.
     internal class UnderOverAtom : Atom
     {
+#if !NET452
         [return: NotNullIfNotNull("box")]
+#endif
         private static Box? ChangeWidth(Box? box, double maxWidth)
         {
             if (box != null && Math.Abs(maxWidth - box.Width) > TexUtilities.FloatPrecision)
