@@ -61,6 +61,7 @@
             <ScrollViewer Padding="4" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
                 <controls:FormulaControl Name="Formula" Formula="{Binding Text, ElementName = InputTextBox, NotifyOnValidationError=True}"
                                          SelectionBrush="LightBlue"
+                                         SystemTextFontName="Arial"
                                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SnapsToDevicePixels="True" />
             </ScrollViewer>
         </Border>

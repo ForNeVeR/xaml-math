@@ -81,7 +81,7 @@ namespace WpfMath.Controls
 
         public static readonly DependencyProperty SystemTextFontNameProperty = DependencyProperty.Register(
             nameof(SystemTextFontName), typeof(string), typeof(FormulaControl),
-            new PropertyMetadata("Arial", OnRenderSettingsChanged, CoerceScaleValue));
+            new PropertyMetadata("Arial", OnRenderSettingsChanged));
 
         public static readonly DependencyProperty HasErrorProperty = DependencyProperty.Register(
             nameof(HasError), typeof(bool), typeof(FormulaControl),
