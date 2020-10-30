@@ -1,10 +1,13 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "RowAtom",
     "PreviousAtom": null,
     "Elements": [
       {
+        "[AtomType]": "BigOperatorAtom",
         "BaseAtom": {
+          "[AtomType]": "SymbolAtom",
           "IsDelimeter": false,
           "Name": "int",
           "IsTextSymbol": false,
@@ -30,6 +33,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "f",
         "TextStyle": null,
         "IsTextSymbol": false,

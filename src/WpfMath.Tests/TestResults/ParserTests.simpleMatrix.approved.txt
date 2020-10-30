@@ -1,9 +1,11 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "MatrixAtom",
     "MatrixCells": [
       [
         {
+          "[AtomType]": "CharAtom",
           "Character": "4",
           "TextStyle": null,
           "IsTextSymbol": false,
@@ -17,9 +19,11 @@
           }
         },
         {
+          "[AtomType]": "RowAtom",
           "PreviousAtom": null,
           "Elements": [
             {
+              "[AtomType]": "CharAtom",
               "Character": "7",
               "TextStyle": null,
               "IsTextSymbol": false,
@@ -33,6 +37,7 @@
               }
             },
             {
+              "[AtomType]": "CharAtom",
               "Character": "8",
               "TextStyle": null,
               "IsTextSymbol": false,
@@ -56,6 +61,7 @@
           }
         },
         {
+          "[AtomType]": "CharAtom",
           "Character": "3",
           "TextStyle": null,
           "IsTextSymbol": false,
@@ -71,6 +77,7 @@
       ],
       [
         {
+          "[AtomType]": "CharAtom",
           "Character": "5",
           "TextStyle": null,
           "IsTextSymbol": false,
@@ -84,6 +91,7 @@
           }
         },
         {
+          "[AtomType]": "CharAtom",
           "Character": "9",
           "TextStyle": null,
           "IsTextSymbol": false,
@@ -97,9 +105,11 @@
           }
         },
         {
+          "[AtomType]": "RowAtom",
           "PreviousAtom": null,
           "Elements": [
             {
+              "[AtomType]": "CharAtom",
               "Character": "8",
               "TextStyle": null,
               "IsTextSymbol": false,
@@ -113,6 +123,7 @@
               }
             },
             {
+              "[AtomType]": "CharAtom",
               "Character": "2",
               "TextStyle": null,
               "IsTextSymbol": false,

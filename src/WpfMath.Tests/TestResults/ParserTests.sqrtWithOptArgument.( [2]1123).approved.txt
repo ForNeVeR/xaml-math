@@ -1,10 +1,13 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "RowAtom",
     "PreviousAtom": null,
     "Elements": [
       {
+        "[AtomType]": "Radical",
         "BaseAtom": {
+          "[AtomType]": "CharAtom",
           "Character": "1",
           "TextStyle": null,
           "IsTextSymbol": false,
@@ -18,6 +21,7 @@
           }
         },
         "DegreeAtom": {
+          "[AtomType]": "CharAtom",
           "Character": "2",
           "TextStyle": null,
           "IsTextSymbol": false,
@@ -40,6 +44,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "1",
         "TextStyle": null,
         "IsTextSymbol": false,
@@ -53,6 +58,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "2",
         "TextStyle": null,
         "IsTextSymbol": false,
@@ -66,6 +72,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "3",
         "TextStyle": null,
         "IsTextSymbol": false,

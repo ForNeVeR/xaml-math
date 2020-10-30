@@ -1,9 +1,11 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "RowAtom",
     "PreviousAtom": null,
     "Elements": [
       {
+        "[AtomType]": "CharAtom",
         "Character": "а",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -17,6 +19,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "б",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -30,6 +33,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "в",
         "TextStyle": "text",
         "IsTextSymbol": false,

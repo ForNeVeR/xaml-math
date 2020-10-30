@@ -1,9 +1,11 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "RowAtom",
     "PreviousAtom": null,
     "Elements": [
       {
+        "[AtomType]": "CharAtom",
         "Character": "a",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -17,6 +19,7 @@
         }
       },
       {
+        "[AtomType]": "SpaceAtom",
         "Type": "Ordinary",
         "Source": {
           "Start": 7,
@@ -27,6 +30,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "b",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -40,6 +44,7 @@
         }
       },
       {
+        "[AtomType]": "SpaceAtom",
         "Type": "Ordinary",
         "Source": {
           "Start": 9,
@@ -50,6 +55,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "c",
         "TextStyle": "text",
         "IsTextSymbol": false,

@@ -1,10 +1,13 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "StyledAtom",
     "RowAtom": {
+      "[AtomType]": "RowAtom",
       "PreviousAtom": null,
       "Elements": [
         {
+          "[AtomType]": "CharAtom",
           "Character": "x",
           "TextStyle": null,
           "IsTextSymbol": false,

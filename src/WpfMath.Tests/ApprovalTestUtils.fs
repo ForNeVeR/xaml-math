@@ -39,11 +39,36 @@ type private InnerPropertyContractResolver() =
 
     override this.CreateProperties(``type``, memberSerialization) =
         // override that to serialize internal properties, too
-        upcast ResizeArray(
-            ``type``.GetProperties(BindingFlags.Public ||| BindingFlags.NonPublic ||| BindingFlags.Instance)
-            |> Seq.filter (fun p -> Array.isEmpty <| p.GetIndexParameters()) // no indexers
-            |> Seq.map (fun p -> this.DoCreateProperty(p, memberSerialization))
-        )
+        let properties =
+            ResizeArray(
+                ``type``.GetProperties(BindingFlags.Public ||| BindingFlags.NonPublic ||| BindingFlags.Instance)
+                |> Seq.filter (fun p -> Array.isEmpty <| p.GetIndexParameters()) // no indexers
+                |> Seq.map (fun p -> this.DoCreateProperty(p, memberSerialization))
+            )
+
+        let baseTypes =
+            ``type``
+            |> Seq.unfold (fun t ->
+                    if t.BaseType = null then
+                        None
+                    else
+                        Some(t, t.BaseType)
+                )
+
+        if Seq.exists ((=) typeof<Atoms.Atom>) baseTypes then
+            properties.Insert(0,
+                new JsonProperty(
+                    PropertyName = "[AtomType]",
+                    PropertyType = typeof<string>,
+                    Readable = true,
+                    ValueProvider = {
+                        new IValueProvider with
+                            member this.GetValue(_) = upcast ``type``.Name
+                            member this.SetValue(_, _) = failwith "Not supported"
+                    }
+                )
+            )
+        upcast properties
 
 [<AbstractClass>]
 type ReadOnlyJsonConverter<'a>() =

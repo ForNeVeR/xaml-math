@@ -1,7 +1,9 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "FencedAtom",
     "BaseAtom": {
+      "[AtomType]": "CharAtom",
       "Character": "a",
       "TextStyle": null,
       "IsTextSymbol": false,
@@ -15,6 +17,7 @@
       }
     },
     "LeftDelimeter": {
+      "[AtomType]": "SymbolAtom",
       "IsDelimeter": true,
       "Name": "(",
       "IsTextSymbol": false,
@@ -28,6 +31,7 @@
       }
     },
     "RightDelimeter": {
+      "[AtomType]": "SymbolAtom",
       "IsDelimeter": true,
       "Name": ")",
       "IsTextSymbol": false,

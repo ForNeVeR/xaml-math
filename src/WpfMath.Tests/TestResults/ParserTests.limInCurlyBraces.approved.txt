@@ -1,14 +1,19 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "RowAtom",
     "PreviousAtom": null,
     "Elements": [
       {
+        "[AtomType]": "TypedAtom",
         "Atom": {
+          "[AtomType]": "BigOperatorAtom",
           "BaseAtom": {
+            "[AtomType]": "RowAtom",
             "PreviousAtom": null,
             "Elements": [
               {
+                "[AtomType]": "CharAtom",
                 "Character": "l",
                 "TextStyle": "mathrm",
                 "IsTextSymbol": false,
@@ -22,6 +27,7 @@
                 }
               },
               {
+                "[AtomType]": "CharAtom",
                 "Character": "i",
                 "TextStyle": "mathrm",
                 "IsTextSymbol": false,
@@ -35,6 +41,7 @@
                 }
               },
               {
+                "[AtomType]": "CharAtom",
                 "Character": "m",
                 "TextStyle": "mathrm",
                 "IsTextSymbol": false,
@@ -81,6 +88,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "x",
         "TextStyle": null,
         "IsTextSymbol": false,

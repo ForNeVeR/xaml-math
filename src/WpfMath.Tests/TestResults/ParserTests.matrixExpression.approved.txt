@@ -1,9 +1,11 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "RowAtom",
     "PreviousAtom": null,
     "Elements": [
       {
+        "[AtomType]": "CharAtom",
         "Character": "v",
         "TextStyle": null,
         "IsTextSymbol": false,
@@ -17,6 +19,7 @@
         }
       },
       {
+        "[AtomType]": "SymbolAtom",
         "IsDelimeter": false,
         "Name": "times",
         "IsTextSymbol": false,
@@ -30,6 +33,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "w",
         "TextStyle": null,
         "IsTextSymbol": false,
@@ -43,6 +47,7 @@
         }
       },
       {
+        "[AtomType]": "SymbolAtom",
         "IsDelimeter": false,
         "Name": "equals",
         "IsTextSymbol": false,
@@ -56,14 +61,19 @@
         }
       },
       {
+        "[AtomType]": "FencedAtom",
         "BaseAtom": {
+          "[AtomType]": "MatrixAtom",
           "MatrixCells": [
             [
               {
+                "[AtomType]": "RowAtom",
                 "PreviousAtom": null,
                 "Elements": [
                   {
+                    "[AtomType]": "ScriptsAtom",
                     "BaseAtom": {
+                      "[AtomType]": "CharAtom",
                       "Character": "v",
                       "TextStyle": null,
                       "IsTextSymbol": false,
@@ -77,6 +87,7 @@
                       }
                     },
                     "SubscriptAtom": {
+                      "[AtomType]": "CharAtom",
                       "Character": "2",
                       "TextStyle": null,
                       "IsTextSymbol": false,
@@ -100,7 +111,9 @@
                     }
                   },
                   {
+                    "[AtomType]": "ScriptsAtom",
                     "BaseAtom": {
+                      "[AtomType]": "CharAtom",
                       "Character": "w",
                       "TextStyle": null,
                       "IsTextSymbol": false,
@@ -114,6 +127,7 @@
                       }
                     },
                     "SubscriptAtom": {
+                      "[AtomType]": "CharAtom",
                       "Character": "3",
                       "TextStyle": null,
                       "IsTextSymbol": false,
@@ -137,6 +151,7 @@
                     }
                   },
                   {
+                    "[AtomType]": "SymbolAtom",
                     "IsDelimeter": false,
                     "Name": "minus",
                     "IsTextSymbol": false,
@@ -150,7 +165,9 @@
                     }
                   },
                   {
+                    "[AtomType]": "ScriptsAtom",
                     "BaseAtom": {
+                      "[AtomType]": "CharAtom",
                       "Character": "v",
                       "TextStyle": null,
                       "IsTextSymbol": false,
@@ -164,6 +181,7 @@
                       }
                     },
                     "SubscriptAtom": {
+                      "[AtomType]": "CharAtom",
                       "Character": "3",
                       "TextStyle": null,
                       "IsTextSymbol": false,
@@ -187,7 +205,9 @@
                     }
                   },
                   {
+                    "[AtomType]": "ScriptsAtom",
                     "BaseAtom": {
+                      "[AtomType]": "CharAtom",
                       "Character": "w",
                       "TextStyle": null,
                       "IsTextSymbol": false,
@@ -201,6 +221,7 @@
                       }
                     },
                     "SubscriptAtom": {
+                      "[AtomType]": "CharAtom",
                       "Character": "2",
                       "TextStyle": null,
                       "IsTextSymbol": false,
@@ -236,10 +257,13 @@
             ],
             [
               {
+                "[AtomType]": "RowAtom",
                 "PreviousAtom": null,
                 "Elements": [
                   {
+                    "[AtomType]": "ScriptsAtom",
                     "BaseAtom": {
+                      "[AtomType]": "CharAtom",
                       "Character": "v",
                       "TextStyle": null,
                       "IsTextSymbol": false,
@@ -253,6 +277,7 @@
                       }
                     },
                     "SubscriptAtom": {
+                      "[AtomType]": "CharAtom",
                       "Character": "3",
                       "TextStyle": null,
                       "IsTextSymbol": false,
@@ -276,7 +301,9 @@
                     }
                   },
                   {
+                    "[AtomType]": "ScriptsAtom",
                     "BaseAtom": {
+                      "[AtomType]": "CharAtom",
                       "Character": "w",
                       "TextStyle": null,
                       "IsTextSymbol": false,
@@ -290,6 +317,7 @@
                       }
                     },
                     "SubscriptAtom": {
+                      "[AtomType]": "CharAtom",
                       "Character": "1",
                       "TextStyle": null,
                       "IsTextSymbol": false,
@@ -313,6 +341,7 @@
                     }
                   },
                   {
+                    "[AtomType]": "SymbolAtom",
                     "IsDelimeter": false,
                     "Name": "minus",
                     "IsTextSymbol": false,
@@ -326,7 +355,9 @@
                     }
                   },
                   {
+                    "[AtomType]": "ScriptsAtom",
                     "BaseAtom": {
+                      "[AtomType]": "CharAtom",
                       "Character": "v",
                       "TextStyle": null,
                       "IsTextSymbol": false,
@@ -340,6 +371,7 @@
                       }
                     },
                     "SubscriptAtom": {
+                      "[AtomType]": "CharAtom",
                       "Character": "1",
                       "TextStyle": null,
                       "IsTextSymbol": false,
@@ -363,7 +395,9 @@
                     }
                   },
                   {
+                    "[AtomType]": "ScriptsAtom",
                     "BaseAtom": {
+                      "[AtomType]": "CharAtom",
                       "Character": "w",
                       "TextStyle": null,
                       "IsTextSymbol": false,
@@ -377,6 +411,7 @@
                       }
                     },
                     "SubscriptAtom": {
+                      "[AtomType]": "CharAtom",
                       "Character": "3",
                       "TextStyle": null,
                       "IsTextSymbol": false,
@@ -412,10 +447,13 @@
             ],
             [
               {
+                "[AtomType]": "RowAtom",
                 "PreviousAtom": null,
                 "Elements": [
                   {
+                    "[AtomType]": "ScriptsAtom",
                     "BaseAtom": {
+                      "[AtomType]": "CharAtom",
                       "Character": "v",
                       "TextStyle": null,
                       "IsTextSymbol": false,
@@ -429,6 +467,7 @@
                       }
                     },
                     "SubscriptAtom": {
+                      "[AtomType]": "CharAtom",
                       "Character": "1",
                       "TextStyle": null,
                       "IsTextSymbol": false,
@@ -452,7 +491,9 @@
                     }
                   },
                   {
+                    "[AtomType]": "ScriptsAtom",
                     "BaseAtom": {
+                      "[AtomType]": "CharAtom",
                       "Character": "w",
                       "TextStyle": null,
                       "IsTextSymbol": false,
@@ -466,6 +507,7 @@
                       }
                     },
                     "SubscriptAtom": {
+                      "[AtomType]": "CharAtom",
                       "Character": "2",
                       "TextStyle": null,
                       "IsTextSymbol": false,
@@ -489,6 +531,7 @@
                     }
                   },
                   {
+                    "[AtomType]": "SymbolAtom",
                     "IsDelimeter": false,
                     "Name": "minus",
                     "IsTextSymbol": false,
@@ -502,7 +545,9 @@
                     }
                   },
                   {
+                    "[AtomType]": "ScriptsAtom",
                     "BaseAtom": {
+                      "[AtomType]": "CharAtom",
                       "Character": "v",
                       "TextStyle": null,
                       "IsTextSymbol": false,
@@ -516,6 +561,7 @@
                       }
                     },
                     "SubscriptAtom": {
+                      "[AtomType]": "CharAtom",
                       "Character": "2",
                       "TextStyle": null,
                       "IsTextSymbol": false,
@@ -539,7 +585,9 @@
                     }
                   },
                   {
+                    "[AtomType]": "ScriptsAtom",
                     "BaseAtom": {
+                      "[AtomType]": "CharAtom",
                       "Character": "w",
                       "TextStyle": null,
                       "IsTextSymbol": false,
@@ -553,6 +601,7 @@
                       }
                     },
                     "SubscriptAtom": {
+                      "[AtomType]": "CharAtom",
                       "Character": "1",
                       "TextStyle": null,
                       "IsTextSymbol": false,
@@ -600,6 +649,7 @@
           }
         },
         "LeftDelimeter": {
+          "[AtomType]": "SymbolAtom",
           "IsDelimeter": true,
           "Name": "(",
           "IsTextSymbol": false,
@@ -613,6 +663,7 @@
           }
         },
         "RightDelimeter": {
+          "[AtomType]": "SymbolAtom",
           "IsDelimeter": true,
           "Name": ")",
           "IsTextSymbol": false,
@@ -635,6 +686,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "w",
         "TextStyle": null,
         "IsTextSymbol": false,
@@ -648,6 +700,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "h",
         "TextStyle": null,
         "IsTextSymbol": false,
@@ -661,6 +714,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "e",
         "TextStyle": null,
         "IsTextSymbol": false,
@@ -674,6 +728,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "r",
         "TextStyle": null,
         "IsTextSymbol": false,
@@ -687,6 +742,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "e",
         "TextStyle": null,
         "IsTextSymbol": false,
@@ -700,6 +756,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "v",
         "TextStyle": null,
         "IsTextSymbol": false,
@@ -713,6 +770,7 @@
         }
       },
       {
+        "[AtomType]": "SymbolAtom",
         "IsDelimeter": false,
         "Name": "equals",
         "IsTextSymbol": false,
@@ -726,11 +784,15 @@
         }
       },
       {
+        "[AtomType]": "FencedAtom",
         "BaseAtom": {
+          "[AtomType]": "MatrixAtom",
           "MatrixCells": [
             [
               {
+                "[AtomType]": "ScriptsAtom",
                 "BaseAtom": {
+                  "[AtomType]": "CharAtom",
                   "Character": "v",
                   "TextStyle": null,
                   "IsTextSymbol": false,
@@ -744,6 +806,7 @@
                   }
                 },
                 "SubscriptAtom": {
+                  "[AtomType]": "CharAtom",
                   "Character": "1",
                   "TextStyle": null,
                   "IsTextSymbol": false,
@@ -769,7 +832,9 @@
             ],
             [
               {
+                "[AtomType]": "ScriptsAtom",
                 "BaseAtom": {
+                  "[AtomType]": "CharAtom",
                   "Character": "v",
                   "TextStyle": null,
                   "IsTextSymbol": false,
@@ -783,6 +848,7 @@
                   }
                 },
                 "SubscriptAtom": {
+                  "[AtomType]": "CharAtom",
                   "Character": "2",
                   "TextStyle": null,
                   "IsTextSymbol": false,
@@ -808,7 +874,9 @@
             ],
             [
               {
+                "[AtomType]": "ScriptsAtom",
                 "BaseAtom": {
+                  "[AtomType]": "CharAtom",
                   "Character": "v",
                   "TextStyle": null,
                   "IsTextSymbol": false,
@@ -822,6 +890,7 @@
                   }
                 },
                 "SubscriptAtom": {
+                  "[AtomType]": "CharAtom",
                   "Character": "3",
                   "TextStyle": null,
                   "IsTextSymbol": false,
@@ -859,6 +928,7 @@
           }
         },
         "LeftDelimeter": {
+          "[AtomType]": "SymbolAtom",
           "IsDelimeter": true,
           "Name": "(",
           "IsTextSymbol": false,
@@ -872,6 +942,7 @@
           }
         },
         "RightDelimeter": {
+          "[AtomType]": "SymbolAtom",
           "IsDelimeter": true,
           "Name": ")",
           "IsTextSymbol": false,
@@ -894,6 +965,7 @@
         }
       },
       {
+        "[AtomType]": "SymbolAtom",
         "IsDelimeter": false,
         "Name": "comma",
         "IsTextSymbol": false,
@@ -907,6 +979,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "w",
         "TextStyle": null,
         "IsTextSymbol": false,
@@ -920,6 +993,7 @@
         }
       },
       {
+        "[AtomType]": "SymbolAtom",
         "IsDelimeter": false,
         "Name": "equals",
         "IsTextSymbol": false,
@@ -933,11 +1007,15 @@
         }
       },
       {
+        "[AtomType]": "FencedAtom",
         "BaseAtom": {
+          "[AtomType]": "MatrixAtom",
           "MatrixCells": [
             [
               {
+                "[AtomType]": "ScriptsAtom",
                 "BaseAtom": {
+                  "[AtomType]": "CharAtom",
                   "Character": "w",
                   "TextStyle": null,
                   "IsTextSymbol": false,
@@ -951,6 +1029,7 @@
                   }
                 },
                 "SubscriptAtom": {
+                  "[AtomType]": "CharAtom",
                   "Character": "1",
                   "TextStyle": null,
                   "IsTextSymbol": false,
@@ -976,7 +1055,9 @@
             ],
             [
               {
+                "[AtomType]": "ScriptsAtom",
                 "BaseAtom": {
+                  "[AtomType]": "CharAtom",
                   "Character": "w",
                   "TextStyle": null,
                   "IsTextSymbol": false,
@@ -990,6 +1071,7 @@
                   }
                 },
                 "SubscriptAtom": {
+                  "[AtomType]": "CharAtom",
                   "Character": "2",
                   "TextStyle": null,
                   "IsTextSymbol": false,
@@ -1015,7 +1097,9 @@
             ],
             [
               {
+                "[AtomType]": "ScriptsAtom",
                 "BaseAtom": {
+                  "[AtomType]": "CharAtom",
                   "Character": "w",
                   "TextStyle": null,
                   "IsTextSymbol": false,
@@ -1029,6 +1113,7 @@
                   }
                 },
                 "SubscriptAtom": {
+                  "[AtomType]": "CharAtom",
                   "Character": "3",
                   "TextStyle": null,
                   "IsTextSymbol": false,
@@ -1066,6 +1151,7 @@
           }
         },
         "LeftDelimeter": {
+          "[AtomType]": "SymbolAtom",
           "IsDelimeter": true,
           "Name": "(",
           "IsTextSymbol": false,
@@ -1079,6 +1165,7 @@
           }
         },
         "RightDelimeter": {
+          "[AtomType]": "SymbolAtom",
           "IsDelimeter": true,
           "Name": ")",
           "IsTextSymbol": false,

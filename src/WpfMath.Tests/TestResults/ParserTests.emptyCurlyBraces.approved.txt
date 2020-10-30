@@ -1,7 +1,9 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "TypedAtom",
     "Atom": {
+      "[AtomType]": "RowAtom",
       "PreviousAtom": null,
       "Elements": [],
       "Type": "Ordinary",

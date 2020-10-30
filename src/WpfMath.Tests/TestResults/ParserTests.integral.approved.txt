@@ -1,7 +1,9 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "BigOperatorAtom",
     "BaseAtom": {
+      "[AtomType]": "SymbolAtom",
       "IsDelimeter": false,
       "Name": "int",
       "IsTextSymbol": false,
@@ -15,6 +17,7 @@
       }
     },
     "LowerLimitAtom": {
+      "[AtomType]": "CharAtom",
       "Character": "a",
       "TextStyle": null,
       "IsTextSymbol": false,
@@ -28,6 +31,7 @@
       }
     },
     "UpperLimitAtom": {
+      "[AtomType]": "CharAtom",
       "Character": "b",
       "TextStyle": null,
       "IsTextSymbol": false,

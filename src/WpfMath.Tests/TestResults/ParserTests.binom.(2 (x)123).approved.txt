@@ -1,13 +1,17 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "RowAtom",
     "PreviousAtom": null,
     "Elements": [
       {
+        "[AtomType]": "FencedAtom",
         "BaseAtom": {
+          "[AtomType]": "MatrixAtom",
           "MatrixCells": [
             [
               {
+                "[AtomType]": "CharAtom",
                 "Character": "2",
                 "TextStyle": null,
                 "IsTextSymbol": false,
@@ -23,6 +27,7 @@
             ],
             [
               {
+                "[AtomType]": "CharAtom",
                 "Character": "x",
                 "TextStyle": null,
                 "IsTextSymbol": false,
@@ -50,6 +55,7 @@
           }
         },
         "LeftDelimeter": {
+          "[AtomType]": "SymbolAtom",
           "IsDelimeter": true,
           "Name": "(",
           "IsTextSymbol": false,
@@ -63,6 +69,7 @@
           }
         },
         "RightDelimeter": {
+          "[AtomType]": "SymbolAtom",
           "IsDelimeter": true,
           "Name": ")",
           "IsTextSymbol": false,
@@ -85,6 +92,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "1",
         "TextStyle": null,
         "IsTextSymbol": false,
@@ -98,6 +106,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "2",
         "TextStyle": null,
         "IsTextSymbol": false,
@@ -111,6 +120,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "3",
         "TextStyle": null,
         "IsTextSymbol": false,

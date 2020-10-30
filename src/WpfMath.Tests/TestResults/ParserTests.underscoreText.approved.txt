@@ -1,6 +1,7 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "CharAtom",
     "Character": "_",
     "TextStyle": "text",
     "IsTextSymbol": false,

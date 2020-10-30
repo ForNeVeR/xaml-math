@@ -1,7 +1,9 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "ScriptsAtom",
     "BaseAtom": {
+      "[AtomType]": "CharAtom",
       "Character": "x",
       "TextStyle": null,
       "IsTextSymbol": false,
@@ -15,6 +17,7 @@
       }
     },
     "SubscriptAtom": {
+      "[AtomType]": "CharAtom",
       "Character": "z",
       "TextStyle": null,
       "IsTextSymbol": false,
@@ -28,6 +31,7 @@
       }
     },
     "SuperscriptAtom": {
+      "[AtomType]": "CharAtom",
       "Character": "y",
       "TextStyle": null,
       "IsTextSymbol": false,

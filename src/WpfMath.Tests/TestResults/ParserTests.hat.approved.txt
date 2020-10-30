@@ -1,8 +1,11 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "TypedAtom",
     "Atom": {
+      "[AtomType]": "AccentedAtom",
       "BaseAtom": {
+        "[AtomType]": "CharAtom",
         "Character": "T",
         "TextStyle": null,
         "IsTextSymbol": false,
@@ -16,6 +19,7 @@
         }
       },
       "AccentAtom": {
+        "[AtomType]": "SymbolAtom",
         "IsDelimeter": false,
         "Name": "hat",
         "IsTextSymbol": false,

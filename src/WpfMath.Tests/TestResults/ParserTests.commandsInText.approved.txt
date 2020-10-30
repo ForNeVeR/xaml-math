@@ -1,9 +1,11 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "RowAtom",
     "PreviousAtom": null,
     "Elements": [
       {
+        "[AtomType]": "CharAtom",
         "Character": "\\",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -17,6 +19,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "a",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -30,6 +33,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "l",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -43,6 +47,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "p",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -56,6 +61,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "h",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -69,6 +75,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "a",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -82,6 +89,7 @@
         }
       },
       {
+        "[AtomType]": "SpaceAtom",
         "Type": "Ordinary",
         "Source": {
           "Start": 12,
@@ -92,6 +100,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "\\",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -105,6 +114,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "b",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -118,6 +128,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "e",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -131,6 +142,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "t",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -144,6 +156,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "a",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -157,6 +170,7 @@
         }
       },
       {
+        "[AtomType]": "SpaceAtom",
         "Type": "Ordinary",
         "Source": {
           "Start": 18,
@@ -167,6 +181,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "\\",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -180,6 +195,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "u",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -193,6 +209,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "n",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -206,6 +223,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "k",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -219,6 +237,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "n",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -232,6 +251,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "o",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -245,6 +265,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "w",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -258,6 +279,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "n",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -271,6 +293,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "c",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -284,6 +307,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "o",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -297,6 +321,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "m",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -310,6 +335,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "m",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -323,6 +349,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "a",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -336,6 +363,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "n",
         "TextStyle": "text",
         "IsTextSymbol": false,
@@ -349,6 +377,7 @@
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "d",
         "TextStyle": "text",
         "IsTextSymbol": false,

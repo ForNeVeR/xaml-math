@@ -1,15 +1,19 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "MatrixAtom",
     "MatrixCells": [
       [
         {
+          "[AtomType]": "MatrixAtom",
           "MatrixCells": [
             [
               {
+                "[AtomType]": "RowAtom",
                 "PreviousAtom": null,
                 "Elements": [
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "l",
                     "TextStyle": null,
                     "IsTextSymbol": false,
@@ -23,6 +27,7 @@
                     }
                   },
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "i",
                     "TextStyle": null,
                     "IsTextSymbol": false,
@@ -36,6 +41,7 @@
                     }
                   },
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "n",
                     "TextStyle": null,
                     "IsTextSymbol": false,
@@ -49,6 +55,7 @@
                     }
                   },
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "e",
                     "TextStyle": null,
                     "IsTextSymbol": false,
@@ -62,6 +69,7 @@
                     }
                   },
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "1",
                     "TextStyle": null,
                     "IsTextSymbol": false,
@@ -101,9 +109,11 @@
       ],
       [
         {
+          "[AtomType]": "RowAtom",
           "PreviousAtom": null,
           "Elements": [
             {
+              "[AtomType]": "CharAtom",
               "Character": "l",
               "TextStyle": null,
               "IsTextSymbol": false,
@@ -117,6 +127,7 @@
               }
             },
             {
+              "[AtomType]": "CharAtom",
               "Character": "i",
               "TextStyle": null,
               "IsTextSymbol": false,
@@ -130,6 +141,7 @@
               }
             },
             {
+              "[AtomType]": "CharAtom",
               "Character": "n",
               "TextStyle": null,
               "IsTextSymbol": false,
@@ -143,6 +155,7 @@
               }
             },
             {
+              "[AtomType]": "CharAtom",
               "Character": "e",
               "TextStyle": null,
               "IsTextSymbol": false,
@@ -156,6 +169,7 @@
               }
             },
             {
+              "[AtomType]": "CharAtom",
               "Character": "2",
               "TextStyle": null,
               "IsTextSymbol": false,
