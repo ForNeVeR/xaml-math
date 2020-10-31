@@ -16,6 +16,7 @@ open Newtonsoft.Json.Converters
 open Newtonsoft.Json.Serialization
 
 open WpfMath
+open WpfMath.Atoms
 
 type private BomlessFileWriter(data: string, ?extensionWithoutDot: string) =
     inherit ApprovalTextWriter(data, defaultArg extensionWithoutDot "txt")
@@ -38,26 +39,16 @@ type private InnerPropertyContractResolver() =
         base.CreateProperty(p, ms, Readable = true)
 
     override this.CreateProperties(``type``, memberSerialization) =
-        // override that to serialize internal properties, too
+        // All properties including internal ones:
         let properties =
-            ResizeArray(
-                ``type``.GetProperties(BindingFlags.Public ||| BindingFlags.NonPublic ||| BindingFlags.Instance)
-                |> Seq.filter (fun p -> Array.isEmpty <| p.GetIndexParameters()) // no indexers
-                |> Seq.map (fun p -> this.DoCreateProperty(p, memberSerialization))
-            )
+            ``type``.GetProperties(BindingFlags.Public ||| BindingFlags.NonPublic ||| BindingFlags.Instance)
+            |> Seq.filter (fun p -> Array.isEmpty <| p.GetIndexParameters()) // no indexers
+            |> Seq.map (fun p -> this.DoCreateProperty(p, memberSerialization))
 
-        let baseTypes =
-            ``type``
-            |> Seq.unfold (fun t ->
-                    if t.BaseType = null then
-                        None
-                    else
-                        Some(t, t.BaseType)
-                )
-
-        if Seq.exists ((=) typeof<Atoms.Atom>) baseTypes then
-            properties.Insert(0,
-                new JsonProperty(
+        upcast [|
+            // For Atoms, type name should be first
+            if typeof<Atom>.IsAssignableFrom ``type`` then
+                JsonProperty(
                     PropertyName = "[AtomType]",
                     PropertyType = typeof<string>,
                     Readable = true,
@@ -67,8 +58,9 @@ type private InnerPropertyContractResolver() =
                             member this.SetValue(_, _) = failwith "Not supported"
                     }
                 )
-            )
-        upcast properties
+
+            yield! properties
+        |]
 
 [<AbstractClass>]
 type ReadOnlyJsonConverter<'a>() =
