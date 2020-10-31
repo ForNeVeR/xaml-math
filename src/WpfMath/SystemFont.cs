@@ -121,7 +121,7 @@ namespace WpfMath
                 typeface,
                 1.0,
                 Brushes.Black
-#if NETCOREAPP3_0
+#if !NET452
                 , 1
 #endif
                 );
