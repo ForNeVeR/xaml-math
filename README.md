@@ -135,7 +135,7 @@ We're very grateful to JMathTeX authors for their work and allowing to redistrib
 [docs-blurred-text-issue]: docs/blurred-text-issue.md
 [docs-licensing-history]: docs/licensing-history.md
 [docs-matrices]: docs/matrices.md
-[example]: WpfMath.Example/
+[example]: src/WpfMath.Example/
 [fonts]: src/WpfMath/Fonts/
 [license]: LICENSE.md
 
