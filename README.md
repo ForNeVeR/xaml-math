@@ -14,7 +14,7 @@ The simplest way of using *WPF-Math* is to render a static formula in a XAML fil
 </Window>
 ```
 
-For a more detailed sample, check out the [example project](src/WpfMath.Example). It shows the usage of data binding and some advanced concepts.
+For a more detailed sample, check out the [example project][example]. It shows the usage of data binding and some advanced concepts.
 
 ![Screenshot of example project](docs/example-screenshot.png)
 
@@ -135,7 +135,7 @@ We're very grateful to JMathTeX authors for their work and allowing to redistrib
 [docs-blurred-text-issue]: docs/blurred-text-issue.md
 [docs-licensing-history]: docs/licensing-history.md
 [docs-matrices]: docs/matrices.md
-[example]: WpfMath.Example/
+[example]: src/WpfMath.Example/
 [fonts]: src/WpfMath/Fonts/
 [license]: LICENSE.md
 
