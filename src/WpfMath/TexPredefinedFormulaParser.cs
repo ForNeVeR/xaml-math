@@ -13,19 +13,17 @@ namespace WpfMath
     // Parses definitions of predefined formulas from XML file.
     internal class TexPredefinedFormulaParser
     {
-        public static readonly string resourceName = TexUtilities.ResourcesDataDirectory + "PredefinedTexFormulas.xml";
+        private static readonly string resourceName = TexUtilities.ResourcesDataDirectory + "PredefinedTexFormulas.xml";
 
-        private static IDictionary<string, Type> typeMappings;
-        private static IDictionary<string, ArgumentValueParser> argValueParsers;
-        private static IDictionary<string, ActionParser> actionParsers;
-        private static TexFormulaParser formulaParser;
+        private static readonly IDictionary<string, Type> typeMappings;
+        private static readonly IDictionary<string, IArgumentValueParser> argValueParsers;
+        private static readonly IDictionary<string, IActionParser> actionParsers;
 
         static TexPredefinedFormulaParser()
         {
             typeMappings = new Dictionary<string, Type>();
-            argValueParsers = new Dictionary<string, ArgumentValueParser>();
-            actionParsers = new Dictionary<string, ActionParser>();
-            formulaParser = new TexFormulaParser();
+            argValueParsers = new Dictionary<string, IArgumentValueParser>();
+            actionParsers = new Dictionary<string, IActionParser>();
 
             typeMappings.Add("Formula", typeof(TexFormula));
             typeMappings.Add("string", typeof(string));
@@ -74,8 +72,8 @@ namespace WpfMath
                 var typeName = curArg.AttributeValue("type");
                 var value = curArg.AttributeValue("value");
 
-                var parser = ((ArgumentValueParser)argValueParsers[typeName]);
-                result.Add(parser.Parse(value, typeName, context));
+                var parser = argValueParsers[typeName];
+                result.Add(parser.Parse(value, context));
             }
 
             return result.ToArray();
@@ -106,7 +104,7 @@ namespace WpfMath
             }
         }
 
-        public TexFormula? ParseFormula(SourceSpan source, XElement formulaElement)
+        private TexFormula? ParseFormula(SourceSpan source, XElement formulaElement)
         {
             var context = new PredefinedFormulaContext();
             foreach (var element in formulaElement.Elements())
@@ -122,9 +120,9 @@ namespace WpfMath
             return null;
         }
 
-        public class MethodInvocationParser : ActionParser
+        private class MethodInvocationParser : IActionParser
         {
-            public override void Parse(SourceSpan source, XElement element, PredefinedFormulaContext context)
+            public void Parse(SourceSpan source, XElement element, PredefinedFormulaContext context)
             {
                 var methodName = element.AttributeValue("name");
                 var objectName = element.AttributeValue("formula");
@@ -143,14 +141,13 @@ namespace WpfMath
             }
         }
 
-        public class CreateTeXFormulaParser : ActionParser
+        private class CreateTeXFormulaParser : IActionParser
         {
-            public override void Parse(SourceSpan source, XElement element, PredefinedFormulaContext context)
+            public void Parse(SourceSpan source, XElement element, PredefinedFormulaContext context)
             {
                 var name = element.AttributeValue("name");
                 var args = element.Elements("Argument");
 
-                var argTypes = GetArgumentTypes(args);
                 var argValues = GetArgumentValues(args, context);
 
                 Debug.Assert(argValues.Length == 1 || argValues.Length == 0);
@@ -169,7 +166,7 @@ namespace WpfMath
             }
         }
 
-        public class ReturnParser : ActionParser
+        private class ReturnParser : IActionParser
         {
             public TexFormula? Result
             {
@@ -177,7 +174,7 @@ namespace WpfMath
                 private set;
             }
 
-            public override void Parse(SourceSpan source, XElement element, PredefinedFormulaContext context)
+            public void Parse(SourceSpan source, XElement element, PredefinedFormulaContext context)
             {
                 var name = element.AttributeValue("name");
                 var result = context[name];
@@ -186,50 +183,50 @@ namespace WpfMath
             }
         }
 
-        public class DoubleValueParser : ArgumentValueParser
+        private class DoubleValueParser : IArgumentValueParser
         {
-            public override object Parse(string value, string type, PredefinedFormulaContext context)
+            public object Parse(string value, PredefinedFormulaContext context)
             {
                 return double.Parse(value, CultureInfo.InvariantCulture);
             }
         }
 
-        public class CharValueParser : ArgumentValueParser
+        private class CharValueParser : IArgumentValueParser
         {
-            public override object Parse(string value, string type, PredefinedFormulaContext context)
+            public object Parse(string value, PredefinedFormulaContext context)
             {
                 Debug.Assert(value.Length == 1);
                 return value[0];
             }
         }
 
-        public class BooleanValueParser : ArgumentValueParser
+        private class BooleanValueParser : IArgumentValueParser
         {
-            public override object Parse(string value, string type, PredefinedFormulaContext context)
+            public object Parse(string value, PredefinedFormulaContext context)
             {
                 return bool.Parse(value);
             }
         }
 
-        public class IntValueParser : ArgumentValueParser
+        private class IntValueParser : IArgumentValueParser
         {
-            public override object Parse(string value, string type, PredefinedFormulaContext context)
+            public object Parse(string value, PredefinedFormulaContext context)
             {
                 return int.Parse(value, CultureInfo.InvariantCulture);
             }
         }
 
-        public class StringValueParser : ArgumentValueParser
+        private class StringValueParser : IArgumentValueParser
         {
-            public override object Parse(string value, string type, PredefinedFormulaContext context)
+            public object Parse(string value, PredefinedFormulaContext context)
             {
                 return value;
             }
         }
 
-        public class TeXFormulaValueParser : ArgumentValueParser
+        private class TeXFormulaValueParser : IArgumentValueParser
         {
-            public override object? Parse(string value, string type, PredefinedFormulaContext context)
+            public object? Parse(string value, PredefinedFormulaContext context)
             {
                 if (value == null)
                     return null;
@@ -240,15 +237,15 @@ namespace WpfMath
             }
         }
 
-        public class ColorConstantValueParser : ArgumentValueParser
+        private class ColorConstantValueParser : IArgumentValueParser
         {
-            public override object? Parse(string value, string type, PredefinedFormulaContext context)
+            public object? Parse(string value, PredefinedFormulaContext context)
             {
                 return typeof(Color).GetField(value)!.GetValue(null);
             }
         }
 
-        public class EnumParser : ArgumentValueParser
+        private class EnumParser : IArgumentValueParser
         {
             private Type enumType;
 
@@ -257,20 +254,20 @@ namespace WpfMath
                 this.enumType = enumType;
             }
 
-            public override object Parse(string value, string type, PredefinedFormulaContext context)
+            public object Parse(string value, PredefinedFormulaContext context)
             {
                 return Enum.Parse(this.enumType, value);
             }
         }
 
-        public abstract class ActionParser
+        private interface IActionParser
         {
-            public abstract void Parse(SourceSpan source, XElement element, PredefinedFormulaContext context);
+            void Parse(SourceSpan source, XElement element, PredefinedFormulaContext context);
         }
 
-        public abstract class ArgumentValueParser
+        private interface IArgumentValueParser
         {
-            public abstract object? Parse(string value, string type, PredefinedFormulaContext context);
+            object? Parse(string value, PredefinedFormulaContext context);
         }
     }
 }
