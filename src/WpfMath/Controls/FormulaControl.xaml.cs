@@ -65,10 +65,10 @@ namespace WpfMath.Controls
             set { SetValue(SelectionLengthProperty, value); }
         }
 
-        public Brush SelectionBrush
+        public Brush? SelectionBrush
         {
-            get { return (Brush)GetValue(SelectionBrushProperty); }
-            set { SetValue(SelectionBrushProperty, value); }
+            get => (Brush)GetValue(SelectionBrushProperty);
+            set => SetValue(SelectionBrushProperty, value);
         }
 
         public static readonly DependencyProperty FormulaProperty = DependencyProperty.Register(
@@ -107,6 +107,17 @@ namespace WpfMath.Controls
             nameof(SelectionBrush), typeof(Brush), typeof(FormulaControl),
             new PropertyMetadata(null, OnRenderSettingsChanged));
 
+        static FormulaControl()
+        {
+            // Call OnRenderSettingsChanged on Foreground property change.
+            ForegroundProperty.OverrideMetadata(
+                typeof(FormulaControl),
+                new FrameworkPropertyMetadata(
+                    SystemColors.ControlTextBrush,
+                    FrameworkPropertyMetadataOptions.Inherits,
+                    OnRenderSettingsChanged));
+        }
+
         public FormulaControl()
         {
             InitializeComponent();
@@ -123,7 +134,9 @@ namespace WpfMath.Controls
 
             // Render formula to visual.
             var visual = new DrawingVisual();
-            var renderer = texFormula.GetRenderer(TexStyle.Display, Scale, SystemTextFontName);
+
+            // Pass transparent background, since the control background will be effectively used anyway.
+            var renderer = texFormula.GetRenderer(TexStyle.Display, Scale, SystemTextFontName, Brushes.Transparent, Foreground);
             var formulaSource = texFormula.Source;
             if (formulaSource != null)
             {

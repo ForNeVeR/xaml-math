@@ -24,11 +24,15 @@ namespace WpfMath
 
         public SourceSpan? Source { get; set; }
 
-        public TexRenderer GetRenderer(TexStyle style, double scale, string systemTextFontName)
+        public TexRenderer GetRenderer(TexStyle style,
+            double scale,
+            string? systemTextFontName,
+            Brush? background = null,
+            Brush? foreground = null)
         {
             var mathFont = new DefaultTexFont(scale);
             var textFont = systemTextFontName == null ? (ITeXFont)mathFont : GetSystemFont(systemTextFontName, scale);
-            var environment = new TexEnvironment(style, mathFont, textFont);
+            var environment = new TexEnvironment(style, mathFont, textFont, background, foreground);
             return new TexRenderer(CreateBox(environment), scale);
         }
 
