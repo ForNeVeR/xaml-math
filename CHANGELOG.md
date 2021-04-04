@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- [#261: Crash on empty \sqrt{}][pull-261]
 
 ## [0.9.0] - 2020-07-31
 ### Added
@@ -168,6 +170,7 @@ This was the initially published version. It consisted entirely of the original 
 [pull-212]: https://github.com/ForNeVeR/wpf-math/pull/212
 [pull-252]: https://github.com/ForNeVeR/wpf-math/pull/252
 [pull-253]: https://github.com/ForNeVeR/wpf-math/pull/253
+[pull-261]: https://github.com/ForNeVeR/wpf-math/pull/261
 
 [0.1.0]: https://github.com/ForNeVeR/wpf-math/releases/tag/0.1.0
 [0.2.0]: https://github.com/ForNeVeR/wpf-math/compare/0.1.0...0.2.0
