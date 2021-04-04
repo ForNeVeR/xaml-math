@@ -91,7 +91,7 @@ let lim() =
 [<Fact>]
 let limInCurlyBraces() =
     verifyParseResult @"{\lim} x"
-    
+
 [<Fact>]
 let limsup() =
     verifyParseResult @"\limsup"
@@ -163,7 +163,8 @@ let overline(text : string) : unit =
 [<InlineData("1123");
   InlineData("{1}123");
   InlineData(" 1123");
-  InlineData(" {1}123")>]
+  InlineData(" {1}123");
+  InlineData("{}")>]
 let sqrt(text : string) : unit =
     verifyParseResultScenario
     <| processSpecialChars text

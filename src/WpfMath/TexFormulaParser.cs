@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -534,10 +533,9 @@ namespace WpfMath
                             environment.CreateChildEnvironment());
 
                         source = value.Segment(start, position - start);
-                        Debug.Assert(sqrtFormula.RootAtom != null);
                         return new Tuple<AtomAppendMode, Atom?>(
                             AtomAppendMode.Add,
-                            new Radical(source, sqrtFormula.RootAtom, degreeFormula?.RootAtom));
+                            new Radical(source, sqrtFormula.RootAtom ?? new NullAtom(), degreeFormula?.RootAtom));
                     }
                 case "color":
                 {
