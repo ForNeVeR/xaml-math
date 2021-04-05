@@ -6,15 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [Unreleased]
 
 ## [0.9.0] - 2020-07-31
-
-New features:
-
+### Added
 - [#59: Extended delimiter support][issue-59]: e.g. `\left\\`
 - [#149: Newline command support][issue-149]: try using `\\` outside of a matrix
 - [#252: Support for \\{ and \\} commands][pull-252]
 
-Fixed issues:
-
+### Fixed
 - [#139: Exception thrown by \\,][issue-139]
 - [#151: Wrong sources detected for complex predefined formulae][issue-151]
 - [#225: \text doesn't work with indices if there's only one Cyrillic letter][issue-225]
@@ -23,57 +20,45 @@ Fixed issues:
 - [#257: IndexOutOfRangeException throws when using \color][issue-257]
 
 ## [0.8.0] - 2020-01-03
-
-New features:
-
+### Added
 - [#165: Extended color support for \color and \colorbox][issue-165], see [the documentation][docs.colors]
 - [#174: \binom command][issue-174]
 - [#209: WPF support on .NET Core 3.0][issue-209]
 - [#226: Add TFM into nuspec][issue-226]
 
-Fixed issues:
-
+### Fixed
 - [#128: \colorbox renders radical index invisible][issue-128]
 - [#158: \color{red} crashes parser][issue-158]
 - [#203: `\colorbox{red}{}` crashes the parser][issue-203]
 - [#212: `\mathrm{}` shouldn't throw exn][pull-212]
 
 ## [0.7.0] - 2019-08-24
+### Changed
+- (**Breaking change!**) [#198: Migrate to .NET 4.5.2][issue-198]
 
-Breaking changes:
-
-- [#198: Migrate to .NET 4.5.2][issue-198]
-
-Fixed issues:
-
+### Fixed
 - [#141: _ doesn't render inside \text][issue-141]
 - [#171: Make \lbrack and \lbrack commands for parentheses][issue-171]
 - [#172: NullReferenceException on some types of markup][pull-172]
 
-New features:
-
+### Added
 - [#100: Support for matrix commands][issue-100]
 
 ## [0.6.0] - 2018-11-19
-
-Fixed issues:
-
+### Fixed
 - [#60: Command arguments passed without braces][issue-60]
 - [#168: Poor exported PNG quality and text cutting][issue-168]
 
-New features:
-
+### Added
 - [#91: \overline command][issue-91]
 - [#145: Implemented the underline command][pull-145]
 
-Refactorings:
+### Changed
 
-- [#152: Move converters to namespace][pull-152]
+- (Refactoring) [#152: Move converters to namespace][pull-152]
 
 ## [0.5.0] - 2018-05-08
-
-Fixed issues:
-
+### Fixed
 - [#101: Fixed crash on empty square root][pull-101]
 - [#103: Fixed a crash if inserting a whitespace after a _ or ^ symbol][pull-103]
 - [#102: Fixed a crash when rendering unsupported characters like "Å"][pull-102]
@@ -82,35 +67,25 @@ Fixed issues:
 - [#129: Summation of two Cyrillic symbols][issue-129]
 - [#133: Fix issues with exceptions][pull-133]
 
-New features:
-
+### Added
 - [#92: Extract Renderer code to a single class/interface][issue-92]
 - [#115: Give a range of source string to Box][issue-115]
 - [#123: Add formula highlighting][pull-123]
-
-New documentation:
-
-- [#108: Dealing with XML][pull-108]
+- (Documentation) [#108: Dealing with XML][pull-108]
 
 ## [0.4.0] - 2017-09-11
-
-Fixed issues:
-
+### Fixed
 - [#80: force streamwriter to flush buffers][pull-80]
 - [#88: Bar alignment][issue-88]
 
-New features:
-
+### Added
 - [#79: SVG: Added support for curves and removed flattening of the geometry][pull-79]
 - [#82: Support UTF8][issue-82]
 - [#84: Add \text{} command][issue-84]
 
 ## [0.3.1] - 2017-03-18
-
-Bug fixes, improved render quality.
-
-Changes:
-
+### Changed
+- Bug fixes, improved render quality
 - [#53: Fix crash while parsing empty groups][pull-53]
 - [#54: Remove delimiter type constraint][pull-54]
 - [#58: Support for empty delimiters][pull-58] _(that means [#14: Extensible delimiters (\left and \right)][issue-14] is completely fixed)_
@@ -119,9 +94,7 @@ Changes:
 - [#74: Add support for scripts to delimiters][pull-74] (fix for [#62: Delimiters should support scripts][issue-62])
 
 ## [0.3.0] - 2017-02-24
-
-Fixed issues:
-
+### Fixed
 - [#14: Extensible delimiters (\left and \right)][issue-14] _(not completely fixed, but in a usable state already)_
 - [#15: Add formula control to the library][issue-15]
 - [#38: Cannot change text style][issue-38]
@@ -129,15 +102,12 @@ Fixed issues:
 - [#24: Integral sign displays incorrectly][issue-24]
 
 ## [0.2.0] - 2017-02-16
-
-Merged all the patches from the Launchpad repository (see #3 for a full list).
-The most interesting ones are:
+Merged all the patches from the Launchpad repository (see #3 for a full list). The most interesting ones are:
 
 - Fix for culture-dependent number parsing in `XmlUtils`
 - Addition of SVG rendering functionality
 
 ## [0.1.0] - 2017-02-11
-
 This was the initially published version. It consisted entirely of the original code from the Launchpad project site.
 
 [docs.colors]: docs/colors.md
