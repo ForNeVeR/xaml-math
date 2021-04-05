@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec/v2.0.0.html).
 
+## [0.10.0-alpha1] - 2021-04-05
+
+Automatic release test.
+
 ## [0.9.0] - 2020-07-31
 
 New features:

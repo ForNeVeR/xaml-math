@@ -5,7 +5,7 @@ on:
       - 'v*'
 
 jobs:
-  push:
+  nuget-push:
     runs-on: windows-2019
     env:
       DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
@@ -66,5 +66,5 @@ jobs:
           asset_path: ./src/WpfMath/bin/Release/WpfMath.${{ steps.version.outputs.version }}.snupkg
           asset_content_type: application/zip
 
-      - name: Push a package to NuGet
-        run: dotnet nuget push ./src/WpfMath/bin/Release/WpfMath.${{ steps.version.outputs.version }}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_TOKEN }}
+#      - name: Push a package to NuGet
+#        run: dotnet nuget push ./src/WpfMath/bin/Release/WpfMath.${{ steps.version.outputs.version }}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_TOKEN }}
