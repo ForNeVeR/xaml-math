@@ -3,9 +3,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec/v2.0.0.html).
 
-## [0.10.0-alpha1] - 2021-04-05
-
-Automatic release test.
+## [Unreleased]
 
 ## [0.9.0] - 2020-07-31
 
@@ -211,3 +209,4 @@ This was the initially published version. It consisted entirely of the original 
 [0.7.0]: https://github.com/ForNeVeR/wpf-math/compare/0.6.0...0.7.0
 [0.8.0]: https://github.com/ForNeVeR/wpf-math/compare/0.7.0...0.8.0
 [0.9.0]: https://github.com/ForNeVeR/wpf-math/compare/0.8.0...0.9.0
+[Unreleased]: https://github.com/ForNeVeR/wpf-math/compare/0.8.0...HEAD
