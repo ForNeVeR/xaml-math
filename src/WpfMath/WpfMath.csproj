@@ -19,17 +19,24 @@
         <PackageTags>wpf;latex;formula</PackageTags>
         <Description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the WPF framework.</Description>
         <Copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2020</Copyright>
+
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <WarningsAsErrors>nullable</WarningsAsErrors>
+
         <Nullable Condition="'$(TargetFramework)' == 'netcoreapp3.0'">enable</Nullable>
         <Nullable Condition="'$(TargetFramework)' == 'net452'">annotations</Nullable>
     </PropertyGroup>
+
     <ItemGroup>
         <EmbeddedResource Include="Data/*" />
         <Resource Include="Fonts\cmex10.ttf" />
         <Resource Include="Fonts\cmmi10.ttf" />
         <Resource Include="Fonts\cmr10.ttf" />
         <Resource Include="Fonts\cmsy10.ttf" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
     </ItemGroup>
 </Project>

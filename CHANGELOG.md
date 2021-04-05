@@ -1,7 +1,9 @@
-Release Notes
-=============
+# Changelog
+All notable changes to this project will be documented in this file.
 
-## 0.9.0 (2020-07-31)
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec/v2.0.0.html).
+
+## [0.9.0] - 2020-07-31
 
 New features:
 
@@ -18,7 +20,7 @@ Fixed issues:
 - [#253: Added equal padding to all sides when saving to bitmap][pull-253]
 - [#257: IndexOutOfRangeException throws when using \color][issue-257]
 
-## 0.8.0 (2020-01-03)
+## [0.8.0] - 2020-01-03
 
 New features:
 
@@ -34,7 +36,7 @@ Fixed issues:
 - [#203: `\colorbox{red}{}` crashes the parser][issue-203]
 - [#212: `\mathrm{}` shouldn't throw exn][pull-212]
 
-## 0.7.0 (2019-08-24)
+## [0.7.0] - 2019-08-24
 
 Breaking changes:
 
@@ -50,7 +52,7 @@ New features:
 
 - [#100: Support for matrix commands][issue-100]
 
-## 0.6.0 (2018-11-19)
+## [0.6.0] - 2018-11-19
 
 Fixed issues:
 
@@ -66,7 +68,7 @@ Refactorings:
 
 - [#152: Move converters to namespace][pull-152]
 
-## 0.5 (2018-05-08)
+## [0.5.0] - 2018-05-08
 
 Fixed issues:
 
@@ -88,7 +90,7 @@ New documentation:
 
 - [#108: Dealing with XML][pull-108]
 
-## 0.4 (2017-09-11)
+## [0.4.0] - 2017-09-11
 
 Fixed issues:
 
@@ -101,7 +103,7 @@ New features:
 - [#82: Support UTF8][issue-82]
 - [#84: Add \text{} command][issue-84]
 
-## 0.3.1 (2017-03-18)
+## [0.3.1] - 2017-03-18
 
 Bug fixes, improved render quality.
 
@@ -114,7 +116,7 @@ Changes:
 - [Adjust metrics for radical symbol][commit-14c303d]
 - [#74: Add support for scripts to delimiters][pull-74] (fix for [#62: Delimiters should support scripts][issue-62])
 
-## 0.3.0 (2017-02-24)
+## [0.3.0] - 2017-02-24
 
 Fixed issues:
 
@@ -124,7 +126,7 @@ Fixed issues:
 - [#32: Add mathematical functions][issue-32]
 - [#24: Integral sign displays incorrectly][issue-24]
 
-## 0.2.0 (2017-02-16)
+## [0.2.0] - 2017-02-16
 
 Merged all the patches from the Launchpad repository (see #3 for a full list).
 The most interesting ones are:
@@ -132,7 +134,7 @@ The most interesting ones are:
 - Fix for culture-dependent number parsing in `XmlUtils`
 - Addition of SVG rendering functionality
 
-## 0.1.0 (2017-02-11)
+## [0.1.0] - 2017-02-11
 
 This was the initially published version. It consisted entirely of the original code from the Launchpad project site.
 
@@ -194,3 +196,14 @@ This was the initially published version. It consisted entirely of the original 
 [pull-212]: https://github.com/ForNeVeR/wpf-math/pull/212
 [pull-252]: https://github.com/ForNeVeR/wpf-math/pull/252
 [pull-253]: https://github.com/ForNeVeR/wpf-math/pull/253
+
+[0.1.0]: https://github.com/ForNeVeR/wpf-math/releases/tag/0.1.0
+[0.2.0]: https://github.com/ForNeVeR/wpf-math/compare/0.1.0...0.2.0
+[0.3.0]: https://github.com/ForNeVeR/wpf-math/compare/0.2.0...0.3.0
+[0.3.1]: https://github.com/ForNeVeR/wpf-math/compare/0.3.0...0.3.1
+[0.4.0]: https://github.com/ForNeVeR/wpf-math/compare/0.3.1...0.4.0
+[0.5.0]: https://github.com/ForNeVeR/wpf-math/compare/0.4.0...0.5.0
+[0.6.0]: https://github.com/ForNeVeR/wpf-math/compare/0.5.0...0.6.0
+[0.7.0]: https://github.com/ForNeVeR/wpf-math/compare/0.6.0...0.7.0
+[0.8.0]: https://github.com/ForNeVeR/wpf-math/compare/0.7.0...0.8.0
+[0.9.0]: https://github.com/ForNeVeR/wpf-math/compare/0.8.0...0.9.0

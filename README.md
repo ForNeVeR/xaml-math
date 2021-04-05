@@ -85,6 +85,8 @@ You may also pass your own `IElementRenderer` implementation to `TexFormula.Rend
 Documentation
 -------------
 
+- [Changelog][docs.changelog]
+
 - [Color support in WPF-Math][docs-colors]
 - [Matrices and Matrix-Like Constructs][docs-matrices]
 - [How to improve blurred formulas][docs-blurred-text-issue]
@@ -92,6 +94,8 @@ Documentation
 - [How to prepare `DefaultTexFont.xml` from the font file][docs-prepare-font]
 
 - [Licensing history][docs-licensing-history]
+
+- [Maintainership][docs.maintainership]
 
 Build and Maintenance Instructions
 ----------------------------------
@@ -130,11 +134,13 @@ We're very grateful to JMathTeX authors for their work and allowing to redistrib
 - Nico Van Cleemput
 - Kurt Vermeulen
 
-[docs-colors]: docs/colors.md
-[docs-prepare-font]: docs/prepare-font.md
 [docs-blurred-text-issue]: docs/blurred-text-issue.md
+[docs-colors]: docs/colors.md
 [docs-licensing-history]: docs/licensing-history.md
 [docs-matrices]: docs/matrices.md
+[docs-prepare-font]: docs/prepare-font.md
+[docs.changelog]: ./CHANGELOG.md
+[docs.maintainership]: ./MAINTAINERSHIP.md
 [example]: src/WpfMath.Example/
 [fonts]: src/WpfMath/Fonts/
 [license]: LICENSE.md
