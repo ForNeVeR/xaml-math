@@ -182,4 +182,4 @@ This was the initially published version. It consisted entirely of the original 
 [0.7.0]: https://github.com/ForNeVeR/wpf-math/compare/0.6.0...0.7.0
 [0.8.0]: https://github.com/ForNeVeR/wpf-math/compare/0.7.0...0.8.0
 [0.9.0]: https://github.com/ForNeVeR/wpf-math/compare/0.8.0...0.9.0
-[Unreleased]: https://github.com/ForNeVeR/wpf-math/compare/0.8.0...HEAD
+[Unreleased]: https://github.com/ForNeVeR/wpf-math/compare/0.9.0...HEAD
