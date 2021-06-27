@@ -24,5 +24,15 @@ Push a NuGet Package Manually
 $ dotnet nuget push ./src/WpfMath/bin/Release/WpfMath.<VERSION>.nupkg --source https://api.nuget.org/v3/index.json --api-key <YOUR_API_KEY>
 ```
 
+Runtime Support Policy
+----------------------
+
+Generally, WPF-Math supports the .NET runtime (.NET Framework or modern .NET) versions that are supported by Microsoft (both basic and extended support are considered), provided that the support cost for the very old versions is reasonable. We will stop support for the currently supported runtime version either after it gets unsupported, or when we consider support cost unreasonable.
+
+Removing .NET runtime version from the list of compatible versions is a breaking change (as far as semantic versioning is concerned).
+
+For reference, see [the .NET support dates list][dotnet-support-dates].
+
 [changelog]: ./CHANGELOG.md
+[dotnet-support-dates]: https://fornever.me/en/posts/2021-04-10.net-support-dates.html
 [license]: ./LICENSE.md
