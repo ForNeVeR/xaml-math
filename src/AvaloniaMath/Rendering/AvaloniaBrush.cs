@@ -8,9 +8,6 @@ namespace AvaloniaMath.Rendering
     {
         private AvaloniaBrush(IBrush brush) : base(brush) {}
 
-        public static AvaloniaBrush FromBrush(Brush value) =>
-            new AvaloniaBrush(value);
-
         public static AvaloniaBrush FromColor(RgbaColor value) =>
             new AvaloniaBrush(
                 new SolidColorBrush(
