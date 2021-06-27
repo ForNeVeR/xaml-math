@@ -4,7 +4,7 @@ namespace WpfMath.Atoms
 {
     internal class NullAtom : Atom
     {
-        public NullAtom(SourceSpan source = null, TexAtomType type = TexAtomType.Ordinary) : base(source, type)
+        public NullAtom(SourceSpan? source = null, TexAtomType type = TexAtomType.Ordinary) : base(source, type)
         {
         }
 

@@ -15,7 +15,7 @@ namespace WpfMath.Atoms
             box.Shift = -(totalHeight / 2 - box.Height) - axis;
         }
 
-        public FencedAtom(SourceSpan source, Atom baseAtom, SymbolAtom leftDelimeter, SymbolAtom rightDelimeter)
+        public FencedAtom(SourceSpan? source, Atom? baseAtom, SymbolAtom? leftDelimeter, SymbolAtom? rightDelimeter)
             : base(source)
         {
             this.BaseAtom = baseAtom ?? new RowAtom(null);
@@ -25,9 +25,9 @@ namespace WpfMath.Atoms
 
         public Atom BaseAtom { get; }
 
-        private SymbolAtom LeftDelimeter { get; }
+        private SymbolAtom? LeftDelimeter { get; }
 
-        private SymbolAtom RightDelimeter { get; }
+        private SymbolAtom? RightDelimeter { get; }
 
         protected override Box CreateBoxCore(TexEnvironment environment)
         {

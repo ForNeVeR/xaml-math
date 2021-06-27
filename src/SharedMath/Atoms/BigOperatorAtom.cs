@@ -16,17 +16,17 @@ namespace WpfMath.Atoms
         }
 
         public BigOperatorAtom(
-            SourceSpan source,
-            Atom baseAtom,
-            Atom lowerLimitAtom,
-            Atom upperLimitAtom,
+            SourceSpan? source,
+            Atom? baseAtom,
+            Atom? lowerLimitAtom,
+            Atom? upperLimitAtom,
             bool? useVerticalLimits = null)
             : this(source, baseAtom, lowerLimitAtom, upperLimitAtom)
         {
             this.UseVerticalLimits = useVerticalLimits;
         }
 
-        public BigOperatorAtom(SourceSpan source, Atom baseAtom, Atom lowerLimitAtom, Atom upperLimitAtom)
+        public BigOperatorAtom(SourceSpan? source, Atom? baseAtom, Atom? lowerLimitAtom, Atom? upperLimitAtom)
             : base(source, TexAtomType.BigOperator)
         {
             this.BaseAtom = baseAtom;
@@ -36,12 +36,12 @@ namespace WpfMath.Atoms
         }
 
         // Atom representing big operator.
-        public Atom BaseAtom { get; }
+        public Atom? BaseAtom { get; }
 
         // Atoms representing lower and upper limits.
-        public Atom LowerLimitAtom { get; }
+        public Atom? LowerLimitAtom { get; }
 
-        public Atom UpperLimitAtom { get; }
+        public Atom? UpperLimitAtom { get; }
 
         // True if limits should be drawn over and under the base atom; false if they should be drawn as scripts.
         public bool? UseVerticalLimits { get; }
@@ -83,16 +83,15 @@ namespace WpfMath.Atoms
             }
 
             // Create boxes for upper and lower limits.
-            var upperLimitBox = this.UpperLimitAtom == null ? null : this.UpperLimitAtom.CreateBox(
+            Box? upperLimitBox = this.UpperLimitAtom == null ? null : this.UpperLimitAtom.CreateBox(
                 environment.GetSuperscriptStyle());
-            var lowerLimitBox = this.LowerLimitAtom == null ? null : this.LowerLimitAtom.CreateBox(
+            Box? lowerLimitBox = this.LowerLimitAtom == null ? null : this.LowerLimitAtom.CreateBox(
                 environment.GetSubscriptStyle());
 
             // Make all component boxes equally wide.
             var maxWidth = Math.Max(Math.Max(baseBox.Width, upperLimitBox == null ? 0 : upperLimitBox.Width),
                 lowerLimitBox == null ? 0 : lowerLimitBox.Width);
-            if (baseBox != null)
-                baseBox = ChangeWidth(baseBox, maxWidth);
+            baseBox = ChangeWidth(baseBox, maxWidth);
             if (upperLimitBox != null)
                 upperLimitBox = ChangeWidth(upperLimitBox, maxWidth);
             if (lowerLimitBox != null)
@@ -106,7 +105,7 @@ namespace WpfMath.Atoms
             if (this.UpperLimitAtom != null)
             {
                 resultBox.Add(new StrutBox(0, opSpacing5, 0, 0));
-                upperLimitBox.Shift = delta / 2;
+                upperLimitBox!.Shift = delta / 2;
                 resultBox.Add(upperLimitBox);
                 kern = Math.Max(texFont.GetBigOpSpacing1(style), texFont.GetBigOpSpacing3(style) -
                     upperLimitBox.Depth);
@@ -120,7 +119,7 @@ namespace WpfMath.Atoms
             if (this.LowerLimitAtom != null)
             {
                 resultBox.Add(new StrutBox(0, Math.Max(texFont.GetBigOpSpacing2(style), texFont.GetBigOpSpacing4(style) -
-                    lowerLimitBox.Height), 0, 0));
+                    lowerLimitBox!.Height), 0, 0));
                 lowerLimitBox.Shift = -delta / 2;
                 resultBox.Add(lowerLimitBox);
                 resultBox.Add(new StrutBox(0, opSpacing5, 0, 0));

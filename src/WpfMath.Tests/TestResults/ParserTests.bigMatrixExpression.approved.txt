@@ -1,10 +1,13 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "RowAtom",
     "PreviousAtom": null,
     "Elements": [
       {
+        "[AtomType]": "ScriptsAtom",
         "BaseAtom": {
+          "[AtomType]": "SymbolAtom",
           "IsDelimeter": false,
           "Name": "Gamma",
           "IsTextSymbol": false,
@@ -13,13 +16,16 @@
             "Start": 1,
             "End": 6,
             "Length": 5,
-            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+            "SourceName": "User input"
           }
         },
         "SubscriptAtom": {
+          "[AtomType]": "RowAtom",
           "PreviousAtom": null,
           "Elements": [
             {
+              "[AtomType]": "SymbolAtom",
               "IsDelimeter": false,
               "Name": "mu",
               "IsTextSymbol": false,
@@ -28,10 +34,12 @@
                 "Start": 9,
                 "End": 11,
                 "Length": 2,
-                "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                "SourceName": "User input"
               }
             },
             {
+              "[AtomType]": "SymbolAtom",
               "IsDelimeter": false,
               "Name": "rho",
               "IsTextSymbol": false,
@@ -40,7 +48,8 @@
                 "Start": 13,
                 "End": 16,
                 "Length": 3,
-                "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                "SourceName": "User input"
               }
             }
           ],
@@ -49,10 +58,12 @@
             "Start": 4,
             "End": 20,
             "Length": 16,
-            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+            "SourceName": "User input"
           }
         },
         "SuperscriptAtom": {
+          "[AtomType]": "SymbolAtom",
           "IsDelimeter": false,
           "Name": "sigma",
           "IsTextSymbol": false,
@@ -61,7 +72,8 @@
             "Start": 21,
             "End": 26,
             "Length": 5,
-            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+            "SourceName": "User input"
           }
         },
         "Type": "Ordinary",
@@ -69,10 +81,12 @@
           "Start": 6,
           "End": 27,
           "Length": 21,
-          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "SymbolAtom",
         "IsDelimeter": false,
         "Name": "equals",
         "IsTextSymbol": false,
@@ -81,75 +95,86 @@
           "Start": 27,
           "End": 28,
           "Length": 1,
-          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "FencedAtom",
         "BaseAtom": {
+          "[AtomType]": "MatrixAtom",
           "MatrixCells": [
             [
               {
+                "[AtomType]": "FencedAtom",
                 "BaseAtom": {
+                  "[AtomType]": "MatrixAtom",
                   "MatrixCells": [
                     [
                       {
+                        "[AtomType]": "CharAtom",
                         "Character": "0",
                         "TextStyle": null,
-                        "IsDefaultTextStyle": true,
                         "IsTextSymbol": false,
                         "Type": "Ordinary",
                         "Source": {
                           "Start": 47,
                           "End": 48,
                           "Length": 1,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       },
                       {
+                        "[AtomType]": "CharAtom",
                         "Character": "0",
                         "TextStyle": null,
-                        "IsDefaultTextStyle": true,
                         "IsTextSymbol": false,
                         "Type": "Ordinary",
                         "Source": {
                           "Start": 51,
                           "End": 52,
                           "Length": 1,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       },
                       {
+                        "[AtomType]": "CharAtom",
                         "Character": "0",
                         "TextStyle": null,
-                        "IsDefaultTextStyle": true,
                         "IsTextSymbol": false,
                         "Type": "Ordinary",
                         "Source": {
                           "Start": 55,
                           "End": 56,
                           "Length": 1,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       }
                     ],
                     [
                       {
+                        "[AtomType]": "CharAtom",
                         "Character": "0",
                         "TextStyle": null,
-                        "IsDefaultTextStyle": true,
                         "IsTextSymbol": false,
                         "Type": "Ordinary",
                         "Source": {
                           "Start": 60,
                           "End": 61,
                           "Length": 1,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       },
                       {
+                        "[AtomType]": "RowAtom",
                         "PreviousAtom": null,
                         "Elements": [
                           {
+                            "[AtomType]": "SymbolAtom",
                             "IsDelimeter": false,
                             "Name": "minus",
                             "IsTextSymbol": false,
@@ -158,20 +183,22 @@
                               "Start": 64,
                               "End": 65,
                               "Length": 1,
-                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                              "SourceName": "User input"
                             }
                           },
                           {
+                            "[AtomType]": "CharAtom",
                             "Character": "r",
                             "TextStyle": null,
-                            "IsDefaultTextStyle": true,
                             "IsTextSymbol": false,
                             "Type": "Ordinary",
                             "Source": {
                               "Start": 65,
                               "End": 66,
                               "Length": 1,
-                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                              "SourceName": "User input"
                             }
                           }
                         ],
@@ -180,54 +207,60 @@
                           "Start": 47,
                           "End": 67,
                           "Length": 20,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       },
                       {
+                        "[AtomType]": "CharAtom",
                         "Character": "0",
                         "TextStyle": null,
-                        "IsDefaultTextStyle": true,
                         "IsTextSymbol": false,
                         "Type": "Ordinary",
                         "Source": {
                           "Start": 69,
                           "End": 70,
                           "Length": 1,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       }
                     ],
                     [
                       {
+                        "[AtomType]": "CharAtom",
                         "Character": "0",
                         "TextStyle": null,
-                        "IsDefaultTextStyle": true,
                         "IsTextSymbol": false,
                         "Type": "Ordinary",
                         "Source": {
                           "Start": 74,
                           "End": 75,
                           "Length": 1,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       },
                       {
+                        "[AtomType]": "CharAtom",
                         "Character": "0",
                         "TextStyle": null,
-                        "IsDefaultTextStyle": true,
                         "IsTextSymbol": false,
                         "Type": "Ordinary",
                         "Source": {
                           "Start": 78,
                           "End": 79,
                           "Length": 1,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       },
                       {
+                        "[AtomType]": "RowAtom",
                         "PreviousAtom": null,
                         "Elements": [
                           {
+                            "[AtomType]": "SymbolAtom",
                             "IsDelimeter": false,
                             "Name": "minus",
                             "IsTextSymbol": false,
@@ -236,74 +269,81 @@
                               "Start": 82,
                               "End": 83,
                               "Length": 1,
-                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                              "SourceName": "User input"
                             }
                           },
                           {
+                            "[AtomType]": "CharAtom",
                             "Character": "r",
                             "TextStyle": null,
-                            "IsDefaultTextStyle": true,
                             "IsTextSymbol": false,
                             "Type": "Ordinary",
                             "Source": {
                               "Start": 83,
                               "End": 84,
                               "Length": 1,
-                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                              "SourceName": "User input"
                             }
                           },
                           {
+                            "[AtomType]": "CharAtom",
                             "Character": "s",
                             "TextStyle": null,
-                            "IsDefaultTextStyle": true,
                             "IsTextSymbol": false,
                             "Type": "Ordinary",
                             "Source": {
                               "Start": 85,
                               "End": 86,
                               "Length": 1,
-                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                              "SourceName": "User input"
                             }
                           },
                           {
+                            "[AtomType]": "CharAtom",
                             "Character": "i",
                             "TextStyle": null,
-                            "IsDefaultTextStyle": true,
                             "IsTextSymbol": false,
                             "Type": "Ordinary",
                             "Source": {
                               "Start": 86,
                               "End": 87,
                               "Length": 1,
-                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                              "SourceName": "User input"
                             }
                           },
                           {
+                            "[AtomType]": "ScriptsAtom",
                             "BaseAtom": {
+                              "[AtomType]": "CharAtom",
                               "Character": "n",
                               "TextStyle": null,
-                              "IsDefaultTextStyle": true,
                               "IsTextSymbol": false,
                               "Type": "Ordinary",
                               "Source": {
                                 "Start": 87,
                                 "End": 88,
                                 "Length": 1,
-                                "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                                "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                                "SourceName": "User input"
                               }
                             },
                             "SubscriptAtom": null,
                             "SuperscriptAtom": {
+                              "[AtomType]": "CharAtom",
                               "Character": "2",
                               "TextStyle": null,
-                              "IsDefaultTextStyle": true,
                               "IsTextSymbol": false,
                               "Type": "Ordinary",
                               "Source": {
                                 "Start": 89,
                                 "End": 90,
                                 "Length": 1,
-                                "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                                "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                                "SourceName": "User input"
                               }
                             },
                             "Type": "Ordinary",
@@ -311,10 +351,12 @@
                               "Start": 41,
                               "End": 43,
                               "Length": 2,
-                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                              "SourceName": "User input"
                             }
                           },
                           {
+                            "[AtomType]": "SymbolAtom",
                             "IsDelimeter": true,
                             "Name": "(",
                             "IsTextSymbol": false,
@@ -323,10 +365,12 @@
                               "Start": 90,
                               "End": 91,
                               "Length": 1,
-                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                              "SourceName": "User input"
                             }
                           },
                           {
+                            "[AtomType]": "SymbolAtom",
                             "IsDelimeter": false,
                             "Name": "theta",
                             "IsTextSymbol": false,
@@ -335,10 +379,12 @@
                               "Start": 92,
                               "End": 97,
                               "Length": 5,
-                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                              "SourceName": "User input"
                             }
                           },
                           {
+                            "[AtomType]": "SymbolAtom",
                             "IsDelimeter": true,
                             "Name": ")",
                             "IsTextSymbol": false,
@@ -347,7 +393,8 @@
                               "Start": 97,
                               "End": 98,
                               "Length": 1,
-                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                              "SourceName": "User input"
                             }
                           }
                         ],
@@ -356,7 +403,8 @@
                           "Start": 47,
                           "End": 98,
                           "Length": 51,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       }
                     ]
@@ -369,10 +417,12 @@
                     "Start": 39,
                     "End": 99,
                     "Length": 60,
-                    "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                    "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                    "SourceName": "User input"
                   }
                 },
                 "LeftDelimeter": {
+                  "[AtomType]": "SymbolAtom",
                   "IsDelimeter": true,
                   "Name": "lbrack",
                   "IsTextSymbol": false,
@@ -380,6 +430,7 @@
                   "Source": null
                 },
                 "RightDelimeter": {
+                  "[AtomType]": "SymbolAtom",
                   "IsDelimeter": true,
                   "Name": "rbrack",
                   "IsTextSymbol": false,
@@ -391,53 +442,60 @@
                   "Start": 39,
                   "End": 99,
                   "Length": 60,
-                  "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                  "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                  "SourceName": "User input"
                 }
               }
             ],
             [
               {
+                "[AtomType]": "FencedAtom",
                 "BaseAtom": {
+                  "[AtomType]": "MatrixAtom",
                   "MatrixCells": [
                     [
                       {
+                        "[AtomType]": "CharAtom",
                         "Character": "0",
                         "TextStyle": null,
-                        "IsDefaultTextStyle": true,
                         "IsTextSymbol": false,
                         "Type": "Ordinary",
                         "Source": {
                           "Start": 112,
                           "End": 113,
                           "Length": 1,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       },
                       {
+                        "[AtomType]": "FractionAtom",
                         "Numerator": {
+                          "[AtomType]": "CharAtom",
                           "Character": "1",
                           "TextStyle": null,
-                          "IsDefaultTextStyle": true,
                           "IsTextSymbol": false,
                           "Type": "Ordinary",
                           "Source": {
                             "Start": 122,
                             "End": 123,
                             "Length": 1,
-                            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                            "SourceName": "User input"
                           }
                         },
                         "Denominator": {
+                          "[AtomType]": "CharAtom",
                           "Character": "r",
                           "TextStyle": null,
-                          "IsDefaultTextStyle": true,
                           "IsTextSymbol": false,
                           "Type": "Ordinary",
                           "Source": {
                             "Start": 125,
                             "End": 126,
                             "Length": 1,
-                            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                            "SourceName": "User input"
                           }
                         },
                         "Type": "Inner",
@@ -445,49 +503,54 @@
                           "Start": 117,
                           "End": 127,
                           "Length": 10,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       },
                       {
+                        "[AtomType]": "CharAtom",
                         "Character": "0",
                         "TextStyle": null,
-                        "IsDefaultTextStyle": true,
                         "IsTextSymbol": false,
                         "Type": "Ordinary",
                         "Source": {
                           "Start": 130,
                           "End": 131,
                           "Length": 1,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       }
                     ],
                     [
                       {
+                        "[AtomType]": "FractionAtom",
                         "Numerator": {
+                          "[AtomType]": "CharAtom",
                           "Character": "1",
                           "TextStyle": null,
-                          "IsDefaultTextStyle": true,
                           "IsTextSymbol": false,
                           "Type": "Ordinary",
                           "Source": {
                             "Start": 141,
                             "End": 142,
                             "Length": 1,
-                            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                            "SourceName": "User input"
                           }
                         },
                         "Denominator": {
+                          "[AtomType]": "CharAtom",
                           "Character": "r",
                           "TextStyle": null,
-                          "IsDefaultTextStyle": true,
                           "IsTextSymbol": false,
                           "Type": "Ordinary",
                           "Source": {
                             "Start": 144,
                             "End": 145,
                             "Length": 1,
-                            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                            "SourceName": "User input"
                           }
                         },
                         "Type": "Inner",
@@ -495,67 +558,74 @@
                           "Start": 136,
                           "End": 146,
                           "Length": 10,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       },
                       {
+                        "[AtomType]": "CharAtom",
                         "Character": "0",
                         "TextStyle": null,
-                        "IsDefaultTextStyle": true,
                         "IsTextSymbol": false,
                         "Type": "Ordinary",
                         "Source": {
                           "Start": 149,
                           "End": 150,
                           "Length": 1,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       },
                       {
+                        "[AtomType]": "CharAtom",
                         "Character": "0",
                         "TextStyle": null,
-                        "IsDefaultTextStyle": true,
                         "IsTextSymbol": false,
                         "Type": "Ordinary",
                         "Source": {
                           "Start": 153,
                           "End": 154,
                           "Length": 1,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       }
                     ],
                     [
                       {
+                        "[AtomType]": "CharAtom",
                         "Character": "0",
                         "TextStyle": null,
-                        "IsDefaultTextStyle": true,
                         "IsTextSymbol": false,
                         "Type": "Ordinary",
                         "Source": {
                           "Start": 158,
                           "End": 159,
                           "Length": 1,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       },
                       {
+                        "[AtomType]": "CharAtom",
                         "Character": "0",
                         "TextStyle": null,
-                        "IsDefaultTextStyle": true,
                         "IsTextSymbol": false,
                         "Type": "Ordinary",
                         "Source": {
                           "Start": 162,
                           "End": 163,
                           "Length": 1,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       },
                       {
+                        "[AtomType]": "RowAtom",
                         "PreviousAtom": null,
                         "Elements": [
                           {
+                            "[AtomType]": "SymbolAtom",
                             "IsDelimeter": false,
                             "Name": "minus",
                             "IsTextSymbol": false,
@@ -564,50 +634,56 @@
                               "Start": 166,
                               "End": 167,
                               "Length": 1,
-                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                              "SourceName": "User input"
                             }
                           },
                           {
+                            "[AtomType]": "BigOperatorAtom",
                             "BaseAtom": {
+                              "[AtomType]": "RowAtom",
                               "PreviousAtom": null,
                               "Elements": [
                                 {
+                                  "[AtomType]": "CharAtom",
                                   "Character": "s",
                                   "TextStyle": "mathrm",
-                                  "IsDefaultTextStyle": false,
                                   "IsTextSymbol": false,
                                   "Type": "Ordinary",
                                   "Source": {
                                     "Start": 8,
                                     "End": 9,
                                     "Length": 1,
-                                    "Source": "\\mathrm{sin}"
+                                    "Source": "\\mathrm{sin}",
+                                    "SourceName": "Predefined formula fragment"
                                   }
                                 },
                                 {
+                                  "[AtomType]": "CharAtom",
                                   "Character": "i",
                                   "TextStyle": "mathrm",
-                                  "IsDefaultTextStyle": false,
                                   "IsTextSymbol": false,
                                   "Type": "Ordinary",
                                   "Source": {
                                     "Start": 9,
                                     "End": 10,
                                     "Length": 1,
-                                    "Source": "\\mathrm{sin}"
+                                    "Source": "\\mathrm{sin}",
+                                    "SourceName": "Predefined formula fragment"
                                   }
                                 },
                                 {
+                                  "[AtomType]": "CharAtom",
                                   "Character": "n",
                                   "TextStyle": "mathrm",
-                                  "IsDefaultTextStyle": false,
                                   "IsTextSymbol": false,
                                   "Type": "Ordinary",
                                   "Source": {
                                     "Start": 10,
                                     "End": 11,
                                     "Length": 1,
-                                    "Source": "\\mathrm{sin}"
+                                    "Source": "\\mathrm{sin}",
+                                    "SourceName": "Predefined formula fragment"
                                   }
                                 }
                               ],
@@ -616,7 +692,8 @@
                                 "Start": 8,
                                 "End": 11,
                                 "Length": 3,
-                                "Source": "\\mathrm{sin}"
+                                "Source": "\\mathrm{sin}",
+                                "SourceName": "Predefined formula fragment"
                               }
                             },
                             "LowerLimitAtom": null,
@@ -627,10 +704,12 @@
                               "Start": 8,
                               "End": 11,
                               "Length": 3,
-                              "Source": "\\mathrm{sin}"
+                              "Source": "\\mathrm{sin}",
+                              "SourceName": "Predefined formula fragment"
                             }
                           },
                           {
+                            "[AtomType]": "SymbolAtom",
                             "IsDelimeter": true,
                             "Name": "(",
                             "IsTextSymbol": false,
@@ -639,10 +718,12 @@
                               "Start": 171,
                               "End": 172,
                               "Length": 1,
-                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                              "SourceName": "User input"
                             }
                           },
                           {
+                            "[AtomType]": "SymbolAtom",
                             "IsDelimeter": false,
                             "Name": "theta",
                             "IsTextSymbol": false,
@@ -651,10 +732,12 @@
                               "Start": 173,
                               "End": 178,
                               "Length": 5,
-                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                              "SourceName": "User input"
                             }
                           },
                           {
+                            "[AtomType]": "SymbolAtom",
                             "IsDelimeter": true,
                             "Name": ")",
                             "IsTextSymbol": false,
@@ -663,50 +746,56 @@
                               "Start": 178,
                               "End": 179,
                               "Length": 1,
-                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                              "SourceName": "User input"
                             }
                           },
                           {
+                            "[AtomType]": "BigOperatorAtom",
                             "BaseAtom": {
+                              "[AtomType]": "RowAtom",
                               "PreviousAtom": null,
                               "Elements": [
                                 {
+                                  "[AtomType]": "CharAtom",
                                   "Character": "c",
                                   "TextStyle": "mathrm",
-                                  "IsDefaultTextStyle": false,
                                   "IsTextSymbol": false,
                                   "Type": "Ordinary",
                                   "Source": {
                                     "Start": 8,
                                     "End": 9,
                                     "Length": 1,
-                                    "Source": "\\mathrm{cos}"
+                                    "Source": "\\mathrm{cos}",
+                                    "SourceName": "Predefined formula fragment"
                                   }
                                 },
                                 {
+                                  "[AtomType]": "CharAtom",
                                   "Character": "o",
                                   "TextStyle": "mathrm",
-                                  "IsDefaultTextStyle": false,
                                   "IsTextSymbol": false,
                                   "Type": "Ordinary",
                                   "Source": {
                                     "Start": 9,
                                     "End": 10,
                                     "Length": 1,
-                                    "Source": "\\mathrm{cos}"
+                                    "Source": "\\mathrm{cos}",
+                                    "SourceName": "Predefined formula fragment"
                                   }
                                 },
                                 {
+                                  "[AtomType]": "CharAtom",
                                   "Character": "s",
                                   "TextStyle": "mathrm",
-                                  "IsDefaultTextStyle": false,
                                   "IsTextSymbol": false,
                                   "Type": "Ordinary",
                                   "Source": {
                                     "Start": 10,
                                     "End": 11,
                                     "Length": 1,
-                                    "Source": "\\mathrm{cos}"
+                                    "Source": "\\mathrm{cos}",
+                                    "SourceName": "Predefined formula fragment"
                                   }
                                 }
                               ],
@@ -715,7 +804,8 @@
                                 "Start": 8,
                                 "End": 11,
                                 "Length": 3,
-                                "Source": "\\mathrm{cos}"
+                                "Source": "\\mathrm{cos}",
+                                "SourceName": "Predefined formula fragment"
                               }
                             },
                             "LowerLimitAtom": null,
@@ -726,10 +816,12 @@
                               "Start": 8,
                               "End": 11,
                               "Length": 3,
-                              "Source": "\\mathrm{cos}"
+                              "Source": "\\mathrm{cos}",
+                              "SourceName": "Predefined formula fragment"
                             }
                           },
                           {
+                            "[AtomType]": "SymbolAtom",
                             "IsDelimeter": true,
                             "Name": "(",
                             "IsTextSymbol": false,
@@ -738,10 +830,12 @@
                               "Start": 184,
                               "End": 185,
                               "Length": 1,
-                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                              "SourceName": "User input"
                             }
                           },
                           {
+                            "[AtomType]": "SymbolAtom",
                             "IsDelimeter": false,
                             "Name": "theta",
                             "IsTextSymbol": false,
@@ -750,10 +844,12 @@
                               "Start": 186,
                               "End": 191,
                               "Length": 5,
-                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                              "SourceName": "User input"
                             }
                           },
                           {
+                            "[AtomType]": "SymbolAtom",
                             "IsDelimeter": true,
                             "Name": ")",
                             "IsTextSymbol": false,
@@ -762,7 +858,8 @@
                               "Start": 191,
                               "End": 192,
                               "Length": 1,
-                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                              "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                              "SourceName": "User input"
                             }
                           }
                         ],
@@ -771,7 +868,8 @@
                           "Start": 112,
                           "End": 192,
                           "Length": 80,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       }
                     ]
@@ -784,10 +882,12 @@
                     "Start": 104,
                     "End": 193,
                     "Length": 89,
-                    "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                    "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                    "SourceName": "User input"
                   }
                 },
                 "LeftDelimeter": {
+                  "[AtomType]": "SymbolAtom",
                   "IsDelimeter": true,
                   "Name": "lbrack",
                   "IsTextSymbol": false,
@@ -795,6 +895,7 @@
                   "Source": null
                 },
                 "RightDelimeter": {
+                  "[AtomType]": "SymbolAtom",
                   "IsDelimeter": true,
                   "Name": "rbrack",
                   "IsTextSymbol": false,
@@ -806,66 +907,74 @@
                   "Start": 104,
                   "End": 193,
                   "Length": 89,
-                  "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                  "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                  "SourceName": "User input"
                 }
               }
             ],
             [
               {
+                "[AtomType]": "FencedAtom",
                 "BaseAtom": {
+                  "[AtomType]": "MatrixAtom",
                   "MatrixCells": [
                     [
                       {
+                        "[AtomType]": "CharAtom",
                         "Character": "0",
                         "TextStyle": null,
-                        "IsDefaultTextStyle": true,
                         "IsTextSymbol": false,
                         "Type": "Ordinary",
                         "Source": {
                           "Start": 206,
                           "End": 207,
                           "Length": 1,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       },
                       {
+                        "[AtomType]": "CharAtom",
                         "Character": "0",
                         "TextStyle": null,
-                        "IsDefaultTextStyle": true,
                         "IsTextSymbol": false,
                         "Type": "Ordinary",
                         "Source": {
                           "Start": 210,
                           "End": 211,
                           "Length": 1,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       },
                       {
+                        "[AtomType]": "FractionAtom",
                         "Numerator": {
+                          "[AtomType]": "CharAtom",
                           "Character": "1",
                           "TextStyle": null,
-                          "IsDefaultTextStyle": true,
                           "IsTextSymbol": false,
                           "Type": "Ordinary",
                           "Source": {
                             "Start": 220,
                             "End": 221,
                             "Length": 1,
-                            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                            "SourceName": "User input"
                           }
                         },
                         "Denominator": {
+                          "[AtomType]": "CharAtom",
                           "Character": "r",
                           "TextStyle": null,
-                          "IsDefaultTextStyle": true,
                           "IsTextSymbol": false,
                           "Type": "Ordinary",
                           "Source": {
                             "Start": 223,
                             "End": 224,
                             "Length": 1,
-                            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                            "SourceName": "User input"
                           }
                         },
                         "Type": "Inner",
@@ -873,95 +982,106 @@
                           "Start": 215,
                           "End": 225,
                           "Length": 10,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       }
                     ],
                     [
                       {
+                        "[AtomType]": "CharAtom",
                         "Character": "0",
                         "TextStyle": null,
-                        "IsDefaultTextStyle": true,
                         "IsTextSymbol": false,
                         "Type": "Ordinary",
                         "Source": {
                           "Start": 229,
                           "End": 230,
                           "Length": 1,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       },
                       {
+                        "[AtomType]": "CharAtom",
                         "Character": "0",
                         "TextStyle": null,
-                        "IsDefaultTextStyle": true,
                         "IsTextSymbol": false,
                         "Type": "Ordinary",
                         "Source": {
                           "Start": 233,
                           "End": 234,
                           "Length": 1,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       },
                       {
+                        "[AtomType]": "FractionAtom",
                         "Numerator": {
+                          "[AtomType]": "CharAtom",
                           "Character": "1",
                           "TextStyle": null,
-                          "IsDefaultTextStyle": true,
                           "IsTextSymbol": false,
                           "Type": "Ordinary",
                           "Source": {
                             "Start": 243,
                             "End": 244,
                             "Length": 1,
-                            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                            "SourceName": "User input"
                           }
                         },
                         "Denominator": {
+                          "[AtomType]": "RowAtom",
                           "PreviousAtom": null,
                           "Elements": [
                             {
+                              "[AtomType]": "BigOperatorAtom",
                               "BaseAtom": {
+                                "[AtomType]": "RowAtom",
                                 "PreviousAtom": null,
                                 "Elements": [
                                   {
+                                    "[AtomType]": "CharAtom",
                                     "Character": "t",
                                     "TextStyle": "mathrm",
-                                    "IsDefaultTextStyle": false,
                                     "IsTextSymbol": false,
                                     "Type": "Ordinary",
                                     "Source": {
                                       "Start": 8,
                                       "End": 9,
                                       "Length": 1,
-                                      "Source": "\\mathrm{tan}"
+                                      "Source": "\\mathrm{tan}",
+                                      "SourceName": "Predefined formula fragment"
                                     }
                                   },
                                   {
+                                    "[AtomType]": "CharAtom",
                                     "Character": "a",
                                     "TextStyle": "mathrm",
-                                    "IsDefaultTextStyle": false,
                                     "IsTextSymbol": false,
                                     "Type": "Ordinary",
                                     "Source": {
                                       "Start": 9,
                                       "End": 10,
                                       "Length": 1,
-                                      "Source": "\\mathrm{tan}"
+                                      "Source": "\\mathrm{tan}",
+                                      "SourceName": "Predefined formula fragment"
                                     }
                                   },
                                   {
+                                    "[AtomType]": "CharAtom",
                                     "Character": "n",
                                     "TextStyle": "mathrm",
-                                    "IsDefaultTextStyle": false,
                                     "IsTextSymbol": false,
                                     "Type": "Ordinary",
                                     "Source": {
                                       "Start": 10,
                                       "End": 11,
                                       "Length": 1,
-                                      "Source": "\\mathrm{tan}"
+                                      "Source": "\\mathrm{tan}",
+                                      "SourceName": "Predefined formula fragment"
                                     }
                                   }
                                 ],
@@ -970,7 +1090,8 @@
                                   "Start": 8,
                                   "End": 11,
                                   "Length": 3,
-                                  "Source": "\\mathrm{tan}"
+                                  "Source": "\\mathrm{tan}",
+                                  "SourceName": "Predefined formula fragment"
                                 }
                               },
                               "LowerLimitAtom": null,
@@ -981,10 +1102,12 @@
                                 "Start": 8,
                                 "End": 11,
                                 "Length": 3,
-                                "Source": "\\mathrm{tan}"
+                                "Source": "\\mathrm{tan}",
+                                "SourceName": "Predefined formula fragment"
                               }
                             },
                             {
+                              "[AtomType]": "SymbolAtom",
                               "IsDelimeter": true,
                               "Name": "(",
                               "IsTextSymbol": false,
@@ -993,10 +1116,12 @@
                                 "Start": 250,
                                 "End": 251,
                                 "Length": 1,
-                                "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                                "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                                "SourceName": "User input"
                               }
                             },
                             {
+                              "[AtomType]": "SymbolAtom",
                               "IsDelimeter": false,
                               "Name": "theta",
                               "IsTextSymbol": false,
@@ -1005,10 +1130,12 @@
                                 "Start": 252,
                                 "End": 257,
                                 "Length": 5,
-                                "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                                "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                                "SourceName": "User input"
                               }
                             },
                             {
+                              "[AtomType]": "SymbolAtom",
                               "IsDelimeter": true,
                               "Name": ")",
                               "IsTextSymbol": false,
@@ -1017,7 +1144,8 @@
                                 "Start": 257,
                                 "End": 258,
                                 "Length": 1,
-                                "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                                "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                                "SourceName": "User input"
                               }
                             }
                           ],
@@ -1026,7 +1154,8 @@
                             "Start": 246,
                             "End": 258,
                             "Length": 12,
-                            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                            "SourceName": "User input"
                           }
                         },
                         "Type": "Inner",
@@ -1034,36 +1163,40 @@
                           "Start": 238,
                           "End": 259,
                           "Length": 21,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       }
                     ],
                     [
                       {
+                        "[AtomType]": "FractionAtom",
                         "Numerator": {
+                          "[AtomType]": "CharAtom",
                           "Character": "1",
                           "TextStyle": null,
-                          "IsDefaultTextStyle": true,
                           "IsTextSymbol": false,
                           "Type": "Ordinary",
                           "Source": {
                             "Start": 269,
                             "End": 270,
                             "Length": 1,
-                            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                            "SourceName": "User input"
                           }
                         },
                         "Denominator": {
+                          "[AtomType]": "CharAtom",
                           "Character": "r",
                           "TextStyle": null,
-                          "IsDefaultTextStyle": true,
                           "IsTextSymbol": false,
                           "Type": "Ordinary",
                           "Source": {
                             "Start": 272,
                             "End": 273,
                             "Length": 1,
-                            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                            "SourceName": "User input"
                           }
                         },
                         "Type": "Inner",
@@ -1071,67 +1204,76 @@
                           "Start": 264,
                           "End": 274,
                           "Length": 10,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       },
                       {
+                        "[AtomType]": "FractionAtom",
                         "Numerator": {
+                          "[AtomType]": "CharAtom",
                           "Character": "1",
                           "TextStyle": null,
-                          "IsDefaultTextStyle": true,
                           "IsTextSymbol": false,
                           "Type": "Ordinary",
                           "Source": {
                             "Start": 283,
                             "End": 284,
                             "Length": 1,
-                            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                            "SourceName": "User input"
                           }
                         },
                         "Denominator": {
+                          "[AtomType]": "RowAtom",
                           "PreviousAtom": null,
                           "Elements": [
                             {
+                              "[AtomType]": "BigOperatorAtom",
                               "BaseAtom": {
+                                "[AtomType]": "RowAtom",
                                 "PreviousAtom": null,
                                 "Elements": [
                                   {
+                                    "[AtomType]": "CharAtom",
                                     "Character": "t",
                                     "TextStyle": "mathrm",
-                                    "IsDefaultTextStyle": false,
                                     "IsTextSymbol": false,
                                     "Type": "Ordinary",
                                     "Source": {
                                       "Start": 8,
                                       "End": 9,
                                       "Length": 1,
-                                      "Source": "\\mathrm{tan}"
+                                      "Source": "\\mathrm{tan}",
+                                      "SourceName": "Predefined formula fragment"
                                     }
                                   },
                                   {
+                                    "[AtomType]": "CharAtom",
                                     "Character": "a",
                                     "TextStyle": "mathrm",
-                                    "IsDefaultTextStyle": false,
                                     "IsTextSymbol": false,
                                     "Type": "Ordinary",
                                     "Source": {
                                       "Start": 9,
                                       "End": 10,
                                       "Length": 1,
-                                      "Source": "\\mathrm{tan}"
+                                      "Source": "\\mathrm{tan}",
+                                      "SourceName": "Predefined formula fragment"
                                     }
                                   },
                                   {
+                                    "[AtomType]": "CharAtom",
                                     "Character": "n",
                                     "TextStyle": "mathrm",
-                                    "IsDefaultTextStyle": false,
                                     "IsTextSymbol": false,
                                     "Type": "Ordinary",
                                     "Source": {
                                       "Start": 10,
                                       "End": 11,
                                       "Length": 1,
-                                      "Source": "\\mathrm{tan}"
+                                      "Source": "\\mathrm{tan}",
+                                      "SourceName": "Predefined formula fragment"
                                     }
                                   }
                                 ],
@@ -1140,7 +1282,8 @@
                                   "Start": 8,
                                   "End": 11,
                                   "Length": 3,
-                                  "Source": "\\mathrm{tan}"
+                                  "Source": "\\mathrm{tan}",
+                                  "SourceName": "Predefined formula fragment"
                                 }
                               },
                               "LowerLimitAtom": null,
@@ -1151,10 +1294,12 @@
                                 "Start": 8,
                                 "End": 11,
                                 "Length": 3,
-                                "Source": "\\mathrm{tan}"
+                                "Source": "\\mathrm{tan}",
+                                "SourceName": "Predefined formula fragment"
                               }
                             },
                             {
+                              "[AtomType]": "SymbolAtom",
                               "IsDelimeter": true,
                               "Name": "(",
                               "IsTextSymbol": false,
@@ -1163,10 +1308,12 @@
                                 "Start": 290,
                                 "End": 291,
                                 "Length": 1,
-                                "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                                "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                                "SourceName": "User input"
                               }
                             },
                             {
+                              "[AtomType]": "SymbolAtom",
                               "IsDelimeter": false,
                               "Name": "theta",
                               "IsTextSymbol": false,
@@ -1175,10 +1322,12 @@
                                 "Start": 292,
                                 "End": 297,
                                 "Length": 5,
-                                "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                                "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                                "SourceName": "User input"
                               }
                             },
                             {
+                              "[AtomType]": "SymbolAtom",
                               "IsDelimeter": true,
                               "Name": ")",
                               "IsTextSymbol": false,
@@ -1187,7 +1336,8 @@
                                 "Start": 297,
                                 "End": 298,
                                 "Length": 1,
-                                "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                                "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                                "SourceName": "User input"
                               }
                             }
                           ],
@@ -1196,7 +1346,8 @@
                             "Start": 286,
                             "End": 298,
                             "Length": 12,
-                            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                            "SourceName": "User input"
                           }
                         },
                         "Type": "Inner",
@@ -1204,20 +1355,22 @@
                           "Start": 278,
                           "End": 299,
                           "Length": 21,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       },
                       {
+                        "[AtomType]": "CharAtom",
                         "Character": "0",
                         "TextStyle": null,
-                        "IsDefaultTextStyle": true,
                         "IsTextSymbol": false,
                         "Type": "Ordinary",
                         "Source": {
                           "Start": 302,
                           "End": 303,
                           "Length": 1,
-                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                          "SourceName": "User input"
                         }
                       }
                     ]
@@ -1230,10 +1383,12 @@
                     "Start": 198,
                     "End": 305,
                     "Length": 107,
-                    "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                    "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                    "SourceName": "User input"
                   }
                 },
                 "LeftDelimeter": {
+                  "[AtomType]": "SymbolAtom",
                   "IsDelimeter": true,
                   "Name": "lbrack",
                   "IsTextSymbol": false,
@@ -1241,6 +1396,7 @@
                   "Source": null
                 },
                 "RightDelimeter": {
+                  "[AtomType]": "SymbolAtom",
                   "IsDelimeter": true,
                   "Name": "rbrack",
                   "IsTextSymbol": false,
@@ -1252,7 +1408,8 @@
                   "Start": 198,
                   "End": 305,
                   "Length": 107,
-                  "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+                  "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+                  "SourceName": "User input"
                 }
               }
             ]
@@ -1265,10 +1422,12 @@
             "Start": 30,
             "End": 306,
             "Length": 276,
-            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+            "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+            "SourceName": "User input"
           }
         },
         "LeftDelimeter": {
+          "[AtomType]": "SymbolAtom",
           "IsDelimeter": true,
           "Name": "lbrack",
           "IsTextSymbol": false,
@@ -1276,6 +1435,7 @@
           "Source": null
         },
         "RightDelimeter": {
+          "[AtomType]": "SymbolAtom",
           "IsDelimeter": true,
           "Name": "rbrack",
           "IsTextSymbol": false,
@@ -1287,7 +1447,8 @@
           "Start": 30,
           "End": 306,
           "Length": 276,
-          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+          "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+          "SourceName": "User input"
         }
       }
     ],
@@ -1296,7 +1457,15 @@
       "Start": 29,
       "End": 335,
       "Length": 306,
-      "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}"
+      "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 306,
+    "Length": 306,
+    "Source": "\\Gamma_{\\mu \\rho} ^{\\sigma}= \\pmatrix{\\pmatrix{0 & 0 & 0 \\\\ 0 & -r & 0 \\\\ 0 & 0 & -r sin^2(\\theta)} \\\\ \\pmatrix{0 & \\frac{1}{r} & 0 \\\\ \\frac{1}{r} & 0 & 0 \\\\ 0 & 0 & -\\sin(\\theta) \\cos(\\theta)} \\\\ \\pmatrix{0 & 0 & \\frac{1}{r} \\\\ 0 & 0 & \\frac{1}{\\tan(\\theta)} \\\\ \\frac{1}{r} & \\frac{1}{\\tan(\\theta)} & 0 }}",
+    "SourceName": "User input"
   }
 }

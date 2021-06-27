@@ -111,7 +111,8 @@ for a text style is not defined (e.g. "numbers" and "small" in "mathcal") -->
     <SymbolMapping name="widetilde" ch="101" fontId="2"/>
 
     <!-- delimiters that can change size -->
-
+    <SymbolMapping name="{" ch="102" fontId="3"/>
+    <SymbolMapping name="}" ch="103" fontId="3"/>
     <SymbolMapping name="lbrace" ch="102" fontId="3"/>
     <SymbolMapping name="rbrace" ch="103" fontId="3"/>
     <SymbolMapping name="(" ch="40" fontId="1"/>

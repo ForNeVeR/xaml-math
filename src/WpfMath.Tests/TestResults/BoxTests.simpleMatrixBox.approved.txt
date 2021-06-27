@@ -90,7 +90,8 @@
                     "Start": 9,
                     "End": 10,
                     "Length": 1,
-                    "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}"
+                    "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}",
+                    "SourceName": "User input"
                   },
                   "Foreground": null,
                   "Background": null,
@@ -186,7 +187,8 @@
                     "Start": 13,
                     "End": 14,
                     "Length": 1,
-                    "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}"
+                    "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}",
+                    "SourceName": "User input"
                   },
                   "Foreground": null,
                   "Background": null,
@@ -296,7 +298,8 @@
                     "Start": 18,
                     "End": 19,
                     "Length": 1,
-                    "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}"
+                    "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}",
+                    "SourceName": "User input"
                   },
                   "Foreground": null,
                   "Background": null,
@@ -392,7 +395,8 @@
                     "Start": 22,
                     "End": 23,
                     "Length": 1,
-                    "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}"
+                    "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}",
+                    "SourceName": "User input"
                   },
                   "Foreground": null,
                   "Background": null,
@@ -459,7 +463,8 @@
         "Start": 1,
         "End": 24,
         "Length": 23,
-        "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}"
+        "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}",
+        "SourceName": "User input"
       },
       "Foreground": null,
       "Background": null,
@@ -516,7 +521,8 @@
     "Start": 1,
     "End": 24,
     "Length": 23,
-    "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}"
+    "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}",
+    "SourceName": "User input"
   },
   "Foreground": null,
   "Background": null,

@@ -1,20 +1,23 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "StyledAtom",
     "RowAtom": {
+      "[AtomType]": "RowAtom",
       "PreviousAtom": null,
       "Elements": [
         {
+          "[AtomType]": "CharAtom",
           "Character": "x",
           "TextStyle": null,
-          "IsDefaultTextStyle": true,
           "IsTextSymbol": false,
           "Type": "Ordinary",
           "Source": {
             "Start": 20,
             "End": 21,
             "Length": 1,
-            "Source": "\\color [gray] {0.5} x"
+            "Source": "\\color [gray] {0.5} x",
+            "SourceName": "User input"
           }
         }
       ],
@@ -23,7 +26,8 @@
         "Start": 1,
         "End": 21,
         "Length": 20,
-        "Source": "\\color [gray] {0.5} x"
+        "Source": "\\color [gray] {0.5} x",
+        "SourceName": "User input"
       }
     },
     "Background": null,
@@ -33,7 +37,15 @@
       "Start": 1,
       "End": 21,
       "Length": 20,
-      "Source": "\\color [gray] {0.5} x"
+      "Source": "\\color [gray] {0.5} x",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 21,
+    "Length": 21,
+    "Source": "\\color [gray] {0.5} x",
+    "SourceName": "User input"
   }
 }

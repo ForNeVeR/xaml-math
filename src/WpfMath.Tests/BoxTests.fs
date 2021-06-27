@@ -10,12 +10,12 @@ open WpfMath.Atoms
 open WpfMath.Boxes
 open WpfMath.Tests.ApprovalTestUtils
 
-let private parse text =
+let private parse(text: string) =
     let parser = TexFormulaParser()
     let result = parser.Parse text
     result.RootAtom
 
-let private src (string: string) (start: int) (len: int) = SourceSpan(string, start, len)
+let private src (string: string) (start: int) (len: int) = SourceSpan("User input", string, start, len)
 
 let private environment =
     let mathFont = DefaultTexFont 20.0

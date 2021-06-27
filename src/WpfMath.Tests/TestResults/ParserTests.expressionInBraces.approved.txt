@@ -1,23 +1,27 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "FencedAtom",
     "BaseAtom": {
+      "[AtomType]": "RowAtom",
       "PreviousAtom": null,
       "Elements": [
         {
+          "[AtomType]": "CharAtom",
           "Character": "2",
           "TextStyle": null,
-          "IsDefaultTextStyle": true,
           "IsTextSymbol": false,
           "Type": "Ordinary",
           "Source": {
             "Start": 6,
             "End": 7,
             "Length": 1,
-            "Source": "\\left(2+2\\right)"
+            "Source": "\\left(2+2\\right)",
+            "SourceName": "User input"
           }
         },
         {
+          "[AtomType]": "SymbolAtom",
           "IsDelimeter": false,
           "Name": "plus",
           "IsTextSymbol": false,
@@ -26,20 +30,22 @@
             "Start": 7,
             "End": 8,
             "Length": 1,
-            "Source": "\\left(2+2\\right)"
+            "Source": "\\left(2+2\\right)",
+            "SourceName": "User input"
           }
         },
         {
+          "[AtomType]": "CharAtom",
           "Character": "2",
           "TextStyle": null,
-          "IsDefaultTextStyle": true,
           "IsTextSymbol": false,
           "Type": "Ordinary",
           "Source": {
             "Start": 8,
             "End": 9,
             "Length": 1,
-            "Source": "\\left(2+2\\right)"
+            "Source": "\\left(2+2\\right)",
+            "SourceName": "User input"
           }
         }
       ],
@@ -48,10 +54,12 @@
         "Start": 9,
         "End": 25,
         "Length": 16,
-        "Source": "\\left(2+2\\right)"
+        "Source": "\\left(2+2\\right)",
+        "SourceName": "User input"
       }
     },
     "LeftDelimeter": {
+      "[AtomType]": "SymbolAtom",
       "IsDelimeter": true,
       "Name": "(",
       "IsTextSymbol": false,
@@ -60,10 +68,12 @@
         "Start": 1,
         "End": 6,
         "Length": 5,
-        "Source": "\\left(2+2\\right)"
+        "Source": "\\left(2+2\\right)",
+        "SourceName": "User input"
       }
     },
     "RightDelimeter": {
+      "[AtomType]": "SymbolAtom",
       "IsDelimeter": true,
       "Name": ")",
       "IsTextSymbol": false,
@@ -72,7 +82,8 @@
         "Start": 10,
         "End": 16,
         "Length": 6,
-        "Source": "\\left(2+2\\right)"
+        "Source": "\\left(2+2\\right)",
+        "SourceName": "User input"
       }
     },
     "Type": "Ordinary",
@@ -80,7 +91,15 @@
       "Start": 1,
       "End": 16,
       "Length": 15,
-      "Source": "\\left(2+2\\right)"
+      "Source": "\\left(2+2\\right)",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 16,
+    "Length": 16,
+    "Source": "\\left(2+2\\right)",
+    "SourceName": "User input"
   }
 }

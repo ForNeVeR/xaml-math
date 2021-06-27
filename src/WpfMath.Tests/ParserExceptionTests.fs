@@ -53,6 +53,11 @@ let ``"\binom{}" should throw a TexParseException``(): unit =
     Assert.Equal("An element is missing", ex.Message)
 
 [<Fact>]
+let ``"\color" should throw a TexParseException``(): unit =
+    let ex = assertParseThrows<TexParseException> @"\color"
+    Assert.Equal("An element is missing", ex.Message)
+
+[<Fact>]
 let ``"\color{red}" should throw a TexParseException``(): unit =
     let ex = assertParseThrows<TexParseException> @"\color{red}"
     Assert.Equal("An element is missing", ex.Message)

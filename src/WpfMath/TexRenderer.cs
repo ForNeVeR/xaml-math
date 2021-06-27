@@ -82,8 +82,8 @@ namespace WpfMath
             this.RenderWithPositiveCoordinates(visual, x, y);
 
             var bounds = visual.ContentBounds;
-            var width = (int)Math.Ceiling(bounds.Right * dpi / DefaultDpi);
-            var height = (int)Math.Ceiling(bounds.Bottom * dpi / DefaultDpi);
+            var width = (int)Math.Ceiling((bounds.Right + x) * dpi / DefaultDpi);
+            var height = (int)Math.Ceiling((bounds.Bottom + y) * dpi / DefaultDpi);
             var bitmap = new RenderTargetBitmap(width, height, dpi, dpi, PixelFormats.Default);
             bitmap.Render(visual);
 

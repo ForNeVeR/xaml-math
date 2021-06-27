@@ -1,362 +1,393 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "RowAtom",
     "PreviousAtom": null,
     "Elements": [
       {
+        "[AtomType]": "CharAtom",
         "Character": "\\",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 6,
           "End": 7,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "a",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 7,
           "End": 8,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "l",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 8,
           "End": 9,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "p",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 9,
           "End": 10,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "h",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 10,
           "End": 11,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "a",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 11,
           "End": 12,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "SpaceAtom",
         "Type": "Ordinary",
         "Source": {
           "Start": 12,
           "End": 13,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "\\",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 13,
           "End": 14,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "b",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 14,
           "End": 15,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "e",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 15,
           "End": 16,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "t",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 16,
           "End": 17,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "a",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 17,
           "End": 18,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "SpaceAtom",
         "Type": "Ordinary",
         "Source": {
           "Start": 18,
           "End": 19,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "\\",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 19,
           "End": 20,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "u",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 20,
           "End": 21,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "n",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 21,
           "End": 22,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "k",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 22,
           "End": 23,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "n",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 23,
           "End": 24,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "o",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 24,
           "End": 25,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "w",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 25,
           "End": 26,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "n",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 26,
           "End": 27,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "c",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 27,
           "End": 28,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "o",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 28,
           "End": 29,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "m",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 29,
           "End": 30,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "m",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 30,
           "End": 31,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "a",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 31,
           "End": 32,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "n",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 32,
           "End": 33,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "d",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 33,
           "End": 34,
           "Length": 1,
-          "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+          "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+          "SourceName": "User input"
         }
       }
     ],
@@ -365,7 +396,15 @@
       "Start": 6,
       "End": 34,
       "Length": 28,
-      "Source": "\\text{\\alpha \\beta \\unknowncommand}"
+      "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 35,
+    "Length": 35,
+    "Source": "\\text{\\alpha \\beta \\unknowncommand}",
+    "SourceName": "User input"
   }
 }

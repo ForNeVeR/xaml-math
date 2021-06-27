@@ -13,7 +13,7 @@ namespace WpfMath
 
         private const double scale = 0.55;
 
-        public Radical(SourceSpan source, Atom baseAtom, Atom degreeAtom = null)
+        public Radical(SourceSpan? source, Atom baseAtom, Atom? degreeAtom = null)
             : base(source)
         {
             this.BaseAtom = baseAtom;
@@ -22,7 +22,7 @@ namespace WpfMath
 
         public Atom BaseAtom { get; }
 
-        public Atom DegreeAtom { get; }
+        public Atom? DegreeAtom { get; }
 
         protected override Box CreateBoxCore(TexEnvironment environment)
         {

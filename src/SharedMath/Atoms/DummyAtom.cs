@@ -18,7 +18,7 @@ namespace WpfMath.Atoms
         {
         }
 
-        public Atom WithPreviousAtom(DummyAtom previousAtom)
+        public Atom WithPreviousAtom(DummyAtom? previousAtom)
         {
             if (this.Atom is IRow row)
             {

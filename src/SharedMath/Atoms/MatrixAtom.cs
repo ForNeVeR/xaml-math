@@ -13,20 +13,20 @@ namespace WpfMath.Atoms
         public const double DefaultPadding = 0.35;
 
         public MatrixAtom(
-            SourceSpan source,
-            IEnumerable<IEnumerable<Atom>> cells,
+            SourceSpan? source,
+            IEnumerable<IEnumerable<Atom?>> cells,
             MatrixCellAlignment matrixCellAlignment,
             double verticalPadding = DefaultPadding,
             double horizontalPadding = DefaultPadding) : base(source)
         {
-            MatrixCells = new ReadOnlyCollection<ReadOnlyCollection<Atom>>(
-                cells.Select(row => new ReadOnlyCollection<Atom>(row.ToList())).ToList());
+            MatrixCells = new ReadOnlyCollection<ReadOnlyCollection<Atom?>>(
+                cells.Select(row => new ReadOnlyCollection<Atom?>(row.ToList())).ToList());
             MatrixCellAlignment = matrixCellAlignment;
             VerticalPadding = verticalPadding;
             HorizontalPadding = horizontalPadding;
         }
 
-        public ReadOnlyCollection<ReadOnlyCollection<Atom>> MatrixCells { get; }
+        public ReadOnlyCollection<ReadOnlyCollection<Atom?>> MatrixCells { get; }
 
         public double VerticalPadding { get; }
 
@@ -45,7 +45,7 @@ namespace WpfMath.Atoms
             return ApplyCellPaddings(environment, cells, columnCount, matrixCellGaps);
         }
 
-        private IEnumerable<Box> CreateRowCellBoxes(TexEnvironment environment, ReadOnlyCollection<Atom> row) =>
+        private IEnumerable<Box> CreateRowCellBoxes(TexEnvironment environment, ReadOnlyCollection<Atom?> row) =>
             row.Select(atom => atom == null ? StrutBox.Empty : atom.CreateBox(environment));
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace WpfMath.Atoms
                 return new Tuple<Box, Box>(topBox, bottomBox);
             }
 
-            Tuple<Box, Box> GetLeftRightPadding(int i, int j)
+            Tuple<Box?, Box> GetLeftRightPadding(int i, int j)
             {
                 var value = matrixCellGaps[i][j].Horizontal;
                 var leftPadding = MatrixCellAlignment == MatrixCellAlignment.Left ? 0.0 : value;
@@ -151,7 +151,7 @@ namespace WpfMath.Atoms
                     ? null
                     : new StrutBox(HorizontalPadding / 2 + leftPadding, 0.0, 0.0, 0.0);
                 var rightBox = new StrutBox(HorizontalPadding / 2 + rightPadding, 0.0, 0.0, 0.0);
-                return new Tuple<Box, Box>(leftBox, rightBox);
+                return new Tuple<Box?, Box>(leftBox, rightBox);
             }
         }
 

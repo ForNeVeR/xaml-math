@@ -1,10 +1,8 @@
 /.idea/
 /.vs/
-/packages/
 
 bin/
 obj/
 
-*.DotSettings
 *.received.txt
 *.user

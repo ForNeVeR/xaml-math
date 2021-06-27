@@ -24,7 +24,7 @@ namespace WpfMath
         public ExtensionChar GetExtension(CharInfo charInfo, TexStyle style) =>
             throw MethodNotSupported(nameof(GetExtension));
 
-        public CharFont GetLigature(CharFont leftChar, CharFont rightChar) => null;
+        public CharFont? GetLigature(CharFont leftChar, CharFont rightChar) => null;
 
         public CharInfo GetNextLargerCharInfo(CharInfo charInfo, TexStyle style) =>
             throw MethodNotSupported(nameof(GetNextLargerCharInfo));
@@ -120,7 +120,11 @@ namespace WpfMath
                 FlowDirection.LeftToRight,
                 typeface,
                 1.0,
-                Brushes.Black);
+                Brushes.Black
+#if !NET452
+                , 1
+#endif
+                );
             return new TexFontMetrics(formattedText.Width, formattedText.Height, 0.0, formattedText.Width, 1.0);
         }
 

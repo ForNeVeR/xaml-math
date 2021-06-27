@@ -17,9 +17,13 @@ let ``TexRenderer.RenderToBitmap should create an image of proper size with offs
     let parser = TexFormulaParser()
     let formula = parser.Parse "2+2=2"
     let renderer = formula.GetRenderer(TexStyle.Display, 20.0, "Arial")
-    let bitmap = renderer.RenderToBitmap(50.0, 50.0)
-    Assert.Equal(132, bitmap.PixelWidth)
-    Assert.Equal(66, bitmap.PixelHeight)
+    let margin = 50
+    let bitmap = renderer.RenderToBitmap(float(margin), float(margin))
+
+    let formulaWidth = 82
+    let formulaHeight = 16
+    Assert.Equal(formulaWidth + (margin * 2), bitmap.PixelWidth)
+    Assert.Equal(formulaHeight + (margin * 2), bitmap.PixelHeight)
 
 [<Fact>]
 let ``TexRenderer.RenderToBitmap should work with different DPI``() =

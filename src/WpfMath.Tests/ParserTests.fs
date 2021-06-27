@@ -29,6 +29,10 @@ let emptyDelimiters(left : string, right : string, isLeftEmpty : bool, isRightEm
     <| sprintf @"\left%sa\right%s" left right
 
 [<Fact>]
+let subScripts() =
+    verifyParseResult @"\hat{a}_{b\sigma}"
+
+[<Fact>]
 let unmatchedDelimiters() =
     verifyParseResult @"\left)a\right|"
 
@@ -87,6 +91,10 @@ let lim() =
 [<Fact>]
 let limInCurlyBraces() =
     verifyParseResult @"{\lim} x"
+
+[<Fact>]
+let limsup() =
+    verifyParseResult @"\limsup"
 
 [<Fact>]
 let sin() =
@@ -155,7 +163,8 @@ let overline(text : string) : unit =
 [<InlineData("1123");
   InlineData("{1}123");
   InlineData(" 1123");
-  InlineData(" {1}123")>]
+  InlineData(" {1}123");
+  InlineData("{}")>]
 let sqrt(text : string) : unit =
     verifyParseResultScenario
     <| processSpecialChars text

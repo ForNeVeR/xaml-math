@@ -21,7 +21,7 @@ namespace WpfMath.Boxes
         {
         }
 
-        protected Box(IPlatformBrush foreground, IPlatformBrush background)
+        protected Box(IPlatformBrush? foreground, IPlatformBrush? background)
         {
             this.children = new List<Box>();
             this.childrenReadOnly = new ReadOnlyCollection<Box>(this.children);
@@ -34,19 +34,19 @@ namespace WpfMath.Boxes
             get { return this.childrenReadOnly; }
         }
 
-        public SourceSpan Source
+        public SourceSpan? Source
         {
             get;
             set;
         }
 
-        public IPlatformBrush Foreground
+        public IPlatformBrush? Foreground
         {
             get;
             set;
         }
 
-        public IPlatformBrush Background
+        public IPlatformBrush? Background
         {
             get;
             set;

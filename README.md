@@ -1,4 +1,4 @@
-WPF-Math [![Build status][badge-appveyor]][appveyor]
+WPF-Math [![NuGet][badge-nuget]][nuget]
 ========
 
 WPF-Math: [![NuGet][badge-nuget-wpf]][nuget-wpf]
@@ -90,6 +90,8 @@ You may also pass your own `IElementRenderer` implementation to `TexFormula.Rend
 Documentation
 -------------
 
+- [Changelog][docs.changelog]
+
 - [Color support in WPF-Math][docs-colors]
 - [Matrices and Matrix-Like Constructs][docs-matrices]
 - [How to improve blurred formulas][docs-blurred-text-issue]
@@ -98,10 +100,12 @@ Documentation
 
 - [Licensing history][docs-licensing-history]
 
+- [Maintainership][docs.maintainership]
+
 Build and Maintenance Instructions
 ----------------------------------
 
-Build the project using .NET Core SDK 3.1. WPF-Math requires C# 8 and F# 4.7 support. Here's the build and test script:
+Build the project using [.NET Core SDK 3.1][dotnet-core-sdk]. WPF-Math requires C# 8 and F# 4.7 support. Here's the build and test script:
 
 ```console
 $ dotnet build --configuration Release
@@ -135,17 +139,19 @@ We're very grateful to JMathTeX authors for their work and allowing to redistrib
 - Nico Van Cleemput
 - Kurt Vermeulen
 
-[docs-colors]: docs/colors.md
-[docs-prepare-font]: docs/prepare-font.md
 [docs-blurred-text-issue]: docs/blurred-text-issue.md
+[docs-colors]: docs/colors.md
 [docs-licensing-history]: docs/licensing-history.md
 [docs-matrices]: docs/matrices.md
-[example]: WpfMath.Example/
+[docs-prepare-font]: docs/prepare-font.md
+[docs.changelog]: ./CHANGELOG.md
+[docs.maintainership]: ./MAINTAINERSHIP.md
+[example]: src/WpfMath.Example/
 [fonts]: src/WpfMath/Fonts/
 [license]: LICENSE.md
 
 [alex-regueiro]: https://github.com/alexreg
-[appveyor]: https://ci.appveyor.com/project/ForNeVeR/wpf-math/branch/master
+[dotnet-core-sdk]: https://dotnet.microsoft.com/download
 [avalonia]: https://avaloniaui.net/
 [github]: https://github.com/ForNeVeR/wpf-math
 [jmathtex]: http://jmathtex.sourceforge.net/
@@ -155,6 +161,5 @@ We're very grateful to JMathTeX authors for their work and allowing to redistrib
 [nuget-avalonia]: https://www.nuget.org/packages/AvaloniaMath/
 [nuget-wpf]: https://www.nuget.org/packages/WpfMath/
 
-[badge-appveyor]: https://ci.appveyor.com/api/projects/status/b26m3rpfcgb91gdg/branch/master?svg=true
 [badge-nuget-avalonia]: https://img.shields.io/nuget/v/AvaloniaMath.svg
 [badge-nuget-wpf]: https://img.shields.io/nuget/v/WpfMath.svg

@@ -4,7 +4,8 @@
     "Start": 1,
     "End": 13,
     "Length": 12,
-    "Source": "\\color{red}{}"
+    "Source": "\\color{red}{}",
+    "SourceName": "User input"
   },
   "Foreground": "#FFED1B23",
   "Background": null,

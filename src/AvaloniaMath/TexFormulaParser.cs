@@ -146,16 +146,13 @@ namespace WpfMath
             PredefinedColorParser.Instance)
         {}
 
-        public TexFormula Parse(string value, string textStyle = null)
+        public TexFormula Parse(string value, string? textStyle = null) =>
+            Parse(new SourceSpan("User input", value, 0, value.Length), textStyle);
+
+        public TexFormula Parse(SourceSpan value, string textStyle = null)
         {
-            Debug.WriteLine(value);
             var position = 0;
-            return Parse(
-                new SourceSpan(value, 0, value.Length),
-                ref position,
-                false,
-                textStyle,
-                DefaultCommandEnvironment.Instance);
+            return Parse(value, ref position, false, textStyle, DefaultCommandEnvironment.Instance);
         }
 
         internal TexFormula Parse(SourceSpan value, string textStyle, ICommandEnvironment environment)
@@ -612,7 +609,7 @@ namespace WpfMath
             var initialSrcPosition = position;
             var commandSpan = ReadEscapeSequence(value, ref position).Segment(1);
             var command = commandSpan.ToString();
-            var formulaSource = new SourceSpan(value.Source, initialSrcPosition, commandSpan.End);
+            var formulaSource = new SourceSpan(value.SourceName, value.Source, initialSrcPosition, commandSpan.End);
 
             SymbolAtom symbolAtom = null;
             if (SymbolAtom.TryGetAtom(commandSpan, out symbolAtom))
@@ -690,6 +687,7 @@ namespace WpfMath
                             environment);
 
                     var source = new SourceSpan(
+                        formulaSource.SourceName,
                         formulaSource.Source,
                         formulaSource.Start,
                         commandAtom.Source?.End ?? position);
@@ -729,7 +727,7 @@ namespace WpfMath
                 return atom;
 
             // Check for prime marks.
-            var primesRowAtom = new RowAtom(new SourceSpan(value.Source, position, 0));
+            var primesRowAtom = new RowAtom(new SourceSpan(value.SourceName, value.Source, position, 0));
             int i = position;
             while (i < value.Length)
             {
@@ -744,8 +742,9 @@ namespace WpfMath
             }
 
             var primesRowSource = new SourceSpan(
+                value.SourceName,
                 value.Source,
-                primesRowAtom.Source.Start,
+                primesRowAtom.Source!.Start,
                 position - primesRowAtom.Source.Start);
             primesRowAtom = primesRowAtom.WithSource(primesRowSource);
 
@@ -811,7 +810,10 @@ namespace WpfMath
             }
             else
             {
-                var source = new SourceSpan(value.Source, initialPosition, position - initialPosition);
+                var source = new SourceSpan(value.SourceName,
+                    value.Source,
+                    initialPosition,
+                    position - initialPosition);
                 return new ScriptsAtom(source, atom, subscriptAtom, superscriptAtom);
             }
         }

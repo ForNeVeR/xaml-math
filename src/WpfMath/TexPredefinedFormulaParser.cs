@@ -6,26 +6,24 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Media;
 using System.Xml.Linq;
+using WpfMath.Parsers.PredefinedFormulae;
 
 namespace WpfMath
 {
     // Parses definitions of predefined formulas from XML file.
     internal class TexPredefinedFormulaParser
     {
-        public static readonly string resourceName = TexUtilities.ResourcesDataDirectory + "PredefinedTexFormulas.xml";
+        private static readonly string resourceName = TexUtilities.ResourcesDataDirectory + "PredefinedTexFormulas.xml";
 
-        private static IDictionary<string, Type> typeMappings;
-        private static IDictionary<string, ArgumentValueParser> argValueParsers;
-        private static IDictionary<string, ActionParser> actionParsers;
-        private static TexFormulaParser formulaParser;
+        private static readonly IDictionary<string, Type> typeMappings;
+        private static readonly IDictionary<string, IArgumentValueParser> argValueParsers;
+        private static readonly IDictionary<string, IActionParser> actionParsers;
 
         static TexPredefinedFormulaParser()
         {
             typeMappings = new Dictionary<string, Type>();
-            argValueParsers = new Dictionary<string, ArgumentValueParser>();
-            actionParsers = new Dictionary<string, ActionParser>();
-            formulaParser = new TexFormulaParser();
-            var sharedCacheFormulas = new Dictionary<string, TexFormula>();
+            argValueParsers = new Dictionary<string, IArgumentValueParser>();
+            actionParsers = new Dictionary<string, IActionParser>();
 
             typeMappings.Add("Formula", typeof(TexFormula));
             typeMappings.Add("string", typeof(string));
@@ -37,19 +35,19 @@ namespace WpfMath
             typeMappings.Add("Unit", typeof(TexUnit));
             typeMappings.Add("AtomType", typeof(TexAtomType));
 
-            actionParsers.Add("CreateFormula", new CreateTeXFormulaParser(sharedCacheFormulas));
-            actionParsers.Add("MethodInvocation", new MethodInvocationParser(sharedCacheFormulas));
-            actionParsers.Add("Return", new ReturnParser(sharedCacheFormulas));
+            actionParsers.Add("CreateFormula", new CreateTeXFormulaParser());
+            actionParsers.Add("MethodInvocation", new MethodInvocationParser());
+            actionParsers.Add("Return", new ReturnParser());
 
-            argValueParsers.Add("Formula", new TeXFormulaValueParser(sharedCacheFormulas));
-            argValueParsers.Add("string", new StringValueParser(sharedCacheFormulas));
-            argValueParsers.Add("double", new DoubleValueParser(sharedCacheFormulas));
-            argValueParsers.Add("int", new IntValueParser(sharedCacheFormulas));
-            argValueParsers.Add("bool", new BooleanValueParser(sharedCacheFormulas));
-            argValueParsers.Add("char", new CharValueParser(sharedCacheFormulas));
-            argValueParsers.Add("Color", new ColorConstantValueParser(sharedCacheFormulas));
-            argValueParsers.Add("Unit", new EnumParser(typeof(TexUnit), sharedCacheFormulas));
-            argValueParsers.Add("AtomType", new EnumParser(typeof(TexAtomType), sharedCacheFormulas));
+            argValueParsers.Add("Formula", new TeXFormulaValueParser());
+            argValueParsers.Add("string", new StringValueParser());
+            argValueParsers.Add("double", new DoubleValueParser());
+            argValueParsers.Add("int", new IntValueParser());
+            argValueParsers.Add("bool", new BooleanValueParser());
+            argValueParsers.Add("char", new CharValueParser());
+            argValueParsers.Add("Color", new ColorConstantValueParser());
+            argValueParsers.Add("Unit", new EnumParser(typeof(TexUnit)));
+            argValueParsers.Add("AtomType", new EnumParser(typeof(TexAtomType)));
         }
 
         private static Type[] GetArgumentTypes(IEnumerable<XElement> args)
@@ -66,16 +64,16 @@ namespace WpfMath
             return result.ToArray();
         }
 
-        private static object[] GetArgumentValues(IEnumerable<XElement> args)
+        private static object?[] GetArgumentValues(IEnumerable<XElement> args, PredefinedFormulaContext context)
         {
-            var result = new List<object>();
+            var result = new List<object?>();
             foreach (var curArg in args)
             {
                 var typeName = curArg.AttributeValue("type");
                 var value = curArg.AttributeValue("value");
 
-                var parser = ((ArgumentValueParser)argValueParsers[typeName]);
-                result.Add(parser.Parse(value, typeName));
+                var parser = argValueParsers[typeName];
+                result.Add(parser.Parse(value, context));
             }
 
             return result.ToArray();
@@ -85,11 +83,11 @@ namespace WpfMath
 
         public TexPredefinedFormulaParser()
         {
-            var doc = XDocument.Load(new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)));
+            var doc = XDocument.Load(new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)!));
             this.rootElement = doc.Root;
         }
 
-        public void Parse(IDictionary<string, Func<SourceSpan, TexFormula>> predefinedTeXFormulas)
+        public void Parse(IDictionary<string, Func<SourceSpan, TexFormula?>> predefinedTeXFormulas)
         {
             var rootEnabled = rootElement.AttributeBooleanValue("enabled", true);
             if (rootEnabled)
@@ -106,238 +104,170 @@ namespace WpfMath
             }
         }
 
-        public TexFormula ParseFormula(SourceSpan source, XElement formulaElement)
+        private TexFormula? ParseFormula(SourceSpan source, XElement formulaElement)
         {
+            var context = new PredefinedFormulaContext();
             foreach (var element in formulaElement.Elements())
             {
                 var parser = actionParsers[element.Name.ToString()];
                 if (parser == null)
                     continue;
 
-                parser.Parse(source, element);
+                parser.Parse(source, element, context);
                 if (parser is ReturnParser)
                     return ((ReturnParser)parser).Result;
             }
             return null;
         }
 
-        public class MethodInvocationParser : ActionParser
+        private class MethodInvocationParser : IActionParser
         {
-            public MethodInvocationParser(IDictionary<string, TexFormula> sharedCacheFormulas)
-                : base(sharedCacheFormulas)
-            {
-            }
-
-            public override void Parse(SourceSpan source, XElement element)
+            public void Parse(SourceSpan source, XElement element, PredefinedFormulaContext context)
             {
                 var methodName = element.AttributeValue("name");
                 var objectName = element.AttributeValue("formula");
                 var args = element.Elements("Argument");
 
-                var formula = this.SharedCacheFormulas[objectName];
+                var formula = context[objectName];
                 Debug.Assert(formula != null);
 
                 var argTypes = GetArgumentTypes(args);
-                var argValues = GetArgumentValues(args);
+                var argValues = GetArgumentValues(args, context);
 
                 var helper = new TexFormulaHelper(formula, source);
-                typeof(TexFormulaHelper).GetMethod(methodName, argTypes).Invoke(helper, argValues);
+                var methodInvocation = typeof(TexFormulaHelper).GetMethod(methodName, argTypes)!;
+
+                methodInvocation.Invoke(helper, argValues);
             }
         }
 
-        public class CreateTeXFormulaParser : ActionParser
+        private class CreateTeXFormulaParser : IActionParser
         {
-            public CreateTeXFormulaParser(IDictionary<string, TexFormula> sharedCacheFormulas)
-                : base(sharedCacheFormulas)
-            {
-            }
-
-            public override void Parse(SourceSpan source, XElement element)
+            public void Parse(SourceSpan source, XElement element, PredefinedFormulaContext context)
             {
                 var name = element.AttributeValue("name");
                 var args = element.Elements("Argument");
 
-                var argTypes = GetArgumentTypes(args);
-                var argValues = GetArgumentValues(args);
+                var argValues = GetArgumentValues(args, context);
 
                 Debug.Assert(argValues.Length == 1 || argValues.Length == 0);
-                TexFormula formula = null;
+                TexFormula formula;
                 if (argValues.Length == 1)
                 {
                     var parser = new TexFormulaParser();
-                    formula = parser.Parse((string)argValues[0]);
+                    formula = parser.Parse((string)argValues[0]!); // Nullable TODO: This might need null checking
                 }
                 else
                 {
-                    formula = new TexFormula();
+                    formula = new TexFormula { Source = source };
                 }
 
-                this.SharedCacheFormulas.Add(name, formula);
+                context.AddFormula(name, formula);
             }
         }
 
-        public class ReturnParser : ActionParser
+        private class ReturnParser : IActionParser
         {
-            public ReturnParser(IDictionary<string, TexFormula> sharedCacheFormulas)
-                : base(sharedCacheFormulas)
-            {
-            }
-
-            public TexFormula Result
+            public TexFormula? Result
             {
                 get;
                 private set;
             }
 
-            public override void Parse(SourceSpan source, XElement element)
+            public void Parse(SourceSpan source, XElement element, PredefinedFormulaContext context)
             {
                 var name = element.AttributeValue("name");
-                var result = this.SharedCacheFormulas[name];
+                var result = context[name];
                 Debug.Assert(result != null);
                 this.Result = result;
-                this.SharedCacheFormulas.Clear();
             }
         }
 
-        public class DoubleValueParser : ArgumentValueParser
+        private class DoubleValueParser : IArgumentValueParser
         {
-            public DoubleValueParser(IDictionary<string, TexFormula> sharedCacheFormulas)
-                : base(sharedCacheFormulas)
-            {
-            }
-
-            public override object Parse(string value, string type)
+            public object Parse(string value, PredefinedFormulaContext context)
             {
                 return double.Parse(value, CultureInfo.InvariantCulture);
             }
         }
 
-        public class CharValueParser : ArgumentValueParser
+        private class CharValueParser : IArgumentValueParser
         {
-            public CharValueParser(IDictionary<string, TexFormula> sharedCacheFormulas)
-                : base(sharedCacheFormulas)
-            {
-            }
-
-            public override object Parse(string value, string type)
+            public object Parse(string value, PredefinedFormulaContext context)
             {
                 Debug.Assert(value.Length == 1);
                 return value[0];
             }
         }
 
-        public class BooleanValueParser : ArgumentValueParser
+        private class BooleanValueParser : IArgumentValueParser
         {
-            public BooleanValueParser(IDictionary<string, TexFormula> sharedCacheFormulas)
-                : base(sharedCacheFormulas)
-            {
-            }
-
-            public override object Parse(string value, string type)
+            public object Parse(string value, PredefinedFormulaContext context)
             {
                 return bool.Parse(value);
             }
         }
 
-        public class IntValueParser : ArgumentValueParser
+        private class IntValueParser : IArgumentValueParser
         {
-            public IntValueParser(IDictionary<string, TexFormula> sharedCacheFormulas)
-                : base(sharedCacheFormulas)
-            {
-            }
-
-            public override object Parse(string value, string type)
+            public object Parse(string value, PredefinedFormulaContext context)
             {
                 return int.Parse(value, CultureInfo.InvariantCulture);
             }
         }
 
-        public class StringValueParser : ArgumentValueParser
+        private class StringValueParser : IArgumentValueParser
         {
-            public StringValueParser(IDictionary<string, TexFormula> sharedCacheFormulas)
-                : base(sharedCacheFormulas)
-            {
-            }
-
-            public override object Parse(string value, string type)
+            public object Parse(string value, PredefinedFormulaContext context)
             {
                 return value;
             }
         }
 
-        public class TeXFormulaValueParser : ArgumentValueParser
+        private class TeXFormulaValueParser : IArgumentValueParser
         {
-            public TeXFormulaValueParser(IDictionary<string, TexFormula> sharedCacheFormulas)
-                : base(sharedCacheFormulas)
-            {
-            }
-
-            public override object Parse(string value, string type)
+            public object? Parse(string value, PredefinedFormulaContext context)
             {
                 if (value == null)
                     return null;
 
-                var formula = this.SharedCacheFormulas[value];
+                var formula = context[value];
                 Debug.Assert(formula != null);
-                return (TexFormula)formula;
+                return formula;
             }
         }
 
-        public class ColorConstantValueParser : ArgumentValueParser
+        private class ColorConstantValueParser : IArgumentValueParser
         {
-            public ColorConstantValueParser(IDictionary<string, TexFormula> sharedCacheFormulas)
-                : base(sharedCacheFormulas)
+            public object? Parse(string value, PredefinedFormulaContext context)
             {
-            }
-
-            public override object Parse(string value, string type)
-            {
-                return typeof(Color).GetField(value).GetValue(null);
+                return typeof(Color).GetField(value)!.GetValue(null);
             }
         }
 
-        public class EnumParser : ArgumentValueParser
+        private class EnumParser : IArgumentValueParser
         {
             private Type enumType;
 
-            public EnumParser(Type enumType, IDictionary<string, TexFormula> sharedCacheFormulas)
-                : base(sharedCacheFormulas)
+            public EnumParser(Type enumType)
             {
                 this.enumType = enumType;
             }
 
-            public override object Parse(string value, string type)
+            public object Parse(string value, PredefinedFormulaContext context)
             {
                 return Enum.Parse(this.enumType, value);
             }
         }
 
-        public abstract class ActionParser : ParserBase
+        private interface IActionParser
         {
-            protected  ActionParser(IDictionary<string, TexFormula> sharedCacheFormulas)
-                : base(sharedCacheFormulas)
-            {}
-
-            public abstract void Parse(SourceSpan source, XElement element);
+            void Parse(SourceSpan source, XElement element, PredefinedFormulaContext context);
         }
 
-        public abstract class ArgumentValueParser : ParserBase
+        private interface IArgumentValueParser
         {
-            protected ArgumentValueParser(IDictionary<string, TexFormula> sharedCacheFormulas)
-                : base(sharedCacheFormulas)
-            {}
-
-            public abstract object Parse(string value, string type);
-        }
-
-        public abstract class ParserBase
-        {
-            public ParserBase(IDictionary<string, TexFormula> sharedCacheFormulas)
-            {
-                this.SharedCacheFormulas = sharedCacheFormulas;
-            }
-
-            public IDictionary<string, TexFormula> SharedCacheFormulas { get; }
+            object? Parse(string value, PredefinedFormulaContext context);
         }
     }
 }

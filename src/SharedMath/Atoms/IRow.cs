@@ -6,6 +6,6 @@ namespace WpfMath
     internal interface IRow
     {
         // Dummy atom representing atom just before first child atom.
-        Atom WithPreviousAtom(DummyAtom previousAtom);
+        Atom WithPreviousAtom(DummyAtom? previousAtom);
     }
 }

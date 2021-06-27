@@ -16,7 +16,7 @@ namespace WpfMath.Controls
     public partial class FormulaControl : UserControl
     {
         private static TexFormulaParser formulaParser = new TexFormulaParser();
-        private TexFormula texFormula;
+        private TexFormula? texFormula;
 
         public string Formula
         {
@@ -66,10 +66,10 @@ namespace WpfMath.Controls
             set { SetValue(SelectionLengthProperty, value); }
         }
 
-        public Brush SelectionBrush
+        public Brush? SelectionBrush
         {
-            get { return (Brush)GetValue(SelectionBrushProperty); }
-            set { SetValue(SelectionBrushProperty, value); }
+            get => (Brush)GetValue(SelectionBrushProperty);
+            set => SetValue(SelectionBrushProperty, value);
         }
 
         public static readonly DependencyProperty FormulaProperty = DependencyProperty.Register(
@@ -82,7 +82,7 @@ namespace WpfMath.Controls
 
         public static readonly DependencyProperty SystemTextFontNameProperty = DependencyProperty.Register(
             nameof(SystemTextFontName), typeof(string), typeof(FormulaControl),
-            new PropertyMetadata("Arial", OnRenderSettingsChanged, CoerceScaleValue));
+            new PropertyMetadata("Arial", OnRenderSettingsChanged));
 
         public static readonly DependencyProperty HasErrorProperty = DependencyProperty.Register(
             nameof(HasError), typeof(bool), typeof(FormulaControl),
@@ -108,6 +108,17 @@ namespace WpfMath.Controls
             nameof(SelectionBrush), typeof(Brush), typeof(FormulaControl),
             new PropertyMetadata(null, OnRenderSettingsChanged));
 
+        static FormulaControl()
+        {
+            // Call OnRenderSettingsChanged on Foreground property change.
+            ForegroundProperty.OverrideMetadata(
+                typeof(FormulaControl),
+                new FrameworkPropertyMetadata(
+                    SystemColors.ControlTextBrush,
+                    FrameworkPropertyMetadataOptions.Inherits,
+                    OnRenderSettingsChanged));
+        }
+
         public FormulaControl()
         {
             InitializeComponent();
@@ -124,24 +135,36 @@ namespace WpfMath.Controls
 
             // Render formula to visual.
             var visual = new DrawingVisual();
-            var renderer = texFormula.GetRenderer(TexStyle.Display, Scale, SystemTextFontName);
 
-            var selectionBrush = SelectionBrush;
-            if (selectionBrush != null)
+            // Pass transparent background, since the control background will be effectively used anyway.
+            var renderer = texFormula.GetRenderer(
+                TexStyle.Display,
+                Scale,
+                SystemTextFontName,
+                WpfBrush.FromBrush(Brushes.Transparent),
+                WpfBrush.FromBrush(Foreground));
+            var formulaSource = texFormula.Source;
+            if (formulaSource != null)
             {
-                var allBoxes = new List<Box>(renderer.Box.Children);
-                var selectionStart = SelectionStart;
-                var selectionEnd = selectionStart + SelectionLength;
-                for (int idx = 0; idx < allBoxes.Count; idx++)
+                var selectionBrush = SelectionBrush;
+                if (selectionBrush != null)
                 {
-                    var box = allBoxes[idx];
-                    allBoxes.AddRange(box.Children);
-                    var source = box.Source;
-                    if (source != null)
+                    var allBoxes = new List<Box>(renderer.Box.Children);
+                    var selectionStart = SelectionStart;
+                    var selectionEnd = selectionStart + SelectionLength;
+                    for (var idx = 0; idx < allBoxes.Count; idx++)
                     {
-                        if (selectionStart < source.Start + source.Length && source.Start < selectionEnd)
+                        var box = allBoxes[idx];
+                        allBoxes.AddRange(box.Children);
+                        var source = box.Source;
+                        if (source == null ||
+                            !source.SourceName.Equals(formulaSource.SourceName, StringComparison.Ordinal) ||
+                            !source.Source.Equals(formulaSource.Source, StringComparison.Ordinal)) continue;
+
+                        if (selectionStart < source.Start + source.Length
+                            && source.Start < selectionEnd
+                            && box is CharBox)
                         {
-                            if (box is CharBox)
                                 box.Background = WpfBrush.FromBrush(selectionBrush);
                         }
                     }

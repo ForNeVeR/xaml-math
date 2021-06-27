@@ -16,6 +16,7 @@ open Newtonsoft.Json.Converters
 open Newtonsoft.Json.Serialization
 
 open WpfMath
+open WpfMath.Atoms
 open WpfMath.Rendering
 
 type private BomlessFileWriter(data: string, ?extensionWithoutDot: string) =
@@ -39,12 +40,28 @@ type private InnerPropertyContractResolver() =
         base.CreateProperty(p, ms, Readable = true)
 
     override this.CreateProperties(``type``, memberSerialization) =
-        // override that to serialize internal properties, too
-        upcast ResizeArray(
+        // All properties including internal ones:
+        let properties =
             ``type``.GetProperties(BindingFlags.Public ||| BindingFlags.NonPublic ||| BindingFlags.Instance)
             |> Seq.filter (fun p -> Array.isEmpty <| p.GetIndexParameters()) // no indexers
             |> Seq.map (fun p -> this.DoCreateProperty(p, memberSerialization))
-        )
+
+        upcast [|
+            // For Atoms, type name should be first
+            if typeof<Atom>.IsAssignableFrom ``type`` then
+                JsonProperty(
+                    PropertyName = "[AtomType]",
+                    PropertyType = typeof<string>,
+                    Readable = true,
+                    ValueProvider = {
+                        new IValueProvider with
+                            member this.GetValue(_) = upcast ``type``.Name
+                            member this.SetValue(_, _) = failwith "Not supported"
+                    }
+                )
+
+            yield! properties
+        |]
 
 [<AbstractClass>]
 type ReadOnlyJsonConverter<'a>() =

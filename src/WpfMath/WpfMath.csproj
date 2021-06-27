@@ -8,26 +8,36 @@
     </PropertyGroup>
     <PropertyGroup>
         <PackageId>WpfMath</PackageId>
-        <Version>0.8.0</Version>
+        <Version>0.10.0</Version>
         <Title>WPF-Math</Title>
         <Authors>ForNeVeR</Authors>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/ForNeVeR/wpf-math</PackageProjectUrl>
         <RepositoryUrl>https://github.com/ForNeVeR/wpf-math.git</RepositoryUrl>
         <AssemblyTitle>WPF-Math</AssemblyTitle>
-        <PackageReleaseNotes>WPF support for .NET Core 3.0; extended color support; \binom command; TeX parser bug fixes.</PackageReleaseNotes>
+        <PackageReleaseNotes>Extended delimiter support; newline command support; support for \{ and \} commands; bug fixes.</PackageReleaseNotes>
         <PackageTags>wpf;latex;formula</PackageTags>
         <Description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the WPF framework.</Description>
-        <Copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2019</Copyright>
+        <Copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2020</Copyright>
+
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+        <Nullable Condition="'$(TargetFramework)' == 'netcoreapp3.0'">enable</Nullable>
+        <Nullable Condition="'$(TargetFramework)' == 'net452'">annotations</Nullable>
     </PropertyGroup>
+
     <ItemGroup>
         <EmbeddedResource Include="Data/*" />
         <Resource Include="Fonts\cmex10.ttf" />
         <Resource Include="Fonts\cmmi10.ttf" />
         <Resource Include="Fonts\cmr10.ttf" />
         <Resource Include="Fonts\cmsy10.ttf" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
     </ItemGroup>
     <Import Project="..\SharedMath\SharedMath.projitems" Label="Shared" />
 </Project>

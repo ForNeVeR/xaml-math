@@ -38,14 +38,13 @@ namespace WpfMath
         public TexSymbolParser()
         {
             // for 3.5
-            var doc = XDocument.Load(new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)));
+            var doc = XDocument.Load(new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)!));
             this.rootElement = doc.Root;
-
         }
 
-        public IDictionary<string, Func<SourceSpan, SymbolAtom>> GetSymbols()
+        public IDictionary<string, Func<SourceSpan?, SymbolAtom>> GetSymbols()
         {
-            var result = new Dictionary<string, Func<SourceSpan, SymbolAtom>>();
+            var result = new Dictionary<string, Func<SourceSpan?, SymbolAtom>>();
 
             foreach (var symbolElement in rootElement.Elements("Symbol"))
             {

@@ -1,45 +1,49 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "RowAtom",
     "PreviousAtom": null,
     "Elements": [
       {
+        "[AtomType]": "CharAtom",
         "Character": "2",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 6,
           "End": 7,
           "Length": 1,
-          "Source": "\\text{2+2}"
+          "Source": "\\text{2+2}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "+",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 7,
           "End": 8,
           "Length": 1,
-          "Source": "\\text{2+2}"
+          "Source": "\\text{2+2}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "2",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 8,
           "End": 9,
           "Length": 1,
-          "Source": "\\text{2+2}"
+          "Source": "\\text{2+2}",
+          "SourceName": "User input"
         }
       }
     ],
@@ -48,7 +52,15 @@
       "Start": 6,
       "End": 9,
       "Length": 3,
-      "Source": "\\text{2+2}"
+      "Source": "\\text{2+2}",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 10,
+    "Length": 10,
+    "Source": "\\text{2+2}",
+    "SourceName": "User input"
   }
 }

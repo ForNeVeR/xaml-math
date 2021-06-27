@@ -1,0 +1,124 @@
+{
+  "TextStyle": null,
+  "RootAtom": {
+    "[AtomType]": "RowAtom",
+    "PreviousAtom": null,
+    "Elements": [
+      {
+        "[AtomType]": "AccentedAtom",
+        "BaseAtom": {
+          "[AtomType]": "CharAtom",
+          "Character": "a",
+          "TextStyle": null,
+          "IsTextSymbol": false,
+          "Type": "Ordinary",
+          "Source": {
+            "Start": 5,
+            "End": 6,
+            "Length": 1,
+            "Source": "\\hat{a}_{b\\sigma}",
+            "SourceName": "User input"
+          }
+        },
+        "AccentAtom": {
+          "[AtomType]": "SymbolAtom",
+          "IsDelimeter": false,
+          "Name": "hat",
+          "IsTextSymbol": false,
+          "Type": "Accent",
+          "Source": null
+        },
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 0,
+          "End": 4,
+          "Length": 4,
+          "Source": "\\hat{a}_{b\\sigma}",
+          "SourceName": "User input"
+        }
+      },
+      {
+        "[AtomType]": "ScriptsAtom",
+        "BaseAtom": {
+          "[AtomType]": "RowAtom",
+          "PreviousAtom": null,
+          "Elements": [],
+          "Type": "Ordinary",
+          "Source": {
+            "Start": 0,
+            "End": 17,
+            "Length": 17,
+            "Source": "\\hat{a}_{b\\sigma}",
+            "SourceName": "User input"
+          }
+        },
+        "SubscriptAtom": {
+          "[AtomType]": "RowAtom",
+          "PreviousAtom": null,
+          "Elements": [
+            {
+              "[AtomType]": "CharAtom",
+              "Character": "b",
+              "TextStyle": null,
+              "IsTextSymbol": false,
+              "Type": "Ordinary",
+              "Source": {
+                "Start": 9,
+                "End": 10,
+                "Length": 1,
+                "Source": "\\hat{a}_{b\\sigma}",
+                "SourceName": "User input"
+              }
+            },
+            {
+              "[AtomType]": "SymbolAtom",
+              "IsDelimeter": false,
+              "Name": "sigma",
+              "IsTextSymbol": false,
+              "Type": "Ordinary",
+              "Source": {
+                "Start": 11,
+                "End": 16,
+                "Length": 5,
+                "Source": "\\hat{a}_{b\\sigma}",
+                "SourceName": "User input"
+              }
+            }
+          ],
+          "Type": "Ordinary",
+          "Source": {
+            "Start": 1,
+            "End": 17,
+            "Length": 16,
+            "Source": "\\hat{a}_{b\\sigma}",
+            "SourceName": "User input"
+          }
+        },
+        "SuperscriptAtom": null,
+        "Type": "Ordinary",
+        "Source": {
+          "Start": 7,
+          "End": 17,
+          "Length": 10,
+          "Source": "\\hat{a}_{b\\sigma}",
+          "SourceName": "User input"
+        }
+      }
+    ],
+    "Type": "Ordinary",
+    "Source": {
+      "Start": 0,
+      "End": 17,
+      "Length": 17,
+      "Source": "\\hat{a}_{b\\sigma}",
+      "SourceName": "User input"
+    }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 17,
+    "Length": 17,
+    "Source": "\\hat{a}_{b\\sigma}",
+    "SourceName": "User input"
+  }
+}

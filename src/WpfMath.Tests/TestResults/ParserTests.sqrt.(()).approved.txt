@@ -1,0 +1,27 @@
+{
+  "TextStyle": null,
+  "RootAtom": {
+    "[AtomType]": "Radical",
+    "BaseAtom": {
+      "[AtomType]": "NullAtom",
+      "Type": "Ordinary",
+      "Source": null
+    },
+    "DegreeAtom": null,
+    "Type": "Ordinary",
+    "Source": {
+      "Start": 1,
+      "End": 7,
+      "Length": 6,
+      "Source": "\\sqrt{}",
+      "SourceName": "User input"
+    }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 7,
+    "Length": 7,
+    "Source": "\\sqrt{}",
+    "SourceName": "User input"
+  }
+}

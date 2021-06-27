@@ -1,43 +1,47 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "ScriptsAtom",
     "BaseAtom": {
+      "[AtomType]": "CharAtom",
       "Character": "x",
       "TextStyle": null,
-      "IsDefaultTextStyle": true,
       "IsTextSymbol": false,
       "Type": "Ordinary",
       "Source": {
         "Start": 0,
         "End": 1,
         "Length": 1,
-        "Source": "x^y_z"
+        "Source": "x^y_z",
+        "SourceName": "User input"
       }
     },
     "SubscriptAtom": {
+      "[AtomType]": "CharAtom",
       "Character": "z",
       "TextStyle": null,
-      "IsDefaultTextStyle": true,
       "IsTextSymbol": false,
       "Type": "Ordinary",
       "Source": {
         "Start": 4,
         "End": 5,
         "Length": 1,
-        "Source": "x^y_z"
+        "Source": "x^y_z",
+        "SourceName": "User input"
       }
     },
     "SuperscriptAtom": {
+      "[AtomType]": "CharAtom",
       "Character": "y",
       "TextStyle": null,
-      "IsDefaultTextStyle": true,
       "IsTextSymbol": false,
       "Type": "Ordinary",
       "Source": {
         "Start": 2,
         "End": 3,
         "Length": 1,
-        "Source": "x^y_z"
+        "Source": "x^y_z",
+        "SourceName": "User input"
       }
     },
     "Type": "Ordinary",
@@ -45,7 +49,15 @@
       "Start": 1,
       "End": 5,
       "Length": 4,
-      "Source": "x^y_z"
+      "Source": "x^y_z",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 5,
+    "Length": 5,
+    "Source": "x^y_z",
+    "SourceName": "User input"
   }
 }

@@ -11,10 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
-		appveyor.yml = appveyor.yml
 		LICENSE.md = LICENSE.md
 		README.md = README.md
-		RELEASES.md = RELEASES.md
+		CHANGELOG.md = CHANGELOG.md
+		MAINTAINERSHIP.md = MAINTAINERSHIP.md
+		NuGet.Config = NuGet.Config
 	EndProjectSection
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "WpfMath.Tests", "src\WpfMath.Tests\WpfMath.Tests.fsproj", "{F19E5FB1-EE6B-4A48-A522-41F30676BE41}"
@@ -38,10 +39,17 @@ ProjectSection(SolutionItems) = preProject
 EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaMath", "src\AvaloniaMath\AvaloniaMath.csproj", "{945C8E20-AE99-493E-8A0D-D5880272050B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{422A1C06-160C-4422-B019-F9B63C6C6877}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaMath.Example", "src\AvaloniaMath.Example\AvaloniaMath.Example.csproj", "{4D9FD5DA-DA8C-4513-8783-413924A76D62}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SharedMath", "src\SharedMath\SharedMath.shproj", "{22DCFC4B-909F-48CB-AD31-15C37198201C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{B296A539-C985-43AB-B740-7FBE8F85CCFF}"
+ProjectSection(SolutionItems) = preProject
+	.github\workflows\main.yml = .github\workflows\main.yml
+	.github\workflows\nuget.yml = .github\workflows\nuget.yml
+EndProjectSection
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -77,8 +85,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{39669369-C4F6-4AC6-9D35-B4B6086FF172} = {D9341AA3-BF7C-4CC1-8E11-82258967B82F}
-		{BE4BA1DB-B8BC-4718-AA9D-23B0191C9323} = {D9341AA3-BF7C-4CC1-8E11-82258967B82F}
+		{B296A539-C985-43AB-B740-7FBE8F85CCFF} = {422A1C06-160C-4422-B019-F9B63C6C6877}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6563FDA0-9C49-4091-AAE3-611169C996D8}

@@ -1,22 +1,25 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "RowAtom",
     "PreviousAtom": null,
     "Elements": [
       {
+        "[AtomType]": "CharAtom",
         "Character": "f",
         "TextStyle": null,
-        "IsDefaultTextStyle": true,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 0,
           "End": 1,
           "Length": 1,
-          "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+          "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "SymbolAtom",
         "IsDelimeter": true,
         "Name": "(",
         "IsTextSymbol": false,
@@ -25,23 +28,26 @@
           "Start": 1,
           "End": 2,
           "Length": 1,
-          "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+          "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "x",
         "TextStyle": null,
-        "IsDefaultTextStyle": true,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 2,
           "End": 3,
           "Length": 1,
-          "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+          "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "SymbolAtom",
         "IsDelimeter": true,
         "Name": ")",
         "IsTextSymbol": false,
@@ -50,10 +56,12 @@
           "Start": 3,
           "End": 4,
           "Length": 1,
-          "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+          "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "SymbolAtom",
         "IsDelimeter": false,
         "Name": "equals",
         "IsTextSymbol": false,
@@ -62,30 +70,36 @@
           "Start": 5,
           "End": 6,
           "Length": 1,
-          "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+          "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "FencedAtom",
         "BaseAtom": {
+          "[AtomType]": "MatrixAtom",
           "MatrixCells": [
             [
               {
+                "[AtomType]": "RowAtom",
                 "PreviousAtom": null,
                 "Elements": [
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "1",
                     "TextStyle": null,
-                    "IsDefaultTextStyle": true,
                     "IsTextSymbol": false,
                     "Type": "Ordinary",
                     "Source": {
                       "Start": 14,
                       "End": 15,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "SymbolAtom",
                     "IsDelimeter": false,
                     "Name": "slash",
                     "IsTextSymbol": false,
@@ -94,20 +108,22 @@
                       "Start": 15,
                       "End": 16,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "3",
                     "TextStyle": null,
-                    "IsDefaultTextStyle": true,
                     "IsTextSymbol": false,
                     "Type": "Ordinary",
                     "Source": {
                       "Start": 16,
                       "End": 17,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   }
                 ],
@@ -116,56 +132,63 @@
                   "Start": 14,
                   "End": 18,
                   "Length": 4,
-                  "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                  "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                  "SourceName": "User input"
                 }
               },
               {
+                "[AtomType]": "RowAtom",
                 "PreviousAtom": null,
                 "Elements": [
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "i",
                     "TextStyle": null,
-                    "IsDefaultTextStyle": true,
                     "IsTextSymbol": false,
                     "Type": "Ordinary",
                     "Source": {
                       "Start": 20,
                       "End": 21,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "f",
                     "TextStyle": null,
-                    "IsDefaultTextStyle": true,
                     "IsTextSymbol": false,
                     "Type": "Ordinary",
                     "Source": {
                       "Start": 21,
                       "End": 22,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "SpaceAtom",
                     "Type": "Ordinary",
                     "Source": null
                   },
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "0",
                     "TextStyle": null,
-                    "IsDefaultTextStyle": true,
                     "IsTextSymbol": false,
                     "Type": "Ordinary",
                     "Source": {
                       "Start": 34,
                       "End": 35,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "SymbolAtom",
                     "IsDelimeter": false,
                     "Name": "le",
                     "IsTextSymbol": false,
@@ -174,23 +197,26 @@
                       "Start": 36,
                       "End": 38,
                       "Length": 2,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "x",
                     "TextStyle": null,
-                    "IsDefaultTextStyle": true,
                     "IsTextSymbol": false,
                     "Type": "Ordinary",
                     "Source": {
                       "Start": 39,
                       "End": 40,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "SymbolAtom",
                     "IsDelimeter": false,
                     "Name": "le",
                     "IsTextSymbol": false,
@@ -199,23 +225,26 @@
                       "Start": 41,
                       "End": 43,
                       "Length": 2,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "1",
                     "TextStyle": null,
-                    "IsDefaultTextStyle": true,
                     "IsTextSymbol": false,
                     "Type": "Ordinary",
                     "Source": {
                       "Start": 44,
                       "End": 45,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "SymbolAtom",
                     "IsDelimeter": false,
                     "Name": "semicolon",
                     "IsTextSymbol": false,
@@ -224,7 +253,8 @@
                       "Start": 45,
                       "End": 46,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   }
                 ],
@@ -233,28 +263,32 @@
                   "Start": 14,
                   "End": 46,
                   "Length": 32,
-                  "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                  "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                  "SourceName": "User input"
                 }
               }
             ],
             [
               {
+                "[AtomType]": "RowAtom",
                 "PreviousAtom": null,
                 "Elements": [
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "2",
                     "TextStyle": null,
-                    "IsDefaultTextStyle": true,
                     "IsTextSymbol": false,
                     "Type": "Ordinary",
                     "Source": {
                       "Start": 50,
                       "End": 51,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "SymbolAtom",
                     "IsDelimeter": false,
                     "Name": "slash",
                     "IsTextSymbol": false,
@@ -263,20 +297,22 @@
                       "Start": 51,
                       "End": 52,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "3",
                     "TextStyle": null,
-                    "IsDefaultTextStyle": true,
                     "IsTextSymbol": false,
                     "Type": "Ordinary",
                     "Source": {
                       "Start": 52,
                       "End": 53,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   }
                 ],
@@ -285,56 +321,63 @@
                   "Start": 14,
                   "End": 54,
                   "Length": 40,
-                  "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                  "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                  "SourceName": "User input"
                 }
               },
               {
+                "[AtomType]": "RowAtom",
                 "PreviousAtom": null,
                 "Elements": [
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "i",
                     "TextStyle": null,
-                    "IsDefaultTextStyle": true,
                     "IsTextSymbol": false,
                     "Type": "Ordinary",
                     "Source": {
                       "Start": 56,
                       "End": 57,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "f",
                     "TextStyle": null,
-                    "IsDefaultTextStyle": true,
                     "IsTextSymbol": false,
                     "Type": "Ordinary",
                     "Source": {
                       "Start": 57,
                       "End": 58,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "SpaceAtom",
                     "Type": "Ordinary",
                     "Source": null
                   },
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "3",
                     "TextStyle": null,
-                    "IsDefaultTextStyle": true,
                     "IsTextSymbol": false,
                     "Type": "Ordinary",
                     "Source": {
                       "Start": 70,
                       "End": 71,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "SymbolAtom",
                     "IsDelimeter": false,
                     "Name": "le",
                     "IsTextSymbol": false,
@@ -343,23 +386,26 @@
                       "Start": 72,
                       "End": 74,
                       "Length": 2,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "x",
                     "TextStyle": null,
-                    "IsDefaultTextStyle": true,
                     "IsTextSymbol": false,
                     "Type": "Ordinary",
                     "Source": {
                       "Start": 75,
                       "End": 76,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "SymbolAtom",
                     "IsDelimeter": false,
                     "Name": "le",
                     "IsTextSymbol": false,
@@ -368,23 +414,26 @@
                       "Start": 78,
                       "End": 80,
                       "Length": 2,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "4",
                     "TextStyle": null,
-                    "IsDefaultTextStyle": true,
                     "IsTextSymbol": false,
                     "Type": "Ordinary",
                     "Source": {
                       "Start": 81,
                       "End": 82,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "SymbolAtom",
                     "IsDelimeter": false,
                     "Name": "semicolon",
                     "IsTextSymbol": false,
@@ -393,7 +442,8 @@
                       "Start": 82,
                       "End": 83,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   }
                 ],
@@ -402,145 +452,158 @@
                   "Start": 14,
                   "End": 84,
                   "Length": 70,
-                  "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                  "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                  "SourceName": "User input"
                 }
               }
             ],
             [
               {
+                "[AtomType]": "CharAtom",
                 "Character": "0",
                 "TextStyle": null,
-                "IsDefaultTextStyle": true,
                 "IsTextSymbol": false,
                 "Type": "Ordinary",
                 "Source": {
                   "Start": 88,
                   "End": 89,
                   "Length": 1,
-                  "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                  "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                  "SourceName": "User input"
                 }
               },
               {
+                "[AtomType]": "RowAtom",
                 "PreviousAtom": null,
                 "Elements": [
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "e",
                     "TextStyle": null,
-                    "IsDefaultTextStyle": true,
                     "IsTextSymbol": false,
                     "Type": "Ordinary",
                     "Source": {
                       "Start": 92,
                       "End": 93,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "l",
                     "TextStyle": null,
-                    "IsDefaultTextStyle": true,
                     "IsTextSymbol": false,
                     "Type": "Ordinary",
                     "Source": {
                       "Start": 93,
                       "End": 94,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "s",
                     "TextStyle": null,
-                    "IsDefaultTextStyle": true,
                     "IsTextSymbol": false,
                     "Type": "Ordinary",
                     "Source": {
                       "Start": 94,
                       "End": 95,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "e",
                     "TextStyle": null,
-                    "IsDefaultTextStyle": true,
                     "IsTextSymbol": false,
                     "Type": "Ordinary",
                     "Source": {
                       "Start": 95,
                       "End": 96,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "w",
                     "TextStyle": null,
-                    "IsDefaultTextStyle": true,
                     "IsTextSymbol": false,
                     "Type": "Ordinary",
                     "Source": {
                       "Start": 96,
                       "End": 97,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "h",
                     "TextStyle": null,
-                    "IsDefaultTextStyle": true,
                     "IsTextSymbol": false,
                     "Type": "Ordinary",
                     "Source": {
                       "Start": 97,
                       "End": 98,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "e",
                     "TextStyle": null,
-                    "IsDefaultTextStyle": true,
                     "IsTextSymbol": false,
                     "Type": "Ordinary",
                     "Source": {
                       "Start": 98,
                       "End": 99,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "r",
                     "TextStyle": null,
-                    "IsDefaultTextStyle": true,
                     "IsTextSymbol": false,
                     "Type": "Ordinary",
                     "Source": {
                       "Start": 99,
                       "End": 100,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "CharAtom",
                     "Character": "e",
                     "TextStyle": null,
-                    "IsDefaultTextStyle": true,
                     "IsTextSymbol": false,
                     "Type": "Ordinary",
                     "Source": {
                       "Start": 100,
                       "End": 101,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   },
                   {
+                    "[AtomType]": "SymbolAtom",
                     "IsDelimeter": false,
                     "Name": "normaldot",
                     "IsTextSymbol": false,
@@ -549,7 +612,8 @@
                       "Start": 101,
                       "End": 102,
                       "Length": 1,
-                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                      "SourceName": "User input"
                     }
                   }
                 ],
@@ -558,16 +622,19 @@
                   "Start": 14,
                   "End": 102,
                   "Length": 88,
-                  "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+                  "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+                  "SourceName": "User input"
                 }
               }
             ],
             [
               {
+                "[AtomType]": "NullAtom",
                 "Type": "Ordinary",
                 "Source": null
               },
               {
+                "[AtomType]": "NullAtom",
                 "Type": "Ordinary",
                 "Source": null
               }
@@ -581,10 +648,12 @@
             "Start": 8,
             "End": 106,
             "Length": 98,
-            "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+            "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+            "SourceName": "User input"
           }
         },
         "LeftDelimeter": {
+          "[AtomType]": "SymbolAtom",
           "IsDelimeter": true,
           "Name": "lbrace",
           "IsTextSymbol": false,
@@ -597,7 +666,8 @@
           "Start": 8,
           "End": 106,
           "Length": 98,
-          "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+          "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+          "SourceName": "User input"
         }
       }
     ],
@@ -606,7 +676,15 @@
       "Start": 7,
       "End": 113,
       "Length": 106,
-      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}"
+      "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 106,
+    "Length": 106,
+    "Source": "f(x) = \\cases{1/3 & if \\thinspace 0\\le x\\le 1;\\cr 2/3 & if \\thinspace 3\\le x \\le 4; \\cr 0 & elsewhere.\\cr}",
+    "SourceName": "User input"
   }
 }

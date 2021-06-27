@@ -1,58 +1,63 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "RowAtom",
     "PreviousAtom": null,
     "Elements": [
       {
+        "[AtomType]": "CharAtom",
         "Character": "t",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 6,
           "End": 7,
           "Length": 1,
-          "Source": "\\text{test}"
+          "Source": "\\text{test}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "e",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 7,
           "End": 8,
           "Length": 1,
-          "Source": "\\text{test}"
+          "Source": "\\text{test}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "s",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 8,
           "End": 9,
           "Length": 1,
-          "Source": "\\text{test}"
+          "Source": "\\text{test}",
+          "SourceName": "User input"
         }
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "t",
         "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
         "Type": "Ordinary",
         "Source": {
           "Start": 9,
           "End": 10,
           "Length": 1,
-          "Source": "\\text{test}"
+          "Source": "\\text{test}",
+          "SourceName": "User input"
         }
       }
     ],
@@ -61,7 +66,15 @@
       "Start": 6,
       "End": 10,
       "Length": 4,
-      "Source": "\\text{test}"
+      "Source": "\\text{test}",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 11,
+    "Length": 11,
+    "Source": "\\text{test}",
+    "SourceName": "User input"
   }
 }

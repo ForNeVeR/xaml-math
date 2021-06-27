@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="clr-namespace:WpfMath.Controls;assembly=WpfMath"
         Title="WPF-Math Example" Width="640" Height="520"
-        Loaded="Window_Loaded" Closed="Window_Closed">
+        Closed="Window_Closed">
     <Window.Resources>
 
         <Style TargetType="Button">
@@ -19,30 +19,25 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-
         <DockPanel Margin="10,10,10,0" Grid.Row="0" Grid.Column="0">
-            <Grid DockPanel.Dock="Right">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Button Name="saveButton" Grid.Column="1" Margin="10,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Stretch" Content="_Save" Click="saveButton_Click" />
-            </Grid>
-            <TextBox Name="inputTextBox" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="inputTextBox_SelectionChanged" />
+            <ComboBox DockPanel.Dock="Left" Width="150"
+                      Name="FormulaSelector" SelectionChanged="FormulaTextBox_OnSelectionChanged" />
+            <Button DockPanel.Dock="Right" Content="_Save"
+                    Click="saveButton_Click" />
+            <TextBox Margin="10,0"
+                     Name="InputTextBox" SelectionChanged="inputTextBox_SelectionChanged" />
         </DockPanel>
 
         <Label Margin="10,0,10,10" Grid.Row="1" Grid.Column="0">
             <Label.Style>
                 <Style TargetType="Label">
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=formula, Path=HasError}" Value="False">
+                        <DataTrigger Binding="{Binding ElementName=Formula, Path=HasError}" Value="False">
                             <Setter Property="Content" Value="Formula is valid" />
                             <Setter Property="Foreground" Value="Green" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=formula, Path=HasError}" Value="True">
-                            <Setter Property="Content" Value="{Binding ElementName=formula, Path=Errors[0].Message}" />
+                        <DataTrigger Binding="{Binding ElementName=Formula, Path=HasError}" Value="True">
+                            <Setter Property="Content" Value="{Binding ElementName=Formula, Path=Errors[0].Message}" />
                             <Setter Property="Foreground" Value="Red" />
                         </DataTrigger>
                     </Style.Triggers>
@@ -57,15 +52,16 @@
             </Grid.ColumnDefinitions>
             <Label Margin="10,0,10,0" Content="Scale: " Grid.Column="0" />
             <Slider Margin="10,0,10,0" Grid.Column="1"
-                Value="{Binding ElementName=formula, Path=Scale}" Minimum="7" Maximum="42"
+                Value="{Binding ElementName=Formula, Path=Scale}" Minimum="7" Maximum="42"
                 IsSnapToTickEnabled="True" TickPlacement="BottomRight"
                 AutoToolTipPlacement="BottomRight" AutoToolTipPrecision="2" />
         </Grid>
 
         <Border Margin="10,0,10,10" BorderBrush="LightGray" BorderThickness="1" Grid.Row="3" Grid.Column="0">
             <ScrollViewer Padding="4" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-                <controls:FormulaControl x:Name="formula" Formula="{Binding Text, ElementName = inputTextBox, NotifyOnValidationError=True}"
+                <controls:FormulaControl Name="Formula" Formula="{Binding Text, ElementName = InputTextBox, NotifyOnValidationError=True}"
                                          SelectionBrush="LightBlue"
+                                         SystemTextFontName="Arial"
                                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SnapsToDevicePixels="True" />
             </ScrollViewer>
         </Border>

@@ -10,8 +10,8 @@ namespace WpfMath.Atoms
         private readonly bool useDepth;
 
         public PhantomAtom(
-            SourceSpan source,
-            Atom baseAtom,
+            SourceSpan? source,
+            Atom? baseAtom,
             bool useWidth = true,
             bool useHeight = true,
             bool useDepth = true)
@@ -23,7 +23,7 @@ namespace WpfMath.Atoms
             this.useDepth = useDepth;
         }
 
-        public Atom WithPreviousAtom(DummyAtom previousAtom) =>
+        public Atom WithPreviousAtom(DummyAtom? previousAtom) =>
             new PhantomAtom(
                 this.Source,
                 this.RowAtom.WithPreviousAtom(previousAtom),

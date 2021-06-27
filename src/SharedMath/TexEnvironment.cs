@@ -8,12 +8,12 @@ namespace WpfMath
         // ID of font that was last used.
         private int lastFontId = TexFontUtilities.NoFontId;
 
-        public TexEnvironment(TexStyle style, ITeXFont mathFont, ITeXFont textFont)
-            : this(style, mathFont, textFont, null, null)
-        {
-        }
-
-        private TexEnvironment(TexStyle style, ITeXFont mathFont, ITeXFont textFont, IPlatformBrush background, IPlatformBrush foreground)
+        public TexEnvironment(
+            TexStyle style,
+            ITeXFont mathFont,
+            ITeXFont textFont,
+            IPlatformBrush? background = null,
+            IPlatformBrush? foreground = null)
         {
             if (style == TexStyle.Display || style == TexStyle.Text ||
                 style == TexStyle.Script || style == TexStyle.ScriptScript)
@@ -41,13 +41,13 @@ namespace WpfMath
 
         public ITeXFont TextFont { get; }
 
-        public IPlatformBrush Background
+        public IPlatformBrush? Background
         {
             get;
             set;
         }
 
-        public IPlatformBrush Foreground
+        public IPlatformBrush? Foreground
         {
             get;
             set;

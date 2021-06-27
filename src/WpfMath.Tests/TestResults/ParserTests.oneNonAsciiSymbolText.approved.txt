@@ -1,30 +1,33 @@
 {
   "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "ScriptsAtom",
     "BaseAtom": {
+      "[AtomType]": "CharAtom",
       "Character": "А",
       "TextStyle": "text",
-      "IsDefaultTextStyle": false,
       "IsTextSymbol": false,
       "Type": "Ordinary",
       "Source": {
         "Start": 6,
         "End": 7,
         "Length": 1,
-        "Source": "\\text{А}_{\\text{И}}"
+        "Source": "\\text{А}_{\\text{И}}",
+        "SourceName": "User input"
       }
     },
     "SubscriptAtom": {
+      "[AtomType]": "CharAtom",
       "Character": "И",
       "TextStyle": "text",
-      "IsDefaultTextStyle": false,
       "IsTextSymbol": false,
       "Type": "Ordinary",
       "Source": {
         "Start": 16,
         "End": 17,
         "Length": 1,
-        "Source": "\\text{А}_{\\text{И}}"
+        "Source": "\\text{А}_{\\text{И}}",
+        "SourceName": "User input"
       }
     },
     "SuperscriptAtom": null,
@@ -33,7 +36,15 @@
       "Start": 8,
       "End": 19,
       "Length": 11,
-      "Source": "\\text{А}_{\\text{И}}"
+      "Source": "\\text{А}_{\\text{И}}",
+      "SourceName": "User input"
     }
+  },
+  "Source": {
+    "Start": 0,
+    "End": 19,
+    "Length": 19,
+    "Source": "\\text{А}_{\\text{И}}",
+    "SourceName": "User input"
   }
 }
