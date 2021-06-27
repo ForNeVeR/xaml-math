@@ -6,6 +6,7 @@ on:
   pull_request:
     branches:
       - master
+      - 'feature/17-avalonia'
   schedule:
     - cron: '0 0 * * 6'
 
