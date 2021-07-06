@@ -18,7 +18,7 @@
         <PackageReleaseNotes>Extended delimiter support; newline command support; support for \{ and \} commands; bug fixes.</PackageReleaseNotes>
         <PackageTags>wpf;latex;formula</PackageTags>
         <Description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the WPF framework.</Description>
-        <Copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2020</Copyright>
+        <Copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2021</Copyright>
 
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>

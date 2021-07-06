@@ -3,12 +3,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.10.0] - 2021-07-06
 ### Changed
 - (**Breaking change!**) Removed support for .NET Core 3.0. .NET Core 3.1 or later is supported from now (.NET Framework 4.5.2 is still supported; .NET 5.0 or later is supported, too).
 
+### Added
+- [#277: Enable nullable reference types][pull-277]
+
 ### Fixed
+- [#99: `Foreground` property not working on `FormulaControl`][issue-99]
+- [#283: Fix typo in SystemTextFontNameProperty][pull-283]
+- [#244: \limsup throws exception][issue-244]
+- [#254: Fix for scripts with curly braces after a command with curly braces][pull-254] (e.g. `\hat{x}_{y}`)
 - [#261: Crash on empty \sqrt{}][pull-261]
+- [#275: OverUnderBox ctor may dereference scriptBox parameter if it's null][issue-275]
 
 ## [0.9.0] - 2020-07-31
 ### Added
@@ -132,6 +140,7 @@ This was the initially published version. It consisted entirely of the original 
 [issue-88]: https://github.com/ForNeVeR/wpf-math/issues/84
 [issue-91]: https://github.com/ForNeVeR/wpf-math/issues/91
 [issue-92]: https://github.com/ForNeVeR/wpf-math/issues/92
+[issue-99]: https://github.com/ForNeVeR/wpf-math/issues/99
 [issue-100]: https://github.com/ForNeVeR/wpf-math/issues/100
 [issue-104]: https://github.com/ForNeVeR/wpf-math/issues/104
 [issue-115]: https://github.com/ForNeVeR/wpf-math/issues/115
@@ -152,8 +161,10 @@ This was the initially published version. It consisted entirely of the original 
 [issue-209]: https://github.com/ForNeVeR/wpf-math/issues/209
 [issue-225]: https://github.com/ForNeVeR/wpf-math/issues/225
 [issue-226]: https://github.com/ForNeVeR/wpf-math/issues/226
+[issue-244]: https://github.com/ForNeVeR/wpf-math/issues/244
 [issue-248]: https://github.com/ForNeVeR/wpf-math/issues/248
 [issue-257]: https://github.com/ForNeVeR/wpf-math/issues/257
+[issue-275]: https://github.com/ForNeVeR/wpf-math/issues/275
 [pull-53]: https://github.com/ForNeVeR/wpf-math/pull/53
 [pull-54]: https://github.com/ForNeVeR/wpf-math/pull/54
 [pull-58]: https://github.com/ForNeVeR/wpf-math/pull/58
@@ -173,7 +184,10 @@ This was the initially published version. It consisted entirely of the original 
 [pull-212]: https://github.com/ForNeVeR/wpf-math/pull/212
 [pull-252]: https://github.com/ForNeVeR/wpf-math/pull/252
 [pull-253]: https://github.com/ForNeVeR/wpf-math/pull/253
+[pull-254]: https://github.com/ForNeVeR/wpf-math/pull/254
 [pull-261]: https://github.com/ForNeVeR/wpf-math/pull/261
+[pull-277]: https://github.com/ForNeVeR/wpf-math/pull/277
+[pull-283]: https://github.com/ForNeVeR/wpf-math/pull/283
 
 [0.1.0]: https://github.com/ForNeVeR/wpf-math/releases/tag/0.1.0
 [0.2.0]: https://github.com/ForNeVeR/wpf-math/compare/0.1.0...0.2.0
@@ -185,4 +199,5 @@ This was the initially published version. It consisted entirely of the original 
 [0.7.0]: https://github.com/ForNeVeR/wpf-math/compare/0.6.0...0.7.0
 [0.8.0]: https://github.com/ForNeVeR/wpf-math/compare/0.7.0...0.8.0
 [0.9.0]: https://github.com/ForNeVeR/wpf-math/compare/0.8.0...0.9.0
-[Unreleased]: https://github.com/ForNeVeR/wpf-math/compare/0.9.0...HEAD
+[0.10.0]: https://github.com/ForNeVeR/wpf-math/compare/0.9.0...v0.10.0
+[Unreleased]: https://github.com/ForNeVeR/wpf-math/compare/v0.10.0...HEAD
