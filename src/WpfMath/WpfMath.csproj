@@ -25,7 +25,7 @@
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
 
-        <Nullable Condition="'$(TargetFramework)' == 'netcoreapp3.0'">enable</Nullable>
+        <Nullable Condition="'$(TargetFramework)' == 'netcoreapp3.1'">enable</Nullable>
         <Nullable Condition="'$(TargetFramework)' == 'net452'">annotations</Nullable>
     </PropertyGroup>
 
