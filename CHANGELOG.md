@@ -12,11 +12,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Fixed
 - [#99: `Foreground` property not working on `FormulaControl`][issue-99]
-- [#283: Fix typo in SystemTextFontNameProperty][pull-283]
-- [#244: \limsup throws exception][issue-244]
+- [#283: Fix typo in `SystemTextFontNameProperty`][pull-283]
+- [#244: `\limsup` throws exception][issue-244]
 - [#254: Fix for scripts with curly braces after a command with curly braces][pull-254] (e.g. `\hat{x}_{y}`)
-- [#261: Crash on empty \sqrt{}][pull-261]
-- [#275: OverUnderBox ctor may dereference scriptBox parameter if it's null][issue-275]
+- [#261: Crash on empty `\sqrt{}`][pull-261]
+- [#275: `OverUnderBox` constructor may dereference scriptBox parameter if it's `null`][issue-275]
 
 ## [0.9.0] - 2020-07-31
 ### Added
