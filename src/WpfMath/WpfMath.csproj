@@ -15,7 +15,20 @@
         <PackageProjectUrl>https://github.com/ForNeVeR/wpf-math</PackageProjectUrl>
         <RepositoryUrl>https://github.com/ForNeVeR/wpf-math.git</RepositoryUrl>
         <AssemblyTitle>WPF-Math</AssemblyTitle>
-        <PackageReleaseNotes>Extended delimiter support; newline command support; support for \{ and \} commands; bug fixes.</PackageReleaseNotes>
+        <PackageReleaseNotes>Changed:
+- Removed support for .NET Core 3.0
+
+Added:
+- Enable nullable reference types
+
+Fixed:
+- Foreground property not working on FormulaControl
+- Fix typo in SystemTextFontNameProperty
+- \limsup throws exception
+- Fix for scripts with curly braces after a command with curly braces (e.g. \hat{x}_{y})
+- Crash on empty \sqrt{}
+- OverUnderBox constructor may dereference scriptBox parameter if it's null
+        </PackageReleaseNotes>
         <PackageTags>wpf;latex;formula</PackageTags>
         <Description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the WPF framework.</Description>
         <Copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2021</Copyright>
