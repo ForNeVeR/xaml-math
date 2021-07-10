@@ -79,7 +79,7 @@ namespace WpfMath
             return result.ToArray();
         }
 
-        private XElement rootElement;
+        private readonly XElement rootElement;
 
         public TexPredefinedFormulaParser()
         {
@@ -109,13 +109,12 @@ namespace WpfMath
             var context = new PredefinedFormulaContext();
             foreach (var element in formulaElement.Elements())
             {
-                var parser = actionParsers[element.Name.ToString()];
-                if (parser == null)
+                if (!actionParsers.TryGetValue(element.Name.ToString(), out var parser))
                     continue;
 
                 parser.Parse(source, element, context);
-                if (parser is ReturnParser)
-                    return ((ReturnParser)parser).Result;
+                if (parser is ReturnParser returnParser)
+                    return returnParser.Result;
             }
             return null;
         }
@@ -226,11 +225,8 @@ namespace WpfMath
 
         private class TeXFormulaValueParser : IArgumentValueParser
         {
-            public object? Parse(string value, PredefinedFormulaContext context)
+            public object Parse(string value, PredefinedFormulaContext context)
             {
-                if (value == null)
-                    return null;
-
                 var formula = context[value];
                 Debug.Assert(formula != null);
                 return formula;
@@ -241,7 +237,7 @@ namespace WpfMath
         {
             public object? Parse(string value, PredefinedFormulaContext context)
             {
-                return typeof(Color).GetField(value)!.GetValue(null);
+                return typeof(Color).GetField(value)?.GetValue(null);
             }
         }
 
