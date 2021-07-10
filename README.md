@@ -1,12 +1,15 @@
-WPF-Math [![NuGet][badge-nuget]][nuget]
-========
-
 WPF-Math: [![NuGet][badge-nuget-wpf]][nuget-wpf]
 Avalonia-Math: [![NuGet][badge-nuget-avalonia]][nuget-avalonia]
+========
 
-*WPF-Math* is a .NET library for rendering mathematical formulae using the LaTeX typsetting style, for the WPF framework.
+*WPF-Math* is a .NET library for rendering mathematical formulae using the LaTeX typesetting style, for the WPF framework.
+We also support [Avalonia][avalonia] XAML framework, there's an Avalonia-Math library for it.
 
-We also support [Avalonia][avalonia] XAML framework, there's a Avalonia-Math library for it.
+It supports the following .NET runtimes:
+- .NET Framework 4.5.2 or later
+- .NET Core 3.1 or later
+- .NET 5.0 or later
+
 
 Getting Started
 ---------------
@@ -105,7 +108,7 @@ Documentation
 Build and Maintenance Instructions
 ----------------------------------
 
-Build the project using [.NET Core SDK 3.1][dotnet-core-sdk]. WPF-Math requires C# 8 and F# 4.7 support. Here's the build and test script:
+Build the project using [.NET SDK 5.0][dotnet-sdk]. WPF-Math requires C# 8 and F# 4.7 support. Here's the build and test script:
 
 ```console
 $ dotnet build --configuration Release
@@ -151,7 +154,7 @@ We're very grateful to JMathTeX authors for their work and allowing to redistrib
 [license]: LICENSE.md
 
 [alex-regueiro]: https://github.com/alexreg
-[dotnet-core-sdk]: https://dotnet.microsoft.com/download
+[dotnet-sdk]: https://dotnet.microsoft.com/download
 [avalonia]: https://avaloniaui.net/
 [github]: https://github.com/ForNeVeR/wpf-math
 [jmathtex]: http://jmathtex.sourceforge.net/

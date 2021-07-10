@@ -28,7 +28,7 @@ jobs:
       - name: Set up .NET SDK
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1.x'
+          dotnet-version: '5.0.x'
 
       - name: Prepare a NuGet package
         run: dotnet pack --configuration Release -p:Version=${{ steps.version.outputs.version }}
