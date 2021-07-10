@@ -14,9 +14,9 @@ namespace AvaloniaMath.Controls
 {
     public class FormulaBlock : Control
     {
-        private static TexFormulaParser s_formulaParser = new TexFormulaParser();
-        private TexFormula _texFormula;
-        private TexRenderer _texRenderer;
+        private static readonly TexFormulaParser s_formulaParser = new TexFormulaParser();
+        private TexFormula? _texFormula;
+        private TexRenderer? _texRenderer;
 
         public static readonly StyledProperty<string> FormulaProperty =
             AvaloniaProperty.Register<FormulaBlock, string>(
@@ -49,7 +49,6 @@ namespace AvaloniaMath.Controls
             AffectsRender<FormulaBlock>(
                 FormulaProperty,
                 ScaleProperty);
-
         }
         /// <summary>
         /// Initializes a new instance of the <see cref="FormulaBlock"/> class.
@@ -106,13 +105,8 @@ namespace AvaloniaMath.Controls
         public override void Render(DrawingContext context)
         {
             base.Render(context);
-
-            if (_texFormula != null)
-            {
-                _texRenderer.Render(context, 0, 0);
-            }
+            _texRenderer?.Render(context, 0, 0);
         }
-
 
         /// <summary>
         /// Invalidates <see cref="FormattedText"/>.
@@ -141,12 +135,7 @@ namespace AvaloniaMath.Controls
         /// <returns>The desired size.</returns>
         protected override Size MeasureOverride(Size availableSize)
         {
-            if (_texFormula!=null)
-            {
-                return _texRenderer.RenderSize;
-            }
-
-            return new Size();
+            return _texRenderer?.RenderSize ?? new Size();
         }
 
         private void SetError(TexException exception)
