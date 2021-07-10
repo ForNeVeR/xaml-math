@@ -50,9 +50,9 @@ namespace WpfMath.Rendering
 
                 // TODO fix baseline text display
                 var origin = glyphRun.Position.WithY(glyphRun.Position.Y-tf.FontSize*0.75);
-                
+
                 _drawingContext.DrawText(foreground, origin, ft);
-                
+
             }
         }
 

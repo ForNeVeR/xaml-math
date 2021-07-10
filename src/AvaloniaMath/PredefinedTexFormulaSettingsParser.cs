@@ -36,7 +36,7 @@ namespace WpfMath
         public TexPredefinedFormulaSettingsParser()
         {
             var assembly = typeof(GlueBox).GetTypeInfo().Assembly;
-            var doc = XDocument.Load(new System.IO.StreamReader(assembly.GetManifestResourceStream(resourceName)));
+            var doc = XDocument.Load(new System.IO.StreamReader(assembly.GetManifestResourceStream(resourceName)!));
             this.rootElement = doc.Root;
         }
 

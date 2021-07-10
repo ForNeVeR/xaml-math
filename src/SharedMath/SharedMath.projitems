@@ -78,6 +78,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Parsers\Matrices\MatrixInternalEnvironment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Parsers\Matrices\NextRowCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Parsers\NonRecursiveEnvironment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Parsers\PredefinedFormulae\PredefinedFormulaContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Parsers\StandardCommands.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Rendering\GenericPlatformBrush.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Rendering\IPlatformBrush.cs" />

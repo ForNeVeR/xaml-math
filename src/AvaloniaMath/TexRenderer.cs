@@ -46,9 +46,13 @@ namespace WpfMath
             }
         }
 
-        public void RenderFormulaTo(IElementRenderer renderer, double x, double y) =>
+        public void RenderFormulaTo(IElementRenderer renderer, double x, double y)
+        {
             renderer.RenderElement(Box, x / Scale, y / Scale + Box.Height);
-/* TODO
+            renderer.FinishRendering();
+        }
+
+        /* TODO
         public Geometry RenderToGeometry(double x, double y)
         {
             var geometry = new GeometryGroup();

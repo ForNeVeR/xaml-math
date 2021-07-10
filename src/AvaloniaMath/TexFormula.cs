@@ -10,27 +10,33 @@ namespace WpfMath
     // Represents mathematical formula that can be rendered.
     public sealed class TexFormula
     {
-        public string TextStyle
+        public string? TextStyle
         {
             get;
             set;
         }
 
-        internal Atom RootAtom
+        internal Atom? RootAtom
         {
             get;
             set;
         }
 
-        public TexRenderer GetRenderer(TexStyle style, double scale, string systemTextFontName)
+        public SourceSpan? Source { get; set; }
+
+        public TexRenderer GetRenderer(TexStyle style,
+            double scale,
+            string? systemTextFontName,
+            IPlatformBrush? background = null,
+            IPlatformBrush? foreground = null)
         {
             var mathFont = new DefaultTexFont(scale);
             var textFont = systemTextFontName == null ? (ITeXFont)mathFont : GetSystemFont(systemTextFontName, scale);
-            var environment = new TexEnvironment(style, mathFont, textFont);
+            var environment = new TexEnvironment(style, mathFont, textFont, background, foreground);
             return new TexRenderer(CreateBox(environment), scale);
         }
 
-        public void Add(TexFormula formula, SourceSpan source = null)
+        public void Add(TexFormula formula, SourceSpan? source = null)
         {
             Debug.Assert(formula != null);
             Debug.Assert(formula.RootAtom != null);
@@ -48,7 +54,7 @@ namespace WpfMath
         /// </summary>
         /// <param name="atom">The atom to add.</param>
         /// <param name="rowSource">The source that will be set for the resulting row atom.</param>
-        internal void Add(Atom atom, SourceSpan rowSource)
+        internal void Add(Atom atom, SourceSpan? rowSource)
         {
             if (this.RootAtom == null)
             {
