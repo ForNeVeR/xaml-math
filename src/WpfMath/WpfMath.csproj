@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
     <PropertyGroup>
         <TargetFrameworks>netcoreapp3.1;net452</TargetFrameworks>
-        <LangVersion>8.0</LangVersion>
         <UseWpf>true</UseWpf>
         <OutputType>Library</OutputType>
         <DebugType>Full</DebugType>
@@ -37,9 +36,6 @@ Fixed:
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-
-        <Nullable Condition="'$(TargetFramework)' == 'netcoreapp3.1'">enable</Nullable>
-        <Nullable Condition="'$(TargetFramework)' == 'net452'">annotations</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
