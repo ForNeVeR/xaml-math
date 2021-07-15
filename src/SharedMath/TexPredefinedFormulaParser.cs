@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
-using System.Windows.Media;
 using System.Xml.Linq;
 using WpfMath.Parsers.PredefinedFormulae;
 
@@ -31,7 +30,6 @@ namespace WpfMath
             typeMappings.Add("int", typeof(int));
             typeMappings.Add("bool", typeof(bool));
             typeMappings.Add("char", typeof(char));
-            typeMappings.Add("Color", typeof(Color));
             typeMappings.Add("Unit", typeof(TexUnit));
             typeMappings.Add("AtomType", typeof(TexAtomType));
 
@@ -45,7 +43,6 @@ namespace WpfMath
             argValueParsers.Add("int", new IntValueParser());
             argValueParsers.Add("bool", new BooleanValueParser());
             argValueParsers.Add("char", new CharValueParser());
-            argValueParsers.Add("Color", new ColorConstantValueParser());
             argValueParsers.Add("Unit", new EnumParser(typeof(TexUnit)));
             argValueParsers.Add("AtomType", new EnumParser(typeof(TexAtomType)));
         }
@@ -230,14 +227,6 @@ namespace WpfMath
                 var formula = context[value];
                 Debug.Assert(formula != null);
                 return formula;
-            }
-        }
-
-        private class ColorConstantValueParser : IArgumentValueParser
-        {
-            public object? Parse(string value, PredefinedFormulaContext context)
-            {
-                return typeof(Color).GetField(value)?.GetValue(null);
             }
         }
 

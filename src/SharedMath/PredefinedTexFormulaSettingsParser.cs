@@ -5,7 +5,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Xml.Linq;
-using WpfMath.Boxes;
 
 namespace WpfMath
 {
@@ -35,8 +34,7 @@ namespace WpfMath
 
         public TexPredefinedFormulaSettingsParser()
         {
-            var assembly = typeof(GlueBox).GetTypeInfo().Assembly;
-            var doc = XDocument.Load(new System.IO.StreamReader(assembly.GetManifestResourceStream(resourceName)!));
+            var doc = XDocument.Load(new System.IO.StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)!));
             this.rootElement = doc.Root;
         }
 
