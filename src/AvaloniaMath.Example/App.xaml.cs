@@ -1,5 +1,8 @@
 using Avalonia;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using AvaloniaMath.Example.ViewModels;
+using AvaloniaMath.Example.Views;
 
 namespace AvaloniaMath.Example
 {
@@ -8,6 +11,19 @@ namespace AvaloniaMath.Example
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
+        }
+
+        public override void OnFrameworkInitializationCompleted()
+        {
+            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            {
+                desktop.MainWindow = new MainWindow
+                {
+                    DataContext = new MainWindowViewModel()
+                };
+            }
+
+            base.OnFrameworkInitializationCompleted();
         }
     }
 }

@@ -33,7 +33,7 @@ namespace WpfMath.Colors
             if (!_colors.TryGetValue(colorName, out var color))
                 return null;
 
-            byte? alpha = 255;
+            byte alpha = 255;
             if (hasAlphaComponent)
             {
                 var alphaFraction = ColorHelpers.ParseFloatColorComponent(components[1], NumberStyles.AllowDecimalPoint);
@@ -43,10 +43,7 @@ namespace WpfMath.Colors
                 alpha = ColorHelpers.ConvertToByteRgbComponent(alphaFraction.Value);
             }
 
-            if (!alpha.HasValue)
-                return null;
-
-            color.A = alpha.Value;
+            color.A = alpha;
             return color;
         }
 
