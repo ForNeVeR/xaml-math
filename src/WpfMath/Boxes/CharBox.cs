@@ -56,7 +56,7 @@ namespace WpfMath.Boxes
 
         public override void RenderTo(IElementRenderer renderer, double x, double y)
         {
-            var color = ((WpfBrush)Foreground)?.Get() ?? Brushes.Black;
+            var color = ((WpfBrush?)Foreground)?.Get() ?? Brushes.Black;
             renderer.RenderGlyphRun(scale => this.GetGlyphRun(scale, x, y), x, y, color);
         }
 

@@ -87,7 +87,7 @@ namespace WpfMath.Rendering
             {
                 // Fill background of box with color:
                 _drawingContext.FillRectangle(
-                    ((AvaloniaBrush)box.Background)?.Get(),
+                    ((AvaloniaBrush)box.Background).Get(),
                     new Rect(_scale * x, _scale * (y - box.Height),
                         _scale * box.TotalWidth,
                         _scale * box.TotalHeight));

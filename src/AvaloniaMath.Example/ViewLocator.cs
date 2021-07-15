@@ -11,17 +11,16 @@ namespace AvaloniaMath.Example
 
         public IControl Build(object data)
         {
-            var name = data.GetType().FullName.Replace("ViewModel", "View");
+            if (!(data.GetType().FullName is { } fullName))
+                return new TextBlock { Text = "Error: data doesn't have type fullName"};
+
+            var name = fullName.Replace("ViewModel", "View");
             var type = Type.GetType(name);
 
-            if (type != null)
-            {
-                return (Control)Activator.CreateInstance(type);
-            }
-            else
-            {
-                return new TextBlock { Text = "Not Found: " + name };
-            }
+            return type is null
+                ? new TextBlock { Text = "Not Found: " + name }
+                : Activator.CreateInstance(type) is Control control
+                    ? control : new TextBlock { Text = "Not Create Instance: " + type };
         }
 
         public bool Match(object data)

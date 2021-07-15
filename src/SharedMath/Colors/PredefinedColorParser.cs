@@ -11,15 +11,16 @@ namespace WpfMath.Colors
     public class PredefinedColorParser : IColorParser
     {
         private const string ResourceName = TexUtilities.ResourcesDataDirectory + "PredefinedColors.xml";
-        public static readonly PredefinedColorParser Instance = new PredefinedColorParser(ResourceName);
 
-        private static IReadOnlyDictionary<string, RgbaColor> _colors;
+        private static IReadOnlyDictionary<string, RgbaColor> _colors = null!;
+
+        public static readonly PredefinedColorParser Instance = new PredefinedColorParser(ResourceName);
 
         private PredefinedColorParser(string resourceName)
         {
             using var resource = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName);
             var doc = XDocument.Load(resource);
-            _colors = Parse(doc.Root);
+            _colors = Parse(doc!.Root!);
         }
 
         public RgbaColor? Parse(IReadOnlyList<string> components)

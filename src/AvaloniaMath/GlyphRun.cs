@@ -34,6 +34,6 @@ namespace WpfMath.Rendering
             throw new System.NotImplementedException();
         }
 
-        public IList<Geometry> Children { get; set; }
+        public IList<Geometry> Children { get; set; } = new List<Geometry>();
     }
 }
