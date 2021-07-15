@@ -1,5 +1,6 @@
 using Avalonia.Media;
 using WpfMath.Exceptions;
+using WpfMath.Rendering;
 using WpfMath.Utils;
 
 namespace WpfMath

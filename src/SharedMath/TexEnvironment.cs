@@ -1,4 +1,4 @@
-using WpfMath.Utils;
+using WpfMath.Rendering;
 
 namespace WpfMath
 {

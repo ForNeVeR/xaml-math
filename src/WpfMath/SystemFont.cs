@@ -2,6 +2,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Media;
 using WpfMath.Exceptions;
+using WpfMath.Rendering;
 using WpfMath.Utils;
 
 namespace WpfMath

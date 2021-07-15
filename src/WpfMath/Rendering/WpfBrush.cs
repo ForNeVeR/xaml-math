@@ -1,6 +1,6 @@
 using System.Windows.Media;
 using WpfMath.Colors;
-using WpfMath.Utils;
+using WpfMath.Rendering;
 
 namespace WpfMath.Rendering
 {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows.Media;
 using WpfMath.Atoms;
 using WpfMath.Boxes;
-using WpfMath.Utils;
+using WpfMath.Rendering;
 
 namespace WpfMath
 {

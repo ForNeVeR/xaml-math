@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using WpfMath.Exceptions;
+using WpfMath.Rendering;
 using WpfMath.Utils;
 
 namespace WpfMath

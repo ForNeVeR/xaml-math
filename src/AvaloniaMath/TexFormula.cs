@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Linq;
 using WpfMath.Atoms;
 using WpfMath.Boxes;
-using WpfMath.Utils;
+using WpfMath.Rendering;
 
 namespace WpfMath
 {

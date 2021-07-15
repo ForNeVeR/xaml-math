@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using WpfMath.Rendering;
 using WpfMath.Utils;
 
 namespace WpfMath.Colors

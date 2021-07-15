@@ -1,4 +1,5 @@
 using System.Globalization;
+using WpfMath.Rendering;
 using WpfMath.Utils;
 
 namespace WpfMath.Colors

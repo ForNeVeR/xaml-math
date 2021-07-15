@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using WpfMath.Rendering;
-using WpfMath.Utils;
 
 namespace WpfMath.Boxes
 {

@@ -1,6 +1,6 @@
 using Avalonia.Media;
 using WpfMath.Colors;
-using WpfMath.Utils;
+using WpfMath.Rendering;
 
 namespace AvaloniaMath.Rendering
 {

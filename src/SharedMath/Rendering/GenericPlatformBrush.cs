@@ -1,4 +1,4 @@
-namespace WpfMath.Utils
+namespace WpfMath.Rendering
 {
     public class GenericPlatformBrush<TBrush> : IPlatformBrush
     {

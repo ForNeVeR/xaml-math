@@ -1,6 +1,4 @@
-using WpfMath.Rendering;
-
-namespace WpfMath.Utils
+namespace WpfMath.Rendering
 {
     /// <summary>
     /// This is a marker interface for a platform-dependent Brush object. It was introduced in scope of cross-platform
