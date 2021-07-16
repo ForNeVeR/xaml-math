@@ -20,7 +20,7 @@ namespace AvaloniaMath.Example
             return type is null
                 ? new TextBlock { Text = "Not Found: " + name }
                 : Activator.CreateInstance(type) is Control control
-                    ? control : new TextBlock { Text = "Not Create Instance: " + type };
+                    ? control : new TextBlock { Text = "Created object is not Control: " + type };
         }
 
         public bool Match(object data)
