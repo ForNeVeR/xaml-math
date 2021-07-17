@@ -6,8 +6,14 @@ namespace AvaloniaMath.Example
 {
     class Program
     {
-        public static void Main(string[] args) => BuildAvaloniaApp()
-            .StartWithClassicDesktopLifetime(args);
+        public static void Main(string[] args)
+        {
+#if DEBUG
+            Trace.Listeners.Add(new ConsoleTraceListener());
+#endif
+            BuildAvaloniaApp()
+                .StartWithClassicDesktopLifetime(args);
+        }
 
         public static AppBuilder BuildAvaloniaApp()
         {
@@ -18,8 +24,10 @@ namespace AvaloniaMath.Example
                 .UseDirect2D1()
                 .UseWin32()
 #endif
-                .UseReactiveUI()
-                .LogToTrace();
+#if DEBUG
+                .LogToTrace()
+#endif
+                .UseReactiveUI();
         }
     }
 }

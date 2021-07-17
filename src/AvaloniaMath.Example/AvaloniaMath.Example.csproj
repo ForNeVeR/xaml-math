@@ -1,10 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <OutputType>Exe</OutputType>
         <TargetFrameworks>netcoreapp3.1;net461</TargetFrameworks>
         <LangVersion>8.0</LangVersion>
         <DebugType>Full</DebugType>
         <IsPackable>false</IsPackable>
+
+        <!-- For System.Diagnostics.ConsoleTraceListener and Avalonia.LoggingExtensions.LogToTrace -->
+        <OutputType Condition=" '$(Configuration)' == 'Debug' ">Exe</OutputType>
+        <OutputType Condition=" '$(Configuration)' != 'Debug' ">WinExe</OutputType>
+
         <Nullable Condition="'$(TargetFramework)' == 'netcoreapp3.1'">enable</Nullable>
         <Nullable Condition="'$(TargetFramework)' == 'net461'">annotations</Nullable>
     </PropertyGroup>
