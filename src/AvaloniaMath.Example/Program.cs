@@ -1,8 +1,6 @@
+using System.Diagnostics;
 using Avalonia;
-using Avalonia.Logging.Serilog;
 using Avalonia.ReactiveUI;
-using AvaloniaMath.Example.ViewModels;
-using AvaloniaMath.Example.Views;
 
 namespace AvaloniaMath.Example
 {
@@ -12,11 +10,16 @@ namespace AvaloniaMath.Example
             .StartWithClassicDesktopLifetime(args);
 
         public static AppBuilder BuildAvaloniaApp()
-            => AppBuilder.Configure<App>()
-                //.UsePlatformDetect()
+        {
+            return AppBuilder.Configure<App>()
+#if NETCOREAPP
+                .UsePlatformDetect()
+#else
                 .UseDirect2D1()
                 .UseWin32()
+#endif
                 .UseReactiveUI()
-                .LogToDebug();
+                .LogToTrace();
+        }
     }
 }

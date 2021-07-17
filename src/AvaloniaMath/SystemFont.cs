@@ -125,7 +125,7 @@ namespace WpfMath
 
         private Typeface GetTypeface()
         {
-            var face = new Typeface(_fontFamily, 12);
+            var face = new Typeface(_fontFamily);
             return face;
         }
     }

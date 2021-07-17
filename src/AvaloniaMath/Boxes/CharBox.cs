@@ -1,6 +1,8 @@
+using System.Linq;
 using Avalonia;
 using Avalonia.Media;
 using AvaloniaMath.Rendering;
+using WpfMath.Exceptions;
 using WpfMath.Rendering;
 
 namespace WpfMath.Boxes
@@ -26,42 +28,22 @@ namespace WpfMath.Boxes
 
         internal GlyphRun GetGlyphRun(double scale, double x, double y)
         {
-            
-            var fontStyle = FontStyle.Normal;
-            var fontWeight = FontWeight.Normal;
-            
-            if (Character.Font.Style.HasFlag(FontStyle.Italic))
+            var typeface = this.Character.Font;
+            var characterUInt = (uint)this.Character.Character;
+            var glyphTypeface = typeface.GlyphTypeface;
+
+            if (!glyphTypeface.TryGetGlyph(characterUInt, out var glyphIndex))
             {
-                fontStyle |= FontStyle.Italic;
+                var fontName = typeface.FontFamily.FamilyNames.First();
+                var characterHex = characterUInt.ToString("X4");
+                throw new TexCharacterMappingNotFoundException(
+                    $"The {fontName} font does not support '{this.Character.Character}' (U+{characterHex}) character.");
             }
 
-            if (Character.Font.Weight.HasFlag(FontWeight.Bold))
+            var glyphRun = new GlyphRun(glyphTypeface, this.Character.Size * scale, new[] {glyphIndex})
             {
-                fontWeight |= FontWeight.Bold;
-            }
-            
-            // TODO: Implement font decoration after Avalonia adds support.
-            /*
-            Underline;
-            Strikethrough;
-            */
-            var typeface = new Typeface(
-                    Character.Font.FontFamily,
-                    scale * Character.Size,
-                    fontStyle,
-                    fontWeight);
-
-            // var glyphIndex = typeface.CharacterToGlyphMap[this.Character.Character];
-            //  var glyphRun = new GlyphRun(typeface, 0, false, this.Character.Size * scale,
-            //      new ushort[] { glyphIndex }, new Point(x * scale, y * scale),
-            //      new double[] { typeface.AdvanceWidths[glyphIndex] }, null, null, null, null, null, null);
-
-            
-
-            var glyphRun = new GlyphRun(typeface,this.Character.Size * scale,
-           //      new Point(x * scale, 0),Character.Character);
-            new Point(x * scale, y  * scale),Character.Character);
-
+                BaselineOrigin = new Point(x * scale, y * scale)
+            };
 
             return glyphRun;
         }

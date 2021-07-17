@@ -222,7 +222,7 @@ namespace WpfMath
             // Load font from embedded resource.
             var fontName = name.Substring(0, name.LastIndexOf('.'));
             var ff = FontFamily.Parse($"avares://AvaloniaMath/Fonts#{fontName}");
-            return new Typeface(ff, 12);
+            return new Typeface(ff);
         }
 
         public class ExtensionParser : ICharChildParser
