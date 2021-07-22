@@ -2,10 +2,8 @@
 
     <PropertyGroup Condition=" '$(MSBuildProjectExtension)' == '.csproj' ">
         <LangVersion>8.0</LangVersion>
-        <IsEnableNullable Condition=" '$(TargetFrameworkIdentifier)' == '.NETCoreApp' AND $([MSBuild]::VersionGreaterThanOrEquals($(TargetFrameworkVersion), '3.0')) ">True</IsEnableNullable>
-        <IsEnableNullable Condition=" '$(TargetFrameworkIdentifier)' == '.NETStandard' AND $([MSBuild]::VersionEquals($(TargetFrameworkVersion), '2.1')) ">True</IsEnableNullable>
-        <Nullable Condition=" '$(IsEnableNullable)' == 'True' ">enable</Nullable>
-        <Nullable Condition=" '$(IsEnableNullable)' != 'True' ">annotations</Nullable>
+        <Nullable Condition=" $([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'netstandard2.1')) ">enable</Nullable>
+        <Nullable Condition=" '$(Nullable)' != 'enable' ">annotations</Nullable>
     </PropertyGroup>
 
 </Project>

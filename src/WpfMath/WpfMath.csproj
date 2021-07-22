@@ -38,6 +38,10 @@ Fixed:
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" $([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net452')) ">
+        <IncludePackageReferencesDuringMarkupCompilation>true</IncludePackageReferencesDuringMarkupCompilation>
+    </PropertyGroup>
+
     <ItemGroup>
         <EmbeddedResource Include="Data/*" />
         <Resource Include="Fonts\cmex10.ttf" />
