@@ -3,12 +3,8 @@ using WpfMath.Boxes;
 namespace WpfMath.Atoms
 {
     // Atom (smallest unit) of TexFormula.
-    internal abstract record Atom(TexAtomType Type, SourceSpan? Source)
+    internal abstract record Atom(SourceSpan? Source, TexAtomType Type = TexAtomType.Ordinary)
     {
-        // TODO: Merge this constructor with the main one
-        public Atom(SourceSpan? source, TexAtomType type = TexAtomType.Ordinary)
-            : this(type, source) {}
-
         public Box CreateBox(TexEnvironment environment)
         {
             var box = this.CreateBoxCore(environment);

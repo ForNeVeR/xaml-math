@@ -3,8 +3,14 @@ using WpfMath.Boxes;
 
 namespace WpfMath.Atoms
 {
-    // Atom representing big operator with optional limits.
-    internal record BigOperatorAtom : Atom
+    /// <summary>Atom representing big operator with optional limits.</summary>
+    /// <param name="UseVerticalLimits">True if limits should be drawn over and under the base atom; false if they should be drawn as scripts.</param>
+    internal record BigOperatorAtom(
+        SourceSpan? Source,
+        Atom? BaseAtom,
+        Atom? LowerLimitAtom,
+        Atom? UpperLimitAtom,
+        bool? UseVerticalLimits = null) : Atom(Source, TexAtomType.BigOperator)
     {
         private static Box ChangeWidth(Box box, double maxWidth)
         {
@@ -14,37 +20,6 @@ namespace WpfMath.Atoms
             else
                 return box;
         }
-
-        public BigOperatorAtom(
-            SourceSpan? source,
-            Atom? baseAtom,
-            Atom? lowerLimitAtom,
-            Atom? upperLimitAtom,
-            bool? useVerticalLimits = null)
-            : this(source, baseAtom, lowerLimitAtom, upperLimitAtom)
-        {
-            this.UseVerticalLimits = useVerticalLimits;
-        }
-
-        public BigOperatorAtom(SourceSpan? source, Atom? baseAtom, Atom? lowerLimitAtom, Atom? upperLimitAtom)
-            : base(source, TexAtomType.BigOperator)
-        {
-            this.BaseAtom = baseAtom;
-            this.LowerLimitAtom = lowerLimitAtom;
-            this.UpperLimitAtom = upperLimitAtom;
-            this.UseVerticalLimits = null;
-        }
-
-        // Atom representing big operator.
-        public Atom? BaseAtom { get; }
-
-        // Atoms representing lower and upper limits.
-        public Atom? LowerLimitAtom { get; }
-
-        public Atom? UpperLimitAtom { get; }
-
-        // True if limits should be drawn over and under the base atom; false if they should be drawn as scripts.
-        public bool? UseVerticalLimits { get; }
 
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
