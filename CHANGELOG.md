@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+### Added
+- [#262: Add \mod operator from amsmath][pull-262]
+
 ## [0.10.0] - 2021-07-06
 ### Changed
 - (**Breaking change!**) Removed support for .NET Core 3.0. .NET Core 3.1 or later is supported from now (.NET Framework 4.5.2 is still supported; .NET 5.0 or later is supported, too).
@@ -186,6 +190,7 @@ This was the initially published version. It consisted entirely of the original 
 [pull-253]: https://github.com/ForNeVeR/wpf-math/pull/253
 [pull-254]: https://github.com/ForNeVeR/wpf-math/pull/254
 [pull-261]: https://github.com/ForNeVeR/wpf-math/pull/261
+[pull-262]: https://github.com/ForNeVeR/wpf-math/pull/262
 [pull-277]: https://github.com/ForNeVeR/wpf-math/pull/277
 [pull-283]: https://github.com/ForNeVeR/wpf-math/pull/283
 
