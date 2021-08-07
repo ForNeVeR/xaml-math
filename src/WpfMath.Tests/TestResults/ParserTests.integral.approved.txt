@@ -1,64 +1,64 @@
 {
-  "TextStyle": null,
   "RootAtom": {
     "[AtomType]": "BigOperatorAtom",
     "BaseAtom": {
       "[AtomType]": "SymbolAtom",
       "IsDelimeter": false,
-      "Name": "int",
       "IsTextSymbol": false,
-      "Type": "BigOperator",
+      "Name": "int",
       "Source": {
-        "Start": 1,
         "End": 4,
         "Length": 3,
         "Source": "\\int_a^b",
-        "SourceName": "User input"
-      }
+        "SourceName": "User input",
+        "Start": 1
+      },
+      "Type": "BigOperator"
     },
     "LowerLimitAtom": {
       "[AtomType]": "CharAtom",
       "Character": "a",
-      "TextStyle": null,
       "IsTextSymbol": false,
-      "Type": "Ordinary",
       "Source": {
-        "Start": 5,
         "End": 6,
         "Length": 1,
         "Source": "\\int_a^b",
-        "SourceName": "User input"
-      }
-    },
-    "UpperLimitAtom": {
-      "[AtomType]": "CharAtom",
-      "Character": "b",
+        "SourceName": "User input",
+        "Start": 5
+      },
       "TextStyle": null,
-      "IsTextSymbol": false,
-      "Type": "Ordinary",
-      "Source": {
-        "Start": 7,
-        "End": 8,
-        "Length": 1,
-        "Source": "\\int_a^b",
-        "SourceName": "User input"
-      }
+      "Type": "Ordinary"
     },
-    "UseVerticalLimits": null,
-    "Type": "BigOperator",
     "Source": {
-      "Start": 0,
       "End": 8,
       "Length": 8,
       "Source": "\\int_a^b",
-      "SourceName": "User input"
-    }
+      "SourceName": "User input",
+      "Start": 0
+    },
+    "Type": "BigOperator",
+    "UpperLimitAtom": {
+      "[AtomType]": "CharAtom",
+      "Character": "b",
+      "IsTextSymbol": false,
+      "Source": {
+        "End": 8,
+        "Length": 1,
+        "Source": "\\int_a^b",
+        "SourceName": "User input",
+        "Start": 7
+      },
+      "TextStyle": null,
+      "Type": "Ordinary"
+    },
+    "UseVerticalLimits": null
   },
   "Source": {
-    "Start": 0,
     "End": 8,
     "Length": 8,
     "Source": "\\int_a^b",
-    "SourceName": "User input"
-  }
+    "SourceName": "User input",
+    "Start": 0
+  },
+  "TextStyle": null
 }

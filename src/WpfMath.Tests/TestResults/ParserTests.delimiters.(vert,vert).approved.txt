@@ -1,63 +1,63 @@
 {
-  "TextStyle": null,
   "RootAtom": {
     "[AtomType]": "FencedAtom",
     "BaseAtom": {
       "[AtomType]": "CharAtom",
       "Character": "a",
-      "TextStyle": null,
       "IsTextSymbol": false,
-      "Type": "Ordinary",
       "Source": {
-        "Start": 11,
         "End": 12,
         "Length": 1,
         "Source": "\\left\\vert a\\right\\vert",
-        "SourceName": "User input"
-      }
+        "SourceName": "User input",
+        "Start": 11
+      },
+      "TextStyle": null,
+      "Type": "Ordinary"
     },
     "LeftDelimeter": {
       "[AtomType]": "SymbolAtom",
       "IsDelimeter": true,
-      "Name": "vert",
       "IsTextSymbol": false,
-      "Type": "Ordinary",
+      "Name": "vert",
       "Source": {
-        "Start": 1,
         "End": 10,
         "Length": 9,
         "Source": "\\left\\vert a\\right\\vert",
-        "SourceName": "User input"
-      }
+        "SourceName": "User input",
+        "Start": 1
+      },
+      "Type": "Ordinary"
     },
     "RightDelimeter": {
       "[AtomType]": "SymbolAtom",
       "IsDelimeter": true,
-      "Name": "vert",
       "IsTextSymbol": false,
-      "Type": "Ordinary",
+      "Name": "vert",
       "Source": {
-        "Start": 13,
         "End": 23,
         "Length": 10,
         "Source": "\\left\\vert a\\right\\vert",
-        "SourceName": "User input"
-      }
+        "SourceName": "User input",
+        "Start": 13
+      },
+      "Type": "Ordinary"
     },
-    "Type": "Ordinary",
     "Source": {
-      "Start": 1,
       "End": 23,
       "Length": 22,
       "Source": "\\left\\vert a\\right\\vert",
-      "SourceName": "User input"
-    }
+      "SourceName": "User input",
+      "Start": 1
+    },
+    "Type": "Ordinary"
   },
   "Source": {
-    "Start": 0,
     "End": 23,
     "Length": 23,
     "Source": "\\left\\vert a\\right\\vert",
-    "SourceName": "User input"
-  }
+    "SourceName": "User input",
+    "Start": 0
+  },
+  "TextStyle": null
 }

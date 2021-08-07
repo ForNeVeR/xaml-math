@@ -1,147 +1,147 @@
 {
-  "TextStyle": null,
   "RootAtom": {
     "[AtomType]": "RowAtom",
-    "PreviousAtom": null,
     "Elements": [
       {
         "[AtomType]": "FencedAtom",
         "BaseAtom": {
           "[AtomType]": "RowAtom",
-          "PreviousAtom": null,
           "Elements": [
             {
               "[AtomType]": "CharAtom",
               "Character": "2",
-              "TextStyle": "mathrm",
               "IsTextSymbol": false,
-              "Type": "Ordinary",
               "Source": {
-                "Start": 14,
                 "End": 15,
                 "Length": 1,
                 "Source": "\\mathrm{\\left(2+2\\right)} + 1",
-                "SourceName": "User input"
-              }
+                "SourceName": "User input",
+                "Start": 14
+              },
+              "TextStyle": "mathrm",
+              "Type": "Ordinary"
             },
             {
               "[AtomType]": "SymbolAtom",
               "IsDelimeter": false,
-              "Name": "plus",
               "IsTextSymbol": false,
-              "Type": "BinaryOperator",
+              "Name": "plus",
               "Source": {
-                "Start": 15,
                 "End": 16,
                 "Length": 1,
                 "Source": "\\mathrm{\\left(2+2\\right)} + 1",
-                "SourceName": "User input"
-              }
+                "SourceName": "User input",
+                "Start": 15
+              },
+              "Type": "BinaryOperator"
             },
             {
               "[AtomType]": "CharAtom",
               "Character": "2",
-              "TextStyle": "mathrm",
               "IsTextSymbol": false,
-              "Type": "Ordinary",
               "Source": {
-                "Start": 16,
                 "End": 17,
                 "Length": 1,
                 "Source": "\\mathrm{\\left(2+2\\right)} + 1",
-                "SourceName": "User input"
-              }
+                "SourceName": "User input",
+                "Start": 16
+              },
+              "TextStyle": "mathrm",
+              "Type": "Ordinary"
             }
           ],
-          "Type": "Ordinary",
+          "PreviousAtom": null,
           "Source": {
-            "Start": 9,
             "End": 33,
             "Length": 24,
             "Source": "\\mathrm{\\left(2+2\\right)} + 1",
-            "SourceName": "User input"
-          }
+            "SourceName": "User input",
+            "Start": 9
+          },
+          "Type": "Ordinary"
         },
         "LeftDelimeter": {
           "[AtomType]": "SymbolAtom",
           "IsDelimeter": true,
-          "Name": "(",
           "IsTextSymbol": false,
-          "Type": "Opening",
+          "Name": "(",
           "Source": {
-            "Start": 9,
             "End": 14,
             "Length": 5,
             "Source": "\\mathrm{\\left(2+2\\right)} + 1",
-            "SourceName": "User input"
-          }
+            "SourceName": "User input",
+            "Start": 9
+          },
+          "Type": "Opening"
         },
         "RightDelimeter": {
           "[AtomType]": "SymbolAtom",
           "IsDelimeter": true,
-          "Name": ")",
           "IsTextSymbol": false,
-          "Type": "Closing",
+          "Name": ")",
           "Source": {
-            "Start": 18,
             "End": 24,
             "Length": 6,
             "Source": "\\mathrm{\\left(2+2\\right)} + 1",
-            "SourceName": "User input"
-          }
+            "SourceName": "User input",
+            "Start": 18
+          },
+          "Type": "Closing"
         },
-        "Type": "Ordinary",
         "Source": {
-          "Start": 9,
           "End": 24,
           "Length": 15,
           "Source": "\\mathrm{\\left(2+2\\right)} + 1",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 9
+        },
+        "Type": "Ordinary"
       },
       {
         "[AtomType]": "SymbolAtom",
         "IsDelimeter": false,
-        "Name": "plus",
         "IsTextSymbol": false,
-        "Type": "BinaryOperator",
+        "Name": "plus",
         "Source": {
-          "Start": 26,
           "End": 27,
           "Length": 1,
           "Source": "\\mathrm{\\left(2+2\\right)} + 1",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 26
+        },
+        "Type": "BinaryOperator"
       },
       {
         "[AtomType]": "CharAtom",
         "Character": "1",
-        "TextStyle": null,
         "IsTextSymbol": false,
-        "Type": "Ordinary",
         "Source": {
-          "Start": 28,
           "End": 29,
           "Length": 1,
           "Source": "\\mathrm{\\left(2+2\\right)} + 1",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 28
+        },
+        "TextStyle": null,
+        "Type": "Ordinary"
       }
     ],
-    "Type": "Ordinary",
+    "PreviousAtom": null,
     "Source": {
-      "Start": 0,
       "End": 29,
       "Length": 29,
       "Source": "\\mathrm{\\left(2+2\\right)} + 1",
-      "SourceName": "User input"
-    }
+      "SourceName": "User input",
+      "Start": 0
+    },
+    "Type": "Ordinary"
   },
   "Source": {
-    "Start": 0,
     "End": 29,
     "Length": 29,
     "Source": "\\mathrm{\\left(2+2\\right)} + 1",
-    "SourceName": "User input"
-  }
+    "SourceName": "User input",
+    "Start": 0
+  },
+  "TextStyle": null
 }

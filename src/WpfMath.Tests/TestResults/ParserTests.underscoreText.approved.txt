@@ -1,24 +1,24 @@
 {
-  "TextStyle": null,
   "RootAtom": {
     "[AtomType]": "CharAtom",
     "Character": "_",
-    "TextStyle": "text",
     "IsTextSymbol": false,
-    "Type": "Ordinary",
     "Source": {
-      "Start": 6,
       "End": 7,
       "Length": 1,
       "Source": "\\text{_}",
-      "SourceName": "User input"
-    }
+      "SourceName": "User input",
+      "Start": 6
+    },
+    "TextStyle": "text",
+    "Type": "Ordinary"
   },
   "Source": {
-    "Start": 0,
     "End": 8,
     "Length": 8,
     "Source": "\\text{_}",
-    "SourceName": "User input"
-  }
+    "SourceName": "User input",
+    "Start": 0
+  },
+  "TextStyle": null
 }

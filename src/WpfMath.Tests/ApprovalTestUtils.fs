@@ -44,6 +44,7 @@ type private InnerPropertyContractResolver() =
             ``type``.GetProperties(BindingFlags.Public ||| BindingFlags.NonPublic ||| BindingFlags.Instance)
             |> Seq.filter(fun p -> Array.isEmpty <| p.GetIndexParameters()) // no indexers
             |> Seq.filter(fun p -> p.Name <> "EqualityContract") // no EqualityContract generated for records
+            |> Seq.sortBy(fun p -> p.Name)
             |> Seq.map(fun p -> this.DoCreateProperty(p, memberSerialization))
 
         upcast [|
