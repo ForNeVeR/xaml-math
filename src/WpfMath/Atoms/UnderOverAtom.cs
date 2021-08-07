@@ -5,7 +5,7 @@ using WpfMath.Boxes;
 namespace WpfMath.Atoms
 {
     // Atom representing other atom with atoms optionally over and under it.
-    internal class UnderOverAtom : Atom
+    internal record UnderOverAtom : Atom
     {
 #if !NET452
         [return: NotNullIfNotNull("box")]

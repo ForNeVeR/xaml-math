@@ -7,7 +7,7 @@ using WpfMath.Utils;
 namespace WpfMath.Atoms
 {
     // Atom representing symbol (non-alphanumeric character).
-    internal class SymbolAtom : CharSymbol
+    internal record SymbolAtom : CharSymbol
     {
         /// <summary>
         /// Special name of empty delimiter symbol that shouldn't be rendered.

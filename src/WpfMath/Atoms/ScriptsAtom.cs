@@ -4,7 +4,7 @@ using WpfMath.Boxes;
 namespace WpfMath.Atoms
 {
     // Atom representing scripts to attach to other atom.
-    internal class ScriptsAtom : Atom
+    internal record ScriptsAtom : Atom
     {
         private static readonly SpaceAtom scriptSpaceAtom = new SpaceAtom(null, TexUnit.Point, 0.5, 0, 0);
 

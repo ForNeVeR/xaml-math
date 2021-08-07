@@ -7,7 +7,7 @@ namespace WpfMath
     /// <summary>
     /// Atom representing radical (nth-root) construction.
     /// </summary>
-    internal class Radical : Atom
+    internal record Radical : Atom
     {
         private const string sqrtSymbol = "sqrt";
 

@@ -3,7 +3,7 @@ using WpfMath.Boxes;
 namespace WpfMath.Atoms
 {
     // Atom representing other atom that is not rendered.
-    internal class PhantomAtom : Atom, IRow
+    internal record PhantomAtom : Atom, IRow
     {
         private readonly bool useWidth;
         private readonly bool useHeight;

@@ -8,7 +8,7 @@ using WpfMath.Utils;
 namespace WpfMath.Atoms
 {
     /// <summary>An atom representing a tabular arrangement of atoms.</summary>
-    internal class MatrixAtom : Atom
+    internal record MatrixAtom : Atom
     {
         public const double DefaultPadding = 0.35;
 

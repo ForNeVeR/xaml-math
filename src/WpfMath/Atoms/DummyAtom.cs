@@ -4,7 +4,7 @@ using WpfMath.Utils;
 namespace WpfMath.Atoms
 {
     // Dummy atom representing atom whose type can change or which can be replaced by a ligature.
-    internal class DummyAtom : Atom
+    internal record DummyAtom : Atom
     {
         public DummyAtom(TexAtomType type, Atom atom, bool isTextSymbol)
             : base(atom.Source, type)

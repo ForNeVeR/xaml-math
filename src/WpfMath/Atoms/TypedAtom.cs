@@ -3,7 +3,7 @@ using WpfMath.Boxes;
 namespace WpfMath.Atoms
 {
     // Atom representing other atom with custom left and right types.
-    internal class TypedAtom : Atom
+    internal record TypedAtom : Atom
     {
         public TypedAtom(SourceSpan? source, Atom? atom, TexAtomType leftType, TexAtomType rightType)
             : base(source)

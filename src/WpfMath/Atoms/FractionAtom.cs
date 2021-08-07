@@ -3,7 +3,7 @@ using WpfMath.Boxes;
 namespace WpfMath.Atoms
 {
     // Atom representing fraction, with or without separation line.
-    internal class FractionAtom : Atom
+    internal record FractionAtom : Atom
     {
         private static TexAlignment CheckAlignment(TexAlignment alignment)
         {

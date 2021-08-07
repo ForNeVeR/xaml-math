@@ -74,7 +74,7 @@ namespace WpfMath
         {
             if (this.RootAtom is StyledAtom sa)
             {
-                this.RootAtom = sa.Clone(foreground: brush);
+                this.RootAtom = sa with { Foreground = brush };
             }
             else
             {
@@ -86,7 +86,7 @@ namespace WpfMath
         {
             if (this.RootAtom is StyledAtom sa)
             {
-                this.RootAtom = sa.Clone(background: brush);
+                this.RootAtom = sa with { Background = brush };
             }
             else
             {

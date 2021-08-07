@@ -4,7 +4,7 @@ using WpfMath.Boxes;
 namespace WpfMath.Atoms
 {
     // Atom representing base atom with accent above it.
-    internal class AccentedAtom : Atom
+    internal record AccentedAtom : Atom
     {
         public AccentedAtom(SourceSpan? source, Atom? baseAtom, string accentName)
             : base(source)

@@ -4,7 +4,7 @@ using WpfMath.Utils;
 namespace WpfMath.Atoms
 {
     // Atom representing single character that can be marked as text symbol.
-    internal abstract class CharSymbol : Atom
+    internal abstract record CharSymbol : Atom
     {
         protected CharSymbol(SourceSpan? source, TexAtomType type = TexAtomType.Ordinary)
             : base(source, type)

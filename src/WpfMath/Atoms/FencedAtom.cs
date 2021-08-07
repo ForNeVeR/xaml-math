@@ -4,7 +4,7 @@ using WpfMath.Boxes;
 namespace WpfMath.Atoms
 {
     // Atom representing base atom surrounded by delimeters.
-    internal class FencedAtom : Atom
+    internal record FencedAtom : Atom
     {
         private const int delimeterFactor = 901;
         private const double delimeterShortfall = 0.5;

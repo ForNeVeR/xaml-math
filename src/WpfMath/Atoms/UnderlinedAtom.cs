@@ -3,7 +3,7 @@ using WpfMath.Boxes;
 namespace WpfMath.Atoms
 {
     // Atom representing other atom that is underlined.
-    internal class UnderlinedAtom : Atom
+    internal record UnderlinedAtom : Atom
     {
         public UnderlinedAtom(SourceSpan? source, Atom? baseAtom)
             : base(source)

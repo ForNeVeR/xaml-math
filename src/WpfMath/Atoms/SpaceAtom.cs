@@ -4,7 +4,7 @@ using WpfMath.Boxes;
 namespace WpfMath.Atoms
 {
     // Atom representing whitespace.
-    internal class SpaceAtom : Atom
+    internal record SpaceAtom : Atom
     {
         // Collection of unit conversion functions.
         private static UnitConversion[] unitConversions = new UnitConversion[]

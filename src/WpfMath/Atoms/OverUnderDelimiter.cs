@@ -5,7 +5,7 @@ using WpfMath.Boxes;
 namespace WpfMath
 {
     // Atom representing other atom with delimeter and script atoms over or under it.
-    internal class OverUnderDelimiter : Atom
+    internal record OverUnderDelimiter : Atom
     {
         private static double GetMaxWidth(Box baseBox, Box delimeterBox, Box? scriptBox)
         {

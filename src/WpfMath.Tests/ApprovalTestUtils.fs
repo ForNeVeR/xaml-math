@@ -42,8 +42,9 @@ type private InnerPropertyContractResolver() =
         // All properties including internal ones:
         let properties =
             ``type``.GetProperties(BindingFlags.Public ||| BindingFlags.NonPublic ||| BindingFlags.Instance)
-            |> Seq.filter (fun p -> Array.isEmpty <| p.GetIndexParameters()) // no indexers
-            |> Seq.map (fun p -> this.DoCreateProperty(p, memberSerialization))
+            |> Seq.filter(fun p -> Array.isEmpty <| p.GetIndexParameters()) // no indexers
+            |> Seq.filter(fun p -> p.Name <> "EqualityContract") // no EqualityContract generated for records
+            |> Seq.map(fun p -> this.DoCreateProperty(p, memberSerialization))
 
         upcast [|
             // For Atoms, type name should be first

@@ -3,7 +3,7 @@ using WpfMath.Utils;
 namespace WpfMath.Atoms
 {
     // Atom representing single character in specific text style.
-    internal class CharAtom : CharSymbol
+    internal record CharAtom : CharSymbol
     {
         public CharAtom(SourceSpan? source, char character, string? textStyle = null)
             : base(source)
