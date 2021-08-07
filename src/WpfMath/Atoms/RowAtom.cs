@@ -61,15 +61,12 @@ namespace WpfMath.Atoms
             this.Elements = elements.Where(x => x != null).ToList().AsReadOnly()!;
             // TODO[F]: Fix this with C# 8 migration: there shouldn't be nullable atoms in this collection
 
-        public DummyAtom? PreviousAtom { get; }
+        public DummyAtom? PreviousAtom { get; init; }
 
         public ReadOnlyCollection<Atom> Elements { get; }
 
         public Atom WithPreviousAtom(DummyAtom? previousAtom) =>
-            new RowAtom(this.Source, previousAtom, this.Elements);
-
-        public RowAtom WithSource(SourceSpan? source) =>
-            new RowAtom(source, this.PreviousAtom, this.Elements);
+            this with { PreviousAtom = previousAtom };
 
         public RowAtom Add(Atom atom)
         {
@@ -84,13 +81,13 @@ namespace WpfMath.Atoms
             if (type == TexAtomType.BinaryOperator && (previousAtom == null ||
                 binaryOperatorChangeSet[(int)previousAtom.GetRightType()]))
             {
-                currentAtom = currentAtom.WithType(TexAtomType.Ordinary);
+                currentAtom = currentAtom with { Type = TexAtomType.Ordinary };
             }
             else if (nextAtom != null && currentAtom.GetRightType() == TexAtomType.BinaryOperator)
             {
                 var nextType = nextAtom.GetLeftType();
                 if (nextType == TexAtomType.Relation || nextType == TexAtomType.Closing || nextType == TexAtomType.Punctuation)
-                    currentAtom = currentAtom.WithType(TexAtomType.Ordinary);
+                    currentAtom = currentAtom with { Type = TexAtomType.Ordinary };
             }
 
             return currentAtom;
@@ -121,7 +118,7 @@ namespace WpfMath.Atoms
                     {
                         var font = ns.GetStyledFont(environment);
                         var style = environment.Style;
-                        curAtom = curAtom.AsTextSymbol();
+                        curAtom = curAtom with { IsTextSymbol = true };
                         if (font.SupportsMetrics && cs.IsSupportedByFont(font, style))
                         {
                             var leftAtomCharFont = curAtom.GetCharFont(font).Value;

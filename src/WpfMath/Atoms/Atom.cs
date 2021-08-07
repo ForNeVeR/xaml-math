@@ -3,17 +3,11 @@ using WpfMath.Boxes;
 namespace WpfMath.Atoms
 {
     // Atom (smallest unit) of TexFormula.
-    internal abstract record Atom
+    internal abstract record Atom(TexAtomType Type, SourceSpan? Source)
     {
-        protected Atom(SourceSpan? source, TexAtomType type = TexAtomType.Ordinary)
-        {
-            this.Source = source;
-            this.Type = type;
-        }
-
-        public TexAtomType Type { get; }
-
-        public SourceSpan? Source { get; }
+        // TODO: Merge this constructor with the main one
+        public Atom(SourceSpan? source, TexAtomType type = TexAtomType.Ordinary)
+            : this(type, source) {}
 
         public Box CreateBox(TexEnvironment environment)
         {

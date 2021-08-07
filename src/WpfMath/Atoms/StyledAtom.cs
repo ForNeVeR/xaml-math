@@ -15,17 +15,14 @@ namespace WpfMath.Atoms
         }
 
         // RowAtom to which colors are applied.
-        public RowAtom RowAtom { get; }
+        public RowAtom RowAtom { get; init; }
 
         public Brush? Background { get; init; }
 
         public Brush? Foreground { get; init; }
 
-        public Atom WithPreviousAtom(DummyAtom? previousAtom)
-        {
-            var rowAtom = this.RowAtom.WithPreviousAtom(previousAtom);
-            return new StyledAtom(this.Source, rowAtom, this.Background, this.Foreground);
-        }
+        public Atom WithPreviousAtom(DummyAtom? previousAtom) =>
+            this with { RowAtom = (RowAtom) RowAtom.WithPreviousAtom(previousAtom) };
 
         protected override Box CreateBoxCore(TexEnvironment environment)
         {

@@ -22,7 +22,7 @@ namespace WpfMath.Atoms
         {
             if (this.Atom is IRow row)
             {
-                return new DummyAtom(this.Type, row.WithPreviousAtom(previousAtom), this.IsTextSymbol);
+                return this with { Atom = row.WithPreviousAtom(previousAtom) };
             }
 
             return this;
@@ -31,15 +31,9 @@ namespace WpfMath.Atoms
         public static DummyAtom CreateLigature(FixedCharAtom ligatureAtom) =>
             new DummyAtom(TexAtomType.None, ligatureAtom, false);
 
-        public Atom Atom { get; }
+        public Atom Atom { get; init; }
 
-        public bool IsTextSymbol { get; }
-
-        public DummyAtom WithType(TexAtomType type) =>
-            new DummyAtom(type, this.Atom, this.IsTextSymbol);
-
-        public DummyAtom AsTextSymbol() =>
-            this.IsTextSymbol ? this : new DummyAtom(this.Type, this.Atom, true);
+        public bool IsTextSymbol { get; init; }
 
         public bool IsKern
         {

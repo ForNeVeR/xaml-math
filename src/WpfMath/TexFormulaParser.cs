@@ -752,7 +752,7 @@ namespace WpfMath
                 value.Source,
                 primesRowAtom.Source!.Start,
                 position - primesRowAtom.Source.Start);
-            primesRowAtom = primesRowAtom.WithSource(primesRowSource);
+            primesRowAtom = primesRowAtom with { Source = primesRowSource };
 
             if (primesRowAtom.Elements.Count > 0)
                 atom = new ScriptsAtom(primesRowAtom.Source, atom, null, primesRowAtom);
