@@ -39,9 +39,9 @@ namespace WpfMath.Parsers
                             context.Environment.CreateChildEnvironment());
                 var start = context.CommandNameStartPosition;
                 var atomSource = source.Segment(start, position - start);
-                var topAtom = new List<Atom> { topFormula.RootAtom };
-                var bottomAtom = new List<Atom> { bottomFormula.RootAtom };
-                var atoms = new List<List<Atom>> { topAtom, bottomAtom };
+                var topAtom = new List<Atom?> { topFormula.RootAtom };
+                var bottomAtom = new List<Atom?> { bottomFormula.RootAtom };
+                var atoms = new List<List<Atom?>> { topAtom, bottomAtom };
                 var matrixAtom = new MatrixAtom(atomSource, atoms, MatrixCellAlignment.Center);
                 var left = new SymbolAtom(atomSource, "(", TexAtomType.Opening, true);
                 var right = new SymbolAtom(atomSource, ")", TexAtomType.Closing, true);
@@ -76,7 +76,7 @@ namespace WpfMath.Parsers
                     : null;
 
                 var topRow = new[] {prevFormulaAtom};
-                var rows = new List<IEnumerable<Atom>> {topRow};
+                var rows = new List<IEnumerable<Atom?>> {topRow};
                 if (newMatrix != null)
                 {
                     rows.AddRange(newMatrix.MatrixCells);

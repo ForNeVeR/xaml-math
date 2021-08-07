@@ -50,8 +50,11 @@ namespace WpfMath
 
         public DefaultTexFontParser()
         {
-            var doc = XDocument.Load(new System.IO.StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)));
+            var doc = XDocument.Load(new System.IO.StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)!));
             this.rootElement = doc.Root;
+
+            this.parsedTextStyles = new Dictionary<string, CharFont[]>();
+
             ParseTextStyleMappings();
         }
 
@@ -195,8 +198,6 @@ namespace WpfMath
 
         private void ParseTextStyleMappings()
         {
-            this.parsedTextStyles = new Dictionary<string, CharFont[]>();
-
             var textStyleMappings = rootElement.Element("TextStyleMappings");
             if (textStyleMappings == null)
                 throw new InvalidOperationException("Cannot find TextStyleMappings element.");

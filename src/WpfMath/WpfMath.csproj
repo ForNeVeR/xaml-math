@@ -1,27 +1,47 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
     <PropertyGroup>
-        <TargetFrameworks>netcoreapp3.0;net452</TargetFrameworks>
-        <LangVersion>8.0</LangVersion>
+        <TargetFrameworks>netcoreapp3.1;net452</TargetFrameworks>
         <UseWpf>true</UseWpf>
         <OutputType>Library</OutputType>
         <DebugType>Full</DebugType>
     </PropertyGroup>
     <PropertyGroup>
         <PackageId>WpfMath</PackageId>
-        <Version>0.8.0</Version>
+        <Version>0.10.0</Version>
         <Title>WPF-Math</Title>
         <Authors>ForNeVeR</Authors>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/ForNeVeR/wpf-math</PackageProjectUrl>
         <RepositoryUrl>https://github.com/ForNeVeR/wpf-math.git</RepositoryUrl>
         <AssemblyTitle>WPF-Math</AssemblyTitle>
-        <PackageReleaseNotes>WPF support for .NET Core 3.0; extended color support; \binom command; TeX parser bug fixes.</PackageReleaseNotes>
+        <PackageReleaseNotes>Changed:
+- Removed support for .NET Core 3.0
+
+Added:
+- Enable nullable reference types
+
+Fixed:
+- Foreground property not working on FormulaControl
+- Fix typo in SystemTextFontNameProperty
+- \limsup throws exception
+- Fix for scripts with curly braces after a command with curly braces (e.g. \hat{x}_{y})
+- Crash on empty \sqrt{}
+- OverUnderBox constructor may dereference scriptBox parameter if it's null
+        </PackageReleaseNotes>
         <PackageTags>wpf;latex;formula</PackageTags>
         <Description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the WPF framework.</Description>
-        <Copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2019</Copyright>
+        <Copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2021</Copyright>
+
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
+
+    <PropertyGroup Condition=" $([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net452')) ">
+        <IncludePackageReferencesDuringMarkupCompilation>true</IncludePackageReferencesDuringMarkupCompilation>
+    </PropertyGroup>
+
     <ItemGroup>
         <EmbeddedResource Include="Data/*" />
         <Resource Include="Fonts\cmex10.ttf" />
@@ -29,4 +49,13 @@
         <Resource Include="Fonts\cmr10.ttf" />
         <Resource Include="Fonts\cmsy10.ttf" />
     </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="$(AssemblyName).Tests" />
+    </ItemGroup>
+
 </Project>

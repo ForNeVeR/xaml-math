@@ -1,64 +1,66 @@
 {
-  "TextStyle": null,
   "RootAtom": {
-    "PreviousAtom": null,
+    "[AtomType]": "RowAtom",
     "Elements": [
       {
+        "[AtomType]": "CharAtom",
         "Character": "2",
-        "TextStyle": null,
-        "IsDefaultTextStyle": true,
         "IsTextSymbol": false,
-        "Type": "Ordinary",
         "Source": {
-          "Start": 0,
           "End": 1,
           "Length": 1,
           "Source": "2+2",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 0
+        },
+        "TextStyle": null,
+        "Type": "Ordinary"
       },
       {
+        "[AtomType]": "SymbolAtom",
         "IsDelimeter": false,
-        "Name": "plus",
         "IsTextSymbol": false,
-        "Type": "BinaryOperator",
+        "Name": "plus",
         "Source": {
-          "Start": 1,
           "End": 2,
           "Length": 1,
           "Source": "2+2",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 1
+        },
+        "Type": "BinaryOperator"
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "2",
-        "TextStyle": null,
-        "IsDefaultTextStyle": true,
         "IsTextSymbol": false,
-        "Type": "Ordinary",
         "Source": {
-          "Start": 2,
           "End": 3,
           "Length": 1,
           "Source": "2+2",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 2
+        },
+        "TextStyle": null,
+        "Type": "Ordinary"
       }
     ],
-    "Type": "Ordinary",
+    "PreviousAtom": null,
     "Source": {
-      "Start": 0,
       "End": 3,
       "Length": 3,
       "Source": "2+2",
-      "SourceName": "User input"
-    }
+      "SourceName": "User input",
+      "Start": 0
+    },
+    "Type": "Ordinary"
   },
   "Source": {
-    "Start": 0,
     "End": 3,
     "Length": 3,
     "Source": "2+2",
-    "SourceName": "User input"
-  }
+    "SourceName": "User input",
+    "Start": 0
+  },
+  "TextStyle": null
 }

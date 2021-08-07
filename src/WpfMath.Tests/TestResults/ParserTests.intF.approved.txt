@@ -1,63 +1,66 @@
 {
-  "TextStyle": null,
   "RootAtom": {
-    "PreviousAtom": null,
+    "[AtomType]": "RowAtom",
     "Elements": [
       {
+        "[AtomType]": "BigOperatorAtom",
         "BaseAtom": {
+          "[AtomType]": "SymbolAtom",
           "IsDelimeter": false,
-          "Name": "int",
           "IsTextSymbol": false,
-          "Type": "BigOperator",
+          "Name": "int",
           "Source": {
-            "Start": 1,
             "End": 4,
             "Length": 3,
             "Source": "\\int f",
-            "SourceName": "User input"
-          }
+            "SourceName": "User input",
+            "Start": 1
+          },
+          "Type": "BigOperator"
         },
         "LowerLimitAtom": null,
-        "UpperLimitAtom": null,
-        "UseVerticalLimits": null,
-        "Type": "BigOperator",
         "Source": {
-          "Start": 0,
           "End": 4,
           "Length": 4,
           "Source": "\\int f",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 0
+        },
+        "Type": "BigOperator",
+        "UpperLimitAtom": null,
+        "UseVerticalLimits": null
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "f",
-        "TextStyle": null,
-        "IsDefaultTextStyle": true,
         "IsTextSymbol": false,
-        "Type": "Ordinary",
         "Source": {
-          "Start": 5,
           "End": 6,
           "Length": 1,
           "Source": "\\int f",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 5
+        },
+        "TextStyle": null,
+        "Type": "Ordinary"
       }
     ],
-    "Type": "Ordinary",
+    "PreviousAtom": null,
     "Source": {
-      "Start": 0,
       "End": 6,
       "Length": 6,
       "Source": "\\int f",
-      "SourceName": "User input"
-    }
+      "SourceName": "User input",
+      "Start": 0
+    },
+    "Type": "Ordinary"
   },
   "Source": {
-    "Start": 0,
     "End": 6,
     "Length": 6,
     "Source": "\\int f",
-    "SourceName": "User input"
-  }
+    "SourceName": "User input",
+    "Start": 0
+  },
+  "TextStyle": null
 }

@@ -1,62 +1,63 @@
 {
-  "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "ScriptsAtom",
     "BaseAtom": {
+      "[AtomType]": "CharAtom",
       "Character": "x",
-      "TextStyle": null,
-      "IsDefaultTextStyle": true,
       "IsTextSymbol": false,
-      "Type": "Ordinary",
       "Source": {
-        "Start": 0,
         "End": 1,
         "Length": 1,
         "Source": "x^{y}_{z}",
-        "SourceName": "User input"
-      }
-    },
-    "SubscriptAtom": {
-      "Character": "z",
+        "SourceName": "User input",
+        "Start": 0
+      },
       "TextStyle": null,
-      "IsDefaultTextStyle": true,
-      "IsTextSymbol": false,
-      "Type": "Ordinary",
-      "Source": {
-        "Start": 7,
-        "End": 8,
-        "Length": 1,
-        "Source": "x^{y}_{z}",
-        "SourceName": "User input"
-      }
+      "Type": "Ordinary"
     },
-    "SuperscriptAtom": {
-      "Character": "y",
-      "TextStyle": null,
-      "IsDefaultTextStyle": true,
-      "IsTextSymbol": false,
-      "Type": "Ordinary",
-      "Source": {
-        "Start": 3,
-        "End": 4,
-        "Length": 1,
-        "Source": "x^{y}_{z}",
-        "SourceName": "User input"
-      }
-    },
-    "Type": "Ordinary",
     "Source": {
-      "Start": 1,
       "End": 9,
       "Length": 8,
       "Source": "x^{y}_{z}",
-      "SourceName": "User input"
-    }
+      "SourceName": "User input",
+      "Start": 1
+    },
+    "SubscriptAtom": {
+      "[AtomType]": "CharAtom",
+      "Character": "z",
+      "IsTextSymbol": false,
+      "Source": {
+        "End": 8,
+        "Length": 1,
+        "Source": "x^{y}_{z}",
+        "SourceName": "User input",
+        "Start": 7
+      },
+      "TextStyle": null,
+      "Type": "Ordinary"
+    },
+    "SuperscriptAtom": {
+      "[AtomType]": "CharAtom",
+      "Character": "y",
+      "IsTextSymbol": false,
+      "Source": {
+        "End": 4,
+        "Length": 1,
+        "Source": "x^{y}_{z}",
+        "SourceName": "User input",
+        "Start": 3
+      },
+      "TextStyle": null,
+      "Type": "Ordinary"
+    },
+    "Type": "Ordinary"
   },
   "Source": {
-    "Start": 0,
     "End": 9,
     "Length": 9,
     "Source": "x^{y}_{z}",
-    "SourceName": "User input"
-  }
+    "SourceName": "User input",
+    "Start": 0
+  },
+  "TextStyle": null
 }

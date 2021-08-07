@@ -7,7 +7,7 @@ using WpfMath.Boxes;
 namespace WpfMath.Atoms
 {
     // Atom representing horizontal row of other atoms, separated by glue.
-    internal class RowAtom : Atom, IRow
+    internal record RowAtom : Atom, IRow
     {
         // Set of atom types that make previous atom of BinaryOperator type change to Ordinary type.
         private static BitArray binaryOperatorChangeSet;
@@ -34,68 +34,60 @@ namespace WpfMath.Atoms
             ligatureKernChangeSet.Set((int)TexAtomType.Punctuation, true);
         }
 
-        public RowAtom(SourceSpan source, Atom baseAtom)
+        public RowAtom(SourceSpan? source, Atom? baseAtom)
             : this(
                 source,
                 baseAtom is RowAtom
                     ? (IEnumerable<Atom>) ((RowAtom) baseAtom).Elements
-                    : new[] { baseAtom })
+                    : new[] { baseAtom! }) // Nullable: Seems to require some sort of non-null assertion to make the analyzer happy
         {
         }
 
-        public RowAtom(SourceSpan source)
+        public RowAtom(SourceSpan? source)
             : base(source)
         {
             this.Elements = new List<Atom>().AsReadOnly();
         }
 
-        private RowAtom(SourceSpan source, DummyAtom previousAtom, ReadOnlyCollection<Atom> elements)
+        private RowAtom(SourceSpan? source, DummyAtom? previousAtom, ReadOnlyCollection<Atom> elements)
             : base(source)
         {
             this.PreviousAtom = previousAtom;
             this.Elements = elements;
         }
 
-        internal RowAtom(SourceSpan source, IEnumerable<Atom> elements)
+        internal RowAtom(SourceSpan? source, IEnumerable<Atom?> elements)
             : base(source) =>
-            this.Elements = elements.Where(x => x != null).ToList().AsReadOnly();
+            this.Elements = elements.Where(x => x != null).ToList().AsReadOnly()!;
             // TODO[F]: Fix this with C# 8 migration: there shouldn't be nullable atoms in this collection
 
-        public DummyAtom PreviousAtom { get; }
+        public DummyAtom? PreviousAtom { get; init; }
 
         public ReadOnlyCollection<Atom> Elements { get; }
 
-        public Atom WithPreviousAtom(DummyAtom previousAtom) =>
-            new RowAtom(this.Source, previousAtom, this.Elements);
-
-        public RowAtom WithSource(SourceSpan source) =>
-            new RowAtom(source, this.PreviousAtom, this.Elements);
+        public Atom WithPreviousAtom(DummyAtom? previousAtom) =>
+            this with { PreviousAtom = previousAtom };
 
         public RowAtom Add(Atom atom)
         {
-            if (atom is null) // TODO[F]: Mark the parameter as non-nullable and drop this check whe porting to C# 8
-            {
-                return new RowAtom(this.Source, this.PreviousAtom, this.Elements);
-            }
-
             var newElements = this.Elements.ToList();
             newElements.Add(atom);
             return new RowAtom(this.Source, this.PreviousAtom, newElements.AsReadOnly());
         }
 
-        private static DummyAtom ChangeAtomToOrdinary(DummyAtom currentAtom, DummyAtom previousAtom, Atom nextAtom)
+        private static DummyAtom ChangeAtomToOrdinary(DummyAtom currentAtom, DummyAtom? previousAtom, Atom? nextAtom)
         {
             var type = currentAtom.GetLeftType();
             if (type == TexAtomType.BinaryOperator && (previousAtom == null ||
                 binaryOperatorChangeSet[(int)previousAtom.GetRightType()]))
             {
-                currentAtom = currentAtom.WithType(TexAtomType.Ordinary);
+                currentAtom = currentAtom with { Type = TexAtomType.Ordinary };
             }
             else if (nextAtom != null && currentAtom.GetRightType() == TexAtomType.BinaryOperator)
             {
                 var nextType = nextAtom.GetLeftType();
                 if (nextType == TexAtomType.Relation || nextType == TexAtomType.Closing || nextType == TexAtomType.Punctuation)
-                    currentAtom = currentAtom.WithType(TexAtomType.Ordinary);
+                    currentAtom = currentAtom with { Type = TexAtomType.Ordinary };
             }
 
             return currentAtom;
@@ -126,7 +118,7 @@ namespace WpfMath.Atoms
                     {
                         var font = ns.GetStyledFont(environment);
                         var style = environment.Style;
-                        curAtom = curAtom.AsTextSymbol();
+                        curAtom = curAtom with { IsTextSymbol = true };
                         if (font.SupportsMetrics && cs.IsSupportedByFont(font, style))
                         {
                             var leftAtomCharFont = curAtom.GetCharFont(font).Value;

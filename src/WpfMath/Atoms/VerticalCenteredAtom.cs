@@ -3,19 +3,19 @@ using WpfMath.Boxes;
 namespace WpfMath.Atoms
 {
     // Atom representing other atom vertically centered with respect to axis.
-    internal class VerticalCenteredAtom : Atom
+    internal record VerticalCenteredAtom : Atom
     {
-        public VerticalCenteredAtom(SourceSpan source, Atom atom)
+        public VerticalCenteredAtom(SourceSpan? source, Atom? atom)
             : base(source)
         {
             this.Atom = atom;
         }
 
-        public Atom Atom { get; }
+        public Atom? Atom { get; }
 
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
-            var box = this.Atom.CreateBox(environment);
+            var box = this.Atom!.CreateBox(environment); // Nullable TODO: This probably needs null checking
 
             // Centre box relative to horizontal axis.
             var totalHeight = box.Height + box.Depth;

@@ -1,65 +1,66 @@
 {
-  "TextStyle": null,
   "RootAtom": {
-    "PreviousAtom": null,
+    "[AtomType]": "RowAtom",
     "Elements": [
       {
+        "[AtomType]": "CharAtom",
         "Character": "а",
-        "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
-        "Type": "Ordinary",
         "Source": {
-          "Start": 6,
           "End": 7,
           "Length": 1,
           "Source": "\\text{абв}",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 6
+        },
+        "TextStyle": "text",
+        "Type": "Ordinary"
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "б",
-        "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
-        "Type": "Ordinary",
         "Source": {
-          "Start": 7,
           "End": 8,
           "Length": 1,
           "Source": "\\text{абв}",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 7
+        },
+        "TextStyle": "text",
+        "Type": "Ordinary"
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "в",
-        "TextStyle": "text",
-        "IsDefaultTextStyle": false,
         "IsTextSymbol": false,
-        "Type": "Ordinary",
         "Source": {
-          "Start": 8,
           "End": 9,
           "Length": 1,
           "Source": "\\text{абв}",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 8
+        },
+        "TextStyle": "text",
+        "Type": "Ordinary"
       }
     ],
-    "Type": "Ordinary",
+    "PreviousAtom": null,
     "Source": {
-      "Start": 6,
       "End": 9,
       "Length": 3,
       "Source": "\\text{абв}",
-      "SourceName": "User input"
-    }
+      "SourceName": "User input",
+      "Start": 6
+    },
+    "Type": "Ordinary"
   },
   "Source": {
-    "Start": 0,
     "End": 10,
     "Length": 10,
     "Source": "\\text{абв}",
-    "SourceName": "User input"
-  }
+    "SourceName": "User input",
+    "Start": 0
+  },
+  "TextStyle": null
 }

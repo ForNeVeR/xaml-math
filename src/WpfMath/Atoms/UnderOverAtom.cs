@@ -1,12 +1,16 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using WpfMath.Boxes;
 
 namespace WpfMath.Atoms
 {
     // Atom representing other atom with atoms optionally over and under it.
-    internal class UnderOverAtom : Atom
+    internal record UnderOverAtom : Atom
     {
-        private static Box ChangeWidth(Box box, double maxWidth)
+#if !NET452
+        [return: NotNullIfNotNull("box")]
+#endif
+        private static Box? ChangeWidth(Box? box, double maxWidth)
         {
             if (box != null && Math.Abs(maxWidth - box.Width) > TexUtilities.FloatPrecision)
                 return new HorizontalBox(box, maxWidth, TexAlignment.Center);
@@ -15,9 +19,9 @@ namespace WpfMath.Atoms
         }
 
         public UnderOverAtom(
-            SourceSpan source,
-            Atom baseAtom,
-            Atom underOver,
+            SourceSpan? source,
+            Atom? baseAtom,
+            Atom? underOver,
             TexUnit underOverUnit,
             double underOverSpace,
             bool underOverScriptSize,
@@ -53,13 +57,13 @@ namespace WpfMath.Atoms
         }
 
         public UnderOverAtom(
-            SourceSpan source,
-            Atom baseAtom,
-            Atom under,
+            SourceSpan? source,
+            Atom? baseAtom,
+            Atom? under,
             TexUnit underUnit,
             double underSpace,
             bool underScriptSize,
-            Atom over,
+            Atom? over,
             TexUnit overUnit,
             double overSpace,
             bool overScriptSize)
@@ -79,11 +83,11 @@ namespace WpfMath.Atoms
             this.OverScriptSmaller = overScriptSize;
         }
 
-        public Atom BaseAtom { get; }
+        public Atom? BaseAtom { get; }
 
-        public Atom UnderAtom { get; }
+        public Atom? UnderAtom { get; }
 
-        public Atom OverAtom { get; }
+        public Atom? OverAtom { get; }
 
         // Kern between base and under atom.
         public double UnderSpace { get; }
@@ -105,7 +109,7 @@ namespace WpfMath.Atoms
             var baseBox = this.BaseAtom == null ? StrutBox.Empty : this.BaseAtom.CreateBox(environment);
 
             // Create boxes for over and under atoms.
-            Box overBox = null, underBox = null;
+            Box? overBox = null, underBox = null;
             var maxWidth = baseBox.Width;
 
             if (this.OverAtom != null)
@@ -128,7 +132,7 @@ namespace WpfMath.Atoms
             // Create and add box for over atom.
             if (this.OverAtom != null)
             {
-                resultBox.Add(ChangeWidth(overBox, maxWidth));
+                resultBox.Add(ChangeWidth(overBox!, maxWidth));
                 resultBox.Add(new SpaceAtom(null, this.OverSpaceUnit, 0, this.OverSpace, 0).CreateBox(environment));
             }
 
@@ -141,7 +145,7 @@ namespace WpfMath.Atoms
             if (this.UnderAtom != null)
             {
                 resultBox.Add(new SpaceAtom(null, this.OverSpaceUnit, 0, this.UnderSpace, 0).CreateBox(environment));
-                resultBox.Add(ChangeWidth(underBox, maxWidth));
+                resultBox.Add(ChangeWidth(underBox!, maxWidth));
             }
 
             resultBox.Depth = resultBox.Height + resultBox.Depth - totalHeight;

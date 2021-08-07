@@ -34,7 +34,7 @@ namespace WpfMath
 
         public TexPredefinedFormulaSettingsParser()
         {
-            var doc = XDocument.Load(new System.IO.StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)));
+            var doc = XDocument.Load(new System.IO.StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)!));
             this.rootElement = doc.Root;
         }
 

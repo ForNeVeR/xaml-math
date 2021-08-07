@@ -45,7 +45,7 @@ namespace WpfMath
             return double.Parse(attribute.Value, CultureInfo.InvariantCulture);
         }
 
-        public static string AttributeValue(this XElement element, string attributeName, string defaultValue = null)
+        public static string AttributeValue(this XElement element, string attributeName, string? defaultValue = null)
         {
             var attribute = element.Attribute(attributeName);
             if (attribute == null)

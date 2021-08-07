@@ -3,15 +3,15 @@ using WpfMath.Boxes;
 namespace WpfMath.Atoms
 {
     // Atom representing other atom with horizontal rule above it.
-    internal class OverlinedAtom : Atom
+    internal record OverlinedAtom : Atom
     {
-        public OverlinedAtom(SourceSpan source, Atom baseAtom)
+        public OverlinedAtom(SourceSpan? source, Atom? baseAtom)
             : base(source)
         {
             this.BaseAtom = baseAtom;
         }
 
-        public Atom BaseAtom { get; }
+        public Atom? BaseAtom { get; }
 
         protected override Box CreateBoxCore(TexEnvironment environment)
         {

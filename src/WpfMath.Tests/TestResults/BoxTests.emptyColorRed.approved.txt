@@ -1,19 +1,19 @@
 {
+  "Background": null,
   "Children": [],
+  "Depth": 0.0,
+  "Foreground": "#FFED1B23",
+  "Height": 0.0,
+  "Italic": 0.0,
+  "Shift": 0.0,
   "Source": {
-    "Start": 1,
     "End": 13,
     "Length": 12,
     "Source": "\\color{red}{}",
-    "SourceName": "User input"
+    "SourceName": "User input",
+    "Start": 1
   },
-  "Foreground": "#FFED1B23",
-  "Background": null,
   "TotalHeight": 0.0,
   "TotalWidth": 0.0,
-  "Italic": 0.0,
-  "Width": 0.0,
-  "Height": 0.0,
-  "Depth": 0.0,
-  "Shift": 0.0
+  "Width": 0.0
 }

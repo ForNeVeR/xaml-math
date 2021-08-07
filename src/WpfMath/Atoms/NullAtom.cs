@@ -2,9 +2,9 @@ using WpfMath.Boxes;
 
 namespace WpfMath.Atoms
 {
-    internal class NullAtom : Atom
+    internal record NullAtom : Atom
     {
-        public NullAtom(SourceSpan source = null, TexAtomType type = TexAtomType.Ordinary) : base(source, type)
+        public NullAtom(SourceSpan? source = null, TexAtomType type = TexAtomType.Ordinary) : base(source, type)
         {
         }
 

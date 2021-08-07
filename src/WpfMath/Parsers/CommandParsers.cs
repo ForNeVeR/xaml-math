@@ -48,8 +48,8 @@ namespace WpfMath.Parsers
 
     internal class CommandProcessingResult
     {
-        /// <summary>A parsed atom. May be <c>null</c>.</summary>
-        public Atom Atom { get; }
+        /// <summary>A parsed atom..</summary>
+        public Atom? Atom { get; }
 
         /// <summary>
         /// A position pointing to the part of the <see cref="CommandContext.CommandSource"/> where the parsing should
@@ -63,7 +63,7 @@ namespace WpfMath.Parsers
         /// </summary>
         public AtomAppendMode AppendMode { get; }
 
-        public CommandProcessingResult(Atom atom, int nextPosition, AtomAppendMode appendMode = AtomAppendMode.Add)
+        public CommandProcessingResult(Atom? atom, int nextPosition, AtomAppendMode appendMode = AtomAppendMode.Add)
         {
             Atom = atom;
             NextPosition = nextPosition;

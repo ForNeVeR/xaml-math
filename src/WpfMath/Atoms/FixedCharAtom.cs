@@ -3,9 +3,9 @@ using WpfMath.Utils;
 namespace WpfMath.Atoms
 {
     // Atom representing character that does not depend on text style.
-    internal class FixedCharAtom : CharSymbol
+    internal record FixedCharAtom : CharSymbol
     {
-        public FixedCharAtom(SourceSpan source, CharFont charFont)
+        public FixedCharAtom(SourceSpan? source, CharFont charFont)
             : base(source)
         {
             this.CharFont = charFont;

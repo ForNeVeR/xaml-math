@@ -8,13 +8,13 @@ namespace WpfMath.Parsers.Matrices
     /// <summary>A parser for matrix-like constructs.</summary>
     internal class MatrixCommandParser : ICommandParser
     {
-        private readonly string _leftDelimiterSymbolName;
-        private readonly string _rightDelimiterSymbolName;
+        private readonly string? _leftDelimiterSymbolName;
+        private readonly string? _rightDelimiterSymbolName;
         private readonly MatrixCellAlignment _cellAlignment;
 
         public MatrixCommandParser(
-            string leftDelimiterSymbolName,
-            string rightDelimiterSymbolName,
+            string? leftDelimiterSymbolName,
+            string? rightDelimiterSymbolName,
             MatrixCellAlignment cellAlignment)
         {
             _leftDelimiterSymbolName = leftDelimiterSymbolName;
@@ -38,14 +38,14 @@ namespace WpfMath.Parsers.Matrices
             var cells = ReadMatrixCells(context.Parser, context.Formula, cellsSource, context.Environment);
             var matrix = new MatrixAtom(matrixSource, cells, _cellAlignment);
 
-            SymbolAtom GetDelimiter(string name) =>
+            SymbolAtom? GetDelimiter(string? name) =>
                 name == null
                     ? null
                     : TexFormulaParser.GetDelimiterSymbol(name, null) ??
                       throw new TexParseException($"The delimiter {name} could not be found");
 
-            var leftDelimiter = GetDelimiter(_leftDelimiterSymbolName);
-            var rightDelimiter = GetDelimiter(_rightDelimiterSymbolName);
+            SymbolAtom? leftDelimiter = GetDelimiter(_leftDelimiterSymbolName);
+            SymbolAtom? rightDelimiter = GetDelimiter(_rightDelimiterSymbolName);
 
             var atom = leftDelimiter == null && rightDelimiter == null
                 ? (Atom) matrix

@@ -3,15 +3,15 @@ using WpfMath.Boxes;
 namespace WpfMath.Atoms
 {
     // Atom representing other atom that is not rendered.
-    internal class PhantomAtom : Atom, IRow
+    internal record PhantomAtom : Atom, IRow
     {
         private readonly bool useWidth;
         private readonly bool useHeight;
         private readonly bool useDepth;
 
         public PhantomAtom(
-            SourceSpan source,
-            Atom baseAtom,
+            SourceSpan? source,
+            Atom? baseAtom,
             bool useWidth = true,
             bool useHeight = true,
             bool useDepth = true)
@@ -23,15 +23,10 @@ namespace WpfMath.Atoms
             this.useDepth = useDepth;
         }
 
-        public Atom WithPreviousAtom(DummyAtom previousAtom) =>
-            new PhantomAtom(
-                this.Source,
-                this.RowAtom.WithPreviousAtom(previousAtom),
-                this.useWidth,
-                this.useHeight,
-                this.useDepth);
+        public Atom WithPreviousAtom(DummyAtom? previousAtom) =>
+            this with { RowAtom = (RowAtom)RowAtom.WithPreviousAtom(previousAtom) };
 
-        public RowAtom RowAtom { get; }
+        public RowAtom RowAtom { get; init; }
 
         protected override Box CreateBoxCore(TexEnvironment environment)
         {

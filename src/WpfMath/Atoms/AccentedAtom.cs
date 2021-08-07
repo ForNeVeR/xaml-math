@@ -4,9 +4,9 @@ using WpfMath.Boxes;
 namespace WpfMath.Atoms
 {
     // Atom representing base atom with accent above it.
-    internal class AccentedAtom : Atom
+    internal record AccentedAtom : Atom
     {
-        public AccentedAtom(SourceSpan source, Atom baseAtom, string accentName)
+        public AccentedAtom(SourceSpan? source, Atom? baseAtom, string accentName)
             : base(source)
         {
             this.BaseAtom = baseAtom;
@@ -16,7 +16,7 @@ namespace WpfMath.Atoms
                 throw new ArgumentException("The specified symbol name is not an accent.", "accent");
         }
 
-        public AccentedAtom(SourceSpan source, Atom baseAtom, TexFormula accent)
+        public AccentedAtom(SourceSpan? source, Atom? baseAtom, TexFormula accent)
             : base(source)
         {
             if (!(accent.RootAtom is SymbolAtom rootSymbol))
@@ -30,14 +30,14 @@ namespace WpfMath.Atoms
         }
 
         // Atom over which accent symbol is placed.
-        public Atom BaseAtom { get; }
+        public Atom? BaseAtom { get; }
 
         // Atom representing accent symbol to place over base atom.
         public SymbolAtom AccentAtom { get; }
 
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
-            CharSymbol GetBaseChar()
+            CharSymbol? GetBaseChar()
             {
                 var baseAtom = this.BaseAtom;
                 while (baseAtom is AccentedAtom a)

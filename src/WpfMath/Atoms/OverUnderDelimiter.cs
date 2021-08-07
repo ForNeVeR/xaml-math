@@ -5,9 +5,9 @@ using WpfMath.Boxes;
 namespace WpfMath
 {
     // Atom representing other atom with delimeter and script atoms over or under it.
-    internal class OverUnderDelimiter : Atom
+    internal record OverUnderDelimiter : Atom
     {
-        private static double GetMaxWidth(Box baseBox, Box delimeterBox, Box scriptBox)
+        private static double GetMaxWidth(Box baseBox, Box delimeterBox, Box? scriptBox)
         {
             var maxWidth = Math.Max(baseBox.Width, delimeterBox.Height + delimeterBox.Depth);
             if (scriptBox != null)
@@ -16,9 +16,9 @@ namespace WpfMath
         }
 
         public OverUnderDelimiter(
-            SourceSpan source,
-            Atom baseAtom,
-            Atom script,
+            SourceSpan? source,
+            Atom? baseAtom,
+            Atom? script,
             SymbolAtom symbol,
             TexUnit kernUnit,
             double kern,
@@ -32,9 +32,9 @@ namespace WpfMath
             this.Over = over;
         }
 
-        public Atom BaseAtom { get; }
+        public Atom? BaseAtom { get; }
 
-        private Atom Script { get; }
+        private Atom? Script { get; }
 
         private SymbolAtom Symbol { get; }
 
@@ -49,7 +49,7 @@ namespace WpfMath
             // Create boxes for base, delimeter, and script atoms.
             var baseBox = this.BaseAtom == null ? StrutBox.Empty : this.BaseAtom.CreateBox(environment);
             var delimeterBox = DelimiterFactory.CreateBox(this.Symbol.Name, baseBox.Width, environment);
-            var scriptBox = this.Script == null ? null : this.Script.CreateBox(this.Over ?
+            Box? scriptBox = this.Script == null ? null : this.Script.CreateBox(this.Over ?
                 environment.GetSuperscriptStyle() : environment.GetSubscriptStyle());
 
             // Create centered horizontal box if any box is smaller than maximum width.

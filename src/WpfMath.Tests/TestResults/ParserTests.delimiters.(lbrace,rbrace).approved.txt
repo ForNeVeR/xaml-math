@@ -1,60 +1,63 @@
 {
-  "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "FencedAtom",
     "BaseAtom": {
+      "[AtomType]": "CharAtom",
       "Character": "a",
-      "TextStyle": null,
-      "IsDefaultTextStyle": true,
       "IsTextSymbol": false,
-      "Type": "Ordinary",
       "Source": {
-        "Start": 7,
         "End": 8,
         "Length": 1,
         "Source": "\\left\\{a\\right\\}",
-        "SourceName": "User input"
-      }
+        "SourceName": "User input",
+        "Start": 7
+      },
+      "TextStyle": null,
+      "Type": "Ordinary"
     },
     "LeftDelimeter": {
+      "[AtomType]": "SymbolAtom",
       "IsDelimeter": true,
-      "Name": "lbrace",
       "IsTextSymbol": false,
-      "Type": "Opening",
+      "Name": "lbrace",
       "Source": {
-        "Start": 1,
         "End": 7,
         "Length": 6,
         "Source": "\\left\\{a\\right\\}",
-        "SourceName": "User input"
-      }
+        "SourceName": "User input",
+        "Start": 1
+      },
+      "Type": "Opening"
     },
     "RightDelimeter": {
+      "[AtomType]": "SymbolAtom",
       "IsDelimeter": true,
-      "Name": "rbrace",
       "IsTextSymbol": false,
-      "Type": "Closing",
+      "Name": "rbrace",
       "Source": {
-        "Start": 9,
         "End": 16,
         "Length": 7,
         "Source": "\\left\\{a\\right\\}",
-        "SourceName": "User input"
-      }
+        "SourceName": "User input",
+        "Start": 9
+      },
+      "Type": "Closing"
     },
-    "Type": "Ordinary",
     "Source": {
-      "Start": 1,
       "End": 16,
       "Length": 15,
       "Source": "\\left\\{a\\right\\}",
-      "SourceName": "User input"
-    }
+      "SourceName": "User input",
+      "Start": 1
+    },
+    "Type": "Ordinary"
   },
   "Source": {
-    "Start": 0,
     "End": 16,
     "Length": 16,
     "Source": "\\left\\{a\\right\\}",
-    "SourceName": "User input"
-  }
+    "SourceName": "User input",
+    "Start": 0
+  },
+  "TextStyle": null
 }

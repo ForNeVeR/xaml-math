@@ -1,12 +1,8 @@
 namespace WpfMath.Tests
 
-open System.Windows
-open System.Windows.Media
-
 open Foq
 open Xunit
 
-open WpfMath
 open WpfMath.Boxes
 open WpfMath.Rendering
 
@@ -32,3 +28,7 @@ type OverUnderBoxTests() =
     member _.``OverUnderBox rendering calls to RenderTransformed for delimiter``() =
         overUnderBox.RenderTo(mockedRenderer, x, y)
         Mock.Verify(<@ mockedRenderer.RenderTransformed(delimiterBox, any(), any(), any()) @>, once)
+
+    [<Fact>]
+    member _.``OverUnderBox should be successfully constructed for over = false and scriptBox = null``() =
+        OverUnderBox(baseBox, delimiterBox, null, 0.0, false) |> ignore

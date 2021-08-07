@@ -1,49 +1,51 @@
 {
-  "TextStyle": null,
   "RootAtom": {
+    "[AtomType]": "StyledAtom",
+    "Background": "#1A808080",
+    "Foreground": null,
     "RowAtom": {
-      "PreviousAtom": null,
+      "[AtomType]": "RowAtom",
       "Elements": [
         {
+          "[AtomType]": "CharAtom",
           "Character": "x",
-          "TextStyle": null,
-          "IsDefaultTextStyle": true,
           "IsTextSymbol": false,
-          "Type": "Ordinary",
           "Source": {
-            "Start": 38,
             "End": 39,
             "Length": 1,
             "Source": "\\colorbox [rgba] {0.5, 0.5, 0.5, 0.1} x",
-            "SourceName": "User input"
-          }
+            "SourceName": "User input",
+            "Start": 38
+          },
+          "TextStyle": null,
+          "Type": "Ordinary"
         }
       ],
-      "Type": "Ordinary",
+      "PreviousAtom": null,
       "Source": {
-        "Start": 1,
         "End": 39,
         "Length": 38,
         "Source": "\\colorbox [rgba] {0.5, 0.5, 0.5, 0.1} x",
-        "SourceName": "User input"
-      }
+        "SourceName": "User input",
+        "Start": 1
+      },
+      "Type": "Ordinary"
     },
-    "Background": "#1A808080",
-    "Foreground": null,
-    "Type": "Ordinary",
     "Source": {
-      "Start": 1,
       "End": 39,
       "Length": 38,
       "Source": "\\colorbox [rgba] {0.5, 0.5, 0.5, 0.1} x",
-      "SourceName": "User input"
-    }
+      "SourceName": "User input",
+      "Start": 1
+    },
+    "Type": "Ordinary"
   },
   "Source": {
-    "Start": 0,
     "End": 39,
     "Length": 39,
     "Source": "\\colorbox [rgba] {0.5, 0.5, 0.5, 0.1} x",
-    "SourceName": "User input"
-  }
+    "SourceName": "User input",
+    "Start": 0
+  },
+  "TextStyle": null
 }

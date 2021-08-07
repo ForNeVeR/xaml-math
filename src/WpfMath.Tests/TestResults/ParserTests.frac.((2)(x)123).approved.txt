@@ -1,103 +1,105 @@
 {
-  "TextStyle": null,
   "RootAtom": {
-    "PreviousAtom": null,
+    "[AtomType]": "RowAtom",
     "Elements": [
       {
-        "Numerator": {
-          "Character": "2",
-          "TextStyle": null,
-          "IsDefaultTextStyle": true,
-          "IsTextSymbol": false,
-          "Type": "Ordinary",
-          "Source": {
-            "Start": 6,
-            "End": 7,
-            "Length": 1,
-            "Source": "\\frac{2}{x}123",
-            "SourceName": "User input"
-          }
-        },
+        "[AtomType]": "FractionAtom",
         "Denominator": {
+          "[AtomType]": "CharAtom",
           "Character": "x",
-          "TextStyle": null,
-          "IsDefaultTextStyle": true,
           "IsTextSymbol": false,
-          "Type": "Ordinary",
           "Source": {
-            "Start": 9,
             "End": 10,
             "Length": 1,
             "Source": "\\frac{2}{x}123",
-            "SourceName": "User input"
-          }
+            "SourceName": "User input",
+            "Start": 9
+          },
+          "TextStyle": null,
+          "Type": "Ordinary"
         },
-        "Type": "Inner",
+        "Numerator": {
+          "[AtomType]": "CharAtom",
+          "Character": "2",
+          "IsTextSymbol": false,
+          "Source": {
+            "End": 7,
+            "Length": 1,
+            "Source": "\\frac{2}{x}123",
+            "SourceName": "User input",
+            "Start": 6
+          },
+          "TextStyle": null,
+          "Type": "Ordinary"
+        },
         "Source": {
-          "Start": 1,
           "End": 11,
           "Length": 10,
           "Source": "\\frac{2}{x}123",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 1
+        },
+        "Type": "Inner"
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "1",
-        "TextStyle": null,
-        "IsDefaultTextStyle": true,
         "IsTextSymbol": false,
-        "Type": "Ordinary",
         "Source": {
-          "Start": 11,
           "End": 12,
           "Length": 1,
           "Source": "\\frac{2}{x}123",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 11
+        },
+        "TextStyle": null,
+        "Type": "Ordinary"
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "2",
-        "TextStyle": null,
-        "IsDefaultTextStyle": true,
         "IsTextSymbol": false,
-        "Type": "Ordinary",
         "Source": {
-          "Start": 12,
           "End": 13,
           "Length": 1,
           "Source": "\\frac{2}{x}123",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 12
+        },
+        "TextStyle": null,
+        "Type": "Ordinary"
       },
       {
+        "[AtomType]": "CharAtom",
         "Character": "3",
-        "TextStyle": null,
-        "IsDefaultTextStyle": true,
         "IsTextSymbol": false,
-        "Type": "Ordinary",
         "Source": {
-          "Start": 13,
           "End": 14,
           "Length": 1,
           "Source": "\\frac{2}{x}123",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 13
+        },
+        "TextStyle": null,
+        "Type": "Ordinary"
       }
     ],
-    "Type": "Ordinary",
+    "PreviousAtom": null,
     "Source": {
-      "Start": 0,
       "End": 14,
       "Length": 14,
       "Source": "\\frac{2}{x}123",
-      "SourceName": "User input"
-    }
+      "SourceName": "User input",
+      "Start": 0
+    },
+    "Type": "Ordinary"
   },
   "Source": {
-    "Start": 0,
     "End": 14,
     "Length": 14,
     "Source": "\\frac{2}{x}123",
-    "SourceName": "User input"
-  }
+    "SourceName": "User input",
+    "Start": 0
+  },
+  "TextStyle": null
 }

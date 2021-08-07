@@ -35,7 +35,7 @@ namespace WpfMath
         public SourceSpan Segment(int start) => new SourceSpan(SourceName, this.Source, this.Start + start, this.Length - start);
         public SourceSpan Segment(int start, int length) => new SourceSpan(SourceName, this.Source, this.Start + start, length);
 
-        public bool Equals(SourceSpan other)
+        public bool Equals(SourceSpan? other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
@@ -45,7 +45,7 @@ namespace WpfMath
                 && string.Equals(SourceName, other.SourceName, StringComparison.Ordinal);
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;

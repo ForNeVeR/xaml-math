@@ -4,7 +4,7 @@ using WpfMath.Boxes;
 namespace WpfMath.Atoms
 {
     // Atom representing whitespace.
-    internal class SpaceAtom : Atom
+    internal record SpaceAtom : Atom
     {
         // Collection of unit conversion functions.
         private static UnitConversion[] unitConversions = new UnitConversion[]
@@ -46,7 +46,7 @@ namespace WpfMath.Atoms
         private readonly TexUnit depthUnit;
 
         public SpaceAtom(
-            SourceSpan source,
+            SourceSpan? source,
             TexUnit widthUnit,
             double width,
             TexUnit heightUnit,
@@ -68,7 +68,7 @@ namespace WpfMath.Atoms
             this.depth = depth;
         }
 
-        public SpaceAtom(SourceSpan source, TexUnit unit, double width, double height, double depth)
+        public SpaceAtom(SourceSpan? source, TexUnit unit, double width, double height, double depth)
             : base(source)
         {
             CheckUnit(unit);
@@ -82,7 +82,7 @@ namespace WpfMath.Atoms
             this.depth = depth;
         }
 
-        public SpaceAtom(SourceSpan source)
+        public SpaceAtom(SourceSpan? source)
             : base(source)
         {
             this.isHardSpace = true;

@@ -4,9 +4,9 @@ using WpfMath.Boxes;
 namespace WpfMath.Atoms
 {
     // Atom specifying graphical style.
-    internal class StyledAtom : Atom, IRow
+    internal record StyledAtom : Atom, IRow
     {
-        public StyledAtom(SourceSpan source, Atom atom, Brush backgroundColor, Brush foregroundColor)
+        public StyledAtom(SourceSpan? source, Atom? atom, Brush? backgroundColor, Brush? foregroundColor)
             : base(source)
         {
             this.RowAtom = new RowAtom(source, atom);
@@ -15,17 +15,14 @@ namespace WpfMath.Atoms
         }
 
         // RowAtom to which colors are applied.
-        public RowAtom RowAtom { get; }
+        public RowAtom RowAtom { get; init; }
 
-        public Brush Background { get; }
+        public Brush? Background { get; init; }
 
-        public Brush Foreground { get; }
+        public Brush? Foreground { get; init; }
 
-        public Atom WithPreviousAtom(DummyAtom previousAtom)
-        {
-            var rowAtom = this.RowAtom.WithPreviousAtom(previousAtom);
-            return new StyledAtom(this.Source, rowAtom, this.Background, this.Foreground);
-        }
+        public Atom WithPreviousAtom(DummyAtom? previousAtom) =>
+            this with { RowAtom = (RowAtom) RowAtom.WithPreviousAtom(previousAtom) };
 
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
@@ -46,18 +43,6 @@ namespace WpfMath.Atoms
         public override TexAtomType GetRightType()
         {
             return this.RowAtom.GetRightType();
-        }
-
-        public StyledAtom Clone(
-            RowAtom rowAtom = null,
-            Brush background = null,
-            Brush foreground = null)
-        {
-            return new StyledAtom(
-                this.Source,
-                rowAtom ?? this.RowAtom,
-                background ?? this.Background,
-                foreground ?? this.Foreground);
         }
     }
 }
