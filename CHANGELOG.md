@@ -3,9 +3,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.11.0]
 ### Added
 - [#262: Add \mod operator from amsmath][pull-262]
+
+### Fixed
+- [#304: SystemFontFamilies does not return all FontFamilies in Chinese System][issue-304]
 
 ## [0.10.0] - 2021-07-06
 ### Changed
@@ -169,6 +172,7 @@ This was the initially published version. It consisted entirely of the original 
 [issue-248]: https://github.com/ForNeVeR/wpf-math/issues/248
 [issue-257]: https://github.com/ForNeVeR/wpf-math/issues/257
 [issue-275]: https://github.com/ForNeVeR/wpf-math/issues/275
+[issue-304]: https://github.com/ForNeVeR/wpf-math/issues/304
 [pull-53]: https://github.com/ForNeVeR/wpf-math/pull/53
 [pull-54]: https://github.com/ForNeVeR/wpf-math/pull/54
 [pull-58]: https://github.com/ForNeVeR/wpf-math/pull/58
@@ -205,4 +209,5 @@ This was the initially published version. It consisted entirely of the original 
 [0.8.0]: https://github.com/ForNeVeR/wpf-math/compare/0.7.0...0.8.0
 [0.9.0]: https://github.com/ForNeVeR/wpf-math/compare/0.8.0...0.9.0
 [0.10.0]: https://github.com/ForNeVeR/wpf-math/compare/0.9.0...v0.10.0
-[Unreleased]: https://github.com/ForNeVeR/wpf-math/compare/v0.10.0...HEAD
+[0.11.0]: https://github.com/ForNeVeR/wpf-math/compare/v0.10.0...v0.11.0
+[Unreleased]: https://github.com/ForNeVeR/wpf-math/compare/v0.11.0...HEAD

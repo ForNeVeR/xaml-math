@@ -7,7 +7,7 @@
     </PropertyGroup>
     <PropertyGroup>
         <PackageId>WpfMath</PackageId>
-        <Version>0.10.0</Version>
+        <Version>0.11.0</Version>
         <Title>WPF-Math</Title>
         <Authors>ForNeVeR</Authors>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -15,18 +15,11 @@
         <RepositoryUrl>https://github.com/ForNeVeR/wpf-math.git</RepositoryUrl>
         <AssemblyTitle>WPF-Math</AssemblyTitle>
         <PackageReleaseNotes>Changed:
-- Removed support for .NET Core 3.0
-
 Added:
-- Enable nullable reference types
+- #262: Add \mod operator from amsmath
 
 Fixed:
-- Foreground property not working on FormulaControl
-- Fix typo in SystemTextFontNameProperty
-- \limsup throws exception
-- Fix for scripts with curly braces after a command with curly braces (e.g. \hat{x}_{y})
-- Crash on empty \sqrt{}
-- OverUnderBox constructor may dereference scriptBox parameter if it's null
+- #304: SystemFontFamilies does not return all FontFamilies in Chinese System
         </PackageReleaseNotes>
         <PackageTags>wpf;latex;formula</PackageTags>
         <Description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the WPF framework.</Description>
