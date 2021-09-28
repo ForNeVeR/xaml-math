@@ -3,14 +3,17 @@
     This script will verify that there's no UTF-8 BOM in the files inside of the project.
 #>
 param (
+    # Path to the repository root. All text files under the root will be checked for UTF-8 BOM.
     $SourceRoot = "$PSScriptRoot/..",
+
+    # Makes the script to perform file modifications to bring them to the standard.
     [switch] $Autofix
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-# For PowerShell to  properly process the UTF-8 output from git ls-tree we need to set up the output encoding:
+# For PowerShell to properly process the UTF-8 output from git ls-tree we need to set up the output encoding:
 [Console]::OutputEncoding = [Text.Encoding]::UTF8
 
 $allFiles = git -c core.quotepath=off ls-tree -r HEAD --name-only
