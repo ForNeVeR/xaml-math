@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
-using System.IO;
-using System.Reflection;
 using System.Windows.Media;
 using System.Xml.Linq;
+using WpfMath.Data;
 using WpfMath.Parsers.PredefinedFormulae;
+using WpfMath.Utils;
 
 namespace WpfMath
 {
@@ -83,7 +83,8 @@ namespace WpfMath
 
         public TexPredefinedFormulaParser()
         {
-            var doc = XDocument.Load(new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)!));
+            using var resource = typeof(WpfMathResourceMarker).Assembly.ReadResource(resourceName);
+            var doc = XDocument.Load(resource);
             this.rootElement = doc.Root;
         }
 

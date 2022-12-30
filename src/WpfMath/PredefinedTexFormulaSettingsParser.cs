@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Reflection;
 using System.Xml.Linq;
+using WpfMath.Data;
+using WpfMath.Utils;
 
 namespace WpfMath
 {
@@ -31,7 +32,8 @@ namespace WpfMath
 
         public TexPredefinedFormulaSettingsParser()
         {
-            var doc = XDocument.Load(new System.IO.StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)!));
+            using var resource = typeof(WpfMathResourceMarker).Assembly.ReadResource(resourceName);
+            var doc = XDocument.Load(resource);
             this.rootElement = doc.Root;
         }
 

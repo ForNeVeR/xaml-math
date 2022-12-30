@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
 using System.Xml.Linq;
 using WpfMath.Atoms;
+using WpfMath.Data;
+using WpfMath.Utils;
 
 namespace WpfMath
 {
@@ -38,7 +38,8 @@ namespace WpfMath
         public TexSymbolParser()
         {
             // for 3.5
-            var doc = XDocument.Load(new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)!));
+            using var resource = typeof(WpfMathResourceMarker).Assembly.ReadResource(resourceName);
+            var doc =  XDocument.Load(resource);
             this.rootElement = doc.Root;
         }
 

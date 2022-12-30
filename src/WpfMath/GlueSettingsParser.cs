@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Xml.Linq;
+using WpfMath.Data;
+using WpfMath.Utils;
 
 namespace WpfMath
 {
@@ -58,7 +59,8 @@ namespace WpfMath
 
         public GlueSettingsParser()
         {
-            var doc = XDocument.Load(new System.IO.StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName)!));
+            using var resource = typeof(WpfMathResourceMarker).Assembly.ReadResource(resourceName);
+            var doc = XDocument.Load(resource);
             this.rootElement = doc.Root;
 
             this.glueTypes = new List<Glue>();

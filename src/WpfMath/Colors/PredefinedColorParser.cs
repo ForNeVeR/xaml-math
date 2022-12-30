@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Reflection;
 using System.Windows.Media;
 using System.Xml.Linq;
+using WpfMath.Data;
+using WpfMath.Utils;
 
 namespace WpfMath.Colors
 {
@@ -17,7 +18,7 @@ namespace WpfMath.Colors
 
         private PredefinedColorParser(string resourceName)
         {
-            using (var resource = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
+            using (var resource = typeof(WpfMathResourceMarker).Assembly.ReadResource(resourceName))
             {
                 var doc = XDocument.Load(resource);
                 _colors = Parse(doc.Root);

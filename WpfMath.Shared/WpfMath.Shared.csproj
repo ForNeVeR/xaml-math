@@ -15,13 +15,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Resource Include="Fonts\cmex10.ttf" />
-      <Resource Include="Fonts\cmmi10.ttf" />
-      <Resource Include="Fonts\cmr10.ttf" />
-      <Resource Include="Fonts\cmsy10.ttf" />
-    </ItemGroup>
-
-    <ItemGroup>
         <InternalsVisibleTo Include="WpfMath" />
         <InternalsVisibleTo Include="WpfMath.Tests" />
     </ItemGroup>
