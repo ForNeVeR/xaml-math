@@ -1,9 +1,9 @@
 <#
 .SYNOPSIS
-    This script will verify that there's no UTF-8 BOM in the files inside of the project.
+    This script will verify that there's no UTF-8 BOM or CRLF line endings in the files inside of the project.
 #>
 param (
-    # Path to the repository root. All text files under the root will be checked for UTF-8 BOM.
+    # Path to the repository root. All text files under the root will be checked for UTF-8 BOM and CRLF.
     $SourceRoot = "$PSScriptRoot/..",
 
     # Makes the script to perform file modifications to bring them to the standard.
