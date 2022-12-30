@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<PredefinedColors xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<PredefinedColors>
   <color r="251" g="185" b="130" name="apricot" />
   <color r="0" g="181" b="190" name="aquamarine" />
   <color r="192" g="79" b="23" name="bittersweet" />

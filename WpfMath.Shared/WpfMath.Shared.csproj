@@ -5,4 +5,25 @@
         <RootNamespace>WpfMath</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <EmbeddedResource Include="Data\DefaultTexFont.xml" />
+      <EmbeddedResource Include="Data\GlueSettings.xml" />
+      <EmbeddedResource Include="Data\PredefinedColors.xml" />
+      <EmbeddedResource Include="Data\PredefinedTexFormulas.xml" />
+      <EmbeddedResource Include="Data\TexFormulaSettings.xml" />
+      <EmbeddedResource Include="Data\TexSymbols.xml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Resource Include="Fonts\cmex10.ttf" />
+      <Resource Include="Fonts\cmmi10.ttf" />
+      <Resource Include="Fonts\cmr10.ttf" />
+      <Resource Include="Fonts\cmsy10.ttf" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="WpfMath" />
+        <InternalsVisibleTo Include="WpfMath.Tests" />
+    </ItemGroup>
+
 </Project>

@@ -1,4 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
     <PropertyGroup>
         <TargetFrameworks>netcoreapp3.1;net452</TargetFrameworks>
         <UseWpf>true</UseWpf>
@@ -35,15 +36,11 @@ Changed:
     </PropertyGroup>
 
     <ItemGroup>
-        <EmbeddedResource Include="Data/*" />
-        <Resource Include="Fonts\cmex10.ttf" />
-        <Resource Include="Fonts\cmmi10.ttf" />
-        <Resource Include="Fonts\cmr10.ttf" />
-        <Resource Include="Fonts\cmsy10.ttf" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+        <ProjectReference Include="..\..\WpfMath.Shared\WpfMath.Shared.csproj" />
     </ItemGroup>
 
     <ItemGroup>
