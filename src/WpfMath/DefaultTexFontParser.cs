@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
-using System.Text;
-using System.Windows;
 using System.Windows.Media;
 using System.Xml.Linq;
 
