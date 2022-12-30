@@ -105,7 +105,7 @@ Documentation
 Build and Maintenance Instructions
 ----------------------------------
 
-Build the project using [.NET SDK 5.0][dotnet-sdk]. WPF-Math requires C# 8 and F# 4.7 support. Here's the build and test script:
+Build the project using [.NET SDK 7.0][dotnet-sdk] or later. WPF-Math requires C# 11 and F# 7 support. Here's the build and test script:
 
 ```console
 $ dotnet build --configuration Release
