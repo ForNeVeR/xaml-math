@@ -27,7 +27,8 @@ $textFiles = git -c core.quotepath=off diff --numstat $nullHash HEAD -- @allFile
 Write-Output "Text files in the repository: $($textFiles.Length)"
 
 $bom = @(0xEF, 0xBB, 0xBF)
-$errors = @()
+$bomErrors = @()
+$lineEndingErrors = @()
 
 try {
     Push-Location $SourceRoot
@@ -40,13 +41,26 @@ try {
             $newContent = $fullContent | Select-Object -Skip $bom.Length
             [IO.File]::WriteAllBytes($fullPath, $newContent)
             Write-Output "Removed UTF-8 BOM from file $file"
-        } elseif  ($bytesEqualsBom) {
-            $errors += @($file)
+        } elseif ($bytesEqualsBom) {
+            $bomErrors += @($file)
+        }
+
+        $text = [IO.File]::ReadAllText($fullPath)
+        $hasWrongLineEndings = $text.Contains("`r`n")
+        if ($hasWrongLineEndings -and $Autofix) {
+            $newText = $text -replace "`r`n", "`n"
+            [IO.File]::WriteAllText($fullPath, $newText)
+            Write-Output "Fixed the line endings for file $file"
+        } elseif ($hasWrongLineEndings) {
+            $lineEndingErrors += @($file)
         }
     }
 
-    if ($errors.Length) {
-        throw "The following $($errors.Length) files have UTF-8 BOM:`n" + ($errors -join "`n")
+    if ($bomErrors.Length) {
+        throw "The following $($bomErrors.Length) files have UTF-8 BOM:`n" + ($bomErrors -join "`n")
+    }
+    if ($lineEndingErrors.Length) {
+        throw "The following $($lineEndingErrors.Length) files have CRLF instead of LF:`n" + ($lineEndingErrors -join "`n")
     }
 } finally {
     Pop-Location
