@@ -1,7 +1,7 @@
 namespace WpfMath
 {
     // Specifies font metrics for single character.
-    internal class TexFontMetrics
+    public class TexFontMetrics
     {
         public TexFontMetrics(double width, double height, double depth, double italicWidth, double scale)
         {

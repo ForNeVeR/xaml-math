@@ -19,4 +19,8 @@
         <InternalsVisibleTo Include="WpfMath.Tests" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Atoms" />
+    </ItemGroup>
+
 </Project>

@@ -2,6 +2,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Media;
 using WpfMath.Exceptions;
+using WpfMath.Fonts;
 using WpfMath.Utils;
 
 namespace WpfMath
@@ -42,7 +43,8 @@ namespace WpfMath
             }
 
             var metrics = GetFontMetrics(character, typeface);
-            return Result.Ok(new CharInfo(character, glyphTypeface, 1.0, TexFontUtilities.NoFontId, metrics));
+            return Result.Ok(
+                new CharInfo(character, new WpfGlyphTypeface(glyphTypeface), 1.0, TexFontUtilities.NoFontId, metrics));
         }
 
         public Result<CharInfo> GetCharInfo(CharFont charFont, TexStyle style) =>

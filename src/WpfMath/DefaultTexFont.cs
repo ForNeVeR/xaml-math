@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using WpfMath.Exceptions;
+using WpfMath.Fonts;
 using WpfMath.Utils;
 
 namespace WpfMath
@@ -108,7 +109,7 @@ namespace WpfMath
             var newFontInfo = fontInfoList[charFont.FontId];
             return new CharInfo(
                 charFont.Character,
-                newFontInfo.Font,
+                new WpfGlyphTypeface(newFontInfo.Font),
                 GetSizeFactor(style),
                 charFont.FontId,
                 GetMetrics(charFont, GetSizeFactor(style)).Value);
@@ -176,7 +177,7 @@ namespace WpfMath
             var size = GetSizeFactor(style);
             var fontInfo = fontInfoList[charFont.FontId];
             var metrics = GetMetrics(charFont, size);
-            return metrics.Map(m => new CharInfo(charFont.Character, fontInfo.Font, size, charFont.FontId, m));
+            return metrics.Map(m => new CharInfo(charFont.Character, new WpfGlyphTypeface(fontInfo.Font), size, charFont.FontId, m));
         }
 
         public double GetKern(CharFont leftCharFont, CharFont rightCharFont, TexStyle style)

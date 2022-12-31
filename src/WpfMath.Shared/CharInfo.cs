@@ -1,14 +1,14 @@
-using System.Windows.Media;
+using WpfMath.Fonts;
 
 namespace WpfMath
 {
-    // Single character togeter with information about font and metrics.
-    internal class CharInfo
+    /// <summary>Single character together with information about font and metrics.</summary>
+    public class CharInfo
     {
-        public CharInfo(char character, GlyphTypeface font, double size, int fontId, TexFontMetrics metrics)
+        public CharInfo(char character, IFontTypeface font, double size, int fontId, TexFontMetrics metrics)
         {
             this.Character = character;
-            this.Font = font;
+            Font = font;
             this.Size = size;
             FontId = fontId;
             this.Metrics = metrics;
@@ -20,10 +20,9 @@ namespace WpfMath
             set;
         }
 
-        public GlyphTypeface Font
+        public IFontTypeface Font
         {
             get;
-            set;
         }
 
         public double Size

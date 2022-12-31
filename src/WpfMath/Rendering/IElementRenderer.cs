@@ -1,4 +1,3 @@
-using System;
 using System.Windows;
 using System.Windows.Media;
 using WpfMath.Boxes;
@@ -19,13 +18,11 @@ namespace WpfMath.Rendering
         /// </remarks>
         void RenderElement(Box box, double x, double y);
 
-        /// <summary>Renders a glyph run (e.g. a character).</summary>
-        /// <param name="scaledGlyphFactory">Function to generate a glyph run for the chosen scale.</param>
-        /// <param name="x">An X coordinate of the top left corner.</param>
-        /// <param name="y">An Y coordinate of the top left corner.</param>
-        /// <param name="foreground">Glyph foreground color.</param>
-        // TODO[F]: Scale the GlyphRun in the implementations, replace the factory with the initial (unscaled) GlyphRun
-        void RenderGlyphRun(Func<double, GlyphRun> scaledGlyphFactory, double x, double y, Brush foreground);
+        /// <summary>
+        /// Renders a character denoted by <paramref name="info"/> at the chosen coordinates, using the color
+        /// <paramref name="foreground"/>.
+        /// </summary>
+        void RenderCharacter(CharInfo info, double x, double y, Brush foreground); // TODO[#63]: Get rid of Brush type.
 
         /// <summary>Renders a rectangle.</summary>
         /// <param name="rectangle">Rectangle to render.</param>

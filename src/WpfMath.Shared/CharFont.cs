@@ -1,7 +1,7 @@
 namespace WpfMath
 {
-    // Single character together with specific font.
-    internal class CharFont
+    /// <summary>Single character together with specific font.</summary>
+    public class CharFont
     {
         public CharFont(char character, int fontId)
         {

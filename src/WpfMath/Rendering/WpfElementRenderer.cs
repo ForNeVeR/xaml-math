@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 using WpfMath.Boxes;
+using WpfMath.Fonts;
 using WpfMath.Rendering.Transformations;
 
 namespace WpfMath.Rendering
@@ -42,9 +43,9 @@ namespace WpfMath.Rendering
             _foregroundContext.Pop();
         }
 
-        public void RenderGlyphRun(Func<double, GlyphRun> scaledGlyphFactory, double x, double y, Brush foreground)
+        public void RenderCharacter(CharInfo info, double x, double y, Brush foreground)
         {
-            var glyphRun = scaledGlyphFactory(_scale);
+            var glyphRun = info.GetGlyphRun(x, y, _scale);
             _foregroundContext.DrawGlyphRun(foreground, glyphRun);
         }
 

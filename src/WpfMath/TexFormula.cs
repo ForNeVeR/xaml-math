@@ -104,7 +104,7 @@ namespace WpfMath
 
         internal static SystemFont GetSystemFont(string fontName, double size)
         {
-            var fontFamily = Fonts.SystemFontFamilies.First(
+            var fontFamily = System.Windows.Media.Fonts.SystemFontFamilies.First(
                 ff => ff.ToString() == fontName || ff.FamilyNames.Values?.Contains(fontName) == true);
             return new SystemFont(size, fontFamily);
         }
