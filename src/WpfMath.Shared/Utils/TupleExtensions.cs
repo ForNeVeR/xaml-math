@@ -1,5 +1,3 @@
-using System;
-
 namespace WpfMath.Utils
 {
 #if NET452 // not needed for .NET Core 3.0+ because there are System.TupleExtensions

@@ -49,7 +49,7 @@ ProjectSection(SolutionItems) = preProject
 	.github\workflows\nuget.yml = .github\workflows\nuget.yml
 EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfMath.Shared", "WpfMath.Shared\WpfMath.Shared.csproj", "{F47FD7D7-3BFA-42BA-BEC6-68280596EE08}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfMath.Shared", "src\WpfMath.Shared\WpfMath.Shared.csproj", "{C9B5E02E-04FB-405F-9BEB-6CF4736939EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,10 +69,10 @@ Global
 		{F19E5FB1-EE6B-4A48-A522-41F30676BE41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F19E5FB1-EE6B-4A48-A522-41F30676BE41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F19E5FB1-EE6B-4A48-A522-41F30676BE41}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F47FD7D7-3BFA-42BA-BEC6-68280596EE08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F47FD7D7-3BFA-42BA-BEC6-68280596EE08}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F47FD7D7-3BFA-42BA-BEC6-68280596EE08}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F47FD7D7-3BFA-42BA-BEC6-68280596EE08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9B5E02E-04FB-405F-9BEB-6CF4736939EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9B5E02E-04FB-405F-9BEB-6CF4736939EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9B5E02E-04FB-405F-9BEB-6CF4736939EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9B5E02E-04FB-405F-9BEB-6CF4736939EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -41,13 +41,13 @@ Changed:
       <Resource Include="Fonts\cmr10.ttf" />
       <Resource Include="Fonts\cmsy10.ttf" />
     </ItemGroup>
-    
+
     <ItemGroup>
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\WpfMath.Shared\WpfMath.Shared.csproj" />
+        <ProjectReference Include="..\WpfMath.Shared\WpfMath.Shared.csproj" />
     </ItemGroup>
 
     <ItemGroup>
