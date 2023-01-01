@@ -8,6 +8,7 @@ open Xunit
 
 open WpfMath
 open WpfMath.Boxes
+open WpfMath.Fonts
 open WpfMath.Rendering
 open WpfMath.Rendering.Transformations
 
@@ -25,7 +26,7 @@ type GeometryElementRendererTests() =
 
     [<Fact>]
     member _.``GeometryElementRenderer.RenderCharacter adds a PathGeometry group``() : unit =
-        let font = DefaultTexFont 20.0
+        let font = DefaultTexFont(WpfMathFontProvider.Instance, 20.0)
         let environment = TexEnvironment(TexStyle.Display, font, font)
         let char = environment.MathFont.GetDefaultCharInfo('x', TexStyle.Display).Value
         renderer.RenderCharacter(char, 0.0, 0.0, Brushes.Black)

@@ -8,6 +8,7 @@ open Xunit
 
 open WpfMath
 open WpfMath.Boxes
+open WpfMath.Fonts
 open WpfMath.Rendering
 
 type HorizontalRuleTests() =
@@ -15,7 +16,7 @@ type HorizontalRuleTests() =
 
     [<Fact>]
     member _.``HorizontalRule rendering calls to RenderRect``() =
-        let font = DefaultTexFont 20.0
+        let font = DefaultTexFont(WpfMathFontProvider.Instance, 20.0)
         let environment = TexEnvironment(TexStyle.Display, font, font)
         let x = 0.5
         let y = 1.0

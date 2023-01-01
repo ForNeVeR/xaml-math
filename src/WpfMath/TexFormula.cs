@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -25,13 +26,14 @@ namespace WpfMath
 
         public SourceSpan? Source { get; set; }
 
-        public TexRenderer GetRenderer(TexStyle style,
+        [Obsolete("Use extension methods from WpfMath.Rendering.TeXFormulaExtensions and WpfMath.Rendering.WpfTeXFormulaExtensions instead.")]
+        public TexRenderer GetRenderer(TexStyle style, // TODO: Revise internal usages of this method.
             double scale,
             string? systemTextFontName,
             Brush? background = null,
             Brush? foreground = null)
         {
-            var mathFont = new DefaultTexFont(new WpfMathFontProvider(), scale);
+            var mathFont = new DefaultTexFont(WpfMathFontProvider.Instance, scale);
             var textFont = systemTextFontName == null ? (ITeXFont)mathFont : GetSystemFont(systemTextFontName, scale);
             var environment = new TexEnvironment(style, mathFont, textFont, background, foreground);
             return new TexRenderer(CreateBox(environment), scale);

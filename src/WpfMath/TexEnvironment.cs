@@ -2,13 +2,13 @@ using System.Windows.Media;
 
 namespace WpfMath
 {
-    // Specifies current graphical parameters used to create boxes.
-    internal class TexEnvironment
+    /// <summary>Specifies current graphical parameters used to create boxes.</summary>
+    public sealed class TexEnvironment
     {
         // ID of font that was last used.
         private int lastFontId = TexFontUtilities.NoFontId;
 
-        public TexEnvironment(
+        internal TexEnvironment(
             TexStyle style,
             ITeXFont mathFont,
             ITeXFont textFont,
@@ -27,86 +27,86 @@ namespace WpfMath
             this.Foreground = foreground;
         }
 
-        public TexStyle Style
+        internal TexStyle Style
         {
             get;
             private set;
         }
 
-        public ITeXFont MathFont
+        internal ITeXFont MathFont
         {
             get;
             private set;
         }
 
-        public ITeXFont TextFont { get; }
+        internal ITeXFont TextFont { get; }
 
-        public Brush? Background
+        internal Brush? Background
         {
             get;
             set;
         }
 
-        public Brush? Foreground
+        internal Brush? Foreground
         {
             get;
             set;
         }
 
-        public int LastFontId
+        internal int LastFontId
         {
             get { return this.lastFontId == TexFontUtilities.NoFontId ? this.MathFont.GetMuFontId() : this.lastFontId; }
             set { this.lastFontId = value; }
         }
 
-        public TexEnvironment GetCrampedStyle()
+        internal TexEnvironment GetCrampedStyle()
         {
             var newEnvironment = Clone();
             newEnvironment.Style = (int)this.Style % 2 == 1 ? this.Style : this.Style + 1;
             return newEnvironment;
         }
 
-        public TexEnvironment GetNumeratorStyle()
+        internal TexEnvironment GetNumeratorStyle()
         {
             var newEnvironment = Clone();
             newEnvironment.Style = this.Style + 2 - 2 * ((int)this.Style / 6);
             return newEnvironment;
         }
 
-        public TexEnvironment GetDenominatorStyle()
+        internal TexEnvironment GetDenominatorStyle()
         {
             var newEnvironment = Clone();
             newEnvironment.Style = (TexStyle)(2 * ((int)this.Style / 2) + 1 + 2 - 2 * ((int)this.Style / 6));
             return newEnvironment;
         }
 
-        public TexEnvironment GetRootStyle()
+        internal TexEnvironment GetRootStyle()
         {
             var newEnvironment = Clone();
             newEnvironment.Style = TexStyle.ScriptScript;
             return newEnvironment;
         }
 
-        public TexEnvironment GetSubscriptStyle()
+        internal TexEnvironment GetSubscriptStyle()
         {
             var newEnvironment = Clone();
             newEnvironment.Style = (TexStyle)(2 * ((int)this.Style / 4) + 4 + 1);
             return newEnvironment;
         }
 
-        public TexEnvironment GetSuperscriptStyle()
+        internal TexEnvironment GetSuperscriptStyle()
         {
             var newEnvironment = Clone();
             newEnvironment.Style = (TexStyle)(2 * ((int)this.Style / 4) + 4 + ((int)this.Style % 2));
             return newEnvironment;
         }
 
-        public TexEnvironment Clone()
+        internal TexEnvironment Clone()
         {
             return new TexEnvironment(Style, MathFont, TextFont, Background, Foreground);
         }
 
-        public void Reset()
+        internal void Reset()
         {
             this.Background = null;
             this.Foreground = null;

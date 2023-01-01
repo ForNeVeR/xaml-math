@@ -3,12 +3,13 @@ namespace WpfMath.Tests
 open Xunit
 
 open WpfMath
+open WpfMath.Fonts
 open WpfMath.Exceptions
 
 type DefaultTexFontTests() =
     static do Utils.initializeFontResourceLoading()
 
-    let font = DefaultTexFont(1.0)
+    let font = DefaultTexFont(WpfMathFontProvider.Instance, 1.0)
 
     [<Fact>]
     member _.``GetCharInfo(char, string, TexStyle) returns a CharInfo for existing character``() =

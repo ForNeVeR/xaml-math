@@ -7,7 +7,8 @@ using WpfMath.Rendering;
 
 namespace WpfMath
 {
-    public class TexRenderer
+    [Obsolete("Use extension methods on WpfMath.TexFormula instead.")]
+    public class TexRenderer // TODO[F]: Drop in the next release
     {
         /// <summary>Default DPI for WPF.</summary>
         private const int DefaultDpi = 96;
@@ -46,13 +47,14 @@ namespace WpfMath
             }
         }
 
-        public void RenderFormulaTo(IElementRenderer renderer, double x, double y)
+        [Obsolete("Use WpfMath.Rendering.TeXFormulaExtensions::RenderTo instead.")]
+        public void RenderFormulaTo(IElementRenderer renderer, double x, double y) // TODO: Remove all internal usages of this method.
         {
-            renderer.RenderElement(Box, x / Scale, y / Scale + Box.Height);
-            renderer.FinishRendering();
+            TeXFormulaExtensions.Render(Box, renderer, Scale, x, y);
         }
 
-        public Geometry RenderToGeometry(double x, double y)
+        [Obsolete("Use WpfMath.Rendering.WpfTeXFormulaExtensions::RenderToGeometry instead.")]
+        public Geometry RenderToGeometry(double x, double y) // TODO: Remove all internal usages of this method.
         {
             var geometry = new GeometryGroup();
             var renderer = new GeometryElementRenderer(geometry, Scale);
@@ -76,7 +78,8 @@ namespace WpfMath
             }
         }
 
-        public BitmapSource RenderToBitmap(double x, double y, double dpi)
+        [Obsolete("Use WpfMath.Rendering.WpfTeXFormulaExtensions::RenderToBitmap instead.")]
+        public BitmapSource RenderToBitmap(double x, double y, double dpi) // TODO: Remove all internal usages of this method.
         {
             var visual = new DrawingVisual();
             this.RenderWithPositiveCoordinates(visual, x, y);
@@ -90,9 +93,11 @@ namespace WpfMath
             return bitmap;
         }
 
-        public BitmapSource RenderToBitmap(double x, double y) => this.RenderToBitmap(x, y, DefaultDpi);
+        [Obsolete("Use WpfMath.Rendering.WpfTeXFormulaExtensions::RenderToBitmap instead.")]
+        public BitmapSource RenderToBitmap(double x, double y) => this.RenderToBitmap(x, y, DefaultDpi); // TODO: Remove all internal usages of this method.
 
-        public void Render(DrawingContext drawingContext, double x, double y) =>
+        [Obsolete("Use WpfMath.Rendering.WpfTeXFormulaExtensions::RenderTo instead.")]
+        public void Render(DrawingContext drawingContext, double x, double y) => // TODO: Remove all internal usages of this method.
             RenderFormulaTo(new WpfElementRenderer(drawingContext, Scale), x, y);
     }
 }

@@ -21,7 +21,7 @@ type CharBoxTests() =
         result.RootAtom
 
     let environment =
-        let mathFont = DefaultTexFont 20.0
+        let mathFont = DefaultTexFont(WpfMathFontProvider.Instance, 20.0)
         let textFont = TexFormula.GetSystemFont("Arial", 20.0)
         TexEnvironment(TexStyle.Display, mathFont, textFont)
 

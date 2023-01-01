@@ -4,8 +4,12 @@ using System.Windows.Media;
 namespace WpfMath.Fonts;
 
 /// <summary>A font provider implementation specifically for the WpfMath assembly.</summary>
-public class WpfMathFontProvider : IFontProvider
+internal class WpfMathFontProvider : IFontProvider
 {
+    private WpfMathFontProvider() {}
+
+    public static WpfMathFontProvider Instance = new();
+
     private const string FontsDirectory = "Fonts/";
 
     public IFontTypeface ReadFontFile(string fontFileName)
