@@ -17,6 +17,7 @@ open Newtonsoft.Json.Serialization
 
 open WpfMath
 open WpfMath.Atoms
+open WpfMath.Fonts
 
 type private BomlessFileWriter(data: string, ?extensionWithoutDot: string) =
     inherit ApprovalTextWriter(data, defaultArg extensionWithoutDot "txt")
@@ -56,7 +57,7 @@ type private InnerPropertyContractResolver() =
                     Readable = true,
                     ValueProvider = {
                         new IValueProvider with
-                            member this.GetValue(_) = upcast ``type``.Name
+                            member this.GetValue _ = upcast ``type``.Name
                             member this.SetValue(_, _) = failwith "Not supported"
                     }
                 )
@@ -69,6 +70,11 @@ type ReadOnlyJsonConverter<'a>() =
     inherit JsonConverter<'a>()
     override _.CanRead = false
     override _.ReadJson(_, _, _, _, _) = failwith "Not supported"
+
+type private WpfGlyphTypefaceConverter() =
+    inherit ReadOnlyJsonConverter<WpfGlyphTypeface>()
+    override _.WriteJson(writer: JsonWriter, value: WpfGlyphTypeface, serializer: JsonSerializer) =
+        serializer.Serialize(writer, value.Typeface)
 
 type private GlyphTypefaceConverter() =
     inherit ReadOnlyJsonConverter<GlyphTypeface>()
@@ -92,10 +98,11 @@ let private jsonSettings = JsonSerializerSettings(ContractResolver = InnerProper
                                                       StringEnumConverter()
                                                       GlyphTypefaceConverter()
                                                       UniversalDoubleConverter()
+                                                      WpfGlyphTypefaceConverter()
                                                   |])
 
 let private serialize o =
-    JsonConvert.SerializeObject(o, jsonSettings)
+    JsonConvert.SerializeObject(o, jsonSettings).Replace("\r\n", "\n")
 
 let verifyObject: obj -> unit =
     serialize >> Approvals.Verify
@@ -106,7 +113,7 @@ let verifyParseResult (formulaText: string): unit =
     verifyObject formula
 
 let verifyParseResultScenario (scenario: string) (formulaText: string): unit =
-    use block = NamerFactory.AsEnvironmentSpecificTest(fun () -> sprintf "(%s)" scenario)
+    use block = NamerFactory.AsEnvironmentSpecificTest(fun () -> $"(%s{scenario})")
     verifyParseResult formulaText
 
 let processSpecialChars (text: string): string =
