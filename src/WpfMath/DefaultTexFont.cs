@@ -18,7 +18,7 @@ namespace WpfMath
 
         static DefaultTexFont()
         {
-            var parser = new DefaultTexFontParser();
+            var parser = new DefaultTexFontParser(new WpfMathFontProvider());
             parameters = parser.GetParameters();
             generalSettings = parser.GetGeneralSettings();
             textStyleMappings = parser.GetTextStyleMappings();
@@ -109,7 +109,7 @@ namespace WpfMath
             var newFontInfo = fontInfoList[charFont.FontId];
             return new CharInfo(
                 charFont.Character,
-                new WpfGlyphTypeface(newFontInfo.Font),
+                newFontInfo.Font,
                 GetSizeFactor(style),
                 charFont.FontId,
                 GetMetrics(charFont, GetSizeFactor(style)).Value);
@@ -177,7 +177,7 @@ namespace WpfMath
             var size = GetSizeFactor(style);
             var fontInfo = fontInfoList[charFont.FontId];
             var metrics = GetMetrics(charFont, size);
-            return metrics.Map(m => new CharInfo(charFont.Character, new WpfGlyphTypeface(fontInfo.Font), size, charFont.FontId, m));
+            return metrics.Map(m => new CharInfo(charFont.Character, fontInfo.Font, size, charFont.FontId, m));
         }
 
         public double GetKern(CharFont leftCharFont, CharFont rightCharFont, TexStyle style)
@@ -347,13 +347,5 @@ namespace WpfMath
                 m[TexFontUtilities.MetricsItalic],
                 size * TexFontUtilities.PixelsPerPoint));
         }
-    }
-
-    internal enum TexCharKind
-    {
-        None = -1,
-        Numbers = 0,
-        Capitals = 1,
-        Small = 2
     }
 }

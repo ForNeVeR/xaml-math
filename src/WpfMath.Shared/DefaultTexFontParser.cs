@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Windows.Media;
 using System.Xml.Linq;
 using WpfMath.Data;
+using WpfMath.Fonts;
 using WpfMath.Utils;
 
 namespace WpfMath
@@ -14,10 +14,11 @@ namespace WpfMath
         private static readonly string resourceName = TexUtilities.ResourcesDataDirectory + "DefaultTexFont.xml";
 
         private const int fontIdCount = 4;
-        private const string fontsDirectory = "Fonts/";
 
         private static readonly IDictionary<string, int> rangeTypeMappings;
         private static readonly IDictionary<string, ICharChildParser> charChildParsers;
+
+        private readonly IFontProvider _fontProvider;
 
         static DefaultTexFontParser()
         {
@@ -47,8 +48,10 @@ namespace WpfMath
 
         private XElement rootElement;
 
-        public DefaultTexFontParser()
+        public DefaultTexFontParser(IFontProvider fontProvider)
         {
+            _fontProvider = fontProvider;
+
             using var resource = typeof(WpfMathResourceMarker).Assembly.ReadResource(resourceName);
             var doc = XDocument.Load(resource);
             this.rootElement = doc.Root;
@@ -74,7 +77,7 @@ namespace WpfMath
                     var quad = fontElement.AttributeDoubleValue("quad");
                     var skewChar = fontElement.AttributeInt32Value("skewChar", -1);
 
-                    var font = CreateFont(fontName);
+                    var font = _fontProvider.ReadFontFile(fontName);
                     var fontInfo = new TexFontInfo(fontId, font, xHeight, space, quad);
                     if (skewChar != -1)
                         fontInfo.SkewCharacter = (char)skewChar;
@@ -217,13 +220,6 @@ namespace WpfMath
                 }
                 this.parsedTextStyles.Add(textStyleName, charFonts);
             }
-        }
-
-        private GlyphTypeface CreateFont(string name)
-        {
-            // Load font from embedded resource.
-            var fontUri = new Uri(string.Format("pack://application:,,,/WpfMath;component/{0}{1}", fontsDirectory, name));
-            return new GlyphTypeface(fontUri);
         }
 
         public class ExtensionParser : ICharChildParser
