@@ -3,6 +3,7 @@ using System.Windows.Media;
 
 namespace WpfMath.Fonts;
 
+/// <summary>A font provider implementation specifically for the WpfMath assembly.</summary>
 public class WpfMathFontProvider : IFontProvider
 {
     private const string FontsDirectory = "Fonts/";

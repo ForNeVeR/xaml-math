@@ -10,8 +10,6 @@ namespace WpfMath
 
         double Size { get; }
 
-        ITeXFont DeriveFont(double newSize);
-
         ExtensionChar GetExtension(CharInfo charInfo, TexStyle style);
 
         CharFont? GetLigature(CharFont leftChar, CharFont rightChar);

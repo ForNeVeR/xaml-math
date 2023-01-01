@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Media;
 using WpfMath.Atoms;
 using WpfMath.Boxes;
+using WpfMath.Fonts;
 
 namespace WpfMath
 {
@@ -30,7 +31,7 @@ namespace WpfMath
             Brush? background = null,
             Brush? foreground = null)
         {
-            var mathFont = new DefaultTexFont(scale);
+            var mathFont = new DefaultTexFont(new WpfMathFontProvider(), scale);
             var textFont = systemTextFontName == null ? (ITeXFont)mathFont : GetSystemFont(systemTextFontName, scale);
             var environment = new TexEnvironment(style, mathFont, textFont, background, foreground);
             return new TexRenderer(CreateBox(environment), scale);

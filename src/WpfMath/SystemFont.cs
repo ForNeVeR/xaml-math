@@ -21,7 +21,6 @@ namespace WpfMath
 
         public double Size { get; }
 
-        public ITeXFont DeriveFont(double newSize) => throw MethodNotSupported(nameof(DeriveFont));
         public ExtensionChar GetExtension(CharInfo charInfo, TexStyle style) =>
             throw MethodNotSupported(nameof(GetExtension));
 

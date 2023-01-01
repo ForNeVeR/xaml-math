@@ -6,19 +6,34 @@ using WpfMath.Utils;
 
 namespace WpfMath
 {
-    // Default implementation of ITeXFont that reads all font information from XML file.
+    /// <summary>Default implementation of ITeXFont that reads all font information from XML file.</summary>
     internal class DefaultTexFont : ITeXFont
     {
-        private static readonly IDictionary<string, double> parameters;
-        private static readonly IDictionary<string, object> generalSettings;
-        private static readonly IDictionary<string, CharFont[]> textStyleMappings;
-        private static readonly IDictionary<string, CharFont> symbolMappings;
-        internal static readonly IList<string> defaultTextStyleMappings;
-        private static readonly IList<TexFontInfo> fontInfoList;
+        private readonly IDictionary<string, double> parameters;
+        private readonly IDictionary<string, object> generalSettings;
+        private readonly IDictionary<string, CharFont[]> textStyleMappings;
+        private readonly IDictionary<string, CharFont> symbolMappings;
+        internal readonly IList<string> defaultTextStyleMappings;
+        private readonly IList<TexFontInfo> fontInfoList;
 
-        static DefaultTexFont()
+        private double GetParameter(string name)
         {
-            var parser = new DefaultTexFontParser(new WpfMathFontProvider());
+            return parameters[name];
+        }
+
+        private double GetSizeFactor(TexStyle style)
+        {
+            if (style < TexStyle.Script)
+                return 1d;
+            else if (style < TexStyle.ScriptScript)
+                return (double)generalSettings["scriptfactor"];
+            else
+                return (double)generalSettings["scriptscriptfactor"];
+        }
+
+        public DefaultTexFont(IFontProvider fontProvider, double size)
+        {
+            var parser = new DefaultTexFontParser(fontProvider);
             parameters = parser.GetParameters();
             generalSettings = parser.GetGeneralSettings();
             textStyleMappings = parser.GetTextStyleMappings();
@@ -30,25 +45,7 @@ namespace WpfMath
             var muFontId = (int)generalSettings["mufontid"];
             if (muFontId < 0 || muFontId >= fontInfoList.Count || fontInfoList[muFontId] == null)
                 throw new InvalidOperationException("ID of Mu font is invalid.");
-        }
 
-        private static double GetParameter(string name)
-        {
-            return parameters[name];
-        }
-
-        private static double GetSizeFactor(TexStyle style)
-        {
-            if (style < TexStyle.Script)
-                return 1d;
-            else if (style < TexStyle.ScriptScript)
-                return (double)generalSettings["scriptfactor"];
-            else
-                return (double)generalSettings["scriptscriptfactor"];
-        }
-
-        public DefaultTexFont(double size)
-        {
             this.Size = size;
         }
 
@@ -58,11 +55,6 @@ namespace WpfMath
         {
             get;
             private set;
-        }
-
-        public ITeXFont DeriveFont(double newSize)
-        {
-            return new DefaultTexFont(newSize);
         }
 
         public ExtensionChar GetExtension(CharInfo charInfo, TexStyle style)
@@ -115,7 +107,7 @@ namespace WpfMath
                 GetMetrics(charFont, GetSizeFactor(style)).Value);
         }
 
-        private static string GetDefaultTextStyleMapping(char character)
+        private string GetDefaultTextStyleMapping(char character)
         {
             TexCharKind GetCharKind()
             {
@@ -336,7 +328,7 @@ namespace WpfMath
             return GetParameter("defaultrulethickness") * GetSizeFactor(style) * TexFontUtilities.PixelsPerPoint;
         }
 
-        private static Result<TexFontMetrics> GetMetrics(CharFont charFont, double size)
+        private Result<TexFontMetrics> GetMetrics(CharFont charFont, double size)
         {
             var fontInfo = fontInfoList[charFont.FontId];
             var metrics = fontInfo.GetMetrics(charFont.Character);
