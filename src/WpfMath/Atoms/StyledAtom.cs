@@ -26,9 +26,10 @@ namespace WpfMath.Atoms
 
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
-            var newEnvironment = environment.Clone();
-            if (this.Foreground != null)
-                newEnvironment.Foreground = this.Foreground;
+            var newEnvironment = environment with
+            {
+                Foreground = this.Foreground ?? environment.Foreground
+            };
             var childBox = this.RowAtom.CreateBox(newEnvironment);
             if (Background != null)
                 childBox.Background = Background;
