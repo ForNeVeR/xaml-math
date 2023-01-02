@@ -1,11 +1,57 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Controls;
 using WpfMath.Atoms;
+using WpfMath.Exceptions;
 using WpfMath.Parsers.Matrices;
 
 namespace WpfMath.Parsers
 {
     internal static class StandardCommands
     {
+        /// <summary>
+        /// This command will parse a \begin \end environment. Doesn't support nested environments
+        /// </summary>
+        private class BeginCommand : ICommandParser
+        {
+            public CommandProcessingResult ProcessCommand(CommandContext context)
+            {
+                int position = context.ArgumentsStartPosition;
+                SourceSpan source = context.CommandSource;
+                if (position == source.Length)
+                    throw new TexParseException("illegal end!");
+                if (!source.ToString().Contains("\\end")) throw new TexParseException("No matching \\end found!");
+
+                SourceSpan element = TexFormulaParser.ReadElement(source, ref position);
+                string argument = element.ToString();
+                int endIndex = -1;
+                for (; position < source.End; position++)
+                {
+                    if (position + 4 >= source.Length || source[source.Length - 1] != '}') throw new TexParseException("Unfinished command \\end!");
+                    if (source[position] == '\\' && source[position + 1] == 'e' && source[position + 2] == 'n' && source[position + 3] == 'd')
+                    {
+                        /* int i = 0;
+                        foreach (char c in "{" + argument + "}") // Trying to implement nested environments
+                        {
+                            i++;
+                            if (c != source[position + 3 + i])
+                            {
+                                throw 
+                            }
+                        } */
+                        endIndex = position;
+                        break;
+                    }
+                }
+
+                string newContent = source.ToString().Substring(context.ArgumentsStartPosition + element.Length + 2, endIndex - (context.ArgumentsStartPosition + element.Length) - 2);
+
+                newContent = "\\" + argument + "{" + newContent + "}";
+                TexFormula content = context.Parser.Parse(newContent);
+                return new CommandProcessingResult(content.RootAtom, position + 3 + argument.Length + 3);
+            }
+        }
+
         private class UnderlineCommand : ICommandParser
         {
             public CommandProcessingResult ProcessCommand(CommandContext context)
@@ -102,7 +148,8 @@ namespace WpfMath.Parsers
             ["cases"] = new MatrixCommandParser("lbrace", null, MatrixCellAlignment.Left),
             ["matrix"] = new MatrixCommandParser(null, null, MatrixCellAlignment.Center),
             ["pmatrix"] = new MatrixCommandParser("lbrack", "rbrack", MatrixCellAlignment.Center),
-            ["underline"] = new UnderlineCommand()
+            ["underline"] = new UnderlineCommand(),
+            ["begin"] = new BeginCommand()
         };
     }
 }
