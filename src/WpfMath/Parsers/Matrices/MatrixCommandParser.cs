@@ -57,7 +57,7 @@ namespace WpfMath.Parsers.Matrices
             return new CommandProcessingResult(atom, position);
         }
 
-        private List<List<Atom>> ReadMatrixCells(
+        private static List<List<Atom>> ReadMatrixCells(
             TexFormulaParser parser,
             TexFormula formula,
             SourceSpan source,
@@ -83,7 +83,7 @@ namespace WpfMath.Parsers.Matrices
             return rows;
         }
 
-        private void MakeRectangular(List<List<Atom>> rowAtoms)
+        private static void MakeRectangular(List<List<Atom>> rowAtoms)
         {
             var maxRowLength = rowAtoms.Max(r => r.Count);
             foreach (var row in rowAtoms.Where(r => r.Count < maxRowLength))

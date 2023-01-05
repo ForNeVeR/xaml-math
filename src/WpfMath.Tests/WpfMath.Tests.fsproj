@@ -31,6 +31,7 @@
         <Compile Include="PredefinedColorParserTests.fs" />
         <Compile Include="CharBoxTests.fs" />
         <Compile Include="DefaultTexFontTests.fs" />
+        <Compile Include="EnvironmentTests.fs" />
         <Compile Include="GeometryHelperTests.fs" />
         <Compile Include="GeometryElementRendererTests.fs" />
         <Compile Include="HorizontalBoxTests.fs" />

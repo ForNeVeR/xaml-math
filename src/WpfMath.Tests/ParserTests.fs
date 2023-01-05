@@ -314,7 +314,3 @@ let newLineAfterMatrix(text: string): unit =
     verifyParseResultScenario
     <| processSpecialChars text
     <| text
-
-[<Fact>]
-let pMatrixEnvironment(): unit =
-    verifyParseResult @"\begin{pmatrix}{line 1}\\line 2\end{pmatrix}"
