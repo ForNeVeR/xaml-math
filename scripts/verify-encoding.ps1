@@ -33,6 +33,10 @@ $lineEndingErrors = @()
 try {
     Push-Location $SourceRoot
     foreach ($file in $textFiles) {
+        if ([IO.Path]::GetExtension($file) -eq '.DotSettings') {
+            continue
+        }
+
         $fullPath = Resolve-Path -LiteralPath $file
         $bytes = [IO.File]::ReadAllBytes($fullPath) | Select-Object -First $bom.Length
         $bytesEqualsBom = @(Compare-Object $bytes $bom -SyncWindow 0).Length -eq 0
