@@ -15,6 +15,10 @@ let nestedEnvironment(): unit =
     verifyParseResult @"\begin{pmatrix}line 1\\\begin{pmatrix}line x\end{pmatrix}\end{pmatrix}"
 
 [<Fact>]
+let nestedMatrix(): unit =
+    verifyParseResult @"\begin{pmatrix}line 1\\\pmatrix{line x & line y}\end{pmatrix}"
+
+[<Fact>]
 let ``Empty environment name should trigger an exception``(): unit =
     let markup = @"\begin{}"
     let ex = assertParseThrows<TexParseException> markup
