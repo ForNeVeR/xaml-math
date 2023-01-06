@@ -16,7 +16,7 @@ namespace WpfMath.Parsers.Matrices
         private readonly string? _rightDelimiterSymbolName;
         private readonly MatrixCellAlignment _cellAlignment;
 
-        public MatrixCommandParser(
+        private MatrixCommandParser(
             string? leftDelimiterSymbolName,
             string? rightDelimiterSymbolName,
             MatrixCellAlignment cellAlignment)

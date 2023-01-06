@@ -52,16 +52,8 @@ internal class ProcessEnvironmentCommand : ICommandParser
             throw new TexParseException(
                 $@"""\end{{{endLabel}}}"" doesn't correspond to earlier ""\begin{{{environmentName}}}"".");
 
-        var environmentSource = new SourceSpan(
-            source.SourceName,
-            source.Source,
-            commandContext.CommandNameStartPosition,
-            position - commandContext.CommandNameStartPosition);
-        var body = new SourceSpan(
-            source.SourceName,
-            source.Source,
-            bodyStartPosition,
-            bodyEndPosition - bodyStartPosition);
+        var environmentSource = source.Segment(commandContext.CommandNameStartPosition, position - commandContext.CommandNameStartPosition);
+        var body = source.Segment(bodyStartPosition, bodyEndPosition - bodyStartPosition);
 
         return new EnvironmentContext(
             commandContext.Parser,
