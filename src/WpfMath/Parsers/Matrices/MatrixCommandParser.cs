@@ -39,7 +39,14 @@ namespace WpfMath.Parsers.Matrices
                 context.CommandNameStartPosition,
                 position - context.CommandNameStartPosition);
 
-            return ProcessSource(context, cellsSource, matrixSource, position);
+            var envContext = new EnvironmentContext(
+                context.Parser,
+                context.Formula,
+                context.Environment,
+                matrixSource,
+                cellsSource);
+            var result = ProcessEnvironment(envContext);
+            return new CommandProcessingResult(result.Atom, position, result.AppendMode);
         }
 
         public EnvironmentProcessingResult ProcessEnvironment(EnvironmentContext context)
@@ -67,31 +74,6 @@ namespace WpfMath.Parsers.Matrices
                     leftDelimiter,
                     rightDelimiter);
             return new EnvironmentProcessingResult(atom);
-        }
-
-        private CommandProcessingResult ProcessSource(CommandContext context, SourceSpan cellsSource, SourceSpan matrixSource,
-            int position)
-        {
-            var cells = ReadMatrixCells(context.Parser, context.Formula, cellsSource, context.Environment);
-            var matrix = new MatrixAtom(matrixSource, cells, _cellAlignment);
-
-            SymbolAtom? GetDelimiter(string? name) =>
-                name == null
-                    ? null
-                    : TexFormulaParser.GetDelimiterSymbol(name, null) ??
-                      throw new TexParseException($"The delimiter {name} could not be found");
-
-            SymbolAtom? leftDelimiter = GetDelimiter(_leftDelimiterSymbolName);
-            SymbolAtom? rightDelimiter = GetDelimiter(_rightDelimiterSymbolName);
-
-            var atom = leftDelimiter == null && rightDelimiter == null
-                ? (Atom)matrix
-                : new FencedAtom(
-                    matrixSource,
-                    matrix,
-                    leftDelimiter,
-                    rightDelimiter);
-            return new CommandProcessingResult(atom, position);
         }
 
         private static List<List<Atom>> ReadMatrixCells(
