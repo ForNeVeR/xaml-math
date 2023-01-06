@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using WpfMath.Atoms;
-using WpfMath.Parsers.Environments;
 using WpfMath.Parsers.Matrices;
 
 namespace WpfMath.Parsers
@@ -96,21 +95,22 @@ namespace WpfMath.Parsers
             }
         }
 
-        public static readonly IReadOnlyDictionary<string, ICommandParser> Dictionary = new Dictionary<string, ICommandParser>
-        {
-            [@"\"] = new NewLineCommand(),
-            ["binom"] = new BinomCommand(),
-            ["cases"] = new MatrixCommandParser("lbrace", null, MatrixCellAlignment.Left),
-            ["matrix"] = new MatrixCommandParser(null, null, MatrixCellAlignment.Center),
-            ["pmatrix"] = new MatrixCommandParser("lbrack", "rbrack", MatrixCellAlignment.Center),
-            ["underline"] = new UnderlineCommand(),
-            ["begin"] = new BeginEnvironmentCommand()
-        };
-
-        internal static readonly IReadOnlyDictionary<string, ICommandParser> Environments =
+        public static readonly IReadOnlyDictionary<string, ICommandParser> Dictionary =
             new Dictionary<string, ICommandParser>
             {
-                ["pmatrix"] = Dictionary["pmatrix"]
+                [@"\"] = new NewLineCommand(),
+                ["binom"] = new BinomCommand(),
+                ["cases"] = MatrixCommandParser.Cases,
+                ["matrix"] = MatrixCommandParser.Matrix,
+                ["pmatrix"] = MatrixCommandParser.PMatrix,
+                ["underline"] = new UnderlineCommand(),
+                ["begin"] = new ProcessEnvironmentCommand()
+            };
+
+        internal static readonly IReadOnlyDictionary<string, IEnvironmentParser> Environments =
+            new Dictionary<string, IEnvironmentParser>
+            {
+                ["pmatrix"] = MatrixCommandParser.PMatrix
             };
     }
 }
