@@ -5,9 +5,9 @@ namespace WpfMath.Parsers.Matrices
 {
     internal class MatrixInternalEnvironment : NonRecursiveEnvironment
     {
-        private IReadOnlyDictionary<string, ICommandParser> GetCommands()
+        private static IReadOnlyDictionary<string, ICommandParser> GetCommands(List<List<Atom>> rows)
         {
-            var nextRowCommand = new NextRowCommand(_rows);
+            var nextRowCommand = new NextRowCommand(rows);
             return new Dictionary<string, ICommandParser>
             {
                 [@"\"] = nextRowCommand,
@@ -16,14 +16,12 @@ namespace WpfMath.Parsers.Matrices
         }
 
         private readonly List<List<Atom>> _rows;
-        protected override IReadOnlyDictionary<string, ICommandParser> AddedCommands { get; }
 
         public MatrixInternalEnvironment(
             ICommandEnvironment parentEnvironment,
-            List<List<Atom>> rows) : base(parentEnvironment.CreateChildEnvironment())
+            List<List<Atom>> rows) : base(parentEnvironment.CreateChildEnvironment(), GetCommands(rows))
         {
             _rows = rows;
-            AddedCommands = GetCommands();
         }
 
         public override bool ProcessUnknownCharacter(TexFormula formula, char character)
