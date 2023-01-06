@@ -95,7 +95,7 @@ namespace WpfMath.Parsers
             }
         }
 
-        public static readonly IReadOnlyDictionary<string, ICommandParser> Dictionary =
+        internal static readonly IReadOnlyDictionary<string, ICommandParser> Dictionary =
             new Dictionary<string, ICommandParser>
             {
                 [@"\"] = new NewLineCommand(),
