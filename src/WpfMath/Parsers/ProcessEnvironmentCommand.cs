@@ -2,9 +2,7 @@ using WpfMath.Exceptions;
 
 namespace WpfMath.Parsers;
 
-/// <summary>
-/// This command will parse a \begin \end environment. Doesn't support nested environments
-/// </summary>
+/// <summary>This command will process a <code>\begin … \end</code> environment block.</summary>
 internal class ProcessEnvironmentCommand : ICommandParser
 {
     public CommandProcessingResult ProcessCommand(CommandContext context)
