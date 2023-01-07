@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] (0.12.0)
+### Added
+- TeX's environment support with only one environment for now: `\begin{pmatrix}` (see [#329][pull-329]).
+
 ## [0.11.0] - 2021-08-31
 ### Added
 - [#262: Add \mod operator from amsmath][pull-262]
@@ -197,6 +201,7 @@ This was the initially published version. It consisted entirely of the original 
 [pull-262]: https://github.com/ForNeVeR/wpf-math/pull/262
 [pull-277]: https://github.com/ForNeVeR/wpf-math/pull/277
 [pull-283]: https://github.com/ForNeVeR/wpf-math/pull/283
+[pull-329]: https://github.com/ForNeVeR/wpf-math/pull/329
 
 [0.1.0]: https://github.com/ForNeVeR/wpf-math/releases/tag/0.1.0
 [0.2.0]: https://github.com/ForNeVeR/wpf-math/compare/0.1.0...0.2.0
