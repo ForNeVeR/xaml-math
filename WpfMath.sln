@@ -32,6 +32,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{39669369-C
 		docs\default.png = docs\default.png
 		docs\matrices.md = docs\matrices.md
 		docs\prepare-font.md = docs\prepare-font.md
+		docs\environments.md = docs\environments.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{BE4BA1DB-B8BC-4718-AA9D-23B0191C9323}"

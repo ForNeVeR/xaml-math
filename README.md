@@ -94,6 +94,7 @@ Documentation
 
 - [Color support in WPF-Math][docs-colors]
 - [Matrices and Matrix-Like Constructs][docs-matrices]
+- [Environments (`\begin` and `\end`)][docs.environments]
 - [How to improve blurred formulas][docs-blurred-text-issue]
 
 - [How to prepare `DefaultTexFont.xml` from the font file][docs-prepare-font]
@@ -145,6 +146,7 @@ We're very grateful to JMathTeX authors for their work and allowing to redistrib
 [docs-matrices]: docs/matrices.md
 [docs-prepare-font]: docs/prepare-font.md
 [docs.changelog]: ./CHANGELOG.md
+[docs.environments]: docs/environments.md
 [docs.maintainership]: ./MAINTAINERSHIP.md
 [example]: src/WpfMath.Example/
 [fonts]: src/WpfMath/Fonts/
