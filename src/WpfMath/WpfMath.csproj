@@ -7,23 +7,22 @@
     </PropertyGroup>
     <PropertyGroup>
         <PackageId>WpfMath</PackageId>
-        <Version>0.11.0</Version>
+        <Version>0.12.0</Version>
         <Title>WPF-Math</Title>
         <Authors>ForNeVeR</Authors>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/ForNeVeR/wpf-math</PackageProjectUrl>
         <RepositoryUrl>https://github.com/ForNeVeR/wpf-math.git</RepositoryUrl>
         <AssemblyTitle>WPF-Math</AssemblyTitle>
-        <PackageReleaseNotes>Changed:
-Added:
-- #262: Add \mod operator from amsmath
+        <PackageReleaseNotes>Added:
+- TeX's environment support with only one environment for now: `\begin{pmatrix}` (see [#329][pull-329]).
 
-Fixed:
-- #304: SystemFontFamilies does not return all FontFamilies in Chinese System
+Changed:
+- The project is now built on .NET 7 SDK and C# 11 (shouldn't change the supported framework set).
         </PackageReleaseNotes>
         <PackageTags>wpf;latex;formula</PackageTags>
         <Description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the WPF framework.</Description>
-        <Copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2021</Copyright>
+        <Copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2023</Copyright>
 
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
