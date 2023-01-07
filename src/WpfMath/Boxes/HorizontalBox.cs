@@ -1,10 +1,9 @@
 using System;
-using System.Windows.Media;
 using WpfMath.Rendering;
 
 namespace WpfMath.Boxes
 {
-    // Box containing horizontal stack of child boxes.
+    /// <summary>Box containing horizontal stack of child boxes.</summary>
     internal class HorizontalBox : Box
     {
         private double childBoxesTotalWidth = 0.0;
@@ -38,7 +37,7 @@ namespace WpfMath.Boxes
             this.Add(box);
         }
 
-        public HorizontalBox(Brush? foreground, Brush? background)
+        public HorizontalBox(IPlatformBrush? foreground, IPlatformBrush? background)
             : base(foreground, background)
         {
         }

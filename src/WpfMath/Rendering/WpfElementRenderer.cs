@@ -82,7 +82,7 @@ namespace WpfMath.Rendering
             if (box.Background != null)
             {
                 _targetContext.DrawRectangle(
-                    box.Background,
+                    box.Background.ToWpf(),
                     null,
                     new Rect(_scale * x, _scale * (y - box.Height),
                         _scale * box.TotalWidth,

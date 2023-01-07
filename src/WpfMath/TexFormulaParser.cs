@@ -8,7 +8,10 @@ using WpfMath.Atoms;
 using WpfMath.Colors;
 using WpfMath.Exceptions;
 using WpfMath.Parsers;
+using WpfMath.Rendering;
+#if NET452
 using WpfMath.Utils;
+#endif
 
 namespace WpfMath
 {
@@ -547,7 +550,7 @@ namespace WpfMath
 
                     return new Tuple<AtomAppendMode, Atom?>(
                         AtomAppendMode.Add,
-                        new StyledAtom(source, bodyFormula.RootAtom, null, new SolidColorBrush(color)));
+                        new StyledAtom(source, bodyFormula.RootAtom, null, new SolidColorBrush(color).ToPlatform())); // TODO[#63]: Should read platform brush from color
                 }
                 case "colorbox":
                 {
@@ -559,7 +562,8 @@ namespace WpfMath
 
                     return new Tuple<AtomAppendMode, Atom?>(
                         AtomAppendMode.Add,
-                        new StyledAtom(source, bodyFormula.RootAtom, new SolidColorBrush(color), null));
+                        new StyledAtom(source, bodyFormula.RootAtom, new SolidColorBrush(color).ToPlatform(), null));
+                        // TODO[#63]: ↑ Should read platform brush from color
                 }
                 }
 

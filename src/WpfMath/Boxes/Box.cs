@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows.Media;
 using WpfMath.Rendering;
 
 namespace WpfMath.Boxes
@@ -21,7 +20,7 @@ namespace WpfMath.Boxes
         {
         }
 
-        protected Box(Brush? foreground, Brush? background)
+        protected Box(IPlatformBrush? foreground, IPlatformBrush? background)
         {
             this.children = new List<Box>();
             this.childrenReadOnly = new ReadOnlyCollection<Box>(this.children);
@@ -40,13 +39,13 @@ namespace WpfMath.Boxes
             set;
         }
 
-        public Brush? Foreground
+        public IPlatformBrush? Foreground
         {
             get;
             set;
         }
 
-        public Brush? Background
+        public IPlatformBrush? Background
         {
             get;
             set;

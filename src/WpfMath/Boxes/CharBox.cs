@@ -3,7 +3,7 @@ using WpfMath.Rendering;
 
 namespace WpfMath.Boxes
 {
-    // Box representing single character.
+    /// <summary>Box representing single character.</summary>
     internal class CharBox : Box
     {
         public CharBox(TexEnvironment environment, CharInfo charInfo)
@@ -24,7 +24,7 @@ namespace WpfMath.Boxes
 
         public override void RenderTo(IElementRenderer renderer, double x, double y)
         {
-            var color = this.Foreground ?? Brushes.Black;
+            var color = this.Foreground.ToWpf() ?? Brushes.Black;
             renderer.RenderCharacter(Character, x, y, color);
         }
 

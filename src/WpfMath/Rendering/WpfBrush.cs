@@ -9,11 +9,10 @@ internal class WpfBrush : GenericPlatformBrush<Brush>
     {
     }
 
-    public static WpfBrush FromBrush(Brush value) =>
-        new WpfBrush(value);
+    public static WpfBrush FromBrush(Brush value) => new(value);
 
     public static WpfBrush FromColor(RgbaColor value) =>
-        new WpfBrush(
+        new(
             new SolidColorBrush(
                 Color.FromArgb(value.A, value.R, value.G, value.B)));
 }

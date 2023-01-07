@@ -1,4 +1,4 @@
-using System.Windows.Media;
+using WpfMath.Rendering;
 
 namespace WpfMath;
 
@@ -7,8 +7,8 @@ public sealed record TexEnvironment(
     TexStyle Style,
     ITeXFont MathFont,
     ITeXFont TextFont,
-    Brush? Background = null,
-    Brush? Foreground = null)
+    IPlatformBrush? Background = null,
+    IPlatformBrush? Foreground = null)
 {
     // ID of font that was last used.
     private int lastFontId = TexFontUtilities.NoFontId;

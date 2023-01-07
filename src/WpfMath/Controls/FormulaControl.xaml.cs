@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using WpfMath.Boxes;
 using WpfMath.Exceptions;
+using WpfMath.Rendering;
 
 namespace WpfMath.Controls
 {
@@ -159,7 +160,7 @@ namespace WpfMath.Controls
                             && source.Start < selectionEnd
                             && box is CharBox)
                         {
-                            box.Background = selectionBrush;
+                            box.Background = WpfBrush.FromBrush(selectionBrush);
                         }
                     }
                 }

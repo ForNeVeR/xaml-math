@@ -6,6 +6,7 @@ using System.Windows.Media;
 using WpfMath.Atoms;
 using WpfMath.Boxes;
 using WpfMath.Fonts;
+using WpfMath.Rendering;
 
 namespace WpfMath
 {
@@ -35,7 +36,7 @@ namespace WpfMath
         {
             var mathFont = new DefaultTexFont(WpfMathFontProvider.Instance, scale);
             var textFont = systemTextFontName == null ? (ITeXFont)mathFont : GetSystemFont(systemTextFontName, scale);
-            var environment = new TexEnvironment(style, mathFont, textFont, background, foreground);
+            var environment = new TexEnvironment(style, mathFont, textFont, WpfBrush.FromBrush(background), WpfBrush.FromBrush(foreground));
             return new TexRenderer(CreateBox(environment), scale);
         }
 
@@ -77,11 +78,11 @@ namespace WpfMath
         {
             if (this.RootAtom is StyledAtom sa)
             {
-                this.RootAtom = sa with { Foreground = brush };
+                this.RootAtom = sa with { Foreground = brush.ToPlatform() };
             }
             else
             {
-                this.RootAtom = new StyledAtom(this.RootAtom?.Source, this.RootAtom, null, brush);
+                RootAtom = new StyledAtom(RootAtom?.Source, RootAtom, null, brush.ToPlatform());
             }
         }
 
@@ -89,11 +90,11 @@ namespace WpfMath
         {
             if (this.RootAtom is StyledAtom sa)
             {
-                this.RootAtom = sa with { Background = brush };
+                this.RootAtom = sa with { Background = brush.ToPlatform() };
             }
             else
             {
-                this.RootAtom = new StyledAtom(this.RootAtom?.Source, this.RootAtom, brush, null);
+                this.RootAtom = new StyledAtom(this.RootAtom?.Source, this.RootAtom, brush.ToPlatform(), null);
             }
         }
 
