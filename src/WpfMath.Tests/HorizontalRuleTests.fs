@@ -1,7 +1,5 @@
 namespace WpfMath.Tests
 
-open System.Windows.Media
-
 open Foq
 open Xunit
 
@@ -28,4 +26,4 @@ type HorizontalRuleTests() =
         horizontalRule.RenderTo(mockedRenderer, x, y)
 
         let expectedRect = Rectangle(x, y -  thickness, width, thickness)
-        Mock.Verify(<@ mockedRenderer.RenderRectangle(expectedRect, BrushExtensions.ToPlatform Brushes.Black) @>, once)
+        Mock.Verify(<@ mockedRenderer.RenderRectangle(expectedRect, null) @>, once)

@@ -17,6 +17,8 @@ namespace WpfMath.Rendering
     /// </remarks>
     internal class WpfElementRenderer : IElementRenderer
     {
+        private static readonly Brush DefaultForegroundBrush = Brushes.Black;
+
         private readonly DrawingContext _targetContext;
         private readonly double _scale;
 
@@ -44,16 +46,19 @@ namespace WpfMath.Rendering
             _foregroundContext.Pop();
         }
 
-        public void RenderCharacter(CharInfo info, double x, double y, IPlatformBrush foreground)
+        public void RenderCharacter(CharInfo info, double x, double y, IPlatformBrush? foreground)
         {
             var glyphRun = info.GetGlyphRun(x, y, _scale);
-            _foregroundContext.DrawGlyphRun(foreground.ToWpf(), glyphRun);
+            _foregroundContext.DrawGlyphRun(foreground.ToWpf() ?? DefaultForegroundBrush, glyphRun);
         }
 
-        public void RenderRectangle(Rectangle rectangle, IPlatformBrush foreground)
+        public void RenderRectangle(Rectangle rectangle, IPlatformBrush? foreground)
         {
             var scaledRectangle = GeometryHelper.ScaleRectangle(_scale, rectangle);
-            _foregroundContext.DrawRectangle(foreground.ToWpf(), null, scaledRectangle.ToWpf());
+            _foregroundContext.DrawRectangle(
+                foreground.ToWpf() ?? DefaultForegroundBrush,
+                null,
+                scaledRectangle.ToWpf());
         }
 
         public void RenderTransformed(Box box, IEnumerable<Transformation> transforms, double x, double y)

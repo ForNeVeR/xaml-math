@@ -1,5 +1,3 @@
-using System.Windows;
-using System.Windows.Media;
 using WpfMath.Rendering;
 
 namespace WpfMath.Boxes
@@ -18,9 +16,8 @@ namespace WpfMath.Boxes
 
         public override void RenderTo(IElementRenderer renderer, double x, double y)
         {
-            var color = this.Foreground.ToWpf() ?? Brushes.Black;
             var rectangle = new Rectangle(x, y - this.Height, this.Width, this.Height);
-            renderer.RenderRectangle(rectangle, color.ToPlatform());
+            renderer.RenderRectangle(rectangle, Foreground);
         }
 
         public override int GetLastFontId()

@@ -1,7 +1,6 @@
 namespace WpfMath.Tests
 
 open System
-open System.Windows.Media
 
 open Foq
 open Xunit
@@ -34,7 +33,7 @@ type CharBoxTests() =
         let mockedRenderer = Mock.Of<IElementRenderer>()
         let charBox = CharBox(environment, char)
         charBox.RenderTo(mockedRenderer, x, y)
-        Mock.Verify(<@ mockedRenderer.RenderCharacter(any(), x, y, BrushExtensions.ToPlatform Brushes.Black) @>, once)
+        Mock.Verify(<@ mockedRenderer.RenderCharacter(any(), x, y, null) @>, once)
 
     [<Fact>]
     member _.``Currently unsupported characters like "Å" should result in TexCharacterMappingNotFoundException``() =

@@ -19,14 +19,16 @@ public interface IElementRenderer
 
     /// <summary>
     /// Renders a character denoted by <paramref name="info"/> at the chosen coordinates, using the color
-    /// <paramref name="foreground"/>.
+    /// <paramref name="foreground"/>. Should use platform default color if passed <c>null</c>.
     /// </summary>
-    void RenderCharacter(CharInfo info, double x, double y, IPlatformBrush foreground);
+    void RenderCharacter(CharInfo info, double x, double y, IPlatformBrush? foreground);
 
     /// <summary>Renders a rectangle.</summary>
     /// <param name="rectangle">Rectangle to render.</param>
-    /// <param name="foreground">Rectangle foreground color.</param>
-    void RenderRectangle(Rectangle rectangle, IPlatformBrush foreground);
+    /// <param name="foreground">
+    /// Rectangle foreground color. Should use platform default color if passed <c>null</c>.
+    /// </param>
+    void RenderRectangle(Rectangle rectangle, IPlatformBrush? foreground);
 
     /// <summary>Renders a box applying the geometry transforms.</summary>
     /// <param name="box">A box to render.</param>
