@@ -4,7 +4,7 @@ using WpfMath.Rendering;
 
 namespace WpfMath.Boxes
 {
-    // Box representing horizontal line.
+    /// <summary>Box representing horizontal line.</summary>
     internal class HorizontalRule : Box
     {
         public HorizontalRule(TexEnvironment environment, double thickness, double width, double shift)
@@ -19,8 +19,8 @@ namespace WpfMath.Boxes
         public override void RenderTo(IElementRenderer renderer, double x, double y)
         {
             var color = this.Foreground.ToWpf() ?? Brushes.Black;
-            var rectangle = new Rect(x, y - this.Height, this.Width, this.Height);
-            renderer.RenderRectangle(rectangle, color);
+            var rectangle = new Rectangle(x, y - this.Height, this.Width, this.Height);
+            renderer.RenderRectangle(rectangle, color.ToPlatform());
         }
 
         public override int GetLastFontId()

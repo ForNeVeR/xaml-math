@@ -1,6 +1,5 @@
 namespace WpfMath.Tests
 
-open System.Windows
 open System.Windows.Media
 
 open Foq
@@ -29,14 +28,14 @@ type GeometryElementRendererTests() =
         let font = DefaultTexFont(WpfMathFontProvider.Instance, 20.0)
         let environment = TexEnvironment(TexStyle.Display, font, font)
         let char = environment.MathFont.GetDefaultCharInfo('x', TexStyle.Display).Value
-        renderer.RenderCharacter(char, 0.0, 0.0, Brushes.Black)
+        renderer.RenderCharacter(char, 0.0, 0.0, BrushExtensions.ToPlatform Brushes.Black)
 
         let group = Seq.exactlyOne geometry.Children :?> GeometryGroup
         Assert.IsType<PathGeometry>(Seq.exactlyOne group.Children) |> ignore
 
     [<Fact>]
     member _.``GeometryElementRenderer.RenderRectangle adds a RectangleGeometry``() : unit =
-        let rect = Rect(1.0, 2.0, 3.0, 4.0)
+        let rect = Rectangle(1.0, 2.0, 3.0, 4.0)
         renderer.RenderRectangle(rect, null)
 
         Assert.IsType<RectangleGeometry>(Seq.exactlyOne geometry.Children) |> ignore

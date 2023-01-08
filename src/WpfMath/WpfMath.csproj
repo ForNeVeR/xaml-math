@@ -44,6 +44,7 @@ Changed:
 
     <ItemGroup>
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+        <PackageReference Include="Nullable" Version="1.2.1" PrivateAssets="All" />
     </ItemGroup>
 
     <ItemGroup>

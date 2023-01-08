@@ -10,7 +10,7 @@ using WpfMath.Exceptions;
 using WpfMath.Parsers;
 using WpfMath.Rendering;
 #if NET452
-using WpfMath.Utils;
+using WpfMath.Compatibility;
 #endif
 
 namespace WpfMath

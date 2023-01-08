@@ -97,9 +97,9 @@ type private WpfBrushConverter() =
     inherit ReadOnlyJsonConverter<WpfBrush>()
     override _.WriteJson(writer: JsonWriter, value: WpfBrush, _: JsonSerializer) =
         let stringified =
-            match value.Get() with
+            match value.Value with
             | null -> null
-            | _ -> value.Get().ToString()
+            | _ -> value.Value.ToString()
         writer.WriteValue stringified
 
 let private jsonSettings = JsonSerializerSettings(ContractResolver = InnerPropertyContractResolver(),

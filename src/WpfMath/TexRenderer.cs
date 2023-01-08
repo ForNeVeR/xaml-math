@@ -31,13 +31,7 @@ namespace WpfMath
             private set;
         }
 
-        public Size RenderSize
-        {
-            get
-            {
-                return new Size(this.Box.TotalWidth * this.Scale, this.Box.TotalHeight * this.Scale);
-            }
-        }
+        public System.Windows.Size RenderSize => new(Box.TotalWidth * Scale, Box.TotalHeight * Scale);
 
         public double Baseline
         {

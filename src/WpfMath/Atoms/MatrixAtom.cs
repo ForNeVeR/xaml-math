@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using WpfMath.Boxes;
-using WpfMath.Utils;
+#if NET452
+using WpfMath.Compatibility;
+#endif
 
 namespace WpfMath.Atoms
 {

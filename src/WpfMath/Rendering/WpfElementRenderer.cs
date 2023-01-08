@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
@@ -43,19 +44,19 @@ namespace WpfMath.Rendering
             _foregroundContext.Pop();
         }
 
-        public void RenderCharacter(CharInfo info, double x, double y, Brush foreground)
+        public void RenderCharacter(CharInfo info, double x, double y, IPlatformBrush foreground)
         {
             var glyphRun = info.GetGlyphRun(x, y, _scale);
-            _foregroundContext.DrawGlyphRun(foreground, glyphRun);
+            _foregroundContext.DrawGlyphRun(foreground.ToWpf(), glyphRun);
         }
 
-        public void RenderRectangle(Rect rectangle, Brush foreground)
+        public void RenderRectangle(Rectangle rectangle, IPlatformBrush foreground)
         {
             var scaledRectangle = GeometryHelper.ScaleRectangle(_scale, rectangle);
-            _foregroundContext.DrawRectangle(foreground, null, scaledRectangle);
+            _foregroundContext.DrawRectangle(foreground.ToWpf(), null, scaledRectangle.ToWpf());
         }
 
-        public void RenderTransformed(Box box, Transformation[] transforms, double x, double y)
+        public void RenderTransformed(Box box, IEnumerable<Transformation> transforms, double x, double y)
         {
             var scaledTransformations = transforms.Select(t => t.Scale(_scale)).ToList();
             foreach (var transformation in scaledTransformations)

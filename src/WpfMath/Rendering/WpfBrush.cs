@@ -3,7 +3,7 @@ using WpfMath.Colors;
 
 namespace WpfMath.Rendering;
 
-internal class WpfBrush : GenericPlatformBrush<Brush>
+internal record WpfBrush : GenericPlatformBrush<Brush>
 {
     private WpfBrush(Brush brush) : base(brush)
     {
