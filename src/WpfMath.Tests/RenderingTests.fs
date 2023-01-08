@@ -1,14 +1,16 @@
-module WpfMath.Tests.TexRendererTests
+module WpfMath.Tests.RenderingTests
+
+open Xunit
 
 open WpfMath
-open Xunit
+open WpfMath.Rendering
 
 [<Fact>]
 let ``TexRenderer.RenderToBitmap should create an image of proper size``() =
     let parser = TexFormulaParser()
     let formula = parser.Parse "2+2=2"
-    let renderer = formula.GetRenderer(TexStyle.Display, 20.0, "Arial")
-    let bitmap = renderer.RenderToBitmap(0.0, 0.0)
+    let environment = WpfTeXEnvironment.Create()
+    let bitmap = formula.RenderToBitmap environment
     Assert.Equal(82, bitmap.PixelWidth)
     Assert.Equal(17, bitmap.PixelHeight)
 
@@ -16,9 +18,9 @@ let ``TexRenderer.RenderToBitmap should create an image of proper size``() =
 let ``TexRenderer.RenderToBitmap should create an image of proper size with offset``() =
     let parser = TexFormulaParser()
     let formula = parser.Parse "2+2=2"
-    let renderer = formula.GetRenderer(TexStyle.Display, 20.0, "Arial")
+    let environment = WpfTeXEnvironment.Create()
     let margin = 50
-    let bitmap = renderer.RenderToBitmap(float(margin), float(margin))
+    let bitmap = formula.RenderToBitmap(environment, x = float margin, y = float margin)
 
     let formulaWidth = 82
     let formulaHeight = 16
@@ -29,8 +31,8 @@ let ``TexRenderer.RenderToBitmap should create an image of proper size with offs
 let ``TexRenderer.RenderToBitmap should work with different DPI``() =
     let parser = TexFormulaParser()
     let formula = parser.Parse "2+2=2"
-    let renderer = formula.GetRenderer(TexStyle.Display, 20.0, "Arial")
-    let bitmap = renderer.RenderToBitmap(0.0, 0.0, 192.0)
+    let environment = WpfTeXEnvironment.Create()
+    let bitmap = formula.RenderToBitmap(environment, dpi = 192.0)
     Assert.Equal(163, bitmap.PixelWidth)
     Assert.Equal(34, bitmap.PixelHeight)
     Assert.Equal(192.0, bitmap.DpiX)

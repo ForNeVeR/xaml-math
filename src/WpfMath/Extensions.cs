@@ -1,5 +1,6 @@
 using System.IO;
 using System.Windows.Media.Imaging;
+using WpfMath.Rendering;
 
 namespace WpfMath
 {
@@ -11,8 +12,8 @@ namespace WpfMath
             double y,
             string systemTextFontName)
         {
-            var trnder = texForm.GetRenderer(TexStyle.Display, scale, systemTextFontName);
-            BitmapSource image = trnder.RenderToBitmap(x, y);
+            var environment = WpfTeXEnvironment.Create();
+            BitmapSource image = texForm.RenderToBitmap(environment, scale, x, y);
 
             PngBitmapEncoder encoder = new PngBitmapEncoder();
             encoder.Frames.Add(BitmapFrame.Create(image));

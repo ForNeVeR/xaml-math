@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using Microsoft.Win32;
 using WpfMath.Converters;
+using WpfMath.Rendering;
 
 namespace WpfMath.Example;
 
@@ -68,7 +69,8 @@ public partial class MainWindow
         // Create formula object from input text.
         var formula = ParseFormula(InputTextBox.Text);
         if (formula == null) return;
-        var renderer = formula.GetRenderer(TexStyle.Display, Formula.Scale, "Arial");
+        var scale = Formula.Scale;
+        var environment = WpfTeXEnvironment.Create(scale: scale);
 
         // Open stream
         var filename = saveFileDialog.FileName;
@@ -76,7 +78,7 @@ public partial class MainWindow
         switch (saveFileDialog.FilterIndex)
         {
             case 1:
-                var geometry = renderer.RenderToGeometry(0, 0);
+                var geometry = formula.RenderToGeometry(environment, scale: scale);
                 var converter = new SVGConverter();
                 var svgPathText = converter.ConvertGeometry(geometry);
                 var svgText = AddSvgHeader(svgPathText);
@@ -85,7 +87,7 @@ public partial class MainWindow
                 break;
 
             case 2:
-                var bitmap = renderer.RenderToBitmap(0, 0, 300);
+                var bitmap = formula.RenderToBitmap(environment, scale, dpi: 300);
                 var encoder = new PngBitmapEncoder
                 {
                     Frames = { BitmapFrame.Create(bitmap) }

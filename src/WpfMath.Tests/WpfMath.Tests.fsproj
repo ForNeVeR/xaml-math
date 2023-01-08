@@ -39,7 +39,7 @@
         <Compile Include="OverUnderBoxTests.fs" />
         <Compile Include="ParserTests.fs" />
         <Compile Include="ParserExceptionTests.fs" />
-        <Compile Include="TexRendererTests.fs" />
+        <Compile Include="RenderingTests.fs" />
         <Compile Include="TransformationTests.fs" />
         <Compile Include="VerticalBoxTests.fs" />
         <Compile Include="WpfRendererTests.fs" />

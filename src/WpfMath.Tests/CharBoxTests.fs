@@ -19,10 +19,7 @@ type CharBoxTests() =
         let result = parser.Parse text
         result.RootAtom
 
-    let environment =
-        let mathFont = DefaultTexFont(WpfMathFontProvider.Instance, 20.0)
-        let textFont = TexFormula.GetSystemFont("Arial", 20.0)
-        TexEnvironment(TexStyle.Display, mathFont, textFont)
+    let environment = WpfTeXEnvironment.Create()
 
     [<Fact>]
     member _.``CharBox rendering calls to RenderCharacter``() =

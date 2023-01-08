@@ -1,16 +1,13 @@
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Windows.Media;
 using WpfMath.Atoms;
 using WpfMath.Boxes;
-using WpfMath.Fonts;
 using WpfMath.Rendering;
 
 namespace WpfMath
 {
-    // Represents mathematical formula that can be rendered.
+    /// <summary>Represents mathematical formula that can be rendered.</summary>
     public sealed class TexFormula
     {
         public string? TextStyle
@@ -27,18 +24,8 @@ namespace WpfMath
 
         public SourceSpan? Source { get; set; }
 
-        [Obsolete("Use extension methods from WpfMath.Rendering.TeXFormulaExtensions and WpfMath.Rendering.WpfTeXFormulaExtensions instead.")]
-        public TexRenderer GetRenderer(TexStyle style, // TODO: Revise internal usages of this method.
-            double scale,
-            string? systemTextFontName,
-            Brush? background = null,
-            Brush? foreground = null)
-        {
-            var mathFont = new DefaultTexFont(WpfMathFontProvider.Instance, scale);
-            var textFont = systemTextFontName == null ? (ITeXFont)mathFont : GetSystemFont(systemTextFontName, scale);
-            var environment = new TexEnvironment(style, mathFont, textFont, WpfBrush.FromBrush(background), WpfBrush.FromBrush(foreground));
-            return new TexRenderer(CreateBox(environment), scale);
-        }
+        // TODO: Document the absence of TexFormula.GetRenderer method (that should be replaced with
+        // WpfMath.Rendering.TeXFormulaExtensions and WpfMath.Rendering.WpfTeXFormulaExtensions).
 
         public void Add(TexFormula formula, SourceSpan? source = null)
         {
@@ -74,43 +61,36 @@ namespace WpfMath
             }
         }
 
-        public void SetForeground(Brush brush)
+        public void SetForeground(IPlatformBrush brush)
         {
             if (this.RootAtom is StyledAtom sa)
             {
-                this.RootAtom = sa with { Foreground = brush.ToPlatform() };
+                this.RootAtom = sa with { Foreground = brush };
             }
             else
             {
-                RootAtom = new StyledAtom(RootAtom?.Source, RootAtom, null, brush.ToPlatform());
+                RootAtom = new StyledAtom(RootAtom?.Source, RootAtom, null, brush);
             }
         }
 
-        public void SetBackground(Brush brush)
+        public void SetBackground(IPlatformBrush brush)
         {
             if (this.RootAtom is StyledAtom sa)
             {
-                this.RootAtom = sa with { Background = brush.ToPlatform() };
+                this.RootAtom = sa with { Background = brush };
             }
             else
             {
-                this.RootAtom = new StyledAtom(this.RootAtom?.Source, this.RootAtom, brush.ToPlatform(), null);
+                this.RootAtom = new StyledAtom(this.RootAtom?.Source, this.RootAtom, brush, null);
             }
         }
 
-        internal Box CreateBox(TexEnvironment environment)
+        public Box CreateBox(TexEnvironment environment)
         {
             if (this.RootAtom == null)
                 return StrutBox.Empty;
             else
                 return this.RootAtom.CreateBox(environment);
-        }
-
-        internal static SystemFont GetSystemFont(string fontName, double size)
-        {
-            var fontFamily = System.Windows.Media.Fonts.SystemFontFamilies.First(
-                ff => ff.ToString() == fontName || ff.FamilyNames.Values?.Contains(fontName) == true);
-            return new SystemFont(size, fontFamily);
         }
     }
 }

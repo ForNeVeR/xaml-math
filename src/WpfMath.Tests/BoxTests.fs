@@ -8,7 +8,7 @@ open Xunit
 open WpfMath
 open WpfMath.Atoms
 open WpfMath.Boxes
-open WpfMath.Fonts
+open WpfMath.Rendering
 open WpfMath.Tests.ApprovalTestUtils
 
 let private parse(text: string) =
@@ -18,10 +18,7 @@ let private parse(text: string) =
 
 let private src (string: string) (start: int) (len: int) = SourceSpan("User input", string, start, len)
 
-let private environment =
-    let mathFont = DefaultTexFont(WpfMathFontProvider.Instance, 20.0)
-    let textFont = TexFormula.GetSystemFont("Arial", 20.0)
-    TexEnvironment(TexStyle.Display, mathFont, textFont)
+let private environment = WpfTeXEnvironment.Create()
 
 [<Fact>]
 let ``AccentedAtom should have a skew according to the char``() =

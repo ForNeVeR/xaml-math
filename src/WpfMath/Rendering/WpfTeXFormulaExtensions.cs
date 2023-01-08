@@ -12,7 +12,7 @@ public static class WpfTeXFormulaExtensions
     public static Geometry RenderToGeometry( // TODO: Tests for this method.
         this TexFormula formula,
         TexEnvironment environment,
-        double scale, // TODO: Get rid of this; it is already encoded in the renderer anyway.
+        double scale = 20.0,
         double x = 0.0,
         double y = 0.0)
     {
@@ -25,9 +25,9 @@ public static class WpfTeXFormulaExtensions
     public static BitmapSource RenderToBitmap( // TODO: Tests for this method.
         this TexFormula formula,
         TexEnvironment environment,
-        double scale, // TODO: Get rid of this; it is already encoded in the renderer anyway.
-        double x,
-        double y,
+        double scale = 20.0,
+        double x = 0,
+        double y = 0,
         double dpi = DefaultDpi)
     {
         var visual = new DrawingVisual();
