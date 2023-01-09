@@ -2,13 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Windows.Media;
 
 namespace WpfMath.Colors
 {
     internal class CmykColorParser : IColorParser
     {
-        public Color? Parse(IEnumerable<string> components)
+        public RgbaColor? Parse(IEnumerable<string> components)
         {
             var componentList = components.ToList();
             var hasAlpha = componentList.Count == 5;
@@ -36,7 +35,7 @@ namespace WpfMath.Colors
             var g = (byte) Math.Round(255.0 * (1.0 - m.Value) * (1.0 - k.Value), MidpointRounding.AwayFromZero);
             var b = (byte) Math.Round(255.0 * (1.0 - y.Value) * (1.0 - k.Value), MidpointRounding.AwayFromZero);
             var a = (byte) Math.Round(255.0 * aFraction.Value, MidpointRounding.AwayFromZero);
-            return Color.FromArgb(a, r, g, b);
+            return RgbaColor.FromArgb(a, r, g, b);
         }
     }
 }

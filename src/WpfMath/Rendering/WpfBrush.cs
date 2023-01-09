@@ -10,9 +10,12 @@ internal record WpfBrush : GenericPlatformBrush<Brush>
     }
 
     public static WpfBrush FromBrush(Brush value) => new(value);
+}
 
-    public static WpfBrush FromColor(RgbaColor value) =>
-        new(
-            new SolidColorBrush(
-                Color.FromArgb(value.A, value.R, value.G, value.B)));
+internal class WpfBrushFactory : IBrushFactory
+{
+    public static WpfBrushFactory Instance = new();
+    public IPlatformBrush FromColor(RgbaColor color) =>
+        new SolidColorBrush(
+            Color.FromArgb(color.A, color.R, color.G, color.B)).ToPlatform();
 }

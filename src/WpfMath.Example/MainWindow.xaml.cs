@@ -7,13 +7,14 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using Microsoft.Win32;
 using WpfMath.Converters;
+using WpfMath.Parsers;
 using WpfMath.Rendering;
 
 namespace WpfMath.Example;
 
 public partial class MainWindow
 {
-    private readonly TexFormulaParser _formulaParser = new();
+    private readonly TexFormulaParser _formulaParser = WpfTeXFormulaParser.Instance;
 
     private static ComboBoxItem DemoFormula(string name, string text) =>
         new ComboBoxItem { Content = name, DataContext = text };

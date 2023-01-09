@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Media;
 #if NET452
 using WpfMath.Compatibility;
 #endif
@@ -33,7 +32,7 @@ namespace WpfMath.Colors
         protected abstract Tuple<bool, T> TryParseComponent(string component);
         protected abstract byte GetByteValue(T val);
 
-        protected override Color? ParseComponents(List<string> components)
+        protected override RgbaColor? ParseComponents(List<string> components)
         {
             var values = components.Select(x =>
             {
@@ -53,8 +52,8 @@ namespace WpfMath.Colors
                 alpha = values[index];
 
             return alpha == null || r == null || g == null || b == null
-                ? (Color?) null
-                : Color.FromArgb(
+                ? (RgbaColor?) null
+                : RgbaColor.FromArgb(
                     GetByteValue(alpha.Value),
                     GetByteValue(r.Value),
                     GetByteValue(g.Value),

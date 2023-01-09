@@ -1,9 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Windows;
-using System.Windows.Media;
 using WpfMath.Atoms;
 using WpfMath.Colors;
 using WpfMath.Exceptions;
@@ -49,8 +46,8 @@ namespace WpfMath
         private static readonly IList<string> symbols;
         private static readonly IList<string> delimeters;
         private static readonly HashSet<string> textStyles;
-        private static readonly IDictionary<string, Func<SourceSpan, TexFormula?>> predefinedFormulas =
-            new Dictionary<string, Func<SourceSpan, TexFormula?>>();
+        // TODO: Architectural solution to make this work faster.
+        private readonly IReadOnlyDictionary<string, Func<SourceSpan, TexFormula?>> predefinedFormulas;
 
         private static readonly string[][] delimiterNames =
         {
@@ -69,23 +66,10 @@ namespace WpfMath
 
         static TexFormulaParser()
         {
-            //
-            // If start application isn't WPF, pack isn't registered by defaultTexFontParser
-            //
-            if (Application.ResourceAssembly == null)
-            {
-                Application.ResourceAssembly = Assembly.GetExecutingAssembly();
-                if (!UriParser.IsKnownScheme("pack"))
-                    UriParser.Register(new GenericUriParser(GenericUriParserOptions.GenericAuthority), "pack", -1);
-            }
-
             var formulaSettingsParser = new TexPredefinedFormulaSettingsParser();
             symbols = formulaSettingsParser.GetSymbolMappings();
             delimeters = formulaSettingsParser.GetDelimiterMappings();
             textStyles = formulaSettingsParser.GetTextStyles();
-
-            var predefinedFormulasParser = new TexPredefinedFormulaParser();
-            predefinedFormulasParser.Parse(predefinedFormulas);
         }
 
         internal static string[][] DelimiterNames
@@ -136,24 +120,42 @@ namespace WpfMath
         /// <summary>A color parser for cases when the color model isn't specified.</summary>
         private readonly IColorParser _defaultColorParser;
 
+        private readonly IBrushFactory _brushFactory;
+
         internal TexFormulaParser(
             IReadOnlyDictionary<string, ICommandParser> commandRegistry,
             IReadOnlyDictionary<string, IColorParser> colorModelParsers,
-            IColorParser defaultColorParser)
+            IColorParser defaultColorParser,
+            IBrushFactory brushFactory,
+            IReadOnlyDictionary<string, Func<SourceSpan, TexFormula?>> predefinedFormulae)
         {
             _commandRegistry = commandRegistry;
             _colorModelParsers = colorModelParsers;
             _defaultColorParser = defaultColorParser;
+            _brushFactory = brushFactory;
+            predefinedFormulas = predefinedFormulae;
         }
 
         public TexFormulaParser(
             IReadOnlyDictionary<string, IColorParser> colorModelParsers,
-            IColorParser defaultColorParser) : this(StandardCommands.Dictionary, colorModelParsers, defaultColorParser)
+            IColorParser defaultColorParser,
+            IBrushFactory brushFactory,
+            IReadOnlyDictionary<string, Func<SourceSpan, TexFormula?>> predefinedFormulae)
+            : this(
+                StandardCommands.Dictionary,
+                colorModelParsers,
+                defaultColorParser,
+                brushFactory,
+                predefinedFormulae)
         {}
 
-        public TexFormulaParser() : this(
+        public TexFormulaParser(
+            IBrushFactory brushFactory,
+            IReadOnlyDictionary<string, Func<SourceSpan, TexFormula?>> predefinedFormulae) : this(
             StandardColorParsers.Dictionary,
-            PredefinedColorParser.Instance)
+            PredefinedColorParser.Instance,
+            brushFactory,
+            predefinedFormulae)
         {}
 
         public TexFormula Parse(string value, string? textStyle = null) =>
@@ -550,7 +552,7 @@ namespace WpfMath
 
                     return new Tuple<AtomAppendMode, Atom?>(
                         AtomAppendMode.Add,
-                        new StyledAtom(source, bodyFormula.RootAtom, null, new SolidColorBrush(color).ToPlatform())); // TODO[#63]: Should read platform brush from color
+                        new StyledAtom(source, bodyFormula.RootAtom, null, _brushFactory.FromColor(color)));
                 }
                 case "colorbox":
                 {
@@ -562,7 +564,7 @@ namespace WpfMath
 
                     return new Tuple<AtomAppendMode, Atom?>(
                         AtomAppendMode.Add,
-                        new StyledAtom(source, bodyFormula.RootAtom, new SolidColorBrush(color).ToPlatform(), null));
+                        new StyledAtom(source, bodyFormula.RootAtom, _brushFactory.FromColor(color), null));
                         // TODO[#63]: ↑ Should read platform brush from color
                 }
                 }
@@ -586,7 +588,7 @@ namespace WpfMath
         /// <summary>Reads an optional square braced color model name, and then a color name.</summary>
         /// <returns>Returns a color parsed.</returns>
         /// <exception cref="TexParseException">Gets thrown in case of nonexistent color model or color.</exception>
-        private Color ReadColorModelData(SourceSpan value, ref int position)
+        private RgbaColor ReadColorModelData(SourceSpan value, ref int position)
         {
             var colorModelName = ReadElementGroupOptional(
                 value,
@@ -628,7 +630,7 @@ namespace WpfMath
 
                 if (symbolAtom.Type == TexAtomType.Accent)
                 {
-                    var helper = new TexFormulaHelper(formula, formulaSource);
+                    var helper = new TexFormulaHelper(formula, formulaSource, _brushFactory, predefinedFormulas);
                     TexFormula accentFormula = ReadScript(formula, value, ref position, environment);
                     helper.AddAccent(accentFormula, symbolAtom.Name);
                 }

@@ -1,5 +1,8 @@
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using WpfMath.Atoms;
+using WpfMath.Rendering;
 
 namespace WpfMath
 {
@@ -8,9 +11,13 @@ namespace WpfMath
         private readonly TexFormulaParser _formulaParser;
         private readonly SourceSpan _source;
 
-        public TexFormulaHelper(TexFormula formula, SourceSpan source)
+        public TexFormulaHelper(
+            TexFormula formula,
+            SourceSpan source,
+            IBrushFactory brushFactory,
+            IReadOnlyDictionary<string, Func<SourceSpan, TexFormula?>> predefinedFormulae)
         {
-            this._formulaParser = new TexFormulaParser();
+            this._formulaParser = new TexFormulaParser(brushFactory, predefinedFormulae);
             this.Formula = formula;
             this._source = source;
         }

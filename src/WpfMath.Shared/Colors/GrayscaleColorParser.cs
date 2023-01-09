@@ -2,13 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Windows.Media;
 
 namespace WpfMath.Colors
 {
     internal class GrayscaleColorParser : IColorParser
     {
-        public Color? Parse(IEnumerable<string> components)
+        public RgbaColor? Parse(IEnumerable<string> components)
         {
             var componentList = components.ToList();
             var hasAlpha = componentList.Count == 2;
@@ -38,7 +37,7 @@ namespace WpfMath.Colors
 
             var colorValue = (byte) Math.Round(gradation * 255.0, MidpointRounding.AwayFromZero);
             var a = (byte) Math.Round(alpha.Value * 255.0, MidpointRounding.AwayFromZero);
-            return Color.FromArgb(a, colorValue, colorValue, colorValue);
+            return RgbaColor.FromArgb(a, colorValue, colorValue, colorValue);
         }
     }
 }

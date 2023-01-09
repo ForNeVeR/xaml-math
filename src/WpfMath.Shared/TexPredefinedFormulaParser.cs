@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
-using System.Windows.Media;
 using System.Xml.Linq;
+using WpfMath.Colors;
 using WpfMath.Data;
 using WpfMath.Parsers.PredefinedFormulae;
+using WpfMath.Rendering;
 using WpfMath.Utils;
 
 namespace WpfMath
@@ -15,42 +16,11 @@ namespace WpfMath
     {
         private static readonly string resourceName = TexUtilities.ResourcesDataDirectory + "PredefinedTexFormulas.xml";
 
-        private static readonly IDictionary<string, Type> typeMappings;
-        private static readonly IDictionary<string, IArgumentValueParser> argValueParsers;
-        private static readonly IDictionary<string, IActionParser> actionParsers;
+        private readonly IDictionary<string, Type> typeMappings;
+        private readonly IDictionary<string, IArgumentValueParser> argValueParsers;
+        private readonly IDictionary<string, IActionParser> actionParsers;
 
-        static TexPredefinedFormulaParser()
-        {
-            typeMappings = new Dictionary<string, Type>();
-            argValueParsers = new Dictionary<string, IArgumentValueParser>();
-            actionParsers = new Dictionary<string, IActionParser>();
-
-            typeMappings.Add("Formula", typeof(TexFormula));
-            typeMappings.Add("string", typeof(string));
-            typeMappings.Add("double", typeof(double));
-            typeMappings.Add("int", typeof(int));
-            typeMappings.Add("bool", typeof(bool));
-            typeMappings.Add("char", typeof(char));
-            typeMappings.Add("Color", typeof(Color));
-            typeMappings.Add("Unit", typeof(TexUnit));
-            typeMappings.Add("AtomType", typeof(TexAtomType));
-
-            actionParsers.Add("CreateFormula", new CreateTeXFormulaParser());
-            actionParsers.Add("MethodInvocation", new MethodInvocationParser());
-            actionParsers.Add("Return", new ReturnParser());
-
-            argValueParsers.Add("Formula", new TeXFormulaValueParser());
-            argValueParsers.Add("string", new StringValueParser());
-            argValueParsers.Add("double", new DoubleValueParser());
-            argValueParsers.Add("int", new IntValueParser());
-            argValueParsers.Add("bool", new BooleanValueParser());
-            argValueParsers.Add("char", new CharValueParser());
-            argValueParsers.Add("Color", new ColorConstantValueParser());
-            argValueParsers.Add("Unit", new EnumParser(typeof(TexUnit)));
-            argValueParsers.Add("AtomType", new EnumParser(typeof(TexAtomType)));
-        }
-
-        private static Type[] GetArgumentTypes(IEnumerable<XElement> args)
+        private Type[] GetArgumentTypes(IEnumerable<XElement> args)
         {
             var result = new List<Type>();
             foreach (var curArg in args)
@@ -64,7 +34,7 @@ namespace WpfMath
             return result.ToArray();
         }
 
-        private static object?[] GetArgumentValues(IEnumerable<XElement> args, PredefinedFormulaContext context)
+        private object?[] GetArgumentValues(IEnumerable<XElement> args, PredefinedFormulaContext context)
         {
             var result = new List<object?>();
             foreach (var curArg in args)
@@ -81,13 +51,42 @@ namespace WpfMath
 
         private XElement rootElement;
 
-        public TexPredefinedFormulaParser()
+        public TexPredefinedFormulaParser(IBrushFactory brushFactory)
         {
+            typeMappings = new Dictionary<string, Type>();
+            argValueParsers = new Dictionary<string, IArgumentValueParser>();
+            actionParsers = new Dictionary<string, IActionParser>();
+
+            typeMappings.Add("Formula", typeof(TexFormula));
+            typeMappings.Add("string", typeof(string));
+            typeMappings.Add("double", typeof(double));
+            typeMappings.Add("int", typeof(int));
+            typeMappings.Add("bool", typeof(bool));
+            typeMappings.Add("char", typeof(char));
+            typeMappings.Add("Color", typeof(RgbaColor));
+            typeMappings.Add("Unit", typeof(TexUnit));
+            typeMappings.Add("AtomType", typeof(TexAtomType));
+
+            actionParsers.Add("CreateFormula", new CreateTeXFormulaParser(this, brushFactory));
+            actionParsers.Add("MethodInvocation", new MethodInvocationParser(this, brushFactory));
+            actionParsers.Add("Return", new ReturnParser());
+
+            argValueParsers.Add("Formula", new TeXFormulaValueParser());
+            argValueParsers.Add("string", new StringValueParser());
+            argValueParsers.Add("double", new DoubleValueParser());
+            argValueParsers.Add("int", new IntValueParser());
+            argValueParsers.Add("bool", new BooleanValueParser());
+            argValueParsers.Add("char", new CharValueParser());
+            argValueParsers.Add("Color", new ColorConstantValueParser());
+            argValueParsers.Add("Unit", new EnumParser(typeof(TexUnit)));
+            argValueParsers.Add("AtomType", new EnumParser(typeof(TexAtomType)));
+
             using var resource = typeof(WpfMathResourceMarker).Assembly.ReadResource(resourceName);
             var doc = XDocument.Load(resource);
             this.rootElement = doc.Root;
         }
 
+        // TODO: Review this API
         public void Parse(IDictionary<string, Func<SourceSpan, TexFormula?>> predefinedTeXFormulas)
         {
             var rootEnabled = rootElement.AttributeBooleanValue("enabled", true);
@@ -121,7 +120,7 @@ namespace WpfMath
             return null;
         }
 
-        private class MethodInvocationParser : IActionParser
+        private record MethodInvocationParser(TexPredefinedFormulaParser Parent, IBrushFactory BrushFactory) : IActionParser
         {
             public void Parse(SourceSpan source, XElement element, PredefinedFormulaContext context)
             {
@@ -132,30 +131,34 @@ namespace WpfMath
                 var formula = context[objectName];
                 Debug.Assert(formula != null);
 
-                var argTypes = GetArgumentTypes(args);
-                var argValues = GetArgumentValues(args, context);
+                var argTypes = Parent.GetArgumentTypes(args);
+                var argValues = Parent.GetArgumentValues(args, context);
 
-                var helper = new TexFormulaHelper(formula, source);
+                var helper = new TexFormulaHelper(
+                    formula,
+                    source,
+                    BrushFactory,
+                    new Dictionary<string, Func<SourceSpan, TexFormula?>>());
                 var methodInvocation = typeof(TexFormulaHelper).GetMethod(methodName, argTypes)!;
 
                 methodInvocation.Invoke(helper, argValues);
             }
         }
 
-        private class CreateTeXFormulaParser : IActionParser
+        private record CreateTeXFormulaParser(TexPredefinedFormulaParser Parent, IBrushFactory BrushFactory) : IActionParser
         {
             public void Parse(SourceSpan source, XElement element, PredefinedFormulaContext context)
             {
                 var name = element.AttributeValue("name");
                 var args = element.Elements("Argument");
 
-                var argValues = GetArgumentValues(args, context);
+                var argValues = Parent.GetArgumentValues(args, context);
 
                 Debug.Assert(argValues.Length == 1 || argValues.Length == 0);
                 TexFormula formula;
                 if (argValues.Length == 1)
                 {
-                    var parser = new TexFormulaParser();
+                    var parser = new TexFormulaParser(BrushFactory, new Dictionary<string, Func<SourceSpan, TexFormula?>>());
                     formula = parser.Parse((string)argValues[0]!); // Nullable TODO: This might need null checking
                 }
                 else
@@ -242,7 +245,8 @@ namespace WpfMath
         {
             public object? Parse(string value, PredefinedFormulaContext context)
             {
-                return typeof(Color).GetField(value)!.GetValue(null);
+                // TODO: Duplicate the WPF color names here and map to RgbaColors. This method should return a color instance named as <value>.
+                throw new NotImplementedException("RgbaColor is not supported, yet");
             }
         }
 

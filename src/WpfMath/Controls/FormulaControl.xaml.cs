@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using WpfMath.Boxes;
 using WpfMath.Exceptions;
+using WpfMath.Parsers;
 using WpfMath.Rendering;
 
 namespace WpfMath.Controls
@@ -15,7 +16,7 @@ namespace WpfMath.Controls
     /// </summary>
     public partial class FormulaControl : UserControl
     {
-        private static TexFormulaParser _formulaParser = new();
+        private static TexFormulaParser _formulaParser = WpfTeXFormulaParser.Instance;
         private TexFormula? texFormula;
 
         public string Formula

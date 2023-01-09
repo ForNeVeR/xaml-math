@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Windows.Media;
 
 namespace WpfMath.Colors
 {
@@ -9,6 +8,6 @@ namespace WpfMath.Colors
         /// <summary>Parses the color components.</summary>
         /// <param name="components">A sequence of the components that were separated by comma.</param>
         /// <returns>Either a parsed color or <c>null</c> if it cannot be parsed.</returns>
-        Color? Parse(IEnumerable<string> components);
+        RgbaColor? Parse(IEnumerable<string> components);
     }
 }
