@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Xml.Linq;
-using WpfMath.Colors;
 using WpfMath.Data;
 using WpfMath.Parsers.PredefinedFormulae;
 using WpfMath.Rendering;
@@ -63,7 +62,6 @@ namespace WpfMath
             typeMappings.Add("int", typeof(int));
             typeMappings.Add("bool", typeof(bool));
             typeMappings.Add("char", typeof(char));
-            typeMappings.Add("Color", typeof(RgbaColor));
             typeMappings.Add("Unit", typeof(TexUnit));
             typeMappings.Add("AtomType", typeof(TexAtomType));
 
@@ -77,7 +75,6 @@ namespace WpfMath
             argValueParsers.Add("int", new IntValueParser());
             argValueParsers.Add("bool", new BooleanValueParser());
             argValueParsers.Add("char", new CharValueParser());
-            argValueParsers.Add("Color", new ColorConstantValueParser());
             argValueParsers.Add("Unit", new EnumParser(typeof(TexUnit)));
             argValueParsers.Add("AtomType", new EnumParser(typeof(TexAtomType)));
 
@@ -238,15 +235,6 @@ namespace WpfMath
                 var formula = context[value];
                 Debug.Assert(formula != null);
                 return formula;
-            }
-        }
-
-        private class ColorConstantValueParser : IArgumentValueParser
-        {
-            public object? Parse(string value, PredefinedFormulaContext context)
-            {
-                // TODO: Duplicate the WPF color names here and map to RgbaColors. This method should return a color instance named as <value>.
-                throw new NotImplementedException("RgbaColor is not supported, yet");
             }
         }
 
