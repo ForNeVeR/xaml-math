@@ -15,9 +15,9 @@ open Newtonsoft.Json
 open Newtonsoft.Json.Converters
 open Newtonsoft.Json.Serialization
 
-open WpfMath
 open WpfMath.Atoms
 open WpfMath.Fonts
+open WpfMath.Parsers
 open WpfMath.Rendering
 
 type private BomlessFileWriter(data: string, ?extensionWithoutDot: string) =
@@ -119,7 +119,7 @@ let verifyObject: obj -> unit =
     serialize >> Approvals.Verify
 
 let verifyParseResult (formulaText: string): unit =
-    let parser = TexFormulaParser()
+    let parser = WpfTeXFormulaParser.Instance
     let formula = parser.Parse formulaText
     verifyObject formula
 

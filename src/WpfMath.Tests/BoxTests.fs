@@ -3,6 +3,7 @@ module WpfMath.Tests.BoxTests
 open System
 
 open FSharp.Core.Fluent
+open WpfMath.Parsers
 open Xunit
 
 open WpfMath
@@ -12,7 +13,7 @@ open WpfMath.Rendering
 open WpfMath.Tests.ApprovalTestUtils
 
 let private parse(text: string) =
-    let parser = TexFormulaParser()
+    let parser = WpfTeXFormulaParser.Instance
     let result = parser.Parse text
     result.RootAtom
 
@@ -52,7 +53,7 @@ let ``ScriptsAtom should set Shift on the created box when creating box without 
 let ``RowAtom creates boxes with proper sources``() =
     let source = "2+2"
     let src = src source
-    let parser = TexFormulaParser()
+    let parser = WpfTeXFormulaParser.Instance
     let formula = parser.Parse source
     let box = formula.CreateBox environment :?> HorizontalBox
     let chars = box.Children.filter (fun x -> x :? CharBox)
@@ -66,7 +67,7 @@ let ``RowAtom creates boxes with proper sources``() =
 let ``BigOperatorAtom creates a box with proper sources``() =
     let source = @"\int_a^b"
     let src = src source
-    let parser = TexFormulaParser()
+    let parser = WpfTeXFormulaParser.Instance
     let formula = parser.Parse source
     let box = formula.CreateBox environment :?> VerticalBox
 

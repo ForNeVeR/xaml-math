@@ -1,6 +1,5 @@
 module WpfMath.Tests.PredefinedColorParserTests
 
-open System.Windows.Media
 
 open Xunit
 
@@ -10,7 +9,7 @@ let parser = PredefinedColorParser.Instance
 
 [<Fact>]
 let ``PredefinedColorParser parses a correctly defined color``(): unit =
-    Assert.Equal(Color.FromRgb(237uy, 27uy, 35uy), parser.Parse([| "red" |]).Value)
+    Assert.Equal(RgbaColor.FromRgb(237uy, 27uy, 35uy), parser.Parse([| "red" |]).Value)
 
 [<Fact>]
 let ``PredefinedColorParser returns null for wrong input``(): unit =

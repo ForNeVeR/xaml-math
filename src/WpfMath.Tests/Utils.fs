@@ -3,9 +3,9 @@ module WpfMath.Tests.Utils
 open System
 open System.Windows
 
+open WpfMath.Parsers
 open Xunit
 
-open WpfMath
 
 let initializeFontResourceLoading =
     let monitor = obj()
@@ -15,5 +15,5 @@ let initializeFontResourceLoading =
             then new Application() |> ignore)
 
 let assertParseThrows<'ex when 'ex :> exn>(formula: string): 'ex =
-    let parser = TexFormulaParser()
+    let parser = WpfTeXFormulaParser.Instance
     Assert.Throws<'ex>(Func<obj>(fun () -> upcast parser.Parse formula))

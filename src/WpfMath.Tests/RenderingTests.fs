@@ -2,12 +2,13 @@ module WpfMath.Tests.RenderingTests
 
 open Xunit
 
-open WpfMath
+open WpfMath.Parsers
 open WpfMath.Rendering
+
+let private parser = WpfTeXFormulaParser.Instance
 
 [<Fact>]
 let ``TexRenderer.RenderToBitmap should create an image of proper size``() =
-    let parser = TexFormulaParser()
     let formula = parser.Parse "2+2=2"
     let environment = WpfTeXEnvironment.Create()
     let bitmap = formula.RenderToBitmap environment
@@ -16,7 +17,6 @@ let ``TexRenderer.RenderToBitmap should create an image of proper size``() =
 
 [<Fact>]
 let ``TexRenderer.RenderToBitmap should create an image of proper size with offset``() =
-    let parser = TexFormulaParser()
     let formula = parser.Parse "2+2=2"
     let environment = WpfTeXEnvironment.Create()
     let margin = 50
@@ -29,7 +29,6 @@ let ``TexRenderer.RenderToBitmap should create an image of proper size with offs
 
 [<Fact>]
 let ``TexRenderer.RenderToBitmap should work with different DPI``() =
-    let parser = TexFormulaParser()
     let formula = parser.Parse "2+2=2"
     let environment = WpfTeXEnvironment.Create()
     let bitmap = formula.RenderToBitmap(environment, dpi = 192.0)

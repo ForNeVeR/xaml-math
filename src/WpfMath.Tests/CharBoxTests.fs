@@ -7,15 +7,16 @@ open Xunit
 
 open WpfMath
 open WpfMath.Boxes
-open WpfMath.Fonts
-open WpfMath.Rendering
 open WpfMath.Exceptions
+open WpfMath.Fonts
+open WpfMath.Parsers
+open WpfMath.Rendering
 
 type CharBoxTests() =
     static do Utils.initializeFontResourceLoading()
 
     let parse(text: string) =
-        let parser = TexFormulaParser()
+        let parser = WpfTeXFormulaParser.Instance
         let result = parser.Parse text
         result.RootAtom
 
