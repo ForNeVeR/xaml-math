@@ -2,7 +2,7 @@ using WpfMath.Boxes;
 
 namespace WpfMath.Rendering;
 
-public static class TeXFormulaExtensions // TODO: Move to the shared assembly.
+public static class TeXFormulaExtensions
 {
     public static void RenderTo( // TODO: Tests for this method.
         this TexFormula formula,

@@ -3,7 +3,7 @@ using System.Windows.Media;
 
 namespace WpfMath.Rendering;
 
-internal static class BrushExtensions
+internal static class WpfBrushExtensions
 {
     public static Brush? ToWpf(this IPlatformBrush? brush) => ((WpfBrush?)brush)?.Value;
     [return: NotNullIfNotNull(nameof(brush))]
