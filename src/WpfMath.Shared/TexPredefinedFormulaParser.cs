@@ -84,7 +84,7 @@ namespace WpfMath
         }
 
         // TODO: Review this API
-        public void Parse(IDictionary<string, Func<SourceSpan, TexFormula?>> predefinedTeXFormulas)
+        public void Parse(Dictionary<string, Func<SourceSpan, TexFormula?>> predefinedTeXFormulas)
         {
             var rootEnabled = rootElement.AttributeBooleanValue("enabled", true);
             if (rootEnabled)
@@ -95,13 +95,13 @@ namespace WpfMath
                     if (enabled)
                     {
                         var formulaName = formulaElement.AttributeValue("name");
-                        predefinedTeXFormulas.Add(formulaName, source => this.ParseFormula(source, formulaElement));
+                        predefinedTeXFormulas.Add(formulaName, source => this.ParseFormula(source, formulaElement, predefinedTeXFormulas));
                     }
                 }
             }
         }
 
-        private TexFormula? ParseFormula(SourceSpan source, XElement formulaElement)
+        private TexFormula? ParseFormula(SourceSpan source, XElement formulaElement, Dictionary<string, Func<SourceSpan, TexFormula?>> allFormulas)
         {
             var context = new PredefinedFormulaContext();
             foreach (var element in formulaElement.Elements())
@@ -110,7 +110,7 @@ namespace WpfMath
                 if (parser == null)
                     continue;
 
-                parser.Parse(source, element, context);
+                parser.Parse(source, element, context, allFormulas);
                 if (parser is ReturnParser)
                     return ((ReturnParser)parser).Result;
             }
@@ -119,7 +119,11 @@ namespace WpfMath
 
         private record MethodInvocationParser(TexPredefinedFormulaParser Parent, IBrushFactory BrushFactory) : IActionParser
         {
-            public void Parse(SourceSpan source, XElement element, PredefinedFormulaContext context)
+            public void Parse(
+                SourceSpan source,
+                XElement element,
+                PredefinedFormulaContext context,
+                Dictionary<string, Func<SourceSpan, TexFormula?>> allFormulas)
             {
                 var methodName = element.AttributeValue("name");
                 var objectName = element.AttributeValue("formula");
@@ -135,7 +139,7 @@ namespace WpfMath
                     formula,
                     source,
                     BrushFactory,
-                    new Dictionary<string, Func<SourceSpan, TexFormula?>>());
+                    allFormulas);
                 var methodInvocation = typeof(TexFormulaHelper).GetMethod(methodName, argTypes)!;
 
                 methodInvocation.Invoke(helper, argValues);
@@ -144,7 +148,11 @@ namespace WpfMath
 
         private record CreateTeXFormulaParser(TexPredefinedFormulaParser Parent, IBrushFactory BrushFactory) : IActionParser
         {
-            public void Parse(SourceSpan source, XElement element, PredefinedFormulaContext context)
+            public void Parse(
+                SourceSpan source,
+                XElement element,
+                PredefinedFormulaContext context,
+                Dictionary<string, Func<SourceSpan, TexFormula?>> allFormulas)
             {
                 var name = element.AttributeValue("name");
                 var args = element.Elements("Argument");
@@ -155,7 +163,7 @@ namespace WpfMath
                 TexFormula formula;
                 if (argValues.Length == 1)
                 {
-                    var parser = new TexFormulaParser(BrushFactory, new Dictionary<string, Func<SourceSpan, TexFormula?>>());
+                    var parser = new TexFormulaParser(BrushFactory, allFormulas);
                     formula = parser.Parse((string)argValues[0]!); // Nullable TODO: This might need null checking
                 }
                 else
@@ -175,7 +183,11 @@ namespace WpfMath
                 private set;
             }
 
-            public void Parse(SourceSpan source, XElement element, PredefinedFormulaContext context)
+            public void Parse(
+                SourceSpan source,
+                XElement element,
+                PredefinedFormulaContext context,
+                Dictionary<string, Func<SourceSpan, TexFormula?>> allFormulas)
             {
                 var name = element.AttributeValue("name");
                 var result = context[name];
@@ -255,7 +267,11 @@ namespace WpfMath
 
         private interface IActionParser
         {
-            void Parse(SourceSpan source, XElement element, PredefinedFormulaContext context);
+            void Parse(
+                SourceSpan source,
+                XElement element,
+                PredefinedFormulaContext context,
+                Dictionary<string, Func<SourceSpan, TexFormula?>> allFormulas);
         }
 
         private interface IArgumentValueParser
