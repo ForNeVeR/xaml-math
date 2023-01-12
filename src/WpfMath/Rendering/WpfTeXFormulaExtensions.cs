@@ -9,7 +9,7 @@ public static class WpfTeXFormulaExtensions
     /// <summary>Default DPI for WPF.</summary>
     private const int DefaultDpi = 96;
 
-    public static Geometry RenderToGeometry( // TODO: Tests for this method.
+    public static Geometry RenderToGeometry(
         this TexFormula formula,
         TexEnvironment environment,
         double scale = 20.0,
@@ -22,7 +22,7 @@ public static class WpfTeXFormulaExtensions
         return geometry;
     }
 
-    public static BitmapSource RenderToBitmap( // TODO: Tests for this method.
+    public static BitmapSource RenderToBitmap(
         this TexFormula formula,
         TexEnvironment environment,
         double scale = 20.0,

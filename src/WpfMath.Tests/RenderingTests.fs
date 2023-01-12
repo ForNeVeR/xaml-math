@@ -1,5 +1,7 @@
 module WpfMath.Tests.RenderingTests
 
+open System.Windows.Media
+
 open Xunit
 
 open WpfMath.Parsers
@@ -8,7 +10,7 @@ open WpfMath.Rendering
 let private parser = WpfTeXFormulaParser.Instance
 
 [<Fact>]
-let ``TexRenderer.RenderToBitmap should create an image of proper size``() =
+let ``WpfTeXFormulaExtensions::RenderToBitmap should create an image of proper size``(): unit =
     let formula = parser.Parse "2+2=2"
     let environment = WpfTeXEnvironment.Create()
     let bitmap = formula.RenderToBitmap environment
@@ -16,7 +18,7 @@ let ``TexRenderer.RenderToBitmap should create an image of proper size``() =
     Assert.Equal(17, bitmap.PixelHeight)
 
 [<Fact>]
-let ``TexRenderer.RenderToBitmap should create an image of proper size with offset``() =
+let ``WpfTeXFormulaExtensions::RenderToBitmap should create an image of proper size with offset``(): unit =
     let formula = parser.Parse "2+2=2"
     let environment = WpfTeXEnvironment.Create()
     let margin = 50
@@ -28,7 +30,7 @@ let ``TexRenderer.RenderToBitmap should create an image of proper size with offs
     Assert.Equal(formulaHeight + (margin * 2), bitmap.PixelHeight)
 
 [<Fact>]
-let ``TexRenderer.RenderToBitmap should work with different DPI``() =
+let ``WpfTeXFormulaExtensions::RenderToBitmap should work with different DPI``(): unit =
     let formula = parser.Parse "2+2=2"
     let environment = WpfTeXEnvironment.Create()
     let bitmap = formula.RenderToBitmap(environment, dpi = 192.0)
@@ -36,3 +38,10 @@ let ``TexRenderer.RenderToBitmap should work with different DPI``() =
     Assert.Equal(34, bitmap.PixelHeight)
     Assert.Equal(192.0, bitmap.DpiX)
     Assert.Equal(192.0, bitmap.DpiY)
+
+[<Fact>]
+let ``WpfTeXFormulaExtensions::RenderToGeometry should work``() =
+    let formula = parser.Parse "2+2=2"
+    let environment = WpfTeXEnvironment.Create()
+    let geometry = formula.RenderToGeometry(environment) :?> GeometryGroup
+    Assert.Equal(5, geometry.Children.Count)
