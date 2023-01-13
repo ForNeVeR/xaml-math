@@ -4,7 +4,7 @@ namespace WpfMath.Rendering;
 
 public static class TeXFormulaExtensions
 {
-    public static void RenderTo( // TODO: Tests for this method.
+    public static void RenderTo(
         this TexFormula formula,
         IElementRenderer renderer,
         TexEnvironment environment,
