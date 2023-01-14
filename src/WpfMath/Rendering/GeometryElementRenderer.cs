@@ -41,7 +41,7 @@ namespace WpfMath.Rendering
             var scaledTransforms = transforms.Select(t => t.Scale(_scale));
             ApplyTransformations(scaledTransforms, group);
             var nestedRenderer = new GeometryElementRenderer(group, _scale);
-            nestedRenderer.RenderElement(box, x, y);
+            nestedRenderer.RenderElement(box, x / _scale, y / _scale);
             _geometry.Children.Add(group);
         }
 

@@ -41,13 +41,13 @@ namespace WpfMath
         }
 
         [Obsolete("Use WpfMath.Rendering.TeXFormulaExtensions::RenderTo instead.")]
-        public void RenderFormulaTo(IElementRenderer renderer, double x, double y) // TODO: Remove all internal usages of this method.
+        public void RenderFormulaTo(IElementRenderer renderer, double x, double y)
         {
-            TeXFormulaExtensions.Render(Box, renderer, Scale, x, y);
+            TeXFormulaExtensions.Render(Box, renderer, x, y);
         }
 
         [Obsolete("Use WpfMath.Rendering.WpfTeXFormulaExtensions::RenderToGeometry instead.")]
-        public Geometry RenderToGeometry(double x, double y) // TODO: Remove all internal usages of this method.
+        public Geometry RenderToGeometry(double x, double y)
         {
             var geometry = new GeometryGroup();
             var renderer = new GeometryElementRenderer(geometry, Scale);
@@ -72,7 +72,7 @@ namespace WpfMath
         }
 
         [Obsolete("Use WpfMath.Rendering.WpfTeXFormulaExtensions::RenderToBitmap instead.")]
-        public BitmapSource RenderToBitmap(double x, double y, double dpi) // TODO: Remove all internal usages of this method.
+        public BitmapSource RenderToBitmap(double x, double y, double dpi)
         {
             var visual = new DrawingVisual();
             this.RenderWithPositiveCoordinates(visual, x, y);
@@ -87,10 +87,10 @@ namespace WpfMath
         }
 
         [Obsolete("Use WpfMath.Rendering.WpfTeXFormulaExtensions::RenderToBitmap instead.")]
-        public BitmapSource RenderToBitmap(double x, double y) => this.RenderToBitmap(x, y, DefaultDpi); // TODO: Remove all internal usages of this method.
+        public BitmapSource RenderToBitmap(double x, double y) => this.RenderToBitmap(x, y, DefaultDpi);
 
         [Obsolete("Use WpfMath.Rendering.WpfTeXFormulaExtensions::RenderTo instead.")]
-        public void Render(DrawingContext drawingContext, double x, double y) => // TODO: Remove all internal usages of this method.
+        public void Render(DrawingContext drawingContext, double x, double y) =>
             RenderFormulaTo(new WpfElementRenderer(drawingContext, Scale), x, y);
     }
 }

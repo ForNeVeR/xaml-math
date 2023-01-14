@@ -9,8 +9,8 @@ public interface IElementRenderer
 {
     /// <summary>Renders a <see cref="Box"/> to the renderer drawing context.</summary>
     /// <param name="box">The element that should be rendered.</param>
-    /// <param name="x">An X coordinate of the top left corner.</param>
-    /// <param name="y">An Y coordinate of the top left corner.</param>
+    /// <param name="x">Logical X coordinate of the top left corner.</param>
+    /// <param name="y">Logical Y coordinate of the top left corner.</param>
     /// <remarks>Should be called for every element of the formula (including nested ones).</remarks>
     /// <remarks>
     /// Usually this method should call <see cref="Box.RenderTo"/> with optional code common for all elements.

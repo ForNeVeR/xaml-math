@@ -18,7 +18,7 @@ public static class WpfTeXFormulaExtensions
     {
         var geometry = new GeometryGroup();
         var renderer = new GeometryElementRenderer(geometry, scale);
-        formula.RenderTo(renderer, environment, scale, x, y);
+        formula.RenderTo(renderer, environment, x, y);
         return geometry;
     }
 
@@ -72,6 +72,6 @@ public static class WpfTeXFormulaExtensions
         double x,
         double y)
     {
-        formula.RenderTo(new WpfElementRenderer(drawingContext, scale), environment, scale, x, y);
+        formula.RenderTo(new WpfElementRenderer(drawingContext, scale), environment, x, y);
     }
 }
