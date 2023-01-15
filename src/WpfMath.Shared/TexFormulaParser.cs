@@ -565,9 +565,8 @@ namespace WpfMath
                     return new Tuple<AtomAppendMode, Atom?>(
                         AtomAppendMode.Add,
                         new StyledAtom(source, bodyFormula.RootAtom, _brushFactory.FromColor(color), null));
-                        // TODO[#63]: ↑ Should read platform brush from color
                 }
-                }
+            }
 
             if (environment.AvailableCommands.TryGetValue(command, out var parser)
                 || _commandRegistry.TryGetValue(command, out parser))

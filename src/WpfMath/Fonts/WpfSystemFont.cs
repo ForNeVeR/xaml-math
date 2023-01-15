@@ -1,3 +1,4 @@
+using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Media;
@@ -9,11 +10,15 @@ namespace WpfMath.Fonts;
 internal class SystemFont : ITeXFont
 {
     private readonly FontFamily fontFamily;
+    private readonly Lazy<Typeface> _typeface;
 
     public SystemFont(double size, FontFamily fontFamily)
     {
         this.fontFamily = fontFamily;
         Size = size;
+
+        _typeface = new Lazy<Typeface>(
+            () => new Typeface(this.fontFamily, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal));
     }
 
     public bool SupportsMetrics => false;
@@ -33,7 +38,7 @@ internal class SystemFont : ITeXFont
 
     public Result<CharInfo> GetCharInfo(char character, string textStyle, TexStyle style)
     {
-        var typeface = this.GetTypeface();
+        var typeface = _typeface.Value;
         if (!typeface.TryGetGlyphTypeface(out var glyphTypeface))
         {
             return Result.Error<CharInfo>(new TypeFaceNotFoundException(
@@ -127,6 +132,4 @@ internal class SystemFont : ITeXFont
         );
         return new TexFontMetrics(formattedText.Width, formattedText.Height, 0.0, formattedText.Width, 1.0);
     }
-
-    private Typeface GetTypeface() => new Typeface(this.fontFamily, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal); // TODO[F]: Put into lazy field
 }
