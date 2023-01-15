@@ -7,8 +7,8 @@ public sealed record TexEnvironment(
     TexStyle Style,
     ITeXFont MathFont,
     ITeXFont TextFont,
-    IPlatformBrush? Background = null,
-    IPlatformBrush? Foreground = null)
+    IBrush? Background = null,
+    IBrush? Foreground = null)
 {
     // ID of font that was last used.
     private int lastFontId = TexFontUtilities.NoFontId;

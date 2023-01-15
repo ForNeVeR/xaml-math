@@ -1,7 +1,7 @@
 namespace WpfMath
 {
     /// <summary>Extension character that contains character information for each of its parts.</summary>
-    internal class ExtensionChar
+    public class ExtensionChar
     {
         public ExtensionChar(CharInfo? top, CharInfo? middle, CharInfo? bottom, CharInfo? repeat)
         {

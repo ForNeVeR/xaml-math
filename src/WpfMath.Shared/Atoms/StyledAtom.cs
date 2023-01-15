@@ -9,8 +9,8 @@ internal record StyledAtom : Atom, IRow
     public StyledAtom(
         SourceSpan? source,
         Atom? atom,
-        IPlatformBrush? backgroundColor,
-        IPlatformBrush? foregroundColor)
+        IBrush? backgroundColor,
+        IBrush? foregroundColor)
         : base(source)
     {
         this.RowAtom = new RowAtom(source, atom);
@@ -21,9 +21,9 @@ internal record StyledAtom : Atom, IRow
     // RowAtom to which colors are applied.
     public RowAtom RowAtom { get; init; }
 
-    public IPlatformBrush? Background { get; init; }
+    public IBrush? Background { get; init; }
 
-    public IPlatformBrush? Foreground { get; init; }
+    public IBrush? Foreground { get; init; }
 
     public Atom WithPreviousAtom(DummyAtom? previousAtom) =>
         this with { RowAtom = (RowAtom) RowAtom.WithPreviousAtom(previousAtom) };

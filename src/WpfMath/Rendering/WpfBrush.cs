@@ -3,7 +3,7 @@ using WpfMath.Colors;
 
 namespace WpfMath.Rendering;
 
-internal record WpfBrush : GenericPlatformBrush<Brush>
+internal record WpfBrush : GenericBrush<Brush>
 {
     private WpfBrush(Brush brush) : base(brush)
     {
@@ -15,7 +15,7 @@ internal record WpfBrush : GenericPlatformBrush<Brush>
 internal class WpfBrushFactory : IBrushFactory
 {
     public static WpfBrushFactory Instance = new();
-    public IPlatformBrush FromColor(RgbaColor color) =>
+    public IBrush FromColor(RgbaColor color) =>
         new SolidColorBrush(
             Color.FromArgb(color.A, color.R, color.G, color.B)).ToPlatform();
 }

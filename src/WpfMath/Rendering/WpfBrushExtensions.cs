@@ -5,7 +5,7 @@ namespace WpfMath.Rendering;
 
 internal static class WpfBrushExtensions
 {
-    public static Brush? ToWpf(this IPlatformBrush? brush) => ((WpfBrush?)brush)?.Value;
+    public static Brush? ToWpf(this IBrush? brush) => ((WpfBrush?)brush)?.Value;
     [return: NotNullIfNotNull(nameof(brush))]
-    public static IPlatformBrush? ToPlatform(this Brush? brush) => brush == null ? null : WpfBrush.FromBrush(brush);
+    public static IBrush? ToPlatform(this Brush? brush) => brush == null ? null : WpfBrush.FromBrush(brush);
 }

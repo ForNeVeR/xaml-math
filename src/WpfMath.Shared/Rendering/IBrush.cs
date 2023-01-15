@@ -7,6 +7,6 @@ namespace WpfMath.Rendering;
 /// A platform-dependent inheritor of <see cref="IElementRenderer"/> is supposed to cast this to a
 /// platform-dependent implementation to extract the containing value.
 /// </summary>
-public interface IPlatformBrush
+public interface IBrush
 {
 }

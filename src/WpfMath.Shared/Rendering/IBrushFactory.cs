@@ -4,5 +4,5 @@ namespace WpfMath.Rendering;
 
 public interface IBrushFactory
 {
-    public IPlatformBrush FromColor(RgbaColor color);
+    public IBrush FromColor(RgbaColor color);
 }

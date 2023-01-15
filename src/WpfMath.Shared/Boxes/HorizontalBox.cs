@@ -37,7 +37,7 @@ namespace WpfMath.Boxes
             this.Add(box);
         }
 
-        public HorizontalBox(IPlatformBrush? foreground, IPlatformBrush? background)
+        public HorizontalBox(IBrush? foreground, IBrush? background)
             : base(foreground, background)
         {
         }

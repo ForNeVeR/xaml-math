@@ -61,7 +61,7 @@ namespace WpfMath
             }
         }
 
-        public void SetForeground(IPlatformBrush brush)
+        public void SetForeground(IBrush brush)
         {
             if (this.RootAtom is StyledAtom sa)
             {
@@ -73,7 +73,7 @@ namespace WpfMath
             }
         }
 
-        public void SetBackground(IPlatformBrush brush)
+        public void SetBackground(IBrush brush)
         {
             if (this.RootAtom is StyledAtom sa)
             {

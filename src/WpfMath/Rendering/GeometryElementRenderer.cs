@@ -22,14 +22,14 @@ namespace WpfMath.Rendering
 
         public void RenderElement(Box box, double x, double y) => box.RenderTo(this, x, y);
 
-        public void RenderCharacter(CharInfo info, double x, double y, IPlatformBrush? foreground)
+        public void RenderCharacter(CharInfo info, double x, double y, IBrush? foreground)
         {
             var glyph = info.GetGlyphRun(x, y, _scale);
             var glyphGeometry = glyph.BuildGeometry();
             _geometry.Children.Add(glyphGeometry);
         }
 
-        public void RenderRectangle(Rectangle rectangle, IPlatformBrush? foreground)
+        public void RenderRectangle(Rectangle rectangle, IBrush? foreground)
         {
             var rectangleGeometry = new RectangleGeometry(GeometryHelper.ScaleRectangle(_scale, rectangle).ToWpf());
             _geometry.Children.Add(rectangleGeometry);
