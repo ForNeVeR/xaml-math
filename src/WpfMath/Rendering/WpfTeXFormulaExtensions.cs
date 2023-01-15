@@ -22,6 +22,11 @@ public static class WpfTeXFormulaExtensions
         return geometry;
     }
 
+    /// <summary>Renders the formula to a WPF bitmap.</summary>
+    /// <param name="scale">Formula text scale./</param>
+    /// <param name="x">A physical X coordinate of the top left corner in the resulting bitmap.</param>
+    /// <param name="y">A physical Y coordinate of the top left corner in the resulting bitmap.</param>
+    /// <param name="dpi">The resulting image DPI.</param>
     public static BitmapSource RenderToBitmap(
         this TexFormula formula,
         TexEnvironment environment,
@@ -51,26 +56,32 @@ public static class WpfTeXFormulaExtensions
         double y)
     {
         using (var drawingContext = visual.RenderOpen())
-            formula.RenderTo(drawingContext, environment, scale, x, y);
+            formula.RenderTo(drawingContext, environment, scale, x / scale, y / scale);
 
         var bounds = visual.ContentBounds;
-        if (bounds.X >= 0 && bounds.Y >= 0) return;
+        if (bounds is { X: >= 0, Y: >= 0 }) return;
 
         using (var drawingContext = visual.RenderOpen())
         {
             drawingContext.PushTransform(
                 new TranslateTransform(Math.Max(0.0, -bounds.X), Math.Max(0.0, -bounds.Y)));
-            formula.RenderTo(drawingContext, environment, scale, x, y);
+            formula.RenderTo(drawingContext, environment, scale, x / scale, y / scale);
         }
     }
 
-    public static void RenderTo( // TODO: Tests for this method.
+    /// <summary>
+    /// Renders the <paramref name="formula"/> to the <paramref name="drawingContext"/>.
+    /// </summary>
+    /// <param name="scale">Formula text scale./</param>
+    /// <param name="x">Logical X coordinate of the top left corner of the formula.</param>
+    /// <param name="y">Logical Y coordinate of the top left corner of the formula.</param>
+    public static void RenderTo(
         this TexFormula formula,
         DrawingContext drawingContext,
         TexEnvironment environment,
-        double scale,
-        double x,
-        double y)
+        double scale = 20.0,
+        double x = 0.0,
+        double y = 0.0)
     {
         formula.RenderTo(new WpfElementRenderer(drawingContext, scale), environment, x, y);
     }

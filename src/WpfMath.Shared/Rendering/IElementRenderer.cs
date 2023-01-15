@@ -11,9 +11,11 @@ public interface IElementRenderer
     /// <param name="box">The element that should be rendered.</param>
     /// <param name="x">Logical X coordinate of the top left corner.</param>
     /// <param name="y">Logical Y coordinate of the top left corner.</param>
-    /// <remarks>Should be called for every element of the formula (including nested ones).</remarks>
     /// <remarks>
-    /// Usually this method should call <see cref="Box.RenderTo"/> with optional code common for all elements.
+    /// <para>Should be called for every element of the formula (including nested ones).</para>
+    /// <para>
+    ///     Usually this method should call <see cref="Box.RenderTo"/> with optional code common for all elements.
+    /// </para>
     /// </remarks>
     void RenderElement(Box box, double x, double y);
 
