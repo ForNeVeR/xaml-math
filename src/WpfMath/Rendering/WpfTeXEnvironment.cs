@@ -30,10 +30,10 @@ public static class WpfTeXEnvironment
             foreground.ToPlatform());
     }
 
-    private static SystemFont GetSystemFont(string fontName, double size)
+    private static WpfSystemFont GetSystemFont(string fontName, double size)
     {
         var fontFamily = System.Windows.Media.Fonts.SystemFontFamilies.First(
             ff => ff.ToString() == fontName || ff.FamilyNames.Values?.Contains(fontName) == true);
-        return new SystemFont(size, fontFamily);
+        return new WpfSystemFont(size, fontFamily);
     }
 }

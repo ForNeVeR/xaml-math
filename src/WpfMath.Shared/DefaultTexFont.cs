@@ -328,11 +328,11 @@ namespace WpfMath
             return GetParameter("defaultrulethickness") * GetSizeFactor(style) * TexFontUtilities.PixelsPerPoint;
         }
 
-        private Result<TexFontMetrics> GetMetrics(CharFont charFont, double size)
+        private Result<TeXFontMetrics> GetMetrics(CharFont charFont, double size)
         {
             var fontInfo = fontInfoList[charFont.FontId];
             var metrics = fontInfo.GetMetrics(charFont.Character);
-            return metrics.Map(m => new TexFontMetrics(
+            return metrics.Map(m => new TeXFontMetrics(
                 m[TexFontUtilities.MetricsWidth],
                 m[TexFontUtilities.MetricsHeight],
                 m[TexFontUtilities.MetricsDepth],

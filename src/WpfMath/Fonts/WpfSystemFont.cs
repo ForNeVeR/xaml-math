@@ -7,12 +7,12 @@ using WpfMath.Utils;
 
 namespace WpfMath.Fonts;
 
-internal class SystemFont : ITeXFont
+internal class WpfSystemFont : ITeXFont
 {
     private readonly FontFamily fontFamily;
     private readonly Lazy<Typeface> _typeface;
 
-    public SystemFont(double size, FontFamily fontFamily)
+    public WpfSystemFont(double size, FontFamily fontFamily)
     {
         this.fontFamily = fontFamily;
         Size = size;
@@ -115,10 +115,10 @@ internal class SystemFont : ITeXFont
     private static TexNotSupportedException MethodNotSupported(string callerMethod)
     {
         return new TexNotSupportedException(
-            $"Call of method {callerMethod} on {nameof(SystemFont)} is not supported");
+            $"Call of method {callerMethod} on {nameof(WpfSystemFont)} is not supported");
     }
 
-    private TexFontMetrics GetFontMetrics(char c, Typeface typeface)
+    private TeXFontMetrics GetFontMetrics(char c, Typeface typeface)
     {
         var formattedText = new FormattedText(c.ToString(),
             CultureInfo.CurrentUICulture,
@@ -130,6 +130,6 @@ internal class SystemFont : ITeXFont
             , 1
 #endif
         );
-        return new TexFontMetrics(formattedText.Width, formattedText.Height, 0.0, formattedText.Width, 1.0);
+        return new TeXFontMetrics(formattedText.Width, formattedText.Height, 0.0, formattedText.Width, 1.0);
     }
 }

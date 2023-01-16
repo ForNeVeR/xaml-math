@@ -3,7 +3,7 @@ using WpfMath.Colors;
 
 namespace WpfMath.Rendering;
 
-internal record WpfBrush : GenericBrush<Brush>
+public record WpfBrush : GenericBrush<Brush>
 {
     private WpfBrush(Brush brush) : base(brush)
     {
@@ -12,7 +12,7 @@ internal record WpfBrush : GenericBrush<Brush>
     public static WpfBrush FromBrush(Brush value) => new(value);
 }
 
-internal class WpfBrushFactory : IBrushFactory
+public class WpfBrushFactory : IBrushFactory
 {
     public static WpfBrushFactory Instance = new();
     public IBrush FromColor(RgbaColor color) =>
