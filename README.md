@@ -49,43 +49,35 @@ namespace ConsoleApplication2
 }
 ```
 
-If you need any additional control over the image format, consider using the `GetRenderer` API:
+If you need any additional control over the image format, consider using the extension methods from the `WpfTeXFormulaExtensions` class:
 
 ```csharp
 using System;
 using System.IO;
 using System.Windows.Media.Imaging;
 using WpfMath;
+using WpfMath.Rendering;
 
-namespace ConsoleApplication2
+const string latex = @"\frac{2+2}{2}";
+const string fileName = @"T:\Temp\formula.png";
+
+var parser = new TexFormulaParser();
+var formula = parser.Parse(latex);
+var environment = WpfTeXEnvironment.Create(TexStyle.Display, 20.0, "Arial");
+var bitmapSource = formula.RenderToBitmap(environment);
+Console.WriteLine($"Image width: {bitmapSource.Width}");
+Console.WriteLine($"Image height: {bitmapSource.Height}");
+
+var encoder = new PngBitmapEncoder();
+encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
+using (var target = new FileStream(fileName, FileMode.Create))
 {
-    internal class Program
-    {
-        public static void Main(string[] args)
-        {
-            const string latex = @"\frac{2+2}{2}";
-            const string fileName = @"T:\Temp\formula.png";
-
-            var parser = new TexFormulaParser();
-            var formula = parser.Parse(latex);
-            var renderer = formula.GetRenderer(TexStyle.Display, 20.0, "Arial");
-            var bitmapSource = renderer.RenderToBitmap(0.0, 0.0);
-            Console.WriteLine($"Image width: {bitmapSource.Width}");
-            Console.WriteLine($"Image height: {bitmapSource.Height}");
-
-            var encoder = new PngBitmapEncoder();
-            encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
-            using (var target = new FileStream(fileName, FileMode.Create))
-            {
-                encoder.Save(target);
-                Console.WriteLine($"File saved to {fileName}");
-            }
-        }
-    }
+    encoder.Save(target);
+    Console.WriteLine($"File saved to {fileName}");
 }
 ```
 
-You may also pass your own `IElementRenderer` implementation to `TexFormula.RenderFormulaTo` method if you need support for any alternate rendering engines.
+You may also pass your own `IElementRenderer` implementation to `TeXFormulaExtensions::RenderTo` method if you need support for any alternate rendering engines.
 
 Documentation
 -------------

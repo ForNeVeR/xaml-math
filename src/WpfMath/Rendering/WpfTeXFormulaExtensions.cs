@@ -23,6 +23,8 @@ public static class WpfTeXFormulaExtensions
     }
 
     /// <summary>Renders the formula to a WPF bitmap.</summary>
+    /// <param name="formula">The formula to render.</param>
+    /// <param name="environment">The environment with rendering parameters.</param>
     /// <param name="scale">Formula text scale./</param>
     /// <param name="x">A physical X coordinate of the top left corner in the resulting bitmap.</param>
     /// <param name="y">A physical Y coordinate of the top left corner in the resulting bitmap.</param>
@@ -72,6 +74,9 @@ public static class WpfTeXFormulaExtensions
     /// <summary>
     /// Renders the <paramref name="formula"/> to the <paramref name="drawingContext"/>.
     /// </summary>
+    /// <param name="formula">The formula to render.</param>
+    /// <param name="drawingContext">The target drawing context.</param>
+    /// <param name="environment">The environment with rendering parameters.</param>
     /// <param name="scale">Formula text scale./</param>
     /// <param name="x">Logical X coordinate of the top left corner of the formula.</param>
     /// <param name="y">Logical Y coordinate of the top left corner of the formula.</param>
