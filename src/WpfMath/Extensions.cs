@@ -12,7 +12,7 @@ namespace WpfMath
             double y,
             string systemTextFontName)
         {
-            var environment = WpfTeXEnvironment.Create();
+            var environment = WpfTeXEnvironment.Create(scale: scale, systemTextFontName: systemTextFontName);
             BitmapSource image = texForm.RenderToBitmap(environment, scale, x, y);
 
             PngBitmapEncoder encoder = new PngBitmapEncoder();
