@@ -174,7 +174,7 @@ namespace WpfMath.Controls
 
             using (var drawingContext = visual.RenderOpen())
             {
-                texFormula.RenderTo(drawingContext, environment, Scale, 0, 0);
+                texFormula.RenderTo(drawingContext, environment, Scale);
             }
             formulaContainerElement.Visual = visual;
         }
