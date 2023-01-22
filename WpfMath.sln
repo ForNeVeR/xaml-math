@@ -49,6 +49,8 @@ ProjectSection(SolutionItems) = preProject
 	.github\workflows\nuget.yml = .github\workflows\nuget.yml
 EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfMath.ApiTest", "WpfMath.ApiTest\WpfMath.ApiTest.csproj", "{BEC1FC52-F0E2-4B6C-9EDA-291F5BF86506}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{F19E5FB1-EE6B-4A48-A522-41F30676BE41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F19E5FB1-EE6B-4A48-A522-41F30676BE41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F19E5FB1-EE6B-4A48-A522-41F30676BE41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEC1FC52-F0E2-4B6C-9EDA-291F5BF86506}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEC1FC52-F0E2-4B6C-9EDA-291F5BF86506}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEC1FC52-F0E2-4B6C-9EDA-291F5BF86506}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEC1FC52-F0E2-4B6C-9EDA-291F5BF86506}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="ApprovalTests" Version="4.2.2" />
+        <PackageReference Include="Microsoft.DotNet.GenAPI" Version="7.0.0-beta.23060.4" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
+        <PackageReference Include="xunit" Version="2.4.2" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="coverlet.collector" Version="3.1.2">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="api" />
+        <Compile Remove="api/**/*"/>
+        <None Include="api/**/*"/>
+    </ItemGroup>
+
+
+    <Target Name="_GenerateApiListing" AfterTargets="_GenerateApiListingAfterBuild" DependsOnTargets="GenerateReferenceAssemblySource" />
+
+    <Target Name="_GenerateApiListingAfterBuild" AfterTargets="CoreBuild">
+
+        <PropertyGroup>
+            <GenAPIInputAssembly>W:\Projects\wpf-math\src\WpfMath\bin\Release\net452\WpfMath.dll</GenAPIInputAssembly>
+            <_RefSourceOutputPath>$(MSBuildProjectDirectory)/api/</_RefSourceOutputPath>
+            <GenAPITargetPath>$(_RefSourceOutputPath)$(AssemblyName).$(TargetFramework).cs</GenAPITargetPath>
+        </PropertyGroup>
+        <Delete Files="$(GenAPITargetPath)" />
+    </Target>
+
+</Project>
