@@ -9,9 +9,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="ApprovalTests" Version="4.2.2" />
         <PackageReference Include="Microsoft.DotNet.GenAPI" Version="7.0.0-beta.23060.4" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
+        <PackageReference Include="Verify.Xunit" Version="19.7.1" />
         <PackageReference Include="xunit" Version="2.4.2" />
         <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -24,22 +24,17 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="api" />
-        <Compile Remove="api/**/*"/>
-        <None Include="api/**/*"/>
+        <Compile Remove="api/**/*" />
+        <None Include="api/**/*" />
     </ItemGroup>
 
+    <ItemGroup>
+        <_InputAssembly Include="../WpfMath/bin/$(Configuration)/net452/WpfMath.dll" Framework="net452" />
+        <_InputAssembly Include="../WpfMath/bin/$(Configuration)/netcoreapp3.0/WpfMath.dll" Framework="netcoreapp3.0" />
+    </ItemGroup>
 
-    <Target Name="_GenerateApiListing" AfterTargets="_GenerateApiListingAfterBuild" DependsOnTargets="GenerateReferenceAssemblySource" />
-
-    <Target Name="_GenerateApiListingAfterBuild" AfterTargets="CoreBuild">
-
-        <PropertyGroup>
-            <GenAPIInputAssembly>W:\Projects\wpf-math\src\WpfMath\bin\Release\net452\WpfMath.dll</GenAPIInputAssembly>
-            <_RefSourceOutputPath>$(MSBuildProjectDirectory)/api/</_RefSourceOutputPath>
-            <GenAPITargetPath>$(_RefSourceOutputPath)$(AssemblyName).$(TargetFramework).cs</GenAPITargetPath>
-        </PropertyGroup>
-        <Delete Files="$(GenAPITargetPath)" />
+    <Target Name="_GenerateApiListing" AfterTargets="CoreBuild" Inputs="@(_InputAssembly->'%(FullPath)')" Outputs="$(MSBuildProjectDirectory)/api/%(_InputAssembly.FileName).%(_InputAssembly.Framework).tmp.cs">
+        <Microsoft.DotNet.GenAPI.GenAPITask Assembly="@(_InputAssembly->'%(FullPath)')" OutputPath="$(MSBuildProjectDirectory)/api/%(_InputAssembly.FileName).%(_InputAssembly.Framework).tmp.cs" />
     </Target>
 
 </Project>
