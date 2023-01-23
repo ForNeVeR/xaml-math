@@ -30,7 +30,7 @@
 
     <ItemGroup>
         <_InputAssembly Include="../WpfMath/bin/$(Configuration)/net452/WpfMath.dll" Framework="net452" />
-        <_InputAssembly Include="../WpfMath/bin/$(Configuration)/netcoreapp3.0/WpfMath.dll" Framework="netcoreapp3.0" />
+        <_InputAssembly Include="../WpfMath/bin/$(Configuration)/netcoreapp3.1/WpfMath.dll" Framework="netcoreapp3.1" />
     </ItemGroup>
 
     <Target Name="_GenerateApiListing" AfterTargets="CoreBuild" Inputs="@(_InputAssembly->'%(FullPath)')" Outputs="$(MSBuildProjectDirectory)/api/%(_InputAssembly.FileName).%(_InputAssembly.Framework).tmp.cs">

@@ -28,14 +28,15 @@ namespace WpfMath
     }
     public partial class SourceSpan : System.IEquatable<WpfMath.SourceSpan>
     {
-        public SourceSpan(string source, int start, int length) { }
+        public SourceSpan(string sourceName, string source, int start, int length) { }
         public int End { get { throw null; } }
         public char this[int index] { get { throw null; } }
         public int Length { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         public string Source { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
+        public string SourceName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         public int Start { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public override bool Equals(object obj) { throw null; }
-        public bool Equals(WpfMath.SourceSpan other) { throw null; }
+        public override bool Equals(object? obj) { throw null; }
+        public bool Equals(WpfMath.SourceSpan? other) { throw null; }
         public override int GetHashCode() { throw null; }
         public WpfMath.SourceSpan Segment(int start) { throw null; }
         public WpfMath.SourceSpan Segment(int start, int length) { throw null; }
@@ -92,17 +93,19 @@ namespace WpfMath
     public sealed partial class TexFormula
     {
         public TexFormula() { }
-        public string TextStyle { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public void Add(WpfMath.TexFormula formula, WpfMath.SourceSpan source = null) { }
-        public WpfMath.TexRenderer GetRenderer(WpfMath.TexStyle style, double scale, string systemTextFontName) { throw null; }
-        public void SetBackground(WpfMath.Utils.IPlatformBrush brush) { }
-        public void SetForeground(WpfMath.Utils.IPlatformBrush brush) { }
+        public WpfMath.SourceSpan? Source { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public string? TextStyle { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public void Add(WpfMath.TexFormula formula, WpfMath.SourceSpan? source = null) { }
+        public WpfMath.TexRenderer GetRenderer(WpfMath.TexStyle style, double scale, string? systemTextFontName, System.Windows.Media.Brush? background = null, System.Windows.Media.Brush? foreground = null) { throw null; }
+        public void SetBackground(System.Windows.Media.Brush brush) { }
+        public void SetForeground(System.Windows.Media.Brush brush) { }
     }
     public partial class TexFormulaParser
     {
         public TexFormulaParser() { }
         public TexFormulaParser(System.Collections.Generic.IReadOnlyDictionary<string, WpfMath.Colors.IColorParser> colorModelParsers, WpfMath.Colors.IColorParser defaultColorParser) { }
-        public WpfMath.TexFormula Parse(string value, string textStyle = null) { throw null; }
+        public WpfMath.TexFormula Parse(string value, string? textStyle = null) { throw null; }
+        public WpfMath.TexFormula Parse(WpfMath.SourceSpan value, string? textStyle = null) { throw null; }
     }
     public partial class TexRenderer
     {
@@ -139,15 +142,15 @@ namespace WpfMath.Boxes
     public abstract partial class Box
     {
         protected Box() { }
-        protected Box(WpfMath.Utils.IPlatformBrush foreground, WpfMath.Utils.IPlatformBrush background) { }
-        public WpfMath.Utils.IPlatformBrush Background { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        protected Box(System.Windows.Media.Brush? foreground, System.Windows.Media.Brush? background) { }
+        public System.Windows.Media.Brush? Background { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public System.Collections.ObjectModel.ReadOnlyCollection<WpfMath.Boxes.Box> Children { get { throw null; } }
         public double Depth { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public WpfMath.Utils.IPlatformBrush Foreground { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public System.Windows.Media.Brush? Foreground { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public double Height { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public double Italic { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public double Shift { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public WpfMath.SourceSpan Source { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public WpfMath.SourceSpan? Source { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public double TotalHeight { get { throw null; } }
         public double TotalWidth { get { throw null; } }
         public double Width { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
@@ -162,29 +165,18 @@ namespace WpfMath.Colors
     public abstract partial class FixedComponentCountColorParser : WpfMath.Colors.IColorParser
     {
         protected FixedComponentCountColorParser(int componentCount) { }
-        public WpfMath.Colors.RgbaColor? Parse(System.Collections.Generic.IReadOnlyList<string> components) { throw null; }
-        protected abstract WpfMath.Colors.RgbaColor? ParseComponents(System.Collections.Generic.IReadOnlyList<string> components);
+        public System.Windows.Media.Color? Parse(System.Collections.Generic.IEnumerable<string> components) { throw null; }
+        protected abstract System.Windows.Media.Color? ParseComponents(System.Collections.Generic.List<string> components);
     }
     public partial interface IColorParser
     {
-        WpfMath.Colors.RgbaColor? Parse(System.Collections.Generic.IReadOnlyList<string> components);
+        System.Windows.Media.Color? Parse(System.Collections.Generic.IEnumerable<string> components);
     }
     public partial class PredefinedColorParser : WpfMath.Colors.IColorParser
     {
         internal PredefinedColorParser() { }
         public static readonly WpfMath.Colors.PredefinedColorParser Instance;
-        public WpfMath.Colors.RgbaColor? Parse(System.Collections.Generic.IReadOnlyList<string> components) { throw null; }
-    }
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
-    public partial struct RgbaColor
-    {
-        private object _dummy;
-        private int _dummyPrimitive;
-        public RgbaColor(byte r, byte g, byte b, byte a = (byte)255) { throw null; }
-        public byte A { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public byte B { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public byte G { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public byte R { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public System.Windows.Media.Color? Parse(System.Collections.Generic.IEnumerable<string> components) { throw null; }
     }
     public static partial class StandardColorParsers
     {
@@ -210,14 +202,14 @@ namespace WpfMath.Controls
         public string Formula { get { throw null; } set { } }
         public bool HasError { get { throw null; } }
         public double Scale { get { throw null; } set { } }
-        public System.Windows.Media.Brush SelectionBrush { get { throw null; } set { } }
+        public System.Windows.Media.Brush? SelectionBrush { get { throw null; } set { } }
         public int SelectionLength { get { throw null; } set { } }
         public int SelectionStart { get { throw null; } set { } }
         public string SystemTextFontName { get { throw null; } set { } }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.6.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "7.0.2.0")]
         [System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void InitializeComponent() { }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.6.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "7.0.2.0")]
         [System.ComponentModel.EditorBrowsableAttribute(1)]
         [System.Diagnostics.DebuggerNonUserCodeAttribute]
         void System.Windows.Markup.IComponentConnector.Connect(int connectionId, object target) { }
@@ -225,10 +217,10 @@ namespace WpfMath.Controls
     public partial class VisualContainerElement : System.Windows.FrameworkElement
     {
         public VisualContainerElement() { }
-        public System.Windows.Media.DrawingVisual Visual { get { throw null; } set { } }
+        public System.Windows.Media.DrawingVisual? Visual { get { throw null; } set { } }
         protected override int VisualChildrenCount { get { throw null; } }
         protected override System.Windows.Size ArrangeOverride(System.Windows.Size finalSize) { throw null; }
-        protected override System.Windows.Media.Visual GetVisualChild(int index) { throw null; }
+        protected override System.Windows.Media.Visual? GetVisualChild(int index) { throw null; }
         protected override System.Windows.Size MeasureOverride(System.Windows.Size availableSize) { throw null; }
         protected override void OnVisualChildrenChanged(System.Windows.DependencyObject visualAdded, System.Windows.DependencyObject visualRemoved) { }
     }
@@ -317,31 +309,5 @@ namespace WpfMath.Rendering.Transformations
     {
         Translate = 0,
         Rotate = 1,
-    }
-}
-namespace WpfMath.Utils
-{
-    public partial class GenericPlatformBrush<TBrush> : WpfMath.Utils.IPlatformBrush
-    {
-        public GenericPlatformBrush(TBrush brush) { }
-        public TBrush Get() { throw null; }
-    }
-    public partial interface IPlatformBrush
-    {
-    }
-}
-namespace XamlGeneratedNamespace
-{
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "5.0.6.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(1)]
-    [System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public sealed partial class GeneratedInternalTypeHelper : System.Windows.Markup.InternalTypeHelper
-    {
-        public GeneratedInternalTypeHelper() { }
-        protected override void AddEventHandler(System.Reflection.EventInfo eventInfo, object target, System.Delegate handler) { }
-        protected override System.Delegate CreateDelegate(System.Type delegateType, object target, string handler) { throw null; }
-        protected override object CreateInstance(System.Type type, System.Globalization.CultureInfo culture) { throw null; }
-        protected override object GetPropertyValue(System.Reflection.PropertyInfo propertyInfo, object target, System.Globalization.CultureInfo culture) { throw null; }
-        protected override void SetPropertyValue(System.Reflection.PropertyInfo propertyInfo, object target, object value, System.Globalization.CultureInfo culture) { }
     }
 }

@@ -13,7 +13,7 @@ public class ApiDefinitionTests
 
     [Theory]
     [InlineData("WpfMath.net452.cs")]
-    [InlineData("WpfMath.netcoreapp3.0.cs")]
+    [InlineData("WpfMath.netcoreapp3.1.cs")]
     public Task WpfMath(string fileName)
     {
         var directory = GetProjectDirectory();
