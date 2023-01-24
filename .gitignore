@@ -4,5 +4,6 @@
 bin/
 obj/
 
-*.received.txt
+*.received.*
+*.tmp.cs
 *.user
