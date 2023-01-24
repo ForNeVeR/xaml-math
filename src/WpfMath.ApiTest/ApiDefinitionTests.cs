@@ -14,7 +14,14 @@ public class ApiDefinitionTests
     [Theory]
     [InlineData("WpfMath.net452.cs")]
     [InlineData("WpfMath.netcoreapp3.1.cs")]
-    public Task WpfMath(string fileName)
+    public Task WpfMath(string fileName) => DoTest(fileName);
+
+    [Theory]
+    [InlineData("WpfMath.Shared.net452.cs")]
+    [InlineData("WpfMath.Shared.netcoreapp3.1.cs")]
+    public Task WpfMathShared(string fileName) => DoTest(fileName);
+
+    private static Task DoTest(string fileName)
     {
         var directory = GetProjectDirectory();
         var goldFile = Path.Combine(directory, "api", fileName);
