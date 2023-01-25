@@ -24,9 +24,6 @@ namespace WpfMath
 
         public SourceSpan? Source { get; set; }
 
-        // TODO: Document the absence of TexFormula.GetRenderer method (that should be replaced with
-        // WpfMath.Rendering.TeXFormulaExtensions and WpfMath.Rendering.WpfTeXFormulaExtensions).
-
         public void Add(TexFormula formula, SourceSpan? source = null)
         {
             Debug.Assert(formula != null);
@@ -85,7 +82,7 @@ namespace WpfMath
             }
         }
 
-        public Box CreateBox(TexEnvironment environment)
+        internal Box CreateBox(TexEnvironment environment)
         {
             if (this.RootAtom == null)
                 return StrutBox.Empty;

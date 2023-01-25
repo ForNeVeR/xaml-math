@@ -17,12 +17,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - `RenderGlyphRun` has been replaced with `RenderCharacter` method (not reliant on any WPF-specific types),
   - `RenderRectangle` now receives an instance of a new `WpfMath.Rendering.Rectangle` type (decoupled from WPF).
 - `WpfMath.TexRenderer` is now obsolete. Consult the documentation on new recommended ways to perform custom rendering. There are new extension methods in two classes (`WpfMath.Rendering.WpfTeXFormulaExtensions` and `WpfMath.Rendering.TeXFormulaExtensions`) that are the main way to render formulae now.
+- **(Breaking change.)** `WpfMath.TexFormnula::GetRenderer` is gone. Create a `TexRenderer` using constructor (obsolete) or use the aforementioned extension methods instead.
 
 ### Added
 - `WpfMath.CharInfo`: a new public type to work with a font character. Use `WpfMath.Fonts.WpfCharInfoEx::GetGlyphRun` if you need to get a `System.Windows.Media.GlyphRun` from it.
 - `WpfMath.Rendering.WpfTeXFormulaExtensions` to render a `WpfMath.TexFormula` into a `System.Windows.Media.Imaging.BitmapSource` or `System.Windows.Media.Geometry`.
 - New classes for WPF-Math porting to platforms other than WPF (consult the `WpfMath.Rendering.IElementRenderer` interface and `TexFormulaParser` constructor parameters to know more).
-
+- `WpfMath.Colors.RgbaColor` as a new portable color representation.
+- `WpfMath.Fonts.IFontProvider`: implement this interface to provide alternate font reading functionality.
+- `WpfMath.Fonts.ITeXFont`: implement this interface to provide access to a platform-specific font resource.
+- `WpfMath.Rendering.IBrushFactory`: implement this interface to provide access to creation of platform-specific solid-colored brushes.
+- `WpfMath.TeXFontMetrics` that contains some measurements of a font glyph.
+- An utility `Result` struct is now public.
 
 ## [0.12.0] - 2023-01-07
 ### Added

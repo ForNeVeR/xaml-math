@@ -46,7 +46,7 @@ namespace WpfMath
         private static readonly IList<string> symbols;
         private static readonly IList<string> delimeters;
         private static readonly HashSet<string> textStyles;
-        // TODO: Architectural solution to make this work faster.
+        // TODO[#339]: Architectural solution to make this work faster.
         private readonly IReadOnlyDictionary<string, Func<SourceSpan, TexFormula?>> predefinedFormulas;
 
         private static readonly string[][] delimiterNames =

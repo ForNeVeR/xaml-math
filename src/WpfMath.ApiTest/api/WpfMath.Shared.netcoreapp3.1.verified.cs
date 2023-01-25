@@ -41,46 +41,6 @@ namespace WpfMath
     {
         internal FormulaNotFoundException() { }
     }
-    public partial interface ITeXFont
-    {
-        double Size { get; }
-        bool SupportsMetrics { get; }
-        double GetAxisHeight(WpfMath.TexStyle style);
-        double GetBigOpSpacing1(WpfMath.TexStyle style);
-        double GetBigOpSpacing2(WpfMath.TexStyle style);
-        double GetBigOpSpacing3(WpfMath.TexStyle style);
-        double GetBigOpSpacing4(WpfMath.TexStyle style);
-        double GetBigOpSpacing5(WpfMath.TexStyle style);
-        WpfMath.Utils.Result<WpfMath.CharInfo> GetCharInfo(char character, string textStyle, WpfMath.TexStyle style);
-        WpfMath.Utils.Result<WpfMath.CharInfo> GetCharInfo(string name, WpfMath.TexStyle style);
-        WpfMath.Utils.Result<WpfMath.CharInfo> GetCharInfo(WpfMath.CharFont charFont, WpfMath.TexStyle style);
-        WpfMath.Utils.Result<WpfMath.CharInfo> GetDefaultCharInfo(char character, WpfMath.TexStyle style);
-        double GetDefaultLineThickness(WpfMath.TexStyle style);
-        double GetDenom1(WpfMath.TexStyle style);
-        double GetDenom2(WpfMath.TexStyle style);
-        WpfMath.ExtensionChar GetExtension(WpfMath.CharInfo charInfo, WpfMath.TexStyle style);
-        double GetKern(WpfMath.CharFont leftChar, WpfMath.CharFont rightChar, WpfMath.TexStyle style);
-        WpfMath.CharFont? GetLigature(WpfMath.CharFont leftChar, WpfMath.CharFont rightChar);
-        int GetMuFontId();
-        WpfMath.CharInfo GetNextLargerCharInfo(WpfMath.CharInfo charInfo, WpfMath.TexStyle style);
-        double GetNum1(WpfMath.TexStyle style);
-        double GetNum2(WpfMath.TexStyle style);
-        double GetNum3(WpfMath.TexStyle style);
-        double GetQuad(int fontId, WpfMath.TexStyle style);
-        double GetSkew(WpfMath.CharFont charFont, WpfMath.TexStyle style);
-        double GetSpace(WpfMath.TexStyle style);
-        double GetSub1(WpfMath.TexStyle style);
-        double GetSub2(WpfMath.TexStyle style);
-        double GetSubDrop(WpfMath.TexStyle style);
-        double GetSup1(WpfMath.TexStyle style);
-        double GetSup2(WpfMath.TexStyle style);
-        double GetSup3(WpfMath.TexStyle style);
-        double GetSupDrop(WpfMath.TexStyle style);
-        double GetXHeight(WpfMath.TexStyle style, int fontId);
-        bool HasNextLarger(WpfMath.CharInfo charInfo);
-        bool HasSpace(int fontId);
-        bool IsExtensionChar(WpfMath.CharInfo charInfo);
-    }
     public enum MatrixCellAlignment
     {
         Left = 0,
@@ -152,14 +112,14 @@ namespace WpfMath
     }
     public sealed partial class TexEnvironment : System.IEquatable<WpfMath.TexEnvironment>
     {
-        public TexEnvironment(WpfMath.TexStyle Style, WpfMath.ITeXFont MathFont, WpfMath.ITeXFont TextFont, WpfMath.Rendering.IBrush? Background = null, WpfMath.Rendering.IBrush? Foreground = null) { }
+        public TexEnvironment(WpfMath.TexStyle Style, WpfMath.Fonts.ITeXFont MathFont, WpfMath.Fonts.ITeXFont TextFont, WpfMath.Rendering.IBrush? Background = null, WpfMath.Rendering.IBrush? Foreground = null) { }
         public WpfMath.Rendering.IBrush? Background { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public WpfMath.Rendering.IBrush? Foreground { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public WpfMath.ITeXFont MathFont { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public WpfMath.Fonts.ITeXFont MathFont { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public WpfMath.TexStyle Style { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public WpfMath.ITeXFont TextFont { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public WpfMath.Fonts.ITeXFont TextFont { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public void Deconstruct(out WpfMath.TexStyle Style, out WpfMath.ITeXFont MathFont, out WpfMath.ITeXFont TextFont, out WpfMath.Rendering.IBrush? Background, out WpfMath.Rendering.IBrush? Foreground) { throw null; }
+        public void Deconstruct(out WpfMath.TexStyle Style, out WpfMath.Fonts.ITeXFont MathFont, out WpfMath.Fonts.ITeXFont TextFont, out WpfMath.Rendering.IBrush? Background, out WpfMath.Rendering.IBrush? Foreground) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override bool Equals(object? obj) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
@@ -189,7 +149,6 @@ namespace WpfMath
         public WpfMath.SourceSpan? Source { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public string? TextStyle { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public void Add(WpfMath.TexFormula formula, WpfMath.SourceSpan? source = null) { }
-        public WpfMath.Boxes.Box CreateBox(WpfMath.TexEnvironment environment) { throw null; }
         public void SetBackground(WpfMath.Rendering.IBrush brush) { }
         public void SetForeground(WpfMath.Rendering.IBrush brush) { }
     }
@@ -290,12 +249,6 @@ namespace WpfMath.Colors
         public static System.Collections.Generic.IReadOnlyDictionary<string, WpfMath.Colors.IColorParser> Dictionary;
     }
 }
-namespace WpfMath.Data
-{
-    public static partial class WpfMathResourceMarker
-    {
-    }
-}
 namespace WpfMath.Exceptions
 {
     public partial class TexCharacterMappingNotFoundException : WpfMath.Exceptions.TexException
@@ -333,6 +286,46 @@ namespace WpfMath.Fonts
     }
     public partial interface IFontTypeface
     {
+    }
+    public partial interface ITeXFont
+    {
+        double Size { get; }
+        bool SupportsMetrics { get; }
+        double GetAxisHeight(WpfMath.TexStyle style);
+        double GetBigOpSpacing1(WpfMath.TexStyle style);
+        double GetBigOpSpacing2(WpfMath.TexStyle style);
+        double GetBigOpSpacing3(WpfMath.TexStyle style);
+        double GetBigOpSpacing4(WpfMath.TexStyle style);
+        double GetBigOpSpacing5(WpfMath.TexStyle style);
+        WpfMath.Utils.Result<WpfMath.CharInfo> GetCharInfo(char character, string textStyle, WpfMath.TexStyle style);
+        WpfMath.Utils.Result<WpfMath.CharInfo> GetCharInfo(string name, WpfMath.TexStyle style);
+        WpfMath.Utils.Result<WpfMath.CharInfo> GetCharInfo(WpfMath.CharFont charFont, WpfMath.TexStyle style);
+        WpfMath.Utils.Result<WpfMath.CharInfo> GetDefaultCharInfo(char character, WpfMath.TexStyle style);
+        double GetDefaultLineThickness(WpfMath.TexStyle style);
+        double GetDenom1(WpfMath.TexStyle style);
+        double GetDenom2(WpfMath.TexStyle style);
+        WpfMath.ExtensionChar GetExtension(WpfMath.CharInfo charInfo, WpfMath.TexStyle style);
+        double GetKern(WpfMath.CharFont leftChar, WpfMath.CharFont rightChar, WpfMath.TexStyle style);
+        WpfMath.CharFont? GetLigature(WpfMath.CharFont leftChar, WpfMath.CharFont rightChar);
+        int GetMuFontId();
+        WpfMath.CharInfo GetNextLargerCharInfo(WpfMath.CharInfo charInfo, WpfMath.TexStyle style);
+        double GetNum1(WpfMath.TexStyle style);
+        double GetNum2(WpfMath.TexStyle style);
+        double GetNum3(WpfMath.TexStyle style);
+        double GetQuad(int fontId, WpfMath.TexStyle style);
+        double GetSkew(WpfMath.CharFont charFont, WpfMath.TexStyle style);
+        double GetSpace(WpfMath.TexStyle style);
+        double GetSub1(WpfMath.TexStyle style);
+        double GetSub2(WpfMath.TexStyle style);
+        double GetSubDrop(WpfMath.TexStyle style);
+        double GetSup1(WpfMath.TexStyle style);
+        double GetSup2(WpfMath.TexStyle style);
+        double GetSup3(WpfMath.TexStyle style);
+        double GetSupDrop(WpfMath.TexStyle style);
+        double GetXHeight(WpfMath.TexStyle style, int fontId);
+        bool HasNextLarger(WpfMath.CharInfo charInfo);
+        bool HasSpace(int fontId);
+        bool IsExtensionChar(WpfMath.CharInfo charInfo);
     }
 }
 namespace WpfMath.Rendering

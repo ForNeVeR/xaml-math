@@ -7,7 +7,7 @@ using WpfMath.Rendering;
 namespace WpfMath
 {
     [Obsolete("Use extension methods on WpfMath.TexFormula instead.")]
-    public class TexRenderer // TODO[F]: Drop in the next release
+    public class TexRenderer // TODO[#340]: Drop in the next release
     {
         /// <summary>Default DPI for WPF.</summary>
         private const int DefaultDpi = 96;

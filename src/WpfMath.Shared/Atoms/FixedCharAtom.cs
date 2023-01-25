@@ -1,3 +1,4 @@
+using WpfMath.Fonts;
 using WpfMath.Utils;
 
 namespace WpfMath.Atoms

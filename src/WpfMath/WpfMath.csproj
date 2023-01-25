@@ -51,7 +51,7 @@ Changed:
         <ProjectReference Include="..\WpfMath.Shared\WpfMath.Shared.csproj" />
     </ItemGroup>
 
-    <!-- TODO: Remove this after WpfMath.Shared gets into a separate package (together with the Avalonia release) -->
+    <!-- TODO[#341]: Remove this after WpfMath.Shared gets into a separate package (together with the Avalonia release) -->
     <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
         <ItemGroup>
             <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />

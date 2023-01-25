@@ -37,7 +37,6 @@ namespace WpfMath
 
         public TexSymbolParser()
         {
-            // for 3.5
             using var resource = typeof(WpfMathResourceMarker).Assembly.ReadResource(resourceName);
             var doc =  XDocument.Load(resource);
             this.rootElement = doc.Root;

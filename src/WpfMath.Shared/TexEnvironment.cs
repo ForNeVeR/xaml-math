@@ -1,3 +1,4 @@
+using WpfMath.Fonts;
 using WpfMath.Rendering;
 
 namespace WpfMath;

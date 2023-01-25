@@ -3,9 +3,9 @@ module WpfMath.Tests.Utils
 open System
 open System.Windows
 
-open WpfMath.Parsers
 open Xunit
 
+open WpfMath.Parsers
 
 let initializeFontResourceLoading =
     let monitor = obj()

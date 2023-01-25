@@ -83,7 +83,7 @@ namespace WpfMath
             this.rootElement = doc.Root;
         }
 
-        // TODO: Review this API
+        // TODO[#339]: Review this API
         public void Parse(Dictionary<string, Func<SourceSpan, TexFormula?>> predefinedTeXFormulas)
         {
             var rootEnabled = rootElement.AttributeBooleanValue("enabled", true);
