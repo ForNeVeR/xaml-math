@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace WpfMath.Fonts;
 
-internal static class WpfCharInfoEx
+public static class WpfCharInfoEx
 {
     public static GlyphRun GetGlyphRun(this CharInfo info, double x, double y, double scale)
     {

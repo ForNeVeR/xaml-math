@@ -83,6 +83,13 @@ namespace WpfMath.Converters
         public string ConvertGeometry(System.Windows.Media.Geometry geometry) { throw null; }
     }
 }
+namespace WpfMath.Fonts
+{
+    public static partial class WpfCharInfoEx
+    {
+        public static System.Windows.Media.GlyphRun GetGlyphRun(this WpfMath.CharInfo info, double x, double y, double scale) { throw null; }
+    }
+}
 namespace WpfMath.Parsers
 {
     public static partial class WpfTeXFormulaParser
