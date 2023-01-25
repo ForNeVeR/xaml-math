@@ -3,6 +3,27 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] (0.13.0)
+### Changed
+- **(Breaking change.)** The library is now distributes in the form of two assemblies: `WpfMath` and `WpfMath.Shared` (as a future cross-platform core of the library).
+
+  Both of the assemblies are still distributed in the same NuGet package.
+
+  A lot of types were moved to `WpfMath.Shared` assembly (preserving their namespaces).
+- **(Breaking change.)** It is no longer recommended to create instances of `TexEnvironment` using the public constructor. Use `WpfMath.Rendering.WpfTeXEnvironment::Create` instead.
+- **(Breaking change.)** It is no longer recommended to create instances of `TexFormulaParser` using public constructors. Use `WpfMath.Parsers.WpfTeXFormulaParser::Instance` instead.
+- **(Breaking change.)** WPF-specific `WpfMath.Rendering.IBrush` has been replaced with `WpfMath.Rendering.IBrush` in most of the public interfaces. Use `WpfMath.Rendering.WpfBrushExtensions` to convert back and forth to the WPF type.
+- **(Breaking change.)** `WpfMath.Rendering.IElementRenderer` has been updated:
+  - `RenderGlyphRun` has been replaced with `RenderCharacter` method (not reliant on any WPF-specific types),
+  - `RenderRectangle` now receives an instance of a new `WpfMath.Rendering.Rectangle` type (decoupled from WPF).
+- `WpfMath.TexRenderer` is now obsolete. Consult the documentation on new recommended ways to perform custom rendering. There are new extension methods in two classes (`WpfMath.Rendering.WpfTeXFormulaExtensions` and `WpfMath.Rendering.TeXFormulaExtensions`) that are the main way to render formulae now.
+
+### Added
+- `WpfMath.CharInfo`: a new public type to work with a font character. Use `WpfMath.Fonts.WpfCharInfoEx::GetGlyphRun` if you need to get a `System.Windows.Media.GlyphRun` from it.
+- `WpfMath.Rendering.WpfTeXFormulaExtensions` to render a `WpfMath.TexFormula` into a `System.Windows.Media.Imaging.BitmapSource` or `System.Windows.Media.Geometry`.
+- New classes for WPF-Math porting to platforms other than WPF (consult the `WpfMath.Rendering.IElementRenderer` interface and `TexFormulaParser` constructor parameters to know more).
+
+
 ## [0.12.0] - 2023-01-07
 ### Added
 - TeX's environment support with only one environment for now: `\begin{pmatrix}` (see [#329][pull-329]).
