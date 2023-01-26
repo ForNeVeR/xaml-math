@@ -4,6 +4,8 @@ on:
     tags:
       - 'v*'
 
+  workflow_dispatch:
+
 jobs:
   nuget-push:
     runs-on: windows-2019
@@ -18,25 +20,27 @@ jobs:
         run: Write-Output "::set-output name=version::$($env:GITHUB_REF -replace '^refs/tags/v', '')"
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: NuGet cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ env.NUGET_PACKAGES }}
           key: release.nuget.${{ hashFiles('**/*.csproj') }}
+
       - name: Set up .NET SDK
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '7.0.x'
 
       - name: Prepare a NuGet package
         run: dotnet pack --configuration Release -p:Version=${{ steps.version.outputs.version }}
+
       - name: Read changelog
         id: changelog
-        uses: mindsers/changelog-reader-action@v2
+        uses: ForNeVeR/ChangelogAutomation.action@v1
         with:
-          version: ${{ steps.version.outputs.version }}
+          output: ./release-notes.md
 
       - name: Create release
         id: release
@@ -46,7 +50,8 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: WPF-Math v${{ steps.version.outputs.version }}
-          body: ${{ steps.changelog.outputs.changes }}
+          body_path: ./release-notes.md
+
       - name: Upload .nupkg file
         uses: actions/upload-release-asset@v1
         env:
@@ -56,6 +61,7 @@ jobs:
           asset_name: WPF-Math.${{ steps.version.outputs.version }}.nupkg
           asset_path: ./src/WpfMath/bin/Release/WpfMath.${{ steps.version.outputs.version }}.nupkg
           asset_content_type: application/zip
+
       - name: Upload .snupkg file
         uses: actions/upload-release-asset@v1
         env:

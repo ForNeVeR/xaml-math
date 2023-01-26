@@ -9,28 +9,33 @@ on:
   schedule:
     - cron: '0 0 * * 6'
 
+  workflow_dispatch:
+
 jobs:
   main:
     runs-on: windows-2019
+
     env:
       DOTNET_NOLOGO: 1
       DOTNET_CLI_TELEMETRY_OPTOUT: 1
       NUGET_PACKAGES: ${{ github.workspace }}/.github/nuget-packages
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Verify encoding
         shell: pwsh
         run: ./scripts/verify-encoding.ps1
 
       - name: NuGet cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ env.NUGET_PACKAGES }}
           key: ${{ runner.os }}.nuget.${{ hashFiles('**/*.csproj') }}
+
       - name: Set up .NET SDK
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: |
             3.1.x
@@ -39,7 +44,9 @@ jobs:
 
       - name: Build
         run: dotnet build
+
       - name: Pack
         run: dotnet pack
+
       - name: Test
         run: dotnet test
