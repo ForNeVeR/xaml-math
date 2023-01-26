@@ -28,6 +28,7 @@ For a more detailed sample, check out the [example project][example]. It shows t
 The following example demonstrates usage of `TexFormula` API to render the image into a PNG file using the `RenderToPng` extension method:
 
 ```csharp
+using System;
 using System.IO;
 using WpfMath;
 
@@ -40,14 +41,23 @@ namespace ConsoleApplication2
             const string latex = @"\frac{2+2}{2}";
             const string fileName = @"T:\Temp\formula.png";
 
-            var parser = new TexFormulaParser();
-            var formula = parser.Parse(latex);
-            var pngBytes = formula.RenderToPng(20.0, 0.0, 0.0, "Arial");
-            File.WriteAllBytes(fileName, pngBytes);
+            try
+            {
+                var parser = new TexFormulaParser();
+                var formula = parser.Parse(latex);
+                var pngBytes = formula.RenderToPng(20.0, 0.0, 0.0, "Arial");
+                File.WriteAllBytes(fileName, pngBytes);
+            }
+            catch (TexException e)
+            {
+                Console.Error.WriteLine("Error when parsing formula: " + e.Message);
+            }
         }
     }
 }
 ```
+
+Note that `WpfMath.TexFormulaParser::Parse` may throw a `WpfMath.TexException` if it was unable to parse a formula.
 
 If you need any additional control over the image format, consider using the extension methods from the `WpfTeXFormulaExtensions` class:
 
