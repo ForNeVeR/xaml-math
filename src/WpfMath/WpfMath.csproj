@@ -1,56 +1,87 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
     <PropertyGroup>
         <TargetFrameworks>netcoreapp3.1;net452</TargetFrameworks>
-        <LangVersion>8.0</LangVersion>
         <UseWpf>true</UseWpf>
         <OutputType>Library</OutputType>
         <DebugType>Full</DebugType>
     </PropertyGroup>
     <PropertyGroup>
         <PackageId>WpfMath</PackageId>
-        <Version>0.10.0</Version>
         <Title>WPF-Math</Title>
         <Authors>ForNeVeR</Authors>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/ForNeVeR/wpf-math</PackageProjectUrl>
         <RepositoryUrl>https://github.com/ForNeVeR/wpf-math.git</RepositoryUrl>
         <AssemblyTitle>WPF-Math</AssemblyTitle>
-        <PackageReleaseNotes>Changed:
-- Removed support for .NET Core 3.0
+        <PackageReleaseNotes>[Changed]
 
-Added:
-- Enable nullable reference types
+- (Breaking change.) The library is now distributed in the form of two assemblies: WpfMath and WpfMath.Shared (as a future cross-platform core of the library).
+Both of the assemblies are still distributed in the same NuGet package.
+A lot of types were moved to WpfMath.Shared assembly (preserving their namespaces).
+- (Breaking change.) It is no longer recommended to create instances of TexEnvironment using the public constructor. Use WpfMath.Rendering.WpfTeXEnvironment::Create instead.
+- (Breaking change.) It is no longer recommended to create instances of TexFormulaParser using public constructors. Use WpfMath.Parsers.WpfTeXFormulaParser::Instance instead.
+- (Breaking change.) WPF-specific WpfMath.Rendering.IBrush has been replaced with WpfMath.Rendering.IBrush in most of the public interfaces. Use WpfMath.Rendering.WpfBrushExtensions to convert back and forth to the WPF type.
+- (Breaking change.) WpfMath.Rendering.IElementRenderer has been updated:
+- RenderGlyphRun has been replaced with RenderCharacter method (not reliant on any WPF-specific types),
+- RenderRectangle now receives an instance of a new WpfMath.Rendering.Rectangle type (decoupled from WPF).
+- WpfMath.TexRenderer is now obsolete. Consult the documentation on new recommended ways to perform custom rendering. There are new extension methods in two classes (WpfMath.Rendering.WpfTeXFormulaExtensions and WpfMath.Rendering.TeXFormulaExtensions) that are the main way to render formulae now.
+- (Breaking change.) WpfMath.TexFormnula::GetRenderer is gone. Create a TexRenderer using constructor (obsolete) or use the aforementioned extension methods instead.
 
-Fixed:
-- Foreground property not working on FormulaControl
-- Fix typo in SystemTextFontNameProperty
-- \limsup throws exception
-- Fix for scripts with curly braces after a command with curly braces (e.g. \hat{x}_{y})
-- Crash on empty \sqrt{}
-- OverUnderBox constructor may dereference scriptBox parameter if it's null
+[Added]
+
+- WpfMath.CharInfo: a new public type to work with a font character. Use WpfMath.Fonts.WpfCharInfoEx::GetGlyphRun if you need to get a System.Windows.Media.GlyphRun from it.
+- WpfMath.Rendering.WpfTeXFormulaExtensions to render a WpfMath.TexFormula into a System.Windows.Media.Imaging.BitmapSource or System.Windows.Media.Geometry.
+- New classes for WPF-Math porting to platforms other than WPF (consult the WpfMath.Rendering.IElementRenderer interface and TexFormulaParser constructor parameters to know more).
+- WpfMath.Colors.RgbaColor as a new portable color representation.
+- WpfMath.Fonts.IFontProvider: implement this interface to provide alternate font reading functionality.
+- WpfMath.Fonts.ITeXFont: implement this interface to provide access to a platform-specific font resource.
+- WpfMath.Rendering.IBrushFactory: implement this interface to provide access to creation of platform-specific solid-colored brushes.
+- WpfMath.TeXFontMetrics that contains some measurements of a font glyph.
+- An utility Result struct is now public.
         </PackageReleaseNotes>
         <PackageTags>wpf;latex;formula</PackageTags>
         <Description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the WPF framework.</Description>
-        <Copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2021</Copyright>
+        <Copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2023</Copyright>
 
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    </PropertyGroup>
 
-        <Nullable Condition="'$(TargetFramework)' == 'netcoreapp3.1'">enable</Nullable>
-        <Nullable Condition="'$(TargetFramework)' == 'net452'">annotations</Nullable>
+    <PropertyGroup Condition=" $([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net452')) ">
+        <IncludePackageReferencesDuringMarkupCompilation>true</IncludePackageReferencesDuringMarkupCompilation>
     </PropertyGroup>
 
     <ItemGroup>
-        <EmbeddedResource Include="Data/*" />
-        <Resource Include="Fonts\cmex10.ttf" />
-        <Resource Include="Fonts\cmmi10.ttf" />
-        <Resource Include="Fonts\cmr10.ttf" />
-        <Resource Include="Fonts\cmsy10.ttf" />
+      <Resource Include="Fonts\cmex10.ttf" />
+      <Resource Include="Fonts\cmmi10.ttf" />
+      <Resource Include="Fonts\cmr10.ttf" />
+      <Resource Include="Fonts\cmsy10.ttf" />
     </ItemGroup>
+
     <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+        <PackageReference Include="Nullable" Version="1.2.1" PrivateAssets="All" />
     </ItemGroup>
-    <Import Project="..\SharedMath\SharedMath.projitems" Label="Shared" />
+
+    <ItemGroup>
+        <ProjectReference Include="..\WpfMath.Shared\WpfMath.Shared.csproj" />
+    </ItemGroup>
+
+    <!-- TODO[#341]: Remove this after WpfMath.Shared gets into a separate package (together with the Avalonia release) -->
+    <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
+        <ItemGroup>
+            <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
+        </ItemGroup>
+    </Target>
+    <PropertyGroup>
+        <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="$(AssemblyName).Tests" />
+    </ItemGroup>
+
 </Project>

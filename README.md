@@ -31,33 +31,8 @@ For a more detailed sample, check out the [example project][example]. It shows t
 The following example demonstrates usage of `TexFormula` API to render the image into a PNG file using the `RenderToPng` extension method:
 
 ```csharp
-using System.IO;
-using WpfMath;
-
-namespace ConsoleApplication2
-{
-    internal class Program
-    {
-        public static void Main(string[] args)
-        {
-            const string latex = @"\frac{2+2}{2}";
-            const string fileName = @"T:\Temp\formula.png";
-
-            var parser = new TexFormulaParser();
-            var formula = parser.Parse(latex);
-            var pngBytes = formula.RenderToPng(20.0, 0.0, 0.0, "Arial");
-            File.WriteAllBytes(fileName, pngBytes);
-        }
-    }
-}
-```
-
-If you need any additional control over the image format, consider using the `GetRenderer` API:
-
-```csharp
 using System;
 using System.IO;
-using System.Windows.Media.Imaging;
 using WpfMath;
 
 namespace ConsoleApplication2
@@ -69,26 +44,53 @@ namespace ConsoleApplication2
             const string latex = @"\frac{2+2}{2}";
             const string fileName = @"T:\Temp\formula.png";
 
-            var parser = new TexFormulaParser();
-            var formula = parser.Parse(latex);
-            var renderer = formula.GetRenderer(TexStyle.Display, 20.0, "Arial");
-            var bitmapSource = renderer.RenderToBitmap(0.0, 0.0);
-            Console.WriteLine($"Image width: {bitmapSource.Width}");
-            Console.WriteLine($"Image height: {bitmapSource.Height}");
-
-            var encoder = new PngBitmapEncoder();
-            encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
-            using (var target = new FileStream(fileName, FileMode.Create))
+            try
             {
-                encoder.Save(target);
-                Console.WriteLine($"File saved to {fileName}");
+                var parser = new TexFormulaParser();
+                var formula = parser.Parse(latex);
+                var pngBytes = formula.RenderToPng(20.0, 0.0, 0.0, "Arial");
+                File.WriteAllBytes(fileName, pngBytes);
+            }
+            catch (TexException e)
+            {
+                Console.Error.WriteLine("Error when parsing formula: " + e.Message);
             }
         }
     }
 }
 ```
 
-You may also pass your own `IElementRenderer` implementation to `TexFormula.RenderFormulaTo` method if you need support for any alternate rendering engines.
+Note that `WpfMath.TexFormulaParser::Parse` may throw a `WpfMath.TexException` if it was unable to parse a formula.
+
+If you need any additional control over the image format, consider using the extension methods from the `WpfTeXFormulaExtensions` class:
+
+```csharp
+using System;
+using System.IO;
+using System.Windows.Media.Imaging;
+using WpfMath;
+using WpfMath.Rendering;
+
+const string latex = @"\frac{2+2}{2}";
+const string fileName = @"T:\Temp\formula.png";
+
+var parser = new TexFormulaParser();
+var formula = parser.Parse(latex);
+var environment = WpfTeXEnvironment.Create(TexStyle.Display, 20.0, "Arial");
+var bitmapSource = formula.RenderToBitmap(environment);
+Console.WriteLine($"Image width: {bitmapSource.Width}");
+Console.WriteLine($"Image height: {bitmapSource.Height}");
+
+var encoder = new PngBitmapEncoder();
+encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
+using (var target = new FileStream(fileName, FileMode.Create))
+{
+    encoder.Save(target);
+    Console.WriteLine($"File saved to {fileName}");
+}
+```
+
+You may also pass your own `IElementRenderer` implementation to `TeXFormulaExtensions::RenderTo` method if you need support for any alternate rendering engines.
 
 Documentation
 -------------
@@ -97,6 +99,7 @@ Documentation
 
 - [Color support in WPF-Math][docs-colors]
 - [Matrices and Matrix-Like Constructs][docs-matrices]
+- [Environments (`\begin` and `\end`)][docs.environments]
 - [How to improve blurred formulas][docs-blurred-text-issue]
 
 - [How to prepare `DefaultTexFont.xml` from the font file][docs-prepare-font]
@@ -108,7 +111,7 @@ Documentation
 Build and Maintenance Instructions
 ----------------------------------
 
-Build the project using [.NET SDK 5.0][dotnet-sdk]. WPF-Math requires C# 8 and F# 4.7 support. Here's the build and test script:
+Build the project using [.NET SDK 7.0][dotnet-sdk] or later. Here's the build and test script:
 
 ```console
 $ dotnet build --configuration Release
@@ -148,6 +151,7 @@ We're very grateful to JMathTeX authors for their work and allowing to redistrib
 [docs-matrices]: docs/matrices.md
 [docs-prepare-font]: docs/prepare-font.md
 [docs.changelog]: ./CHANGELOG.md
+[docs.environments]: docs/environments.md
 [docs.maintainership]: ./MAINTAINERSHIP.md
 [example]: src/WpfMath.Example/
 [fonts]: src/WpfMath/Fonts/

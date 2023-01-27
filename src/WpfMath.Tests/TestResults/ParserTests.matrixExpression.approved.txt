@@ -1,792 +1,792 @@
 {
-  "TextStyle": null,
   "RootAtom": {
     "[AtomType]": "RowAtom",
-    "PreviousAtom": null,
     "Elements": [
       {
         "[AtomType]": "CharAtom",
         "Character": "v",
-        "TextStyle": null,
         "IsTextSymbol": false,
-        "Type": "Ordinary",
         "Source": {
-          "Start": 0,
           "End": 1,
           "Length": 1,
           "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 0
+        },
+        "TextStyle": null,
+        "Type": "Ordinary"
       },
       {
         "[AtomType]": "SymbolAtom",
         "IsDelimeter": false,
-        "Name": "times",
         "IsTextSymbol": false,
-        "Type": "BinaryOperator",
+        "Name": "times",
         "Source": {
-          "Start": 3,
           "End": 8,
           "Length": 5,
           "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 3
+        },
+        "Type": "BinaryOperator"
       },
       {
         "[AtomType]": "CharAtom",
         "Character": "w",
-        "TextStyle": null,
         "IsTextSymbol": false,
-        "Type": "Ordinary",
         "Source": {
-          "Start": 9,
           "End": 10,
           "Length": 1,
           "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 9
+        },
+        "TextStyle": null,
+        "Type": "Ordinary"
       },
       {
         "[AtomType]": "SymbolAtom",
         "IsDelimeter": false,
-        "Name": "equals",
         "IsTextSymbol": false,
-        "Type": "Relation",
+        "Name": "equals",
         "Source": {
-          "Start": 11,
           "End": 12,
           "Length": 1,
           "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 11
+        },
+        "Type": "Relation"
       },
       {
         "[AtomType]": "FencedAtom",
         "BaseAtom": {
           "[AtomType]": "MatrixAtom",
+          "HorizontalPadding": 0.35,
+          "MatrixCellAlignment": "Center",
           "MatrixCells": [
             [
               {
                 "[AtomType]": "RowAtom",
-                "PreviousAtom": null,
                 "Elements": [
                   {
                     "[AtomType]": "ScriptsAtom",
                     "BaseAtom": {
                       "[AtomType]": "CharAtom",
                       "Character": "v",
-                      "TextStyle": null,
                       "IsTextSymbol": false,
-                      "Type": "Ordinary",
                       "Source": {
-                        "Start": 28,
                         "End": 29,
                         "Length": 1,
                         "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                        "SourceName": "User input"
-                      }
-                    },
-                    "SubscriptAtom": {
-                      "[AtomType]": "CharAtom",
-                      "Character": "2",
+                        "SourceName": "User input",
+                        "Start": 28
+                      },
                       "TextStyle": null,
-                      "IsTextSymbol": false,
-                      "Type": "Ordinary",
-                      "Source": {
-                        "Start": 30,
-                        "End": 31,
-                        "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                        "SourceName": "User input"
-                      }
+                      "Type": "Ordinary"
                     },
-                    "SuperscriptAtom": null,
-                    "Type": "Ordinary",
                     "Source": {
-                      "Start": 1,
                       "End": 4,
                       "Length": 3,
                       "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                      "SourceName": "User input"
-                    }
+                      "SourceName": "User input",
+                      "Start": 1
+                    },
+                    "SubscriptAtom": {
+                      "[AtomType]": "CharAtom",
+                      "Character": "2",
+                      "IsTextSymbol": false,
+                      "Source": {
+                        "End": 31,
+                        "Length": 1,
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input",
+                        "Start": 30
+                      },
+                      "TextStyle": null,
+                      "Type": "Ordinary"
+                    },
+                    "SuperscriptAtom": null,
+                    "Type": "Ordinary"
                   },
                   {
                     "[AtomType]": "ScriptsAtom",
                     "BaseAtom": {
                       "[AtomType]": "CharAtom",
                       "Character": "w",
-                      "TextStyle": null,
                       "IsTextSymbol": false,
-                      "Type": "Ordinary",
                       "Source": {
-                        "Start": 32,
                         "End": 33,
                         "Length": 1,
                         "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                        "SourceName": "User input"
-                      }
-                    },
-                    "SubscriptAtom": {
-                      "[AtomType]": "CharAtom",
-                      "Character": "3",
+                        "SourceName": "User input",
+                        "Start": 32
+                      },
                       "TextStyle": null,
-                      "IsTextSymbol": false,
-                      "Type": "Ordinary",
-                      "Source": {
-                        "Start": 34,
-                        "End": 35,
-                        "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                        "SourceName": "User input"
-                      }
+                      "Type": "Ordinary"
                     },
-                    "SuperscriptAtom": null,
-                    "Type": "Ordinary",
                     "Source": {
-                      "Start": 5,
                       "End": 8,
                       "Length": 3,
                       "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                      "SourceName": "User input"
-                    }
+                      "SourceName": "User input",
+                      "Start": 5
+                    },
+                    "SubscriptAtom": {
+                      "[AtomType]": "CharAtom",
+                      "Character": "3",
+                      "IsTextSymbol": false,
+                      "Source": {
+                        "End": 35,
+                        "Length": 1,
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input",
+                        "Start": 34
+                      },
+                      "TextStyle": null,
+                      "Type": "Ordinary"
+                    },
+                    "SuperscriptAtom": null,
+                    "Type": "Ordinary"
                   },
                   {
                     "[AtomType]": "SymbolAtom",
                     "IsDelimeter": false,
-                    "Name": "minus",
                     "IsTextSymbol": false,
-                    "Type": "BinaryOperator",
+                    "Name": "minus",
                     "Source": {
-                      "Start": 36,
                       "End": 37,
                       "Length": 1,
                       "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                      "SourceName": "User input"
-                    }
+                      "SourceName": "User input",
+                      "Start": 36
+                    },
+                    "Type": "BinaryOperator"
                   },
                   {
                     "[AtomType]": "ScriptsAtom",
                     "BaseAtom": {
                       "[AtomType]": "CharAtom",
                       "Character": "v",
-                      "TextStyle": null,
                       "IsTextSymbol": false,
-                      "Type": "Ordinary",
                       "Source": {
-                        "Start": 38,
                         "End": 39,
                         "Length": 1,
                         "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                        "SourceName": "User input"
-                      }
-                    },
-                    "SubscriptAtom": {
-                      "[AtomType]": "CharAtom",
-                      "Character": "3",
+                        "SourceName": "User input",
+                        "Start": 38
+                      },
                       "TextStyle": null,
-                      "IsTextSymbol": false,
-                      "Type": "Ordinary",
-                      "Source": {
-                        "Start": 40,
-                        "End": 41,
-                        "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                        "SourceName": "User input"
-                      }
+                      "Type": "Ordinary"
                     },
-                    "SuperscriptAtom": null,
-                    "Type": "Ordinary",
                     "Source": {
-                      "Start": 11,
                       "End": 14,
                       "Length": 3,
                       "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                      "SourceName": "User input"
-                    }
+                      "SourceName": "User input",
+                      "Start": 11
+                    },
+                    "SubscriptAtom": {
+                      "[AtomType]": "CharAtom",
+                      "Character": "3",
+                      "IsTextSymbol": false,
+                      "Source": {
+                        "End": 41,
+                        "Length": 1,
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input",
+                        "Start": 40
+                      },
+                      "TextStyle": null,
+                      "Type": "Ordinary"
+                    },
+                    "SuperscriptAtom": null,
+                    "Type": "Ordinary"
                   },
                   {
                     "[AtomType]": "ScriptsAtom",
                     "BaseAtom": {
                       "[AtomType]": "CharAtom",
                       "Character": "w",
-                      "TextStyle": null,
                       "IsTextSymbol": false,
-                      "Type": "Ordinary",
                       "Source": {
-                        "Start": 42,
                         "End": 43,
                         "Length": 1,
                         "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                        "SourceName": "User input"
-                      }
-                    },
-                    "SubscriptAtom": {
-                      "[AtomType]": "CharAtom",
-                      "Character": "2",
+                        "SourceName": "User input",
+                        "Start": 42
+                      },
                       "TextStyle": null,
-                      "IsTextSymbol": false,
-                      "Type": "Ordinary",
-                      "Source": {
-                        "Start": 44,
-                        "End": 45,
-                        "Length": 1,
-                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                        "SourceName": "User input"
-                      }
+                      "Type": "Ordinary"
                     },
-                    "SuperscriptAtom": null,
-                    "Type": "Ordinary",
                     "Source": {
-                      "Start": 15,
                       "End": 18,
                       "Length": 3,
                       "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                      "SourceName": "User input"
-                    }
+                      "SourceName": "User input",
+                      "Start": 15
+                    },
+                    "SubscriptAtom": {
+                      "[AtomType]": "CharAtom",
+                      "Character": "2",
+                      "IsTextSymbol": false,
+                      "Source": {
+                        "End": 45,
+                        "Length": 1,
+                        "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                        "SourceName": "User input",
+                        "Start": 44
+                      },
+                      "TextStyle": null,
+                      "Type": "Ordinary"
+                    },
+                    "SuperscriptAtom": null,
+                    "Type": "Ordinary"
                   }
                 ],
-                "Type": "Ordinary",
+                "PreviousAtom": null,
                 "Source": {
-                  "Start": 28,
                   "End": 46,
                   "Length": 18,
                   "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                  "SourceName": "User input"
-                }
+                  "SourceName": "User input",
+                  "Start": 28
+                },
+                "Type": "Ordinary"
               }
             ],
             [
               {
                 "[AtomType]": "RowAtom",
-                "PreviousAtom": null,
                 "Elements": [
                   {
                     "[AtomType]": "ScriptsAtom",
                     "BaseAtom": {
                       "[AtomType]": "CharAtom",
                       "Character": "v",
-                      "TextStyle": null,
                       "IsTextSymbol": false,
-                      "Type": "Ordinary",
                       "Source": {
-                        "Start": 49,
                         "End": 50,
                         "Length": 1,
                         "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                        "SourceName": "User input"
-                      }
+                        "SourceName": "User input",
+                        "Start": 49
+                      },
+                      "TextStyle": null,
+                      "Type": "Ordinary"
+                    },
+                    "Source": {
+                      "End": 25,
+                      "Length": 3,
+                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                      "SourceName": "User input",
+                      "Start": 22
                     },
                     "SubscriptAtom": {
                       "[AtomType]": "CharAtom",
                       "Character": "3",
-                      "TextStyle": null,
                       "IsTextSymbol": false,
-                      "Type": "Ordinary",
                       "Source": {
-                        "Start": 51,
                         "End": 52,
                         "Length": 1,
                         "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                        "SourceName": "User input"
-                      }
+                        "SourceName": "User input",
+                        "Start": 51
+                      },
+                      "TextStyle": null,
+                      "Type": "Ordinary"
                     },
                     "SuperscriptAtom": null,
-                    "Type": "Ordinary",
-                    "Source": {
-                      "Start": 22,
-                      "End": 25,
-                      "Length": 3,
-                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                      "SourceName": "User input"
-                    }
+                    "Type": "Ordinary"
                   },
                   {
                     "[AtomType]": "ScriptsAtom",
                     "BaseAtom": {
                       "[AtomType]": "CharAtom",
                       "Character": "w",
-                      "TextStyle": null,
                       "IsTextSymbol": false,
-                      "Type": "Ordinary",
                       "Source": {
-                        "Start": 53,
                         "End": 54,
                         "Length": 1,
                         "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                        "SourceName": "User input"
-                      }
+                        "SourceName": "User input",
+                        "Start": 53
+                      },
+                      "TextStyle": null,
+                      "Type": "Ordinary"
+                    },
+                    "Source": {
+                      "End": 29,
+                      "Length": 3,
+                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                      "SourceName": "User input",
+                      "Start": 26
                     },
                     "SubscriptAtom": {
                       "[AtomType]": "CharAtom",
                       "Character": "1",
-                      "TextStyle": null,
                       "IsTextSymbol": false,
-                      "Type": "Ordinary",
                       "Source": {
-                        "Start": 55,
                         "End": 56,
                         "Length": 1,
                         "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                        "SourceName": "User input"
-                      }
+                        "SourceName": "User input",
+                        "Start": 55
+                      },
+                      "TextStyle": null,
+                      "Type": "Ordinary"
                     },
                     "SuperscriptAtom": null,
-                    "Type": "Ordinary",
-                    "Source": {
-                      "Start": 26,
-                      "End": 29,
-                      "Length": 3,
-                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                      "SourceName": "User input"
-                    }
+                    "Type": "Ordinary"
                   },
                   {
                     "[AtomType]": "SymbolAtom",
                     "IsDelimeter": false,
-                    "Name": "minus",
                     "IsTextSymbol": false,
-                    "Type": "BinaryOperator",
+                    "Name": "minus",
                     "Source": {
-                      "Start": 57,
                       "End": 58,
                       "Length": 1,
                       "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                      "SourceName": "User input"
-                    }
+                      "SourceName": "User input",
+                      "Start": 57
+                    },
+                    "Type": "BinaryOperator"
                   },
                   {
                     "[AtomType]": "ScriptsAtom",
                     "BaseAtom": {
                       "[AtomType]": "CharAtom",
                       "Character": "v",
-                      "TextStyle": null,
                       "IsTextSymbol": false,
-                      "Type": "Ordinary",
                       "Source": {
-                        "Start": 59,
                         "End": 60,
                         "Length": 1,
                         "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                        "SourceName": "User input"
-                      }
+                        "SourceName": "User input",
+                        "Start": 59
+                      },
+                      "TextStyle": null,
+                      "Type": "Ordinary"
+                    },
+                    "Source": {
+                      "End": 35,
+                      "Length": 3,
+                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                      "SourceName": "User input",
+                      "Start": 32
                     },
                     "SubscriptAtom": {
                       "[AtomType]": "CharAtom",
                       "Character": "1",
-                      "TextStyle": null,
                       "IsTextSymbol": false,
-                      "Type": "Ordinary",
                       "Source": {
-                        "Start": 61,
                         "End": 62,
                         "Length": 1,
                         "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                        "SourceName": "User input"
-                      }
+                        "SourceName": "User input",
+                        "Start": 61
+                      },
+                      "TextStyle": null,
+                      "Type": "Ordinary"
                     },
                     "SuperscriptAtom": null,
-                    "Type": "Ordinary",
-                    "Source": {
-                      "Start": 32,
-                      "End": 35,
-                      "Length": 3,
-                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                      "SourceName": "User input"
-                    }
+                    "Type": "Ordinary"
                   },
                   {
                     "[AtomType]": "ScriptsAtom",
                     "BaseAtom": {
                       "[AtomType]": "CharAtom",
                       "Character": "w",
-                      "TextStyle": null,
                       "IsTextSymbol": false,
-                      "Type": "Ordinary",
                       "Source": {
-                        "Start": 63,
                         "End": 64,
                         "Length": 1,
                         "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                        "SourceName": "User input"
-                      }
+                        "SourceName": "User input",
+                        "Start": 63
+                      },
+                      "TextStyle": null,
+                      "Type": "Ordinary"
+                    },
+                    "Source": {
+                      "End": 39,
+                      "Length": 3,
+                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                      "SourceName": "User input",
+                      "Start": 36
                     },
                     "SubscriptAtom": {
                       "[AtomType]": "CharAtom",
                       "Character": "3",
-                      "TextStyle": null,
                       "IsTextSymbol": false,
-                      "Type": "Ordinary",
                       "Source": {
-                        "Start": 65,
                         "End": 66,
                         "Length": 1,
                         "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                        "SourceName": "User input"
-                      }
+                        "SourceName": "User input",
+                        "Start": 65
+                      },
+                      "TextStyle": null,
+                      "Type": "Ordinary"
                     },
                     "SuperscriptAtom": null,
-                    "Type": "Ordinary",
-                    "Source": {
-                      "Start": 36,
-                      "End": 39,
-                      "Length": 3,
-                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                      "SourceName": "User input"
-                    }
+                    "Type": "Ordinary"
                   }
                 ],
-                "Type": "Ordinary",
+                "PreviousAtom": null,
                 "Source": {
-                  "Start": 28,
                   "End": 67,
                   "Length": 39,
                   "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                  "SourceName": "User input"
-                }
+                  "SourceName": "User input",
+                  "Start": 28
+                },
+                "Type": "Ordinary"
               }
             ],
             [
               {
                 "[AtomType]": "RowAtom",
-                "PreviousAtom": null,
                 "Elements": [
                   {
                     "[AtomType]": "ScriptsAtom",
                     "BaseAtom": {
                       "[AtomType]": "CharAtom",
                       "Character": "v",
-                      "TextStyle": null,
                       "IsTextSymbol": false,
-                      "Type": "Ordinary",
                       "Source": {
-                        "Start": 70,
                         "End": 71,
                         "Length": 1,
                         "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                        "SourceName": "User input"
-                      }
+                        "SourceName": "User input",
+                        "Start": 70
+                      },
+                      "TextStyle": null,
+                      "Type": "Ordinary"
+                    },
+                    "Source": {
+                      "End": 46,
+                      "Length": 3,
+                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                      "SourceName": "User input",
+                      "Start": 43
                     },
                     "SubscriptAtom": {
                       "[AtomType]": "CharAtom",
                       "Character": "1",
-                      "TextStyle": null,
                       "IsTextSymbol": false,
-                      "Type": "Ordinary",
                       "Source": {
-                        "Start": 72,
                         "End": 73,
                         "Length": 1,
                         "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                        "SourceName": "User input"
-                      }
+                        "SourceName": "User input",
+                        "Start": 72
+                      },
+                      "TextStyle": null,
+                      "Type": "Ordinary"
                     },
                     "SuperscriptAtom": null,
-                    "Type": "Ordinary",
-                    "Source": {
-                      "Start": 43,
-                      "End": 46,
-                      "Length": 3,
-                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                      "SourceName": "User input"
-                    }
+                    "Type": "Ordinary"
                   },
                   {
                     "[AtomType]": "ScriptsAtom",
                     "BaseAtom": {
                       "[AtomType]": "CharAtom",
                       "Character": "w",
-                      "TextStyle": null,
                       "IsTextSymbol": false,
-                      "Type": "Ordinary",
                       "Source": {
-                        "Start": 74,
                         "End": 75,
                         "Length": 1,
                         "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                        "SourceName": "User input"
-                      }
+                        "SourceName": "User input",
+                        "Start": 74
+                      },
+                      "TextStyle": null,
+                      "Type": "Ordinary"
+                    },
+                    "Source": {
+                      "End": 50,
+                      "Length": 3,
+                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                      "SourceName": "User input",
+                      "Start": 47
                     },
                     "SubscriptAtom": {
                       "[AtomType]": "CharAtom",
                       "Character": "2",
-                      "TextStyle": null,
                       "IsTextSymbol": false,
-                      "Type": "Ordinary",
                       "Source": {
-                        "Start": 76,
                         "End": 77,
                         "Length": 1,
                         "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                        "SourceName": "User input"
-                      }
+                        "SourceName": "User input",
+                        "Start": 76
+                      },
+                      "TextStyle": null,
+                      "Type": "Ordinary"
                     },
                     "SuperscriptAtom": null,
-                    "Type": "Ordinary",
-                    "Source": {
-                      "Start": 47,
-                      "End": 50,
-                      "Length": 3,
-                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                      "SourceName": "User input"
-                    }
+                    "Type": "Ordinary"
                   },
                   {
                     "[AtomType]": "SymbolAtom",
                     "IsDelimeter": false,
-                    "Name": "minus",
                     "IsTextSymbol": false,
-                    "Type": "BinaryOperator",
+                    "Name": "minus",
                     "Source": {
-                      "Start": 78,
                       "End": 79,
                       "Length": 1,
                       "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                      "SourceName": "User input"
-                    }
+                      "SourceName": "User input",
+                      "Start": 78
+                    },
+                    "Type": "BinaryOperator"
                   },
                   {
                     "[AtomType]": "ScriptsAtom",
                     "BaseAtom": {
                       "[AtomType]": "CharAtom",
                       "Character": "v",
-                      "TextStyle": null,
                       "IsTextSymbol": false,
-                      "Type": "Ordinary",
                       "Source": {
-                        "Start": 80,
                         "End": 81,
                         "Length": 1,
                         "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                        "SourceName": "User input"
-                      }
+                        "SourceName": "User input",
+                        "Start": 80
+                      },
+                      "TextStyle": null,
+                      "Type": "Ordinary"
+                    },
+                    "Source": {
+                      "End": 56,
+                      "Length": 3,
+                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                      "SourceName": "User input",
+                      "Start": 53
                     },
                     "SubscriptAtom": {
                       "[AtomType]": "CharAtom",
                       "Character": "2",
-                      "TextStyle": null,
                       "IsTextSymbol": false,
-                      "Type": "Ordinary",
                       "Source": {
-                        "Start": 82,
                         "End": 83,
                         "Length": 1,
                         "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                        "SourceName": "User input"
-                      }
+                        "SourceName": "User input",
+                        "Start": 82
+                      },
+                      "TextStyle": null,
+                      "Type": "Ordinary"
                     },
                     "SuperscriptAtom": null,
-                    "Type": "Ordinary",
-                    "Source": {
-                      "Start": 53,
-                      "End": 56,
-                      "Length": 3,
-                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                      "SourceName": "User input"
-                    }
+                    "Type": "Ordinary"
                   },
                   {
                     "[AtomType]": "ScriptsAtom",
                     "BaseAtom": {
                       "[AtomType]": "CharAtom",
                       "Character": "w",
-                      "TextStyle": null,
                       "IsTextSymbol": false,
-                      "Type": "Ordinary",
                       "Source": {
-                        "Start": 84,
                         "End": 85,
                         "Length": 1,
                         "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                        "SourceName": "User input"
-                      }
+                        "SourceName": "User input",
+                        "Start": 84
+                      },
+                      "TextStyle": null,
+                      "Type": "Ordinary"
+                    },
+                    "Source": {
+                      "End": 59,
+                      "Length": 2,
+                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                      "SourceName": "User input",
+                      "Start": 57
                     },
                     "SubscriptAtom": {
                       "[AtomType]": "CharAtom",
                       "Character": "1",
-                      "TextStyle": null,
                       "IsTextSymbol": false,
-                      "Type": "Ordinary",
                       "Source": {
-                        "Start": 86,
                         "End": 87,
                         "Length": 1,
                         "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                        "SourceName": "User input"
-                      }
+                        "SourceName": "User input",
+                        "Start": 86
+                      },
+                      "TextStyle": null,
+                      "Type": "Ordinary"
                     },
                     "SuperscriptAtom": null,
-                    "Type": "Ordinary",
-                    "Source": {
-                      "Start": 57,
-                      "End": 59,
-                      "Length": 2,
-                      "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                      "SourceName": "User input"
-                    }
+                    "Type": "Ordinary"
                   }
                 ],
-                "Type": "Ordinary",
+                "PreviousAtom": null,
                 "Source": {
-                  "Start": 28,
                   "End": 87,
                   "Length": 59,
                   "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                  "SourceName": "User input"
-                }
+                  "SourceName": "User input",
+                  "Start": 28
+                },
+                "Type": "Ordinary"
               }
             ]
           ],
-          "VerticalPadding": 0.35,
-          "HorizontalPadding": 0.35,
-          "MatrixCellAlignment": "Center",
-          "Type": "Ordinary",
           "Source": {
-            "Start": 21,
             "End": 88,
             "Length": 67,
             "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-            "SourceName": "User input"
-          }
+            "SourceName": "User input",
+            "Start": 21
+          },
+          "Type": "Ordinary",
+          "VerticalPadding": 0.35
         },
         "LeftDelimeter": {
           "[AtomType]": "SymbolAtom",
           "IsDelimeter": true,
-          "Name": "(",
           "IsTextSymbol": false,
-          "Type": "Opening",
+          "Name": "(",
           "Source": {
-            "Start": 14,
             "End": 19,
             "Length": 5,
             "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-            "SourceName": "User input"
-          }
+            "SourceName": "User input",
+            "Start": 14
+          },
+          "Type": "Opening"
         },
         "RightDelimeter": {
           "[AtomType]": "SymbolAtom",
           "IsDelimeter": true,
-          "Name": ")",
           "IsTextSymbol": false,
-          "Type": "Closing",
+          "Name": ")",
           "Source": {
-            "Start": 90,
             "End": 96,
             "Length": 6,
             "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-            "SourceName": "User input"
-          }
+            "SourceName": "User input",
+            "Start": 90
+          },
+          "Type": "Closing"
         },
-        "Type": "Ordinary",
         "Source": {
-          "Start": 14,
           "End": 96,
           "Length": 82,
           "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 14
+        },
+        "Type": "Ordinary"
       },
       {
         "[AtomType]": "CharAtom",
         "Character": "w",
-        "TextStyle": null,
         "IsTextSymbol": false,
-        "Type": "Ordinary",
         "Source": {
-          "Start": 97,
           "End": 98,
           "Length": 1,
           "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 97
+        },
+        "TextStyle": null,
+        "Type": "Ordinary"
       },
       {
         "[AtomType]": "CharAtom",
         "Character": "h",
-        "TextStyle": null,
         "IsTextSymbol": false,
-        "Type": "Ordinary",
         "Source": {
-          "Start": 98,
           "End": 99,
           "Length": 1,
           "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 98
+        },
+        "TextStyle": null,
+        "Type": "Ordinary"
       },
       {
         "[AtomType]": "CharAtom",
         "Character": "e",
-        "TextStyle": null,
         "IsTextSymbol": false,
-        "Type": "Ordinary",
         "Source": {
-          "Start": 99,
           "End": 100,
           "Length": 1,
           "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 99
+        },
+        "TextStyle": null,
+        "Type": "Ordinary"
       },
       {
         "[AtomType]": "CharAtom",
         "Character": "r",
-        "TextStyle": null,
         "IsTextSymbol": false,
-        "Type": "Ordinary",
         "Source": {
-          "Start": 100,
           "End": 101,
           "Length": 1,
           "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 100
+        },
+        "TextStyle": null,
+        "Type": "Ordinary"
       },
       {
         "[AtomType]": "CharAtom",
         "Character": "e",
-        "TextStyle": null,
         "IsTextSymbol": false,
-        "Type": "Ordinary",
         "Source": {
-          "Start": 101,
           "End": 102,
           "Length": 1,
           "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 101
+        },
+        "TextStyle": null,
+        "Type": "Ordinary"
       },
       {
         "[AtomType]": "CharAtom",
         "Character": "v",
-        "TextStyle": null,
         "IsTextSymbol": false,
-        "Type": "Ordinary",
         "Source": {
-          "Start": 103,
           "End": 104,
           "Length": 1,
           "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 103
+        },
+        "TextStyle": null,
+        "Type": "Ordinary"
       },
       {
         "[AtomType]": "SymbolAtom",
         "IsDelimeter": false,
-        "Name": "equals",
         "IsTextSymbol": false,
-        "Type": "Relation",
+        "Name": "equals",
         "Source": {
-          "Start": 104,
           "End": 105,
           "Length": 1,
           "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 104
+        },
+        "Type": "Relation"
       },
       {
         "[AtomType]": "FencedAtom",
         "BaseAtom": {
           "[AtomType]": "MatrixAtom",
+          "HorizontalPadding": 0.35,
+          "MatrixCellAlignment": "Center",
           "MatrixCells": [
             [
               {
@@ -794,40 +794,40 @@
                 "BaseAtom": {
                   "[AtomType]": "CharAtom",
                   "Character": "v",
-                  "TextStyle": null,
                   "IsTextSymbol": false,
-                  "Type": "Ordinary",
                   "Source": {
-                    "Start": 121,
                     "End": 122,
                     "Length": 1,
                     "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                    "SourceName": "User input"
-                  }
+                    "SourceName": "User input",
+                    "Start": 121
+                  },
+                  "TextStyle": null,
+                  "Type": "Ordinary"
+                },
+                "Source": {
+                  "End": 5,
+                  "Length": 3,
+                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                  "SourceName": "User input",
+                  "Start": 2
                 },
                 "SubscriptAtom": {
                   "[AtomType]": "CharAtom",
                   "Character": "1",
-                  "TextStyle": null,
                   "IsTextSymbol": false,
-                  "Type": "Ordinary",
                   "Source": {
-                    "Start": 123,
                     "End": 124,
                     "Length": 1,
                     "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                    "SourceName": "User input"
-                  }
+                    "SourceName": "User input",
+                    "Start": 123
+                  },
+                  "TextStyle": null,
+                  "Type": "Ordinary"
                 },
                 "SuperscriptAtom": null,
-                "Type": "Ordinary",
-                "Source": {
-                  "Start": 2,
-                  "End": 5,
-                  "Length": 3,
-                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                  "SourceName": "User input"
-                }
+                "Type": "Ordinary"
               }
             ],
             [
@@ -836,40 +836,40 @@
                 "BaseAtom": {
                   "[AtomType]": "CharAtom",
                   "Character": "v",
-                  "TextStyle": null,
                   "IsTextSymbol": false,
-                  "Type": "Ordinary",
                   "Source": {
-                    "Start": 128,
                     "End": 129,
                     "Length": 1,
                     "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                    "SourceName": "User input"
-                  }
+                    "SourceName": "User input",
+                    "Start": 128
+                  },
+                  "TextStyle": null,
+                  "Type": "Ordinary"
+                },
+                "Source": {
+                  "End": 12,
+                  "Length": 3,
+                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                  "SourceName": "User input",
+                  "Start": 9
                 },
                 "SubscriptAtom": {
                   "[AtomType]": "CharAtom",
                   "Character": "2",
-                  "TextStyle": null,
                   "IsTextSymbol": false,
-                  "Type": "Ordinary",
                   "Source": {
-                    "Start": 130,
                     "End": 131,
                     "Length": 1,
                     "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                    "SourceName": "User input"
-                  }
+                    "SourceName": "User input",
+                    "Start": 130
+                  },
+                  "TextStyle": null,
+                  "Type": "Ordinary"
                 },
                 "SuperscriptAtom": null,
-                "Type": "Ordinary",
-                "Source": {
-                  "Start": 9,
-                  "End": 12,
-                  "Length": 3,
-                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                  "SourceName": "User input"
-                }
+                "Type": "Ordinary"
               }
             ],
             [
@@ -878,138 +878,138 @@
                 "BaseAtom": {
                   "[AtomType]": "CharAtom",
                   "Character": "v",
-                  "TextStyle": null,
                   "IsTextSymbol": false,
-                  "Type": "Ordinary",
                   "Source": {
-                    "Start": 135,
                     "End": 136,
                     "Length": 1,
                     "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                    "SourceName": "User input"
-                  }
+                    "SourceName": "User input",
+                    "Start": 135
+                  },
+                  "TextStyle": null,
+                  "Type": "Ordinary"
+                },
+                "Source": {
+                  "End": 19,
+                  "Length": 3,
+                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                  "SourceName": "User input",
+                  "Start": 16
                 },
                 "SubscriptAtom": {
                   "[AtomType]": "CharAtom",
                   "Character": "3",
-                  "TextStyle": null,
                   "IsTextSymbol": false,
-                  "Type": "Ordinary",
                   "Source": {
-                    "Start": 137,
                     "End": 138,
                     "Length": 1,
                     "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                    "SourceName": "User input"
-                  }
+                    "SourceName": "User input",
+                    "Start": 137
+                  },
+                  "TextStyle": null,
+                  "Type": "Ordinary"
                 },
                 "SuperscriptAtom": null,
-                "Type": "Ordinary",
-                "Source": {
-                  "Start": 16,
-                  "End": 19,
-                  "Length": 3,
-                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                  "SourceName": "User input"
-                }
+                "Type": "Ordinary"
               }
             ]
           ],
-          "VerticalPadding": 0.35,
-          "HorizontalPadding": 0.35,
-          "MatrixCellAlignment": "Center",
-          "Type": "Ordinary",
           "Source": {
-            "Start": 113,
             "End": 140,
             "Length": 27,
             "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-            "SourceName": "User input"
-          }
+            "SourceName": "User input",
+            "Start": 113
+          },
+          "Type": "Ordinary",
+          "VerticalPadding": 0.35
         },
         "LeftDelimeter": {
           "[AtomType]": "SymbolAtom",
           "IsDelimeter": true,
-          "Name": "(",
           "IsTextSymbol": false,
-          "Type": "Opening",
+          "Name": "(",
           "Source": {
-            "Start": 107,
             "End": 112,
             "Length": 5,
             "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-            "SourceName": "User input"
-          }
+            "SourceName": "User input",
+            "Start": 107
+          },
+          "Type": "Opening"
         },
         "RightDelimeter": {
           "[AtomType]": "SymbolAtom",
           "IsDelimeter": true,
-          "Name": ")",
           "IsTextSymbol": false,
-          "Type": "Closing",
+          "Name": ")",
           "Source": {
-            "Start": 141,
             "End": 147,
             "Length": 6,
             "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-            "SourceName": "User input"
-          }
+            "SourceName": "User input",
+            "Start": 141
+          },
+          "Type": "Closing"
         },
-        "Type": "Ordinary",
         "Source": {
-          "Start": 107,
           "End": 147,
           "Length": 40,
           "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 107
+        },
+        "Type": "Ordinary"
       },
       {
         "[AtomType]": "SymbolAtom",
         "IsDelimeter": false,
-        "Name": "comma",
         "IsTextSymbol": false,
-        "Type": "Punctuation",
+        "Name": "comma",
         "Source": {
-          "Start": 147,
           "End": 148,
           "Length": 1,
           "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 147
+        },
+        "Type": "Punctuation"
       },
       {
         "[AtomType]": "CharAtom",
         "Character": "w",
-        "TextStyle": null,
         "IsTextSymbol": false,
-        "Type": "Ordinary",
         "Source": {
-          "Start": 149,
           "End": 150,
           "Length": 1,
           "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 149
+        },
+        "TextStyle": null,
+        "Type": "Ordinary"
       },
       {
         "[AtomType]": "SymbolAtom",
         "IsDelimeter": false,
-        "Name": "equals",
         "IsTextSymbol": false,
-        "Type": "Relation",
+        "Name": "equals",
         "Source": {
-          "Start": 150,
           "End": 151,
           "Length": 1,
           "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 150
+        },
+        "Type": "Relation"
       },
       {
         "[AtomType]": "FencedAtom",
         "BaseAtom": {
           "[AtomType]": "MatrixAtom",
+          "HorizontalPadding": 0.35,
+          "MatrixCellAlignment": "Center",
           "MatrixCells": [
             [
               {
@@ -1017,40 +1017,40 @@
                 "BaseAtom": {
                   "[AtomType]": "CharAtom",
                   "Character": "w",
-                  "TextStyle": null,
                   "IsTextSymbol": false,
-                  "Type": "Ordinary",
                   "Source": {
-                    "Start": 167,
                     "End": 168,
                     "Length": 1,
                     "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                    "SourceName": "User input"
-                  }
+                    "SourceName": "User input",
+                    "Start": 167
+                  },
+                  "TextStyle": null,
+                  "Type": "Ordinary"
+                },
+                "Source": {
+                  "End": 4,
+                  "Length": 3,
+                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                  "SourceName": "User input",
+                  "Start": 1
                 },
                 "SubscriptAtom": {
                   "[AtomType]": "CharAtom",
                   "Character": "1",
-                  "TextStyle": null,
                   "IsTextSymbol": false,
-                  "Type": "Ordinary",
                   "Source": {
-                    "Start": 169,
                     "End": 170,
                     "Length": 1,
                     "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                    "SourceName": "User input"
-                  }
+                    "SourceName": "User input",
+                    "Start": 169
+                  },
+                  "TextStyle": null,
+                  "Type": "Ordinary"
                 },
                 "SuperscriptAtom": null,
-                "Type": "Ordinary",
-                "Source": {
-                  "Start": 1,
-                  "End": 4,
-                  "Length": 3,
-                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                  "SourceName": "User input"
-                }
+                "Type": "Ordinary"
               }
             ],
             [
@@ -1059,40 +1059,40 @@
                 "BaseAtom": {
                   "[AtomType]": "CharAtom",
                   "Character": "w",
-                  "TextStyle": null,
                   "IsTextSymbol": false,
-                  "Type": "Ordinary",
                   "Source": {
-                    "Start": 174,
                     "End": 175,
                     "Length": 1,
                     "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                    "SourceName": "User input"
-                  }
+                    "SourceName": "User input",
+                    "Start": 174
+                  },
+                  "TextStyle": null,
+                  "Type": "Ordinary"
+                },
+                "Source": {
+                  "End": 12,
+                  "Length": 4,
+                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                  "SourceName": "User input",
+                  "Start": 8
                 },
                 "SubscriptAtom": {
                   "[AtomType]": "CharAtom",
                   "Character": "2",
-                  "TextStyle": null,
                   "IsTextSymbol": false,
-                  "Type": "Ordinary",
                   "Source": {
-                    "Start": 176,
                     "End": 177,
                     "Length": 1,
                     "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                    "SourceName": "User input"
-                  }
+                    "SourceName": "User input",
+                    "Start": 176
+                  },
+                  "TextStyle": null,
+                  "Type": "Ordinary"
                 },
                 "SuperscriptAtom": null,
-                "Type": "Ordinary",
-                "Source": {
-                  "Start": 8,
-                  "End": 12,
-                  "Length": 4,
-                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                  "SourceName": "User input"
-                }
+                "Type": "Ordinary"
               }
             ],
             [
@@ -1101,107 +1101,107 @@
                 "BaseAtom": {
                   "[AtomType]": "CharAtom",
                   "Character": "w",
-                  "TextStyle": null,
                   "IsTextSymbol": false,
-                  "Type": "Ordinary",
                   "Source": {
-                    "Start": 182,
                     "End": 183,
                     "Length": 1,
                     "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                    "SourceName": "User input"
-                  }
+                    "SourceName": "User input",
+                    "Start": 182
+                  },
+                  "TextStyle": null,
+                  "Type": "Ordinary"
+                },
+                "Source": {
+                  "End": 18,
+                  "Length": 2,
+                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
+                  "SourceName": "User input",
+                  "Start": 16
                 },
                 "SubscriptAtom": {
                   "[AtomType]": "CharAtom",
                   "Character": "3",
-                  "TextStyle": null,
                   "IsTextSymbol": false,
-                  "Type": "Ordinary",
                   "Source": {
-                    "Start": 184,
                     "End": 185,
                     "Length": 1,
                     "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                    "SourceName": "User input"
-                  }
+                    "SourceName": "User input",
+                    "Start": 184
+                  },
+                  "TextStyle": null,
+                  "Type": "Ordinary"
                 },
                 "SuperscriptAtom": null,
-                "Type": "Ordinary",
-                "Source": {
-                  "Start": 16,
-                  "End": 18,
-                  "Length": 2,
-                  "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-                  "SourceName": "User input"
-                }
+                "Type": "Ordinary"
               }
             ]
           ],
-          "VerticalPadding": 0.35,
-          "HorizontalPadding": 0.35,
-          "MatrixCellAlignment": "Center",
-          "Type": "Ordinary",
           "Source": {
-            "Start": 160,
             "End": 186,
             "Length": 26,
             "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-            "SourceName": "User input"
-          }
+            "SourceName": "User input",
+            "Start": 160
+          },
+          "Type": "Ordinary",
+          "VerticalPadding": 0.35
         },
         "LeftDelimeter": {
           "[AtomType]": "SymbolAtom",
           "IsDelimeter": true,
-          "Name": "(",
           "IsTextSymbol": false,
-          "Type": "Opening",
+          "Name": "(",
           "Source": {
-            "Start": 153,
             "End": 158,
             "Length": 5,
             "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-            "SourceName": "User input"
-          }
+            "SourceName": "User input",
+            "Start": 153
+          },
+          "Type": "Opening"
         },
         "RightDelimeter": {
           "[AtomType]": "SymbolAtom",
           "IsDelimeter": true,
-          "Name": ")",
           "IsTextSymbol": false,
-          "Type": "Closing",
+          "Name": ")",
           "Source": {
-            "Start": 188,
             "End": 194,
             "Length": 6,
             "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-            "SourceName": "User input"
-          }
+            "SourceName": "User input",
+            "Start": 188
+          },
+          "Type": "Closing"
         },
-        "Type": "Ordinary",
         "Source": {
-          "Start": 153,
           "End": 194,
           "Length": 41,
           "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 153
+        },
+        "Type": "Ordinary"
       }
     ],
-    "Type": "Ordinary",
+    "PreviousAtom": null,
     "Source": {
-      "Start": 152,
       "End": 346,
       "Length": 194,
       "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-      "SourceName": "User input"
-    }
+      "SourceName": "User input",
+      "Start": 152
+    },
+    "Type": "Ordinary"
   },
   "Source": {
-    "Start": 0,
     "End": 194,
     "Length": 194,
     "Source": "v \\times w = \\left( \\matrix{v_2 w_3 - v_3 w_2 \\\\ v_3 w_1 - v_1 w_3 \\\\ v_1 w_2 - v_2 w_1} \\right) where v= \\left(\\matrix{ v_1 \\\\ v_2 \\\\ v_3 }\\right), w= \\left( \\matrix{w_1 \\\\ w_2  \\\\ w_3} \\right)",
-    "SourceName": "User input"
-  }
+    "SourceName": "User input",
+    "Start": 0
+  },
+  "TextStyle": null
 }

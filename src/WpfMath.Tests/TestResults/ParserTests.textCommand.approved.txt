@@ -1,80 +1,80 @@
 {
-  "TextStyle": null,
   "RootAtom": {
     "[AtomType]": "RowAtom",
-    "PreviousAtom": null,
     "Elements": [
       {
         "[AtomType]": "CharAtom",
         "Character": "t",
-        "TextStyle": "text",
         "IsTextSymbol": false,
-        "Type": "Ordinary",
         "Source": {
-          "Start": 6,
           "End": 7,
           "Length": 1,
           "Source": "\\text{test}",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 6
+        },
+        "TextStyle": "text",
+        "Type": "Ordinary"
       },
       {
         "[AtomType]": "CharAtom",
         "Character": "e",
-        "TextStyle": "text",
         "IsTextSymbol": false,
-        "Type": "Ordinary",
         "Source": {
-          "Start": 7,
           "End": 8,
           "Length": 1,
           "Source": "\\text{test}",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 7
+        },
+        "TextStyle": "text",
+        "Type": "Ordinary"
       },
       {
         "[AtomType]": "CharAtom",
         "Character": "s",
-        "TextStyle": "text",
         "IsTextSymbol": false,
-        "Type": "Ordinary",
         "Source": {
-          "Start": 8,
           "End": 9,
           "Length": 1,
           "Source": "\\text{test}",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 8
+        },
+        "TextStyle": "text",
+        "Type": "Ordinary"
       },
       {
         "[AtomType]": "CharAtom",
         "Character": "t",
-        "TextStyle": "text",
         "IsTextSymbol": false,
-        "Type": "Ordinary",
         "Source": {
-          "Start": 9,
           "End": 10,
           "Length": 1,
           "Source": "\\text{test}",
-          "SourceName": "User input"
-        }
+          "SourceName": "User input",
+          "Start": 9
+        },
+        "TextStyle": "text",
+        "Type": "Ordinary"
       }
     ],
-    "Type": "Ordinary",
+    "PreviousAtom": null,
     "Source": {
-      "Start": 6,
       "End": 10,
       "Length": 4,
       "Source": "\\text{test}",
-      "SourceName": "User input"
-    }
+      "SourceName": "User input",
+      "Start": 6
+    },
+    "Type": "Ordinary"
   },
   "Source": {
-    "Start": 0,
     "End": 11,
     "Length": 11,
     "Source": "\\text{test}",
-    "SourceName": "User input"
-  }
+    "SourceName": "User input",
+    "Start": 0
+  },
+  "TextStyle": null
 }

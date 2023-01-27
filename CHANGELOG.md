@@ -3,6 +3,47 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec/v2.0.0.html).
 
+## [0.13.0] - 2023-01-27
+### Changed
+- **(Breaking change.)** The library is now distributed in the form of two assemblies: `WpfMath` and `WpfMath.Shared` (as a future cross-platform core of the library).
+
+  Both of the assemblies are still distributed in the same NuGet package.
+
+  A lot of types were moved to `WpfMath.Shared` assembly (preserving their namespaces).
+- **(Breaking change.)** It is no longer recommended to create instances of `TexEnvironment` using the public constructor. Use `WpfMath.Rendering.WpfTeXEnvironment::Create` instead.
+- **(Breaking change.)** It is no longer recommended to create instances of `TexFormulaParser` using public constructors. Use `WpfMath.Parsers.WpfTeXFormulaParser::Instance` instead.
+- **(Breaking change.)** WPF-specific `WpfMath.Rendering.IBrush` has been replaced with `WpfMath.Rendering.IBrush` in most of the public interfaces. Use `WpfMath.Rendering.WpfBrushExtensions` to convert back and forth to the WPF type.
+- **(Breaking change.)** `WpfMath.Rendering.IElementRenderer` has been updated:
+  - `RenderGlyphRun` has been replaced with `RenderCharacter` method (not reliant on any WPF-specific types),
+  - `RenderRectangle` now receives an instance of a new `WpfMath.Rendering.Rectangle` type (decoupled from WPF).
+- `WpfMath.TexRenderer` is now obsolete. Consult the documentation on new recommended ways to perform custom rendering. There are new extension methods in two classes (`WpfMath.Rendering.WpfTeXFormulaExtensions` and `WpfMath.Rendering.TeXFormulaExtensions`) that are the main way to render formulae now.
+- **(Breaking change.)** `WpfMath.TexFormnula::GetRenderer` is gone. Create a `TexRenderer` using constructor (obsolete) or use the aforementioned extension methods instead.
+
+### Added
+- `WpfMath.CharInfo`: a new public type to work with a font character. Use `WpfMath.Fonts.WpfCharInfoEx::GetGlyphRun` if you need to get a `System.Windows.Media.GlyphRun` from it.
+- `WpfMath.Rendering.WpfTeXFormulaExtensions` to render a `WpfMath.TexFormula` into a `System.Windows.Media.Imaging.BitmapSource` or `System.Windows.Media.Geometry`.
+- New classes for WPF-Math porting to platforms other than WPF (consult the `WpfMath.Rendering.IElementRenderer` interface and `TexFormulaParser` constructor parameters to know more).
+- `WpfMath.Colors.RgbaColor` as a new portable color representation.
+- `WpfMath.Fonts.IFontProvider`: implement this interface to provide alternate font reading functionality.
+- `WpfMath.Fonts.ITeXFont`: implement this interface to provide access to a platform-specific font resource.
+- `WpfMath.Rendering.IBrushFactory`: implement this interface to provide access to creation of platform-specific solid-colored brushes.
+- `WpfMath.TeXFontMetrics` that contains some measurements of a font glyph.
+- An utility `Result` struct is now public.
+
+## [0.12.0] - 2023-01-07
+### Added
+- TeX's environment support with only one environment for now: `\begin{pmatrix}` (see [#329][pull-329]).
+
+### Changed
+- The project is now built on .NET 7 SDK and C# 11 (shouldn't change the supported framework set).
+
+## [0.11.0] - 2021-08-31
+### Added
+- [#262: Add \mod operator from amsmath][pull-262]
+
+### Fixed
+- [#304: SystemFontFamilies does not return all FontFamilies in Chinese System][issue-304]
+
 ## [0.10.0] - 2021-07-06
 ### Changed
 - (**Breaking change!**) Removed support for .NET Core 3.0. .NET Core 3.1 or later is supported from now (.NET Framework 4.5.2 is still supported; .NET 5.0 or later is supported, too).
@@ -165,6 +206,7 @@ This was the initially published version. It consisted entirely of the original 
 [issue-248]: https://github.com/ForNeVeR/wpf-math/issues/248
 [issue-257]: https://github.com/ForNeVeR/wpf-math/issues/257
 [issue-275]: https://github.com/ForNeVeR/wpf-math/issues/275
+[issue-304]: https://github.com/ForNeVeR/wpf-math/issues/304
 [pull-53]: https://github.com/ForNeVeR/wpf-math/pull/53
 [pull-54]: https://github.com/ForNeVeR/wpf-math/pull/54
 [pull-58]: https://github.com/ForNeVeR/wpf-math/pull/58
@@ -186,8 +228,10 @@ This was the initially published version. It consisted entirely of the original 
 [pull-253]: https://github.com/ForNeVeR/wpf-math/pull/253
 [pull-254]: https://github.com/ForNeVeR/wpf-math/pull/254
 [pull-261]: https://github.com/ForNeVeR/wpf-math/pull/261
+[pull-262]: https://github.com/ForNeVeR/wpf-math/pull/262
 [pull-277]: https://github.com/ForNeVeR/wpf-math/pull/277
 [pull-283]: https://github.com/ForNeVeR/wpf-math/pull/283
+[pull-329]: https://github.com/ForNeVeR/wpf-math/pull/329
 
 [0.1.0]: https://github.com/ForNeVeR/wpf-math/releases/tag/0.1.0
 [0.2.0]: https://github.com/ForNeVeR/wpf-math/compare/0.1.0...0.2.0
@@ -200,4 +244,7 @@ This was the initially published version. It consisted entirely of the original 
 [0.8.0]: https://github.com/ForNeVeR/wpf-math/compare/0.7.0...0.8.0
 [0.9.0]: https://github.com/ForNeVeR/wpf-math/compare/0.8.0...0.9.0
 [0.10.0]: https://github.com/ForNeVeR/wpf-math/compare/0.9.0...v0.10.0
-[Unreleased]: https://github.com/ForNeVeR/wpf-math/compare/v0.10.0...HEAD
+[0.11.0]: https://github.com/ForNeVeR/wpf-math/compare/v0.10.0...v0.11.0
+[0.12.0]: https://github.com/ForNeVeR/wpf-math/compare/v0.11.0...v0.12.0
+[0.13.0]: https://github.com/ForNeVeR/wpf-math/compare/v0.12.0...v0.13.0
+[Unreleased]: https://github.com/ForNeVeR/wpf-math/compare/v0.13.0...HEAD

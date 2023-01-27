@@ -3,24 +3,23 @@ module WpfMath.Tests.BoxTests
 open System
 
 open FSharp.Core.Fluent
+open WpfMath.Parsers
 open Xunit
 
 open WpfMath
 open WpfMath.Atoms
 open WpfMath.Boxes
+open WpfMath.Rendering
 open WpfMath.Tests.ApprovalTestUtils
 
 let private parse(text: string) =
-    let parser = TexFormulaParser()
+    let parser = WpfTeXFormulaParser.Instance
     let result = parser.Parse text
     result.RootAtom
 
 let private src (string: string) (start: int) (len: int) = SourceSpan("User input", string, start, len)
 
-let private environment =
-    let mathFont = DefaultTexFont 20.0
-    let textFont = TexFormula.GetSystemFont("Arial", 20.0)
-    TexEnvironment(TexStyle.Display, mathFont, textFont)
+let private environment = WpfTeXEnvironment.Create()
 
 [<Fact>]
 let ``AccentedAtom should have a skew according to the char``() =
@@ -54,7 +53,7 @@ let ``ScriptsAtom should set Shift on the created box when creating box without 
 let ``RowAtom creates boxes with proper sources``() =
     let source = "2+2"
     let src = src source
-    let parser = TexFormulaParser()
+    let parser = WpfTeXFormulaParser.Instance
     let formula = parser.Parse source
     let box = formula.CreateBox environment :?> HorizontalBox
     let chars = box.Children.filter (fun x -> x :? CharBox)
@@ -68,7 +67,7 @@ let ``RowAtom creates boxes with proper sources``() =
 let ``BigOperatorAtom creates a box with proper sources``() =
     let source = @"\int_a^b"
     let src = src source
-    let parser = TexFormulaParser()
+    let parser = WpfTeXFormulaParser.Instance
     let formula = parser.Parse source
     let box = formula.CreateBox environment :?> VerticalBox
 

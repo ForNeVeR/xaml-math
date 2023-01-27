@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using WpfMath.Boxes;
 using WpfMath.Exceptions;
+using WpfMath.Parsers;
 using WpfMath.Rendering;
 
 namespace WpfMath.Controls
@@ -15,7 +16,7 @@ namespace WpfMath.Controls
     /// </summary>
     public partial class FormulaControl : UserControl
     {
-        private static TexFormulaParser formulaParser = new TexFormulaParser();
+        private static TexFormulaParser _formulaParser = WpfTeXFormulaParser.Instance;
         private TexFormula? texFormula;
 
         public string Formula
@@ -136,20 +137,20 @@ namespace WpfMath.Controls
             // Render formula to visual.
             var visual = new DrawingVisual();
 
-            // Pass transparent background, since the control background will be effectively used anyway.
-            var renderer = texFormula.GetRenderer(
-                TexStyle.Display,
-                Scale,
-                SystemTextFontName,
-                WpfBrush.FromBrush(Brushes.Transparent),
-                WpfBrush.FromBrush(Foreground));
+            // Omit passing the background, since the control background will be effectively used anyway.
+            var environment = WpfTeXEnvironment.Create(
+                scale: Scale,
+                systemTextFontName: SystemTextFontName,
+                foreground: Foreground);
+
             var formulaSource = texFormula.Source;
+            var formulaBox = texFormula.CreateBox(environment);
             if (formulaSource != null)
             {
                 var selectionBrush = SelectionBrush;
                 if (selectionBrush != null)
                 {
-                    var allBoxes = new List<Box>(renderer.Box.Children);
+                    var allBoxes = new List<Box>(formulaBox.Children);
                     var selectionStart = SelectionStart;
                     var selectionEnd = selectionStart + SelectionLength;
                     for (var idx = 0; idx < allBoxes.Count; idx++)
@@ -165,7 +166,7 @@ namespace WpfMath.Controls
                             && source.Start < selectionEnd
                             && box is CharBox)
                         {
-                                box.Background = WpfBrush.FromBrush(selectionBrush);
+                            box.Background = WpfBrush.FromBrush(selectionBrush);
                         }
                     }
                 }
@@ -173,7 +174,7 @@ namespace WpfMath.Controls
 
             using (var drawingContext = visual.RenderOpen())
             {
-                renderer.Render(drawingContext, 0, 0);
+                texFormula.RenderTo(drawingContext, environment, Scale);
             }
             formulaContainerElement.Visual = visual;
         }
@@ -186,7 +187,7 @@ namespace WpfMath.Controls
             {
                 control.HasError = false;
                 control.Errors.Clear();
-                control.texFormula = formulaParser.Parse(formula);
+                control.texFormula = _formulaParser.Parse(formula);
                 return baseValue;
             }
             catch (TexException e)

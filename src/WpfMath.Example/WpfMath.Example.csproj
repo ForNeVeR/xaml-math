@@ -2,7 +2,6 @@
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
         <TargetFrameworks>netcoreapp3.1;net452;net5.0-windows</TargetFrameworks>
-        <LangVersion>8.0</LangVersion>
         <UseWpf>true</UseWpf>
         <DebugType>Full</DebugType>
         <IsPackable>false</IsPackable>

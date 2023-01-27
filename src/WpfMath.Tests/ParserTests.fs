@@ -105,6 +105,10 @@ let intF() =
     verifyParseResult @"\int f"
 
 [<Fact>]
+let ``mod``() =
+    verifyParseResult @"\mod"
+
+[<Fact>]
 let emptyCurlyBraces() =
     verifyParseResult @"{}"
 

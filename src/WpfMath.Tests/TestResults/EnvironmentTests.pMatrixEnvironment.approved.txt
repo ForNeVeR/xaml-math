@@ -1,0 +1,238 @@
+{
+  "RootAtom": {
+    "[AtomType]": "FencedAtom",
+    "BaseAtom": {
+      "[AtomType]": "MatrixAtom",
+      "HorizontalPadding": 0.35,
+      "MatrixCellAlignment": "Center",
+      "MatrixCells": [
+        [
+          {
+            "[AtomType]": "TypedAtom",
+            "Atom": {
+              "[AtomType]": "RowAtom",
+              "Elements": [
+                {
+                  "[AtomType]": "CharAtom",
+                  "Character": "l",
+                  "IsTextSymbol": false,
+                  "Source": {
+                    "End": 17,
+                    "Length": 1,
+                    "Source": "\\begin{pmatrix}{line 1}\\\\line 2\\end{pmatrix}",
+                    "SourceName": "User input",
+                    "Start": 16
+                  },
+                  "TextStyle": null,
+                  "Type": "Ordinary"
+                },
+                {
+                  "[AtomType]": "CharAtom",
+                  "Character": "i",
+                  "IsTextSymbol": false,
+                  "Source": {
+                    "End": 18,
+                    "Length": 1,
+                    "Source": "\\begin{pmatrix}{line 1}\\\\line 2\\end{pmatrix}",
+                    "SourceName": "User input",
+                    "Start": 17
+                  },
+                  "TextStyle": null,
+                  "Type": "Ordinary"
+                },
+                {
+                  "[AtomType]": "CharAtom",
+                  "Character": "n",
+                  "IsTextSymbol": false,
+                  "Source": {
+                    "End": 19,
+                    "Length": 1,
+                    "Source": "\\begin{pmatrix}{line 1}\\\\line 2\\end{pmatrix}",
+                    "SourceName": "User input",
+                    "Start": 18
+                  },
+                  "TextStyle": null,
+                  "Type": "Ordinary"
+                },
+                {
+                  "[AtomType]": "CharAtom",
+                  "Character": "e",
+                  "IsTextSymbol": false,
+                  "Source": {
+                    "End": 20,
+                    "Length": 1,
+                    "Source": "\\begin{pmatrix}{line 1}\\\\line 2\\end{pmatrix}",
+                    "SourceName": "User input",
+                    "Start": 19
+                  },
+                  "TextStyle": null,
+                  "Type": "Ordinary"
+                },
+                {
+                  "[AtomType]": "CharAtom",
+                  "Character": "1",
+                  "IsTextSymbol": false,
+                  "Source": {
+                    "End": 22,
+                    "Length": 1,
+                    "Source": "\\begin{pmatrix}{line 1}\\\\line 2\\end{pmatrix}",
+                    "SourceName": "User input",
+                    "Start": 21
+                  },
+                  "TextStyle": null,
+                  "Type": "Ordinary"
+                }
+              ],
+              "PreviousAtom": null,
+              "Source": {
+                "End": 22,
+                "Length": 6,
+                "Source": "\\begin{pmatrix}{line 1}\\\\line 2\\end{pmatrix}",
+                "SourceName": "User input",
+                "Start": 16
+              },
+              "Type": "Ordinary"
+            },
+            "LeftType": "Ordinary",
+            "RightType": "Ordinary",
+            "Source": {
+              "End": 22,
+              "Length": 6,
+              "Source": "\\begin{pmatrix}{line 1}\\\\line 2\\end{pmatrix}",
+              "SourceName": "User input",
+              "Start": 16
+            },
+            "Type": "Ordinary"
+          }
+        ],
+        [
+          {
+            "[AtomType]": "RowAtom",
+            "Elements": [
+              {
+                "[AtomType]": "CharAtom",
+                "Character": "l",
+                "IsTextSymbol": false,
+                "Source": {
+                  "End": 26,
+                  "Length": 1,
+                  "Source": "\\begin{pmatrix}{line 1}\\\\line 2\\end{pmatrix}",
+                  "SourceName": "User input",
+                  "Start": 25
+                },
+                "TextStyle": null,
+                "Type": "Ordinary"
+              },
+              {
+                "[AtomType]": "CharAtom",
+                "Character": "i",
+                "IsTextSymbol": false,
+                "Source": {
+                  "End": 27,
+                  "Length": 1,
+                  "Source": "\\begin{pmatrix}{line 1}\\\\line 2\\end{pmatrix}",
+                  "SourceName": "User input",
+                  "Start": 26
+                },
+                "TextStyle": null,
+                "Type": "Ordinary"
+              },
+              {
+                "[AtomType]": "CharAtom",
+                "Character": "n",
+                "IsTextSymbol": false,
+                "Source": {
+                  "End": 28,
+                  "Length": 1,
+                  "Source": "\\begin{pmatrix}{line 1}\\\\line 2\\end{pmatrix}",
+                  "SourceName": "User input",
+                  "Start": 27
+                },
+                "TextStyle": null,
+                "Type": "Ordinary"
+              },
+              {
+                "[AtomType]": "CharAtom",
+                "Character": "e",
+                "IsTextSymbol": false,
+                "Source": {
+                  "End": 29,
+                  "Length": 1,
+                  "Source": "\\begin{pmatrix}{line 1}\\\\line 2\\end{pmatrix}",
+                  "SourceName": "User input",
+                  "Start": 28
+                },
+                "TextStyle": null,
+                "Type": "Ordinary"
+              },
+              {
+                "[AtomType]": "CharAtom",
+                "Character": "2",
+                "IsTextSymbol": false,
+                "Source": {
+                  "End": 31,
+                  "Length": 1,
+                  "Source": "\\begin{pmatrix}{line 1}\\\\line 2\\end{pmatrix}",
+                  "SourceName": "User input",
+                  "Start": 30
+                },
+                "TextStyle": null,
+                "Type": "Ordinary"
+              }
+            ],
+            "PreviousAtom": null,
+            "Source": {
+              "End": 31,
+              "Length": 16,
+              "Source": "\\begin{pmatrix}{line 1}\\\\line 2\\end{pmatrix}",
+              "SourceName": "User input",
+              "Start": 15
+            },
+            "Type": "Ordinary"
+          }
+        ]
+      ],
+      "Source": {
+        "End": 44,
+        "Length": 43,
+        "Source": "\\begin{pmatrix}{line 1}\\\\line 2\\end{pmatrix}",
+        "SourceName": "User input",
+        "Start": 1
+      },
+      "Type": "Ordinary",
+      "VerticalPadding": 0.35
+    },
+    "LeftDelimeter": {
+      "[AtomType]": "SymbolAtom",
+      "IsDelimeter": true,
+      "IsTextSymbol": false,
+      "Name": "lbrack",
+      "Source": null,
+      "Type": "Opening"
+    },
+    "RightDelimeter": {
+      "[AtomType]": "SymbolAtom",
+      "IsDelimeter": true,
+      "IsTextSymbol": false,
+      "Name": "rbrack",
+      "Source": null,
+      "Type": "Closing"
+    },
+    "Source": {
+      "End": 44,
+      "Length": 43,
+      "Source": "\\begin{pmatrix}{line 1}\\\\line 2\\end{pmatrix}",
+      "SourceName": "User input",
+      "Start": 1
+    },
+    "Type": "Ordinary"
+  },
+  "Source": {
+    "End": 44,
+    "Length": 44,
+    "Source": "\\begin{pmatrix}{line 1}\\\\line 2\\end{pmatrix}",
+    "SourceName": "User input",
+    "Start": 0
+  },
+  "TextStyle": null
+}

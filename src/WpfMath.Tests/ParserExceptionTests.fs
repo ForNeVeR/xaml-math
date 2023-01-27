@@ -10,6 +10,7 @@ open WpfMath.Atoms
 open WpfMath.Colors
 open WpfMath.Exceptions
 open WpfMath.Parsers
+open WpfMath.Rendering
 open WpfMath.Tests.Utils
 
 [<Fact>]
@@ -69,7 +70,13 @@ let ``Incorrect command parser behavior should be detected``(): unit =
              member _.ProcessCommand _ =
                  CommandProcessingResult(SpaceAtom(null), 0) }
     let parserRegistry = Map([| "dummy", incorrectParser |])
-    let parser = TexFormulaParser(parserRegistry, Dictionary(), PredefinedColorParser.Instance)
+    let parser = TexFormulaParser(
+        parserRegistry,
+        Dictionary(),
+        PredefinedColorParser.Instance,
+        WpfBrushFactory.Instance,
+        Dictionary()
+    )
     let ex = Assert.Throws<TexParseException>(Action(fun () -> ignore <| parser.Parse("\dummy")))
     Assert.Contains("NextPosition = 0", ex.Message)
 

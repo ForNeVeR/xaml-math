@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>netcoreapp3.1;net452</TargetFrameworks>
+        <RootNamespace>WpfMath</RootNamespace>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="Data\DefaultTexFont.xml" />
+      <EmbeddedResource Include="Data\GlueSettings.xml" />
+      <EmbeddedResource Include="Data\PredefinedColors.xml" />
+      <EmbeddedResource Include="Data\PredefinedTexFormulas.xml" />
+      <EmbeddedResource Include="Data\TexFormulaSettings.xml" />
+      <EmbeddedResource Include="Data\TexSymbols.xml" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="WpfMath" />
+        <InternalsVisibleTo Include="WpfMath.Tests" />
+    </ItemGroup>
+
+</Project>

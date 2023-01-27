@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
 using System.Windows.Media;
 using WpfMath.Boxes;
+using WpfMath.Fonts;
 using WpfMath.Rendering.Transformations;
 
 namespace WpfMath.Rendering
@@ -22,20 +22,20 @@ namespace WpfMath.Rendering
 
         public void RenderElement(Box box, double x, double y) => box.RenderTo(this, x, y);
 
-        public void RenderGlyphRun(Func<double, GlyphRun> scaledGlyphFactory, double x, double y, Brush foreground)
+        public void RenderCharacter(CharInfo info, double x, double y, IBrush? foreground)
         {
-            var glyph = scaledGlyphFactory(_scale);
+            var glyph = info.GetGlyphRun(x, y, _scale);
             var glyphGeometry = glyph.BuildGeometry();
             _geometry.Children.Add(glyphGeometry);
         }
 
-        public void RenderRectangle(Rect rectangle, Brush foreground)
+        public void RenderRectangle(Rectangle rectangle, IBrush? foreground)
         {
-            var rectangleGeometry = new RectangleGeometry(GeometryHelper.ScaleRectangle(_scale, rectangle));
+            var rectangleGeometry = new RectangleGeometry(GeometryHelper.ScaleRectangle(_scale, rectangle).ToWpf());
             _geometry.Children.Add(rectangleGeometry);
         }
 
-        public void RenderTransformed(Box box, Transformation[] transforms, double x, double y)
+        public void RenderTransformed(Box box, IEnumerable<Transformation> transforms, double x, double y)
         {
             var group = new GeometryGroup();
             var scaledTransforms = transforms.Select(t => t.Scale(_scale));

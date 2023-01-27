@@ -11,7 +11,7 @@
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.3.0" />
         <PackageReference Include="Foq" Version="1.8.0" />
         <PackageReference Include="FSharp.Core.Fluent-4.0" Version="1.0.0.6" />
-        <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
         <PackageReference Include="xunit" Version="2.4.1" />
         <PackageReference Include="xunit.abstractions" Version="2.0.3" />
         <PackageReference Include="xunit.assert" Version="2.4.1" />
@@ -31,6 +31,7 @@
         <Compile Include="PredefinedColorParserTests.fs" />
         <Compile Include="CharBoxTests.fs" />
         <Compile Include="DefaultTexFontTests.fs" />
+        <Compile Include="EnvironmentTests.fs" />
         <Compile Include="GeometryHelperTests.fs" />
         <Compile Include="GeometryElementRendererTests.fs" />
         <Compile Include="HorizontalBoxTests.fs" />
@@ -38,7 +39,7 @@
         <Compile Include="OverUnderBoxTests.fs" />
         <Compile Include="ParserTests.fs" />
         <Compile Include="ParserExceptionTests.fs" />
-        <Compile Include="TexRendererTests.fs" />
+        <Compile Include="RenderingTests.fs" />
         <Compile Include="TransformationTests.fs" />
         <Compile Include="VerticalBoxTests.fs" />
         <Compile Include="WpfRendererTests.fs" />

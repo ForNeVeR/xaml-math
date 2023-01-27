@@ -1,536 +1,536 @@
 {
+  "Background": null,
   "Children": [
     {
+      "Background": null,
       "Character": {
         "Character": "h",
         "Font": "pack://application:,,,/WpfMath;component/Fonts/cmex10.ttf",
-        "Size": 1.0,
+        "FontId": 2,
         "Metrics": {
-          "Width": 0.472224,
-          "Height": 0.039999,
           "Depth": 1.760019,
-          "Italic": 0.0
+          "Height": 0.039999,
+          "Italic": 0.0,
+          "Width": 0.472224
         },
-        "FontId": 2
+        "Size": 1.0
       },
       "Children": [],
-      "Source": null,
+      "Depth": 1.760019,
       "Foreground": null,
-      "Background": null,
+      "Height": 0.039999,
+      "Italic": 0.0,
+      "Shift": -1.11001,
+      "Source": null,
       "TotalHeight": 1.800018,
       "TotalWidth": 0.472224,
-      "Italic": 0.0,
-      "Width": 0.472224,
-      "Height": 0.039999,
-      "Depth": 1.760019,
-      "Shift": -1.11001
+      "Width": 0.472224
     },
     {
-      "Stretch": 0.0,
-      "Shrink": 0.0,
-      "Children": [],
-      "Source": null,
-      "Foreground": null,
       "Background": null,
+      "Children": [],
+      "Depth": 0.0,
+      "Foreground": null,
+      "Height": 0.0,
+      "Italic": 0.0,
+      "Shift": 0.0,
+      "Shrink": 0.0,
+      "Source": null,
+      "Stretch": 0.0,
       "TotalHeight": 0.0,
       "TotalWidth": 0.0,
-      "Italic": 0.0,
-      "Width": 0.0,
-      "Height": 0.0,
-      "Depth": 0.0,
-      "Shift": 0.0
+      "Width": 0.0
     },
     {
+      "Background": null,
       "Children": [
         {
+          "Background": null,
           "Children": [
             {
-              "Children": [],
-              "Source": null,
-              "Foreground": null,
               "Background": null,
+              "Children": [],
+              "Depth": 0.0,
+              "Foreground": null,
+              "Height": 0.0,
+              "Italic": 0.0,
+              "Shift": 0.0,
+              "Source": null,
               "TotalHeight": 0.0,
               "TotalWidth": 0.175,
-              "Italic": 0.0,
-              "Width": 0.175,
-              "Height": 0.0,
-              "Depth": 0.0,
-              "Shift": 0.0
+              "Width": 0.175
             },
             {
+              "Background": null,
               "Children": [
                 {
-                  "Children": [],
-                  "Source": null,
-                  "Foreground": null,
                   "Background": null,
+                  "Children": [],
+                  "Depth": 0.0,
+                  "Foreground": null,
+                  "Height": 0.175,
+                  "Italic": 0.0,
+                  "Shift": 0.35,
+                  "Source": null,
                   "TotalHeight": 0.175,
                   "TotalWidth": 0.0,
-                  "Italic": 0.0,
-                  "Width": 0.0,
-                  "Height": 0.175,
-                  "Depth": 0.0,
-                  "Shift": 0.35
+                  "Width": 0.0
                 },
                 {
+                  "Background": null,
                   "Character": {
                     "Character": "2",
                     "Font": "pack://application:,,,/WpfMath;component/Fonts/cmr10.ttf",
-                    "Size": 1.0,
+                    "FontId": 1,
                     "Metrics": {
-                      "Width": 0.500002,
-                      "Height": 0.644444,
                       "Depth": 0.0,
-                      "Italic": 0.0
+                      "Height": 0.644444,
+                      "Italic": 0.0,
+                      "Width": 0.500002
                     },
-                    "FontId": 1
+                    "Size": 1.0
                   },
                   "Children": [],
+                  "Depth": 0.0,
+                  "Foreground": null,
+                  "Height": 0.644444,
+                  "Italic": 0.0,
+                  "Shift": 0.0,
                   "Source": {
-                    "Start": 9,
                     "End": 10,
                     "Length": 1,
                     "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}",
-                    "SourceName": "User input"
+                    "SourceName": "User input",
+                    "Start": 9
                   },
-                  "Foreground": null,
-                  "Background": null,
                   "TotalHeight": 0.644444,
                   "TotalWidth": 0.500002,
-                  "Italic": 0.0,
-                  "Width": 0.500002,
-                  "Height": 0.644444,
-                  "Depth": 0.0,
-                  "Shift": 0.0
+                  "Width": 0.500002
                 },
                 {
-                  "Children": [],
-                  "Source": null,
-                  "Foreground": null,
                   "Background": null,
+                  "Children": [],
+                  "Depth": 0.0,
+                  "Foreground": null,
+                  "Height": 0.175,
+                  "Italic": 0.0,
+                  "Shift": 0.35,
+                  "Source": null,
                   "TotalHeight": 0.175,
                   "TotalWidth": 0.0,
-                  "Italic": 0.0,
-                  "Width": 0.0,
-                  "Height": 0.175,
-                  "Depth": 0.0,
-                  "Shift": 0.35
+                  "Width": 0.0
                 }
               ],
-              "Source": null,
+              "Depth": 0.0,
               "Foreground": null,
-              "Background": null,
+              "Height": 0.994444,
+              "Italic": 0.0,
+              "Shift": 0.0,
+              "Source": null,
               "TotalHeight": 0.994444,
               "TotalWidth": 0.500002,
-              "Italic": 0.0,
-              "Width": 0.500002,
-              "Height": 0.994444,
-              "Depth": 0.0,
-              "Shift": 0.0
+              "Width": 0.500002
             },
             {
-              "Children": [],
-              "Source": null,
-              "Foreground": null,
               "Background": null,
+              "Children": [],
+              "Depth": 0.0,
+              "Foreground": null,
+              "Height": 0.0,
+              "Italic": 0.0,
+              "Shift": 0.0,
+              "Source": null,
               "TotalHeight": 0.0,
               "TotalWidth": 0.175,
-              "Italic": 0.0,
-              "Width": 0.175,
-              "Height": 0.0,
-              "Depth": 0.0,
-              "Shift": 0.0
+              "Width": 0.175
             },
             {
-              "Children": [],
-              "Source": null,
-              "Foreground": null,
               "Background": null,
+              "Children": [],
+              "Depth": 0.0,
+              "Foreground": null,
+              "Height": 0.0,
+              "Italic": 0.0,
+              "Shift": 0.0,
+              "Source": null,
               "TotalHeight": 0.0,
               "TotalWidth": 0.175,
-              "Italic": 0.0,
-              "Width": 0.175,
-              "Height": 0.0,
-              "Depth": 0.0,
-              "Shift": 0.0
+              "Width": 0.175
             },
             {
+              "Background": null,
               "Children": [
                 {
-                  "Children": [],
-                  "Source": null,
-                  "Foreground": null,
                   "Background": null,
+                  "Children": [],
+                  "Depth": 0.0,
+                  "Foreground": null,
+                  "Height": 0.175,
+                  "Italic": 0.0,
+                  "Shift": 0.35,
+                  "Source": null,
                   "TotalHeight": 0.175,
                   "TotalWidth": 0.0,
-                  "Italic": 0.0,
-                  "Width": 0.0,
-                  "Height": 0.175,
-                  "Depth": 0.0,
-                  "Shift": 0.35
+                  "Width": 0.0
                 },
                 {
+                  "Background": null,
                   "Character": {
                     "Character": "2",
                     "Font": "pack://application:,,,/WpfMath;component/Fonts/cmr10.ttf",
-                    "Size": 1.0,
+                    "FontId": 1,
                     "Metrics": {
-                      "Width": 0.500002,
-                      "Height": 0.644444,
                       "Depth": 0.0,
-                      "Italic": 0.0
+                      "Height": 0.644444,
+                      "Italic": 0.0,
+                      "Width": 0.500002
                     },
-                    "FontId": 1
+                    "Size": 1.0
                   },
                   "Children": [],
+                  "Depth": 0.0,
+                  "Foreground": null,
+                  "Height": 0.644444,
+                  "Italic": 0.0,
+                  "Shift": 0.0,
                   "Source": {
-                    "Start": 13,
                     "End": 14,
                     "Length": 1,
                     "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}",
-                    "SourceName": "User input"
+                    "SourceName": "User input",
+                    "Start": 13
                   },
-                  "Foreground": null,
-                  "Background": null,
                   "TotalHeight": 0.644444,
                   "TotalWidth": 0.500002,
-                  "Italic": 0.0,
-                  "Width": 0.500002,
-                  "Height": 0.644444,
-                  "Depth": 0.0,
-                  "Shift": 0.0
+                  "Width": 0.500002
                 },
                 {
-                  "Children": [],
-                  "Source": null,
-                  "Foreground": null,
                   "Background": null,
+                  "Children": [],
+                  "Depth": 0.0,
+                  "Foreground": null,
+                  "Height": 0.175,
+                  "Italic": 0.0,
+                  "Shift": 0.35,
+                  "Source": null,
                   "TotalHeight": 0.175,
                   "TotalWidth": 0.0,
-                  "Italic": 0.0,
-                  "Width": 0.0,
-                  "Height": 0.175,
-                  "Depth": 0.0,
-                  "Shift": 0.35
+                  "Width": 0.0
                 }
               ],
-              "Source": null,
+              "Depth": 0.0,
               "Foreground": null,
-              "Background": null,
+              "Height": 0.994444,
+              "Italic": 0.0,
+              "Shift": 0.0,
+              "Source": null,
               "TotalHeight": 0.994444,
               "TotalWidth": 0.500002,
-              "Italic": 0.0,
-              "Width": 0.500002,
-              "Height": 0.994444,
-              "Depth": 0.0,
-              "Shift": 0.0
+              "Width": 0.500002
             },
             {
-              "Children": [],
-              "Source": null,
-              "Foreground": null,
               "Background": null,
+              "Children": [],
+              "Depth": 0.0,
+              "Foreground": null,
+              "Height": 0.0,
+              "Italic": 0.0,
+              "Shift": 0.0,
+              "Source": null,
               "TotalHeight": 0.0,
               "TotalWidth": 0.175,
-              "Italic": 0.0,
-              "Width": 0.175,
-              "Height": 0.0,
-              "Depth": 0.0,
-              "Shift": 0.0
+              "Width": 0.175
             }
           ],
-          "Source": null,
+          "Depth": 0.0,
           "Foreground": null,
-          "Background": null,
+          "Height": 0.994444,
+          "Italic": 0.0,
+          "Shift": 0.0,
+          "Source": null,
           "TotalHeight": 0.994444,
           "TotalWidth": 1.700004,
-          "Italic": 0.0,
-          "Width": 1.700004,
-          "Height": 0.994444,
-          "Depth": 0.0,
-          "Shift": 0.0
+          "Width": 1.700004
         },
         {
+          "Background": null,
           "Children": [
             {
-              "Children": [],
-              "Source": null,
-              "Foreground": null,
               "Background": null,
+              "Children": [],
+              "Depth": 0.0,
+              "Foreground": null,
+              "Height": 0.0,
+              "Italic": 0.0,
+              "Shift": 0.0,
+              "Source": null,
               "TotalHeight": 0.0,
               "TotalWidth": 0.175,
-              "Italic": 0.0,
-              "Width": 0.175,
-              "Height": 0.0,
-              "Depth": 0.0,
-              "Shift": 0.0
+              "Width": 0.175
             },
             {
+              "Background": null,
               "Children": [
                 {
-                  "Children": [],
-                  "Source": null,
-                  "Foreground": null,
                   "Background": null,
+                  "Children": [],
+                  "Depth": 0.0,
+                  "Foreground": null,
+                  "Height": 0.175,
+                  "Italic": 0.0,
+                  "Shift": 0.35,
+                  "Source": null,
                   "TotalHeight": 0.175,
                   "TotalWidth": 0.0,
-                  "Italic": 0.0,
-                  "Width": 0.0,
-                  "Height": 0.175,
-                  "Depth": 0.0,
-                  "Shift": 0.35
+                  "Width": 0.0
                 },
                 {
+                  "Background": null,
                   "Character": {
                     "Character": "2",
                     "Font": "pack://application:,,,/WpfMath;component/Fonts/cmr10.ttf",
-                    "Size": 1.0,
+                    "FontId": 1,
                     "Metrics": {
-                      "Width": 0.500002,
-                      "Height": 0.644444,
                       "Depth": 0.0,
-                      "Italic": 0.0
+                      "Height": 0.644444,
+                      "Italic": 0.0,
+                      "Width": 0.500002
                     },
-                    "FontId": 1
+                    "Size": 1.0
                   },
                   "Children": [],
+                  "Depth": 0.0,
+                  "Foreground": null,
+                  "Height": 0.644444,
+                  "Italic": 0.0,
+                  "Shift": 0.0,
                   "Source": {
-                    "Start": 18,
                     "End": 19,
                     "Length": 1,
                     "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}",
-                    "SourceName": "User input"
+                    "SourceName": "User input",
+                    "Start": 18
                   },
-                  "Foreground": null,
-                  "Background": null,
                   "TotalHeight": 0.644444,
                   "TotalWidth": 0.500002,
-                  "Italic": 0.0,
-                  "Width": 0.500002,
-                  "Height": 0.644444,
-                  "Depth": 0.0,
-                  "Shift": 0.0
+                  "Width": 0.500002
                 },
                 {
-                  "Children": [],
-                  "Source": null,
-                  "Foreground": null,
                   "Background": null,
+                  "Children": [],
+                  "Depth": 0.0,
+                  "Foreground": null,
+                  "Height": 0.175,
+                  "Italic": 0.0,
+                  "Shift": 0.35,
+                  "Source": null,
                   "TotalHeight": 0.175,
                   "TotalWidth": 0.0,
-                  "Italic": 0.0,
-                  "Width": 0.0,
-                  "Height": 0.175,
-                  "Depth": 0.0,
-                  "Shift": 0.35
+                  "Width": 0.0
                 }
               ],
-              "Source": null,
+              "Depth": 0.0,
               "Foreground": null,
-              "Background": null,
+              "Height": 0.994444,
+              "Italic": 0.0,
+              "Shift": 0.0,
+              "Source": null,
               "TotalHeight": 0.994444,
               "TotalWidth": 0.500002,
-              "Italic": 0.0,
-              "Width": 0.500002,
-              "Height": 0.994444,
-              "Depth": 0.0,
-              "Shift": 0.0
+              "Width": 0.500002
             },
             {
-              "Children": [],
-              "Source": null,
-              "Foreground": null,
               "Background": null,
+              "Children": [],
+              "Depth": 0.0,
+              "Foreground": null,
+              "Height": 0.0,
+              "Italic": 0.0,
+              "Shift": 0.0,
+              "Source": null,
               "TotalHeight": 0.0,
               "TotalWidth": 0.175,
-              "Italic": 0.0,
-              "Width": 0.175,
-              "Height": 0.0,
-              "Depth": 0.0,
-              "Shift": 0.0
+              "Width": 0.175
             },
             {
-              "Children": [],
-              "Source": null,
-              "Foreground": null,
               "Background": null,
+              "Children": [],
+              "Depth": 0.0,
+              "Foreground": null,
+              "Height": 0.0,
+              "Italic": 0.0,
+              "Shift": 0.0,
+              "Source": null,
               "TotalHeight": 0.0,
               "TotalWidth": 0.175,
-              "Italic": 0.0,
-              "Width": 0.175,
-              "Height": 0.0,
-              "Depth": 0.0,
-              "Shift": 0.0
+              "Width": 0.175
             },
             {
+              "Background": null,
               "Children": [
                 {
-                  "Children": [],
-                  "Source": null,
-                  "Foreground": null,
                   "Background": null,
+                  "Children": [],
+                  "Depth": 0.0,
+                  "Foreground": null,
+                  "Height": 0.175,
+                  "Italic": 0.0,
+                  "Shift": 0.35,
+                  "Source": null,
                   "TotalHeight": 0.175,
                   "TotalWidth": 0.0,
-                  "Italic": 0.0,
-                  "Width": 0.0,
-                  "Height": 0.175,
-                  "Depth": 0.0,
-                  "Shift": 0.35
+                  "Width": 0.0
                 },
                 {
+                  "Background": null,
                   "Character": {
                     "Character": "2",
                     "Font": "pack://application:,,,/WpfMath;component/Fonts/cmr10.ttf",
-                    "Size": 1.0,
+                    "FontId": 1,
                     "Metrics": {
-                      "Width": 0.500002,
-                      "Height": 0.644444,
                       "Depth": 0.0,
-                      "Italic": 0.0
+                      "Height": 0.644444,
+                      "Italic": 0.0,
+                      "Width": 0.500002
                     },
-                    "FontId": 1
+                    "Size": 1.0
                   },
                   "Children": [],
+                  "Depth": 0.0,
+                  "Foreground": null,
+                  "Height": 0.644444,
+                  "Italic": 0.0,
+                  "Shift": 0.0,
                   "Source": {
-                    "Start": 22,
                     "End": 23,
                     "Length": 1,
                     "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}",
-                    "SourceName": "User input"
+                    "SourceName": "User input",
+                    "Start": 22
                   },
-                  "Foreground": null,
-                  "Background": null,
                   "TotalHeight": 0.644444,
                   "TotalWidth": 0.500002,
-                  "Italic": 0.0,
-                  "Width": 0.500002,
-                  "Height": 0.644444,
-                  "Depth": 0.0,
-                  "Shift": 0.0
+                  "Width": 0.500002
                 },
                 {
-                  "Children": [],
-                  "Source": null,
-                  "Foreground": null,
                   "Background": null,
+                  "Children": [],
+                  "Depth": 0.0,
+                  "Foreground": null,
+                  "Height": 0.175,
+                  "Italic": 0.0,
+                  "Shift": 0.35,
+                  "Source": null,
                   "TotalHeight": 0.175,
                   "TotalWidth": 0.0,
-                  "Italic": 0.0,
-                  "Width": 0.0,
-                  "Height": 0.175,
-                  "Depth": 0.0,
-                  "Shift": 0.35
+                  "Width": 0.0
                 }
               ],
-              "Source": null,
+              "Depth": 0.0,
               "Foreground": null,
-              "Background": null,
+              "Height": 0.994444,
+              "Italic": 0.0,
+              "Shift": 0.0,
+              "Source": null,
               "TotalHeight": 0.994444,
               "TotalWidth": 0.500002,
-              "Italic": 0.0,
-              "Width": 0.500002,
-              "Height": 0.994444,
-              "Depth": 0.0,
-              "Shift": 0.0
+              "Width": 0.500002
             },
             {
-              "Children": [],
-              "Source": null,
-              "Foreground": null,
               "Background": null,
+              "Children": [],
+              "Depth": 0.0,
+              "Foreground": null,
+              "Height": 0.0,
+              "Italic": 0.0,
+              "Shift": 0.0,
+              "Source": null,
               "TotalHeight": 0.0,
               "TotalWidth": 0.175,
-              "Italic": 0.0,
-              "Width": 0.175,
-              "Height": 0.0,
-              "Depth": 0.0,
-              "Shift": 0.0
+              "Width": 0.175
             }
           ],
-          "Source": null,
+          "Depth": 0.0,
           "Foreground": null,
-          "Background": null,
+          "Height": 0.994444,
+          "Italic": 0.0,
+          "Shift": 0.0,
+          "Source": null,
           "TotalHeight": 0.994444,
           "TotalWidth": 1.700004,
-          "Italic": 0.0,
-          "Width": 1.700004,
-          "Height": 0.994444,
-          "Depth": 0.0,
-          "Shift": 0.0
+          "Width": 1.700004
         }
       ],
+      "Depth": 0.744444,
+      "Foreground": null,
+      "Height": 1.244444,
+      "Italic": 0.0,
+      "Shift": 0.0,
       "Source": {
-        "Start": 1,
         "End": 24,
         "Length": 23,
         "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}",
-        "SourceName": "User input"
+        "SourceName": "User input",
+        "Start": 1
       },
-      "Foreground": null,
-      "Background": null,
       "TotalHeight": 1.988888,
       "TotalWidth": 1.700004,
-      "Italic": 0.0,
-      "Width": 1.700004,
-      "Height": 1.244444,
-      "Depth": 0.744444,
-      "Shift": 0.0
+      "Width": 1.700004
     },
     {
-      "Stretch": 0.0,
-      "Shrink": 0.0,
-      "Children": [],
-      "Source": null,
-      "Foreground": null,
       "Background": null,
+      "Children": [],
+      "Depth": 0.0,
+      "Foreground": null,
+      "Height": 0.0,
+      "Italic": 0.0,
+      "Shift": 0.0,
+      "Shrink": 0.0,
+      "Source": null,
+      "Stretch": 0.0,
       "TotalHeight": 0.0,
       "TotalWidth": 0.0,
-      "Italic": 0.0,
-      "Width": 0.0,
-      "Height": 0.0,
-      "Depth": 0.0,
-      "Shift": 0.0
+      "Width": 0.0
     },
     {
+      "Background": null,
       "Character": {
         "Character": "i",
         "Font": "pack://application:,,,/WpfMath;component/Fonts/cmex10.ttf",
-        "Size": 1.0,
+        "FontId": 2,
         "Metrics": {
-          "Width": 0.472224,
-          "Height": 0.039999,
           "Depth": 1.760019,
-          "Italic": 0.0
+          "Height": 0.039999,
+          "Italic": 0.0,
+          "Width": 0.472224
         },
-        "FontId": 2
+        "Size": 1.0
       },
       "Children": [],
-      "Source": null,
+      "Depth": 1.760019,
       "Foreground": null,
-      "Background": null,
+      "Height": 0.039999,
+      "Italic": 0.0,
+      "Shift": -1.11001,
+      "Source": null,
       "TotalHeight": 1.800018,
       "TotalWidth": 0.472224,
-      "Italic": 0.0,
-      "Width": 0.472224,
-      "Height": 0.039999,
-      "Depth": 1.760019,
-      "Shift": -1.11001
+      "Width": 0.472224
     }
   ],
+  "Depth": 0.744444,
+  "Foreground": null,
+  "Height": 1.244444,
+  "Italic": 0.0,
+  "Shift": 0.0,
   "Source": {
-    "Start": 1,
     "End": 24,
     "Length": 23,
     "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}",
-    "SourceName": "User input"
+    "SourceName": "User input",
+    "Start": 1
   },
-  "Foreground": null,
-  "Background": null,
   "TotalHeight": 1.988888,
   "TotalWidth": 2.644452,
-  "Italic": 0.0,
-  "Width": 2.644452,
-  "Height": 1.244444,
-  "Depth": 0.744444,
-  "Shift": 0.0
+  "Width": 2.644452
 }

@@ -1,63 +1,63 @@
 {
-  "TextStyle": null,
   "RootAtom": {
     "[AtomType]": "FencedAtom",
     "BaseAtom": {
       "[AtomType]": "CharAtom",
       "Character": "a",
-      "TextStyle": null,
       "IsTextSymbol": false,
-      "Type": "Ordinary",
       "Source": {
-        "Start": 6,
         "End": 7,
         "Length": 1,
         "Source": "\\left(a\\right.",
-        "SourceName": "User input"
-      }
+        "SourceName": "User input",
+        "Start": 6
+      },
+      "TextStyle": null,
+      "Type": "Ordinary"
     },
     "LeftDelimeter": {
       "[AtomType]": "SymbolAtom",
       "IsDelimeter": true,
-      "Name": "(",
       "IsTextSymbol": false,
-      "Type": "Opening",
+      "Name": "(",
       "Source": {
-        "Start": 1,
         "End": 6,
         "Length": 5,
         "Source": "\\left(a\\right.",
-        "SourceName": "User input"
-      }
+        "SourceName": "User input",
+        "Start": 1
+      },
+      "Type": "Opening"
     },
     "RightDelimeter": {
       "[AtomType]": "SymbolAtom",
       "IsDelimeter": true,
-      "Name": "_emptyDelimiter",
       "IsTextSymbol": false,
-      "Type": "Ordinary",
+      "Name": "_emptyDelimiter",
       "Source": {
-        "Start": 8,
         "End": 14,
         "Length": 6,
         "Source": "\\left(a\\right.",
-        "SourceName": "User input"
-      }
+        "SourceName": "User input",
+        "Start": 8
+      },
+      "Type": "Ordinary"
     },
-    "Type": "Ordinary",
     "Source": {
-      "Start": 1,
       "End": 14,
       "Length": 13,
       "Source": "\\left(a\\right.",
-      "SourceName": "User input"
-    }
+      "SourceName": "User input",
+      "Start": 1
+    },
+    "Type": "Ordinary"
   },
   "Source": {
-    "Start": 0,
     "End": 14,
     "Length": 14,
     "Source": "\\left(a\\right.",
-    "SourceName": "User input"
-  }
+    "SourceName": "User input",
+    "Start": 0
+  },
+  "TextStyle": null
 }

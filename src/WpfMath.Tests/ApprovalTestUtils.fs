@@ -15,8 +15,9 @@ open Newtonsoft.Json
 open Newtonsoft.Json.Converters
 open Newtonsoft.Json.Serialization
 
-open WpfMath
 open WpfMath.Atoms
+open WpfMath.Fonts
+open WpfMath.Parsers
 open WpfMath.Rendering
 
 type private BomlessFileWriter(data: string, ?extensionWithoutDot: string) =
@@ -43,8 +44,10 @@ type private InnerPropertyContractResolver() =
         // All properties including internal ones:
         let properties =
             ``type``.GetProperties(BindingFlags.Public ||| BindingFlags.NonPublic ||| BindingFlags.Instance)
-            |> Seq.filter (fun p -> Array.isEmpty <| p.GetIndexParameters()) // no indexers
-            |> Seq.map (fun p -> this.DoCreateProperty(p, memberSerialization))
+            |> Seq.filter(fun p -> Array.isEmpty <| p.GetIndexParameters()) // no indexers
+            |> Seq.filter(fun p -> p.Name <> "EqualityContract") // no EqualityContract generated for records
+            |> Seq.sortBy(fun p -> p.Name)
+            |> Seq.map(fun p -> this.DoCreateProperty(p, memberSerialization))
 
         upcast [|
             // For Atoms, type name should be first
@@ -55,7 +58,7 @@ type private InnerPropertyContractResolver() =
                     Readable = true,
                     ValueProvider = {
                         new IValueProvider with
-                            member this.GetValue(_) = upcast ``type``.Name
+                            member this.GetValue _ = upcast ``type``.Name
                             member this.SetValue(_, _) = failwith "Not supported"
                     }
                 )
@@ -68,6 +71,11 @@ type ReadOnlyJsonConverter<'a>() =
     inherit JsonConverter<'a>()
     override _.CanRead = false
     override _.ReadJson(_, _, _, _, _) = failwith "Not supported"
+
+type private WpfGlyphTypefaceConverter() =
+    inherit ReadOnlyJsonConverter<WpfGlyphTypeface>()
+    override _.WriteJson(writer: JsonWriter, value: WpfGlyphTypeface, serializer: JsonSerializer) =
+        serializer.Serialize(writer, value.Typeface)
 
 type private GlyphTypefaceConverter() =
     inherit ReadOnlyJsonConverter<GlyphTypeface>()
@@ -89,9 +97,9 @@ type private WpfBrushConverter() =
     inherit ReadOnlyJsonConverter<WpfBrush>()
     override _.WriteJson(writer: JsonWriter, value: WpfBrush, _: JsonSerializer) =
         let stringified =
-            match value.Get() with
+            match value.Value with
             | null -> null
-            | _ -> value.Get().ToString()
+            | _ -> value.Value.ToString()
         writer.WriteValue stringified
 
 let private jsonSettings = JsonSerializerSettings(ContractResolver = InnerPropertyContractResolver(),
@@ -100,22 +108,23 @@ let private jsonSettings = JsonSerializerSettings(ContractResolver = InnerProper
                                                       StringEnumConverter()
                                                       GlyphTypefaceConverter()
                                                       UniversalDoubleConverter()
+                                                      WpfGlyphTypefaceConverter()
                                                       WpfBrushConverter()
                                                   |])
 
 let private serialize o =
-    JsonConvert.SerializeObject(o, jsonSettings)
+    JsonConvert.SerializeObject(o, jsonSettings).Replace("\r\n", "\n")
 
 let verifyObject: obj -> unit =
     serialize >> Approvals.Verify
 
 let verifyParseResult (formulaText: string): unit =
-    let parser = TexFormulaParser()
+    let parser = WpfTeXFormulaParser.Instance
     let formula = parser.Parse formulaText
     verifyObject formula
 
 let verifyParseResultScenario (scenario: string) (formulaText: string): unit =
-    use block = NamerFactory.AsEnvironmentSpecificTest(fun () -> sprintf "(%s)" scenario)
+    use block = NamerFactory.AsEnvironmentSpecificTest(fun () -> $"(%s{scenario})")
     verifyParseResult formulaText
 
 let processSpecialChars (text: string): string =

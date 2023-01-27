@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 using WpfMath.Boxes;
+using WpfMath.Fonts;
 using WpfMath.Rendering.Transformations;
 
 namespace WpfMath.Rendering
@@ -15,6 +17,8 @@ namespace WpfMath.Rendering
     /// </remarks>
     internal class WpfElementRenderer : IElementRenderer
     {
+        private static readonly Brush DefaultForegroundBrush = Brushes.Black;
+
         private readonly DrawingContext _targetContext;
         private readonly double _scale;
 
@@ -42,19 +46,22 @@ namespace WpfMath.Rendering
             _foregroundContext.Pop();
         }
 
-        public void RenderGlyphRun(Func<double, GlyphRun> scaledGlyphFactory, double x, double y, Brush foreground)
+        public void RenderCharacter(CharInfo info, double x, double y, IBrush? foreground)
         {
-            var glyphRun = scaledGlyphFactory(_scale);
-            _foregroundContext.DrawGlyphRun(foreground, glyphRun);
+            var glyphRun = info.GetGlyphRun(x, y, _scale);
+            _foregroundContext.DrawGlyphRun(foreground.ToWpf() ?? DefaultForegroundBrush, glyphRun);
         }
 
-        public void RenderRectangle(Rect rectangle, Brush foreground)
+        public void RenderRectangle(Rectangle rectangle, IBrush? foreground)
         {
             var scaledRectangle = GeometryHelper.ScaleRectangle(_scale, rectangle);
-            _foregroundContext.DrawRectangle(foreground, null, scaledRectangle);
+            _foregroundContext.DrawRectangle(
+                foreground.ToWpf() ?? DefaultForegroundBrush,
+                null,
+                scaledRectangle.ToWpf());
         }
 
-        public void RenderTransformed(Box box, Transformation[] transforms, double x, double y)
+        public void RenderTransformed(Box box, IEnumerable<Transformation> transforms, double x, double y)
         {
             var scaledTransformations = transforms.Select(t => t.Scale(_scale)).ToList();
             foreach (var transformation in scaledTransformations)
@@ -81,7 +88,7 @@ namespace WpfMath.Rendering
             if (box.Background != null)
             {
                 _targetContext.DrawRectangle(
-                    ((WpfBrush) box.Background).Get(),
+                    box.Background.ToWpf(),
                     null,
                     new Rect(_scale * x, _scale * (y - box.Height),
                         _scale * box.TotalWidth,

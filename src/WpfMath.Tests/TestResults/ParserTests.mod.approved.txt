@@ -1,0 +1,80 @@
+{
+  "RootAtom": {
+    "[AtomType]": "BigOperatorAtom",
+    "BaseAtom": {
+      "[AtomType]": "RowAtom",
+      "Elements": [
+        {
+          "[AtomType]": "CharAtom",
+          "Character": "m",
+          "IsTextSymbol": false,
+          "Source": {
+            "End": 9,
+            "Length": 1,
+            "Source": "\\mathrm{mod}",
+            "SourceName": "Predefined formula fragment",
+            "Start": 8
+          },
+          "TextStyle": "mathrm",
+          "Type": "Ordinary"
+        },
+        {
+          "[AtomType]": "CharAtom",
+          "Character": "o",
+          "IsTextSymbol": false,
+          "Source": {
+            "End": 10,
+            "Length": 1,
+            "Source": "\\mathrm{mod}",
+            "SourceName": "Predefined formula fragment",
+            "Start": 9
+          },
+          "TextStyle": "mathrm",
+          "Type": "Ordinary"
+        },
+        {
+          "[AtomType]": "CharAtom",
+          "Character": "d",
+          "IsTextSymbol": false,
+          "Source": {
+            "End": 11,
+            "Length": 1,
+            "Source": "\\mathrm{mod}",
+            "SourceName": "Predefined formula fragment",
+            "Start": 10
+          },
+          "TextStyle": "mathrm",
+          "Type": "Ordinary"
+        }
+      ],
+      "PreviousAtom": null,
+      "Source": {
+        "End": 11,
+        "Length": 3,
+        "Source": "\\mathrm{mod}",
+        "SourceName": "Predefined formula fragment",
+        "Start": 8
+      },
+      "Type": "Ordinary"
+    },
+    "LowerLimitAtom": null,
+    "Source": {
+      "End": 11,
+      "Length": 3,
+      "Source": "\\mathrm{mod}",
+      "SourceName": "Predefined formula fragment",
+      "Start": 8
+    },
+    "Type": "BigOperator",
+    "UpperLimitAtom": null,
+    "UseVerticalLimits": false
+  },
+  "Source": {
+    "End": 4,
+    "Length": 4,
+    "Source": "\\mod",
+    "SourceName": "User input",
+    "Start": 0
+  },
+  "TextStyle": null
+}
