@@ -3,9 +3,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] (0.13.0)
+## [0.13.0] - 2023-01-27
 ### Changed
-- **(Breaking change.)** The library is now distributes in the form of two assemblies: `WpfMath` and `WpfMath.Shared` (as a future cross-platform core of the library).
+- **(Breaking change.)** The library is now distributed in the form of two assemblies: `WpfMath` and `WpfMath.Shared` (as a future cross-platform core of the library).
 
   Both of the assemblies are still distributed in the same NuGet package.
 
@@ -246,4 +246,5 @@ This was the initially published version. It consisted entirely of the original 
 [0.10.0]: https://github.com/ForNeVeR/wpf-math/compare/0.9.0...v0.10.0
 [0.11.0]: https://github.com/ForNeVeR/wpf-math/compare/v0.10.0...v0.11.0
 [0.12.0]: https://github.com/ForNeVeR/wpf-math/compare/v0.11.0...v0.12.0
-[Unreleased]: https://github.com/ForNeVeR/wpf-math/compare/v0.12.0...HEAD
+[0.13.0]: https://github.com/ForNeVeR/wpf-math/compare/v0.12.0...v0.13.0
+[Unreleased]: https://github.com/ForNeVeR/wpf-math/compare/v0.13.0...HEAD

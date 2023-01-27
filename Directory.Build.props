@@ -1,9 +1,12 @@
 <Project>
 
+    <PropertyGroup Label="Versioning">
+        <Version>0.13.0</Version>
+    </PropertyGroup>
+
     <PropertyGroup Condition=" '$(MSBuildProjectExtension)' == '.csproj' ">
         <LangVersion>11</LangVersion>
         <Nullable Condition=" $([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'netstandard2.1')) ">enable</Nullable>
         <Nullable Condition=" '$(Nullable)' != 'enable' ">annotations</Nullable>
     </PropertyGroup>
-
 </Project>
