@@ -1,43 +1,35 @@
-using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
+using static WpfMath.Utils.ColorHelpers;
 
-namespace WpfMath.Colors
+namespace WpfMath.Colors;
+
+internal class GrayscaleColorParser : IColorParser
 {
-    internal class GrayscaleColorParser : IColorParser
+    public RgbaColor? Parse(IReadOnlyList<string> components)
     {
-        public RgbaColor? Parse(IEnumerable<string> components)
+        var hasAlpha = components.Count == 2;
+        if (components.Count != 1 && !hasAlpha)
+            return null;
+
+        var gradation = ParseFloatColorComponent(components[0], NumberStyles.AllowDecimalPoint);
+        if (!gradation.HasValue)
+            return null;
+
+        var alpha = hasAlpha
+            ? ParseFloatColorComponent(components[1], NumberStyles.AllowDecimalPoint)
+            : 1.0;
+        if (!alpha.HasValue)
+            return null;
+
+        var colorValue = ConvertToByteRgbComponent(gradation.Value);
+        var color = new RgbaColor
         {
-            var componentList = components.ToList();
-            var hasAlpha = componentList.Count == 2;
-            if (componentList.Count != 1 && !hasAlpha)
-                return null;
-
-            var success = double.TryParse(
-                componentList[0],
-                NumberStyles.AllowDecimalPoint,
-                CultureInfo.InvariantCulture,
-                out var gradation);
-            if (!success || gradation < 0.0 || gradation > 1.0)
-                return null;
-
-            double? alpha = 1.0;
-            if (hasAlpha)
-                alpha = double.TryParse(
-                            componentList[1],
-                            NumberStyles.AllowDecimalPoint,
-                            CultureInfo.InvariantCulture,
-                            out var value) && value >= 0.0 && value <= 1.0
-                    ? (double?) value
-                    : null;
-
-            if (alpha == null)
-                return null;
-
-            var colorValue = (byte) Math.Round(gradation * 255.0, MidpointRounding.AwayFromZero);
-            var a = (byte) Math.Round(alpha.Value * 255.0, MidpointRounding.AwayFromZero);
-            return RgbaColor.FromArgb(a, colorValue, colorValue, colorValue);
-        }
+            R = colorValue,
+            G = colorValue,
+            B = colorValue,
+            A = ConvertToByteRgbComponent(alpha.Value),
+        };
+        return color;
     }
 }

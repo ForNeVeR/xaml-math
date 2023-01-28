@@ -595,7 +595,7 @@ namespace WpfMath
                 leftBracketChar,
                 rightBracketChar)?.ToString();
             var colorDefinition = ReadElement(value, ref position).ToString();
-            var colorComponents = colorDefinition.Split(',').Select(c => c.Trim());
+            var colorComponents = colorDefinition.Split(',').Select(c => c.Trim()).ToArray();
 
             var colorParser = string.IsNullOrEmpty(colorModelName)
                 ? _defaultColorParser

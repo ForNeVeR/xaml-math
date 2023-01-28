@@ -1,63 +1,53 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-#if NET452
-using WpfMath.Compatibility;
-#endif
 
-namespace WpfMath.Colors
+namespace WpfMath.Colors;
+
+/// <summary>A generic parser class for RGB color.</summary>
+/// <typeparam name="T">Type of component value (e.g. integer or double).</typeparam>
+internal abstract class RgbColorParserBase<T> : FixedComponentCountColorParser where T : struct
 {
-    /// <summary>Helps to differentiate RGBA and ARGB color models, if necessary.</summary>
-    internal enum AlphaChannelMode
+    private readonly AlphaChannelMode _alphaChannelMode;
+
+    protected RgbColorParserBase(AlphaChannelMode alphaChannelMode)
+        : base(alphaChannelMode == AlphaChannelMode.None ? 3 : 4)
     {
-        None,
-        AlphaFirst,
-        AlphaLast
+        _alphaChannelMode = alphaChannelMode;
     }
 
-    /// <summary>A generic parser class for RGB color.</summary>
-    /// <typeparam name="T">Type of component value (e.g. integer or double).</typeparam>
-    internal abstract class RgbColorParserBase<T> : FixedComponentCountColorParser where T : struct
+    protected abstract T DefaultAlpha { get; }
+
+    protected abstract T? ParseColorComponent(string component);
+    protected abstract byte GetByteValue(T val);
+
+    protected override RgbaColor? ParseComponents(IReadOnlyList<string> components)
     {
-        private readonly AlphaChannelMode _alphaChannelMode;
+        var values = components
+            .Select(ParseColorComponent)
+            .ToArray();
 
-        protected RgbColorParserBase(AlphaChannelMode alphaChannelMode)
-            : base(alphaChannelMode == AlphaChannelMode.None ? 3 : 4)
+        var index = 0;
+        var alpha = _alphaChannelMode == AlphaChannelMode.AlphaFirst
+            ? values[index++]
+            : DefaultAlpha;
+
+        var r = values[index++];
+        var g = values[index++];
+        var b = values[index++];
+
+        if (_alphaChannelMode == AlphaChannelMode.AlphaLast)
+            alpha = values[index];
+
+        if (!(alpha.HasValue && r.HasValue && g.HasValue && b.HasValue))
+            return null;
+
+        var color = new RgbaColor
         {
-            _alphaChannelMode = alphaChannelMode;
-        }
-
-        protected abstract T DefaultAlpha { get; }
-
-        protected abstract Tuple<bool, T> TryParseComponent(string component);
-        protected abstract byte GetByteValue(T val);
-
-        protected override RgbaColor? ParseComponents(List<string> components)
-        {
-            var values = components.Select(x =>
-            {
-                var (success, val) = TryParseComponent(x);
-                return success ? (T?) val : null;
-            }).ToArray();
-            var index = 0;
-            T? alpha = DefaultAlpha;
-            if (_alphaChannelMode == AlphaChannelMode.AlphaFirst)
-                alpha = values[index++];
-
-            var r = values[index++];
-            var g = values[index++];
-            var b = values[index++];
-
-            if (_alphaChannelMode == AlphaChannelMode.AlphaLast)
-                alpha = values[index];
-
-            return alpha == null || r == null || g == null || b == null
-                ? (RgbaColor?) null
-                : RgbaColor.FromArgb(
-                    GetByteValue(alpha.Value),
-                    GetByteValue(r.Value),
-                    GetByteValue(g.Value),
-                    GetByteValue(b.Value));
-        }
+            R = GetByteValue(r.Value),
+            G = GetByteValue(g.Value),
+            B = GetByteValue(b.Value),
+            A = GetByteValue(alpha.Value),
+        };
+        return color;
     }
 }

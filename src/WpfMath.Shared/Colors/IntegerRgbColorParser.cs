@@ -1,20 +1,18 @@
 using System.Globalization;
-using WpfMath.Rendering;
-using WpfMath.Utils;
+using static WpfMath.Utils.ColorHelpers;
 
-namespace WpfMath.Colors
+namespace WpfMath.Colors;
+
+internal class IntegerRgbColorParser : RgbColorParserBase<byte>
 {
-    internal class IntegerRgbColorParser : RgbColorParserBase<byte>
+    public IntegerRgbColorParser(AlphaChannelMode alphaChannelMode) : base(alphaChannelMode)
     {
-        public IntegerRgbColorParser(AlphaChannelMode alphaChannelMode) : base(alphaChannelMode)
-        {
-        }
-
-        protected override byte DefaultAlpha => 255;
-
-        protected override byte? ParseColorComponent(string component) =>
-            ColorHelpers.ParseByteColorComponent(component, NumberStyles.None);
-
-        protected override byte GetByteValue(byte val) => val;
     }
+
+    protected override byte DefaultAlpha => 255;
+
+    protected override byte? ParseColorComponent(string component) =>
+        ParseByteColorComponent(component, NumberStyles.None);
+
+    protected override byte GetByteValue(byte val) => val;
 }
