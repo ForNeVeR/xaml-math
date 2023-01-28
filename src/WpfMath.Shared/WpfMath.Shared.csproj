@@ -17,6 +17,7 @@
 
     <ItemGroup>
         <InternalsVisibleTo Include="WpfMath" />
+        <InternalsVisibleTo Include="AvaloniaMath" />
         <InternalsVisibleTo Include="WpfMath.Tests" />
     </ItemGroup>
 

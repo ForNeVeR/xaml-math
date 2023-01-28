@@ -44,5 +44,8 @@
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="[0.10.0,0.11.0)" />
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\WpfMath.Shared\WpfMath.Shared.csproj" />
+    </ItemGroup>
 
 </Project>
