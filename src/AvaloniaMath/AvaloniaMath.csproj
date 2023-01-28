@@ -45,6 +45,4 @@
         <PackageReference Include="Avalonia" Version="[0.10.0,0.11.0)" />
     </ItemGroup>
 
-    <Import Project="..\SharedMath\SharedMath.projitems" Label="Shared" />
-
 </Project>

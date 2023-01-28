@@ -47,8 +47,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{422A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaMath.Example", "src\AvaloniaMath.Example\AvaloniaMath.Example.csproj", "{4D9FD5DA-DA8C-4513-8783-413924A76D62}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SharedMath", "src\SharedMath\SharedMath.shproj", "{22DCFC4B-909F-48CB-AD31-15C37198201C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{B296A539-C985-43AB-B740-7FBE8F85CCFF}"
 ProjectSection(SolutionItems) = preProject
 	.github\workflows\main.yml = .github\workflows\main.yml
