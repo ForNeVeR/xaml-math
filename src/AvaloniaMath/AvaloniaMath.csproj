@@ -37,9 +37,6 @@
             <SubType>Designer</SubType>
         </AvaloniaResource>
     </ItemGroup>
-    <PropertyGroup>
-        <AvaloniaUseExternalMSBuild>true</AvaloniaUseExternalMSBuild>
-    </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="[0.10.0,0.11.0)" />
         <PackageReference Include="Nullable" Version="1.2.1" PrivateAssets="All" />
