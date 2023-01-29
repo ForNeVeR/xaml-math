@@ -10,6 +10,7 @@ public class ApiDefinitionTests : ApiDefinitionTestsBase
     public Task WpfMath(string fileName) => DoTest(fileName);
 
     [Theory]
+    [InlineData("WpfMath.Shared.netstandard2.0.cs")]
     [InlineData("WpfMath.Shared.net452.cs")]
     [InlineData("WpfMath.Shared.netcoreapp3.1.cs")]
     public Task WpfMathShared(string fileName) => DoTest(fileName);

@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>netcoreapp3.1;net461</TargetFrameworks>
-        <LangVersion>8.0</LangVersion>
+        <TargetFrameworks>net462;net6.0</TargetFrameworks>
         <DebugType>Full</DebugType>
         <IsPackable>false</IsPackable>
 
