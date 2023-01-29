@@ -15,6 +15,8 @@ namespace AvaloniaMath.Rendering;
 /// <summary>The renderer that uses Avalonia drawing context.</summary>
 internal class AvaloniaElementRenderer : IElementRenderer
 {
+    private static readonly ISolidColorBrush DefaultForegroundBrush = Brushes.Black;
+
     private readonly DrawingContext _foregroundContext;
     private readonly double _scale;
 
@@ -38,13 +40,13 @@ internal class AvaloniaElementRenderer : IElementRenderer
     public void RenderCharacter(CharInfo info, double x, double y, IBrush? foreground)
     {
         var glyph = info.GetGlyphRun(x, y, _scale);
-        _foregroundContext.DrawGlyphRun(foreground.ToAvalonia(), glyph);
+        _foregroundContext.DrawGlyphRun(foreground.ToAvalonia() ?? DefaultForegroundBrush, glyph);
     }
 
     public void RenderRectangle(Rectangle rectangle, IBrush? foreground)
     {
         var scaledRectangle = GeometryHelper.ScaleRectangle(_scale, rectangle).ToAvalonia();
-        _foregroundContext.FillRectangle(foreground.ToAvalonia(), scaledRectangle);
+        _foregroundContext.FillRectangle(foreground.ToAvalonia() ?? DefaultForegroundBrush, scaledRectangle);
     }
 
     public void RenderTransformed(Box box, IEnumerable<Transformation> transforms, double x, double y)

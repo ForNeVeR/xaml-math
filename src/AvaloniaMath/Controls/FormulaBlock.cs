@@ -9,7 +9,6 @@ using Avalonia.Markup.Xaml.Templates;
 using Avalonia.Media;
 using AvaloniaMath.Parsers;
 using AvaloniaMath.Rendering;
-using WpfMath;
 using WpfMath.Boxes;
 using WpfMath.Exceptions;
 using WpfMath.Rendering;
@@ -19,7 +18,6 @@ namespace AvaloniaMath.Controls
 {
     public class FormulaBlock : Control
     {
-        private TexEnvironment? _texEnvironment;
         private Box? _box;
 
         public static readonly StyledProperty<string> FormulaProperty =
@@ -124,11 +122,10 @@ namespace AvaloniaMath.Controls
             {
                 // TODO only parse on formula change
                 var formula = AvaloniaTeXFormulaParser.Instance.Parse(Formula);
-                _texEnvironment = AvaloniaTeXEnvironment.Create(
+                var texEnvironment = AvaloniaTeXEnvironment.Create(
                     scale: Scale,
                     systemTextFontName: SystemTextFontName);
-                _box = formula.CreateBox(_texEnvironment);
-                // TODO: Maybe store the environment inside of a Box?
+                _box = formula.CreateBox(texEnvironment);
 
                 HasError = false;
                 Errors.Clear();
@@ -156,7 +153,6 @@ namespace AvaloniaMath.Controls
             Errors.Add(exception);
             HasError = true;
             _box = null;
-            _texEnvironment = null;
         }
     }
 }
