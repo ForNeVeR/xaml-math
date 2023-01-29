@@ -9,6 +9,7 @@
     </PropertyGroup>
     <ItemGroup>
         <ProjectReference Include="../WpfMath/WpfMath.csproj" />
+        <ProjectReference Include="../WpfMath.Shared/WpfMath.Shared.csproj" />
     </ItemGroup>
     <ItemGroup>
       <PackageReference Include="Nullable" Version="1.2.1">
