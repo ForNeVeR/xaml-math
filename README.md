@@ -2,14 +2,14 @@ WPF-Math: [![NuGet][badge-nuget-wpf]][nuget-wpf]
 Avalonia-Math: [![NuGet][badge-nuget-avalonia]][nuget-avalonia]
 ========
 
-*WPF-Math* is a .NET library for rendering mathematical formulae using the LaTeX typesetting style, for the WPF framework.
-We also support [Avalonia][avalonia] XAML framework, there's an Avalonia-Math library for it.
+*WPF-Math* is a .NET library for rendering mathematical formulae using the LaTeX typesetting style, for the WPF and Avalonia XAML-based frameworks.
+
+For WPF, use NuGet package [WpfMath][nuget-wpf]; for Avalonia, use [AvaloniaMath][nuget-avalonia].
 
 It supports the following .NET runtimes:
 - .NET Framework 4.5.2 or later
 - .NET Core 3.1 or later
 - .NET 5.0 or later
-
 
 Getting Started
 ---------------
@@ -17,8 +17,14 @@ Getting Started
 The simplest way of using *WPF-Math* is to render a static formula in a XAML file as follows.
 
 ```xml
-<Window ... xmlns:controls="clr-namespace:WpfMath.Controls;assembly=WpfMath">
+<!-- WPF -->
+<Window … xmlns:controls="clr-namespace:WpfMath.Controls;assembly=WpfMath">
     <controls:FormulaControl Formula="\left(x^2 + 2 \cdot x + 2\right) = 0" />
+</Window>
+
+<!-- Avalonia -->
+<Window … xmlns:controls="clr-namespace:AvaloniaMath.Controls;assembly=AvaloniaMath">
+    <controls:FormulaBlock Formula="\left(x^2 + 2 \cdot x + 2\right) = 0" />
 </Window>
 ```
 
