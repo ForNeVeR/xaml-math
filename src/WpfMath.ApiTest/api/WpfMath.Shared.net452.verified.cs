@@ -204,18 +204,18 @@ namespace WpfMath.Colors
     public abstract partial class FixedComponentCountColorParser : WpfMath.Colors.IColorParser
     {
         protected FixedComponentCountColorParser(int componentCount) { }
-        public WpfMath.Colors.RgbaColor? Parse(System.Collections.Generic.IEnumerable<string> components) { throw null; }
-        protected abstract WpfMath.Colors.RgbaColor? ParseComponents(System.Collections.Generic.List<string> components);
+        public WpfMath.Colors.RgbaColor? Parse(System.Collections.Generic.IReadOnlyList<string> components) { throw null; }
+        protected abstract WpfMath.Colors.RgbaColor? ParseComponents(System.Collections.Generic.IReadOnlyList<string> components);
     }
     public partial interface IColorParser
     {
-        WpfMath.Colors.RgbaColor? Parse(System.Collections.Generic.IEnumerable<string> components);
+        WpfMath.Colors.RgbaColor? Parse(System.Collections.Generic.IReadOnlyList<string> components);
     }
     public partial class PredefinedColorParser : WpfMath.Colors.IColorParser
     {
         internal PredefinedColorParser() { }
         public static readonly WpfMath.Colors.PredefinedColorParser Instance;
-        public WpfMath.Colors.RgbaColor? Parse(System.Collections.Generic.IEnumerable<string> components) { throw null; }
+        public WpfMath.Colors.RgbaColor? Parse(System.Collections.Generic.IReadOnlyList<string> components) { throw null; }
     }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct RgbaColor : System.IEquatable<WpfMath.Colors.RgbaColor>
