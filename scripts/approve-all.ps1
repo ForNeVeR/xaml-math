@@ -1,19 +1,19 @@
 param (
     $SolutionRoot = "$PSScriptRoot/..",
-    $ApprovalTestsDirectories = "$SolutionRoot/src/WpfMath.Tests/TestResults",
-    $VerifyDirectories = "$SolutionRoot/src/WpfMath.ApiTest/api"
+    $ApprovalTestsDirectory = "$SolutionRoot/src/WpfMath.Tests/TestResults",
+    $VerifyDirectory = "$SolutionRoot/api"
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-Get-ChildItem $ApprovalTestsDirectories -Filter "*.received.txt" | ForEach-Object {
+Get-ChildItem $ApprovalTestsDirectory -Filter "*.received.txt" | ForEach-Object {
     $receivedTestResult = $_.FullName
     $approvedTestResult = $receivedTestResult.Replace('.received.txt', '.approved.txt')
     Move-Item -Force -LiteralPath $receivedTestResult $approvedTestResult
 }
 
-Get-ChildItem $VerifyDirectories -Filter "*.received.*" | ForEach-Object {
+Get-ChildItem $VerifyDirectory -Filter "*.received.*" | ForEach-Object {
     $receivedTestResult = $_.FullName
     $approvedTestResult = $receivedTestResult.Replace('.received.', '.verified.')
     Move-Item -Force -LiteralPath $receivedTestResult $approvedTestResult

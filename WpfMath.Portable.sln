@@ -1,0 +1,44 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaMath", "src\AvaloniaMath\AvaloniaMath.csproj", "{B0392A81-CE05-4BB4-B0A4-1859F5E86320}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaMath.Example", "src\AvaloniaMath.Example\AvaloniaMath.Example.csproj", "{4BA49B62-7C1F-4106-8DF1-8FCE83C73FDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaMath.ApiTest", "src\AvaloniaMath.ApiTest\AvaloniaMath.ApiTest.csproj", "{A5C7015D-9EE7-4C0A-B66D-BF6546DE9E8A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B0392A81-CE05-4BB4-B0A4-1859F5E86320} = {B0392A81-CE05-4BB4-B0A4-1859F5E86320}
+		{ADE38025-CF65-4084-A3C8-8584D9E5B4C0} = {ADE38025-CF65-4084-A3C8-8584D9E5B4C0}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfMath.Shared", "src\WpfMath.Shared\WpfMath.Shared.csproj", "{ADE38025-CF65-4084-A3C8-8584D9E5B4C0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B0392A81-CE05-4BB4-B0A4-1859F5E86320}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0392A81-CE05-4BB4-B0A4-1859F5E86320}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0392A81-CE05-4BB4-B0A4-1859F5E86320}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0392A81-CE05-4BB4-B0A4-1859F5E86320}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BA49B62-7C1F-4106-8DF1-8FCE83C73FDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BA49B62-7C1F-4106-8DF1-8FCE83C73FDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BA49B62-7C1F-4106-8DF1-8FCE83C73FDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BA49B62-7C1F-4106-8DF1-8FCE83C73FDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5C7015D-9EE7-4C0A-B66D-BF6546DE9E8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5C7015D-9EE7-4C0A-B66D-BF6546DE9E8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5C7015D-9EE7-4C0A-B66D-BF6546DE9E8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5C7015D-9EE7-4C0A-B66D-BF6546DE9E8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADE38025-CF65-4084-A3C8-8584D9E5B4C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADE38025-CF65-4084-A3C8-8584D9E5B4C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADE38025-CF65-4084-A3C8-8584D9E5B4C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADE38025-CF65-4084-A3C8-8584D9E5B4C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

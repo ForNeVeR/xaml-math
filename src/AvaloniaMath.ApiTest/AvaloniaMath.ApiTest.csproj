@@ -11,6 +11,7 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.DotNet.GenAPI" Version="7.0.0-beta.23060.4" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
+        <PackageReference Include="Verify.Xunit" Version="19.7.1" />
         <PackageReference Include="xunit" Version="2.4.2" />
         <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -23,8 +24,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <_InputAssembly Include="../WpfMath/bin/$(Configuration)/net452/WpfMath.dll" Framework="net452" />
-        <_InputAssembly Include="../WpfMath/bin/$(Configuration)/netcoreapp3.1/WpfMath.dll" Framework="netcoreapp3.1" />
+        <_InputAssembly Include="../AvaloniaMath/bin/$(Configuration)/netstandard2.0/AvaloniaMath.dll" Framework="netstandard2.0" />
+        <_InputAssembly Include="../AvaloniaMath/bin/$(Configuration)/netstandard2.1/AvaloniaMath.dll" Framework="netstandard2.1" />
         <_InputAssembly Include="../WpfMath.Shared/bin/$(Configuration)/net452/WpfMath.Shared.dll" Framework="net452" />
         <_InputAssembly Include="../WpfMath.Shared/bin/$(Configuration)/netcoreapp3.1/WpfMath.Shared.dll" Framework="netcoreapp3.1" />
     </ItemGroup>

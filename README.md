@@ -6,10 +6,12 @@ Avalonia-Math: [![NuGet][badge-nuget-avalonia]][nuget-avalonia]
 
 For WPF, use NuGet package [WpfMath][nuget-wpf]; for Avalonia, use [AvaloniaMath][nuget-avalonia].
 
-It supports the following .NET runtimes:
+The WPF version supports the following .NET runtimes:
 - .NET Framework 4.5.2 or later
 - .NET Core 3.1 or later
 - .NET 5.0 or later
+
+The Avalonia version supports .NET Standard 2.0 and .NET Standard 2.1.
 
 Getting Started
 ---------------
@@ -120,8 +122,8 @@ Build and Maintenance Instructions
 Build the project using [.NET SDK 7.0][dotnet-sdk] or later. Here's the build and test script:
 
 ```console
-$ dotnet build --configuration Release
-$ dotnet test
+$ dotnet build WpfMath.All.sln --configuration Release
+$ dotnet test WpfMath.All.sln
 ```
 
 To approve the test results if they differ from the existing ones, execute the `scripts/approve-all.ps1` script using PowerShell or PowerShell Core.
@@ -129,8 +131,10 @@ To approve the test results if they differ from the existing ones, execute the `
 To publish the package, execute the following command:
 
 ```console
-$ dotnet pack --configuration Release
+$ dotnet pack WpfMath.All.sln --configuration Release
 ```
+
+For non-Windows systems, substitute `WpfMath.Portable.sln` instead of `WpfMath.All.sln`.
 
 History
 -------

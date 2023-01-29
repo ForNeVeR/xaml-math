@@ -14,7 +14,18 @@ on:
 
 jobs:
   main:
-    runs-on: windows-2019
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - image: 'macos-12'
+            solution: 'WpfMath.Portable.sln'
+          - image: 'ubuntu-22.04'
+            solution: 'WpfMath.Portable.sln'
+          - image: 'windows-2022'
+            solution: 'WpfMath.All.sln'
+
+    runs-on: ${{ matrix.config.image }}
 
     env:
       DOTNET_NOLOGO: 1
@@ -44,10 +55,10 @@ jobs:
             7.0.x
 
       - name: Build
-        run: dotnet build
+        run: dotnet build ${{ matrix.config.solution }}
 
       - name: Pack
-        run: dotnet pack
+        run: dotnet pack ${{ matrix.config.solution }}
 
       - name: Test
-        run: dotnet test
+        run: dotnet test ${{ matrix.config.solution }}
