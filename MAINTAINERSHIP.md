@@ -15,7 +15,7 @@ Prepare NuGet Package Locally
 -----------------------------
 
 ```console
-$ dotnet pack --configuration Release
+$ dotnet pack WpfMath.All --configuration Release
 ```
 
 Push a NuGet Package Manually

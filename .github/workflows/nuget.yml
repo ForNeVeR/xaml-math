@@ -52,25 +52,48 @@ jobs:
           release_name: WPF-Math v${{ steps.version.outputs.version }}
           body_path: ./release-notes.md
 
-      - name: Upload .nupkg file
+      - name: Upload WPF-Math .nupkg file
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.release.outputs.upload_url }}
-          asset_name: WPF-Math.${{ steps.version.outputs.version }}.nupkg
+          asset_name: WpfMath.${{ steps.version.outputs.version }}.nupkg
           asset_path: ./src/WpfMath/bin/Release/WpfMath.${{ steps.version.outputs.version }}.nupkg
           asset_content_type: application/zip
 
-      - name: Upload .snupkg file
+      - name: Upload Avalonia-Math .nupkg file
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.release.outputs.upload_url }}
-          asset_name: WPF-Math.${{ steps.version.outputs.version }}.snupkg
+          asset_name: AvaloniaMath.${{ steps.version.outputs.version }}.nupkg
+          asset_path: ./src/AvaloniaMath/bin/Release/AvaloniaMath.${{ steps.version.outputs.version }}.nupkg
+          asset_content_type: application/zip
+
+      - name: Upload WPF-Math .snupkg file
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_name: WpfMath.${{ steps.version.outputs.version }}.snupkg
           asset_path: ./src/WpfMath/bin/Release/WpfMath.${{ steps.version.outputs.version }}.snupkg
           asset_content_type: application/zip
 
-      - name: Push a package to NuGet
-        run: dotnet nuget push ./src/WpfMath/bin/Release/WpfMath.${{ steps.version.outputs.version }}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_TOKEN }}
+      - name: Upload Avalonia-Math .snupkg file
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_name: AvaloniaMath.${{ steps.version.outputs.version }}.snupkg
+          asset_path: ./src/AvaloniaMath/bin/Release/AvaloniaMath.${{ steps.version.outputs.version }}.snupkg
+          asset_content_type: application/zip
+
+      - name: Push WPF-Math package to NuGet
+        run: dotnet nuget push ./src/WpfMath/bin/Release/WpfMath.${{ steps.version.outputs.version }}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_TOKEN_WPF }}
+
+      - name: Push Avalonia-Math package to NuGet
+        run: dotnet nuget push ./src/AvaloniaMath/bin/Release/AvaloniaMath.${{ steps.version.outputs.version }}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_TOKEN_AVALONIA }}

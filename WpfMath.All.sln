@@ -76,7 +76,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{3F2FED19-93A
 		api\WpfMath.Shared.net452.verified.cs = api\WpfMath.Shared.net452.verified.cs
 		api\WpfMath.Shared.netcoreapp3.1.verified.cs = api\WpfMath.Shared.netcoreapp3.1.verified.cs
 		api\AvaloniaMath.netstandard2.0.verified.cs = api\AvaloniaMath.netstandard2.0.verified.cs
-		api\AvaloniaMath.netstandard2.1.verified.cs = api\AvaloniaMath.netstandard2.1.verified.cs
+		api\AvaloniaMath.net6.0.verified.cs = api\AvaloniaMath.net6.0.verified.cs
+		api\WpfMath.Shared.netstandard2.0.verified.cs = api\WpfMath.Shared.netstandard2.0.verified.cs
 	EndProjectSection
 EndProject
 Global

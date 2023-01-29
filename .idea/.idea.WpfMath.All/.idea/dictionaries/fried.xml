@@ -2,6 +2,8 @@
   <dictionary name="fried">
     <words>
       <w>maintainership</w>
+      <w>nupkg</w>
+      <w>snupkg</w>
     </words>
   </dictionary>
 </component>
