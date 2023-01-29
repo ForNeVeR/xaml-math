@@ -21,12 +21,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Remove="Data\*.xml" />
+        <!-- TODO: Include after we support Avalonia 11 -->
+        <!-- See this: https://github.com/AvaloniaUI/Avalonia/blob/81fab67becf5499f1893d23e556e1b84abcce135/src/Avalonia.Build.Tasks/GenerateAvaloniaResourcesTask.cs#L39-L43 -->
+        <!-- <_Font Include="..\..\fonts\*.ttf" Visible="false" />-->
+        <!-- <AvaloniaResource Include="@(_Font->'%(FullPath)')"-->
+        <!--                   Link="Fonts\@(_Font->'%(Filename)').ttf"-->
+        <!--                   Visible="true"/>-->
         <None Remove="Fonts\*.ttf" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <EmbeddedResource Include="Data\*.xml" />
         <AvaloniaResource Include="Fonts\*.ttf" />
     </ItemGroup>
     <ItemGroup>

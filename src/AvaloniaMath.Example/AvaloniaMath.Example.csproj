@@ -19,7 +19,7 @@
         <AvaloniaResource Include="**\*.xaml">
             <SubType>Designer</SubType>
         </AvaloniaResource>
-        <AvaloniaResource Include="Assets\*"/>
+        <AvaloniaResource Include="Assets\*" />
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Avalonia.Desktop" Version="0.10.6" />
@@ -30,6 +30,6 @@
         <PackageReference Include="Avalonia.Direct2D1" Version="0.10.6" />
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\AvaloniaMath\AvaloniaMath.csproj"/>
+        <ProjectReference Include="..\AvaloniaMath\AvaloniaMath.csproj" />
     </ItemGroup>
 </Project>

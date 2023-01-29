@@ -55,10 +55,7 @@ A lot of types were moved to WpfMath.Shared assembly (preserving their namespace
     </PropertyGroup>
 
     <ItemGroup>
-      <Resource Include="Fonts\cmex10.ttf" />
-      <Resource Include="Fonts\cmmi10.ttf" />
-      <Resource Include="Fonts\cmr10.ttf" />
-      <Resource Include="Fonts\cmsy10.ttf" />
+      <Resource Include="..\..\fonts\*.ttf" LinkBase="Fonts" />
     </ItemGroup>
 
     <ItemGroup>
