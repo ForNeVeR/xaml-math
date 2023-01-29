@@ -1,22 +1,26 @@
+using System;
+using System.Collections.ObjectModel;
+using System.Reactive;
+using System.Reactive.Linq;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Data;
 using Avalonia.Markup.Xaml.Templates;
 using Avalonia.Media;
-using System;
-using System.Collections.ObjectModel;
-using System.Reactive;
-using System.Reactive.Linq;
+using AvaloniaMath.Parsers;
+using AvaloniaMath.Rendering;
 using WpfMath;
+using WpfMath.Boxes;
 using WpfMath.Exceptions;
+using WpfMath.Rendering;
+using Size = Avalonia.Size;
 
 namespace AvaloniaMath.Controls
 {
     public class FormulaBlock : Control
     {
-        private static readonly TexFormulaParser s_formulaParser = new TexFormulaParser();
-        private TexFormula? _texFormula;
-        private TexRenderer? _texRenderer;
+        private TexEnvironment? _texEnvironment;
+        private Box? _box;
 
         public static readonly StyledProperty<string> FormulaProperty =
             AvaloniaProperty.Register<FormulaBlock, string>(
@@ -105,7 +109,10 @@ namespace AvaloniaMath.Controls
         public override void Render(DrawingContext context)
         {
             base.Render(context);
-            _texRenderer?.Render(context, 0, 0);
+            if (_box == null) return;
+
+            var renderer = new AvaloniaElementRenderer(context, Scale);
+            TeXFormulaExtensions.Render(_box, renderer, 0.0, 0.0);
         }
 
         /// <summary>
@@ -116,8 +123,12 @@ namespace AvaloniaMath.Controls
             try
             {
                 // TODO only parse on formula change
-                _texFormula = s_formulaParser.Parse(Formula);
-                _texRenderer = _texFormula.GetRenderer(TexStyle.Display, Scale, SystemTextFontName);
+                var formula = AvaloniaTeXFormulaParser.Instance.Parse(Formula);
+                _texEnvironment = AvaloniaTeXEnvironment.Create(
+                    scale: Scale,
+                    systemTextFontName: SystemTextFontName);
+                _box = formula.CreateBox(_texEnvironment);
+                // TODO: Maybe store the environment inside of a Box?
 
                 HasError = false;
                 Errors.Clear();
@@ -135,15 +146,17 @@ namespace AvaloniaMath.Controls
         /// <returns>The desired size.</returns>
         protected override Size MeasureOverride(Size availableSize)
         {
-            return _texRenderer?.RenderSize ?? new Size();
+            return _box == null
+                ? new Size()
+                : new Size(_box.TotalWidth * Scale, _box.TotalHeight * Scale);
         }
 
         private void SetError(TexException exception)
         {
             Errors.Add(exception);
             HasError = true;
-            _texFormula = null;
-            _texRenderer = null;
+            _box = null;
+            _texEnvironment = null;
         }
     }
 }

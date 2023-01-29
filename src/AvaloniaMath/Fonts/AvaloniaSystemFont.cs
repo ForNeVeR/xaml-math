@@ -1,15 +1,16 @@
 using Avalonia.Media;
+using AvaloniaMath.Fonts;
 using WpfMath.Exceptions;
-using WpfMath.Rendering;
+using WpfMath.Fonts;
 using WpfMath.Utils;
 
 namespace WpfMath
 {
-    internal class SystemFont : ITeXFont
+    internal class AvaloniaSystemFont : ITeXFont
     {
         private readonly string _fontFamily;
 
-        public SystemFont(double size, string fontFamily)
+        public AvaloniaSystemFont(double size, string fontFamily)
         {
             _fontFamily = fontFamily;
             Size = size;
@@ -41,7 +42,7 @@ namespace WpfMath
 //            }
 
             var metrics = GetFontMetrics(character, typeface);
-            return Result.Ok(new CharInfo(character, typeface, 1.0, TexFontUtilities.NoFontId, metrics));
+            return Result.Ok(new CharInfo(character, typeface.ToPlatform(), 1.0, TexFontUtilities.NoFontId, metrics));
         }
 
         public Result<CharInfo> GetCharInfo(CharFont charFont, TexStyle style) =>
@@ -109,10 +110,10 @@ namespace WpfMath
         private static TexNotSupportedException MethodNotSupported(string callerMethod)
         {
             return new TexNotSupportedException(
-                $"Call of method {callerMethod} on {nameof(SystemFont)} is not supported");
+                $"Call of method {callerMethod} on {nameof(AvaloniaSystemFont)} is not supported");
         }
 
-        private TexFontMetrics GetFontMetrics(char c, Typeface typeface)
+        private TeXFontMetrics GetFontMetrics(char c, Typeface typeface)
         {
             var formattedText = new FormattedText
             {
@@ -120,7 +121,7 @@ namespace WpfMath
                 Typeface = typeface,
                 TextAlignment=TextAlignment.Left
             };
-            return new TexFontMetrics(formattedText.Constraint.Width, formattedText.Constraint.Height, 0.0, formattedText.Constraint.Width, 1.0);
+            return new TeXFontMetrics(formattedText.Constraint.Width, formattedText.Constraint.Height, 0.0, formattedText.Constraint.Width, 1.0);
         }
 
         private Typeface GetTypeface()

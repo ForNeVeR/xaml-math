@@ -19,7 +19,6 @@ public static class TeXFormulaExtensions
         Render(box, renderer, x, y);
     }
 
-    // TODO: Merge into RenderTo after we get rid of the TexRenderer class.
     internal static void Render(Box box, IElementRenderer renderer, double x, double y)
     {
         renderer.RenderElement(box, x, y + box.Height);
