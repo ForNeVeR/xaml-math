@@ -1,7 +1,7 @@
 <Project>
 
     <PropertyGroup Label="Versioning">
-        <Version>0.13.0</Version>
+        <Version>0.13.1</Version>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(MSBuildProjectExtension)' == '.csproj' ">
