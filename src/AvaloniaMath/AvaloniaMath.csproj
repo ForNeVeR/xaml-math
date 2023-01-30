@@ -11,7 +11,7 @@
         <Title>Avalonia-Math</Title>
         <Description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the Avalonia framework.</Description>
 
-        <PackageTags>$(PackageTags);avalonia</PackageTags> <!-- TODO: Check it works correctly -->
+        <PackageTags>$(PackageTags);avalonia</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>
