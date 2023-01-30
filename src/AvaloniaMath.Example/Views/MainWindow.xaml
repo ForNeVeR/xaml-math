@@ -1,9 +1,7 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="clr-namespace:AvaloniaMath.Example.ViewModels;assembly=AvaloniaMath.Example"
         xmlns:math="clr-namespace:AvaloniaMath.Controls;assembly=AvaloniaMath"
         x:Class="AvaloniaMath.Example.Views.MainWindow"
-        Icon="/Assets/avalonia-logo.ico"
         Title="AvaloniaMath.Example"
         Width="800"
         Height="600">
