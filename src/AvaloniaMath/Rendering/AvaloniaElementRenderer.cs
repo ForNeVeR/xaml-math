@@ -28,13 +28,8 @@ internal class AvaloniaElementRenderer : IElementRenderer
 
     public void RenderElement(Box box, double x, double y)
     {
-        //   var guidelines = GenerateGuidelines(box, x, y);
-        //   _drawingContext.PushGuidelineSet(guidelines);
-
         RenderBackground(box, x, y);
         box.RenderTo(this, x, y);
-
-        //  _drawingContext.Pop();
     }
 
     public void RenderCharacter(CharInfo info, double x, double y, IBrush? foreground)
@@ -95,14 +90,4 @@ internal class AvaloniaElementRenderer : IElementRenderer
                 throw new NotSupportedException($"Unknown {nameof(Transformation)} kind: {transformation.Kind}");
         }
     }
-
-    /// <summary>
-    /// Generates the guidelines for WPF render to snap the box boundaries onto the device pixel grid.
-    /// </summary>
-    /*    private GuidelineSet GenerateGuidelines(Box box, double x, double y) => new GuidelineSet
-        {
-            GuidelinesX = {_scale * x, _scale * (x + box.TotalWidth)},
-            GuidelinesY = {_scale * y, _scale * (y + box.TotalHeight)}
-        };
-        */
 }

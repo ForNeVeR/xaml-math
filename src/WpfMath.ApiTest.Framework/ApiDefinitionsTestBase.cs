@@ -21,9 +21,9 @@ public class ApiDefinitionTestsBase
             .UseFileName(Path.GetFileNameWithoutExtension(goldFile));
     }
 
-    protected static string GetProjectDirectory(string csProjFileName)
+    private static string GetProjectDirectory(string csProjFileName)
     {
-        var assemblyLocation =Assembly.GetExecutingAssembly().Location;
+        var assemblyLocation = Assembly.GetExecutingAssembly().Location;
         var currentLocation = assemblyLocation;
 
         while (true)

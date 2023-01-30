@@ -10,7 +10,8 @@ using IBrush = WpfMath.Rendering.IBrush;
 namespace AvaloniaMath.Rendering;
 
 /// <summary>A renderer that renders the elements to a provided <see cref="GeometryGroup"/> instance.</summary>
-public class GeometryElementRenderer : IElementRenderer
+// TODO: Make this work
+internal class GeometryElementRenderer : IElementRenderer
 {
     private readonly GeometryGroup _geometry;
     private readonly double _scale;
