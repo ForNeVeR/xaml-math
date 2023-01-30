@@ -11,7 +11,9 @@ The WPF version supports the following .NET runtimes:
 - .NET Core 3.1 or later
 - .NET 5.0 or later
 
-The Avalonia version supports .NET Standard 2.0 and .NET Standard 2.1.
+The Avalonia version supports:
+- .NET Standard 2.0 or later
+- .NET 6 or later
 
 Getting Started
 ---------------
