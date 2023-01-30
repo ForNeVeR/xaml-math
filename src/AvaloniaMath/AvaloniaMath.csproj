@@ -9,15 +9,9 @@
     <PropertyGroup>
         <PackageId>AvaloniaMath</PackageId>
         <Title>Avalonia-Math</Title>
-        <Authors>ForNeVeR</Authors>
         <Description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the Avalonia framework.</Description>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <RepositoryUrl>https://github.com/ForNeVeR/wpf-math</RepositoryUrl>
-        <Copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2019</Copyright>
 
-        <VersionPrefix>0.6.0</VersionPrefix>
-        <VersionSuffix>alpha</VersionSuffix>
-        <PackageReleaseNotes>Initial release of the package version for Avalonia.</PackageReleaseNotes>
+        <PackageTags>$(PackageTags);avalonia</PackageTags> <!-- TODO: Check it works correctly -->
     </PropertyGroup>
 
     <ItemGroup>
