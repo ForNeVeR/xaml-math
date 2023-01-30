@@ -1,7 +1,7 @@
 WPF-Math
 ========
 
-*WPF-Math* is a .NET library for rendering mathematical formulae using the LaTeX typesetting style, for the WPF and Avalonia XAML-based frameworks.
+*WPF-Math* is a .NET library for rendering mathematical formulae using the LaTeX typesetting style, for the WPF and [Avalonia][avalonia] XAML-based frameworks.
 
 - For WPF version, use NuGet package [WpfMath][nuget-wpf]: [![NuGet][badge-nuget-wpf]][nuget-wpf]
 - For Avalonia version, use [AvaloniaMath][nuget-avalonia]: [![NuGet][badge-nuget-avalonia]][nuget-avalonia]
