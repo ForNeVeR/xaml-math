@@ -9,7 +9,7 @@
         <OutputType Condition=" '$(Configuration)' != 'Debug' ">WinExe</OutputType>
 
         <Nullable Condition="'$(TargetFramework)' == 'netcoreapp3.1'">enable</Nullable>
-        <Nullable Condition="'$(TargetFramework)' == 'net461'">annotations</Nullable>
+        <Nullable Condition="'$(TargetFramework)' == 'net462'">annotations</Nullable>
     </PropertyGroup>
     <ItemGroup>
         <Compile Update="**\*.xaml.cs">
