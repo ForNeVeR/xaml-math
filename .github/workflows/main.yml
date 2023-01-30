@@ -18,13 +18,17 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - image: 'macos-12'
+          - name: 'macos'
+            image: 'macos-12'
             solution: 'WpfMath.Portable.sln'
-          - image: 'ubuntu-22.04'
+          - name: 'linux'
+            image: 'ubuntu-22.04'
             solution: 'WpfMath.Portable.sln'
-          - image: 'windows-2022'
+          - name: 'windows'
+            image: 'windows-2022'
             solution: 'WpfMath.All.sln'
 
+    name: main.${{ matrix.config.name }}
     runs-on: ${{ matrix.config.image }}
 
     env:
