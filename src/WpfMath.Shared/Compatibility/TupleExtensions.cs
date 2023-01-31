@@ -2,8 +2,6 @@ using System;
 
 namespace WpfMath.Compatibility;
 
-// TODO: Review if this is still used
-
 #if NET452 // not needed for .NET Core 3.0+ because there are System.TupleExtensions
 // TODO[#338]: Remove after migration to .NET Framework 4.7
 
