@@ -11,9 +11,9 @@ public class PredefinedColorParser : IColorParser
 {
     private const string ResourceName = TexUtilities.ResourcesDataDirectory + "PredefinedColors.xml";
 
-    private static IReadOnlyDictionary<string, RgbaColor> _colors = null!;
+    private readonly IReadOnlyDictionary<string, RgbaColor> _colors;
 
-    public static readonly PredefinedColorParser Instance = new PredefinedColorParser(ResourceName);
+    public static readonly PredefinedColorParser Instance = new(ResourceName);
 
     private PredefinedColorParser(string resourceName)
     {
