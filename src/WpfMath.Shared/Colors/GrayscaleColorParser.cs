@@ -23,13 +23,6 @@ internal class GrayscaleColorParser : IColorParser
             return null;
 
         var colorValue = ConvertToByteRgbComponent(gradation.Value);
-        var color = new RgbaColor
-        {
-            R = colorValue,
-            G = colorValue,
-            B = colorValue,
-            A = ConvertToByteRgbComponent(alpha.Value),
-        };
-        return color;
+        return RgbaColor.FromArgb(ConvertToByteRgbComponent(alpha.Value), colorValue, colorValue, colorValue);
     }
 }
