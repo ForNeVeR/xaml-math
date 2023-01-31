@@ -62,23 +62,4 @@ namespace AvaloniaMath.Rendering
     {
         public static WpfMath.TexEnvironment Create(WpfMath.TexStyle style = 0, double scale = 20, string systemTextFontName = "Arial", Avalonia.Media.Brush? foreground = null, Avalonia.Media.Brush? background = null) { throw null; }
     }
-    public partial class GeometryElementRenderer : WpfMath.Rendering.IElementRenderer
-    {
-        public GeometryElementRenderer(WpfMath.Rendering.GeometryGroup geometry, double scale) { }
-        public void FinishRendering() { }
-        public void RenderCharacter(WpfMath.CharInfo info, double x, double y, WpfMath.Rendering.IBrush? foreground) { }
-        public void RenderElement(WpfMath.Boxes.Box box, double x, double y) { }
-        public void RenderRectangle(WpfMath.Rendering.Rectangle rectangle, WpfMath.Rendering.IBrush? foreground) { }
-        public void RenderTransformed(WpfMath.Boxes.Box box, System.Collections.Generic.IEnumerable<WpfMath.Rendering.Transformations.Transformation> transforms, double x, double y) { }
-    }
-}
-namespace WpfMath.Rendering
-{
-    public partial class GeometryGroup : Avalonia.Media.Geometry
-    {
-        public GeometryGroup() { }
-        public System.Collections.Generic.IList<Avalonia.Media.Geometry> Children { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public override Avalonia.Media.Geometry Clone() { throw null; }
-        protected override Avalonia.Platform.IGeometryImpl CreateDefiningGeometry() { throw null; }
-    }
 }
