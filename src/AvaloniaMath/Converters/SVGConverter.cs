@@ -1,3 +1,4 @@
+/* TODO[#354]
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,7 +6,7 @@ using System.Text;
 using Avalonia.Media;
 using System.Globalization;
 using System.Diagnostics;
-/* TODO
+
 namespace WpfMath.Converters
 {
     public class SVGConverter
