@@ -49,14 +49,14 @@ internal class AvaloniaElementRenderer : IElementRenderer
         var scaledTransformations = transforms.Select(t => t.Scale(_scale)).ToList();
         foreach (var transformation in scaledTransformations)
         {
-            //TODO         _drawingContext.PushTransform(ToTransform(transformation));
+            //TODO[#356]         _drawingContext.PushTransform(ToTransform(transformation));
         }
 
         RenderElement(box, x, y);
 
         for (var i = 0; i < scaledTransformations.Count; ++i)
         {
-            //TODO         _drawingContext.Pop();
+            //TODO[#356]         _drawingContext.Pop();
         }
     }
 
