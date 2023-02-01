@@ -121,7 +121,6 @@ namespace AvaloniaMath.Controls
         {
             try
             {
-                // TODO only parse on formula change
                 var formula = AvaloniaTeXFormulaParser.Instance.Parse(Formula);
                 var texEnvironment = AvaloniaTeXEnvironment.Create(
                     scale: Scale,
