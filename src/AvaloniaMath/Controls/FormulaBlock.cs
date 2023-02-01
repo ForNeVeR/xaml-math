@@ -98,7 +98,7 @@ namespace AvaloniaMath.Controls
             private set { SetValue(ErrorsProperty, value); }
         }
 
-        // TODO: Make it used
+        // TODO[#353]: Make it used
         public ControlTemplate ErrorTemplate
         {
             get { return GetValue(ErrorTemplateProperty); }
