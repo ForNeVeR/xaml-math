@@ -1,6 +1,7 @@
+/* TODO[#355]
 using Avalonia.Media.Imaging;
 using System.IO;
-/* TODO
+
 namespace WpfMath
 {
     public static class Extensions
