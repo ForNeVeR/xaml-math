@@ -15,7 +15,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <!-- TODO: Include after we support Avalonia 11 -->
+        <!-- TODO[#352]: Include after we support Avalonia 11 -->
         <!-- See this: https://github.com/AvaloniaUI/Avalonia/blob/81fab67becf5499f1893d23e556e1b84abcce135/src/Avalonia.Build.Tasks/GenerateAvaloniaResourcesTask.cs#L39-L43 -->
         <!-- <_Font Include="..\..\fonts\*.ttf" Visible="false" />-->
         <!-- <AvaloniaResource Include="@(_Font->'%(FullPath)')"-->
