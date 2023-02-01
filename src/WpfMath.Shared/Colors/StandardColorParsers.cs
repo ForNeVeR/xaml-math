@@ -4,7 +4,7 @@ namespace WpfMath.Colors;
 
 public static class StandardColorParsers
 {
-    // TODO: Make readonly
+    // TODO[#358]: Make readonly
     public static IReadOnlyDictionary<string, IColorParser> Dictionary = new Dictionary<string, IColorParser>
     {
         ["ARGB"] = new IntegerRgbColorParser(AlphaChannelMode.AlphaFirst),
