@@ -10,7 +10,7 @@ using IBrush = WpfMath.Rendering.IBrush;
 namespace AvaloniaMath.Rendering;
 
 /// <summary>A renderer that renders the elements to a provided <see cref="GeometryGroup"/> instance.</summary>
-// TODO: Make this work
+// TODO[#357]: Make this work
 internal class GeometryElementRenderer : IElementRenderer
 {
     private readonly GeometryGroup _geometry;
@@ -26,7 +26,7 @@ internal class GeometryElementRenderer : IElementRenderer
 
     public void RenderCharacter(CharInfo info, double x, double y, IBrush? foreground)
     {
-        /*TODO       var glyph = scaledGlyphFactory(_scale);
+        /*TODO[#357]       var glyph = scaledGlyphFactory(_scale);
                var glyphGeometry = glyph.BuildGeometry();
                _geometry.Children.Add(glyphGeometry);
                */
@@ -53,7 +53,7 @@ internal class GeometryElementRenderer : IElementRenderer
 
     private static void ApplyTransformations(IEnumerable<Transformation> transformations, GeometryGroup geometry)
     {
-        /*TODO
+        /*TODO[#357]
         foreach (var transformation in transformations)
         {
             switch (transformation.Kind)
