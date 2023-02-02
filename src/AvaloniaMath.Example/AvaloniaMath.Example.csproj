@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net462;net6.0</TargetFrameworks>
-        <DebugType>Full</DebugType>
         <IsPackable>false</IsPackable>
 
         <!-- For System.Diagnostics.ConsoleTraceListener and Avalonia.LoggingExtensions.LogToTrace -->

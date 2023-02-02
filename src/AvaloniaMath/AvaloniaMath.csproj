@@ -2,7 +2,6 @@
 
     <PropertyGroup>
         <TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>
-        <DebugType>Full</DebugType>
         <Nullable Condition="'$(TargetFramework)' == 'net6.0'">enable</Nullable>
         <Nullable Condition="'$(TargetFramework)' == 'netstandard2.0'">annotations</Nullable>
     </PropertyGroup>

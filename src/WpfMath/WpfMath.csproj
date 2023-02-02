@@ -4,7 +4,6 @@
         <TargetFrameworks>netcoreapp3.1;net452</TargetFrameworks>
         <UseWpf>true</UseWpf>
         <OutputType>Library</OutputType>
-        <DebugType>Full</DebugType>
     </PropertyGroup>
     <PropertyGroup>
         <PackageId>WpfMath</PackageId>

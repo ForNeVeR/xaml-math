@@ -3,7 +3,6 @@
         <TargetFrameworks>netcoreapp3.1;net461;net5.0-windows</TargetFrameworks>
         <IsPackable>false</IsPackable>
         <UseWpf>true</UseWpf>
-        <DebugType>Full</DebugType>
         <Deterministic>false</Deterministic>
     </PropertyGroup>
     <ItemGroup>

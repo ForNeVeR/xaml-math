@@ -3,7 +3,6 @@
         <OutputType>WinExe</OutputType>
         <TargetFrameworks>netcoreapp3.1;net452;net5.0-windows</TargetFrameworks>
         <UseWpf>true</UseWpf>
-        <DebugType>Full</DebugType>
         <IsPackable>false</IsPackable>
         <Nullable>enable</Nullable>
     </PropertyGroup>
