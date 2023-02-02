@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 - Avalonia version is now available! Install the **AvaloniaMath** NuGet package to get it.
+- Portable PDB packages are now published to NuGet.
 
 ## [0.13.1] - 2023-01-29
 ### Fixed
