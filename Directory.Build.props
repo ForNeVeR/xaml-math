@@ -2,9 +2,6 @@
 
     <PropertyGroup Label="Packaging">
         <Version>0.13.1</Version>
-        <PackageReleaseNotes>[Fixed]
-- #350: Unable to resolve dependency 'WpfMath.Shared' (https://github.com/ForNeVeR/wpf-math/issues/350)
-        </PackageReleaseNotes>
         <Copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2023</Copyright>
 
         <Authors>ForNeVeR</Authors>
@@ -17,6 +14,10 @@
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    </PropertyGroup>
+
+    <PropertyGroup Label="ChangelogAutomation">
+        <ChangelogFilePath>..\..\CHANGELOG.md</ChangelogFilePath>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(MSBuildProjectExtension)' == '.csproj' ">
