@@ -13,25 +13,6 @@ namespace WpfMath
     {
         public static byte[] RenderToPng(this WpfMath.TexFormula texForm, double scale, double x, double y, string systemTextFontName) { throw null; }
     }
-    [System.ObsoleteAttribute("Use extension methods on WpfMath.TexFormula instead.")]
-    public partial class TexRenderer
-    {
-        internal TexRenderer() { }
-        public double Baseline { get { throw null; } }
-        public WpfMath.Boxes.Box Box { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public System.Windows.Size RenderSize { get { throw null; } }
-        public double Scale { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        [System.ObsoleteAttribute("Use WpfMath.Rendering.WpfTeXFormulaExtensions::RenderTo instead.")]
-        public void Render(System.Windows.Media.DrawingContext drawingContext, double x, double y) { }
-        [System.ObsoleteAttribute("Use WpfMath.Rendering.TeXFormulaExtensions::RenderTo instead.")]
-        public void RenderFormulaTo(WpfMath.Rendering.IElementRenderer renderer, double x, double y) { }
-        [System.ObsoleteAttribute("Use WpfMath.Rendering.WpfTeXFormulaExtensions::RenderToBitmap instead.")]
-        public System.Windows.Media.Imaging.BitmapSource RenderToBitmap(double x, double y) { throw null; }
-        [System.ObsoleteAttribute("Use WpfMath.Rendering.WpfTeXFormulaExtensions::RenderToBitmap instead.")]
-        public System.Windows.Media.Imaging.BitmapSource RenderToBitmap(double x, double y, double dpi) { throw null; }
-        [System.ObsoleteAttribute("Use WpfMath.Rendering.WpfTeXFormulaExtensions::RenderToGeometry instead.")]
-        public System.Windows.Media.Geometry RenderToGeometry(double x, double y) { throw null; }
-    }
 }
 namespace WpfMath.Controls
 {
