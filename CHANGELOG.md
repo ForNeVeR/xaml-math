@@ -7,6 +7,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 - **(Breaking change.)** `WpfMath.Colors.IColorParser::Parse` now accepts `IReadOnlyList` instead of `IEnumerable`.
 
+### Removed
+- **(Breaking change.)** Delete the `TexRenderer` class. Use extension methods from `WpfMath.Rendering.WpfTeXFormulaExtensions` and `WpfMath.Rendering.TeXFormulaExtensions` to replace its functionality in your code.
+
 ### Added
 - Avalonia version is now available! Install the **AvaloniaMath** NuGet package to get it.
 - Portable PDB packages are now published to NuGet.
