@@ -3,6 +3,8 @@ The MIT License
 
 Copyright (c) 2010 Alex Regueiro
 
+Copyright (c) 2023 WPF-Math Contributors
+
 Copyright (c) 2023 XAML-Math Contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
