@@ -4,8 +4,7 @@ namespace XamlMath.Colors;
 
 public static class StandardColorParsers
 {
-    // TODO[#358]: Make readonly
-    public static IReadOnlyDictionary<string, IColorParser> Dictionary = new Dictionary<string, IColorParser>
+    public static readonly IReadOnlyDictionary<string, IColorParser> Dictionary = new Dictionary<string, IColorParser>
     {
         ["ARGB"] = new IntegerRgbColorParser(AlphaChannelMode.AlphaFirst),
         ["argb"] = new FloatRgbColorParser(AlphaChannelMode.AlphaFirst),
