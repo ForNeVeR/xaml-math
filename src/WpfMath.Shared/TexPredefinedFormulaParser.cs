@@ -78,7 +78,7 @@ namespace WpfMath
             argValueParsers.Add("Unit", new EnumParser(typeof(TexUnit)));
             argValueParsers.Add("AtomType", new EnumParser(typeof(TexAtomType)));
 
-            using var resource = typeof(WpfMathResourceMarker).Assembly.ReadResource(resourceName);
+            using var resource = typeof(XamlMathResourceMarker).Assembly.ReadResource(resourceName);
             var doc = XDocument.Load(resource);
             this.rootElement = doc.Root;
         }

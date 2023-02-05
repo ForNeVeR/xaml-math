@@ -32,7 +32,7 @@ namespace WpfMath
 
         public TexPredefinedFormulaSettingsParser()
         {
-            using var resource = typeof(WpfMathResourceMarker).Assembly.ReadResource(resourceName);
+            using var resource = typeof(XamlMathResourceMarker).Assembly.ReadResource(resourceName);
             var doc = XDocument.Load(resource);
             this.rootElement = doc.Root;
         }

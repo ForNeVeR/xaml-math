@@ -1,10 +1,10 @@
 How to improve blurred formulas
 ======================================================
 
-Since `FormulaControl` is a WPF control it has `TextOptions` properties 
-to tune how formulas are rendered. Default settings provides smooth and 
-clear output for large font sizes, but for smaller ones it may looks 
-blurred. It's a personal preference, and if you are unhappy with default 
+Since `FormulaControl` is a WPF control it has `TextOptions` properties
+to tune how formulas are rendered. Default settings provides smooth and
+clear output for large font sizes, but for smaller ones it may looks
+blurred. It's a personal preference, and if you are unhappy with default
 settings you may override it by creating custom style:
 
 ```xml
@@ -32,13 +32,13 @@ Let's see on output for different settings.
 
 ![Formula's rendering with ClearType settings](cleartype.png)
 
-Second formula looks great with sharp symbols! But for larger font size it 
-might be not pleasible, so you may want to experiment with WPF rendering 
+Second formula looks great with sharp symbols! But for larger font size it
+might be not pleasible, so you may want to experiment with WPF rendering
 options further.
 
-If you still have problems with blurred/noisy formulas, please tell us in 
-this [umbrella issue](https://github.com/ForNeVeR/wpf-math/issues/50). We 
-are trying hard to achieve best-looking rendering on WPF, but sometimes it 
+If you still have problems with blurred/noisy formulas, please tell us in
+this [umbrella issue](https://github.com/ForNeVeR/xaml-math/issues/50). We
+are trying hard to achieve best-looking rendering on WPF, but sometimes it
 might be tricky.
 
 Thanks!

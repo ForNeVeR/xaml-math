@@ -1,7 +1,7 @@
-WPF-Math
-========
+XAML-Math
+=========
 
-*WPF-Math* is a .NET library for rendering mathematical formulae using the LaTeX typesetting style, for the WPF and [Avalonia][avalonia] XAML-based frameworks.
+*XAML-Math* is a collection of .NET libraries for rendering mathematical formulae using the LaTeX typesetting style, for the WPF and [Avalonia][avalonia] XAML-based frameworks.
 
 - For WPF version, use NuGet package [WpfMath][nuget-wpf]: [![NuGet][badge-nuget-wpf]][nuget-wpf]
 - For Avalonia version, use [AvaloniaMath][nuget-avalonia]: [![NuGet][badge-nuget-avalonia]][nuget-avalonia]
@@ -18,7 +18,7 @@ The Avalonia version supports:
 Getting Started
 ---------------
 
-The simplest way of using *WPF-Math* is to render a static formula in a XAML file as follows.
+The simplest way of using *XAML-Math* is to render a static formula in a XAML file as follows.
 
 ```xml
 <!-- WPF -->
@@ -36,7 +36,7 @@ For a more detailed sample, check out the [example project][example]. It shows t
 
 ![Screenshot of example project](docs/example-screenshot.png)
 
-### Using a rendering API
+### Using the rendering API
 
 The following example demonstrates usage of `TexFormula` API to render the image into a PNG file using the `RenderToPng` extension method:
 
@@ -70,7 +70,7 @@ namespace ConsoleApplication2
 }
 ```
 
-Note that `WpfMath.TexFormulaParser::Parse` may throw a `WpfMath.TexException` if it was unable to parse a formula.
+Note that `XamlMath.TexFormulaParser::Parse` may throw a `XamlMath.TexException` if it was unable to parse a formula.
 
 If you need any additional control over the image format, consider using the extension methods from the `WpfTeXFormulaExtensions` class:
 
@@ -107,7 +107,7 @@ Documentation
 
 - [Changelog][docs.changelog]
 
-- [Color support in WPF-Math][docs-colors]
+- [Color support in XAML-Math][docs-colors]
 - [Matrices and Matrix-Like Constructs][docs-matrices]
 - [Environments (`\begin` and `\end`)][docs.environments]
 - [How to improve blurred formulas][docs-blurred-text-issue]
@@ -124,8 +124,8 @@ Build and Maintenance Instructions
 Build the project using [.NET SDK 7.0][dotnet-sdk] or later. Here's the build and test script:
 
 ```console
-$ dotnet build WpfMath.All.sln --configuration Release
-$ dotnet test WpfMath.All.sln
+$ dotnet build XamlMath.All.sln --configuration Release
+$ dotnet test XamlMath.All.sln
 ```
 
 To approve the test results if they differ from the existing ones, execute the `scripts/approve-all.ps1` script using PowerShell or PowerShell Core.
@@ -133,15 +133,17 @@ To approve the test results if they differ from the existing ones, execute the `
 To publish the package, execute the following command:
 
 ```console
-$ dotnet pack WpfMath.All.sln --configuration Release
+$ dotnet pack XamlMath.All.sln --configuration Release
 ```
 
-For non-Windows systems, substitute `WpfMath.Portable.sln` instead of `WpfMath.All.sln`.
+For non-Windows systems, substitute `XamlMath.Portable.sln` instead of `XamlMath.All.sln`.
 
 History
 -------
 
-The library was originally ported from the [JMathTex project][jmathtex], copyright 2004-2007 Universiteit Gent. The port was originally named *WPF-TeX* and was written and maintained by [Alex Regueiro][alex-regueiro]. It was later available as [*WPF-Math* on Launchpad][launchpad], but was unmaintained from 2011 until it was revived in [its current form][github].
+The library was originally ported from the [JMathTex project][jmathtex], copyright 2004-2007 Universiteit Gent. The port was originally named *WPF-TeX* and was written and maintained by [Alex Regueiro][alex-regueiro]. It was later available as [*WPF-Math* on Launchpad][launchpad], but was unmaintained from 2011 until it 2017, when was revived in [its current form][github].
+
+In 2023, after adding the Avalonia support, the *WPF-Math* project was renamed to *XAML-Math*.
 
 License Notes
 -------------
@@ -150,7 +152,7 @@ The project code and all the resources are distributed under the terms of [MIT l
 
 The [fonts][] `cmex10.ttf`, `cmmi10.ttf`, `cmr10.ttf`, and `cmsy10.ttf` and `cmtt10.ttf` are under the [Knuth License][knuth-license].
 
-WPF-Math started as a direct port of [JMathTeX][jmathtex] project written in Java, reusing both code and resources. JMathTeX is distributed under the terms of GNU GPL v2 license. WPF-Math, being a derived work, has a permission from JMathTeX authors to be redistributed under the MIT license. See the [Licensing history][docs-licensing-history] for the details.
+XAML-Math started as a direct port of [JMathTeX][jmathtex] project written in Java, reusing both code and resources. JMathTeX is distributed under the terms of GNU GPL v2 license. WPF-Math, being a derived work, has a permission from JMathTeX authors to be redistributed under the MIT license. See the [Licensing history][docs-licensing-history] for the details.
 
 We're very grateful to JMathTeX authors for their work and allowing to redistribute the derived library. JMathTeX is written by:
 - Kris Coolsaet
@@ -172,7 +174,7 @@ We're very grateful to JMathTeX authors for their work and allowing to redistrib
 [alex-regueiro]: https://github.com/alexreg
 [dotnet-sdk]: https://dotnet.microsoft.com/download
 [avalonia]: https://avaloniaui.net/
-[github]: https://github.com/ForNeVeR/wpf-math
+[github]: https://github.com/ForNeVeR/xaml-math
 [jmathtex]: http://jmathtex.sourceforge.net/
 [knuth-license]: http://ctan.org/license/knuth
 [launchpad]: https://launchpad.net/wpf-math

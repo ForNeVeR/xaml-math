@@ -4,7 +4,7 @@ using WpfMath.Rendering.Transformations;
 
 namespace WpfMath.Rendering;
 
-/// <summary>Renderer interface for WPF-Math elements.</summary>
+/// <summary>Renderer interface for XAML-Math elements.</summary>
 public interface IElementRenderer
 {
     /// <summary>Renders a <see cref="Box"/> to the renderer drawing context.</summary>

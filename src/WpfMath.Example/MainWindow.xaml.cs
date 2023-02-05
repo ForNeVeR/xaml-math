@@ -51,7 +51,7 @@ public partial class MainWindow
         catch (Exception ex)
         {
             MessageBox.Show("An error occurred while parsing the given input:" + Environment.NewLine +
-                            Environment.NewLine + ex.Message, "WPF-Math Example", MessageBoxButton.OK, MessageBoxImage.Error);
+                            Environment.NewLine + ex.Message, "XAML-Math Example", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         return formula;

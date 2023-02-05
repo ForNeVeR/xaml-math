@@ -1,7 +1,7 @@
 Matrices and Matrix-Like Constructs
 ===================================
 
-WPF-Math supports multiple types of matrices and similar constructs (that allow to build the items into rows and columns).
+XAML-Math supports multiple types of matrices and similar constructs (that allow to build the items into rows and columns).
 
 All commands offer a similar syntax, but a bit different features. Rows inside of a matrix are separated by two commands:
 

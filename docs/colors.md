@@ -1,13 +1,9 @@
-Color support in WPF-Math
-=========================
+Color support in XAML-Math
+==========================
 
-WPF-Math supports standard LaTeX commands: `\color` for foreground color, and
-`\colorbox` for background color.
+XAML-Math supports standard LaTeX commands: `\color` for foreground color, and `\colorbox` for background color.
 
-The commands also support additional syntax for color definitions. Standard
-LaTeX only allows to use predefined colors or colors defined in the same
-document. WPF-Math allows immediate color definition in the command arguments
-instead.
+The commands also support additional syntax for color definitions. Standard LaTeX only allows to use predefined colors or colors defined in the same document. XAML-Math allows immediate color definition in the command arguments instead.
 
 The full color command syntax is:
 
@@ -30,10 +26,7 @@ allowed around the comma, before first and after the last element in the list.
 
 ## Default mode (when no `mode` was provided)
 
-In the default mode, `color` should be a predefined color name. Predefined
-colors are stored in the `PredefinedColors.xml` file from the WPF-Math
-resources. Additionally, this mode accepts an opacity index in range from 0.0 to
-1.0. Examples:
+In the default mode, `color` should be a predefined color name. Predefined colors are stored in the `PredefinedColors.xml` file from the XAML-Math resources. Additionally, this mode accepts an opacity index in range from 0.0 to 1.0. Examples:
 
 ```
 \color{red}{without opacity}

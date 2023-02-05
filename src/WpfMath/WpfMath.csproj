@@ -8,7 +8,6 @@
     <PropertyGroup>
         <PackageId>WpfMath</PackageId>
         <Title>WPF-Math</Title>
-        <AssemblyTitle>WPF-Math</AssemblyTitle>
 
         <PackageTags>$(PackageTags);wpf</PackageTags>
         <Description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the WPF framework.</Description>

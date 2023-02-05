@@ -1,5 +1,5 @@
-WPF-Math Maintainership
-=======================
+XAML-Math Maintainership
+========================
 
 Publish a New Version
 ---------------------
@@ -15,7 +15,7 @@ Prepare NuGet Package Locally
 -----------------------------
 
 ```console
-$ dotnet pack WpfMath.All.sln --configuration Release
+$ dotnet pack XamlMath.All.sln --configuration Release
 ```
 
 (Use `WpfMath.Portable.sln` on Unix-like operating systems; note you won't be able to build and pack the WPF-specific part of the code, though.)
@@ -31,7 +31,7 @@ $ dotnet nuget push ./src/AvaloniaMath/bin/Release/AvaloniaMath.<VERSION>.nupkg 
 Runtime Support Policy
 ----------------------
 
-Generally, WPF-Math supports the .NET runtime (.NET Framework or modern .NET) versions that are supported by Microsoft (both basic and extended support are considered), provided that the support cost for the very old versions is reasonable. We will stop support for the currently supported runtime version either after it gets unsupported, or when we consider support cost unreasonable.
+Generally, XAML-Math supports the .NET runtime (.NET Framework or modern .NET) versions that are supported by Microsoft (both basic and extended support are considered), provided that the support cost for the very old versions is reasonable. We will stop support for the currently supported runtime version either after it gets unsupported, or when we consider support cost unreasonable.
 
 Removing .NET runtime version from the list of compatible versions is a breaking change (as far as semantic versioning is concerned).
 
