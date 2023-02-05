@@ -138,18 +138,3 @@ namespace WpfMath.Rendering
         public static System.Windows.Media.Geometry RenderToGeometry(this XamlMath.TexFormula formula, XamlMath.TexEnvironment environment, double scale = 20, double x = 0, double y = 0) { throw null; }
     }
 }
-namespace XamlGeneratedNamespace
-{
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "7.0.2.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(1)]
-    [System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public sealed partial class GeneratedInternalTypeHelper : System.Windows.Markup.InternalTypeHelper
-    {
-        public GeneratedInternalTypeHelper() { }
-        protected override void AddEventHandler(System.Reflection.EventInfo eventInfo, object target, System.Delegate handler) { }
-        protected override System.Delegate CreateDelegate(System.Type delegateType, object target, string handler) { throw null; }
-        protected override object CreateInstance(System.Type type, System.Globalization.CultureInfo culture) { throw null; }
-        protected override object GetPropertyValue(System.Reflection.PropertyInfo propertyInfo, object target, System.Globalization.CultureInfo culture) { throw null; }
-        protected override void SetPropertyValue(System.Reflection.PropertyInfo propertyInfo, object target, object value, System.Globalization.CultureInfo culture) { }
-    }
-}
