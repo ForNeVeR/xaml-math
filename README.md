@@ -3,17 +3,19 @@ XAML-Math
 
 *XAML-Math* is a collection of .NET libraries for rendering mathematical formulae using the LaTeX typesetting style, for the WPF and [Avalonia][avalonia] XAML-based frameworks.
 
-- For WPF version, use NuGet package [WpfMath][nuget-wpf]: [![NuGet][badge-nuget-wpf]][nuget-wpf]
-- For Avalonia version, use [AvaloniaMath][nuget-avalonia]: [![NuGet][badge-nuget-avalonia]][nuget-avalonia]
+- For WPF, use NuGet package [WPF-Math][nuget-wpf]: [![NuGet][badge-nuget-wpf]][nuget-wpf]
+- For Avalonia, use [Avalonia-Math][nuget-avalonia]: [![NuGet][badge-nuget-avalonia]][nuget-avalonia]
 
-The WPF version supports the following .NET variants:
+WPF-Math supports the following .NET variants:
 - .NET Framework 4.6.2 or later
 - .NET 6 or later
 
-The Avalonia version supports:
+Avalonia-Math supports:
 - .NET Framework 4.6.2 or later
 - .NET Standard 2.0 or later
 - .NET 6 or later
+
+A part of XAML-Math independent of the UI frameworks is published on NuGet as [XAML-Math Shared Code][nuget-xaml]: [![NuGet][badge-nuget-xaml]][nuget-xaml]
 
 Getting Started
 ---------------
@@ -175,8 +177,8 @@ We're very grateful to JMathTeX authors for their work and allowing to redistrib
 [license]: LICENSE.md
 
 [alex-regueiro]: https://github.com/alexreg
-[dotnet-sdk]: https://dotnet.microsoft.com/download
 [avalonia]: https://avaloniaui.net/
+[dotnet-sdk]: https://dotnet.microsoft.com/download
 [github]: https://github.com/ForNeVeR/xaml-math
 [jmathtex]: http://jmathtex.sourceforge.net/
 [knuth-license]: http://ctan.org/license/knuth
@@ -184,6 +186,8 @@ We're very grateful to JMathTeX authors for their work and allowing to redistrib
 [msbuild]: https://github.com/Microsoft/msbuild
 [nuget-avalonia]: https://www.nuget.org/packages/AvaloniaMath/
 [nuget-wpf]: https://www.nuget.org/packages/WpfMath/
+[nuget-xaml]: https://www.nuget.org/packages/XamlMath.Shared/
 
 [badge-nuget-avalonia]: https://img.shields.io/nuget/v/AvaloniaMath.svg
 [badge-nuget-wpf]: https://img.shields.io/nuget/v/WpfMath.svg
+[badge-nuget-xaml]: https://img.shields.io/nuget/v/XamlMath.Shared.svg
