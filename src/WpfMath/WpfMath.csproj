@@ -28,11 +28,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <!-- TODO[#341]: Remove PrivateAssets="All" after WpfMath.Shared gets into a separate package -->
+        <!-- TODO[#341]: Remove PrivateAssets="All" after XamlMath.Shared gets into a separate package -->
         <ProjectReference Include="..\XamlMath.Shared\XamlMath.Shared.csproj" PrivateAssets="All" />
     </ItemGroup>
 
-    <!-- TODO[#341]: Remove this after WpfMath.Shared gets into a separate package (together with the Avalonia release) -->
+    <!-- TODO[#341]: Remove this after XamlMath.Shared gets into a separate package (together with the Avalonia release) -->
     <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
         <ItemGroup>
             <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
