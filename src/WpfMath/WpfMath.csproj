@@ -29,7 +29,7 @@
 
     <ItemGroup>
         <!-- TODO[#341]: Remove PrivateAssets="All" after WpfMath.Shared gets into a separate package -->
-        <ProjectReference Include="..\WpfMath.Shared\WpfMath.Shared.csproj" PrivateAssets="All" />
+        <ProjectReference Include="..\XamlMath.Shared\XamlMath.Shared.csproj" PrivateAssets="All" />
     </ItemGroup>
 
     <!-- TODO[#341]: Remove this after WpfMath.Shared gets into a separate package (together with the Avalonia release) -->

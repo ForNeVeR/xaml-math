@@ -22,7 +22,7 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <ProjectReference Include="../WpfMath/WpfMath.csproj" />
-        <ProjectReference Include="../WpfMath.Shared/WpfMath.Shared.csproj" />
+        <ProjectReference Include="..\XamlMath.Shared\XamlMath.Shared.csproj" />
     </ItemGroup>
     <ItemGroup>
         <Compile Include="ApprovalTestUtils.fs" />

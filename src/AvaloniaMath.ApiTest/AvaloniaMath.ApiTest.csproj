@@ -26,9 +26,9 @@
     <ItemGroup>
         <_InputAssembly Include="../AvaloniaMath/bin/$(Configuration)/netstandard2.0/AvaloniaMath.dll" Framework="netstandard2.0" />
         <_InputAssembly Include="../AvaloniaMath/bin/$(Configuration)/net6.0/AvaloniaMath.dll" Framework="net6.0" />
-        <_InputAssembly Include="../WpfMath.Shared/bin/$(Configuration)/netstandard2.0/WpfMath.Shared.dll" Framework="netstandard2.0" />
-        <_InputAssembly Include="../WpfMath.Shared/bin/$(Configuration)/net452/WpfMath.Shared.dll" Framework="net452" />
-        <_InputAssembly Include="../WpfMath.Shared/bin/$(Configuration)/netcoreapp3.1/WpfMath.Shared.dll" Framework="netcoreapp3.1" />
+        <_InputAssembly Include="../XamlMath.Shared/bin/$(Configuration)/netstandard2.0/XamlMath.Shared.dll" Framework="netstandard2.0" />
+        <_InputAssembly Include="../XamlMath.Shared/bin/$(Configuration)/net452/XamlMath.Shared.dll" Framework="net452" />
+        <_InputAssembly Include="../XamlMath.Shared/bin/$(Configuration)/netcoreapp3.1/XamlMath.Shared.dll" Framework="netcoreapp3.1" />
     </ItemGroup>
 
     <ItemGroup>

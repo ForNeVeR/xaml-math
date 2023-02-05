@@ -53,7 +53,7 @@ ProjectSection(SolutionItems) = preProject
 	.github\workflows\nuget.yml = .github\workflows\nuget.yml
 EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfMath.Shared", "src\WpfMath.Shared\WpfMath.Shared.csproj", "{C9B5E02E-04FB-405F-9BEB-6CF4736939EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamlMath.Shared", "src\XamlMath.Shared\XamlMath.Shared.csproj", "{C9B5E02E-04FB-405F-9BEB-6CF4736939EB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfMath.ApiTest", "src\WpfMath.ApiTest\WpfMath.ApiTest.csproj", "{3FC6007E-5400-42FB-AD7A-727ADFAB6469}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -73,11 +73,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{3F2FED19-93A
 	ProjectSection(SolutionItems) = preProject
 		api\WpfMath.net452.verified.cs = api\WpfMath.net452.verified.cs
 		api\WpfMath.netcoreapp3.1.verified.cs = api\WpfMath.netcoreapp3.1.verified.cs
-		api\WpfMath.Shared.net452.verified.cs = api\WpfMath.Shared.net452.verified.cs
-		api\WpfMath.Shared.netcoreapp3.1.verified.cs = api\WpfMath.Shared.netcoreapp3.1.verified.cs
 		api\AvaloniaMath.netstandard2.0.verified.cs = api\AvaloniaMath.netstandard2.0.verified.cs
 		api\AvaloniaMath.net6.0.verified.cs = api\AvaloniaMath.net6.0.verified.cs
-		api\WpfMath.Shared.netstandard2.0.verified.cs = api\WpfMath.Shared.netstandard2.0.verified.cs
+		api\XamlMath.Shared.net452.verified.cs = api\XamlMath.Shared.net452.verified.cs
+		api\XamlMath.Shared.netcoreapp3.1.verified.cs = api\XamlMath.Shared.netcoreapp3.1.verified.cs
+		api\XamlMath.Shared.netstandard2.0.verified.cs = api\XamlMath.Shared.netstandard2.0.verified.cs
 	EndProjectSection
 EndProject
 Global

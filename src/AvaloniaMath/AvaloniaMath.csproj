@@ -37,7 +37,7 @@
         <PackageReference Include="ChangelogAutomation.MSBuild" Version="2.0.0" PrivateAssets="All" />
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\WpfMath.Shared\WpfMath.Shared.csproj" />
+        <ProjectReference Include="..\XamlMath.Shared\XamlMath.Shared.csproj" />
     </ItemGroup>
 
 </Project>

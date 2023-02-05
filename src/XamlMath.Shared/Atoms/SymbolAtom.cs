@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using WpfMath.Fonts;
 using WpfMath.Utils;
 #if !NET452
-using System.Diagnostics.CodeAnalysis;
 #endif
 
 namespace WpfMath.Atoms
