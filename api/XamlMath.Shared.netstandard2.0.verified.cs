@@ -246,7 +246,7 @@ namespace XamlMath.Colors
     }
     public static partial class StandardColorParsers
     {
-        public static System.Collections.Generic.IReadOnlyDictionary<string, XamlMath.Colors.IColorParser> Dictionary;
+        public static readonly System.Collections.Generic.IReadOnlyDictionary<string, XamlMath.Colors.IColorParser> Dictionary;
     }
 }
 namespace XamlMath.Exceptions

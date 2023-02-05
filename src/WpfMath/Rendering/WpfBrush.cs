@@ -15,9 +15,10 @@ public record WpfBrush : GenericBrush<Brush>
 
 public class WpfBrushFactory : IBrushFactory
 {
-    // TODO[#359]: private constructor
-    // TODO[#359]: readonly property instead of a writeable field
-    public static WpfBrushFactory Instance = new();
+    public static readonly WpfBrushFactory Instance = new();
+
+    private WpfBrushFactory() {}
+
     public IBrush FromColor(RgbaColor color) =>
         new SolidColorBrush(
             Color.FromArgb(color.A, color.R, color.G, color.B)).ToPlatform();

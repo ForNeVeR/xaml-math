@@ -14,7 +14,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - .NET Framework 4.6.2 or later,
   - .NET 6.0 and later.
 - **(Breaking change.)** `WpfMath.Colors.IColorParser::Parse` now accepts `IReadOnlyList` instead of `IEnumerable`.
-- **(Minor breaking change.)** `XamlMath.Colors.StandardColorParsers::Dictionary` public field is now `readonly`.
+- **(Minor breaking change.)** `XamlMath.Colors.StandardColorParsers::Dictionary` static public field is now `readonly`.
+- **(Minor breaking change.)** `WpfMath.Rendering.WpfBrushFactory`'s constructor is now `private`.
+- **(Minor breaking change.)** `WpfMath.Rendering.WpfBrushFactory::Instance` static public field is now `readonly`.
 
 ### Removed
 - **(Breaking change.)** Delete the `TexRenderer` class. Use extension methods from `WpfMath.Rendering.WpfTeXFormulaExtensions` and `WpfMath.Rendering.TeXFormulaExtensions` to replace its functionality in your code.

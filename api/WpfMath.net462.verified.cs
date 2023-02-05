@@ -122,8 +122,8 @@ namespace WpfMath.Rendering
     }
     public partial class WpfBrushFactory : XamlMath.Rendering.IBrushFactory
     {
-        public static WpfMath.Rendering.WpfBrushFactory Instance;
-        public WpfBrushFactory() { }
+        internal WpfBrushFactory() { }
+        public static readonly WpfMath.Rendering.WpfBrushFactory Instance;
         public XamlMath.Rendering.IBrush FromColor(XamlMath.Colors.RgbaColor color) { throw null; }
     }
     public static partial class WpfTeXEnvironment
