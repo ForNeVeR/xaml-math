@@ -40,7 +40,7 @@ jobs:
           dotnet-version: '7.0.x'
 
       - name: Prepare a NuGet package
-        run: dotnet pack --configuration Release -p:Version=${{ steps.version.outputs.version }}
+        run: dotnet pack XamlMath.All.sln --configuration Release -p:Version=${{ steps.version.outputs.version }}
 
       - name: Read changelog
         id: changelog
