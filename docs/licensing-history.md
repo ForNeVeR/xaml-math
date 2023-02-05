@@ -1,6 +1,6 @@
 # Licensing History
 
-*XAML-Math* was originally a direct port from the [JMathTex project][jmathtex] project written in Java, copyright 2004-2007 Universiteit Gent. *JMathTex* is licensed under the terms of the GPLv2 licence, while WPF-Math is licensed under the terms of the MIT licence.
+*XAML-Math* (named *WPF-Math* at the time) was originally a direct port from the [JMathTex project][jmathtex] project written in Java, copyright 2004-2007 Universiteit Gent. *JMathTex* is licensed under the terms of the GPLv2 licence, while XAML-Math is licensed under the terms of the MIT licence.
 
 ## Current status
 
