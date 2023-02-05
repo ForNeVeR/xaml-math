@@ -5,6 +5,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased] (0.14.0)
 ### Changed
+- The project has been renamed to XAML-Math. This doesn't change the NuGet package names (WpfMath and AvaloniaMath) and their contents (including namespaces of most entities), but changed the contents of the shared assembly.
 - **(Breaking change.)** `WpfMath.Shared` assembly was renamed to `XamlMath.Shared`:
   - a lot of types were migrated from `WpfMath` namespace to `XamlMath`,
   - all the internal XML file resources were migrated to the new namespace as well.
