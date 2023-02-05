@@ -19,13 +19,13 @@ jobs:
         config:
           - name: 'macos'
             image: 'macos-12'
-            solution: 'WpfMath.Portable.sln'
+            solution: 'XamlMath.Portable.sln'
           - name: 'linux'
             image: 'ubuntu-22.04'
-            solution: 'WpfMath.Portable.sln'
+            solution: 'XamlMath.Portable.sln'
           - name: 'windows'
             image: 'windows-2022'
-            solution: 'WpfMath.All.sln'
+            solution: 'XamlMath.All.sln'
 
     name: main.${{ matrix.config.name }}
     runs-on: ${{ matrix.config.image }}
