@@ -8,7 +8,6 @@
     </PropertyGroup>
     <ItemGroup>
         <ProjectReference Include="../WpfMath/WpfMath.csproj" />
-        <ProjectReference Include="..\XamlMath.Shared\XamlMath.Shared.csproj" />
     </ItemGroup>
     <ItemGroup>
       <PackageReference Include="Nullable" Version="1.2.1">
