@@ -39,6 +39,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{BE4B
 ProjectSection(SolutionItems) = preProject
 	scripts\approve-all.ps1 = scripts\approve-all.ps1
 	scripts\verify-encoding.ps1 = scripts\verify-encoding.ps1
+	scripts\Get-Version.ps1 = scripts\Get-Version.ps1
 EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaMath", "src\AvaloniaMath\AvaloniaMath.csproj", "{945C8E20-AE99-493E-8A0D-D5880272050B}"

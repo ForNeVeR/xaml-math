@@ -1,9 +1,15 @@
 name: NuGet
 on:
   push:
+    branches:
+      - 'master'
     tags:
       - 'v*'
-
+  pull_request:
+    branches:
+      - 'master'
+  schedule:
+    - cron: '0 0 * * 6'
   workflow_dispatch:
 
 jobs:
@@ -14,13 +20,13 @@ jobs:
       DOTNET_CLI_TELEMETRY_OPTOUT: 1
       NUGET_PACKAGES: ${{ github.workspace }}/.github/nuget-packages
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Read version from ref
         id: version
         shell: pwsh
-        run: Write-Output "::set-output name=version::$($env:GITHUB_REF -replace '^refs/tags/v', '')"
-
-      - name: Checkout
-        uses: actions/checkout@v3
+        run: echo "version=$(./scripts/Get-Version.ps1 -RefName $env:GITHUB_REF)" >> $env:GITHUB_OUTPUT
 
       - name: NuGet cache
         uses: actions/cache@v3
@@ -42,7 +48,19 @@ jobs:
         with:
           output: ./release-notes.md
 
+      - name: 'Upload workflow artifacts'
+        uses: 'actions/upload-artifact@v3'
+        with:
+          name: 'XAML-Math v${{ steps.version.outputs.version }}'
+          path: |
+            ./release-notes.md
+            ./src/WpfMath/bin/Release/WpfMath.${{ steps.version.outputs.version }}.nupkg
+            ./src/WpfMath/bin/Release/WpfMath.${{ steps.version.outputs.version }}.snupkg
+            ./src/AvaloniaMath/bin/Release/AvaloniaMath.${{ steps.version.outputs.version }}.nupkg
+            ./src/AvaloniaMath/bin/Release/AvaloniaMath.${{ steps.version.outputs.version }}.snupkg
+
       - name: Create release
+        if: startsWith(github.ref, 'refs/tags/v')
         id: release
         uses: actions/create-release@v1
         env:
@@ -53,6 +71,7 @@ jobs:
           body_path: ./release-notes.md
 
       - name: Upload WPF-Math .nupkg file
+        if: startsWith(github.ref, 'refs/tags/v')
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -63,6 +82,7 @@ jobs:
           asset_content_type: application/zip
 
       - name: Upload Avalonia-Math .nupkg file
+        if: startsWith(github.ref, 'refs/tags/v')
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -73,6 +93,7 @@ jobs:
           asset_content_type: application/zip
 
       - name: Upload WPF-Math .snupkg file
+        if: startsWith(github.ref, 'refs/tags/v')
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -83,6 +104,7 @@ jobs:
           asset_content_type: application/zip
 
       - name: Upload Avalonia-Math .snupkg file
+        if: startsWith(github.ref, 'refs/tags/v')
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -93,7 +115,9 @@ jobs:
           asset_content_type: application/zip
 
       - name: Push WPF-Math package to NuGet
+        if: startsWith(github.ref, 'refs/tags/v')
         run: dotnet nuget push ./src/WpfMath/bin/Release/WpfMath.${{ steps.version.outputs.version }}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_TOKEN_WPF }}
 
       - name: Push Avalonia-Math package to NuGet
+        if: startsWith(github.ref, 'refs/tags/v')
         run: dotnet nuget push ./src/AvaloniaMath/bin/Release/AvaloniaMath.${{ steps.version.outputs.version }}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_TOKEN_AVALONIA }}
