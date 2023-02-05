@@ -1,7 +1,8 @@
-namespace WpfMath.Compatibility;
+namespace XamlMath.Compatibility;
 
 #if NET452 // not needed for .NET Core 3.0+ because there are System.TupleExtensions
 // TODO[#338]: Remove after migration to .NET Framework 4.7
+using System;
 
 internal static class TupleExtensions
 {

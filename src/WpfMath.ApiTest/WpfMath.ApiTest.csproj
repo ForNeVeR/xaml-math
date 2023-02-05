@@ -31,7 +31,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\WpfMath.ApiTest.Framework\WpfMath.ApiTest.Framework.csproj" />
+      <ProjectReference Include="..\XamlMath.ApiTest.Framework\XamlMath.ApiTest.Framework.csproj" />
     </ItemGroup>
 
     <Target Name="_GenerateApiListing" AfterTargets="CoreBuild" Inputs="@(_InputAssembly->'%(FullPath)')" Outputs="$(MSBuildProjectDirectory)\..\..\api\%(_InputAssembly.FileName).%(_InputAssembly.Framework).tmp.cs">

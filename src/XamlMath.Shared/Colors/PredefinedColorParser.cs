@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
 using System.Xml.Linq;
-using static WpfMath.Utils.ColorHelpers;
+using static XamlMath.Utils.ColorHelpers;
 
-namespace WpfMath.Colors;
+namespace XamlMath.Colors;
 
 public class PredefinedColorParser : IColorParser
 {

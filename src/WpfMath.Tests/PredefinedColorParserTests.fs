@@ -2,7 +2,7 @@ module WpfMath.Tests.PredefinedColorParserTests
 
 open Xunit
 
-open WpfMath.Colors
+open XamlMath.Colors
 
 let parser = PredefinedColorParser.Instance
 

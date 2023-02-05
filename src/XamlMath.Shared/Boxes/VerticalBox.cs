@@ -1,7 +1,7 @@
 using System;
-using WpfMath.Rendering;
+using XamlMath.Rendering;
 
-namespace WpfMath.Boxes
+namespace XamlMath.Boxes
 {
     // Box containing vertical stack of child boxes.
     internal class VerticalBox : Box

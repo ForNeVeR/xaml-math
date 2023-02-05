@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using AvaloniaMath.Rendering;
-using WpfMath;
+using XamlMath;
 
 namespace AvaloniaMath.Parsers;
 

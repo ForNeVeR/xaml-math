@@ -1,4 +1,4 @@
-namespace WpfMath.Boxes
+namespace XamlMath.Boxes
 {
     // Box representing other box with horizontal rule above it.
     internal class OverBar : VerticalBox

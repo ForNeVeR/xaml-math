@@ -3,8 +3,8 @@ namespace WpfMath.Tests
 open Foq
 open Xunit
 
-open WpfMath.Boxes
-open WpfMath.Rendering
+open XamlMath.Boxes
+open XamlMath.Rendering
 
 type OverUnderBoxTests() =
     let x = 0.5

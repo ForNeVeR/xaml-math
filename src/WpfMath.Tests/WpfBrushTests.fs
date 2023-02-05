@@ -4,8 +4,8 @@ open System.Windows.Media
 
 open Xunit
 
-open WpfMath.Colors
 open WpfMath.Rendering
+open XamlMath.Colors
 
 [<Fact>]
 let ``The brush is expected to remain in the container``() =

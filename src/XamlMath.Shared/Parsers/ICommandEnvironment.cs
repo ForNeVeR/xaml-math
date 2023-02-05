@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace WpfMath.Parsers
+namespace XamlMath.Parsers
 {
     /// <summary>
     /// An environment in which the command parsing is performed. This environment may provide additional commands for

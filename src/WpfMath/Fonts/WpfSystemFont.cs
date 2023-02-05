@@ -2,8 +2,10 @@ using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Media;
-using WpfMath.Exceptions;
-using WpfMath.Utils;
+using XamlMath;
+using XamlMath.Exceptions;
+using XamlMath.Fonts;
+using XamlMath.Utils;
 
 namespace WpfMath.Fonts;
 

@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Reflection;
 
-namespace WpfMath.Utils;
+namespace XamlMath.Utils;
 
 internal static class AssemblyEx
 {

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Xml.Linq;
-using WpfMath.Data;
-using WpfMath.Parsers.PredefinedFormulae;
-using WpfMath.Rendering;
-using WpfMath.Utils;
+using XamlMath.Data;
+using XamlMath.Parsers.PredefinedFormulae;
+using XamlMath.Rendering;
+using XamlMath.Utils;
 
-namespace WpfMath
+namespace XamlMath
 {
     // Parses definitions of predefined formulas from XML file.
     internal class TexPredefinedFormulaParser

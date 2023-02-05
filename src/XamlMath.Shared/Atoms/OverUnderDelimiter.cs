@@ -1,8 +1,7 @@
 using System;
-using WpfMath.Atoms;
-using WpfMath.Boxes;
+using XamlMath.Boxes;
 
-namespace WpfMath
+namespace XamlMath.Atoms
 {
     // Atom representing other atom with delimeter and script atoms over or under it.
     internal record OverUnderDelimiter : Atom

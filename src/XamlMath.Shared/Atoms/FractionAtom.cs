@@ -1,6 +1,6 @@
-using WpfMath.Boxes;
+using XamlMath.Boxes;
 
-namespace WpfMath.Atoms
+namespace XamlMath.Atoms
 {
     // Atom representing fraction, with or without separation line.
     internal record FractionAtom : Atom

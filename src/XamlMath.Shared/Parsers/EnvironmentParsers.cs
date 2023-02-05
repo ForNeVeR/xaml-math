@@ -1,6 +1,6 @@
-using WpfMath.Atoms;
+using XamlMath.Atoms;
 
-namespace WpfMath.Parsers;
+namespace XamlMath.Parsers;
 
 /// <summary>Context for parsing of an environment block.</summary>
 /// <param name="Parser">TeX formula parser that calls the command.</param>

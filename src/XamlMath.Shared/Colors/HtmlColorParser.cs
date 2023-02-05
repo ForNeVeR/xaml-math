@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace WpfMath.Colors;
+namespace XamlMath.Colors;
 
 internal class HtmlColorParser : SingleComponentColorParser
 {

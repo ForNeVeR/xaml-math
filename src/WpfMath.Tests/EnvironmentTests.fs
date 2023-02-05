@@ -2,9 +2,9 @@ module WpfMath.Tests.EnvironmentTests
 
 open Xunit
 
-open WpfMath.Exceptions
 open WpfMath.Tests.ApprovalTestUtils
 open WpfMath.Tests.Utils
+open XamlMath.Exceptions
 
 [<Fact>]
 let pMatrixEnvironment(): unit =

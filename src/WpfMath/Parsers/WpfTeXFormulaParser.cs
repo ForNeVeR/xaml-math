@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using WpfMath.Rendering;
+using XamlMath;
 
 namespace WpfMath.Parsers;
 

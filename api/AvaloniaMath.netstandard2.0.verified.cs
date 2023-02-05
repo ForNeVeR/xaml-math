@@ -31,35 +31,35 @@ namespace AvaloniaMath.Controls
 }
 namespace AvaloniaMath.Fonts
 {
-    public partial class AvaloniaMathFontProvider : WpfMath.Fonts.IFontProvider
+    public partial class AvaloniaMathFontProvider : XamlMath.Fonts.IFontProvider
     {
         internal AvaloniaMathFontProvider() { }
         public static AvaloniaMath.Fonts.AvaloniaMathFontProvider Instance;
-        public WpfMath.Fonts.IFontTypeface ReadFontFile(string fontFileName) { throw null; }
+        public XamlMath.Fonts.IFontTypeface ReadFontFile(string fontFileName) { throw null; }
     }
 }
 namespace AvaloniaMath.Parsers
 {
     public static partial class AvaloniaTeXFormulaParser
     {
-        public static WpfMath.TexFormulaParser Instance { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
+        public static XamlMath.TexFormulaParser Instance { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
     }
 }
 namespace AvaloniaMath.Rendering
 {
     public static partial class AvaloniaBrushExtensions
     {
-        public static Avalonia.Media.IBrush? ToAvalonia(this WpfMath.Rendering.IBrush? brush) { throw null; }
-        public static WpfMath.Rendering.IBrush? ToPlatform(this Avalonia.Media.Brush? brush) { throw null; }
+        public static Avalonia.Media.IBrush? ToAvalonia(this XamlMath.Rendering.IBrush? brush) { throw null; }
+        public static XamlMath.Rendering.IBrush? ToPlatform(this Avalonia.Media.Brush? brush) { throw null; }
     }
-    public partial class AvaloniaBrushFactory : WpfMath.Rendering.IBrushFactory
+    public partial class AvaloniaBrushFactory : XamlMath.Rendering.IBrushFactory
     {
         internal AvaloniaBrushFactory() { }
         public static AvaloniaMath.Rendering.AvaloniaBrushFactory Instance { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public WpfMath.Rendering.IBrush FromColor(WpfMath.Colors.RgbaColor color) { throw null; }
+        public XamlMath.Rendering.IBrush FromColor(XamlMath.Colors.RgbaColor color) { throw null; }
     }
     public static partial class AvaloniaTeXEnvironment
     {
-        public static WpfMath.TexEnvironment Create(WpfMath.TexStyle style = 0, double scale = 20, string systemTextFontName = "Arial", Avalonia.Media.Brush? foreground = null, Avalonia.Media.Brush? background = null) { throw null; }
+        public static XamlMath.TexEnvironment Create(XamlMath.TexStyle style = 0, double scale = 20, string systemTextFontName = "Arial", Avalonia.Media.Brush? foreground = null, Avalonia.Media.Brush? background = null) { throw null; }
     }
 }

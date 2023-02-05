@@ -1,7 +1,7 @@
-using WpfMath.Boxes;
-using WpfMath.Rendering;
+using XamlMath.Boxes;
+using XamlMath.Rendering;
 
-namespace WpfMath.Atoms;
+namespace XamlMath.Atoms;
 
 /// <summary>Atom specifying graphical style.</summary>
 internal record StyledAtom : Atom, IRow

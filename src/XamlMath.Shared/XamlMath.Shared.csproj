@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFrameworks>netstandard2.0;net452;netcoreapp3.1</TargetFrameworks>
-        <RootNamespace>WpfMath</RootNamespace>
+        <RootNamespace>XamlMath</RootNamespace>
         <IsPackable>false</IsPackable>
     </PropertyGroup>
 

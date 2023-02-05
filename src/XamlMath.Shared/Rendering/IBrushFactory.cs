@@ -1,6 +1,6 @@
-using WpfMath.Colors;
+using XamlMath.Colors;
 
-namespace WpfMath.Rendering;
+namespace XamlMath.Rendering;
 
 public interface IBrushFactory
 {

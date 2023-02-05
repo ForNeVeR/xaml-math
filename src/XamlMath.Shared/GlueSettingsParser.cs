@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
-using WpfMath.Data;
-using WpfMath.Utils;
+using XamlMath.Data;
+using XamlMath.Utils;
 
-namespace WpfMath
+namespace XamlMath
 {
     // Parses information about glue settings from XML file.
     internal class GlueSettingsParser

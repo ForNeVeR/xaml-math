@@ -1,8 +1,8 @@
-using WpfMath.Boxes;
-using WpfMath.Fonts;
-using WpfMath.Utils;
+using XamlMath.Boxes;
+using XamlMath.Fonts;
+using XamlMath.Utils;
 
-namespace WpfMath.Atoms
+namespace XamlMath.Atoms
 {
     // Atom representing single character that can be marked as text symbol.
     internal abstract record CharSymbol : Atom

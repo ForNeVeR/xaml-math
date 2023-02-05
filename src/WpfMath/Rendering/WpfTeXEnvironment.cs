@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Windows.Media;
 using WpfMath.Fonts;
+using XamlMath;
 
 namespace WpfMath.Rendering;
 

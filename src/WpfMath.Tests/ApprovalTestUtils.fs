@@ -15,10 +15,10 @@ open Newtonsoft.Json
 open Newtonsoft.Json.Converters
 open Newtonsoft.Json.Serialization
 
-open WpfMath.Atoms
 open WpfMath.Fonts
 open WpfMath.Parsers
 open WpfMath.Rendering
+open XamlMath.Atoms
 
 type private BomlessFileWriter(data: string, ?extensionWithoutDot: string) =
     inherit ApprovalTextWriter(data, defaultArg extensionWithoutDot "txt")

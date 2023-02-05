@@ -1,11 +1,8 @@
 module WpfMath.Tests.TransformationTests
 
-open System.Windows
-open System.Windows.Media
-
 open Xunit
 
-open WpfMath.Rendering.Transformations
+open XamlMath.Rendering.Transformations
 
 [<Fact>]
 let ``Translate transformation scales properly``() =

@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using WpfMath.Fonts;
-using WpfMath.Utils;
-#if !NET452
+using XamlMath.Fonts;
+using XamlMath.Utils;
+#if !NET452 && !NETSTANDARD2_0
+using System.Diagnostics.CodeAnalysis;
 #endif
 
-namespace WpfMath.Atoms
+namespace XamlMath.Atoms
 {
     // Atom representing symbol (non-alphanumeric character).
     internal record SymbolAtom : CharSymbol

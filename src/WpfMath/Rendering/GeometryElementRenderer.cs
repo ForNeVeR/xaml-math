@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Media;
-using WpfMath.Boxes;
 using WpfMath.Fonts;
-using WpfMath.Rendering.Transformations;
+using XamlMath;
+using XamlMath.Boxes;
+using XamlMath.Rendering;
+using XamlMath.Rendering.Transformations;
 
 namespace WpfMath.Rendering
 {

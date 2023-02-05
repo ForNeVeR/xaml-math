@@ -1,16 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using WpfMath.Atoms;
-using WpfMath.Colors;
-using WpfMath.Exceptions;
-using WpfMath.Parsers;
-using WpfMath.Rendering;
+using XamlMath.Atoms;
+using XamlMath.Colors;
+using XamlMath.Exceptions;
+using XamlMath.Parsers;
+using XamlMath.Rendering;
 #if NET452
-using WpfMath.Compatibility;
+using XamlMath.Compatibility;
 #endif
 
-namespace WpfMath
+namespace XamlMath
 {
     // TODO: Put all error strings into resources.
     // TODO: Use TextReader for lexing.

@@ -1,7 +1,7 @@
 using System;
-using WpfMath.Boxes;
+using XamlMath.Boxes;
 
-namespace WpfMath.Atoms
+namespace XamlMath.Atoms
 {
     // Atom representing scripts to attach to other atom.
     internal record ScriptsAtom : Atom

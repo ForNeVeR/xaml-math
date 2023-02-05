@@ -3,10 +3,10 @@ namespace WpfMath.Tests
 open Foq
 open Xunit
 
-open WpfMath
-open WpfMath.Boxes
 open WpfMath.Fonts
-open WpfMath.Rendering
+open XamlMath
+open XamlMath.Boxes
+open XamlMath.Rendering
 
 type HorizontalRuleTests() =
     static do Utils.initializeFontResourceLoading()

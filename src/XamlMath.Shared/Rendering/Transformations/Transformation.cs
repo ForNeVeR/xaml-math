@@ -1,4 +1,4 @@
-namespace WpfMath.Rendering.Transformations
+namespace XamlMath.Rendering.Transformations
 {
     /// <summary>Geometrical transformation.</summary>
     public abstract class Transformation

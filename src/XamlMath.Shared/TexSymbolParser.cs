@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
-using WpfMath.Atoms;
-using WpfMath.Data;
-using WpfMath.Utils;
+using XamlMath.Atoms;
+using XamlMath.Data;
+using XamlMath.Utils;
 
-namespace WpfMath
+namespace XamlMath
 {
     // Parse definitions of symbols from XML files.
     internal class TexSymbolParser

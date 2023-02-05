@@ -1,6 +1,8 @@
 using System;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using XamlMath;
+using XamlMath.Rendering;
 
 namespace WpfMath.Rendering;
 

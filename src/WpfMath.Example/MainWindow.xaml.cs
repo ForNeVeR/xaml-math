@@ -9,6 +9,7 @@ using Microsoft.Win32;
 using WpfMath.Converters;
 using WpfMath.Parsers;
 using WpfMath.Rendering;
+using XamlMath;
 
 namespace WpfMath.Example;
 

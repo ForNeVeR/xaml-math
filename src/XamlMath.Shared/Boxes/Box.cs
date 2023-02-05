@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using WpfMath.Rendering;
+using XamlMath.Rendering;
 
-namespace WpfMath.Boxes
+namespace XamlMath.Boxes
 {
     // Represents graphical box that is part of math expression, and can itself contain child boxes.
     public abstract class Box

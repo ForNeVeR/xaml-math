@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace WpfMath.Colors;
+namespace XamlMath.Colors;
 
 /// <summary>A color parser that requires an exact number of components.</summary>
 public abstract class FixedComponentCountColorParser : IColorParser

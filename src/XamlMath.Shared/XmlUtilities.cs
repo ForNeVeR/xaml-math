@@ -2,7 +2,7 @@ using System;
 using System.Globalization;
 using System.Xml.Linq;
 
-namespace WpfMath
+namespace XamlMath
 {
     internal static class XmlUtilities
     {

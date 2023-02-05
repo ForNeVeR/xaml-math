@@ -1,7 +1,7 @@
 using System;
-using WpfMath.Boxes;
+using XamlMath.Boxes;
 
-namespace WpfMath.Atoms
+namespace XamlMath.Atoms
 {
     /// <summary>Atom representing big operator with optional limits.</summary>
     /// <param name="UseVerticalLimits">True if limits should be drawn over and under the base atom; false if they should be drawn as scripts.</param>

@@ -1,6 +1,4 @@
-using WpfMath.Atoms;
-
-namespace WpfMath
+namespace XamlMath.Atoms
 {
     // Atom consisting of child atoms displayed in horizontal row with glueElement between them.
     internal interface IRow

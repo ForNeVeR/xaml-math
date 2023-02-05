@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using Avalonia.Media;
-using WpfMath;
-using WpfMath.Boxes;
-using WpfMath.Rendering;
-using WpfMath.Rendering.Transformations;
-using IBrush = WpfMath.Rendering.IBrush;
+using XamlMath;
+using XamlMath.Boxes;
+using XamlMath.Rendering;
+using XamlMath.Rendering.Transformations;
+using IBrush = XamlMath.Rendering.IBrush;
 
 namespace AvaloniaMath.Rendering;
 

@@ -1,6 +1,6 @@
-using WpfMath.Atoms;
+using XamlMath.Atoms;
 
-namespace WpfMath
+namespace XamlMath
 {
     /// <summary>
     /// Information about the body between a pair of delimiters.

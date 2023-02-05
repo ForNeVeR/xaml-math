@@ -1,4 +1,5 @@
 using System.Windows.Media;
+using XamlMath.Fonts;
 
 namespace WpfMath.Fonts;
 

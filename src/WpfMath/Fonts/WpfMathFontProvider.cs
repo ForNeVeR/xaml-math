@@ -2,6 +2,7 @@ using System;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Media;
+using XamlMath.Fonts;
 
 namespace WpfMath.Fonts;
 

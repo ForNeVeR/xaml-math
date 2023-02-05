@@ -43,7 +43,9 @@ The following example demonstrates usage of `TexFormula` API to render the image
 ```csharp
 using System;
 using System.IO;
+using WpfMath.Parsers;
 using WpfMath;
+using XamlMath.Exceptions;
 
 namespace ConsoleApplication2
 {
@@ -56,7 +58,7 @@ namespace ConsoleApplication2
 
             try
             {
-                var parser = new TexFormulaParser();
+                var parser = WpfTeXFormulaParser.Instance;
                 var formula = parser.Parse(latex);
                 var pngBytes = formula.RenderToPng(20.0, 0.0, 0.0, "Arial");
                 File.WriteAllBytes(fileName, pngBytes);
@@ -70,7 +72,7 @@ namespace ConsoleApplication2
 }
 ```
 
-Note that `XamlMath.TexFormulaParser::Parse` may throw a `XamlMath.TexException` if it was unable to parse a formula.
+Note that `XamlMath.TexFormulaParser::Parse` may throw a `XamlMath.Exceptions.TexException` if it was unable to parse a formula.
 
 If you need any additional control over the image format, consider using the extension methods from the `WpfTeXFormulaExtensions` class:
 
@@ -78,13 +80,14 @@ If you need any additional control over the image format, consider using the ext
 using System;
 using System.IO;
 using System.Windows.Media.Imaging;
-using WpfMath;
+using WpfMath.Parsers;
 using WpfMath.Rendering;
+using XamlMath;
 
 const string latex = @"\frac{2+2}{2}";
 const string fileName = @"T:\Temp\formula.png";
 
-var parser = new TexFormulaParser();
+var parser = WpfTeXFormulaParser.Instance;
 var formula = parser.Parse(latex);
 var environment = WpfTeXEnvironment.Create(TexStyle.Display, 20.0, "Arial");
 var bitmapSource = formula.RenderToBitmap(environment);

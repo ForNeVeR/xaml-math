@@ -2,9 +2,9 @@ namespace WpfMath.Tests
 
 open Xunit
 
-open WpfMath
 open WpfMath.Fonts
-open WpfMath.Exceptions
+open XamlMath
+open XamlMath.Exceptions
 
 type DefaultTexFontTests() =
     static do Utils.initializeFontResourceLoading()

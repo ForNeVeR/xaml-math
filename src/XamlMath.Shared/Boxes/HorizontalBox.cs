@@ -1,7 +1,7 @@
 using System;
-using WpfMath.Rendering;
+using XamlMath.Rendering;
 
-namespace WpfMath.Boxes
+namespace XamlMath.Boxes
 {
     /// <summary>Box containing horizontal stack of child boxes.</summary>
     internal class HorizontalBox : Box

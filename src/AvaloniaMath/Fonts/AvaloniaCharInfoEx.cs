@@ -1,8 +1,8 @@
 using System.Linq;
 using Avalonia;
 using Avalonia.Media;
-using WpfMath;
-using WpfMath.Exceptions;
+using XamlMath;
+using XamlMath.Exceptions;
 
 namespace AvaloniaMath.Fonts;
 

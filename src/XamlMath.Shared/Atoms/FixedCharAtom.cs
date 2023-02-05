@@ -1,7 +1,7 @@
-using WpfMath.Fonts;
-using WpfMath.Utils;
+using XamlMath.Fonts;
+using XamlMath.Utils;
 
-namespace WpfMath.Atoms
+namespace XamlMath.Atoms
 {
     // Atom representing character that does not depend on text style.
     internal record FixedCharAtom : CharSymbol

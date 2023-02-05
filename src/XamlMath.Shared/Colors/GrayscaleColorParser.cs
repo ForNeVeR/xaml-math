@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Globalization;
-using static WpfMath.Utils.ColorHelpers;
+using static XamlMath.Utils.ColorHelpers;
 
-namespace WpfMath.Colors;
+namespace XamlMath.Colors;
 
 internal class GrayscaleColorParser : IColorParser
 {

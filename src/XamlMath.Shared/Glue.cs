@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using WpfMath.Boxes;
+using XamlMath.Boxes;
 
-namespace WpfMath
+namespace XamlMath
 {
     // Represents glueElement for holding together boxes.
     internal class Glue

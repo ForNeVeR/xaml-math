@@ -1,4 +1,4 @@
-namespace WpfMath.Fonts;
+namespace XamlMath.Fonts;
 
 public interface IFontProvider
 {

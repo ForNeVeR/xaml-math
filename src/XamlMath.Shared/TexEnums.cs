@@ -1,4 +1,4 @@
-namespace WpfMath
+namespace XamlMath
 {
     public enum MatrixCellAlignment
     {

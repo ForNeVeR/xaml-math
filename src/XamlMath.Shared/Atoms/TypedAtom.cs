@@ -1,6 +1,6 @@
-using WpfMath.Boxes;
+using XamlMath.Boxes;
 
-namespace WpfMath.Atoms
+namespace XamlMath.Atoms
 {
     // Atom representing other atom with custom left and right types.
     internal record TypedAtom : Atom

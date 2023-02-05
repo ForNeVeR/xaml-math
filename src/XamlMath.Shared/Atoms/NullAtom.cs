@@ -1,6 +1,6 @@
-using WpfMath.Boxes;
+using XamlMath.Boxes;
 
-namespace WpfMath.Atoms
+namespace XamlMath.Atoms
 {
     internal record NullAtom : Atom
     {

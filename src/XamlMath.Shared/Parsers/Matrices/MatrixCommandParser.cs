@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using WpfMath.Atoms;
-using WpfMath.Exceptions;
+using XamlMath.Atoms;
+using XamlMath.Exceptions;
 
-namespace WpfMath.Parsers.Matrices
+namespace XamlMath.Parsers.Matrices
 {
     /// <summary>A parser for matrix-like constructs.</summary>
     internal class MatrixCommandParser : ICommandParser, IEnvironmentParser

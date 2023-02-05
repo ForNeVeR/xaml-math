@@ -2,7 +2,7 @@ module WpfMath.Tests.GeometryHelperTests
 
 open Xunit
 
-open WpfMath.Rendering
+open XamlMath.Rendering
 
 [<Fact>]
 let ``ScaleRectangle scales the rectangle``() =

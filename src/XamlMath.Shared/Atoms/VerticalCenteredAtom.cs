@@ -1,6 +1,6 @@
-using WpfMath.Boxes;
+using XamlMath.Boxes;
 
-namespace WpfMath.Atoms
+namespace XamlMath.Atoms
 {
     // Atom representing other atom vertically centered with respect to axis.
     internal record VerticalCenteredAtom : Atom

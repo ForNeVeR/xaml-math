@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace WpfMath.Colors;
+namespace XamlMath.Colors;
 
 /// <summary>A parser for colors in commands like \color and \colorbox.</summary>
 public interface IColorParser

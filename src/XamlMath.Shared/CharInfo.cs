@@ -1,6 +1,6 @@
-using WpfMath.Fonts;
+using XamlMath.Fonts;
 
-namespace WpfMath
+namespace XamlMath
 {
     /// <summary>Single character together with information about font and metrics.</summary>
     public class CharInfo

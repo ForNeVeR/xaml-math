@@ -9,9 +9,9 @@ using Avalonia.Markup.Xaml.Templates;
 using Avalonia.Media;
 using AvaloniaMath.Parsers;
 using AvaloniaMath.Rendering;
-using WpfMath.Boxes;
-using WpfMath.Exceptions;
-using WpfMath.Rendering;
+using XamlMath.Boxes;
+using XamlMath.Exceptions;
+using XamlMath.Rendering;
 using Size = Avalonia.Size;
 
 namespace AvaloniaMath.Controls

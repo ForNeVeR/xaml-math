@@ -1,5 +1,5 @@
 using Avalonia.Media;
-using WpfMath.Fonts;
+using XamlMath.Fonts;
 
 namespace AvaloniaMath.Fonts;
 

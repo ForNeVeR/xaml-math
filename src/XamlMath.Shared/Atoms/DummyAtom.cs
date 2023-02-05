@@ -1,8 +1,8 @@
-using WpfMath.Boxes;
-using WpfMath.Fonts;
-using WpfMath.Utils;
+using XamlMath.Boxes;
+using XamlMath.Fonts;
+using XamlMath.Utils;
 
-namespace WpfMath.Atoms
+namespace XamlMath.Atoms
 {
     // Dummy atom representing atom whose type can change or which can be replaced by a ligature.
     internal record DummyAtom : Atom

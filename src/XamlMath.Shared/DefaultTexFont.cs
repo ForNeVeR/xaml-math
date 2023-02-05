@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using WpfMath.Exceptions;
-using WpfMath.Fonts;
-using WpfMath.Utils;
+using XamlMath.Exceptions;
+using XamlMath.Fonts;
+using XamlMath.Utils;
 
-namespace WpfMath
+namespace XamlMath
 {
     /// <summary>Default implementation of ITeXFont that reads all font information from XML file.</summary>
     internal class DefaultTexFont : ITeXFont

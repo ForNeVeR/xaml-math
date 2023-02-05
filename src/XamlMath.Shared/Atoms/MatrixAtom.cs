@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using WpfMath.Boxes;
+using XamlMath.Boxes;
 #if NET452
-using WpfMath.Compatibility;
+using XamlMath.Compatibility;
 #endif
 
-namespace WpfMath.Atoms
+namespace XamlMath.Atoms
 {
     /// <summary>An atom representing a tabular arrangement of atoms.</summary>
     internal record MatrixAtom : Atom

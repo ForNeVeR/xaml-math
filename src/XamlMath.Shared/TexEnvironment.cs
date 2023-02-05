@@ -1,7 +1,7 @@
-using WpfMath.Fonts;
-using WpfMath.Rendering;
+using XamlMath.Fonts;
+using XamlMath.Rendering;
 
-namespace WpfMath;
+namespace XamlMath;
 
 /// <summary>Specifies current graphical parameters used to create boxes.</summary>
 public sealed record TexEnvironment(

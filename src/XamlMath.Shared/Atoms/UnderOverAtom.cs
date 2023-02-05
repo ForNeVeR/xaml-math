@@ -1,7 +1,10 @@
 using System;
-using WpfMath.Boxes;
+using XamlMath.Boxes;
+#if !NET452 && !NETSTANDARD2_0
+using System.Diagnostics.CodeAnalysis;
+#endif
 
-namespace WpfMath.Atoms
+namespace XamlMath.Atoms
 {
     // Atom representing other atom with atoms optionally over and under it.
     internal record UnderOverAtom : Atom

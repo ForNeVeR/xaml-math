@@ -1,5 +1,5 @@
 using Avalonia;
-using WpfMath.Rendering;
+using XamlMath.Rendering;
 
 namespace AvaloniaMath.Rendering;
 

@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Windows.Media;
+using XamlMath.Rendering;
 
 namespace WpfMath.Rendering;
 

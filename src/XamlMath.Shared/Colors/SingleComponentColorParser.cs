@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WpfMath.Colors;
+namespace XamlMath.Colors;
 
 /// <summary>A base class for color parsers that only require one component.</summary>
 internal abstract class SingleComponentColorParser : FixedComponentCountColorParser

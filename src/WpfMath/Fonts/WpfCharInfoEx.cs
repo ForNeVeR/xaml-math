@@ -1,7 +1,8 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
-using WpfMath.Exceptions;
+using XamlMath;
+using XamlMath.Exceptions;
 #if !NET452
 using System.ComponentModel;
 #endif

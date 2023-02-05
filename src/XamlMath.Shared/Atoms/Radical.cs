@@ -1,8 +1,7 @@
 using System;
-using WpfMath.Atoms;
-using WpfMath.Boxes;
+using XamlMath.Boxes;
 
-namespace WpfMath
+namespace XamlMath.Atoms
 {
     /// <summary>
     /// Atom representing radical (nth-root) construction.

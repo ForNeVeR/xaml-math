@@ -1,4 +1,4 @@
-namespace WpfMath.Rendering
+namespace XamlMath.Rendering
 {
     internal static class GeometryHelper
     {

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using WpfMath.Atoms;
+using XamlMath.Atoms;
 
-namespace WpfMath.Parsers.Matrices
+namespace XamlMath.Parsers.Matrices
 {
     internal class NextRowCommand : ICommandParser
     {

@@ -4,10 +4,11 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using WpfMath.Boxes;
-using WpfMath.Exceptions;
 using WpfMath.Parsers;
 using WpfMath.Rendering;
+using XamlMath;
+using XamlMath.Boxes;
+using XamlMath.Exceptions;
 
 namespace WpfMath.Controls
 {

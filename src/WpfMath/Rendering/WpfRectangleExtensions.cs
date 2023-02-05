@@ -1,4 +1,5 @@
 using System.Windows;
+using XamlMath.Rendering;
 
 namespace WpfMath.Rendering;
 

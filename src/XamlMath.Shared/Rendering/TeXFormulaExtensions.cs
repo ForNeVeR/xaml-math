@@ -1,6 +1,6 @@
-using WpfMath.Boxes;
+using XamlMath.Boxes;
 
-namespace WpfMath.Rendering;
+namespace XamlMath.Rendering;
 
 public static class TeXFormulaExtensions
 {

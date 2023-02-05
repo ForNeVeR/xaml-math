@@ -1,6 +1,6 @@
 using System;
 
-namespace WpfMath.Utils
+namespace XamlMath.Utils
 {
     public static class Result
     {

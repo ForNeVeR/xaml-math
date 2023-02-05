@@ -5,12 +5,13 @@ open System
 open Foq
 open Xunit
 
-open WpfMath
-open WpfMath.Boxes
-open WpfMath.Exceptions
 open WpfMath.Fonts
 open WpfMath.Parsers
 open WpfMath.Rendering
+open XamlMath
+open XamlMath.Boxes
+open XamlMath.Exceptions
+open XamlMath.Rendering
 
 type CharBoxTests() =
     static do Utils.initializeFontResourceLoading()

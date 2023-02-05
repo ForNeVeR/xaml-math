@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace WpfMath.Parsers
+namespace XamlMath.Parsers
 {
     internal abstract class NonRecursiveEnvironment : ICommandEnvironment
     {

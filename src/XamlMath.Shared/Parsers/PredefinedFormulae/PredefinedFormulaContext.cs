@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace WpfMath.Parsers.PredefinedFormulae
+namespace XamlMath.Parsers.PredefinedFormulae
 {
     /// <summary>
     /// This is a context for parsing a predefined formula. <c>PredefinedTexFormulas.xml</c> allows the users to

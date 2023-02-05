@@ -1,4 +1,4 @@
-namespace WpfMath.Rendering;
+namespace XamlMath.Rendering;
 
 public record struct Point(double X, double Y);
 

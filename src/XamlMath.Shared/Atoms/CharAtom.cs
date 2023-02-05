@@ -1,7 +1,7 @@
-using WpfMath.Fonts;
-using WpfMath.Utils;
+using XamlMath.Fonts;
+using XamlMath.Utils;
 
-namespace WpfMath.Atoms
+namespace XamlMath.Atoms
 {
     // Atom representing single character in specific text style.
     internal record CharAtom : CharSymbol

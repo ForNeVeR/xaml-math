@@ -1,4 +1,4 @@
-namespace WpfMath.Exceptions
+namespace XamlMath.Exceptions
 {
     public class TexCharacterMappingNotFoundException : TexException
     {

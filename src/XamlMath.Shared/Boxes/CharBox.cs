@@ -1,6 +1,6 @@
-using WpfMath.Rendering;
+using XamlMath.Rendering;
 
-namespace WpfMath.Boxes;
+namespace XamlMath.Boxes;
 
 /// <summary>Box representing single character.</summary>
 internal class CharBox : Box

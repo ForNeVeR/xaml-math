@@ -1,6 +1,6 @@
-using WpfMath.Utils;
+using XamlMath.Utils;
 
-namespace WpfMath.Fonts;
+namespace XamlMath.Fonts;
 
 /// <summary>Font that specifies how TexFormula objects are rendered.</summary>
 public interface ITeXFont

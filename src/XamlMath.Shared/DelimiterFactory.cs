@@ -1,6 +1,6 @@
-using WpfMath.Boxes;
+using XamlMath.Boxes;
 
-namespace WpfMath
+namespace XamlMath
 {
     // Creates boxes containing delimeter symbol that exists in different sizes.
     internal static class DelimiterFactory

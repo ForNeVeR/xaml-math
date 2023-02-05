@@ -1,6 +1,6 @@
-using WpfMath.Rendering;
+using XamlMath.Rendering;
 
-namespace WpfMath.Boxes
+namespace XamlMath.Boxes
 {
     // Box representing glue.
     internal class GlueBox : Box

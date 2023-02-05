@@ -1,6 +1,6 @@
 using System;
 
-namespace WpfMath.Exceptions
+namespace XamlMath.Exceptions
 {
     public abstract class TexException : Exception
     {

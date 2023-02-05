@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using WpfMath.Boxes;
-using WpfMath.Rendering.Transformations;
+using XamlMath.Boxes;
+using XamlMath.Rendering.Transformations;
 
-namespace WpfMath.Rendering;
+namespace XamlMath.Rendering;
 
 /// <summary>Renderer interface for XAML-Math elements.</summary>
 public interface IElementRenderer

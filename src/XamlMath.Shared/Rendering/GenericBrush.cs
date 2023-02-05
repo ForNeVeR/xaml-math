@@ -1,3 +1,3 @@
-namespace WpfMath.Rendering;
+namespace XamlMath.Rendering;
 
 public record GenericBrush<TBrush>(TBrush Value) : IBrush;

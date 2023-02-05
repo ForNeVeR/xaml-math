@@ -1,6 +1,7 @@
 using System.IO;
 using System.Windows.Media.Imaging;
 using WpfMath.Rendering;
+using XamlMath;
 
 namespace WpfMath
 {

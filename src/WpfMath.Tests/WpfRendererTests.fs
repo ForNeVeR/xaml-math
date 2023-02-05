@@ -1,15 +1,15 @@
 namespace WpfMath.Tests
 
 open System
-open System.Windows
 open System.Windows.Media
 
 open Foq
 open Xunit
 
-open WpfMath
-open WpfMath.Boxes
 open WpfMath.Rendering
+open XamlMath
+open XamlMath.Boxes
+open XamlMath.Rendering
 
 type WpfRendererTests() =
     static do Utils.initializeFontResourceLoading()

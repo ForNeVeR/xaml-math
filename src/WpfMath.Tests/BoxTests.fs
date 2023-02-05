@@ -3,14 +3,14 @@ module WpfMath.Tests.BoxTests
 open System
 
 open FSharp.Core.Fluent
-open WpfMath.Parsers
 open Xunit
 
-open WpfMath
-open WpfMath.Atoms
-open WpfMath.Boxes
+open WpfMath.Parsers
 open WpfMath.Rendering
 open WpfMath.Tests.ApprovalTestUtils
+open XamlMath
+open XamlMath.Atoms
+open XamlMath.Boxes
 
 let private parse(text: string) =
     let parser = WpfTeXFormulaParser.Instance

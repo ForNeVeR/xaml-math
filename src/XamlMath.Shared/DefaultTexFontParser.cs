@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Xml.Linq;
-using WpfMath.Data;
-using WpfMath.Fonts;
-using WpfMath.Utils;
+using XamlMath.Data;
+using XamlMath.Fonts;
+using XamlMath.Utils;
 
-namespace WpfMath
+namespace XamlMath
 {
     // Parses information for DefaultTeXFont settings from XML file.
     internal class DefaultTexFontParser

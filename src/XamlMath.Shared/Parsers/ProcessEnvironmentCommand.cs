@@ -1,6 +1,6 @@
-using WpfMath.Exceptions;
+using XamlMath.Exceptions;
 
-namespace WpfMath.Parsers;
+namespace XamlMath.Parsers;
 
 /// <summary>This command will process a <code>\begin … \end</code> environment block.</summary>
 internal class ProcessEnvironmentCommand : ICommandParser

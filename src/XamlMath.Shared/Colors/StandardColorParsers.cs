@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace WpfMath.Colors;
+namespace XamlMath.Colors;
 
 public static class StandardColorParsers
 {

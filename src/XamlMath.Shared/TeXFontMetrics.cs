@@ -1,4 +1,4 @@
-namespace WpfMath
+namespace XamlMath
 {
     /// <summary>Specifies font metrics for single character.</summary>
     public class TeXFontMetrics

@@ -1,6 +1,6 @@
 using System;
 
-namespace WpfMath
+namespace XamlMath
 {
     public class SourceSpan : IEquatable<SourceSpan>
     {

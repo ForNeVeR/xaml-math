@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WpfMath.Colors;
+namespace XamlMath.Colors;
 
 /// <summary>A generic parser class for RGB color.</summary>
 /// <typeparam name="T">Type of component value (e.g. integer or double).</typeparam>

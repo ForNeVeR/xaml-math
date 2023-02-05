@@ -61,7 +61,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfMath.ApiTest", "src\WpfM
 		{C9B5E02E-04FB-405F-9BEB-6CF4736939EB} = {C9B5E02E-04FB-405F-9BEB-6CF4736939EB}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfMath.ApiTest.Framework", "src\WpfMath.ApiTest.Framework\WpfMath.ApiTest.Framework.csproj", "{204E2BD3-05C6-41E0-998F-0E0AC1530DCC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamlMath.ApiTest.Framework", "src\XamlMath.ApiTest.Framework\XamlMath.ApiTest.Framework.csproj", "{204E2BD3-05C6-41E0-998F-0E0AC1530DCC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaMath.ApiTest", "src\AvaloniaMath.ApiTest\AvaloniaMath.ApiTest.csproj", "{54F77EF7-F918-46F8-A615-56BC0BFE8AAB}"
 	ProjectSection(ProjectDependencies) = postProject

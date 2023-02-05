@@ -1,7 +1,7 @@
 using System;
-using WpfMath.Boxes;
+using XamlMath.Boxes;
 
-namespace WpfMath.Atoms
+namespace XamlMath.Atoms
 {
     // Atom representing base atom surrounded by delimeters.
     internal record FencedAtom : Atom

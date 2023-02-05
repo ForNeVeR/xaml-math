@@ -5,11 +5,12 @@ open System.Windows.Media
 open Foq
 open Xunit
 
-open WpfMath
-open WpfMath.Boxes
 open WpfMath.Fonts
 open WpfMath.Rendering
-open WpfMath.Rendering.Transformations
+open XamlMath
+open XamlMath.Boxes
+open XamlMath.Rendering
+open XamlMath.Rendering.Transformations
 
 type GeometryElementRendererTests() =
     static do Utils.initializeFontResourceLoading()

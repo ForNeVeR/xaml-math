@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace WpfMath
+namespace XamlMath
 {
     public partial class CharFont
     {
@@ -17,13 +17,13 @@ namespace WpfMath
     }
     public partial class CharInfo
     {
-        public CharInfo(char character, WpfMath.Fonts.IFontTypeface font, double size, int fontId, WpfMath.TeXFontMetrics metrics) { }
+        public CharInfo(char character, XamlMath.Fonts.IFontTypeface font, double size, int fontId, XamlMath.TeXFontMetrics metrics) { }
         public char Character { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public WpfMath.Fonts.IFontTypeface Font { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
+        public XamlMath.Fonts.IFontTypeface Font { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         public int FontId { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public WpfMath.TeXFontMetrics Metrics { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public XamlMath.TeXFontMetrics Metrics { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public double Size { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public WpfMath.CharFont GetCharacterFont() { throw null; }
+        public XamlMath.CharFont GetCharacterFont() { throw null; }
     }
     public partial class DelimiterMappingNotFoundException : System.Exception
     {
@@ -31,11 +31,11 @@ namespace WpfMath
     }
     public partial class ExtensionChar
     {
-        public ExtensionChar(WpfMath.CharInfo? top, WpfMath.CharInfo? middle, WpfMath.CharInfo? bottom, WpfMath.CharInfo? repeat) { }
-        public WpfMath.CharInfo? Bottom { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public WpfMath.CharInfo? Middle { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public WpfMath.CharInfo? Repeat { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        public WpfMath.CharInfo? Top { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
+        public ExtensionChar(XamlMath.CharInfo? top, XamlMath.CharInfo? middle, XamlMath.CharInfo? bottom, XamlMath.CharInfo? repeat) { }
+        public XamlMath.CharInfo? Bottom { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
+        public XamlMath.CharInfo? Middle { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
+        public XamlMath.CharInfo? Repeat { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
+        public XamlMath.CharInfo? Top { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
     }
     public partial class FormulaNotFoundException : System.Exception
     {
@@ -46,7 +46,7 @@ namespace WpfMath
         Left = 0,
         Center = 1,
     }
-    public partial class SourceSpan : System.IEquatable<WpfMath.SourceSpan>
+    public partial class SourceSpan : System.IEquatable<XamlMath.SourceSpan>
     {
         public SourceSpan(string sourceName, string source, int start, int length) { }
         public int End { get { throw null; } }
@@ -56,10 +56,10 @@ namespace WpfMath
         public string SourceName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         public int Start { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         public override bool Equals(object? obj) { throw null; }
-        public bool Equals(WpfMath.SourceSpan? other) { throw null; }
+        public bool Equals(XamlMath.SourceSpan? other) { throw null; }
         public override int GetHashCode() { throw null; }
-        public WpfMath.SourceSpan Segment(int start) { throw null; }
-        public WpfMath.SourceSpan Segment(int start, int length) { throw null; }
+        public XamlMath.SourceSpan Segment(int start) { throw null; }
+        public XamlMath.SourceSpan Segment(int start, int length) { throw null; }
         public override string ToString() { throw null; }
     }
     public partial class SymbolMappingNotFoundException : System.Exception
@@ -110,30 +110,30 @@ namespace WpfMath
         SingleLine = 9,
         DoubleLine = 10,
     }
-    public sealed partial class TexEnvironment : System.IEquatable<WpfMath.TexEnvironment>
+    public sealed partial class TexEnvironment : System.IEquatable<XamlMath.TexEnvironment>
     {
-        public TexEnvironment(WpfMath.TexStyle Style, WpfMath.Fonts.ITeXFont MathFont, WpfMath.Fonts.ITeXFont TextFont, WpfMath.Rendering.IBrush? Background = null, WpfMath.Rendering.IBrush? Foreground = null) { }
-        public WpfMath.Rendering.IBrush? Background { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public WpfMath.Rendering.IBrush? Foreground { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public WpfMath.Fonts.ITeXFont MathFont { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public WpfMath.TexStyle Style { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public WpfMath.Fonts.ITeXFont TextFont { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public TexEnvironment(XamlMath.TexStyle Style, XamlMath.Fonts.ITeXFont MathFont, XamlMath.Fonts.ITeXFont TextFont, XamlMath.Rendering.IBrush? Background = null, XamlMath.Rendering.IBrush? Foreground = null) { }
+        public XamlMath.Rendering.IBrush? Background { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public XamlMath.Rendering.IBrush? Foreground { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public XamlMath.Fonts.ITeXFont MathFont { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public XamlMath.TexStyle Style { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public XamlMath.Fonts.ITeXFont TextFont { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public void Deconstruct(out WpfMath.TexStyle Style, out WpfMath.Fonts.ITeXFont MathFont, out WpfMath.Fonts.ITeXFont TextFont, out WpfMath.Rendering.IBrush? Background, out WpfMath.Rendering.IBrush? Foreground) { throw null; }
+        public void Deconstruct(out XamlMath.TexStyle Style, out XamlMath.Fonts.ITeXFont MathFont, out XamlMath.Fonts.ITeXFont TextFont, out XamlMath.Rendering.IBrush? Background, out XamlMath.Rendering.IBrush? Foreground) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override bool Equals(object? obj) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public bool Equals(WpfMath.TexEnvironment? other) { throw null; }
+        public bool Equals(XamlMath.TexEnvironment? other) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override int GetHashCode() { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public static bool operator ==(WpfMath.TexEnvironment? left, WpfMath.TexEnvironment? right) { throw null; }
+        public static bool operator ==(XamlMath.TexEnvironment? left, XamlMath.TexEnvironment? right) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public static bool operator !=(WpfMath.TexEnvironment? left, WpfMath.TexEnvironment? right) { throw null; }
+        public static bool operator !=(XamlMath.TexEnvironment? left, XamlMath.TexEnvironment? right) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override string ToString() { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public WpfMath.TexEnvironment <Clone>$() { throw null; }
+        public XamlMath.TexEnvironment <Clone>$() { throw null; }
     }
     public partial class TeXFontMetrics
     {
@@ -146,18 +146,18 @@ namespace WpfMath
     public sealed partial class TexFormula
     {
         public TexFormula() { }
-        public WpfMath.SourceSpan? Source { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public XamlMath.SourceSpan? Source { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public string? TextStyle { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public void Add(WpfMath.TexFormula formula, WpfMath.SourceSpan? source = null) { }
-        public void SetBackground(WpfMath.Rendering.IBrush brush) { }
-        public void SetForeground(WpfMath.Rendering.IBrush brush) { }
+        public void Add(XamlMath.TexFormula formula, XamlMath.SourceSpan? source = null) { }
+        public void SetBackground(XamlMath.Rendering.IBrush brush) { }
+        public void SetForeground(XamlMath.Rendering.IBrush brush) { }
     }
     public partial class TexFormulaParser
     {
-        public TexFormulaParser(System.Collections.Generic.IReadOnlyDictionary<string, WpfMath.Colors.IColorParser> colorModelParsers, WpfMath.Colors.IColorParser defaultColorParser, WpfMath.Rendering.IBrushFactory brushFactory, System.Collections.Generic.IReadOnlyDictionary<string, System.Func<WpfMath.SourceSpan, WpfMath.TexFormula?>> predefinedFormulae) { }
-        public TexFormulaParser(WpfMath.Rendering.IBrushFactory brushFactory, System.Collections.Generic.IReadOnlyDictionary<string, System.Func<WpfMath.SourceSpan, WpfMath.TexFormula?>> predefinedFormulae) { }
-        public WpfMath.TexFormula Parse(string value, string? textStyle = null) { throw null; }
-        public WpfMath.TexFormula Parse(WpfMath.SourceSpan value, string? textStyle = null) { throw null; }
+        public TexFormulaParser(System.Collections.Generic.IReadOnlyDictionary<string, XamlMath.Colors.IColorParser> colorModelParsers, XamlMath.Colors.IColorParser defaultColorParser, XamlMath.Rendering.IBrushFactory brushFactory, System.Collections.Generic.IReadOnlyDictionary<string, System.Func<XamlMath.SourceSpan, XamlMath.TexFormula?>> predefinedFormulae) { }
+        public TexFormulaParser(XamlMath.Rendering.IBrushFactory brushFactory, System.Collections.Generic.IReadOnlyDictionary<string, System.Func<XamlMath.SourceSpan, XamlMath.TexFormula?>> predefinedFormulae) { }
+        public XamlMath.TexFormula Parse(string value, string? textStyle = null) { throw null; }
+        public XamlMath.TexFormula Parse(XamlMath.SourceSpan value, string? textStyle = null) { throw null; }
     }
     public enum TexStyle
     {
@@ -176,49 +176,49 @@ namespace WpfMath
         Mu = 5,
     }
 }
-namespace WpfMath.Boxes
+namespace XamlMath.Boxes
 {
     public abstract partial class Box
     {
         protected Box() { }
-        protected Box(WpfMath.Rendering.IBrush? foreground, WpfMath.Rendering.IBrush? background) { }
-        public WpfMath.Rendering.IBrush? Background { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public System.Collections.ObjectModel.ReadOnlyCollection<WpfMath.Boxes.Box> Children { get { throw null; } }
+        protected Box(XamlMath.Rendering.IBrush? foreground, XamlMath.Rendering.IBrush? background) { }
+        public XamlMath.Rendering.IBrush? Background { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public System.Collections.ObjectModel.ReadOnlyCollection<XamlMath.Boxes.Box> Children { get { throw null; } }
         public double Depth { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public WpfMath.Rendering.IBrush? Foreground { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public XamlMath.Rendering.IBrush? Foreground { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public double Height { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public double Italic { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public double Shift { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public WpfMath.SourceSpan? Source { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public XamlMath.SourceSpan? Source { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public double TotalHeight { get { throw null; } }
         public double TotalWidth { get { throw null; } }
         public double Width { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public virtual void Add(int position, WpfMath.Boxes.Box box) { }
-        public virtual void Add(WpfMath.Boxes.Box box) { }
+        public virtual void Add(int position, XamlMath.Boxes.Box box) { }
+        public virtual void Add(XamlMath.Boxes.Box box) { }
         public abstract int GetLastFontId();
-        public abstract void RenderTo(WpfMath.Rendering.IElementRenderer renderer, double x, double y);
+        public abstract void RenderTo(XamlMath.Rendering.IElementRenderer renderer, double x, double y);
     }
 }
-namespace WpfMath.Colors
+namespace XamlMath.Colors
 {
-    public abstract partial class FixedComponentCountColorParser : WpfMath.Colors.IColorParser
+    public abstract partial class FixedComponentCountColorParser : XamlMath.Colors.IColorParser
     {
         protected FixedComponentCountColorParser(int componentCount) { }
-        public WpfMath.Colors.RgbaColor? Parse(System.Collections.Generic.IReadOnlyList<string> components) { throw null; }
-        protected abstract WpfMath.Colors.RgbaColor? ParseComponents(System.Collections.Generic.IReadOnlyList<string> components);
+        public XamlMath.Colors.RgbaColor? Parse(System.Collections.Generic.IReadOnlyList<string> components) { throw null; }
+        protected abstract XamlMath.Colors.RgbaColor? ParseComponents(System.Collections.Generic.IReadOnlyList<string> components);
     }
     public partial interface IColorParser
     {
-        WpfMath.Colors.RgbaColor? Parse(System.Collections.Generic.IReadOnlyList<string> components);
+        XamlMath.Colors.RgbaColor? Parse(System.Collections.Generic.IReadOnlyList<string> components);
     }
-    public partial class PredefinedColorParser : WpfMath.Colors.IColorParser
+    public partial class PredefinedColorParser : XamlMath.Colors.IColorParser
     {
         internal PredefinedColorParser() { }
-        public static readonly WpfMath.Colors.PredefinedColorParser Instance;
-        public WpfMath.Colors.RgbaColor? Parse(System.Collections.Generic.IReadOnlyList<string> components) { throw null; }
+        public static readonly XamlMath.Colors.PredefinedColorParser Instance;
+        public XamlMath.Colors.RgbaColor? Parse(System.Collections.Generic.IReadOnlyList<string> components) { throw null; }
     }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
-    public partial struct RgbaColor : System.IEquatable<WpfMath.Colors.RgbaColor>
+    public partial struct RgbaColor : System.IEquatable<XamlMath.Colors.RgbaColor>
     {
         private object _dummy;
         private int _dummyPrimitive;
@@ -232,26 +232,26 @@ namespace WpfMath.Colors
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override bool Equals(object obj) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public bool Equals(WpfMath.Colors.RgbaColor other) { throw null; }
-        public static WpfMath.Colors.RgbaColor FromArgb(byte a, byte r, byte g, byte b) { throw null; }
-        public static WpfMath.Colors.RgbaColor FromRgb(byte r, byte g, byte b) { throw null; }
+        public bool Equals(XamlMath.Colors.RgbaColor other) { throw null; }
+        public static XamlMath.Colors.RgbaColor FromArgb(byte a, byte r, byte g, byte b) { throw null; }
+        public static XamlMath.Colors.RgbaColor FromRgb(byte r, byte g, byte b) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override int GetHashCode() { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public static bool operator ==(WpfMath.Colors.RgbaColor left, WpfMath.Colors.RgbaColor right) { throw null; }
+        public static bool operator ==(XamlMath.Colors.RgbaColor left, XamlMath.Colors.RgbaColor right) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public static bool operator !=(WpfMath.Colors.RgbaColor left, WpfMath.Colors.RgbaColor right) { throw null; }
+        public static bool operator !=(XamlMath.Colors.RgbaColor left, XamlMath.Colors.RgbaColor right) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override string ToString() { throw null; }
     }
     public static partial class StandardColorParsers
     {
-        public static System.Collections.Generic.IReadOnlyDictionary<string, WpfMath.Colors.IColorParser> Dictionary;
+        public static System.Collections.Generic.IReadOnlyDictionary<string, XamlMath.Colors.IColorParser> Dictionary;
     }
 }
-namespace WpfMath.Exceptions
+namespace XamlMath.Exceptions
 {
-    public partial class TexCharacterMappingNotFoundException : WpfMath.Exceptions.TexException
+    public partial class TexCharacterMappingNotFoundException : XamlMath.Exceptions.TexException
     {
         public TexCharacterMappingNotFoundException(string message) { }
     }
@@ -261,28 +261,28 @@ namespace WpfMath.Exceptions
         public TexException(string message) { }
         public TexException(string message, System.Exception innerException) { }
     }
-    public partial class TexNotSupportedException : WpfMath.Exceptions.TexException
+    public partial class TexNotSupportedException : XamlMath.Exceptions.TexException
     {
         public TexNotSupportedException(string message) { }
     }
-    public partial class TexParseException : WpfMath.Exceptions.TexException
+    public partial class TexParseException : XamlMath.Exceptions.TexException
     {
         internal TexParseException() { }
     }
-    public partial class TextStyleMappingNotFoundException : WpfMath.Exceptions.TexException
+    public partial class TextStyleMappingNotFoundException : XamlMath.Exceptions.TexException
     {
         internal TextStyleMappingNotFoundException() { }
     }
-    public partial class TypeFaceNotFoundException : WpfMath.Exceptions.TexException
+    public partial class TypeFaceNotFoundException : XamlMath.Exceptions.TexException
     {
         public TypeFaceNotFoundException(string message) { }
     }
 }
-namespace WpfMath.Fonts
+namespace XamlMath.Fonts
 {
     public partial interface IFontProvider
     {
-        WpfMath.Fonts.IFontTypeface ReadFontFile(string fontFileName);
+        XamlMath.Fonts.IFontTypeface ReadFontFile(string fontFileName);
     }
     public partial interface IFontTypeface
     {
@@ -291,49 +291,49 @@ namespace WpfMath.Fonts
     {
         double Size { get; }
         bool SupportsMetrics { get; }
-        double GetAxisHeight(WpfMath.TexStyle style);
-        double GetBigOpSpacing1(WpfMath.TexStyle style);
-        double GetBigOpSpacing2(WpfMath.TexStyle style);
-        double GetBigOpSpacing3(WpfMath.TexStyle style);
-        double GetBigOpSpacing4(WpfMath.TexStyle style);
-        double GetBigOpSpacing5(WpfMath.TexStyle style);
-        WpfMath.Utils.Result<WpfMath.CharInfo> GetCharInfo(char character, string textStyle, WpfMath.TexStyle style);
-        WpfMath.Utils.Result<WpfMath.CharInfo> GetCharInfo(string name, WpfMath.TexStyle style);
-        WpfMath.Utils.Result<WpfMath.CharInfo> GetCharInfo(WpfMath.CharFont charFont, WpfMath.TexStyle style);
-        WpfMath.Utils.Result<WpfMath.CharInfo> GetDefaultCharInfo(char character, WpfMath.TexStyle style);
-        double GetDefaultLineThickness(WpfMath.TexStyle style);
-        double GetDenom1(WpfMath.TexStyle style);
-        double GetDenom2(WpfMath.TexStyle style);
-        WpfMath.ExtensionChar GetExtension(WpfMath.CharInfo charInfo, WpfMath.TexStyle style);
-        double GetKern(WpfMath.CharFont leftChar, WpfMath.CharFont rightChar, WpfMath.TexStyle style);
-        WpfMath.CharFont? GetLigature(WpfMath.CharFont leftChar, WpfMath.CharFont rightChar);
+        double GetAxisHeight(XamlMath.TexStyle style);
+        double GetBigOpSpacing1(XamlMath.TexStyle style);
+        double GetBigOpSpacing2(XamlMath.TexStyle style);
+        double GetBigOpSpacing3(XamlMath.TexStyle style);
+        double GetBigOpSpacing4(XamlMath.TexStyle style);
+        double GetBigOpSpacing5(XamlMath.TexStyle style);
+        XamlMath.Utils.Result<XamlMath.CharInfo> GetCharInfo(char character, string textStyle, XamlMath.TexStyle style);
+        XamlMath.Utils.Result<XamlMath.CharInfo> GetCharInfo(string name, XamlMath.TexStyle style);
+        XamlMath.Utils.Result<XamlMath.CharInfo> GetCharInfo(XamlMath.CharFont charFont, XamlMath.TexStyle style);
+        XamlMath.Utils.Result<XamlMath.CharInfo> GetDefaultCharInfo(char character, XamlMath.TexStyle style);
+        double GetDefaultLineThickness(XamlMath.TexStyle style);
+        double GetDenom1(XamlMath.TexStyle style);
+        double GetDenom2(XamlMath.TexStyle style);
+        XamlMath.ExtensionChar GetExtension(XamlMath.CharInfo charInfo, XamlMath.TexStyle style);
+        double GetKern(XamlMath.CharFont leftChar, XamlMath.CharFont rightChar, XamlMath.TexStyle style);
+        XamlMath.CharFont? GetLigature(XamlMath.CharFont leftChar, XamlMath.CharFont rightChar);
         int GetMuFontId();
-        WpfMath.CharInfo GetNextLargerCharInfo(WpfMath.CharInfo charInfo, WpfMath.TexStyle style);
-        double GetNum1(WpfMath.TexStyle style);
-        double GetNum2(WpfMath.TexStyle style);
-        double GetNum3(WpfMath.TexStyle style);
-        double GetQuad(int fontId, WpfMath.TexStyle style);
-        double GetSkew(WpfMath.CharFont charFont, WpfMath.TexStyle style);
-        double GetSpace(WpfMath.TexStyle style);
-        double GetSub1(WpfMath.TexStyle style);
-        double GetSub2(WpfMath.TexStyle style);
-        double GetSubDrop(WpfMath.TexStyle style);
-        double GetSup1(WpfMath.TexStyle style);
-        double GetSup2(WpfMath.TexStyle style);
-        double GetSup3(WpfMath.TexStyle style);
-        double GetSupDrop(WpfMath.TexStyle style);
-        double GetXHeight(WpfMath.TexStyle style, int fontId);
-        bool HasNextLarger(WpfMath.CharInfo charInfo);
+        XamlMath.CharInfo GetNextLargerCharInfo(XamlMath.CharInfo charInfo, XamlMath.TexStyle style);
+        double GetNum1(XamlMath.TexStyle style);
+        double GetNum2(XamlMath.TexStyle style);
+        double GetNum3(XamlMath.TexStyle style);
+        double GetQuad(int fontId, XamlMath.TexStyle style);
+        double GetSkew(XamlMath.CharFont charFont, XamlMath.TexStyle style);
+        double GetSpace(XamlMath.TexStyle style);
+        double GetSub1(XamlMath.TexStyle style);
+        double GetSub2(XamlMath.TexStyle style);
+        double GetSubDrop(XamlMath.TexStyle style);
+        double GetSup1(XamlMath.TexStyle style);
+        double GetSup2(XamlMath.TexStyle style);
+        double GetSup3(XamlMath.TexStyle style);
+        double GetSupDrop(XamlMath.TexStyle style);
+        double GetXHeight(XamlMath.TexStyle style, int fontId);
+        bool HasNextLarger(XamlMath.CharInfo charInfo);
         bool HasSpace(int fontId);
-        bool IsExtensionChar(WpfMath.CharInfo charInfo);
+        bool IsExtensionChar(XamlMath.CharInfo charInfo);
     }
 }
-namespace WpfMath.Rendering
+namespace XamlMath.Rendering
 {
-    public partial class GenericBrush<TBrush> : System.IEquatable<WpfMath.Rendering.GenericBrush<TBrush>>, WpfMath.Rendering.IBrush
+    public partial class GenericBrush<TBrush> : System.IEquatable<XamlMath.Rendering.GenericBrush<TBrush>>, XamlMath.Rendering.IBrush
     {
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        protected GenericBrush(WpfMath.Rendering.GenericBrush<TBrush> original) { }
+        protected GenericBrush(XamlMath.Rendering.GenericBrush<TBrush> original) { }
         public GenericBrush(TBrush Value) { }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         protected virtual System.Type EqualityContract { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
@@ -343,37 +343,37 @@ namespace WpfMath.Rendering
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override bool Equals(object? obj) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public virtual bool Equals(WpfMath.Rendering.GenericBrush<TBrush>? other) { throw null; }
+        public virtual bool Equals(XamlMath.Rendering.GenericBrush<TBrush>? other) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override int GetHashCode() { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public static bool operator ==(WpfMath.Rendering.GenericBrush<TBrush>? left, WpfMath.Rendering.GenericBrush<TBrush>? right) { throw null; }
+        public static bool operator ==(XamlMath.Rendering.GenericBrush<TBrush>? left, XamlMath.Rendering.GenericBrush<TBrush>? right) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public static bool operator !=(WpfMath.Rendering.GenericBrush<TBrush>? left, WpfMath.Rendering.GenericBrush<TBrush>? right) { throw null; }
+        public static bool operator !=(XamlMath.Rendering.GenericBrush<TBrush>? left, XamlMath.Rendering.GenericBrush<TBrush>? right) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         protected virtual bool PrintMembers(System.Text.StringBuilder builder) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override string ToString() { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public virtual WpfMath.Rendering.GenericBrush<TBrush> <Clone>$() { throw null; }
+        public virtual XamlMath.Rendering.GenericBrush<TBrush> <Clone>$() { throw null; }
     }
     public partial interface IBrush
     {
     }
     public partial interface IBrushFactory
     {
-        WpfMath.Rendering.IBrush FromColor(WpfMath.Colors.RgbaColor color);
+        XamlMath.Rendering.IBrush FromColor(XamlMath.Colors.RgbaColor color);
     }
     public partial interface IElementRenderer
     {
         void FinishRendering();
-        void RenderCharacter(WpfMath.CharInfo info, double x, double y, WpfMath.Rendering.IBrush? foreground);
-        void RenderElement(WpfMath.Boxes.Box box, double x, double y);
-        void RenderRectangle(WpfMath.Rendering.Rectangle rectangle, WpfMath.Rendering.IBrush? foreground);
-        void RenderTransformed(WpfMath.Boxes.Box box, System.Collections.Generic.IEnumerable<WpfMath.Rendering.Transformations.Transformation> transforms, double x, double y);
+        void RenderCharacter(XamlMath.CharInfo info, double x, double y, XamlMath.Rendering.IBrush? foreground);
+        void RenderElement(XamlMath.Boxes.Box box, double x, double y);
+        void RenderRectangle(XamlMath.Rendering.Rectangle rectangle, XamlMath.Rendering.IBrush? foreground);
+        void RenderTransformed(XamlMath.Boxes.Box box, System.Collections.Generic.IEnumerable<XamlMath.Rendering.Transformations.Transformation> transforms, double x, double y);
     }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
-    public partial struct Point : System.IEquatable<WpfMath.Rendering.Point>
+    public partial struct Point : System.IEquatable<XamlMath.Rendering.Point>
     {
         private object _dummy;
         private int _dummyPrimitive;
@@ -385,46 +385,46 @@ namespace WpfMath.Rendering
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override bool Equals(object obj) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public bool Equals(WpfMath.Rendering.Point other) { throw null; }
+        public bool Equals(XamlMath.Rendering.Point other) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override int GetHashCode() { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public static bool operator ==(WpfMath.Rendering.Point left, WpfMath.Rendering.Point right) { throw null; }
+        public static bool operator ==(XamlMath.Rendering.Point left, XamlMath.Rendering.Point right) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public static bool operator !=(WpfMath.Rendering.Point left, WpfMath.Rendering.Point right) { throw null; }
+        public static bool operator !=(XamlMath.Rendering.Point left, XamlMath.Rendering.Point right) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override string ToString() { throw null; }
     }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
-    public readonly partial struct Rectangle : System.IEquatable<WpfMath.Rendering.Rectangle>
+    public readonly partial struct Rectangle : System.IEquatable<XamlMath.Rendering.Rectangle>
     {
         private readonly object _dummy;
         private readonly int _dummyPrimitive;
         public Rectangle(double x, double y, double width, double height) { throw null; }
-        public Rectangle(WpfMath.Rendering.Point TopLeft, WpfMath.Rendering.Size Size) { throw null; }
+        public Rectangle(XamlMath.Rendering.Point TopLeft, XamlMath.Rendering.Size Size) { throw null; }
         public double Height { get { throw null; } }
-        public WpfMath.Rendering.Size Size { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
-        public WpfMath.Rendering.Point TopLeft { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public XamlMath.Rendering.Size Size { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
+        public XamlMath.Rendering.Point TopLeft { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public double Width { get { throw null; } }
         public double X { get { throw null; } }
         public double Y { get { throw null; } }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public void Deconstruct(out WpfMath.Rendering.Point TopLeft, out WpfMath.Rendering.Size Size) { throw null; }
+        public void Deconstruct(out XamlMath.Rendering.Point TopLeft, out XamlMath.Rendering.Size Size) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override bool Equals(object obj) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public bool Equals(WpfMath.Rendering.Rectangle other) { throw null; }
+        public bool Equals(XamlMath.Rendering.Rectangle other) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override int GetHashCode() { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public static bool operator ==(WpfMath.Rendering.Rectangle left, WpfMath.Rendering.Rectangle right) { throw null; }
+        public static bool operator ==(XamlMath.Rendering.Rectangle left, XamlMath.Rendering.Rectangle right) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public static bool operator !=(WpfMath.Rendering.Rectangle left, WpfMath.Rendering.Rectangle right) { throw null; }
+        public static bool operator !=(XamlMath.Rendering.Rectangle left, XamlMath.Rendering.Rectangle right) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override string ToString() { throw null; }
     }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
-    public partial struct Size : System.IEquatable<WpfMath.Rendering.Size>
+    public partial struct Size : System.IEquatable<XamlMath.Rendering.Size>
     {
         private object _dummy;
         private int _dummyPrimitive;
@@ -436,42 +436,42 @@ namespace WpfMath.Rendering
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override bool Equals(object obj) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public bool Equals(WpfMath.Rendering.Size other) { throw null; }
+        public bool Equals(XamlMath.Rendering.Size other) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override int GetHashCode() { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public static bool operator ==(WpfMath.Rendering.Size left, WpfMath.Rendering.Size right) { throw null; }
+        public static bool operator ==(XamlMath.Rendering.Size left, XamlMath.Rendering.Size right) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public static bool operator !=(WpfMath.Rendering.Size left, WpfMath.Rendering.Size right) { throw null; }
+        public static bool operator !=(XamlMath.Rendering.Size left, XamlMath.Rendering.Size right) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override string ToString() { throw null; }
     }
     public static partial class TeXFormulaExtensions
     {
-        public static void RenderTo(this WpfMath.TexFormula formula, WpfMath.Rendering.IElementRenderer renderer, WpfMath.TexEnvironment environment, double x, double y) { }
+        public static void RenderTo(this XamlMath.TexFormula formula, XamlMath.Rendering.IElementRenderer renderer, XamlMath.TexEnvironment environment, double x, double y) { }
     }
 }
-namespace WpfMath.Rendering.Transformations
+namespace XamlMath.Rendering.Transformations
 {
     public abstract partial class Transformation
     {
         internal Transformation() { }
-        public abstract WpfMath.Rendering.Transformations.TransformationKind Kind { get; }
-        public abstract WpfMath.Rendering.Transformations.Transformation Scale(double scale);
-        public partial class Rotate : WpfMath.Rendering.Transformations.Transformation
+        public abstract XamlMath.Rendering.Transformations.TransformationKind Kind { get; }
+        public abstract XamlMath.Rendering.Transformations.Transformation Scale(double scale);
+        public partial class Rotate : XamlMath.Rendering.Transformations.Transformation
         {
             public Rotate(double rotationDegrees) { }
-            public override WpfMath.Rendering.Transformations.TransformationKind Kind { get { throw null; } }
+            public override XamlMath.Rendering.Transformations.TransformationKind Kind { get { throw null; } }
             public double RotationDegrees { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-            public override WpfMath.Rendering.Transformations.Transformation Scale(double scale) { throw null; }
+            public override XamlMath.Rendering.Transformations.Transformation Scale(double scale) { throw null; }
         }
-        public partial class Translate : WpfMath.Rendering.Transformations.Transformation
+        public partial class Translate : XamlMath.Rendering.Transformations.Transformation
         {
             public Translate(double x, double y) { }
-            public override WpfMath.Rendering.Transformations.TransformationKind Kind { get { throw null; } }
+            public override XamlMath.Rendering.Transformations.TransformationKind Kind { get { throw null; } }
             public double X { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
             public double Y { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-            public override WpfMath.Rendering.Transformations.Transformation Scale(double scale) { throw null; }
+            public override XamlMath.Rendering.Transformations.Transformation Scale(double scale) { throw null; }
         }
     }
     public enum TransformationKind
@@ -480,12 +480,12 @@ namespace WpfMath.Rendering.Transformations
         Rotate = 1,
     }
 }
-namespace WpfMath.Utils
+namespace XamlMath.Utils
 {
     public static partial class Result
     {
-        public static WpfMath.Utils.Result<TValue> Error<TValue>(System.Exception error) { throw null; }
-        public static WpfMath.Utils.Result<TValue> Ok<TValue>(TValue value) { throw null; }
+        public static XamlMath.Utils.Result<TValue> Error<TValue>(System.Exception error) { throw null; }
+        public static XamlMath.Utils.Result<TValue> Ok<TValue>(TValue value) { throw null; }
     }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public readonly partial struct Result<TValue>
@@ -497,6 +497,6 @@ namespace WpfMath.Utils
         public System.Exception? Error { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         public bool IsSuccess { get { throw null; } }
         public TValue Value { get { throw null; } }
-        public WpfMath.Utils.Result<TProduct> Map<TProduct>(System.Func<TValue, TProduct> mapper) { throw null; }
+        public XamlMath.Utils.Result<TProduct> Map<TProduct>(System.Func<TValue, TProduct> mapper) { throw null; }
     }
 }

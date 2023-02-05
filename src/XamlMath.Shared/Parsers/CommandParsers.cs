@@ -1,7 +1,7 @@
-using WpfMath.Atoms;
-using WpfMath.Exceptions;
+using XamlMath.Atoms;
+using XamlMath.Exceptions;
 
-namespace WpfMath.Parsers;
+namespace XamlMath.Parsers;
 
 /// <summary>A context that will be passed to the command parser.</summary>
 /// <param name="Parser">TeX formula parser that calls the command.</param>

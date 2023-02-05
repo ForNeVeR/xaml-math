@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using WpfMath.Atoms;
-using WpfMath.Parsers.Matrices;
+using XamlMath.Atoms;
+using XamlMath.Parsers.Matrices;
 
-namespace WpfMath.Parsers
+namespace XamlMath.Parsers
 {
     internal static class StandardCommands
     {

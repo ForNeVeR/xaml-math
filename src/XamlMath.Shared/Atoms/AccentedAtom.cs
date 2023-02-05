@@ -1,7 +1,7 @@
 using System;
-using WpfMath.Boxes;
+using XamlMath.Boxes;
 
-namespace WpfMath.Atoms
+namespace XamlMath.Atoms
 {
     // Atom representing base atom with accent above it.
     internal record AccentedAtom : Atom

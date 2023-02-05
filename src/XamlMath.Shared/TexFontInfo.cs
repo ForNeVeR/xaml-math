@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using WpfMath.Exceptions;
-using WpfMath.Fonts;
-using WpfMath.Utils;
+using XamlMath.Exceptions;
+using XamlMath.Fonts;
+using XamlMath.Utils;
 
-namespace WpfMath
+namespace XamlMath
 {
     // Specifies all information about single font.
     internal class TexFontInfo

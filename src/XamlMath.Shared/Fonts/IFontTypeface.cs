@@ -1,4 +1,4 @@
-namespace WpfMath.Fonts;
+namespace XamlMath.Fonts;
 
 /// <summary>
 /// A marker interface for font typeface. Used to extract font glyphs. Should be casted back in the

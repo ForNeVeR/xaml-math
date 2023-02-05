@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using WpfMath.Atoms;
-using WpfMath.Boxes;
-using WpfMath.Rendering;
+using XamlMath.Atoms;
+using XamlMath.Boxes;
+using XamlMath.Rendering;
 
-namespace WpfMath
+namespace XamlMath
 {
     /// <summary>Represents mathematical formula that can be rendered.</summary>
     public sealed class TexFormula

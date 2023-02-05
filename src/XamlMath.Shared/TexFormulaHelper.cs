@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using WpfMath.Atoms;
-using WpfMath.Rendering;
+using XamlMath.Atoms;
+using XamlMath.Rendering;
 
-namespace WpfMath
+namespace XamlMath
 {
     internal class TexFormulaHelper
     {

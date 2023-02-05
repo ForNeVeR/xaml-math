@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace WpfMath.Utils;
+namespace XamlMath.Utils;
 
 internal static class ColorHelpers
 {

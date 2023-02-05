@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Xml.Linq;
-using WpfMath.Data;
-using WpfMath.Utils;
+using XamlMath.Data;
+using XamlMath.Utils;
 
-namespace WpfMath
+namespace XamlMath
 {
     // Parses settings for predefined formulas from XML file.
     internal class TexPredefinedFormulaSettingsParser

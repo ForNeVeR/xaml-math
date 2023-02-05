@@ -5,13 +5,13 @@ open System.Collections.Generic
 
 open Xunit
 
-open WpfMath
-open WpfMath.Atoms
-open WpfMath.Colors
-open WpfMath.Exceptions
-open WpfMath.Parsers
 open WpfMath.Rendering
 open WpfMath.Tests.Utils
+open XamlMath
+open XamlMath.Atoms
+open XamlMath.Colors
+open XamlMath.Exceptions
+open XamlMath.Parsers
 
 [<Fact>]
 let ``Non-existing delimiter should throw a TexParseException``(): unit =
