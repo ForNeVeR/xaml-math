@@ -60,8 +60,5 @@ jobs:
       - name: Build
         run: dotnet build ${{ matrix.config.solution }}
 
-      - name: Pack
-        run: dotnet pack ${{ matrix.config.solution }}
-
       - name: Test
         run: dotnet test ${{ matrix.config.solution }}
