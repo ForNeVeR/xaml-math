@@ -47,7 +47,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ${{ env.NUGET_PACKAGES }}
-          key: ${{ runner.os }}.nuget.${{ hashFiles('**/*.csproj') }}
+          key: ${{ runner.os }}.nuget.${{ hashFiles('**/*.csproj', '**/*.fsproj') }}
 
       - name: Set up .NET SDK
         uses: actions/setup-dotnet@v3

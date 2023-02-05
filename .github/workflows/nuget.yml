@@ -32,7 +32,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ${{ env.NUGET_PACKAGES }}
-          key: release.nuget.${{ hashFiles('**/*.csproj') }}
+          key: release.nuget.${{ hashFiles('**/*.csproj', '**/*.fsproj') }}
 
       - name: Set up .NET SDK
         uses: actions/setup-dotnet@v3
