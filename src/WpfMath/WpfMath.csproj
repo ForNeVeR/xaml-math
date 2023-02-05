@@ -18,32 +18,21 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Resource Include="..\..\fonts\*.ttf" LinkBase="Fonts" />
+        <Resource Include="..\..\fonts\*.ttf" LinkBase="Fonts"/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
-        <PackageReference Include="Nullable" Version="1.2.1" PrivateAssets="All" />
-        <PackageReference Include="ChangelogAutomation.MSBuild" Version="2.0.0" PrivateAssets="All" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+        <PackageReference Include="Nullable" Version="1.2.1" PrivateAssets="All"/>
+        <PackageReference Include="ChangelogAutomation.MSBuild" Version="2.0.0" PrivateAssets="All"/>
     </ItemGroup>
 
     <ItemGroup>
-        <!-- TODO[#341]: Remove PrivateAssets="All" after XamlMath.Shared gets into a separate package -->
-        <ProjectReference Include="..\XamlMath.Shared\XamlMath.Shared.csproj" PrivateAssets="All" />
+        <ProjectReference Include="..\XamlMath.Shared\XamlMath.Shared.csproj"/>
     </ItemGroup>
 
-    <!-- TODO[#341]: Remove this after XamlMath.Shared gets into a separate package (together with the Avalonia release) -->
-    <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
-        <ItemGroup>
-            <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
-        </ItemGroup>
-    </Target>
-    <PropertyGroup>
-        <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
-    </PropertyGroup>
-
     <ItemGroup>
-        <InternalsVisibleTo Include="$(AssemblyName).Tests" />
+        <InternalsVisibleTo Include="$(AssemblyName).Tests"/>
     </ItemGroup>
 
 </Project>

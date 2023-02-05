@@ -2,8 +2,16 @@
 
     <PropertyGroup>
         <TargetFrameworks>netstandard2.0;net452;netcoreapp3.1</TargetFrameworks>
+        <OutputType>Library</OutputType>
         <RootNamespace>XamlMath</RootNamespace>
-        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <PropertyGroup Label="Packaging">
+        <PackageId>XamlMath.Shared</PackageId>
+        <Title>XAML-Math Shared Code</Title>
+
+        <PackageTags>$(PackageTags);xaml</PackageTags>
+        <Description>A package code shared between UI framework-specific implementations of XAML-Math, a .NET library for rendering mathematical formulae using the LaTeX typsetting style.</Description>
     </PropertyGroup>
 
     <ItemGroup>
