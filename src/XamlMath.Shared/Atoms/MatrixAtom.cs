@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using XamlMath.Boxes;
-#if NET452
+#if NET462
 using XamlMath.Compatibility;
 #endif
 

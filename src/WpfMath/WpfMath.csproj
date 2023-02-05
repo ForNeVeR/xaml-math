@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
     <PropertyGroup>
-        <TargetFrameworks>netcoreapp3.1;net452</TargetFrameworks>
+        <TargetFrameworks>net462;net6.0-windows</TargetFrameworks>
         <UseWpf>true</UseWpf>
         <OutputType>Library</OutputType>
     </PropertyGroup>
@@ -11,10 +11,6 @@
 
         <PackageTags>$(PackageTags);wpf</PackageTags>
         <Description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the WPF framework.</Description>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" $([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net452')) ">
-        <IncludePackageReferencesDuringMarkupCompilation>true</IncludePackageReferencesDuringMarkupCompilation>
     </PropertyGroup>
 
     <ItemGroup>

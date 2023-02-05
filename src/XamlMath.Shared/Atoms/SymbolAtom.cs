@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using XamlMath.Fonts;
 using XamlMath.Utils;
-#if !NET452 && !NETSTANDARD2_0
+#if !NET462 && !NETSTANDARD2_0
 using System.Diagnostics.CodeAnalysis;
 #endif
 
@@ -39,7 +39,7 @@ namespace XamlMath.Atoms
             validSymbolTypes.Set((int)TexAtomType.Accent, true);
         }
 
-#if !NET452 && !NETSTANDARD2_0
+#if !NET462 && !NETSTANDARD2_0
         public static bool TryGetAtom(string name, SourceSpan? source, [NotNullWhen(true)] out SymbolAtom? atom)
 #else
         public static bool TryGetAtom(string name, SourceSpan? source, out SymbolAtom? atom)
@@ -59,7 +59,7 @@ namespace XamlMath.Atoms
         public static SymbolAtom GetAtom(string name, SourceSpan? source) =>
             TryGetAtom(name, source, out var atom) ? atom : throw new SymbolNotFoundException(name);
 
-#if !NET452 && !NETSTANDARD2_0
+#if !NET462 && !NETSTANDARD2_0
         public static bool TryGetAtom(SourceSpan name, [NotNullWhen(true)] out SymbolAtom? atom)
 #else
         public static bool TryGetAtom(SourceSpan name, out SymbolAtom? atom)

@@ -113,7 +113,8 @@ namespace WpfMath.Rendering
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override string ToString() { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public override XamlMath.Rendering.GenericBrush<System.Windows.Media.Brush> <Clone>$() { throw null; }
+        [System.Runtime.CompilerServices.PreserveBaseOverridesAttribute]
+        virtual WpfMath.Rendering.WpfBrush XamlMath.Rendering.GenericBrush<System.Windows.Media.Brush>.<Clone>$() { throw null; }
     }
     public static partial class WpfBrushExtensions
     {

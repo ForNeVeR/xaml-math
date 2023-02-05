@@ -23,11 +23,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <_InputAssembly Include="../WpfMath/bin/$(Configuration)/net452/WpfMath.dll" Framework="net452" />
-        <_InputAssembly Include="../WpfMath/bin/$(Configuration)/netcoreapp3.1/WpfMath.dll" Framework="netcoreapp3.1" />
+        <_InputAssembly Include="../WpfMath/bin/$(Configuration)/net462/WpfMath.dll" Framework="net462" />
+        <_InputAssembly Include="../WpfMath/bin/$(Configuration)/net6.0-windows/WpfMath.dll" Framework="net6.0" />
+        <_InputAssembly Include="../XamlMath.Shared/bin/$(Configuration)/net462/XamlMath.Shared.dll" Framework="net462" />
         <_InputAssembly Include="../XamlMath.Shared/bin/$(Configuration)/netstandard2.0/XamlMath.Shared.dll" Framework="netstandard2.0" />
-        <_InputAssembly Include="../XamlMath.Shared/bin/$(Configuration)/net452/XamlMath.Shared.dll" Framework="net452" />
-        <_InputAssembly Include="../XamlMath.Shared/bin/$(Configuration)/netcoreapp3.1/XamlMath.Shared.dll" Framework="netcoreapp3.1" />
+        <_InputAssembly Include="../XamlMath.Shared/bin/$(Configuration)/net6.0/XamlMath.Shared.dll" Framework="net6.0" />
     </ItemGroup>
 
     <ItemGroup>

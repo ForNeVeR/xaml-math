@@ -10,6 +10,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - a lot of types were migrated from `WpfMath` namespace to `XamlMath`,
   - all the internal XML file resources were migrated to the new namespace as well.
 - The `XamlMath.Shared` assembly has been extracted into a separately published NuGet package.
+- **(Breaking change.)** WPF-Math no longer supports .NET Framework 4.5.2, .NET Core 3.1 and .NET 5.0, because they are out of support by Microsoft. The only supported runtimes are:
+  - .NET Framework 4.6.2 or later,
+  - .NET 6.0 and later.
 - **(Breaking change.)** `WpfMath.Colors.IColorParser::Parse` now accepts `IReadOnlyList` instead of `IEnumerable`.
 
 ### Removed
@@ -17,6 +20,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 - Avalonia version is now available! Install the **AvaloniaMath** NuGet package to get it.
+
+  It supports the following .NET variants:
+  - .NET Framework 4.6.2 or later,
+  - .NET Standard 2.0 or later,
+  - .NET 6.0 or later.
 - Portable PDB packages are now published to NuGet.
 
 ## [0.13.1] - 2023-01-29

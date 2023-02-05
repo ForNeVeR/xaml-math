@@ -6,12 +6,12 @@ XAML-Math
 - For WPF version, use NuGet package [WpfMath][nuget-wpf]: [![NuGet][badge-nuget-wpf]][nuget-wpf]
 - For Avalonia version, use [AvaloniaMath][nuget-avalonia]: [![NuGet][badge-nuget-avalonia]][nuget-avalonia]
 
-The WPF version supports the following .NET runtimes:
-- .NET Framework 4.5.2 or later
-- .NET Core 3.1 or later
-- .NET 5.0 or later
+The WPF version supports the following .NET variants:
+- .NET Framework 4.6.2 or later
+- .NET 6 or later
 
 The Avalonia version supports:
+- .NET Framework 4.6.2 or later
 - .NET Standard 2.0 or later
 - .NET 6 or later
 

@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>
-        <Nullable Condition="'$(TargetFramework)' == 'net6.0'">enable</Nullable>
+        <TargetFrameworks>net462;netstandard2.0;net6.0</TargetFrameworks>
         <Nullable Condition="'$(TargetFramework)' == 'netstandard2.0'">annotations</Nullable>
+        <Nullable Condition="'$(Nullable)' == ''">enable</Nullable>
     </PropertyGroup>
     <PropertyGroup>
         <PackageId>AvaloniaMath</PackageId>

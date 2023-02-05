@@ -6,7 +6,7 @@ using XamlMath.Colors;
 using XamlMath.Exceptions;
 using XamlMath.Parsers;
 using XamlMath.Rendering;
-#if NET452
+#if NET462
 using XamlMath.Compatibility;
 #endif
 
