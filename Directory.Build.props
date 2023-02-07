@@ -14,11 +14,17 @@
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <PropertyGroup Label="ChangelogAutomation">
         <ChangelogFilePath>..\..\CHANGELOG.md</ChangelogFilePath>
     </PropertyGroup>
+
+    <ItemGroup Label="Packaging">
+        <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
 
     <PropertyGroup Condition=" '$(MSBuildProjectExtension)' == '.csproj' ">
         <LangVersion>11</LangVersion>
