@@ -173,7 +173,7 @@ We're very grateful to JMathTeX authors for their work and allowing to redistrib
 [docs.environments]: docs/environments.md
 [docs.maintainership]: ./MAINTAINERSHIP.md
 [example]: src/WpfMath.Example/
-[fonts]: src/WpfMath/Fonts/
+[fonts]: fonts/
 [license]: LICENSE.md
 
 [alex-regueiro]: https://github.com/alexreg
