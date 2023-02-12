@@ -1,4 +1,4 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Drawing.Text;
 using WinFormsMath.Fonts;
 using XamlMath;
 using XamlMath.Boxes;
@@ -11,11 +11,14 @@ namespace WinFormsMath.Rendering;
 public class WinFormsRenderer : IElementRenderer
 {
     private readonly Graphics _graphics;
-    private float Scale => 20f * _graphics.DpiX / 96f; // TODO: Figure out what to do with sizes properly
+    private readonly TextRenderingHint _textRenderingHintToRestore;
+    private float Scale => 30f * _graphics.DpiX / 96f; // TODO: Figure out what to do with sizes properly
 
     public WinFormsRenderer(Graphics graphics)
     {
         _graphics = graphics;
+        _textRenderingHintToRestore = _graphics.TextRenderingHint;
+        _graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
     }
 
     public void RenderElement(Box box, double x, double y)
@@ -24,10 +27,7 @@ public class WinFormsRenderer : IElementRenderer
         box.RenderTo(this, x, y);
     }
 
-    [DllImport("gdi32.dll")]
-    public static extern int GetTextCharacterExtra(
-        IntPtr hdc    // DC handle
-    );
+    private static readonly StringFormat typographicFormat = StringFormat.GenericTypographic; // TODO: Dispose
 
     public void RenderCharacter(CharInfo info, double x, double y, IBrush? foreground)
     {
@@ -35,34 +35,25 @@ public class WinFormsRenderer : IElementRenderer
         var newF = new Font(font.FontFamily, (float)info.Size * Scale, GraphicsUnit.Pixel);
         var brush = foreground.ToWinForms() ?? Brushes.Black; // TODO: Make IBrush disposable?
 
-        int mm;
-        var hdc = _graphics.GetHdc();
-        try
-        {
-            mm = GetTextCharacterExtra(hdc);
-        }
-        finally
-        {
-            _graphics.ReleaseHdc(hdc);
-        }
-
-        var metric = _graphics.MeasureString(info.Character.ToString(), newF);
-
         // Renderer wants upper left corner from us, while we have baseline here. Let's convert.
         var ff = newF.FontFamily;
         var lineSpace = ff.GetLineSpacing(font.Style);
         var ascent = ff.GetCellAscent(font.Style);
         var fontBaseline = newF.GetHeight(_graphics.DpiX) * ascent / lineSpace;
 
-        var baselineX = x * Scale; // TODO: It looks like we should subtract several pixels here for some reason,
-                                   //       I don't understand why. Probably a font metric issue. It's possible
-                                   //       that we won't be able to get the right metrics using WinForms without
-                                   //       falling back to DirectX?
-        var baselineY = y * Scale;
-        var topY = baselineY - fontBaseline;
+        var baselineOriginX = x * Scale;
+        var baselineOriginY = y * Scale;
+        var topY = baselineOriginY - fontBaseline;
 
-
-        _graphics.DrawString(info.Character.ToString(), newF, brush, (float)baselineX, (float)topY);
+        // NOTE: Passing of TypographicFormat here is important. Otherwise, the X alignment of the font may be
+        // incorrect. See this for details: https://github.com/ForNeVeR/xaml-math/issues/281#issuecomment-1427149022
+        _graphics.DrawString(
+            info.Character.ToString(),
+            newF,
+            brush,
+            (float)baselineOriginX,
+            (float)topY,
+            typographicFormat);
     }
 
     public void RenderRectangle(Rectangle rectangle, IBrush? foreground)
@@ -80,5 +71,6 @@ public class WinFormsRenderer : IElementRenderer
 
     public void FinishRendering()
     {
+        _graphics.TextRenderingHint = _textRenderingHintToRestore;
     }
 }
