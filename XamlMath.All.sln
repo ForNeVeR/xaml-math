@@ -82,6 +82,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{3F2FED19-93A
 		api\XamlMath.Shared.net6.0.verified.cs = api\XamlMath.Shared.net6.0.verified.cs
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsMath", "src\WinFormsMath\WinFormsMath.csproj", "{4236794D-83A5-46B8-8F1C-8777D525DCD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsApp.Example", "WinFormsApp.Example\WinFormsApp.Example.csproj", "{7AD0440C-A9E8-4153-883C-B595E8B7346F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -124,6 +128,14 @@ Global
 		{54F77EF7-F918-46F8-A615-56BC0BFE8AAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54F77EF7-F918-46F8-A615-56BC0BFE8AAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54F77EF7-F918-46F8-A615-56BC0BFE8AAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4236794D-83A5-46B8-8F1C-8777D525DCD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4236794D-83A5-46B8-8F1C-8777D525DCD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4236794D-83A5-46B8-8F1C-8777D525DCD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4236794D-83A5-46B8-8F1C-8777D525DCD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AD0440C-A9E8-4153-883C-B595E8B7346F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AD0440C-A9E8-4153-883C-B595E8B7346F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AD0440C-A9E8-4153-883C-B595E8B7346F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AD0440C-A9E8-4153-883C-B595E8B7346F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
