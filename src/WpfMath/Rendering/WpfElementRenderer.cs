@@ -85,6 +85,11 @@ namespace WpfMath.Rendering
             _targetContext.DrawDrawing(_foregroundGroup);
         }
 
+        public System.Windows.Size GetBounds()
+        {
+            return _foregroundGroup.Bounds.Size;
+        }
+
         private void RenderBackground(Box box, double x, double y)
         {
             if (box.Background != null)

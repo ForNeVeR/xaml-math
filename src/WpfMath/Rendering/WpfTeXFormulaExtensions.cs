@@ -82,7 +82,7 @@ public static class WpfTeXFormulaExtensions
     /// <param name="scale">Formula text scale./</param>
     /// <param name="x">Logical X coordinate of the top left corner of the formula.</param>
     /// <param name="y">Logical Y coordinate of the top left corner of the formula.</param>
-    public static void RenderTo(
+    public static System.Windows.Size RenderTo(
         this TexFormula formula,
         DrawingContext drawingContext,
         TexEnvironment environment,
@@ -90,6 +90,8 @@ public static class WpfTeXFormulaExtensions
         double x = 0.0,
         double y = 0.0)
     {
-        formula.RenderTo(new WpfElementRenderer(drawingContext, scale), environment, x, y);
+        var renderer = new WpfElementRenderer(drawingContext, scale);
+        formula.RenderTo(renderer, environment, x, y);
+        return renderer.GetBounds();
     }
 }
