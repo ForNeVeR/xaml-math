@@ -121,7 +121,7 @@ namespace XamlMath.Atoms
                     cellContainer.Depth = 0;
 
                     var (leftPadding, rightPadding) = GetLeftRightPadding(i, j);
-                    if (leftPadding != null) rowContainer.Add(leftPadding);
+                    rowContainer.Add(leftPadding);
                     rowContainer.Add(cellContainer);
                     rowContainer.Add(rightPadding);
                 }
