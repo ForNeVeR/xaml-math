@@ -139,8 +139,8 @@ namespace XamlMath.Atoms
             Tuple<Box, Box> GetTopBottomPadding(int i, int j)
             {
                 var value = matrixCellGaps[i][j].Vertical;
-                var topBox = new StrutBox(0.0, VerticalPadding / 2 + value, 0.0, VerticalPadding);
-                var bottomBox = new StrutBox(0.0, VerticalPadding / 2 + value, 0.0, VerticalPadding);
+                var topBox = new StrutBox(0.0, VerticalPadding / 2 + value, 0.0, 0.0);
+                var bottomBox = new StrutBox(0.0, VerticalPadding / 2 + value, 0.0, 0.0);
                 return new Tuple<Box, Box>(topBox, bottomBox);
             }
 
