@@ -144,15 +144,26 @@ namespace XamlMath.Atoms
                 return new Tuple<Box, Box>(topBox, bottomBox);
             }
 
-            Tuple<Box?, Box> GetLeftRightPadding(int i, int j)
+            Tuple<Box, Box> GetLeftRightPadding(int i, int j)
             {
                 var value = matrixCellGaps[i][j].Horizontal;
-                var leftPadding = MatrixCellAlignment == MatrixCellAlignment.Left ? 0.0 : value;
-                var rightPadding = MatrixCellAlignment == MatrixCellAlignment.Left ? value * 2 : value;
-                var leftBox = MatrixCellAlignment == MatrixCellAlignment.Left
-                    ? null
-                    : new StrutBox(HorizontalPadding / 2 + leftPadding, 0.0, 0.0, 0.0);
-                var rightBox = new StrutBox(HorizontalPadding / 2 + rightPadding, 0.0, 0.0, 0.0);
+
+                StrutBox leftBox;
+                StrutBox rightBox;
+                switch (MatrixCellAlignment)
+                {
+                    case MatrixCellAlignment.Left:
+                        leftBox = new StrutBox(HorizontalPadding / 2, 0.0, 0.0, 0.0);
+                        rightBox = new StrutBox(HorizontalPadding / 2 + value * 2, 0.0, 0.0, 0.0);
+                        break;
+                    case MatrixCellAlignment.Center:
+                        leftBox = new StrutBox(HorizontalPadding / 2 + value, 0.0, 0.0, 0.0);
+                        rightBox = new StrutBox(HorizontalPadding / 2 + value, 0.0, 0.0, 0.0);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
                 return new Tuple<Box?, Box>(leftBox, rightBox);
             }
         }
