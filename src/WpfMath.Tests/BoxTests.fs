@@ -116,11 +116,11 @@ let emptyCellMatrix() =
     verifyBox @"\matrix{A & B \\ A & B \\ & B}"
 
 [<Fact>]
-let shortСommandForThinspace(): unit =
+let shortCommandForThinspace(): unit =
     verifyBox @"\,"
 
 [<Fact>]
-let shortСommandForNotEqual(): unit =
+let shortCommandForNotEqual(): unit =
     verifyBox @"\neq"
 
 [<Fact>]
