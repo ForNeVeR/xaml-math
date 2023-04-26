@@ -13,6 +13,7 @@ namespace XamlMath.Atoms
     /// <summary>An atom representing a tabular arrangement of atoms.</summary>
     internal record MatrixAtom : Atom
     {
+        public const double AlignGroupLeftPadding = 4;
         public const double DefaultPadding = 0.35;
 
         public MatrixAtom(
@@ -93,6 +94,7 @@ namespace XamlMath.Atoms
             {
                 MatrixCellAlignment.Align => (columnIndex % 2) switch
                 {
+                    0 when columnIndex != 0 => new SurroundingGap(AlignGroupLeftPadding + lrPadding + hFreeSpace, lrPadding),
                     0 => new SurroundingGap(lrPadding + hFreeSpace, lrPadding),
                     1 => new SurroundingGap(lrPadding, lrPadding + hFreeSpace),
                     _ => throw new ArgumentOutOfRangeException()

@@ -1,0 +1,391 @@
+{
+  "RootAtom": {
+    "[AtomType]": "MatrixAtom",
+    "HorizontalPadding": 0.35,
+    "MatrixCellAlignment": "Align",
+    "MatrixCells": [
+      [
+        {
+          "[AtomType]": "RowAtom",
+          "Elements": [
+            {
+              "[AtomType]": "CharAtom",
+              "Character": "x",
+              "IsTextSymbol": false,
+              "Source": {
+                "End": 15,
+                "Length": 1,
+                "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+                "SourceName": "User input",
+                "Start": 14
+              },
+              "TextStyle": null,
+              "Type": "Ordinary"
+            },
+            {
+              "[AtomType]": "SymbolAtom",
+              "IsDelimeter": false,
+              "IsTextSymbol": false,
+              "Name": "plus",
+              "Source": {
+                "End": 16,
+                "Length": 1,
+                "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+                "SourceName": "User input",
+                "Start": 15
+              },
+              "Type": "BinaryOperator"
+            },
+            {
+              "[AtomType]": "CharAtom",
+              "Character": "1",
+              "IsTextSymbol": false,
+              "Source": {
+                "End": 17,
+                "Length": 1,
+                "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+                "SourceName": "User input",
+                "Start": 16
+              },
+              "TextStyle": null,
+              "Type": "Ordinary"
+            }
+          ],
+          "PreviousAtom": null,
+          "Source": {
+            "End": 18,
+            "Length": 5,
+            "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+            "SourceName": "User input",
+            "Start": 13
+          },
+          "Type": "Ordinary"
+        },
+        {
+          "[AtomType]": "RowAtom",
+          "Elements": [
+            {
+              "[AtomType]": "SymbolAtom",
+              "IsDelimeter": false,
+              "IsTextSymbol": false,
+              "Name": "equals",
+              "Source": {
+                "End": 20,
+                "Length": 1,
+                "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+                "SourceName": "User input",
+                "Start": 19
+              },
+              "Type": "Relation"
+            },
+            {
+              "[AtomType]": "CharAtom",
+              "Character": "y",
+              "IsTextSymbol": false,
+              "Source": {
+                "End": 22,
+                "Length": 1,
+                "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+                "SourceName": "User input",
+                "Start": 21
+              },
+              "TextStyle": null,
+              "Type": "Ordinary"
+            }
+          ],
+          "PreviousAtom": null,
+          "Source": {
+            "End": 23,
+            "Length": 10,
+            "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+            "SourceName": "User input",
+            "Start": 13
+          },
+          "Type": "Ordinary"
+        },
+        {
+          "[AtomType]": "RowAtom",
+          "Elements": [
+            {
+              "[AtomType]": "CharAtom",
+              "Character": "a",
+              "IsTextSymbol": false,
+              "Source": {
+                "End": 26,
+                "Length": 1,
+                "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+                "SourceName": "User input",
+                "Start": 25
+              },
+              "TextStyle": null,
+              "Type": "Ordinary"
+            },
+            {
+              "[AtomType]": "SymbolAtom",
+              "IsDelimeter": false,
+              "IsTextSymbol": false,
+              "Name": "ast",
+              "Source": {
+                "End": 27,
+                "Length": 1,
+                "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+                "SourceName": "User input",
+                "Start": 26
+              },
+              "Type": "BinaryOperator"
+            },
+            {
+              "[AtomType]": "CharAtom",
+              "Character": "2",
+              "IsTextSymbol": false,
+              "Source": {
+                "End": 28,
+                "Length": 1,
+                "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+                "SourceName": "User input",
+                "Start": 27
+              },
+              "TextStyle": null,
+              "Type": "Ordinary"
+            }
+          ],
+          "PreviousAtom": null,
+          "Source": {
+            "End": 29,
+            "Length": 16,
+            "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+            "SourceName": "User input",
+            "Start": 13
+          },
+          "Type": "Ordinary"
+        },
+        {
+          "[AtomType]": "RowAtom",
+          "Elements": [
+            {
+              "[AtomType]": "SymbolAtom",
+              "IsDelimeter": false,
+              "IsTextSymbol": false,
+              "Name": "equals",
+              "Source": {
+                "End": 31,
+                "Length": 1,
+                "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+                "SourceName": "User input",
+                "Start": 30
+              },
+              "Type": "Relation"
+            },
+            {
+              "[AtomType]": "CharAtom",
+              "Character": "b",
+              "IsTextSymbol": false,
+              "Source": {
+                "End": 33,
+                "Length": 1,
+                "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+                "SourceName": "User input",
+                "Start": 32
+              },
+              "TextStyle": null,
+              "Type": "Ordinary"
+            }
+          ],
+          "PreviousAtom": null,
+          "Source": {
+            "End": 34,
+            "Length": 21,
+            "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+            "SourceName": "User input",
+            "Start": 13
+          },
+          "Type": "Ordinary"
+        }
+      ],
+      [
+        {
+          "[AtomType]": "CharAtom",
+          "Character": "x",
+          "IsTextSymbol": false,
+          "Source": {
+            "End": 38,
+            "Length": 1,
+            "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+            "SourceName": "User input",
+            "Start": 37
+          },
+          "TextStyle": null,
+          "Type": "Ordinary"
+        },
+        {
+          "[AtomType]": "RowAtom",
+          "Elements": [
+            {
+              "[AtomType]": "SymbolAtom",
+              "IsDelimeter": false,
+              "IsTextSymbol": false,
+              "Name": "equals",
+              "Source": {
+                "End": 41,
+                "Length": 1,
+                "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+                "SourceName": "User input",
+                "Start": 40
+              },
+              "Type": "Relation"
+            },
+            {
+              "[AtomType]": "CharAtom",
+              "Character": "y",
+              "IsTextSymbol": false,
+              "Source": {
+                "End": 43,
+                "Length": 1,
+                "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+                "SourceName": "User input",
+                "Start": 42
+              },
+              "TextStyle": null,
+              "Type": "Ordinary"
+            },
+            {
+              "[AtomType]": "SymbolAtom",
+              "IsDelimeter": false,
+              "IsTextSymbol": false,
+              "Name": "minus",
+              "Source": {
+                "End": 44,
+                "Length": 1,
+                "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+                "SourceName": "User input",
+                "Start": 43
+              },
+              "Type": "BinaryOperator"
+            },
+            {
+              "[AtomType]": "CharAtom",
+              "Character": "1",
+              "IsTextSymbol": false,
+              "Source": {
+                "End": 45,
+                "Length": 1,
+                "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+                "SourceName": "User input",
+                "Start": 44
+              },
+              "TextStyle": null,
+              "Type": "Ordinary"
+            }
+          ],
+          "PreviousAtom": null,
+          "Source": {
+            "End": 46,
+            "Length": 33,
+            "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+            "SourceName": "User input",
+            "Start": 13
+          },
+          "Type": "Ordinary"
+        },
+        {
+          "[AtomType]": "CharAtom",
+          "Character": "a",
+          "IsTextSymbol": false,
+          "Source": {
+            "End": 49,
+            "Length": 1,
+            "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+            "SourceName": "User input",
+            "Start": 48
+          },
+          "TextStyle": null,
+          "Type": "Ordinary"
+        },
+        {
+          "[AtomType]": "RowAtom",
+          "Elements": [
+            {
+              "[AtomType]": "SymbolAtom",
+              "IsDelimeter": false,
+              "IsTextSymbol": false,
+              "Name": "equals",
+              "Source": {
+                "End": 52,
+                "Length": 1,
+                "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+                "SourceName": "User input",
+                "Start": 51
+              },
+              "Type": "Relation"
+            },
+            {
+              "[AtomType]": "FractionAtom",
+              "Denominator": {
+                "[AtomType]": "CharAtom",
+                "Character": "2",
+                "IsTextSymbol": false,
+                "Source": {
+                  "End": 63,
+                  "Length": 1,
+                  "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+                  "SourceName": "User input",
+                  "Start": 62
+                },
+                "TextStyle": null,
+                "Type": "Ordinary"
+              },
+              "Numerator": {
+                "[AtomType]": "CharAtom",
+                "Character": "b",
+                "IsTextSymbol": false,
+                "Source": {
+                  "End": 60,
+                  "Length": 1,
+                  "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+                  "SourceName": "User input",
+                  "Start": 59
+                },
+                "TextStyle": null,
+                "Type": "Ordinary"
+              },
+              "Source": {
+                "End": 64,
+                "Length": 10,
+                "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+                "SourceName": "User input",
+                "Start": 54
+              },
+              "Type": "Inner"
+            }
+          ],
+          "PreviousAtom": null,
+          "Source": {
+            "End": 104,
+            "Length": 64,
+            "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+            "SourceName": "User input",
+            "Start": 40
+          },
+          "Type": "Ordinary"
+        }
+      ]
+    ],
+    "Source": {
+      "End": 76,
+      "Length": 75,
+      "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+      "SourceName": "User input",
+      "Start": 1
+    },
+    "Type": "Ordinary",
+    "VerticalPadding": 0.35
+  },
+  "Source": {
+    "End": 76,
+    "Length": 76,
+    "Source": "\\begin{align} x+1 &= y & a*2 &= b \\\\ x &= y-1 & a &= \\frac{b}{2} \\end{align}",
+    "SourceName": "User input",
+    "Start": 0
+  },
+  "TextStyle": null
+}

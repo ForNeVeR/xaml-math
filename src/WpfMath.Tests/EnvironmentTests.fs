@@ -11,6 +11,10 @@ let alignEnvironment(): unit =
     verifyParseResult @"\begin{align} x+1 &= y \\ x &= y-1 \end{align}"
 
 [<Fact>]
+let alignEnvironmentLarge(): unit =
+    verifyParseResult @"\begin{align} x+1 &= y & a*2 &= b \\ x &= y-1 & a &= \frac{b}{2} \end{align}"
+
+[<Fact>]
 let pMatrixEnvironment(): unit =
     verifyParseResult @"\begin{pmatrix}{line 1}\\line 2\end{pmatrix}"
 
