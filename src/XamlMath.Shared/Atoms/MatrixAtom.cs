@@ -69,7 +69,7 @@ namespace XamlMath.Atoms
 
 
                     var hFreeSpace = columnWidth - cell.TotalWidth;
-                    var (lGap, rGap) = GetLeftRightGap(hFreeSpace);
+                    var (lGap, rGap) = GetLeftRightGap(hFreeSpace, j);
                     rowContainer.Add(new StrutBox(lGap, 0.0, 0.0, 0.0));
                     rowContainer.Add(cellContainer);
                     rowContainer.Add(new StrutBox(rGap, 0.0, 0.0, 0.0));
@@ -86,11 +86,17 @@ namespace XamlMath.Atoms
             return rowsContainer;
         }
 
-        private SurroundingGap GetLeftRightGap(double hFreeSpace)
+        private SurroundingGap GetLeftRightGap(double hFreeSpace, int columnIndex)
         {
             var lrPadding = HorizontalPadding / 2;
             return MatrixCellAlignment switch
             {
+                MatrixCellAlignment.Align => (columnIndex % 2) switch
+                {
+                    0 => new SurroundingGap(lrPadding + hFreeSpace, lrPadding),
+                    1 => new SurroundingGap(lrPadding, lrPadding + hFreeSpace),
+                    _ => throw new ArgumentOutOfRangeException()
+                },
                 MatrixCellAlignment.Left => new SurroundingGap(lrPadding, lrPadding + hFreeSpace),
                 MatrixCellAlignment.Center => new SurroundingGap(lrPadding + hFreeSpace / 2, lrPadding + hFreeSpace / 2),
                 _ => throw new ArgumentOutOfRangeException()

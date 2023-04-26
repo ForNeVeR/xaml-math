@@ -2,6 +2,7 @@ namespace XamlMath
 {
     public enum MatrixCellAlignment
     {
+        Align,
         Left,
         Center
     }
