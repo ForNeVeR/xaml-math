@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using XamlMath.Boxes;
 #if NET462
 using XamlMath.Compatibility;
 #endif
+
+using SurroundingGap = System.Tuple<double, double>;
 
 namespace XamlMath.Atoms
 {
@@ -21,14 +22,13 @@ namespace XamlMath.Atoms
             double verticalPadding = DefaultPadding,
             double horizontalPadding = DefaultPadding) : base(source)
         {
-            MatrixCells = new ReadOnlyCollection<ReadOnlyCollection<Atom?>>(
-                cells.Select(row => new ReadOnlyCollection<Atom?>(row.ToList())).ToList());
+            MatrixCells = ToImmutableCollection(cells.Select(ToImmutableCollection));
             MatrixCellAlignment = matrixCellAlignment;
             VerticalPadding = verticalPadding;
             HorizontalPadding = horizontalPadding;
         }
 
-        public ReadOnlyCollection<ReadOnlyCollection<Atom?>> MatrixCells { get; }
+        public IReadOnlyCollection<IReadOnlyCollection<Atom?>> MatrixCells { get; }
 
         public double VerticalPadding { get; }
 
@@ -38,92 +38,41 @@ namespace XamlMath.Atoms
 
         protected override Box CreateBoxCore(TexEnvironment environment)
         {
+            Box CreateCell(Atom? atom) => atom is null ? StrutBox.Empty : atom.CreateBox(environment);
+
+            var cells = MatrixCells.Select(row => row.Select(CreateCell).ToArray()).ToArray();
             var columnCount = MatrixCells.Max(row => row.Count);
+            var columnWidths = Enumerable.Range(0, columnCount)
+                                         .Select(i => cells.Where(row => i < row.Length)
+                                         .Max(row => row[i].TotalWidth))
+                                         .ToArray();
 
-            var cells = MatrixCells.Select(row => CreateRowCellBoxes(environment, row).ToList()).ToList();
-            var (rowHeights, columnWidths) = CalculateDimensions(cells, columnCount);
-            var matrixCellGaps = CalculateCellGaps(cells, columnCount, rowHeights, columnWidths);
-
-            return ApplyCellPaddings(environment, cells, columnCount, matrixCellGaps);
-        }
-
-        private IEnumerable<Box> CreateRowCellBoxes(TexEnvironment environment, ReadOnlyCollection<Atom?> row) =>
-            row.Select(atom => atom == null ? StrutBox.Empty : atom.CreateBox(environment));
-
-        /// <summary>
-        /// Calculates the height of each row and the width of each column and returns arrays of those.
-        /// </summary>
-        /// <returns>A tuple of RowHeights and ColumnWidths arrays.</returns>
-        private Tuple<double[], double[]> CalculateDimensions(
-            List<List<Box>> matrix,
-            int columnCount)
-        {
-            var rowHeights = new double[matrix.Count];
-            var columnWidths = new double[columnCount];
-            for (var i = 0; i < matrix.Count; ++i)
-            {
-                for (var j = 0; j < columnCount; ++j)
-                {
-                    var cell = matrix[i][j];
-                    rowHeights[i] = Math.Max(rowHeights[i], cell.TotalHeight);
-                    columnWidths[j] = Math.Max(columnWidths[j], cell.TotalWidth);
-                }
-            }
-
-            return Tuple.Create(rowHeights, columnWidths);
-        }
-
-        private static List<List<CellGaps>> CalculateCellGaps(
-            List<List<Box>> matrix,
-            int columnCount,
-            double[] rowHeights,
-            double[] columnWidths)
-        {
-            var matrixCellGaps = new List<List<CellGaps>>();
-            for (var i = 0; i < matrix.Count; ++i)
-            {
-                var rowGaps = new List<CellGaps>();
-                for (var j = 0; j < columnCount; ++j)
-                {
-                    var cell = matrix[i][j];
-                    double cellVShift = rowHeights[i] - cell.TotalHeight;
-                    double cellHShift = columnWidths[j] - cell.TotalWidth;
-
-                    rowGaps.Add(new CellGaps {Horizontal = cellHShift / 2, Vertical = cellVShift / 2});
-                }
-
-                matrixCellGaps.Add(rowGaps);
-            }
-
-            return matrixCellGaps;
-        }
-
-        private VerticalBox ApplyCellPaddings(
-            TexEnvironment environment,
-            IList<List<Box>> matrix,
-            int columnCount,
-            IList<List<CellGaps>> matrixCellGaps)
-        {
             var rowsContainer = new VerticalBox();
-            for (var i = 0; i < matrix.Count; ++i)
+            foreach (var row in cells)
             {
                 var rowContainer = new HorizontalBox();
+                var rowHeight = row.Max(cell => cell.TotalHeight);
+
                 for (var j = 0; j < columnCount; ++j)
                 {
-                    var cell = matrix[i][j];
+                    var cell = row[j];
+                    var columnWidth = columnWidths[j];
 
+                    var vFreeSpace = rowHeight - cell.TotalHeight;
+                    var tbGap = (VerticalPadding + vFreeSpace) / 2;
                     var cellContainer = new VerticalBox();
-                    var (topPadding, bottomPadding) = GetTopBottomPadding(i, j);
-                    cellContainer.Add(topPadding);
+                    cellContainer.Add(new StrutBox(0.0, tbGap, 0.0, 0.0));
                     cellContainer.Add(cell);
-                    cellContainer.Add(bottomPadding);
+                    cellContainer.Add(new StrutBox(0.0, tbGap, 0.0, 0.0));
                     cellContainer.Height = cellContainer.TotalHeight;
                     cellContainer.Depth = 0;
 
-                    var (leftPadding, rightPadding) = GetLeftRightPadding(i, j);
-                    rowContainer.Add(leftPadding);
+
+                    var hFreeSpace = columnWidth - cell.TotalWidth;
+                    var (lGap, rGap) = GetLeftRightGap(hFreeSpace);
+                    rowContainer.Add(new StrutBox(lGap, 0.0, 0.0, 0.0));
                     rowContainer.Add(cellContainer);
-                    rowContainer.Add(rightPadding);
+                    rowContainer.Add(new StrutBox(rGap, 0.0, 0.0, 0.0));
                 }
 
                 rowsContainer.Add(rowContainer);
@@ -135,43 +84,19 @@ namespace XamlMath.Atoms
             rowsContainer.Height = containerHeight / 2 + axis;
 
             return rowsContainer;
-
-            Tuple<Box, Box> GetTopBottomPadding(int i, int j)
-            {
-                var value = matrixCellGaps[i][j].Vertical;
-                var topBox = new StrutBox(0.0, VerticalPadding / 2 + value, 0.0, 0.0);
-                var bottomBox = new StrutBox(0.0, VerticalPadding / 2 + value, 0.0, 0.0);
-                return new Tuple<Box, Box>(topBox, bottomBox);
-            }
-
-            Tuple<Box, Box> GetLeftRightPadding(int i, int j)
-            {
-                var value = matrixCellGaps[i][j].Horizontal;
-
-                StrutBox leftBox;
-                StrutBox rightBox;
-                switch (MatrixCellAlignment)
-                {
-                    case MatrixCellAlignment.Left:
-                        leftBox = new StrutBox(HorizontalPadding / 2, 0.0, 0.0, 0.0);
-                        rightBox = new StrutBox(HorizontalPadding / 2 + value * 2, 0.0, 0.0, 0.0);
-                        break;
-                    case MatrixCellAlignment.Center:
-                        leftBox = new StrutBox(HorizontalPadding / 2 + value, 0.0, 0.0, 0.0);
-                        rightBox = new StrutBox(HorizontalPadding / 2 + value, 0.0, 0.0, 0.0);
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-
-                return new(leftBox, rightBox);
-            }
         }
 
-        private struct CellGaps
+        private SurroundingGap GetLeftRightGap(double hFreeSpace)
         {
-            public double Horizontal { get; set; }
-            public double Vertical { get; set; }
+            var lrPadding = HorizontalPadding / 2;
+            return MatrixCellAlignment switch
+            {
+                MatrixCellAlignment.Left => new SurroundingGap(lrPadding, lrPadding + hFreeSpace),
+                MatrixCellAlignment.Center => new SurroundingGap(lrPadding + hFreeSpace / 2, lrPadding + hFreeSpace / 2),
+                _ => throw new ArgumentOutOfRangeException()
+            };
         }
+
+        private static IReadOnlyCollection<T> ToImmutableCollection<T>(IEnumerable<T> s) => s.ToList().AsReadOnly();
     }
 }
