@@ -5,17 +5,9 @@ namespace WpfMath.Example;
 
 public partial class App
 {
-    public static new App Current
+    protected override void OnStartup(StartupEventArgs e)
     {
-        get { return (App) Application.Current; }
-    }
-
-    private void Application_Startup(object sender, StartupEventArgs e)
-    {
+        base.OnStartup(e);
         Trace.AutoFlush = true;
-    }
-
-    private void Application_Exit(object sender, ExitEventArgs e)
-    {
     }
 }
