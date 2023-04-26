@@ -1,0 +1,212 @@
+{
+  "RootAtom": {
+    "[AtomType]": "MatrixAtom",
+    "HorizontalPadding": 0.35,
+    "MatrixCellAlignment": "Align",
+    "MatrixCells": [
+      [
+        {
+          "[AtomType]": "RowAtom",
+          "Elements": [
+            {
+              "[AtomType]": "CharAtom",
+              "Character": "x",
+              "IsTextSymbol": false,
+              "Source": {
+                "End": 15,
+                "Length": 1,
+                "Source": "\\begin{align} x+1 &= y \\\\ x &= y-1 \\end{align}",
+                "SourceName": "User input",
+                "Start": 14
+              },
+              "TextStyle": null,
+              "Type": "Ordinary"
+            },
+            {
+              "[AtomType]": "SymbolAtom",
+              "IsDelimeter": false,
+              "IsTextSymbol": false,
+              "Name": "plus",
+              "Source": {
+                "End": 16,
+                "Length": 1,
+                "Source": "\\begin{align} x+1 &= y \\\\ x &= y-1 \\end{align}",
+                "SourceName": "User input",
+                "Start": 15
+              },
+              "Type": "BinaryOperator"
+            },
+            {
+              "[AtomType]": "CharAtom",
+              "Character": "1",
+              "IsTextSymbol": false,
+              "Source": {
+                "End": 17,
+                "Length": 1,
+                "Source": "\\begin{align} x+1 &= y \\\\ x &= y-1 \\end{align}",
+                "SourceName": "User input",
+                "Start": 16
+              },
+              "TextStyle": null,
+              "Type": "Ordinary"
+            }
+          ],
+          "PreviousAtom": null,
+          "Source": {
+            "End": 18,
+            "Length": 5,
+            "Source": "\\begin{align} x+1 &= y \\\\ x &= y-1 \\end{align}",
+            "SourceName": "User input",
+            "Start": 13
+          },
+          "Type": "Ordinary"
+        },
+        {
+          "[AtomType]": "RowAtom",
+          "Elements": [
+            {
+              "[AtomType]": "SymbolAtom",
+              "IsDelimeter": false,
+              "IsTextSymbol": false,
+              "Name": "equals",
+              "Source": {
+                "End": 20,
+                "Length": 1,
+                "Source": "\\begin{align} x+1 &= y \\\\ x &= y-1 \\end{align}",
+                "SourceName": "User input",
+                "Start": 19
+              },
+              "Type": "Relation"
+            },
+            {
+              "[AtomType]": "CharAtom",
+              "Character": "y",
+              "IsTextSymbol": false,
+              "Source": {
+                "End": 22,
+                "Length": 1,
+                "Source": "\\begin{align} x+1 &= y \\\\ x &= y-1 \\end{align}",
+                "SourceName": "User input",
+                "Start": 21
+              },
+              "TextStyle": null,
+              "Type": "Ordinary"
+            }
+          ],
+          "PreviousAtom": null,
+          "Source": {
+            "End": 23,
+            "Length": 10,
+            "Source": "\\begin{align} x+1 &= y \\\\ x &= y-1 \\end{align}",
+            "SourceName": "User input",
+            "Start": 13
+          },
+          "Type": "Ordinary"
+        }
+      ],
+      [
+        {
+          "[AtomType]": "CharAtom",
+          "Character": "x",
+          "IsTextSymbol": false,
+          "Source": {
+            "End": 27,
+            "Length": 1,
+            "Source": "\\begin{align} x+1 &= y \\\\ x &= y-1 \\end{align}",
+            "SourceName": "User input",
+            "Start": 26
+          },
+          "TextStyle": null,
+          "Type": "Ordinary"
+        },
+        {
+          "[AtomType]": "RowAtom",
+          "Elements": [
+            {
+              "[AtomType]": "SymbolAtom",
+              "IsDelimeter": false,
+              "IsTextSymbol": false,
+              "Name": "equals",
+              "Source": {
+                "End": 30,
+                "Length": 1,
+                "Source": "\\begin{align} x+1 &= y \\\\ x &= y-1 \\end{align}",
+                "SourceName": "User input",
+                "Start": 29
+              },
+              "Type": "Relation"
+            },
+            {
+              "[AtomType]": "CharAtom",
+              "Character": "y",
+              "IsTextSymbol": false,
+              "Source": {
+                "End": 32,
+                "Length": 1,
+                "Source": "\\begin{align} x+1 &= y \\\\ x &= y-1 \\end{align}",
+                "SourceName": "User input",
+                "Start": 31
+              },
+              "TextStyle": null,
+              "Type": "Ordinary"
+            },
+            {
+              "[AtomType]": "SymbolAtom",
+              "IsDelimeter": false,
+              "IsTextSymbol": false,
+              "Name": "minus",
+              "Source": {
+                "End": 33,
+                "Length": 1,
+                "Source": "\\begin{align} x+1 &= y \\\\ x &= y-1 \\end{align}",
+                "SourceName": "User input",
+                "Start": 32
+              },
+              "Type": "BinaryOperator"
+            },
+            {
+              "[AtomType]": "CharAtom",
+              "Character": "1",
+              "IsTextSymbol": false,
+              "Source": {
+                "End": 34,
+                "Length": 1,
+                "Source": "\\begin{align} x+1 &= y \\\\ x &= y-1 \\end{align}",
+                "SourceName": "User input",
+                "Start": 33
+              },
+              "TextStyle": null,
+              "Type": "Ordinary"
+            }
+          ],
+          "PreviousAtom": null,
+          "Source": {
+            "End": 34,
+            "Length": 21,
+            "Source": "\\begin{align} x+1 &= y \\\\ x &= y-1 \\end{align}",
+            "SourceName": "User input",
+            "Start": 13
+          },
+          "Type": "Ordinary"
+        }
+      ]
+    ],
+    "Source": {
+      "End": 46,
+      "Length": 45,
+      "Source": "\\begin{align} x+1 &= y \\\\ x &= y-1 \\end{align}",
+      "SourceName": "User input",
+      "Start": 1
+    },
+    "Type": "Ordinary",
+    "VerticalPadding": 0.35
+  },
+  "Source": {
+    "End": 46,
+    "Length": 46,
+    "Source": "\\begin{align} x+1 &= y \\\\ x &= y-1 \\end{align}",
+    "SourceName": "User input",
+    "Start": 0
+  },
+  "TextStyle": null
+}

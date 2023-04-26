@@ -7,6 +7,10 @@ open WpfMath.Tests.Utils
 open XamlMath.Exceptions
 
 [<Fact>]
+let alignEnvironment(): unit =
+    verifyParseResult @"\begin{align} x+1 &= y \\ x &= y-1 \end{align}"
+
+[<Fact>]
 let pMatrixEnvironment(): unit =
     verifyParseResult @"\begin{pmatrix}{line 1}\\line 2\end{pmatrix}"
 
