@@ -164,7 +164,7 @@ namespace XamlMath.Atoms
                         throw new ArgumentOutOfRangeException();
                 }
 
-                return new Tuple<Box?, Box>(leftBox, rightBox);
+                return new(leftBox, rightBox);
             }
         }
 
