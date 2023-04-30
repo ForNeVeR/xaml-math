@@ -1,11 +1,10 @@
+#if NET462
+using XamlMath.Compatibility;
+#endif
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using XamlMath.Boxes;
-#if NET462
-using XamlMath.Compatibility;
-#endif
-
 using SurroundingGap = System.Tuple<double, double>;
 
 namespace XamlMath.Atoms
@@ -13,7 +12,12 @@ namespace XamlMath.Atoms
     /// <summary>An atom representing a tabular arrangement of atoms.</summary>
     internal record MatrixAtom : Atom
     {
-        public const double AlignGroupLeftPadding = 4;
+        /// <summary>Used for grouping of align statements into several columns.</summary>
+        /// <remarks>
+        /// See section "Aligning several equations" of
+        /// <a href="https://www.overleaf.com/learn/latex/Aligning_equations_with_amsmath">this article</a> for details.
+        /// </remarks>
+        private const double AlignGroupLeftPadding = 4;
         public const double DefaultPadding = 0.35;
 
         public MatrixAtom(

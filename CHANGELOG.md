@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - [#389: Padding is not respected with `\cases`][issue-389], thanks @Orace.
 
 ### Added
+- Support for `\begin{align}`, see [#393][pull-393], thanks @Orace.
 - The README file is now packed into NuGet for better documentation.
 
 ## [1.0.0] - 2023-02-07
@@ -274,6 +275,7 @@ This was the initially published version. It consisted entirely of the original 
 [pull-277]: https://github.com/ForNeVeR/xaml-math/pull/277
 [pull-283]: https://github.com/ForNeVeR/xaml-math/pull/283
 [pull-329]: https://github.com/ForNeVeR/xaml-math/pull/329
+[pull-393]: https://github.com/ForNeVeR/xaml-math/pull/393
 
 [0.1.0]: https://github.com/ForNeVeR/xaml-math/releases/tag/0.1.0
 [0.2.0]: https://github.com/ForNeVeR/xaml-math/compare/0.1.0...0.2.0
