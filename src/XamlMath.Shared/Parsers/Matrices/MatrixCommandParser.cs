@@ -8,7 +8,7 @@ namespace XamlMath.Parsers.Matrices
     /// <summary>A parser for matrix-like constructs.</summary>
     internal class MatrixCommandParser : ICommandParser, IEnvironmentParser
     {
-        internal static readonly MatrixCommandParser Align = new(null, null, MatrixCellAlignment.Align);
+        internal static readonly MatrixCommandParser Align = new(null, null, MatrixCellAlignment.Aligned);
         internal static readonly MatrixCommandParser Cases = new("lbrace", null, MatrixCellAlignment.Left);
         internal static readonly MatrixCommandParser Matrix = new(null, null, MatrixCellAlignment.Center);
         internal static readonly MatrixCommandParser PMatrix = new("lbrack", "rbrack", MatrixCellAlignment.Center);

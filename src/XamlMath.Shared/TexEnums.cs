@@ -2,9 +2,9 @@ namespace XamlMath
 {
     public enum MatrixCellAlignment
     {
-        Align,
         Left,
-        Center
+        Center,
+        Aligned
     }
 
     public enum TexDelimeterType

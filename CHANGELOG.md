@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] (1.0.1)
+## [Unreleased] (1.1.0)
 ### Fixed
 - [#387: Alignment issue in matrix with an empty cell][issue-387], thanks @Orace.
 - [#389: Padding is not respected with `\cases`][issue-389], thanks @Orace.

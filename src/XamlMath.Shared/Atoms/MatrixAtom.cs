@@ -96,7 +96,7 @@ namespace XamlMath.Atoms
             var lrPadding = HorizontalPadding / 2;
             return MatrixCellAlignment switch
             {
-                MatrixCellAlignment.Align => (columnIndex % 2) switch
+                MatrixCellAlignment.Aligned => (columnIndex % 2) switch
                 {
                     0 when columnIndex != 0 => new SurroundingGap(AlignGroupLeftPadding + lrPadding + hFreeSpace, lrPadding),
                     0 => new SurroundingGap(lrPadding + hFreeSpace, lrPadding),

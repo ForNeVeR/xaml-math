@@ -2,7 +2,7 @@
   "RootAtom": {
     "[AtomType]": "MatrixAtom",
     "HorizontalPadding": 0.35,
-    "MatrixCellAlignment": "Align",
+    "MatrixCellAlignment": "Aligned",
     "MatrixCells": [
       [
         {
