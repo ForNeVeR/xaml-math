@@ -3,13 +3,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] (1.1.0)
+## [1.1.0] - 2023-04-30
 ### Fixed
 - [#387: Alignment issue in matrix with an empty cell][issue-387], thanks @Orace.
 - [#389: Padding is not respected with `\cases`][issue-389], thanks @Orace.
 
 ### Added
-- Support for `\begin{align}`, see [#393][pull-393], thanks @Orace.
+- [#381: Support for `\begin{align}`][issue-381], thanks @Orace.
 - The README file is now packed into NuGet for better documentation.
 
 ## [1.0.0] - 2023-02-07
@@ -249,6 +249,7 @@ This was the initially published version. It consisted entirely of the original 
 [issue-304]: https://github.com/ForNeVeR/xaml-math/issues/304
 [issue-350]: https://github.com/ForNeVeR/xaml-math/issues/350
 [issue-387]: https://github.com/ForNeVeR/xaml-math/issues/387
+[issue-381]: https://github.com/ForNeVeR/xaml-math/issues/381
 [issue-389]: https://github.com/ForNeVeR/xaml-math/issues/389
 [pull-53]: https://github.com/ForNeVeR/xaml-math/pull/53
 [pull-54]: https://github.com/ForNeVeR/xaml-math/pull/54
@@ -275,7 +276,6 @@ This was the initially published version. It consisted entirely of the original 
 [pull-277]: https://github.com/ForNeVeR/xaml-math/pull/277
 [pull-283]: https://github.com/ForNeVeR/xaml-math/pull/283
 [pull-329]: https://github.com/ForNeVeR/xaml-math/pull/329
-[pull-393]: https://github.com/ForNeVeR/xaml-math/pull/393
 
 [0.1.0]: https://github.com/ForNeVeR/xaml-math/releases/tag/0.1.0
 [0.2.0]: https://github.com/ForNeVeR/xaml-math/compare/0.1.0...0.2.0
@@ -293,4 +293,5 @@ This was the initially published version. It consisted entirely of the original 
 [0.13.0]: https://github.com/ForNeVeR/xaml-math/compare/v0.12.0...v0.13.0
 [0.13.1]: https://github.com/ForNeVeR/xaml-math/compare/v0.13.0...v0.13.1
 [1.0.0]: https://github.com/ForNeVeR/xaml-math/compare/v0.13.1...v1.0.0
-[Unreleased]: https://github.com/ForNeVeR/xaml-math/compare/v1.0.0...HEAD
+[1.1.0]: https://github.com/ForNeVeR/xaml-math/compare/v1.0.0...v1.1.0
+[Unreleased]: https://github.com/ForNeVeR/xaml-math/compare/v1.1.0...HEAD
