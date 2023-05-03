@@ -151,7 +151,7 @@ namespace WpfMath.Controls
                 var selectionBrush = SelectionBrush;
                 if (selectionBrush != null)
                 {
-                    var allBoxes = new List<Box>(formulaBox.Children);
+                    var allBoxes = new List<Box> { formulaBox };
                     var selectionStart = SelectionStart;
                     var selectionEnd = selectionStart + SelectionLength;
                     for (var idx = 0; idx < allBoxes.Count; idx++)
@@ -175,8 +175,11 @@ namespace WpfMath.Controls
 
             using (var drawingContext = visual.RenderOpen())
             {
-                texFormula.RenderTo(drawingContext, environment, Scale);
+                var renderer = new WpfElementRenderer(drawingContext, Scale);
+                renderer.RenderElement(formulaBox, 0, formulaBox.Height);
+                renderer.FinishRendering();
             }
+
             formulaContainerElement.Visual = visual;
         }
 
