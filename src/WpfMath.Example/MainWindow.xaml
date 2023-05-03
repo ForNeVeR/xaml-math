@@ -98,6 +98,7 @@
                                          VerticalAlignment="Stretch"
                                          SnapsToDevicePixels="True"
                                          Formula="{Binding Formula, NotifyOnValidationError=True}"
+                                         Padding="5"
                                          Scale="{Binding Scale}"
                                          SelectionBrush="LightBlue"
                                          SystemTextFontName="Arial" />
