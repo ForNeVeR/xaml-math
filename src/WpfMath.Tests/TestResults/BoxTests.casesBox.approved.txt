@@ -49,6 +49,19 @@
           "Children": [
             {
               "Background": null,
+              "Children": [],
+              "Depth": 0.0,
+              "Foreground": null,
+              "Height": 0.0,
+              "Italic": 0.0,
+              "Shift": 0.0,
+              "Source": null,
+              "TotalHeight": 0.0,
+              "TotalWidth": 0.175,
+              "Width": 0.175
+            },
+            {
+              "Background": null,
               "Children": [
                 {
                   "Background": null,
@@ -139,12 +152,25 @@
           "Shift": 0.0,
           "Source": null,
           "TotalHeight": 0.780555,
-          "TotalWidth": 0.70359,
-          "Width": 0.70359
+          "TotalWidth": 0.87859,
+          "Width": 0.87859
         },
         {
           "Background": null,
           "Children": [
+            {
+              "Background": null,
+              "Children": [],
+              "Depth": 0.0,
+              "Foreground": null,
+              "Height": 0.0,
+              "Italic": 0.0,
+              "Shift": 0.0,
+              "Source": null,
+              "TotalHeight": 0.0,
+              "TotalWidth": 0.175,
+              "Width": 0.175
+            },
             {
               "Background": null,
               "Children": [
@@ -237,12 +263,25 @@
           "Shift": 0.0,
           "Source": null,
           "TotalHeight": 1.044445,
-          "TotalWidth": 0.70359,
-          "Width": 0.70359
+          "TotalWidth": 0.87859,
+          "Width": 0.87859
         },
         {
           "Background": null,
           "Children": [
+            {
+              "Background": null,
+              "Children": [],
+              "Depth": 0.0,
+              "Foreground": null,
+              "Height": 0.0,
+              "Italic": 0.0,
+              "Shift": 0.0,
+              "Source": null,
+              "TotalHeight": 0.0,
+              "TotalWidth": 0.175,
+              "Width": 0.175
+            },
             {
               "Background": null,
               "Children": [
@@ -335,8 +374,8 @@
           "Shift": 0.0,
           "Source": null,
           "TotalHeight": 0.780555,
-          "TotalWidth": 0.70359,
-          "Width": 0.70359
+          "TotalWidth": 0.87859,
+          "Width": 0.87859
         }
       ],
       "Depth": 1.0527775,
@@ -352,8 +391,8 @@
         "Start": 1
       },
       "TotalHeight": 2.605555,
-      "TotalWidth": 0.70359,
-      "Width": 0.70359
+      "TotalWidth": 0.87859,
+      "Width": 0.87859
     },
     {
       "Background": null,
@@ -384,6 +423,6 @@
     "Start": 1
   },
   "TotalHeight": 2.605555,
-  "TotalWidth": 1.453592,
-  "Width": 1.453592
+  "TotalWidth": 1.628592,
+  "Width": 1.628592
 }

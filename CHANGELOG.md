@@ -3,6 +3,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2023-04-30
+### Fixed
+- [#387: Alignment issue in matrix with an empty cell][issue-387], thanks @Orace.
+- [#389: Padding is not respected with `\cases`][issue-389], thanks @Orace.
+
+### Added
+- [#381: Support for `\begin{align}`][issue-381], thanks @Orace.
+- The README file is now packed into NuGet for better documentation.
+
 ## [1.0.0] - 2023-02-07
 ### Changed
 - The project has been renamed to XAML-Math. This doesn't change the NuGet package names (WpfMath and AvaloniaMath) and their contents (including namespaces of most entities), but changed the contents of the shared assembly.
@@ -239,6 +248,9 @@ This was the initially published version. It consisted entirely of the original 
 [issue-275]: https://github.com/ForNeVeR/xaml-math/issues/275
 [issue-304]: https://github.com/ForNeVeR/xaml-math/issues/304
 [issue-350]: https://github.com/ForNeVeR/xaml-math/issues/350
+[issue-387]: https://github.com/ForNeVeR/xaml-math/issues/387
+[issue-381]: https://github.com/ForNeVeR/xaml-math/issues/381
+[issue-389]: https://github.com/ForNeVeR/xaml-math/issues/389
 [pull-53]: https://github.com/ForNeVeR/xaml-math/pull/53
 [pull-54]: https://github.com/ForNeVeR/xaml-math/pull/54
 [pull-58]: https://github.com/ForNeVeR/xaml-math/pull/58
@@ -281,4 +293,5 @@ This was the initially published version. It consisted entirely of the original 
 [0.13.0]: https://github.com/ForNeVeR/xaml-math/compare/v0.12.0...v0.13.0
 [0.13.1]: https://github.com/ForNeVeR/xaml-math/compare/v0.13.0...v0.13.1
 [1.0.0]: https://github.com/ForNeVeR/xaml-math/compare/v0.13.1...v1.0.0
-[Unreleased]: https://github.com/ForNeVeR/xaml-math/compare/v1.0.0...HEAD
+[1.1.0]: https://github.com/ForNeVeR/xaml-math/compare/v1.0.0...v1.1.0
+[Unreleased]: https://github.com/ForNeVeR/xaml-math/compare/v1.1.0...HEAD

@@ -45,6 +45,7 @@ namespace XamlMath
     {
         Left = 0,
         Center = 1,
+        Aligned = 2,
     }
     public partial class SourceSpan : System.IEquatable<XamlMath.SourceSpan>
     {

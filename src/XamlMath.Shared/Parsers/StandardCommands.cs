@@ -110,6 +110,7 @@ namespace XamlMath.Parsers
         internal static readonly IReadOnlyDictionary<string, IEnvironmentParser> Environments =
             new Dictionary<string, IEnvironmentParser>
             {
+                ["align"] = MatrixCommandParser.Align,
                 ["pmatrix"] = MatrixCommandParser.PMatrix
             };
     }

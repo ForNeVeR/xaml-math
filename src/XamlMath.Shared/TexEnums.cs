@@ -3,7 +3,8 @@ namespace XamlMath
     public enum MatrixCellAlignment
     {
         Left,
-        Center
+        Center,
+        Aligned
     }
 
     public enum TexDelimeterType
