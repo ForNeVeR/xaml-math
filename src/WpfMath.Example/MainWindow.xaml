@@ -1,42 +1,67 @@
 <Window x:Class="WpfMath.Example.MainWindow"
+        x:Name="Window"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="clr-namespace:WpfMath.Controls;assembly=WpfMath"
-        Title="WPF-Math Example" Width="640" Height="520"
-        Closed="Window_Closed">
-    <Window.Resources>
+        xmlns:example="clr-namespace:WpfMath.Example"
+        Title="WPF-Math Example" Width="1200" Height="600"
+        WindowStartupLocation="CenterScreen">
 
-        <Style TargetType="Button">
-            <Setter Property="Padding" Value="2" />
-        </Style>
-    </Window.Resources>
+    <Window.DataContext>
+        <example:MainViewModel />
+    </Window.DataContext>
+
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition />
         </Grid.RowDefinitions>
 
-        <DockPanel Margin="10,10,10,0" Grid.Row="0" Grid.Column="0">
-            <ComboBox DockPanel.Dock="Left" Width="150"
-                      Name="FormulaSelector" SelectionChanged="FormulaTextBox_OnSelectionChanged" />
-            <Button DockPanel.Dock="Right" Content="_Save"
-                    Click="saveButton_Click" />
-            <TextBox Margin="10,0"
-                     Name="InputTextBox" SelectionChanged="inputTextBox_SelectionChanged" />
-        </DockPanel>
+        <GroupBox Grid.Column="0"
+                  Grid.Row="0"
+                  Header="Presets">
+            <ListView ItemsSource="{Binding Presets}"
+                      SelectedItem="{Binding SelectedPreset}">
+                <ListView.ItemTemplate>
+                    <DataTemplate DataType="{x:Type example:Preset}">
+                        <TextBlock Text="{Binding Name}">
+                            <TextBlock.ToolTip>
+                                <controls:FormulaControl Formula="{Binding Formula}" />
+                            </TextBlock.ToolTip>
+                        </TextBlock>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </GroupBox>
 
-        <Label Margin="10,0,10,10" Grid.Row="1" Grid.Column="0">
+        <GroupBox Grid.Column="1"
+                  Grid.Row="0"
+                  Header="Formula">
+            <TextBox Name="InputTextBox"
+                     AcceptsReturn="True"
+                     BorderThickness="0"
+                     Margin="3"
+                     SelectionChanged="OnSelectionChanged"
+                     Text="{Binding Formula, UpdateSourceTrigger=PropertyChanged}" />
+        </GroupBox>
+
+        <Label Grid.Column="1"
+               Grid.Row="1"
+               Margin="3"
+               HorizontalAlignment="Right">
             <Label.Style>
                 <Style TargetType="Label">
+                    <Setter Property="Content" Value="Formula is valid" />
+                    <Setter Property="Foreground" Value="Green" />
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=Formula, Path=HasError}" Value="False">
-                            <Setter Property="Content" Value="Formula is valid" />
-                            <Setter Property="Foreground" Value="Green" />
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=Formula, Path=HasError}" Value="True">
+                        <DataTrigger Binding="{Binding ElementName=FormulaControl, Path=HasError}" Value="True">
                             <Setter Property="Content" Value="{Binding ElementName=Formula, Path=Errors[0].Message}" />
                             <Setter Property="Foreground" Value="Red" />
                         </DataTrigger>
@@ -45,25 +70,74 @@
             </Label.Style>
         </Label>
 
-        <Grid Margin="0,0,0,10" Grid.Row="2" Grid.Column="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Label Margin="10,0,10,0" Content="Scale: " Grid.Column="0" />
-            <Slider Margin="10,0,10,0" Grid.Column="1"
-                Value="{Binding ElementName=Formula, Path=Scale}" Minimum="7" Maximum="42"
-                IsSnapToTickEnabled="True" TickPlacement="BottomRight"
-                AutoToolTipPlacement="BottomRight" AutoToolTipPrecision="2" />
-        </Grid>
+        <GridSplitter Grid.Column="2"
+                      Grid.Row="0"
+                      Grid.RowSpan="2"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Stretch"
+                      ShowsPreview="True"
+                      Width="5" />
 
-        <Border Margin="10,0,10,10" BorderBrush="LightGray" BorderThickness="1" Grid.Row="3" Grid.Column="0">
-            <ScrollViewer Padding="4" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-                <controls:FormulaControl Name="Formula" Formula="{Binding Text, ElementName = InputTextBox, NotifyOnValidationError=True}"
+        <Label Grid.Column="2"
+               Grid.Row="0"
+               Grid.RowSpan="2"
+               Content="⁞"
+               FontSize="18"
+               IsHitTestVisible="False"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center" />
+
+        <GroupBox Grid.Column="3"
+                  Grid.Row="0"
+                  Header="Rendering">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                          VerticalScrollBarVisibility="Disabled"
+                          Margin="3">
+                <controls:FormulaControl Name="FormulaControl"
+                                         HorizontalAlignment="Stretch"
+                                         VerticalAlignment="Stretch"
+                                         SnapsToDevicePixels="True"
+                                         Formula="{Binding Formula, NotifyOnValidationError=True}"
+                                         Padding="5"
+                                         Scale="{Binding Scale}"
                                          SelectionBrush="LightBlue"
-                                         SystemTextFontName="Arial"
-                                         HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SnapsToDevicePixels="True" />
+                                         SystemTextFontName="Arial" />
             </ScrollViewer>
-        </Border>
+        </GroupBox>
+
+        <DockPanel Grid.Column="3"
+                   Grid.Row="1"
+                   DockPanel.Dock="Bottom">
+            <Label DockPanel.Dock="Left"
+                   Content="{Binding Scale}"
+                   ContentStringFormat="Scale: {0}"
+                   Margin="3"
+                   Width="58" />
+
+            <Button DockPanel.Dock="Right"
+                    Command="{Binding ExportCommand}"
+                    Content="Export..."
+                    Margin="3"
+                    Padding="5 0">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=FormulaControl, Path=HasError}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <Slider AutoToolTipPlacement="BottomRight"
+                    AutoToolTipPrecision="2"
+                    IsSnapToTickEnabled="True"
+                    Margin="3"
+                    Minimum="7" Maximum="42"
+                    TickPlacement="BottomRight"
+                    Value="{Binding Scale}" />
+        </DockPanel>
+
     </Grid>
 </Window>

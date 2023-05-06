@@ -10,6 +10,7 @@
         <ProjectReference Include="../WpfMath/WpfMath.csproj" />
     </ItemGroup>
     <ItemGroup>
+      <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
       <PackageReference Include="Nullable" Version="1.2.1">
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         <PrivateAssets>all</PrivateAssets>
