@@ -82,6 +82,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{3F2FED19-93A
 		api\XamlMath.Shared.net6.0.verified.cs = api\XamlMath.Shared.net6.0.verified.cs
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tool.TTFMetrics", "src\Tool.TTFMetrics\Tool.TTFMetrics.csproj", "{A29B12C8-9AE6-4016-9AB8-702B67409C95}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -124,6 +126,10 @@ Global
 		{54F77EF7-F918-46F8-A615-56BC0BFE8AAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54F77EF7-F918-46F8-A615-56BC0BFE8AAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54F77EF7-F918-46F8-A615-56BC0BFE8AAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A29B12C8-9AE6-4016-9AB8-702B67409C95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A29B12C8-9AE6-4016-9AB8-702B67409C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A29B12C8-9AE6-4016-9AB8-702B67409C95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A29B12C8-9AE6-4016-9AB8-702B67409C95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

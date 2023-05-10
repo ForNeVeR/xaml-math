@@ -13,7 +13,7 @@ namespace XamlMath
     {
         private static readonly string resourceName = TexUtilities.ResourcesDataDirectory + "DefaultTexFont.xml";
 
-        private const int fontIdCount = 4;
+        private const int fontIdCount = 5;
 
         private static readonly IDictionary<string, int> rangeTypeMappings;
         private static readonly IDictionary<string, ICharChildParser> charChildParsers;
