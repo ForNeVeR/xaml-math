@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Media3D;
 using Microsoft.Win32;
 using Microsoft.Xaml.Behaviors.Core;
 
@@ -63,9 +64,13 @@ public sealed class MainViewModel : INotifyPropertyChanged
                 if (code > 255)
                     continue;
 
-                var geometry = gtf.GetGlyphOutline(index, 1, 0);
+                var bbh = gtf.Height;
+                var bsb = gtf.BottomSideBearings[index];
+                var tsb = gtf.TopSideBearings[index];
+                var fullHeight = bbh - bsb - tsb;
+
                 var depth = gtf.DistancesFromHorizontalBaselineToBlackBoxBottom[index];
-                var height = geometry.Bounds.Height - depth;
+                var height = fullHeight - depth;
                 var width = gtf.AdvanceWidths[index];
 
                 if (!IsValid(depth) || !IsValid(height) || !IsValid(width))

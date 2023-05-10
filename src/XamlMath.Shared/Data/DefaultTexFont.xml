@@ -1787,6 +1787,8 @@ for a text style is not defined (e.g. "numbers" and "small" in "mathcal") -->
     </Font>
 
     <Font name="jlm_msam10.ttf" id="4" space="0.0" xHeight="0.366" quad="1.000003" >
+      <Char code="13" width="0.333" height="0.000" />
+      <Char code="32" width="0.000" height="0.000" />
       <Char code="33" width="1.388" height="0.417" depth="-0.083" />
       <Char code="34" width="1.000" height="0.576" depth="0.042" />
       <Char code="35" width="1.000" height="0.576" depth="0.042" />
@@ -1882,6 +1884,7 @@ for a text style is not defined (e.g. "numbers" and "small" in "mathcal") -->
       <Char code="125" width="0.777" height="0.583" depth="0.083" />
       <Char code="126" width="0.777" height="0.583" depth="0.083" />
       <Char code="127" width="0.777" height="0.583" depth="0.083" />
+      <Char code="160" width="0.000" height="0.000" />
       <Char code="161" width="0.777" height="0.687" />
       <Char code="162" width="0.777" height="0.687" />
       <Char code="163" width="0.777" height="0.687" />
