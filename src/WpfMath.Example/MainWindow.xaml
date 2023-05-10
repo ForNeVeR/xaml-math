@@ -62,7 +62,7 @@
                     <Setter Property="Foreground" Value="Green" />
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding ElementName=FormulaControl, Path=HasError}" Value="True">
-                            <Setter Property="Content" Value="{Binding ElementName=Formula, Path=Errors[0].Message}" />
+                            <Setter Property="Content" Value="{Binding ElementName=FormulaControl, Path=Errors[0].Message}" />
                             <Setter Property="Foreground" Value="Red" />
                         </DataTrigger>
                     </Style.Triggers>
