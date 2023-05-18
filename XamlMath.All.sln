@@ -84,6 +84,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{3F2FED19-93A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tool.TTFMetrics", "src\Tool.TTFMetrics\Tool.TTFMetrics.csproj", "{A29B12C8-9AE6-4016-9AB8-702B67409C95}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "fonts", "fonts", "{766B0CFB-741E-4ACB-963C-FA76133927D3}"
+	ProjectSection(SolutionItems) = preProject
+		fonts\cmr10.ttf = fonts\cmr10.ttf
+		fonts\cmex10.ttf = fonts\cmex10.ttf
+		fonts\cmmi10.ttf = fonts\cmmi10.ttf
+		fonts\cmsy10.ttf = fonts\cmsy10.ttf
+		fonts\jlm_msam10.ttf = fonts\jlm_msam10.ttf
+		fonts\LICENSES.md = fonts\LICENSES.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

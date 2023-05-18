@@ -8,13 +8,14 @@
     <PropertyGroup>
         <PackageId>WpfMath</PackageId>
         <Title>WPF-Math</Title>
-
-        <PackageTags>$(PackageTags);wpf</PackageTags>
+        <PackageLicenseExpression>MIT AND Knuth-CTAN AND OFL-1.1</PackageLicenseExpression>
         <Description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the WPF framework.</Description>
+        <PackageTags>$(PackageTags);wpf</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>
         <Resource Include="..\..\fonts\*.ttf" LinkBase="Fonts"/>
+        <None Include="..\..\fonts\LICENSES.md" Pack="true" PackagePath="\FONT-LICENSES.md" />
     </ItemGroup>
 
     <ItemGroup>

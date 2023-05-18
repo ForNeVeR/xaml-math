@@ -8,9 +8,9 @@
     <PropertyGroup>
         <PackageId>AvaloniaMath</PackageId>
         <Title>Avalonia-Math</Title>
-        <Description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the Avalonia framework.</Description>
-
+        <PackageLicenseExpression>MIT AND Knuth-CTAN AND OFL-1.1</PackageLicenseExpression>
         <PackageTags>$(PackageTags);avalonia</PackageTags>
+        <Description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the Avalonia framework.</Description>
     </PropertyGroup>
 
     <ItemGroup>
@@ -22,6 +22,7 @@
         <!--                   Visible="true"/>-->
         <None Remove="Fonts\*.ttf" />
         <AvaloniaResource Include="Fonts\*.ttf" />
+        <None Include="..\..\fonts\LICENSES.md" Pack="true" PackagePath="\FONT-LICENSES.md" />
     </ItemGroup>
     <ItemGroup>
         <Compile Update="**\*.xaml.cs">

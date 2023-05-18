@@ -157,6 +157,8 @@ The project code and all the resources are distributed under the terms of [MIT l
 
 The [fonts][] `cmex10.ttf`, `cmmi10.ttf`, `cmr10.ttf`, and `cmsy10.ttf` and `cmtt10.ttf` are under the [Knuth License][knuth-license].
 
+The font file `jlm_msam10.ttf` ([taken from JLaTeXMath project][jlatexmath.fonts]) is licensed under the [Open Font License][docs.open-font-license].
+
 XAML-Math (named *WPF-Math* at the time) started as a direct port of [JMathTeX][jmathtex] project written in Java, reusing both code and resources. JMathTeX is distributed under the terms of GNU GPL v2 license. XAML-Math, being a derived work, has a permission from JMathTeX authors to be redistributed under the MIT license. See the [Licensing history][docs-licensing-history] for the details.
 
 We're very grateful to JMathTeX authors for their work and allowing to redistribute the derived library. JMathTeX is written by:
@@ -172,8 +174,10 @@ We're very grateful to JMathTeX authors for their work and allowing to redistrib
 [docs.changelog]: ./CHANGELOG.md
 [docs.environments]: docs/environments.md
 [docs.maintainership]: ./MAINTAINERSHIP.md
+[docs.open-font-license]: fonts/LICENSES.md
 [example]: src/WpfMath.Example/
 [fonts]: fonts/
+[jlatexmath.fonts]: https://github.com/opencollab/jlatexmath/tree/af77a8e80d41ff67dfe2f42f14b41f6860dfeeec/jlatexmath/src/main/resources/org/scilab/forge/jlatexmath/fonts/maths
 [license]: LICENSE.md
 
 [alex-regueiro]: https://github.com/alexreg
