@@ -7,6 +7,12 @@ namespace XamlMath.Rendering;
 /// <summary>Renderer interface for XAML-Math elements.</summary>
 public interface IElementRenderer
 {
+    /// <summary>
+    /// Renders a character denoted by <paramref name="info"/> at the chosen coordinates, using the color
+    /// <paramref name="foreground"/>. Should use platform default color if passed <c>null</c>.
+    /// </summary>
+    void RenderCharacter(CharInfo info, double x, double y, IBrush? foreground);
+
     /// <summary>Renders a <see cref="Box"/> to the renderer drawing context.</summary>
     /// <param name="box">The element that should be rendered.</param>
     /// <param name="x">Logical X coordinate of the top left corner.</param>
@@ -19,11 +25,13 @@ public interface IElementRenderer
     /// </remarks>
     void RenderElement(Box box, double x, double y);
 
-    /// <summary>
-    /// Renders a character denoted by <paramref name="info"/> at the chosen coordinates, using the color
-    /// <paramref name="foreground"/>. Should use platform default color if passed <c>null</c>.
-    /// </summary>
-    void RenderCharacter(CharInfo info, double x, double y, IBrush? foreground);
+    /// <summary>Renders a line</summary>
+    /// <param name="point0">First line end</param>
+    /// <param name="point1">Second line end</param>
+    /// <param name="foreground">
+    /// Line foreground color. Should use platform default color if passed <c>null</c>.
+    /// </param>
+    void RenderLine(Point point0, Point point1, IBrush? foreground);
 
     /// <summary>Renders a rectangle.</summary>
     /// <param name="rectangle">Rectangle to render.</param>

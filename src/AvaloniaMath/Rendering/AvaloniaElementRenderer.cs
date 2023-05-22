@@ -9,6 +9,7 @@ using XamlMath.Boxes;
 using XamlMath.Rendering;
 using XamlMath.Rendering.Transformations;
 using IBrush = XamlMath.Rendering.IBrush;
+using Point = XamlMath.Rendering.Point;
 
 namespace AvaloniaMath.Rendering;
 
@@ -30,6 +31,14 @@ internal class AvaloniaElementRenderer : IElementRenderer
     {
         RenderBackground(box, x, y);
         box.RenderTo(this, x, y);
+    }
+
+    public void RenderLine(Point point0, Point point1, IBrush? foreground)
+    {
+        point0 = GeometryHelper.ScalePoint(_scale, point0);
+        point1 = GeometryHelper.ScalePoint(_scale, point1);
+        var pen = new Pen(foreground.ToAvalonia() ?? DefaultForegroundBrush);
+        _foregroundContext.DrawLine(pen, point0.ToAvalonia(), point1.ToAvalonia());
     }
 
     public void RenderCharacter(CharInfo info, double x, double y, IBrush? foreground)
