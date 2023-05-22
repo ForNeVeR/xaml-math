@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
 using System.Windows.Media;
 using WpfMath.Fonts;
 using XamlMath;
 using XamlMath.Boxes;
 using XamlMath.Rendering;
 using XamlMath.Rendering.Transformations;
+using WpfRect = System.Windows.Rect;
 
 namespace WpfMath.Rendering
 {
@@ -46,6 +46,14 @@ namespace WpfMath.Rendering
 
             _targetContext.Pop();
             _foregroundContext.Pop();
+        }
+
+        public void RenderLine(Point point0, Point point1, IBrush? foreground)
+        {
+            point0 = GeometryHelper.ScalePoint(_scale, point0);
+            point1 = GeometryHelper.ScalePoint(_scale, point1);
+            var pen = new Pen(foreground.ToWpf() ?? DefaultForegroundBrush, 1.0);
+            _foregroundContext.DrawLine(pen, point0.ToWpf(), point1.ToWpf());
         }
 
         public void RenderCharacter(CharInfo info, double x, double y, IBrush? foreground)
@@ -89,12 +97,8 @@ namespace WpfMath.Rendering
         {
             if (box.Background != null)
             {
-                _targetContext.DrawRectangle(
-                    box.Background.ToWpf(),
-                    null,
-                    new Rect(_scale * x, _scale * (y - box.Height),
-                        _scale * box.TotalWidth,
-                        _scale * box.TotalHeight));
+                var rectangle = new WpfRect(_scale * x, _scale * (y - box.Height), _scale * box.TotalWidth, _scale * box.TotalHeight);
+                _targetContext.DrawRectangle(box.Background.ToWpf(), null, rectangle);
             }
         }
 

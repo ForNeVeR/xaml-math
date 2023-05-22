@@ -38,6 +38,11 @@ namespace WpfMath.Converters
                     GeometryGroup childGroup = (GeometryGroup)geometry;
                     AddGeometry(svgString, childGroup);
                 }
+                else if (geometry is LineGeometry)
+                {
+                    LineGeometry lineGeometry = (LineGeometry)geometry;
+                    AddGeometry(svgString, lineGeometry);
+                }
                 else if (geometry is PathGeometry)
                 {
                     PathGeometry path = (PathGeometry)geometry;
@@ -60,6 +65,17 @@ namespace WpfMath.Converters
             }
 
             m_nestedLevel--;
+        }
+
+        private void AddGeometry(StringBuilder svgString, LineGeometry line)
+        {
+            var x1 = line.StartPoint.X.ToString(CultureInfo.InvariantCulture);
+            var y1 = line.StartPoint.Y.ToString(CultureInfo.InvariantCulture);
+
+            var x2 = line.EndPoint.X.ToString(CultureInfo.InvariantCulture);
+            var y2 = line.EndPoint.Y.ToString(CultureInfo.InvariantCulture);
+
+            svgString.AppendLine(@$"<line x1=""{x1}"" y1=""{y1}"" x2=""{x2}"" y2=""{y2}"" style=""stroke:black;stroke-width:1"" />");
         }
 
         private void AddGeometry(StringBuilder svgString, PathGeometry path)

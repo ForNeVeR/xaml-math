@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using Avalonia.Media;
 using XamlMath.Colors;
 using XamlMath.Rendering;
@@ -16,16 +15,6 @@ internal record AvaloniaBrush : GenericBrush<Avalonia.Media.IBrush>
         new(
             new SolidColorBrush(
                 Color.FromArgb(value.A, value.R, value.G, value.B)));
-}
-
-public static class AvaloniaBrushExtensions
-{
-    public static Avalonia.Media.IBrush? ToAvalonia(this IBrush? brush) =>
-        ((AvaloniaBrush?)brush)?.Value;
-
-    [return: NotNullIfNotNull(nameof(brush))]
-    public static IBrush? ToPlatform(this Brush? brush) =>
-        brush == null ? null : AvaloniaBrush.FromBrush(brush);
 }
 
 public class AvaloniaBrushFactory : IBrushFactory

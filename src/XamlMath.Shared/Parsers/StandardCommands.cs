@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using XamlMath.Atoms;
+using XamlMath.Boxes;
 using XamlMath.Parsers.Matrices;
 
 namespace XamlMath.Parsers
@@ -47,6 +48,35 @@ namespace XamlMath.Parsers
                 var right = new SymbolAtom(atomSource, ")", TexAtomType.Closing, true);
                 var fencedAtom = new FencedAtom(atomSource, matrixAtom, left, right);
                 return new CommandProcessingResult(fencedAtom, position);
+            }
+        }
+
+        private class CancelCommand : ICommandParser
+        {
+            public static CancelCommand BCancel { get; } = new(StrokeBoxMode.Back);
+            public static CancelCommand Cancel { get; } = new(StrokeBoxMode.Normal);
+            public static CancelCommand XCancel { get; } = new(StrokeBoxMode.Both);
+
+            private CancelCommand(StrokeBoxMode strokeBoxMode)
+            {
+                _strokeBoxMode = strokeBoxMode;
+            }
+
+            private readonly StrokeBoxMode _strokeBoxMode;
+
+            public CommandProcessingResult ProcessCommand(CommandContext context)
+            {
+                var source = context.CommandSource;
+                var position = context.ArgumentsStartPosition;
+                var contentFormula = context.Parser.Parse(TexFormulaParser.ReadElement(source, ref position),
+                                                          context.Formula.TextStyle,
+                                                          context.Environment.CreateChildEnvironment());
+
+                var start = context.CommandNameStartPosition;
+                var atomSource = source.Segment(start, position - start);
+                var cancelAtom = new CancelAtom(atomSource, contentFormula.RootAtom, _strokeBoxMode);
+
+                return new CommandProcessingResult(cancelAtom, position);
             }
         }
 
@@ -100,6 +130,9 @@ namespace XamlMath.Parsers
             {
                 [@"\"] = new NewLineCommand(),
                 ["binom"] = new BinomCommand(),
+                ["cancel"] = CancelCommand.Cancel,
+                ["bcancel"] = CancelCommand.BCancel,
+                ["xcancel"] = CancelCommand.XCancel,
                 ["cases"] = MatrixCommandParser.Cases,
                 ["matrix"] = MatrixCommandParser.Matrix,
                 ["pmatrix"] = MatrixCommandParser.PMatrix,

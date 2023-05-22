@@ -24,6 +24,14 @@ internal class GeometryElementRenderer : IElementRenderer
 
     public void RenderElement(Box box, double x, double y) => box.RenderTo(this, x, y);
 
+    public void RenderLine(Point point0, Point point1, IBrush? foreground)
+    {
+        point0 = GeometryHelper.ScalePoint(_scale, point0);
+        point1 = GeometryHelper.ScalePoint(_scale, point1);
+        var lineGeometry = new LineGeometry(point0.ToAvalonia(), point1.ToAvalonia());
+        _geometry.Children.Add(lineGeometry);
+    }
+
     public void RenderCharacter(CharInfo info, double x, double y, IBrush? foreground)
     {
         /*TODO[#357]       var glyph = scaledGlyphFactory(_scale);
