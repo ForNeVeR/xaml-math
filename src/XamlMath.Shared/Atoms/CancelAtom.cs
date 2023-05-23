@@ -23,7 +23,7 @@ namespace XamlMath.Atoms
                 Width = contentBox.Width
             };
 
-            var box = new ZBox();
+            var box = new LayeredBox();
             box.Add(contentBox);
             box.Add(lineBox);
 

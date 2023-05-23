@@ -1,18 +1,28 @@
-using System.Linq;
+using System;
 using XamlMath.Rendering;
 
 namespace XamlMath.Boxes
 {
-    public class ZBox : Box
+    public class LayeredBox : Box
     {
         public override void Add(Box box)
         {
             base.Add(box);
 
-            Width = Children.Select(c => c.Width).DefaultIfEmpty(0).Max();
-            Height = Children.Select(c => c.Height - c.Shift).DefaultIfEmpty(double.NegativeInfinity).Max();
-            Depth = Children.Select(c => c.Depth + c.Shift).DefaultIfEmpty(double.NegativeInfinity).Max(); ;
-            Italic = Children.Select(c => c.Italic).DefaultIfEmpty(double.NegativeInfinity).Max(); ;
+            if (Children.Count is 1)
+            {
+                Width = box.Width;
+                Height = box.Height - box.Shift;
+                Depth = box.Depth + box.Shift;
+                Italic = box.Italic;
+            }
+            else
+            {
+                Width = Math.Max(Width, box.Width);
+                Height = Math.Max(Height, box.Height - box.Shift);
+                Depth = Math.Max(Depth, box.Depth + box.Shift);
+                Italic = Math.Max(Italic, box.Italic);
+            }
         }
 
         public override void RenderTo(IElementRenderer renderer, double x, double y)
