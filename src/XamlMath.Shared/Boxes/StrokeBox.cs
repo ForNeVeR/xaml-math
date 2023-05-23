@@ -23,14 +23,7 @@ public class StrokeBox : Box
 
     public override int GetLastFontId()
     {
-        var fontId = TexFontUtilities.NoFontId;
-        foreach (var child in Children)
-        {
-            fontId = child.GetLastFontId();
-            if (fontId == TexFontUtilities.NoFontId)
-                break;
-        }
-        return fontId;
+        return TexFontUtilities.NoFontId;
     }
 }
 
