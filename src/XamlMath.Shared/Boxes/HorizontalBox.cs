@@ -47,15 +47,15 @@ namespace XamlMath.Boxes
         {
         }
 
-        public override void Add(Box box)
+        public sealed override void Add(Box box)
         {
             base.Add(box);
 
-            this.childBoxesTotalWidth += box.Width;
-            this.Width = Math.Max(this.Width, this.childBoxesTotalWidth);
-            this.Height = Math.Max((this.Children.Count == 0 ? double.NegativeInfinity : this.Height), box.Height - box.Shift);
-            this.Depth = Math.Max((this.Children.Count == 0 ? double.NegativeInfinity : this.Depth), box.Depth + box.Shift);
-            this.Italic = Math.Max((this.Children.Count == 0 ? double.NegativeInfinity : this.Italic), box.Italic);
+            childBoxesTotalWidth += box.Width;
+            Width = Math.Max(Width, childBoxesTotalWidth);
+            Height = Math.Max(Height, box.Height - box.Shift);
+            Depth = Math.Max(Depth, box.Depth + box.Shift);
+            Italic = Math.Max(Italic, box.Italic);
         }
 
         public override void RenderTo(IElementRenderer renderer, double x, double y)
