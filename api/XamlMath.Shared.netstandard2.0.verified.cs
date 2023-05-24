@@ -370,6 +370,7 @@ namespace XamlMath.Rendering
         void FinishRendering();
         void RenderCharacter(XamlMath.CharInfo info, double x, double y, XamlMath.Rendering.IBrush? foreground);
         void RenderElement(XamlMath.Boxes.Box box, double x, double y);
+        void RenderLine(XamlMath.Rendering.Point point0, XamlMath.Rendering.Point point1, XamlMath.Rendering.IBrush? foreground);
         void RenderRectangle(XamlMath.Rendering.Rectangle rectangle, XamlMath.Rendering.IBrush? foreground);
         void RenderTransformed(XamlMath.Boxes.Box box, System.Collections.Generic.IEnumerable<XamlMath.Rendering.Transformations.Transformation> transforms, double x, double y);
     }

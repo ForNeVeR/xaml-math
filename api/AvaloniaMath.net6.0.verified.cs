@@ -47,17 +47,19 @@ namespace AvaloniaMath.Parsers
 }
 namespace AvaloniaMath.Rendering
 {
-    public static partial class AvaloniaBrushExtensions
-    {
-        public static Avalonia.Media.IBrush? ToAvalonia(this XamlMath.Rendering.IBrush? brush) { throw null; }
-        [return: System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute("brush")]
-        public static XamlMath.Rendering.IBrush? ToPlatform(this Avalonia.Media.Brush? brush) { throw null; }
-    }
     public partial class AvaloniaBrushFactory : XamlMath.Rendering.IBrushFactory
     {
         internal AvaloniaBrushFactory() { }
         public static AvaloniaMath.Rendering.AvaloniaBrushFactory Instance { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         public XamlMath.Rendering.IBrush FromColor(XamlMath.Colors.RgbaColor color) { throw null; }
+    }
+    public static partial class AvaloniaExtensions
+    {
+        [return: System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute("brush")]
+        public static Avalonia.Media.IBrush? ToAvalonia(this XamlMath.Rendering.IBrush? brush) { throw null; }
+        public static Avalonia.Point ToAvalonia(this XamlMath.Rendering.Point point) { throw null; }
+        [return: System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute("brush")]
+        public static XamlMath.Rendering.IBrush? ToPlatform(this Avalonia.Media.Brush? brush) { throw null; }
     }
     public static partial class AvaloniaTeXEnvironment
     {

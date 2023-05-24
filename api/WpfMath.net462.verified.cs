@@ -86,6 +86,7 @@ namespace WpfMath.Rendering
         public void FinishRendering() { }
         public void RenderCharacter(XamlMath.CharInfo info, double x, double y, XamlMath.Rendering.IBrush? foreground) { }
         public void RenderElement(XamlMath.Boxes.Box box, double x, double y) { }
+        public void RenderLine(XamlMath.Rendering.Point point0, XamlMath.Rendering.Point point1, XamlMath.Rendering.IBrush? foreground) { }
         public void RenderRectangle(XamlMath.Rendering.Rectangle rectangle, XamlMath.Rendering.IBrush? foreground) { }
         public void RenderTransformed(XamlMath.Boxes.Box box, System.Collections.Generic.IEnumerable<XamlMath.Rendering.Transformations.Transformation> transforms, double x, double y) { }
     }
@@ -115,16 +116,17 @@ namespace WpfMath.Rendering
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override XamlMath.Rendering.GenericBrush<System.Windows.Media.Brush> <Clone>$() { throw null; }
     }
-    public static partial class WpfBrushExtensions
-    {
-        public static XamlMath.Rendering.IBrush? ToPlatform(this System.Windows.Media.Brush? brush) { throw null; }
-        public static System.Windows.Media.Brush? ToWpf(this XamlMath.Rendering.IBrush? brush) { throw null; }
-    }
     public partial class WpfBrushFactory : XamlMath.Rendering.IBrushFactory
     {
         internal WpfBrushFactory() { }
         public static readonly WpfMath.Rendering.WpfBrushFactory Instance;
         public XamlMath.Rendering.IBrush FromColor(XamlMath.Colors.RgbaColor color) { throw null; }
+    }
+    public static partial class WpfExtensions
+    {
+        public static XamlMath.Rendering.IBrush? ToPlatform(this System.Windows.Media.Brush? brush) { throw null; }
+        public static System.Windows.Media.Brush? ToWpf(this XamlMath.Rendering.IBrush? brush) { throw null; }
+        public static System.Windows.Point ToWpf(this XamlMath.Rendering.Point point) { throw null; }
     }
     public static partial class WpfTeXEnvironment
     {
