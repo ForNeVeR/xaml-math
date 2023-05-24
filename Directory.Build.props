@@ -5,7 +5,6 @@
         <Copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2023; Copyright © XAML-Math Contributors 2023</Copyright>
 
         <Authors>ForNeVeR</Authors>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/ForNeVeR/xaml-math</PackageProjectUrl>
         <RepositoryUrl>https://github.com/ForNeVeR/xaml-math.git</RepositoryUrl>
         <PackageTags>latex;formula</PackageTags>

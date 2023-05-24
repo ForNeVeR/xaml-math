@@ -287,4 +287,147 @@
   <Symbol name="leftharpoondown" type="rel"/>
   <Symbol name="rightharpoonup" type="rel"/>
   <Symbol name="rightharpoondown" type="rel"/>
+
+  <!-- jlm_msam10 -->
+
+  <Symbol name="rightleftharpoons" type="rel"/>
+  <Symbol name="angle" type="ord"/>
+  <Symbol name="sqsubset" type="rel"/>
+  <Symbol name="sqsupset" type="rel"/>
+  <Symbol name="Box" type="ord"/>
+  <Symbol name="Diamond" type="ord"/>
+  <Symbol name="leadsto" type="rel"/>
+  <Symbol name="lhd" type="bin"/>
+  <Symbol name="unlhd" type="bin"/>
+  <Symbol name="rhd" type="bin"/>
+  <Symbol name="unrhd" type="bin"/>
+  <Symbol name="boxdot" type="bin"/>
+  <Symbol name="boxplus" type="bin"/>
+  <Symbol name="boxtimes" type="bin"/>
+  <Symbol name="square" type="ord"/>
+  <Symbol name="blacksquare" type="ord"/>
+
+  <Symbol name="centerdot" type="bin"/>
+  <Symbol name="lozenge" type="ord"/>
+  <Symbol name="blacklozenge" type="ord"/>
+  <Symbol name="circlearrowright" type="rel"/>
+  <Symbol name="circlearrowleft" type="rel"/>
+  <Symbol name="leftrightharpoons" type="rel"/>
+  <Symbol name="boxminus" type="bin"/>
+  <Symbol name="Vdash" type="rel"/>
+  <Symbol name="Vvdash" type="rel"/>
+  <Symbol name="vDash" type="rel"/>
+  <Symbol name="twoheadrightarrow" type="rel"/>
+  <Symbol name="twoheadleftarrow" type="rel"/>
+  <Symbol name="leftleftarrows" type="rel"/>
+  <Symbol name="rightrightarrows" type="rel"/>
+  <Symbol name="upuparrows" type="rel"/>
+  <Symbol name="downdownarrows" type="rel"/>
+
+  <Symbol name="upharpoonright" type="rel"/>
+  <Symbol name="downharpoonright" type="rel"/>
+  <Symbol name="upharpoonleft" type="rel"/>
+  <Symbol name="downharpoonleft" type="rel"/>
+  <Symbol name="rightarrowtail" type="rel"/>
+  <Symbol name="leftarrowtail" type="rel"/>
+  <Symbol name="leftrightarrows" type="rel"/>
+  <Symbol name="rightleftarrows" type="rel"/>
+  <Symbol name="Lsh" type="rel"/>
+  <Symbol name="Rsh" type="rel"/>
+  <Symbol name="rightsquigarrow" type="rel"/>
+  <Symbol name="leftrightsquigarrow" type="rel"/>
+  <Symbol name="looparrowleft" type="rel"/>
+  <Symbol name="looparrowright" type="rel"/>
+  <Symbol name="circeq" type="rel"/>
+  <Symbol name="succsim" type="rel"/>
+
+  <Symbol name="gtrsim" type="rel"/>
+  <Symbol name="gtrapprox" type="rel"/>
+  <Symbol name="multimap" type="rel"/>
+  <Symbol name="therefore" type="rel"/>
+  <Symbol name="because" type="rel"/>
+  <Symbol name="doteqdot" type="rel"/>
+  <Symbol name="triangleq" type="rel"/>
+  <Symbol name="precsim" type="rel"/>
+  <Symbol name="lesssim" type="rel"/>
+  <Symbol name="lessapprox" type="rel"/>
+  <Symbol name="eqslantless" type="rel"/>
+  <Symbol name="eqslantgtr" type="rel"/>
+  <Symbol name="curlyeqprec" type="rel"/>
+  <Symbol name="curlyeqsucc" type="rel"/>
+  <Symbol name="preccurlyeq" type="rel"/>
+  <Symbol name="leqq" type="rel"/>
+
+  <Symbol name="leqslant" type="rel"/>
+  <Symbol name="lessgtr" type="rel"/>
+  <Symbol name="backprime" type="ord"/>
+  <Symbol name="risingdotseq" type="rel"/>
+  <Symbol name="fallingdotseq" type="rel"/>
+  <Symbol name="succcurlyeq" type="rel"/>
+  <Symbol name="geqq" type="rel"/>
+  <Symbol name="geqslant" type="rel"/>
+  <Symbol name="gtrless" type="rel"/>
+  <Symbol name="vartriangleright" type="rel"/>
+  <Symbol name="vartriangleleft" type="rel"/>
+  <Symbol name="trianglerighteq" type="rel"/>
+  <Symbol name="trianglelefteq" type="rel"/>
+  <Symbol name="bigstar" type="ord"/>
+  <Symbol name="between" type="rel"/>
+  <Symbol name="blacktriangledown" type="ord"/>
+
+  <Symbol name="blacktriangleright" type="rel"/>
+  <Symbol name="blacktriangleleft" type="rel"/>
+  <Symbol name="vartriangle" type="rel"/>
+  <Symbol name="blacktriangle" type="ord"/>
+  <Symbol name="triangledown" type="ord"/>
+  <Symbol name="eqcirc" type="rel"/>
+  <Symbol name="lesseqgtr" type="rel"/>
+  <Symbol name="gtreqless" type="rel"/>
+  <Symbol name="lesseqqgtr" type="rel"/>
+  <Symbol name="gtreqqless" type="rel"/>
+  <Symbol name="yen" type="ord"/>
+  <Symbol name="Rrightarrow" type="rel"/>
+  <Symbol name="Lleftarrow" type="rel"/>
+  <Symbol name="checkmark" type="ord"/>
+  <Symbol name="veebar" type="bin"/>
+  <Symbol name="barwedge" type="bin"/>
+
+  <Symbol name="doublebarwedge" type="bin"/>
+  <Symbol name="measuredangle" type="ord"/>
+  <Symbol name="sphericalangle" type="ord"/>
+  <Symbol name="varpropto" type="rel"/>
+  <Symbol name="smallsmile" type="rel"/>
+  <Symbol name="smallfrown" type="rel"/>
+  <Symbol name="Subset" type="rel"/>
+  <Symbol name="Supset" type="rel"/>
+  <Symbol name="Cup" type="bin"/>
+  <Symbol name="Cap" type="bin"/>
+  <Symbol name="curlywedge" type="bin"/>
+  <Symbol name="curlyvee" type="bin"/>
+  <Symbol name="leftthreetimes" type="bin"/>
+  <Symbol name="rightthreetimes" type="bin"/>
+  <Symbol name="subseteqq" type="rel"/>
+  <Symbol name="supseteqq" type="rel"/>
+
+  <Symbol name="bumpeq" type="rel"/>
+  <Symbol name="Bumpeq" type="rel"/>
+  <Symbol name="lll" type="rel"/>
+  <Symbol name="ggg" type="rel"/>
+  <Symbol name="ulcorner" type="open"/>
+  <Symbol name="urcorner" type="close"/>
+  <Symbol name="textregistered" type="ord"/>
+  <Symbol name="circledS" type="ord"/>
+  <Symbol name="pitchfork" type="rel"/>
+  <Symbol name="dotplus" type="bin"/>
+  <Symbol name="backsim" type="rel"/>
+  <Symbol name="backsimeq" type="rel"/>
+  <Symbol name="llcorner" type="open"/>
+  <Symbol name="lrcorner" type="close"/>
+  <Symbol name="maltese" type="ord"/>
+  <Symbol name="complement" type="ord"/>
+
+  <Symbol name="intercal" type="bin"/>
+  <Symbol name="circledcirc" type="bin"/>
+  <Symbol name="circledast" type="bin"/>
+  <Symbol name="circleddash" type="bin"/>
 </TeXSymbols>

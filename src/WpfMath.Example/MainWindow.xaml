@@ -47,9 +47,12 @@
             <TextBox Name="InputTextBox"
                      AcceptsReturn="True"
                      BorderThickness="0"
+                     FontFamily="Consolas"
+                     HorizontalScrollBarVisibility="Auto"
                      Margin="3"
                      SelectionChanged="OnSelectionChanged"
-                     Text="{Binding Formula, UpdateSourceTrigger=PropertyChanged}" />
+                     Text="{Binding Formula, UpdateSourceTrigger=PropertyChanged}"
+                     VerticalScrollBarVisibility="Auto" />
         </GroupBox>
 
         <Label Grid.Column="1"

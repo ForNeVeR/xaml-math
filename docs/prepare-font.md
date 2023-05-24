@@ -11,6 +11,14 @@ TTF files than the files in the repository. Be prepared for that. When in doubt,
 refer to [the original TFM files][tfm] (they seem to correspond to our data
 better than the TFM files generated from our TTF files).
 
+## `Tool.TTFMetrics`
+
+There's a WPF-based `Tool.TTFMetrics` application designed for gathering the necessary font information.
+
+Start it, choose a `.ttf` file, and it will generate the data to paste into the `<Font>` section of the `DefaultTexFont.xml` file.
+
+## Manual Approach
+
 There are two helpful toolsets to work with our TTF files:
 
 1. To gather font metrics:

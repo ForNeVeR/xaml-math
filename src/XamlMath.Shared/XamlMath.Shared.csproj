@@ -9,7 +9,7 @@
     <PropertyGroup Label="Packaging">
         <PackageId>XamlMath.Shared</PackageId>
         <Title>XAML-Math Shared Code</Title>
-
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageTags>$(PackageTags);xaml</PackageTags>
         <Description>A package code shared between UI framework-specific implementations of XAML-Math, a .NET library for rendering mathematical formulae using the LaTeX typsetting style.</Description>
     </PropertyGroup>

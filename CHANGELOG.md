@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] (1.2.0)
+### Added
+- [`jlm_msam10.ttf` font with a lot of new characters][pull-400], thanks @Orace, that closes the following requests:
+  - [`angle`, `measuredangle`, and `square` symbols are not rendered][issue-127],
+  - [An unsupported command `\geqslant`][issue-313].
+
 ## [1.1.0] - 2023-04-30
 ### Fixed
 - [#387: Alignment issue in matrix with an empty cell][issue-387], thanks @Orace.
@@ -169,7 +175,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [0.4.0] - 2017-09-11
 ### Fixed
-- [#80: force streamwriter to flush buffers][pull-80]
+- [#80: force `StreamWriter` to flush buffers][pull-80]
 - [#88: Bar alignment][issue-88]
 
 ### Added
@@ -227,6 +233,7 @@ This was the initially published version. It consisted entirely of the original 
 [issue-115]: https://github.com/ForNeVeR/xaml-math/issues/115
 [issue-119]: https://github.com/ForNeVeR/xaml-math/issues/119
 [issue-128]: https://github.com/ForNeVeR/xaml-math/issues/128
+[issue-127]: https://github.com/ForNeVeR/xaml-math/issues/127
 [issue-129]: https://github.com/ForNeVeR/xaml-math/issues/129
 [issue-139]: https://github.com/ForNeVeR/xaml-math/issues/139
 [issue-141]: https://github.com/ForNeVeR/xaml-math/issues/141
@@ -247,6 +254,7 @@ This was the initially published version. It consisted entirely of the original 
 [issue-257]: https://github.com/ForNeVeR/xaml-math/issues/257
 [issue-275]: https://github.com/ForNeVeR/xaml-math/issues/275
 [issue-304]: https://github.com/ForNeVeR/xaml-math/issues/304
+[issue-313]: https://github.com/ForNeVeR/xaml-math/issues/313
 [issue-350]: https://github.com/ForNeVeR/xaml-math/issues/350
 [issue-387]: https://github.com/ForNeVeR/xaml-math/issues/387
 [issue-381]: https://github.com/ForNeVeR/xaml-math/issues/381
@@ -276,6 +284,7 @@ This was the initially published version. It consisted entirely of the original 
 [pull-277]: https://github.com/ForNeVeR/xaml-math/pull/277
 [pull-283]: https://github.com/ForNeVeR/xaml-math/pull/283
 [pull-329]: https://github.com/ForNeVeR/xaml-math/pull/329
+[pull-400]: https://github.com/ForNeVeR/xaml-math/pull/400
 
 [0.1.0]: https://github.com/ForNeVeR/xaml-math/releases/tag/0.1.0
 [0.2.0]: https://github.com/ForNeVeR/xaml-math/compare/0.1.0...0.2.0
