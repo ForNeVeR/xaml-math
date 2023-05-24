@@ -3,11 +3,19 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] (1.2.0)
+## [Unreleased] (2.0.0)
+Although a major release with certain formally breaking changes, these changes should hopefully not break any normal usage of the library (if the user code doesn't implement own `IElementRenderer`).
+
+### Changed
+- **(Breaking!)** Avalonia: rename `AvaloniaBrushExtensions` to `AvaloniaExtensions`.
+- **(Breaking!)** WPF: rename `WpfBrushExtensions` to `WpfExtensions`.
+- **(Breaking!)** `IElementRenderer` is now required to implement a new method, `RenderLine` (required for the new `\cancel*` commands).
+
 ### Added
 - [`jlm_msam10.ttf` font with a lot of new characters][pull-400], thanks @Orace, that closes the following requests:
   - [`angle`, `measuredangle`, and `square` symbols are not rendered][issue-127],
   - [An unsupported command `\geqslant`][issue-313].
+- New commands: `\cancel`, `\bcancel`, `\xcancel` (partially addressing [issue #349][issue-349]), thanks @Orace.
 
 ## [1.1.0] - 2023-04-30
 ### Fixed
@@ -255,6 +263,7 @@ This was the initially published version. It consisted entirely of the original 
 [issue-275]: https://github.com/ForNeVeR/xaml-math/issues/275
 [issue-304]: https://github.com/ForNeVeR/xaml-math/issues/304
 [issue-313]: https://github.com/ForNeVeR/xaml-math/issues/313
+[issue-349]: https://github.com/ForNeVeR/xaml-math/issues/349
 [issue-350]: https://github.com/ForNeVeR/xaml-math/issues/350
 [issue-387]: https://github.com/ForNeVeR/xaml-math/issues/387
 [issue-381]: https://github.com/ForNeVeR/xaml-math/issues/381
