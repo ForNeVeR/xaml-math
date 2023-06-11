@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] (2.0.0)
+## [2.0.0] - 2023-06-11
 Although a major release with certain formally breaking changes, these changes should hopefully not break any normal usage of the library (if the user code doesn't implement own `IElementRenderer`).
 
 ### Changed
@@ -16,6 +16,9 @@ Although a major release with certain formally breaking changes, these changes s
   - [`angle`, `measuredangle`, and `square` symbols are not rendered][issue-127],
   - [An unsupported command `\geqslant`][issue-313].
 - New commands: `\cancel`, `\bcancel`, `\xcancel` (partially addressing [issue #349][issue-349]), thanks @Orace.
+
+### Fixed
+- [#409: Exception on empty matrix row][issue-409].
 
 ## [1.1.0] - 2023-04-30
 ### Fixed
@@ -33,7 +36,7 @@ Although a major release with certain formally breaking changes, these changes s
   - a lot of types were migrated from `WpfMath` namespace to `XamlMath`,
   - all the internal XML file resources were migrated to the new namespace as well.
 - The `XamlMath.Shared` assembly has been extracted into a separately published NuGet package.
-- **(Breaking change.)** WPF-Math no longer supports .NET Framework 4.5.2, .NET Core 3.1 and .NET 5.0, because they are out of support by Microsoft. The only supported runtimes are:
+- **(Breaking change.)** WPF-Math no longer supports .NET Framework 4.5.2, .NET Core 3.1, and .NET 5.0, because they are out of support by Microsoft. The only supported runtimes are:
   - .NET Framework 4.6.2 or later,
   - .NET 6.0 and later.
 - **(Breaking change.)** `WpfMath.Colors.IColorParser::Parse` now accepts `IReadOnlyList` instead of `IEnumerable`.
@@ -82,7 +85,7 @@ Although a major release with certain formally breaking changes, these changes s
 - `WpfMath.Fonts.ITeXFont`: implement this interface to provide access to a platform-specific font resource.
 - `WpfMath.Rendering.IBrushFactory`: implement this interface to provide access to creation of platform-specific solid-colored brushes.
 - `WpfMath.TeXFontMetrics` that contains some measurements of a font glyph.
-- An utility `Result` struct is now public.
+- A utility `Result` struct is now public.
 
 ## [0.12.0] - 2023-01-07
 ### Added
@@ -265,9 +268,10 @@ This was the initially published version. It consisted entirely of the original 
 [issue-313]: https://github.com/ForNeVeR/xaml-math/issues/313
 [issue-349]: https://github.com/ForNeVeR/xaml-math/issues/349
 [issue-350]: https://github.com/ForNeVeR/xaml-math/issues/350
-[issue-387]: https://github.com/ForNeVeR/xaml-math/issues/387
 [issue-381]: https://github.com/ForNeVeR/xaml-math/issues/381
+[issue-387]: https://github.com/ForNeVeR/xaml-math/issues/387
 [issue-389]: https://github.com/ForNeVeR/xaml-math/issues/389
+[issue-409]: https://github.com/ForNeVeR/xaml-math/issues/409
 [pull-53]: https://github.com/ForNeVeR/xaml-math/pull/53
 [pull-54]: https://github.com/ForNeVeR/xaml-math/pull/54
 [pull-58]: https://github.com/ForNeVeR/xaml-math/pull/58

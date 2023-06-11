@@ -1,7 +1,7 @@
 <Project>
 
     <PropertyGroup Label="Packaging">
-        <Version>1.1.0</Version>
+        <Version>2.0.0</Version>
         <Copyright>Copyright © Alex Regueiro 2010; Copyright © WPF-Math Contributors 2023; Copyright © XAML-Math Contributors 2023</Copyright>
 
         <Authors>ForNeVeR</Authors>
