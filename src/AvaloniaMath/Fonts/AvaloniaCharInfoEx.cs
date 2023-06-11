@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Avalonia;
 using Avalonia.Media;
@@ -22,7 +23,7 @@ internal static class AvaloniaCharInfoEx
                 $"The {fontName} font does not support '{info.Character}' (U+{characterHex}) character.");
         }
 
-        var glyphRun = new GlyphRun(glyphTypeface, info.Size * scale, new[] {glyphIndex})
+        var glyphRun = new GlyphRun(glyphTypeface, info.Size * scale, new ReadOnlyMemory<char>(new[] {info.Character}), new[] {glyphIndex})
         {
             BaselineOrigin = new Point(x * scale, y * scale)
         };
