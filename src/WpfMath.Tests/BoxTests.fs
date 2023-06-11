@@ -138,3 +138,7 @@ let emptyCommandText(): unit =
 [<Fact>]
 let emptyColorRed(): unit =
     verifyBox @"\color{red}{}"
+
+[<Fact>]
+let emptyMatrix(): unit =
+    verifyBox @"\matrix{}"

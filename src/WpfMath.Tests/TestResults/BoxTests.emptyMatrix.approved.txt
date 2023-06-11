@@ -1,0 +1,33 @@
+{
+  "Background": null,
+  "Children": [
+    {
+      "Background": null,
+      "Children": [],
+      "Depth": 0.0,
+      "Foreground": null,
+      "Height": 0.0,
+      "Italic": 0.0,
+      "Shift": 0.0,
+      "Source": null,
+      "TotalHeight": 0.0,
+      "TotalWidth": 0.0,
+      "Width": 0.0
+    }
+  ],
+  "Depth": -0.25,
+  "Foreground": null,
+  "Height": 0.25,
+  "Italic": 0.0,
+  "Shift": 0.0,
+  "Source": {
+    "End": 9,
+    "Length": 8,
+    "Source": "\\matrix{}",
+    "SourceName": "User input",
+    "Start": 1
+  },
+  "TotalHeight": 0.0,
+  "TotalWidth": 0.0,
+  "Width": 0.0
+}
