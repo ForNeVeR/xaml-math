@@ -8,7 +8,7 @@
     <PropertyGroup>
         <PackageId>AvaloniaMath</PackageId>
         <Title>Avalonia-Math</Title>
-        <PackageLicenseExpression>MIT AND Knuth-CTAN AND OFL-1.1</PackageLicenseExpression>
+        <PackageLicenseExpression>MIT AND OFL-1.1</PackageLicenseExpression>
         <PackageTags>$(PackageTags);avalonia</PackageTags>
         <Description>.NET library for rendering mathematical formulae using the LaTeX typsetting style, for the Avalonia framework.</Description>
     </PropertyGroup>
