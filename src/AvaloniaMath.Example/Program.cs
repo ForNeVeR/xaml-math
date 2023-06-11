@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using Avalonia;
 using Avalonia.ReactiveUI;
@@ -6,6 +7,7 @@ namespace AvaloniaMath.Example
 {
     class Program
     {
+        [STAThread]
         public static void Main(string[] args)
         {
 #if DEBUG

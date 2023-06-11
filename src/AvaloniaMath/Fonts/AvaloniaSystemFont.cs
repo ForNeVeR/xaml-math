@@ -1,3 +1,4 @@
+using System.Globalization;
 using Avalonia.Media;
 using XamlMath;
 using XamlMath.Exceptions;
@@ -108,13 +109,9 @@ internal class AvaloniaSystemFont : ITeXFont
 
     private TeXFontMetrics GetFontMetrics(char c, Typeface typeface)
     {
-        var formattedText = new FormattedText
-        {
-            Text = c.ToString(),
-            Typeface = typeface,
-            TextAlignment=TextAlignment.Left
-        };
-        return new TeXFontMetrics(formattedText.Constraint.Width, formattedText.Constraint.Height, 0.0, formattedText.Constraint.Width, 1.0);
+        var formattedText = new FormattedText(
+            c.ToString(), CultureInfo.CurrentUICulture, FlowDirection.RightToLeft, typeface, 1.0, Brushes.Black);
+        return new TeXFontMetrics(formattedText.Width, formattedText.Height, 0.0, formattedText.Width, 1.0);
     }
 
     private Typeface GetTypeface()
