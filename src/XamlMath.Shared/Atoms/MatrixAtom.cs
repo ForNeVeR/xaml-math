@@ -56,7 +56,7 @@ namespace XamlMath.Atoms
             foreach (var row in cells)
             {
                 var rowContainer = new HorizontalBox();
-                var rowHeight = row.Max(cell => cell.TotalHeight);
+                var rowHeight = row.Length > 0 ? row.Max(cell => cell.TotalHeight) : 0.0;
 
                 for (var j = 0; j < columnCount; ++j)
                 {
