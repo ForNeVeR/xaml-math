@@ -8,9 +8,6 @@
         <!-- For System.Diagnostics.ConsoleTraceListener and Avalonia.LoggingExtensions.LogToTrace -->
         <OutputType Condition=" '$(Configuration)' == 'Debug' ">Exe</OutputType>
         <OutputType Condition=" '$(Configuration)' != 'Debug' ">WinExe</OutputType>
-
-        <Nullable Condition="'$(TargetFramework)' == 'netcoreapp3.1'">enable</Nullable>
-        <Nullable Condition="'$(TargetFramework)' == 'net462'">annotations</Nullable>
     </PropertyGroup>
     <ItemGroup>
         <Compile Update="**\*.xaml.cs">
@@ -22,13 +19,13 @@
         <AvaloniaResource Include="Assets\*" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Avalonia.Desktop" Version="11.0.0-rc1.1" />
-        <PackageReference Include="Avalonia.Diagnostics" Version="11.0.0-rc1.1" Condition=" '$(Configuration)' == 'Debug' " />
-        <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.0-rc1.1" />
-        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.0-rc1.1" />
+        <PackageReference Include="Avalonia.Desktop" Version="[11.0.0,12.0.0)" />
+        <PackageReference Include="Avalonia.Diagnostics" Version="[11.0.0,12.0.0)" Condition=" '$(Configuration)' == 'Debug' " />
+        <PackageReference Include="Avalonia.ReactiveUI" Version="[11.0.0,12.0.0)" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="[11.0.0,12.0.0)" />
     </ItemGroup>
     <ItemGroup Condition=" '$(TargetFrameworkIdentifier)' == '.NETFramework' ">
-        <PackageReference Include="Avalonia.Direct2D1" Version="11.0.0-rc1.1" />
+        <PackageReference Include="Avalonia.Direct2D1" Version="[11.0.0,12.0.0)" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\AvaloniaMath\AvaloniaMath.csproj" />
