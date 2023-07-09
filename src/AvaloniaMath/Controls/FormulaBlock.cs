@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Reactive;
 using System.Reactive.Linq;
 using Avalonia;
-using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Data;
 using Avalonia.Markup.Xaml.Templates;
 using Avalonia.Media;
@@ -16,7 +16,7 @@ using Size = Avalonia.Size;
 
 namespace AvaloniaMath.Controls
 {
-    public class FormulaBlock : Control
+    public class FormulaBlock : TemplatedControl
     {
         private Box? _box;
 
@@ -110,7 +110,7 @@ namespace AvaloniaMath.Controls
             base.Render(context);
             if (_box == null) return;
 
-            var renderer = new AvaloniaElementRenderer(context, Scale);
+            var renderer = new AvaloniaElementRenderer(context, Scale, Background, Foreground);
             TeXFormulaExtensions.Render(_box, renderer, 0.0, 0.0);
         }
 

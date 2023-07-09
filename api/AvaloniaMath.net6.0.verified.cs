@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 namespace AvaloniaMath.Controls
 {
-    public partial class FormulaBlock : Avalonia.Controls.Control
+    public partial class FormulaBlock : Avalonia.Controls.Primitives.TemplatedControl
     {
         public static readonly Avalonia.StyledProperty<System.Collections.ObjectModel.ObservableCollection<System.Exception>> ErrorsProperty;
         public static readonly Avalonia.StyledProperty<Avalonia.Markup.Xaml.Templates.ControlTemplate> ErrorTemplateProperty;
