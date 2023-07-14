@@ -34,7 +34,7 @@
         <PackageReference Include="Avalonia" Version="[11.0.0,12.0.0)" />
         <PackageReference Include="Nullable" Version="1.2.1" PrivateAssets="All" />
         <PackageReference Include="ChangelogAutomation.MSBuild" Version="2.0.0" PrivateAssets="All" />
-        <PackageReference Include="System.Reactive" Version="5.0.0" />
+        <PackageReference Include="System.Reactive" Version="6.0.0" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\XamlMath.Shared\XamlMath.Shared.csproj" />
