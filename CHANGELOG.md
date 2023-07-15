@@ -7,6 +7,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 - AvaloniaMath is now based on (and thus compatible with) Avalonia 11.
 
+### Fixed
+- [#272: Parser crash on `\left{2+2\right\}`][issue-272].
+
 ## [2.0.0] - 2023-06-11
 Although a major release with certain formally breaking changes, these changes should hopefully not break any normal usage of the library (if the user code doesn't implement own `IElementRenderer`).
 
@@ -267,6 +270,7 @@ This was the initially published version. It consisted entirely of the original 
 [issue-244]: https://github.com/ForNeVeR/xaml-math/issues/244
 [issue-248]: https://github.com/ForNeVeR/xaml-math/issues/248
 [issue-257]: https://github.com/ForNeVeR/xaml-math/issues/257
+[issue-272]: https://github.com/ForNeVeR/xaml-math/issues/272
 [issue-275]: https://github.com/ForNeVeR/xaml-math/issues/275
 [issue-304]: https://github.com/ForNeVeR/xaml-math/issues/304
 [issue-313]: https://github.com/ForNeVeR/xaml-math/issues/313
