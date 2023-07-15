@@ -199,6 +199,11 @@ namespace WpfMath.Controls
                 control.SetError(e);
                 return "";
             }
+            catch (Exception e)
+            {
+                control.SetError(new TexParseException("Parser crash! " + e.Message, e));
+                return "";
+            }
         }
 
         private static object CoerceScaleValue(DependencyObject d, object baseValue)

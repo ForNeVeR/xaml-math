@@ -401,7 +401,7 @@ namespace XamlMath
             else
             {
                 if (delimiter[0] != escapeChar)
-                    throw new Exception($"Incorrect parser state: delimiter should start from {escapeChar}: {delimiter}");
+                    throw new TexParseException($"A delimiter should start from {escapeChar}, but got {delimiter}");
 
                 // Here goes the fancy business: for non-alphanumeric commands (e.g. \{, \\ etc.) we need to pass them
                 // through GetDelimeterMapping, but for alphanumeric ones, we don't.

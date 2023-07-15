@@ -107,3 +107,8 @@ let ``Nonexistent color throws a TexParseException``(text: string): unit =
 let ``Invalid color numbers throw exceptions``(formula: string, colorModel: string): unit =
     let ex = assertParseThrows<TexParseException> formula
     Assert.Contains(colorModel, ex.Message)
+
+[<Fact>]
+let ``Invalid delimiter test``(): unit =
+    let ex = assertParseThrows<TexParseException> @"\left{2+2\right\}"
+    Assert.Contains(@"A delimiter should start from \, but got 2+2\right\", ex.Message)
