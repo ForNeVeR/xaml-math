@@ -32,29 +32,10 @@ namespace XamlMath
             this.Name = name;
         }
 
-        public double Space
-        {
-            get;
-            private set;
-        }
-
-        public double Stretch
-        {
-            get;
-            private set;
-        }
-
-        public double Shrink
-        {
-            get;
-            private set;
-        }
-
-        public string Name
-        {
-            get;
-            private set;
-        }
+        public double Space { get; }
+        public double Stretch { get; }
+        public double Shrink { get; }
+        public string Name { get; }
 
         private Box CreateBox(TexEnvironment environment)
         {

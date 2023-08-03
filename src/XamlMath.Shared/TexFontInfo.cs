@@ -33,35 +33,11 @@ namespace XamlMath
             this.SkewCharacter = (char)1;
         }
 
-        public int FontId
-        {
-            get;
-            private set;
-        }
-
-        public IFontTypeface Font
-        {
-            get;
-            private set;
-        }
-
-        public double XHeight
-        {
-            get;
-            private set;
-        }
-
-        public double Space
-        {
-            get;
-            private set;
-        }
-
-        public double Quad
-        {
-            get;
-            private set;
-        }
+        public int FontId { get; }
+        public IFontTypeface Font { get; }
+        public double XHeight { get; }
+        public double Space { get; }
+        public double Quad { get; }
 
         // Skew character (used for positioning accents).
         public char SkewCharacter

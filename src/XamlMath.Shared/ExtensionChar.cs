@@ -11,28 +11,9 @@ namespace XamlMath
             this.Bottom = bottom;
         }
 
-        public CharInfo? Top
-        {
-            get;
-            private set;
-        }
-
-        public CharInfo? Middle
-        {
-            get;
-            private set;
-        }
-
-        public CharInfo? Bottom
-        {
-            get;
-            private set;
-        }
-
-        public CharInfo? Repeat
-        {
-            get;
-            private set;
-        }
+        public CharInfo? Top { get; }
+        public CharInfo? Middle { get; }
+        public CharInfo? Bottom { get; }
+        public CharInfo? Repeat { get; }
     }
 }

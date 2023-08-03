@@ -23,37 +23,17 @@ namespace XamlMath.Boxes
                 (!over && scriptBox != null ? scriptBox.Height + scriptBox.Depth + kern : 0.0);
         }
 
-        public Box BaseBox
-        {
-            get;
-            private set;
-        }
+        public Box BaseBox { get; }
 
-        public Box DelimiterBox
-        {
-            get;
-            private set;
-        }
+        public Box DelimiterBox { get; }
 
-        public Box? ScriptBox
-        {
-            get;
-            private set;
-        }
+        public Box? ScriptBox { get; }
 
         // Kern between delimeter and Script.
-        public double Kern
-        {
-            get;
-            private set;
-        }
+        public double Kern { get; }
 
         // True to draw delimeter and script over base; false to draw under base.
-        public bool Over
-        {
-            get;
-            private set;
-        }
+        public bool Over { get; }
 
         public override void RenderTo(IElementRenderer renderer, double x, double y)
         {

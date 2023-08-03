@@ -51,11 +51,7 @@ namespace XamlMath
 
         public bool SupportsMetrics => true;
 
-        public double Size
-        {
-            get;
-            private set;
-        }
+        public double Size { get; }
 
         public ExtensionChar GetExtension(CharInfo charInfo, TexStyle style)
         {

@@ -18,11 +18,10 @@ namespace WpfMath
             PngBitmapEncoder encoder = new PngBitmapEncoder();
             encoder.Frames.Add(BitmapFrame.Create(image));
 
-            using (var ms = new MemoryStream())
-            {
-                encoder.Save(ms);
-                return ms.ToArray();
-            }
+            using var ms = new MemoryStream();
+
+            encoder.Save(ms);
+            return ms.ToArray();
         }
     }
 }

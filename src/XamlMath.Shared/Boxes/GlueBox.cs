@@ -12,17 +12,9 @@ namespace XamlMath.Boxes
             this.Shrink = shrink;
         }
 
-        public double Stretch
-        {
-            get;
-            private set;
-        }
+        public double Stretch { get; }
 
-        public double Shrink
-        {
-            get;
-            private set;
-        }
+        public double Shrink { get; }
 
         public override void RenderTo(IElementRenderer renderer, double x, double y)
         {

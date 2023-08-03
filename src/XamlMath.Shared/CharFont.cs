@@ -9,16 +9,8 @@ namespace XamlMath
             this.FontId = fontId;
         }
 
-        public char Character
-        {
-            get;
-            private set;
-        }
+        public char Character { get; }
 
-        public int FontId
-        {
-            get;
-            private set;
-        }
+        public int FontId { get; }
     }
 }

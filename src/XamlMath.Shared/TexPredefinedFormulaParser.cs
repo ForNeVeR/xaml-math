@@ -176,11 +176,7 @@ namespace XamlMath
 
         private class ReturnParser : IActionParser
         {
-            public TexFormula? Result
-            {
-                get;
-                private set;
-            }
+            public TexFormula? Result { get; private set; }
 
             public void Parse(
                 SourceSpan source,
