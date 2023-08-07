@@ -1,19 +1,18 @@
 using System;
 
-namespace XamlMath.Exceptions
+namespace XamlMath.Exceptions;
+
+public abstract class TexException : Exception
 {
-    public abstract class TexException : Exception
+    public TexException()
     {
-        public TexException()
-        {
-        }
+    }
 
-        public TexException(string message) : base(message)
-        {
-        }
+    public TexException(string message) : base(message)
+    {
+    }
 
-        public TexException(string message, Exception innerException) : base(message, innerException)
-        {
-        }
+    public TexException(string message, Exception innerException) : base(message, innerException)
+    {
     }
 }
