@@ -1,9 +1,8 @@
-namespace XamlMath.Exceptions
+namespace XamlMath.Exceptions;
+
+public sealed class TypeFaceNotFoundException : TexException
 {
-    public class TypeFaceNotFoundException : TexException
+    public TypeFaceNotFoundException(string message) : base(message)
     {
-        public TypeFaceNotFoundException(string message) : base(message)
-        {
-        }
     }
 }
