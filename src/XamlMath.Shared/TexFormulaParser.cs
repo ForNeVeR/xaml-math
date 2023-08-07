@@ -72,10 +72,7 @@ namespace XamlMath
             textStyles = formulaSettingsParser.GetTextStyles();
         }
 
-        internal static string[][] DelimiterNames
-        {
-            get { return delimiterNames; }
-        }
+        internal static string[][] DelimiterNames => delimiterNames;
 
         internal static string GetDelimeterMapping(char character)
         {

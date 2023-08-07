@@ -70,39 +70,39 @@ namespace AvaloniaMath.Controls
 
         public string Formula
         {
-            get { return GetValue(FormulaProperty); }
-            set { SetValue(FormulaProperty, value); }
+            get => GetValue(FormulaProperty);
+            set => SetValue(FormulaProperty, value);
         }
 
         public double Scale
         {
-            get { return GetValue(ScaleProperty); }
-            set { SetValue(ScaleProperty, value); }
+            get => GetValue(ScaleProperty);
+            set => SetValue(ScaleProperty, value);
         }
 
         public string SystemTextFontName
         {
-            get { return GetValue(SystemTextFontNameProperty); }
-            set { SetValue(SystemTextFontNameProperty, value); }
+            get => GetValue(SystemTextFontNameProperty);
+            set => SetValue(SystemTextFontNameProperty, value);
         }
 
         public bool HasError
         {
-            get { return GetValue(HasErrorProperty); }
-            private set { SetValue(HasErrorProperty, value); }
+            get => GetValue(HasErrorProperty);
+            private set => SetValue(HasErrorProperty, value);
         }
 
         public ObservableCollection<Exception> Errors
         {
-            get { return GetValue(ErrorsProperty); }
-            private set { SetValue(ErrorsProperty, value); }
+            get => GetValue(ErrorsProperty);
+            private set => SetValue(ErrorsProperty, value);
         }
 
         // TODO[#353]: Make it used
         public ControlTemplate ErrorTemplate
         {
-            get { return GetValue(ErrorTemplateProperty); }
-            set { SetValue(ErrorTemplateProperty, value); }
+            get => GetValue(ErrorTemplateProperty);
+            set => SetValue(ErrorTemplateProperty, value);
         }
 
         public override void Render(DrawingContext context)

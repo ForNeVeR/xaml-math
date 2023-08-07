@@ -28,10 +28,7 @@ namespace XamlMath.Boxes
             this.Background = background;
         }
 
-        public ReadOnlyCollection<Box> Children
-        {
-            get { return this.childrenReadOnly; }
-        }
+        public ReadOnlyCollection<Box> Children => this.childrenReadOnly;
 
         public SourceSpan? Source
         {

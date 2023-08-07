@@ -36,10 +36,7 @@ namespace XamlMath.Atoms
 
         public bool IsTextSymbol { get; init; }
 
-        public bool IsKern
-        {
-            get { return this.Atom is SpaceAtom; }
-        }
+        public bool IsKern => this.Atom is SpaceAtom;
 
         public Result<CharFont> GetCharFont(ITeXFont texFont) =>
             ((CharSymbol)this.Atom).GetCharFont(texFont);

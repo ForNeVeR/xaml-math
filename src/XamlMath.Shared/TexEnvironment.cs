@@ -16,8 +16,8 @@ public sealed record TexEnvironment(
 
     internal int LastFontId
     {
-        get { return this.lastFontId == TexFontUtilities.NoFontId ? this.MathFont.GetMuFontId() : this.lastFontId; }
-        set { this.lastFontId = value; }
+        get => this.lastFontId == TexFontUtilities.NoFontId ? this.MathFont.GetMuFontId() : this.lastFontId;
+        set => this.lastFontId = value;
     }
 
     internal TexEnvironment GetCrampedStyle() =>

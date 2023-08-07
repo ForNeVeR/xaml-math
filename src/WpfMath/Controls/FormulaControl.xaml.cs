@@ -22,14 +22,14 @@ namespace WpfMath.Controls
 
         public string Formula
         {
-            get { return (string)GetValue(FormulaProperty); }
-            set { SetValue(FormulaProperty, value); }
+            get => (string)GetValue(FormulaProperty);
+            set => SetValue(FormulaProperty, value);
         }
 
         public double Scale
         {
-            get { return (double)GetValue(ScaleProperty); }
-            set { SetValue(ScaleProperty, value); }
+            get => (double)GetValue(ScaleProperty);
+            set => SetValue(ScaleProperty, value);
         }
 
         public string SystemTextFontName
@@ -40,32 +40,32 @@ namespace WpfMath.Controls
 
         public bool HasError
         {
-            get { return (bool)GetValue(HasErrorProperty); }
-            private set { SetValue(HasErrorProperty, value); }
+            get => (bool)GetValue(HasErrorProperty);
+            private set => SetValue(HasErrorProperty, value);
         }
 
         public ObservableCollection<Exception> Errors
         {
-            get { return (ObservableCollection<Exception>)GetValue(ErrorsProperty); }
-            private set { SetValue(ErrorsProperty, value); }
+            get => (ObservableCollection<Exception>)GetValue(ErrorsProperty);
+            private set => SetValue(ErrorsProperty, value);
         }
 
         public ControlTemplate ErrorTemplate
         {
-            get { return (ControlTemplate)GetValue(ErrorTemplateProperty); }
-            set { SetValue(ErrorTemplateProperty, value); }
+            get => (ControlTemplate)GetValue(ErrorTemplateProperty);
+            set => SetValue(ErrorTemplateProperty, value);
         }
 
         public int SelectionStart
         {
-            get { return (int)GetValue(SelectionStartProperty); }
-            set { SetValue(SelectionStartProperty, value); }
+            get => (int)GetValue(SelectionStartProperty);
+            set => SetValue(SelectionStartProperty, value);
         }
 
         public int SelectionLength
         {
-            get { return (int)GetValue(SelectionLengthProperty); }
-            set { SetValue(SelectionLengthProperty, value); }
+            get => (int)GetValue(SelectionLengthProperty);
+            set => SetValue(SelectionLengthProperty, value);
         }
 
         public Brush? SelectionBrush

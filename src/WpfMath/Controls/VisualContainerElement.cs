@@ -19,7 +19,7 @@ namespace WpfMath.Controls
 
         public DrawingVisual? Visual
         {
-            get { return this.visual; }
+            get => this.visual;
             set
             {
                 RemoveVisualChild(this.visual);
@@ -31,10 +31,7 @@ namespace WpfMath.Controls
             }
         }
 
-        protected override int VisualChildrenCount
-        {
-            get { return 1; }
-        }
+        protected override int VisualChildrenCount => 1;
 
         protected override Visual? GetVisualChild(int index)
         {
