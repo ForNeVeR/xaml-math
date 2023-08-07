@@ -1,8 +1,9 @@
-namespace XamlMath.Exceptions;
-
-public sealed class TexCharacterMappingNotFoundException : TexException
+namespace XamlMath.Exceptions
 {
-    public TexCharacterMappingNotFoundException(string message) : base(message)
+    public sealed class TexCharacterMappingNotFoundException : TexException
     {
+        public TexCharacterMappingNotFoundException(string message) : base(message)
+        {
+        }
     }
 }

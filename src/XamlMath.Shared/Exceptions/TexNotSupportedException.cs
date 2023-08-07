@@ -1,8 +1,9 @@
-namespace XamlMath.Exceptions;
-
-public sealed class TexNotSupportedException : TexException
+namespace XamlMath.Exceptions
 {
-    public TexNotSupportedException(string message) : base(message)
+    public sealed class TexNotSupportedException : TexException
     {
+        public TexNotSupportedException(string message) : base(message)
+        {
+        }
     }
 }
