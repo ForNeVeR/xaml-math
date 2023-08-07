@@ -11,13 +11,14 @@ using XamlMath.Utils;
 namespace XamlMath
 {
     // Parses definitions of predefined formulas from XML file.
-    internal class TexPredefinedFormulaParser
+    internal sealed class TexPredefinedFormulaParser
     {
         private static readonly string resourceName = TexUtilities.ResourcesDataDirectory + "PredefinedTexFormulas.xml";
 
-        private readonly IDictionary<string, Type> typeMappings;
-        private readonly IDictionary<string, IArgumentValueParser> argValueParsers;
-        private readonly IDictionary<string, IActionParser> actionParsers;
+        private static readonly IReadOnlyDictionary<string, Type> typeMappings;
+        private static readonly IReadOnlyDictionary<string, IArgumentValueParser> argValueParsers;
+
+        private readonly IReadOnlyDictionary<string, IActionParser> actionParsers;
 
         private Type[] GetArgumentTypes(IEnumerable<XElement> args)
         {
@@ -50,33 +51,42 @@ namespace XamlMath
 
         private readonly XElement rootElement;
 
+        static TexPredefinedFormulaParser()
+        {
+            typeMappings = new Dictionary<string, Type>
+            {
+                ["Formula"] = typeof(TexFormula),
+                ["string"] = typeof(string),
+                ["double"] = typeof(double),
+                ["int"] = typeof(int),
+                ["bool"] = typeof(bool),
+                ["char"] = typeof(char),
+                ["Unit"] = typeof(TexUnit),
+                ["AtomType"] = typeof(TexAtomType),
+            };
+
+            argValueParsers = new Dictionary<string, IArgumentValueParser>
+            {
+                ["Formula"] = new TeXFormulaValueParser(),
+                ["string"] = new StringValueParser(),
+                ["double"] = new DoubleValueParser(),
+                ["int"] = new IntValueParser(),
+                ["bool"] = new BooleanValueParser(),
+                ["char"] = new CharValueParser(),
+                ["Unit"] = new EnumParser(typeof(TexUnit)),
+                ["AtomType"] = new EnumParser(typeof(TexAtomType)),
+            };
+        }
+
         public TexPredefinedFormulaParser(IBrushFactory brushFactory)
         {
-            typeMappings = new Dictionary<string, Type>();
-            argValueParsers = new Dictionary<string, IArgumentValueParser>();
-            actionParsers = new Dictionary<string, IActionParser>();
 
-            typeMappings.Add("Formula", typeof(TexFormula));
-            typeMappings.Add("string", typeof(string));
-            typeMappings.Add("double", typeof(double));
-            typeMappings.Add("int", typeof(int));
-            typeMappings.Add("bool", typeof(bool));
-            typeMappings.Add("char", typeof(char));
-            typeMappings.Add("Unit", typeof(TexUnit));
-            typeMappings.Add("AtomType", typeof(TexAtomType));
-
-            actionParsers.Add("CreateFormula", new CreateTeXFormulaParser(this, brushFactory));
-            actionParsers.Add("MethodInvocation", new MethodInvocationParser(this, brushFactory));
-            actionParsers.Add("Return", new ReturnParser());
-
-            argValueParsers.Add("Formula", new TeXFormulaValueParser());
-            argValueParsers.Add("string", new StringValueParser());
-            argValueParsers.Add("double", new DoubleValueParser());
-            argValueParsers.Add("int", new IntValueParser());
-            argValueParsers.Add("bool", new BooleanValueParser());
-            argValueParsers.Add("char", new CharValueParser());
-            argValueParsers.Add("Unit", new EnumParser(typeof(TexUnit)));
-            argValueParsers.Add("AtomType", new EnumParser(typeof(TexAtomType)));
+            actionParsers = new Dictionary<string, IActionParser>
+            {
+                ["CreateFormula"] = new CreateTeXFormulaParser(this, brushFactory),
+                ["MethodInvocation"] = new MethodInvocationParser(this, brushFactory),
+                ["Return"] = new ReturnParser(),
+            };
 
             using var resource = typeof(XamlMathResourceMarker).Assembly.ReadResource(resourceName);
             var doc = XDocument.Load(resource);
@@ -87,17 +97,19 @@ namespace XamlMath
         public void Parse(Dictionary<string, Func<SourceSpan, TexFormula?>> predefinedTeXFormulas)
         {
             var rootEnabled = rootElement.AttributeBooleanValue("enabled", true);
-            if (rootEnabled)
+
+            if (!rootEnabled)
+                return;
+
+            foreach (var formulaElement in rootElement.Elements("Formula"))
             {
-                foreach (var formulaElement in rootElement.Elements("Formula"))
-                {
-                    var enabled = formulaElement.AttributeBooleanValue("enabled", true);
-                    if (enabled)
-                    {
-                        var formulaName = formulaElement.AttributeValue("name");
-                        predefinedTeXFormulas.Add(formulaName, source => this.ParseFormula(source, formulaElement, predefinedTeXFormulas));
-                    }
-                }
+                var enabled = formulaElement.AttributeBooleanValue("enabled", true);
+
+                if (!enabled)
+                    continue;
+
+                var formulaName = formulaElement.AttributeValue("name");
+                predefinedTeXFormulas.Add(formulaName, source => this.ParseFormula(source, formulaElement, predefinedTeXFormulas));
             }
         }
 
@@ -174,7 +186,7 @@ namespace XamlMath
             }
         }
 
-        private class ReturnParser : IActionParser
+        private sealed class ReturnParser : IActionParser
         {
             public TexFormula? Result { get; private set; }
 
@@ -191,7 +203,7 @@ namespace XamlMath
             }
         }
 
-        private class DoubleValueParser : IArgumentValueParser
+        private sealed class DoubleValueParser : IArgumentValueParser
         {
             public object Parse(string value, PredefinedFormulaContext context)
             {
@@ -199,7 +211,7 @@ namespace XamlMath
             }
         }
 
-        private class CharValueParser : IArgumentValueParser
+        private sealed class CharValueParser : IArgumentValueParser
         {
             public object Parse(string value, PredefinedFormulaContext context)
             {
@@ -208,7 +220,7 @@ namespace XamlMath
             }
         }
 
-        private class BooleanValueParser : IArgumentValueParser
+        private sealed class BooleanValueParser : IArgumentValueParser
         {
             public object Parse(string value, PredefinedFormulaContext context)
             {
@@ -216,7 +228,7 @@ namespace XamlMath
             }
         }
 
-        private class IntValueParser : IArgumentValueParser
+        private sealed class IntValueParser : IArgumentValueParser
         {
             public object Parse(string value, PredefinedFormulaContext context)
             {
@@ -224,7 +236,7 @@ namespace XamlMath
             }
         }
 
-        private class StringValueParser : IArgumentValueParser
+        private sealed class StringValueParser : IArgumentValueParser
         {
             public object Parse(string value, PredefinedFormulaContext context)
             {
@@ -232,7 +244,7 @@ namespace XamlMath
             }
         }
 
-        private class TeXFormulaValueParser : IArgumentValueParser
+        private sealed class TeXFormulaValueParser : IArgumentValueParser
         {
             public object Parse(string value, PredefinedFormulaContext context)
             {
@@ -242,9 +254,9 @@ namespace XamlMath
             }
         }
 
-        private class EnumParser : IArgumentValueParser
+        private sealed class EnumParser : IArgumentValueParser
         {
-            private Type enumType;
+            private readonly Type enumType;
 
             public EnumParser(Type enumType)
             {
