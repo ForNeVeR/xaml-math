@@ -44,9 +44,9 @@ namespace XamlMath
             charChildParsers.Add("Extension", new ExtensionParser());
         }
 
-        private IDictionary<string, CharFont[]> parsedTextStyles;
+        private readonly IDictionary<string, CharFont[]> parsedTextStyles;
 
-        private XElement rootElement;
+        private readonly XElement rootElement;
 
         public DefaultTexFontParser(IFontProvider fontProvider)
         {

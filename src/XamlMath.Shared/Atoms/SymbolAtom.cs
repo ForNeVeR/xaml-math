@@ -21,7 +21,7 @@ namespace XamlMath.Atoms
         private static readonly IDictionary<string, Func<SourceSpan?, SymbolAtom>> symbols;
 
         // Set of all valid symbol types.
-        private static BitArray validSymbolTypes;
+        private static readonly BitArray validSymbolTypes;
 
         static SymbolAtom()
         {

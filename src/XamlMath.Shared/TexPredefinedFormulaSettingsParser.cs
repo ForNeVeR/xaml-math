@@ -28,7 +28,7 @@ namespace XamlMath
             }
         }
 
-        private XElement rootElement;
+        private readonly XElement rootElement;
 
         public TexPredefinedFormulaSettingsParser()
         {

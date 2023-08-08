@@ -11,8 +11,8 @@ namespace XamlMath
     {
         private static readonly string resourceName = TexUtilities.ResourcesDataDirectory + "GlueSettings.xml";
 
-        private static IDictionary<string, TexAtomType> typeMappings;
-        private static IDictionary<string, TexStyle> styleMappings;
+        private static readonly IDictionary<string, TexAtomType> typeMappings;
+        private static readonly IDictionary<string, TexStyle> styleMappings;
 
         static GlueSettingsParser()
         {
@@ -52,10 +52,10 @@ namespace XamlMath
             styleMappings.Add("script_script", (TexStyle)((int)TexStyle.ScriptScript / 2));
         }
 
-        private IList<Glue> glueTypes;
-        private IDictionary<string, int> glueTypeMappings;
+        private readonly IList<Glue> glueTypes;
+        private readonly IDictionary<string, int> glueTypeMappings;
 
-        private XElement rootElement;
+        private readonly XElement rootElement;
 
         public GlueSettingsParser()
         {

@@ -17,7 +17,7 @@ namespace WpfMath.Controls
     /// </summary>
     public partial class FormulaControl : UserControl
     {
-        private static TexFormulaParser _formulaParser = WpfTeXFormulaParser.Instance;
+        private static readonly TexFormulaParser _formulaParser = WpfTeXFormulaParser.Instance;
         private TexFormula? texFormula;
 
         public string Formula

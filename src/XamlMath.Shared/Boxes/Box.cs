@@ -7,8 +7,8 @@ namespace XamlMath.Boxes
     // Represents graphical box that is part of math expression, and can itself contain child boxes.
     public abstract class Box
     {
-        private List<Box> children;
-        private ReadOnlyCollection<Box> childrenReadOnly;
+        private readonly List<Box> children;
+        private readonly ReadOnlyCollection<Box> childrenReadOnly;
 
         internal Box(TexEnvironment environment)
             : this(environment.Foreground, environment.Background)

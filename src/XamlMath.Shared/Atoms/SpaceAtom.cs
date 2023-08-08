@@ -7,7 +7,7 @@ namespace XamlMath.Atoms
     internal record SpaceAtom : Atom
     {
         // Collection of unit conversion functions.
-        private static UnitConversion[] unitConversions = new UnitConversion[]
+        private static readonly UnitConversion[] unitConversions = new UnitConversion[]
                 {
                     new UnitConversion(e => e.MathFont.GetXHeight(e.Style, e.LastFontId)),
 

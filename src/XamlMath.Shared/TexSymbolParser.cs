@@ -12,7 +12,7 @@ namespace XamlMath
     {
         private static readonly string resourceName = TexUtilities.ResourcesDataDirectory + "TexSymbols.xml";
 
-        private static IDictionary<string, TexAtomType> typeMappings;
+        private static readonly IDictionary<string, TexAtomType> typeMappings;
 
         static TexSymbolParser()
         {
@@ -33,7 +33,7 @@ namespace XamlMath
             typeMappings.Add("acc", TexAtomType.Accent);
         }
 
-        private XElement rootElement;
+        private readonly XElement rootElement;
 
         public TexSymbolParser()
         {

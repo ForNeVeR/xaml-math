@@ -10,10 +10,10 @@ namespace XamlMath.Atoms
     internal record RowAtom : Atom, IRow
     {
         // Set of atom types that make previous atom of BinaryOperator type change to Ordinary type.
-        private static BitArray binaryOperatorChangeSet;
+        private static readonly BitArray binaryOperatorChangeSet;
 
         // Set of atom types that may need kern, or together with previous atom, be replaced by ligature.
-        private static BitArray ligatureKernChangeSet;
+        private static readonly BitArray ligatureKernChangeSet;
 
         static RowAtom()
         {
