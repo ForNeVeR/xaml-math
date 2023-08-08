@@ -37,10 +37,10 @@ namespace WpfMath.Controls
         public int SelectionLength { get { throw null; } set { } }
         public int SelectionStart { get { throw null; } set { } }
         public string SystemTextFontName { get { throw null; } set { } }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "7.0.9.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "7.0.10.0")]
         [System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void InitializeComponent() { }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "7.0.9.0")]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "7.0.10.0")]
         [System.ComponentModel.EditorBrowsableAttribute(1)]
         [System.Diagnostics.DebuggerNonUserCodeAttribute]
         void System.Windows.Markup.IComponentConnector.Connect(int connectionId, object target) { }
