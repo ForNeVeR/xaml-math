@@ -252,7 +252,7 @@ namespace XamlMath.Colors
 }
 namespace XamlMath.Exceptions
 {
-    public partial class TexCharacterMappingNotFoundException : XamlMath.Exceptions.TexException
+    public sealed partial class TexCharacterMappingNotFoundException : XamlMath.Exceptions.TexException
     {
         public TexCharacterMappingNotFoundException(string message) { }
     }
@@ -262,19 +262,19 @@ namespace XamlMath.Exceptions
         public TexException(string message) { }
         public TexException(string message, System.Exception innerException) { }
     }
-    public partial class TexNotSupportedException : XamlMath.Exceptions.TexException
+    public sealed partial class TexNotSupportedException : XamlMath.Exceptions.TexException
     {
         public TexNotSupportedException(string message) { }
     }
-    public partial class TexParseException : XamlMath.Exceptions.TexException
+    public sealed partial class TexParseException : XamlMath.Exceptions.TexException
     {
         internal TexParseException() { }
     }
-    public partial class TextStyleMappingNotFoundException : XamlMath.Exceptions.TexException
+    public sealed partial class TextStyleMappingNotFoundException : XamlMath.Exceptions.TexException
     {
         internal TextStyleMappingNotFoundException() { }
     }
-    public partial class TypeFaceNotFoundException : XamlMath.Exceptions.TexException
+    public sealed partial class TypeFaceNotFoundException : XamlMath.Exceptions.TexException
     {
         public TypeFaceNotFoundException(string message) { }
     }
