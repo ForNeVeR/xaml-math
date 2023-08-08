@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] (2.1.1)
+### Changed
+- The exception classes are now `sealed` (should not break anything, since there never was any sense in extending them in the user code).
+
 ## [2.1.0] - 2023-07-15
 ### Changed
 - AvaloniaMath is now based on (and thus compatible with) Avalonia 11.
