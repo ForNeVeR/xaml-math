@@ -7,69 +7,64 @@ using XamlMath.Utils;
 namespace XamlMath
 {
     // Parses information about glue settings from XML file.
-    internal class GlueSettingsParser
+    internal sealed class GlueSettingsParser
     {
         private static readonly string resourceName = TexUtilities.ResourcesDataDirectory + "GlueSettings.xml";
 
-        private static readonly IDictionary<string, TexAtomType> typeMappings;
-        private static readonly IDictionary<string, TexStyle> styleMappings;
+        private static readonly IReadOnlyDictionary<string, TexAtomType> typeMappings;
+        private static readonly IReadOnlyDictionary<string, TexStyle> styleMappings;
 
         static GlueSettingsParser()
         {
-            typeMappings = new Dictionary<string, TexAtomType>();
-            styleMappings = new Dictionary<string, TexStyle>();
+            typeMappings = new Dictionary<string, TexAtomType>
+            {
+                ["ord"] = TexAtomType.Ordinary,
+                ["op"] = TexAtomType.BigOperator,
+                ["bin"] = TexAtomType.BinaryOperator,
+                ["rel"] = TexAtomType.Relation,
+                ["open"] = TexAtomType.Opening,
+                ["close"] = TexAtomType.Closing,
+                ["punct"] = TexAtomType.Punctuation,
+                ["inner"] = TexAtomType.Inner,
+            };
 
-            SetTypeMappings();
-            SetStyleMappings();
+            styleMappings = new Dictionary<string, TexStyle>
+            {
+                ["display"] = (TexStyle)((int)TexStyle.Display / 2),
+                ["text"] = (TexStyle)((int)TexStyle.Text / 2),
+                ["script"] = (TexStyle)((int)TexStyle.Script / 2),
+                ["script_script"] = (TexStyle)((int)TexStyle.ScriptScript / 2),
+            };
         }
 
+        private static readonly IReadOnlyList<string> names = new[] { "space", "stretch", "shrink" };
         private static Glue CreateGlue(XElement type, string name)
         {
-            var names = new string[] { "space", "stretch", "shrink" };
-            var values = new double[names.Length];
-            for (int i = 0; i < names.Length; i++)
+            var values = new double[names.Count];
+            for (int i = 0; i < names.Count; i++)
                 values[i] = type.AttributeDoubleValue(names[i], 0d);
             return new Glue(values[0], values[1], values[2], name);
         }
 
-        private static void SetTypeMappings()
-        {
-            typeMappings.Add("ord", TexAtomType.Ordinary);
-            typeMappings.Add("op", TexAtomType.BigOperator);
-            typeMappings.Add("bin", TexAtomType.BinaryOperator);
-            typeMappings.Add("rel", TexAtomType.Relation);
-            typeMappings.Add("open", TexAtomType.Opening);
-            typeMappings.Add("close", TexAtomType.Closing);
-            typeMappings.Add("punct", TexAtomType.Punctuation);
-            typeMappings.Add("inner", TexAtomType.Inner);
-        }
-
-        private static void SetStyleMappings()
-        {
-            styleMappings.Add("display", (TexStyle)((int)TexStyle.Display / 2));
-            styleMappings.Add("text", (TexStyle)((int)TexStyle.Text / 2));
-            styleMappings.Add("script", (TexStyle)((int)TexStyle.Script / 2));
-            styleMappings.Add("script_script", (TexStyle)((int)TexStyle.ScriptScript / 2));
-        }
-
-        private readonly IList<Glue> glueTypes;
-        private readonly IDictionary<string, int> glueTypeMappings;
+        private readonly IReadOnlyList<Glue> glueTypes;
+        private readonly IReadOnlyDictionary<string, int> glueTypeMappings;
 
         private readonly XElement rootElement;
 
         public GlueSettingsParser()
         {
             using var resource = typeof(XamlMathResourceMarker).Assembly.ReadResource(resourceName);
+
             var doc = XDocument.Load(resource);
-            this.rootElement = doc.Root;
+            var root = doc.Root;
+            var parsedGlueTypes = ParseGlueTypes(root);
 
-            this.glueTypes = new List<Glue>();
-            this.glueTypeMappings = new Dictionary<string, int>();
-
-            ParseGlueTypes();
+            this.rootElement = root;
+            this.glueTypes = parsedGlueTypes;
+            this.glueTypeMappings = CreateReverseMappings(parsedGlueTypes);
         }
 
-        public IList<Glue> GetGlueTypes()
+        public IReadOnlyList<Glue> GetGlueTypes()
         {
             return glueTypes;
         }
@@ -77,7 +72,6 @@ namespace XamlMath
         public int[, ,] GetGlueRules()
         {
             var rules = new int[typeMappings.Count, typeMappings.Count, styleMappings.Count];
-
             var glueTableElement = rootElement.Element("GlueTable");
             if (glueTableElement != null)
             {
@@ -98,12 +92,22 @@ namespace XamlMath
             return rules;
         }
 
-        private void ParseGlueTypes()
+        private static IReadOnlyDictionary<string, int> CreateReverseMappings(IReadOnlyList<Glue> types)
         {
+            var result = new Dictionary<string, int>();
+            for (int i = 0; i < types.Count; i++)
+                result.Add(types[i].Name, i);
+            return result;
+        }
+
+        private static IReadOnlyList<Glue> ParseGlueTypes (XElement root)
+        {
+            var result = new List<Glue>();
+
             int defaultIndex = -1;
             int index = 0;
 
-            var glueTypesElement = rootElement.Element("GlueTypes");
+            var glueTypesElement = root.Element("GlueTypes");
             if (glueTypesElement != null)
             {
                 foreach (var glueTypeElement in glueTypesElement.Elements("GlueType"))
@@ -112,7 +116,7 @@ namespace XamlMath
                     var glue = CreateGlue(glueTypeElement, name);
                     if (name.Equals("default", StringComparison.InvariantCultureIgnoreCase))
                         defaultIndex = index;
-                    glueTypes.Add(glue);
+                    result.Add(glue);
                     index++;
                 }
             }
@@ -121,20 +125,18 @@ namespace XamlMath
             if (defaultIndex < 0)
             {
                 defaultIndex = index;
-                glueTypes.Add(new Glue(0, 0, 0, "default"));
+                result.Add(new Glue(0, 0, 0, "default"));
             }
 
             // Insure that default glue type is first in list.
             if (defaultIndex > 0)
             {
-                var tempGlueType = glueTypes[defaultIndex];
-                glueTypes[defaultIndex] = glueTypes[0];
-                glueTypes[0] = tempGlueType;
+                var tempGlueType = result[defaultIndex];
+                result[defaultIndex] = result[0];
+                result[0] = tempGlueType;
             }
 
-            // Create dictionary of reverse mappings.
-            for (int i = 0; i < glueTypes.Count; i++)
-                glueTypeMappings.Add(glueTypes[i].Name, i);
+            return result;
         }
     }
 }

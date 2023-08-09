@@ -8,29 +8,25 @@ using XamlMath.Utils;
 namespace XamlMath
 {
     // Parse definitions of symbols from XML files.
-    internal class TexSymbolParser
+    internal sealed class TexSymbolParser
     {
         private static readonly string resourceName = TexUtilities.ResourcesDataDirectory + "TexSymbols.xml";
 
-        private static readonly IDictionary<string, TexAtomType> typeMappings;
+        private static readonly IReadOnlyDictionary<string, TexAtomType> typeMappings;
 
         static TexSymbolParser()
         {
-            typeMappings = new Dictionary<string, TexAtomType>();
-
-            SetTypeMappings();
-        }
-
-        private static void SetTypeMappings()
-        {
-            typeMappings.Add("ord", TexAtomType.Ordinary);
-            typeMappings.Add("op", TexAtomType.BigOperator);
-            typeMappings.Add("bin", TexAtomType.BinaryOperator);
-            typeMappings.Add("rel", TexAtomType.Relation);
-            typeMappings.Add("open", TexAtomType.Opening);
-            typeMappings.Add("close", TexAtomType.Closing);
-            typeMappings.Add("punct", TexAtomType.Punctuation);
-            typeMappings.Add("acc", TexAtomType.Accent);
+            typeMappings = new Dictionary<string, TexAtomType>
+            {
+                ["ord"] = TexAtomType.Ordinary,
+                ["op"] = TexAtomType.BigOperator,
+                ["bin"] = TexAtomType.BinaryOperator,
+                ["rel"] = TexAtomType.Relation,
+                ["open"] = TexAtomType.Opening,
+                ["close"] = TexAtomType.Closing,
+                ["punct"] = TexAtomType.Punctuation,
+                ["acc"] = TexAtomType.Accent,
+            };
         }
 
         private readonly XElement rootElement;
@@ -42,7 +38,7 @@ namespace XamlMath
             this.rootElement = doc.Root;
         }
 
-        public IDictionary<string, Func<SourceSpan?, SymbolAtom>> GetSymbols()
+        public IReadOnlyDictionary<string, Func<SourceSpan?, SymbolAtom>> GetSymbols()
         {
             var result = new Dictionary<string, Func<SourceSpan?, SymbolAtom>>();
 
