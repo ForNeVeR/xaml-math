@@ -7,7 +7,7 @@ using XamlMath.Fonts;
 namespace WpfMath.Fonts;
 
 /// <summary>A font provider implementation specifically for the WpfMath assembly.</summary>
-internal class WpfMathFontProvider : IFontProvider
+internal sealed class WpfMathFontProvider : IFontProvider
 {
     private WpfMathFontProvider() {}
 
