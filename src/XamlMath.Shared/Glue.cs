@@ -4,9 +4,9 @@ using XamlMath.Boxes;
 namespace XamlMath
 {
     // Represents glueElement for holding together boxes.
-    internal class Glue
+    internal sealed class Glue
     {
-        private static readonly IList<Glue> glueTypes;
+        private static readonly IReadOnlyList<Glue> glueTypes;
         private static readonly int[, ,] glueRules;
 
         static Glue()

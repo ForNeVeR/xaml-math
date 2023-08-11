@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.Linq;
 using System.Xml.Linq;
 using XamlMath.Data;
 using XamlMath.Parsers.PredefinedFormulae;
@@ -20,33 +21,26 @@ namespace XamlMath
 
         private readonly IReadOnlyDictionary<string, IActionParser> actionParsers;
 
-        private Type[] GetArgumentTypes(IEnumerable<XElement> args)
+        private IEnumerable<Type> GetArgumentTypes(IEnumerable<XElement> args)
         {
-            var result = new List<Type>();
             foreach (var curArg in args)
             {
                 var typeName = curArg.AttributeValue("type");
                 var type = typeMappings[typeName];
                 Debug.Assert(type != null);
-                result.Add(type);
+                yield return type;
             }
-
-            return result.ToArray();
         }
 
-        private object?[] GetArgumentValues(IEnumerable<XElement> args, PredefinedFormulaContext context)
+        private IEnumerable<object?> GetArgumentValues(IEnumerable<XElement> args, PredefinedFormulaContext context)
         {
-            var result = new List<object?>();
             foreach (var curArg in args)
             {
                 var typeName = curArg.AttributeValue("type");
                 var value = curArg.AttributeValue("value");
-
                 var parser = argValueParsers[typeName];
-                result.Add(parser.Parse(value, context));
+                yield return parser.Parse(value, context);
             }
-
-            return result.ToArray();
         }
 
         private readonly XElement rootElement;
@@ -143,8 +137,8 @@ namespace XamlMath
                 var formula = context[objectName];
                 Debug.Assert(formula != null);
 
-                var argTypes = Parent.GetArgumentTypes(args);
-                var argValues = Parent.GetArgumentValues(args, context);
+                var argTypes = Parent.GetArgumentTypes(args).ToArray();
+                var argValues = Parent.GetArgumentValues(args, context).ToArray();
 
                 var helper = new TexFormulaHelper(
                     formula,
@@ -168,7 +162,7 @@ namespace XamlMath
                 var name = element.AttributeValue("name");
                 var args = element.Elements("Argument");
 
-                var argValues = Parent.GetArgumentValues(args, context);
+                var argValues = Parent.GetArgumentValues(args, context).ToArray();
 
                 Debug.Assert(argValues.Length == 1 || argValues.Length == 0);
                 TexFormula formula;

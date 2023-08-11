@@ -21,6 +21,7 @@ namespace XamlMath
 
         internal const char leftGroupChar = '{';
         internal const char rightGroupChar = '}';
+
         private const char leftBracketChar = '[';
         private const char rightBracketChar = ']';
 
@@ -32,7 +33,7 @@ namespace XamlMath
         /// A set of names of the commands that are embedded in the parser itself, <see cref="ProcessCommand"/>.
         /// These're not the additional commands that may be supplied via <see cref="_commandRegistry"/>.
         /// </summary>
-        private static readonly HashSet<string> embeddedCommands = new HashSet<string>
+        private static readonly HashSet<string> embeddedCommands = new()
         {
             "color",
             "colorbox",
@@ -43,13 +44,14 @@ namespace XamlMath
             "sqrt"
         };
 
-        private static readonly IList<string> symbols;
-        private static readonly IList<string> delimeters;
+        private static readonly IReadOnlyList<string> symbols;
+        private static readonly IReadOnlyList<string> delimeters;
         private static readonly HashSet<string> textStyles;
+
         // TODO[#339]: Architectural solution to make this work faster.
         private readonly IReadOnlyDictionary<string, Func<SourceSpan, TexFormula?>> predefinedFormulas;
 
-        private static readonly string[][] delimiterNames =
+        private static readonly IReadOnlyList<IReadOnlyList<string>> delimiterNames = new[] 
         {
             new[] { "lbrace", "rbrace" },
             new[] { "(", ")" },
@@ -69,10 +71,10 @@ namespace XamlMath
             var formulaSettingsParser = new TexPredefinedFormulaSettingsParser();
             symbols = formulaSettingsParser.GetSymbolMappings();
             delimeters = formulaSettingsParser.GetDelimiterMappings();
-            textStyles = formulaSettingsParser.GetTextStyles();
+            textStyles = new HashSet<string>(formulaSettingsParser.GetTextStyles());
         }
 
-        internal static string[][] DelimiterNames => delimiterNames;
+        internal static IReadOnlyList<IReadOnlyList<string>> DelimiterNames => delimiterNames;
 
         internal static string GetDelimeterMapping(char character)
         {
