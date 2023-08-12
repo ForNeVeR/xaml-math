@@ -9,7 +9,7 @@ using XamlMath.Utils;
 
 namespace WpfMath.Fonts;
 
-internal class WpfSystemFont : ITeXFont
+internal sealed class WpfSystemFont : ITeXFont
 {
     private readonly FontFamily fontFamily;
     private readonly Lazy<Typeface> _typeface;
