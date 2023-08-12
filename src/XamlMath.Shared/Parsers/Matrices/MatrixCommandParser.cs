@@ -6,7 +6,7 @@ using XamlMath.Exceptions;
 namespace XamlMath.Parsers.Matrices
 {
     /// <summary>A parser for matrix-like constructs.</summary>
-    internal class MatrixCommandParser : ICommandParser, IEnvironmentParser
+    internal sealed class MatrixCommandParser : ICommandParser, IEnvironmentParser
     {
         internal static readonly MatrixCommandParser Align = new(null, null, MatrixCellAlignment.Aligned);
         internal static readonly MatrixCommandParser Cases = new("lbrace", null, MatrixCellAlignment.Left);

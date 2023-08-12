@@ -5,7 +5,7 @@ using IBrush = XamlMath.Rendering.IBrush;
 
 namespace AvaloniaMath.Rendering;
 
-internal record AvaloniaBrush : GenericBrush<Avalonia.Media.IBrush>
+internal sealed record AvaloniaBrush : GenericBrush<Avalonia.Media.IBrush>
 {
     private AvaloniaBrush(Avalonia.Media.IBrush brush) : base(brush) {}
 
@@ -17,7 +17,7 @@ internal record AvaloniaBrush : GenericBrush<Avalonia.Media.IBrush>
                 Color.FromArgb(value.A, value.R, value.G, value.B)));
 }
 
-public class AvaloniaBrushFactory : IBrushFactory
+public sealed class AvaloniaBrushFactory : IBrushFactory
 {
     private AvaloniaBrushFactory() { }
     public static AvaloniaBrushFactory Instance { get; } = new();

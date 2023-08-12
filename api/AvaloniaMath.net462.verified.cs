@@ -31,7 +31,7 @@ namespace AvaloniaMath.Controls
 }
 namespace AvaloniaMath.Fonts
 {
-    public partial class AvaloniaMathFontProvider : XamlMath.Fonts.IFontProvider
+    public sealed partial class AvaloniaMathFontProvider : XamlMath.Fonts.IFontProvider
     {
         internal AvaloniaMathFontProvider() { }
         public static AvaloniaMath.Fonts.AvaloniaMathFontProvider Instance;
@@ -47,7 +47,7 @@ namespace AvaloniaMath.Parsers
 }
 namespace AvaloniaMath.Rendering
 {
-    public partial class AvaloniaBrushFactory : XamlMath.Rendering.IBrushFactory
+    public sealed partial class AvaloniaBrushFactory : XamlMath.Rendering.IBrushFactory
     {
         internal AvaloniaBrushFactory() { }
         public static AvaloniaMath.Rendering.AvaloniaBrushFactory Instance { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }

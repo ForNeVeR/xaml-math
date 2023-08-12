@@ -60,20 +60,24 @@ namespace WpfMath.Rendering
         {
             foreach (var transformation in transformations)
             {
-                switch (transformation.Kind)
-                {
-                    case TransformationKind.Translate:
-                        var tt = (Transformation.Translate) transformation;
-                        geometry.Transform.Value.Translate(tt.X, tt.Y);
-                        break;
-                    case TransformationKind.Rotate:
-                        var rt = (Transformation.Rotate) transformation;
-                        geometry.Transform.Value.Rotate(rt.RotationDegrees);
-                        break;
-                    default:
-                        throw new NotSupportedException(
-                            $"Unknown {nameof(Transformation)} kind: {transformation.Kind}");
-                }
+                ApplyTransformation(transformation, geometry);
+            }
+        }
+
+        private static void ApplyTransformation(Transformation transformation, GeometryGroup geometry)
+        {
+            switch (transformation.Kind)
+            {
+                case TransformationKind.Translate:
+                    var tt = (Transformation.Translate)transformation;
+                    geometry.Transform.Value.Translate(tt.X, tt.Y);
+                    break;
+                case TransformationKind.Rotate:
+                    var rt = (Transformation.Rotate)transformation;
+                    geometry.Transform.Value.Rotate(rt.RotationDegrees);
+                    break;
+                default:
+                    throw new NotSupportedException($"Unknown {nameof(Transformation)} kind: {transformation.Kind}");
             }
         }
     }
