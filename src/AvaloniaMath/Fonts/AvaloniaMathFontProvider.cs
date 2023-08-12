@@ -3,7 +3,7 @@ using XamlMath.Fonts;
 
 namespace AvaloniaMath.Fonts;
 
-public class AvaloniaMathFontProvider : IFontProvider
+public sealed class AvaloniaMathFontProvider : IFontProvider
 {
     private AvaloniaMathFontProvider() {}
 

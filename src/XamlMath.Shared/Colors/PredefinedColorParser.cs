@@ -7,7 +7,7 @@ using static XamlMath.Utils.ColorHelpers;
 
 namespace XamlMath.Colors;
 
-public class PredefinedColorParser : IColorParser
+public sealed class PredefinedColorParser : IColorParser
 {
     private const string ResourceName = TexUtilities.ResourcesDataDirectory + "PredefinedColors.xml";
 

@@ -212,7 +212,7 @@ namespace XamlMath.Colors
     {
         XamlMath.Colors.RgbaColor? Parse(System.Collections.Generic.IReadOnlyList<string> components);
     }
-    public partial class PredefinedColorParser : XamlMath.Colors.IColorParser
+    public sealed partial class PredefinedColorParser : XamlMath.Colors.IColorParser
     {
         internal PredefinedColorParser() { }
         public static readonly XamlMath.Colors.PredefinedColorParser Instance;

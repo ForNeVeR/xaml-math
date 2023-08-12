@@ -51,7 +51,7 @@ namespace XamlMath.Parsers
             }
         }
 
-        private class CancelCommand : ICommandParser
+        private sealed class CancelCommand : ICommandParser
         {
             public static CancelCommand BCancel { get; } = new(StrokeBoxMode.Back);
             public static CancelCommand Cancel { get; } = new(StrokeBoxMode.Normal);

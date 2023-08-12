@@ -4,7 +4,7 @@ using XamlMath.Rendering;
 
 namespace WpfMath.Rendering;
 
-public record WpfBrush : GenericBrush<Brush>
+public sealed record WpfBrush : GenericBrush<Brush>
 {
     private WpfBrush(Brush brush) : base(brush)
     {
@@ -13,7 +13,7 @@ public record WpfBrush : GenericBrush<Brush>
     public static WpfBrush FromBrush(Brush value) => new(value);
 }
 
-public class WpfBrushFactory : IBrushFactory
+public sealed class WpfBrushFactory : IBrushFactory
 {
     public static readonly WpfBrushFactory Instance = new();
 
