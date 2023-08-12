@@ -18,10 +18,10 @@ internal class WpfSystemFont : ITeXFont
     {
         this.fontFamily = fontFamily;
         Size = size;
-
-        _typeface = new Lazy<Typeface>(
-            () => new Typeface(this.fontFamily, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal));
+        _typeface = new Lazy<Typeface>(InitializeTypeface);
     }
+
+    private Typeface InitializeTypeface() => new Typeface(this.fontFamily, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal);
 
     public bool SupportsMetrics => false;
 
