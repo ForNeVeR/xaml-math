@@ -146,6 +146,7 @@ namespace WpfMath.Controls
 
             var formulaSource = texFormula.Source;
             var formulaBox = texFormula.CreateBox(environment);
+
             if (formulaSource != null)
             {
                 var selectionBrush = SelectionBrush;

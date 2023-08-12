@@ -1,58 +1,53 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Media;
 
-namespace WpfMath.Controls
+namespace WpfMath.Controls;
+
+public class VisualContainerElement : FrameworkElement
 {
-    public class VisualContainerElement : FrameworkElement
+    private DrawingVisual? visual;
+
+    public VisualContainerElement()
+        : base()
     {
-        private DrawingVisual? visual;
+        this.visual = null;
+    }
 
-        public VisualContainerElement()
-            : base()
+    public DrawingVisual? Visual
+    {
+        get => this.visual;
+        set
         {
-            this.visual = null;
+            RemoveVisualChild(this.visual);
+            this.visual = value;
+            AddVisualChild(this.visual);
+
+            InvalidateMeasure();
+            InvalidateVisual();
         }
+    }
 
-        public DrawingVisual? Visual
-        {
-            get => this.visual;
-            set
-            {
-                RemoveVisualChild(this.visual);
-                this.visual = value;
-                AddVisualChild(this.visual);
+    protected override int VisualChildrenCount => 1;
 
-                InvalidateMeasure();
-                InvalidateVisual();
-            }
-        }
+    protected override Visual? GetVisualChild(int index)
+    {
+        return this.visual;
+    }
 
-        protected override int VisualChildrenCount => 1;
+    protected override Size MeasureOverride(Size availableSize)
+    {
+        if (this.visual != null)
+            return this.visual.ContentBounds.Size;
+        return base.MeasureOverride(availableSize);
+    }
 
-        protected override Visual? GetVisualChild(int index)
-        {
-            return this.visual;
-        }
+    protected override Size ArrangeOverride(Size finalSize)
+    {
+        return base.ArrangeOverride(finalSize);
+    }
 
-        protected override Size MeasureOverride(Size availableSize)
-        {
-            if (this.visual != null)
-                return this.visual.ContentBounds.Size;
-            return base.MeasureOverride(availableSize);
-        }
-
-        protected override Size ArrangeOverride(Size finalSize)
-        {
-            return base.ArrangeOverride(finalSize);
-        }
-
-        protected override void OnVisualChildrenChanged(DependencyObject visualAdded, DependencyObject visualRemoved)
-        {
-            base.OnVisualChildrenChanged(visualAdded, visualRemoved);
-        }
+    protected override void OnVisualChildrenChanged(DependencyObject visualAdded, DependencyObject visualRemoved)
+    {
+        base.OnVisualChildrenChanged(visualAdded, visualRemoved);
     }
 }
