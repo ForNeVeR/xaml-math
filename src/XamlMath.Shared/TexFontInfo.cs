@@ -7,7 +7,7 @@ using XamlMath.Utils;
 namespace XamlMath
 {
     // Specifies all information about single font.
-    internal class TexFontInfo
+    internal sealed class TexFontInfo
     {
         public const int charCodesCount = 256;
 

@@ -7,7 +7,7 @@ using XamlMath.Utils;
 namespace XamlMath
 {
     // Parses settings for predefined formulas from XML file.
-    internal class TexPredefinedFormulaSettingsParser
+    internal sealed class TexPredefinedFormulaSettingsParser
     {
         private static readonly string resourceName = TexUtilities.ResourcesDataDirectory + "TexFormulaSettings.xml";
 
@@ -37,7 +37,7 @@ namespace XamlMath
             this.rootElement = doc.Root;
         }
 
-        public IList<string> GetSymbolMappings()
+        public IReadOnlyList<string> GetSymbolMappings()
         {
             var mappings = new string[TexFontInfo.charCodesCount];
             var charToSymbol = rootElement.Element("CharacterToSymbolMappings");
@@ -46,7 +46,7 @@ namespace XamlMath
             return mappings;
         }
 
-        public IList<string> GetDelimiterMappings()
+        public IReadOnlyList<string> GetDelimiterMappings()
         {
             var mappings = new string[TexFontInfo.charCodesCount];
             var charToDelimiter = rootElement.Element("CharacterToDelimiterMappings");
@@ -55,22 +55,16 @@ namespace XamlMath
             return mappings;
         }
 
-        public HashSet<string> GetTextStyles()
+        public IEnumerable<string> GetTextStyles()
         {
-            var result = new HashSet<string>();
-
             var textStyles = rootElement.Element("TextStyles");
-            if (textStyles != null)
+            if (textStyles == null) yield break;
+            foreach (var textStyleElement in textStyles.Elements("TextStyle"))
             {
-                foreach (var textStyleElement in textStyles.Elements("TextStyle"))
-                {
-                    var name = textStyleElement.AttributeValue("name");
-                    Debug.Assert(name != null);
-                    result.Add(name);
-                }
+                var name = textStyleElement.AttributeValue("name");
+                Debug.Assert(name != null);
+                yield return name;
             }
-
-            return result;
         }
     }
 }

@@ -10,7 +10,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace XamlMath.Atoms
 {
     // Atom representing symbol (non-alphanumeric character).
-    internal record SymbolAtom : CharSymbol
+    internal sealed record SymbolAtom : CharSymbol
     {
         /// <summary>
         /// Special name of empty delimiter symbol that shouldn't be rendered.
@@ -18,7 +18,7 @@ namespace XamlMath.Atoms
         internal const string EmptyDelimiterName = "_emptyDelimiter";
 
         // Dictionary of definitions of all symbols, keyed by name.
-        private static readonly IDictionary<string, Func<SourceSpan?, SymbolAtom>> symbols;
+        private static readonly IReadOnlyDictionary<string, Func<SourceSpan?, SymbolAtom>> symbols;
 
         // Set of all valid symbol types.
         private static readonly BitArray validSymbolTypes;
