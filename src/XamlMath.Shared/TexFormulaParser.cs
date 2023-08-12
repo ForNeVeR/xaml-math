@@ -293,7 +293,7 @@ namespace XamlMath
             return formula;
         }
 
-        private void ProcessLeftGroupChar(SourceSpan value, ref int position, string textStyle, ICommandEnvironment environment, TexFormula formula, int initialPosition)
+        private void ProcessLeftGroupChar(SourceSpan value, ref int position, string? textStyle, ICommandEnvironment environment, TexFormula formula, int initialPosition)
         {
             var groupValue = ReadElement(value, ref position);
             var parsedGroup = Parse(groupValue, textStyle, environment.CreateChildEnvironment());
