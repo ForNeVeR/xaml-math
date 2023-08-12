@@ -138,40 +138,7 @@ namespace WpfMath.Controls
             // Render formula to visual.
             var visual = new DrawingVisual();
 
-            // Omit passing the background, since the control background will be effectively used anyway.
-            var environment = WpfTeXEnvironment.Create(
-                scale: Scale,
-                systemTextFontName: SystemTextFontName,
-                foreground: Foreground);
-
-            var formulaSource = texFormula.Source;
-            var formulaBox = texFormula.CreateBox(environment);
-            if (formulaSource != null)
-            {
-                var selectionBrush = SelectionBrush;
-                if (selectionBrush != null)
-                {
-                    var allBoxes = new List<Box> { formulaBox };
-                    var selectionStart = SelectionStart;
-                    var selectionEnd = selectionStart + SelectionLength;
-                    for (var idx = 0; idx < allBoxes.Count; idx++)
-                    {
-                        var box = allBoxes[idx];
-                        allBoxes.AddRange(box.Children);
-                        var source = box.Source;
-                        if (source == null ||
-                            !source.SourceName.Equals(formulaSource.SourceName, StringComparison.Ordinal) ||
-                            !source.Source.Equals(formulaSource.Source, StringComparison.Ordinal)) continue;
-
-                        if (selectionStart < source.Start + source.Length
-                            && source.Start < selectionEnd
-                            && box is CharBox)
-                        {
-                            box.Background = WpfBrush.FromBrush(selectionBrush);
-                        }
-                    }
-                }
-            }
+            Box formulaBox = GetBoxToRender();
 
             using (var drawingContext = visual.RenderOpen())
             {
@@ -181,6 +148,51 @@ namespace WpfMath.Controls
             }
 
             formulaContainerElement.Visual = visual;
+        }
+
+        private Box GetBoxToRender()
+        {
+            // Omit passing the background, since the control background will be effectively used anyway.
+            var environment = WpfTeXEnvironment.Create(
+                scale: Scale,
+                systemTextFontName: SystemTextFontName,
+                foreground: Foreground);
+
+            var formulaSource = texFormula!.Source; // TODO: Get rid of null forgiving operator
+            var formulaBox = texFormula.CreateBox(environment);
+
+            ProcessBox(formulaSource, formulaBox);
+
+            return formulaBox;
+        }
+
+        private void ProcessBox(SourceSpan? formulaSource, Box formulaBox)
+        {
+            if (formulaSource == null) return;
+
+            var selectionBrush = SelectionBrush;
+
+            if (selectionBrush == null) return;
+
+            var allBoxes = new List<Box> { formulaBox };
+            var selectionStart = SelectionStart;
+            var selectionEnd = selectionStart + SelectionLength;
+            for (var idx = 0; idx < allBoxes.Count; idx++)
+            {
+                var box = allBoxes[idx];
+                allBoxes.AddRange(box.Children);
+                var source = box.Source;
+                if (source == null ||
+                    !source.SourceName.Equals(formulaSource.SourceName, StringComparison.Ordinal) ||
+                    !source.Source.Equals(formulaSource.Source, StringComparison.Ordinal)) continue;
+
+                if (selectionStart < source.Start + source.Length
+                    && source.Start < selectionEnd
+                    && box is CharBox)
+                {
+                    box.Background = WpfBrush.FromBrush(selectionBrush);
+                }
+            }
         }
 
         private static object CoerceFormula(DependencyObject d, object baseValue)
