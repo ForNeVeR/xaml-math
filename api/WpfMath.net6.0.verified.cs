@@ -90,16 +90,15 @@ namespace WpfMath.Rendering
         public void RenderRectangle(XamlMath.Rendering.Rectangle rectangle, XamlMath.Rendering.IBrush? foreground) { }
         public void RenderTransformed(XamlMath.Boxes.Box box, System.Collections.Generic.IEnumerable<XamlMath.Rendering.Transformations.Transformation> transforms, double x, double y) { }
     }
-    public partial class WpfBrush : XamlMath.Rendering.GenericBrush<System.Windows.Media.Brush>, System.IEquatable<WpfMath.Rendering.WpfBrush>
+    public sealed partial class WpfBrush : XamlMath.Rendering.GenericBrush<System.Windows.Media.Brush>, System.IEquatable<WpfMath.Rendering.WpfBrush>
     {
-        [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        protected WpfBrush(WpfMath.Rendering.WpfBrush original) { }
+        internal WpfBrush() { }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         protected override System.Type EqualityContract { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override bool Equals(object? obj) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        public virtual bool Equals(WpfMath.Rendering.WpfBrush? other) { throw null; }
+        public bool Equals(WpfMath.Rendering.WpfBrush? other) { throw null; }
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public sealed override bool Equals(XamlMath.Rendering.GenericBrush<System.Windows.Media.Brush>? other) { throw null; }
         public static WpfMath.Rendering.WpfBrush FromBrush(System.Windows.Media.Brush value) { throw null; }
@@ -117,7 +116,7 @@ namespace WpfMath.Rendering
         [System.Runtime.CompilerServices.PreserveBaseOverridesAttribute]
         virtual WpfMath.Rendering.WpfBrush XamlMath.Rendering.GenericBrush<System.Windows.Media.Brush>.<Clone>$() { throw null; }
     }
-    public partial class WpfBrushFactory : XamlMath.Rendering.IBrushFactory
+    public sealed partial class WpfBrushFactory : XamlMath.Rendering.IBrushFactory
     {
         internal WpfBrushFactory() { }
         public static readonly WpfMath.Rendering.WpfBrushFactory Instance;
