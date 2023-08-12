@@ -248,16 +248,13 @@ namespace XamlMath
                 }
                 else if (ch == leftGroupChar)
                 {
-                    var groupValue = ReadElement(value, ref position);
-                    var parsedGroup = Parse(groupValue, textStyle, environment.CreateChildEnvironment());
-                    var innerGroupAtom = parsedGroup.RootAtom ?? new RowAtom(groupValue);
-                    var groupAtom = new TypedAtom(
-                        innerGroupAtom.Source,
-                        innerGroupAtom,
-                        TexAtomType.Ordinary,
-                        TexAtomType.Ordinary);
-                    var scriptsAtom = this.AttachScripts(formula, value, ref position, groupAtom, true, environment);
-                    formula.Add(scriptsAtom, value.Segment(initialPosition, position - initialPosition));
+                    ProcessLeftGroupChar(
+                        value,
+                        ref position,
+                        textStyle,
+                        environment,
+                        formula,
+                        initialPosition);
                 }
                 else if (ch == rightGroupChar)
                 {
@@ -294,6 +291,20 @@ namespace XamlMath
             }
 
             return formula;
+        }
+
+        private void ProcessLeftGroupChar(SourceSpan value, ref int position, string textStyle, ICommandEnvironment environment, TexFormula formula, int initialPosition)
+        {
+            var groupValue = ReadElement(value, ref position);
+            var parsedGroup = Parse(groupValue, textStyle, environment.CreateChildEnvironment());
+            var innerGroupAtom = parsedGroup.RootAtom ?? new RowAtom(groupValue);
+            var groupAtom = new TypedAtom(
+                innerGroupAtom.Source,
+                innerGroupAtom,
+                TexAtomType.Ordinary,
+                TexAtomType.Ordinary);
+            var scriptsAtom = this.AttachScripts(formula, value, ref position, groupAtom, true, environment);
+            formula.Add(scriptsAtom, value.Segment(initialPosition, position - initialPosition));
         }
 
         private static TexFormula ConvertRawText(SourceSpan value, string textStyle)
