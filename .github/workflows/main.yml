@@ -19,13 +19,10 @@ jobs:
         config:
           - name: 'macos'
             image: 'macos-12'
-            solution: 'XamlMath.Portable.sln'
           - name: 'linux'
             image: 'ubuntu-22.04'
-            solution: 'XamlMath.Portable.sln'
           - name: 'windows'
             image: 'windows-2022'
-            solution: 'XamlMath.All.sln'
 
     name: main.${{ matrix.config.name }}
     runs-on: ${{ matrix.config.image }}
@@ -57,7 +54,7 @@ jobs:
             7.0.x
 
       - name: Build
-        run: dotnet build ${{ matrix.config.solution }}
+        run: dotnet build
 
       - name: Test
-        run: dotnet test ${{ matrix.config.solution }}
+        run: dotnet test

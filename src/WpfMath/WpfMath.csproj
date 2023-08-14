@@ -4,6 +4,7 @@
         <TargetFrameworks>net462;net6.0-windows</TargetFrameworks>
         <UseWpf>true</UseWpf>
         <OutputType>Library</OutputType>
+        <EnableWindowsTargeting>true</EnableWindowsTargeting>
     </PropertyGroup>
     <PropertyGroup>
         <PackageId>WpfMath</PackageId>

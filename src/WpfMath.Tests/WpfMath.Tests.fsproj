@@ -4,6 +4,7 @@
         <IsPackable>false</IsPackable>
         <UseWpf>true</UseWpf>
         <Deterministic>false</Deterministic>
+        <EnableWindowsTargeting>true</EnableWindowsTargeting>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="ApprovalTests" Version="4.2.2" />

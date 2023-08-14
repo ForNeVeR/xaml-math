@@ -18,8 +18,6 @@ Prepare NuGet Package Locally
 $ dotnet pack XamlMath.All.sln --configuration Release
 ```
 
-(Use `XamlMath.Portable.sln` on Unix-like operating systems; note you won't be able to build and pack the WPF-specific part of the code, though.)
-
 Push a NuGet Package Manually
 -----------------------------
 

@@ -5,6 +5,7 @@
         <UseWpf>true</UseWpf>
         <IsPackable>false</IsPackable>
         <Nullable>enable</Nullable>
+        <EnableWindowsTargeting>true</EnableWindowsTargeting>
     </PropertyGroup>
     <ItemGroup>
         <ProjectReference Include="../WpfMath/WpfMath.csproj" />

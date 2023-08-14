@@ -141,8 +141,6 @@ To publish the package, execute the following command:
 $ dotnet pack XamlMath.All.sln --configuration Release
 ```
 
-For non-Windows systems, substitute `XamlMath.Portable.sln` instead of `XamlMath.All.sln`.
-
 History
 -------
 
