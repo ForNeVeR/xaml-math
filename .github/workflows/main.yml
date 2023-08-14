@@ -19,10 +19,13 @@ jobs:
         config:
           - name: 'macos'
             image: 'macos-12'
+            testProject: 'src/AvaloniaMath.ApiTest'
           - name: 'linux'
             image: 'ubuntu-22.04'
+            testProject: 'src/AvaloniaMath.ApiTest'
           - name: 'windows'
             image: 'windows-2022'
+            runAllTests: 'true'
 
     name: main.${{ matrix.config.name }}
     runs-on: ${{ matrix.config.image }}
@@ -56,5 +59,10 @@ jobs:
       - name: Build
         run: dotnet build
 
-      - name: Test
+      - name: Run all tests
         run: dotnet test
+        if: ${{ matrix.config.runAllTests == 'true' }}
+
+      - name: Run portable tests
+        run: dotnet test ${{ matrix.config.testProject }}
+        if: ${{ matrix.config.runAllTests != 'true' }}
