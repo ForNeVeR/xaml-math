@@ -3,7 +3,7 @@ using XamlMath.Exceptions;
 namespace XamlMath.Parsers;
 
 /// <summary>This command will process a <code>\begin … \end</code> environment block.</summary>
-internal class ProcessEnvironmentCommand : ICommandParser
+internal sealed class ProcessEnvironmentCommand : ICommandParser
 {
     public CommandProcessingResult ProcessCommand(CommandContext context)
     {

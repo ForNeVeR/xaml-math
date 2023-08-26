@@ -17,7 +17,7 @@ namespace XamlMath.Parsers;
 /// <param name="ArgumentsStartPosition">
 /// A position inside of source where the command arguments start. Should be a parser start position.
 /// </param>
-internal record CommandContext(
+internal sealed record CommandContext(
     TexFormulaParser Parser,
     TexFormula Formula,
     ICommandEnvironment Environment,
@@ -26,7 +26,7 @@ internal record CommandContext(
     int ArgumentsStartPosition
 );
 
-internal class CommandProcessingResult
+internal sealed class CommandProcessingResult
 {
     /// <summary>A parsed atom.</summary>
     public Atom? Atom { get; }
