@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace XamlMath.Parsers
 {
-    internal class DefaultCommandEnvironment : ICommandEnvironment
+    internal sealed class DefaultCommandEnvironment : ICommandEnvironment
     {
         public static readonly ICommandEnvironment Instance = new DefaultCommandEnvironment();
 
