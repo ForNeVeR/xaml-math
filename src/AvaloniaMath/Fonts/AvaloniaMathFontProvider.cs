@@ -7,7 +7,7 @@ public sealed class AvaloniaMathFontProvider : IFontProvider
 {
     private AvaloniaMathFontProvider() {}
 
-    public static AvaloniaMathFontProvider Instance = new();
+    public static readonly AvaloniaMathFontProvider Instance = new();
 
     public IFontTypeface ReadFontFile(string fontFileName)
     {
