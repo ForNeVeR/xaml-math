@@ -3,7 +3,7 @@ using XamlMath.Rendering;
 namespace XamlMath.Boxes
 {
     // Box representing glue.
-    internal class GlueBox : Box
+    internal sealed class GlueBox : Box
     {
         public GlueBox(double space, double stretch, double shrink)
         {

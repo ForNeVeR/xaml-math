@@ -3,7 +3,7 @@ using XamlMath.Rendering;
 
 namespace XamlMath.Boxes;
 
-internal class LayeredBox : Box
+internal sealed class LayeredBox : Box
 {
     public override void Add(Box box)
     {

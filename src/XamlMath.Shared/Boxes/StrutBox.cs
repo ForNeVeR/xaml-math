@@ -3,7 +3,7 @@ using XamlMath.Rendering;
 namespace XamlMath.Boxes
 {
     // Box representing whitespace.
-    internal class StrutBox : Box
+    internal sealed class StrutBox : Box
     {
         public static StrutBox Empty { get; } = new StrutBox(0, 0, 0, 0);
 

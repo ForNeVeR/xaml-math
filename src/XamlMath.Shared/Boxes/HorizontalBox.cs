@@ -4,7 +4,7 @@ using XamlMath.Rendering;
 namespace XamlMath.Boxes
 {
     /// <summary>Box containing horizontal stack of child boxes.</summary>
-    internal class HorizontalBox : Box
+    internal sealed class HorizontalBox : Box
     {
         private double childBoxesTotalWidth = 0.0;
 

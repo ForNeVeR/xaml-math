@@ -3,7 +3,7 @@ using XamlMath.Rendering;
 
 namespace XamlMath.Boxes;
 
-internal class StrokeBox : Box
+internal sealed class StrokeBox : Box
 {
     private readonly StrokeBoxMode _mode;
 
