@@ -4,7 +4,7 @@ using XamlMath.Boxes;
 namespace XamlMath.Atoms
 {
     // Atom representing scripts to attach to other atom.
-    internal record ScriptsAtom : Atom
+    internal sealed record ScriptsAtom : Atom
     {
         private static readonly SpaceAtom scriptSpaceAtom = new SpaceAtom(null, TexUnit.Point, 0.5, 0, 0);
 

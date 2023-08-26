@@ -4,7 +4,7 @@ using XamlMath.Boxes;
 namespace XamlMath.Atoms
 {
     // Atom representing other atom with delimeter and script atoms over or under it.
-    internal record OverUnderDelimiter : Atom
+    internal sealed record OverUnderDelimiter : Atom
     {
         private static double GetMaxWidth(Box baseBox, Box delimeterBox, Box? scriptBox)
         {

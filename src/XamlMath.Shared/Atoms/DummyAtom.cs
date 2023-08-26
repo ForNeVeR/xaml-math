@@ -5,7 +5,7 @@ using XamlMath.Utils;
 namespace XamlMath.Atoms
 {
     // Dummy atom representing atom whose type can change or which can be replaced by a ligature.
-    internal record DummyAtom : Atom
+    internal sealed record DummyAtom : Atom
     {
         public DummyAtom(TexAtomType type, Atom atom, bool isTextSymbol)
             : base(atom.Source, type)

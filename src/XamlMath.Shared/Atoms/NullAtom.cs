@@ -2,7 +2,7 @@ using XamlMath.Boxes;
 
 namespace XamlMath.Atoms
 {
-    internal record NullAtom : Atom
+    internal sealed record NullAtom : Atom
     {
         public NullAtom(SourceSpan? source = null, TexAtomType type = TexAtomType.Ordinary) : base(source, type)
         {

@@ -4,7 +4,7 @@ using XamlMath.Boxes;
 namespace XamlMath.Atoms
 {
     // Atom representing base atom surrounded by delimeters.
-    internal record FencedAtom : Atom
+    internal sealed record FencedAtom : Atom
     {
         private const int delimeterFactor = 901;
         private const double delimeterShortfall = 0.5;

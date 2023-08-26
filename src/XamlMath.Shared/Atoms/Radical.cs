@@ -6,7 +6,7 @@ namespace XamlMath.Atoms
     /// <summary>
     /// Atom representing radical (nth-root) construction.
     /// </summary>
-    internal record Radical : Atom
+    internal sealed record Radical : Atom
     {
         private const string sqrtSymbol = "sqrt";
 
