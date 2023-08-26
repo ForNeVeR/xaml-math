@@ -3,7 +3,7 @@ using XamlMath.Rendering;
 namespace XamlMath.Boxes;
 
 /// <summary>Box representing single character.</summary>
-internal class CharBox : Box
+internal sealed class CharBox : Box
 {
     public CharBox(TexEnvironment environment, CharInfo charInfo)
         : base(environment)
