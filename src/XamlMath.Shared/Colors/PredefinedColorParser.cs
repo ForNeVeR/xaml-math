@@ -42,7 +42,7 @@ public sealed class PredefinedColorParser : IColorParser
             alpha = ConvertToByteRgbComponent(alphaFraction.Value);
         }
 
-        color.A = alpha;
+        color = color with { A = alpha };
         return color;
     }
 
