@@ -3,7 +3,7 @@ using static XamlMath.Utils.ColorHelpers;
 
 namespace XamlMath.Colors;
 
-internal class FloatRgbColorParser : RgbColorParserBase<double>
+internal sealed class FloatRgbColorParser : RgbColorParserBase<double>
 {
     public FloatRgbColorParser(AlphaChannelMode alphaChannelMode) : base(alphaChannelMode)
     {

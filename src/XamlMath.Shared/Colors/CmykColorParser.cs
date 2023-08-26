@@ -5,7 +5,7 @@ using static XamlMath.Utils.ColorHelpers;
 
 namespace XamlMath.Colors;
 
-internal class CmykColorParser : IColorParser
+internal sealed class CmykColorParser : IColorParser
 {
     public RgbaColor? Parse(IReadOnlyList<string> components)
     {
