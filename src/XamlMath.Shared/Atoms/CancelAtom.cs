@@ -2,7 +2,7 @@ using XamlMath.Boxes;
 
 namespace XamlMath.Atoms
 {
-    internal record CancelAtom : Atom
+    internal sealed record CancelAtom : Atom
     {
         private readonly Atom? _contentAtom;
         private readonly StrokeBoxMode _strokeBoxMode;

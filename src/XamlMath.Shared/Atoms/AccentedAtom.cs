@@ -4,7 +4,7 @@ using XamlMath.Boxes;
 namespace XamlMath.Atoms
 {
     // Atom representing base atom with accent above it.
-    internal record AccentedAtom : Atom
+    internal sealed record AccentedAtom : Atom
     {
         public AccentedAtom(SourceSpan? source, Atom? baseAtom, string accentName)
             : base(source)

@@ -4,7 +4,7 @@ using XamlMath.Utils;
 namespace XamlMath.Atoms
 {
     // Atom representing single character in specific text style.
-    internal record CharAtom : CharSymbol
+    internal sealed record CharAtom : CharSymbol
     {
         public CharAtom(SourceSpan? source, char character, string? textStyle = null)
             : base(source)

@@ -3,7 +3,7 @@ using XamlMath.Boxes;
 namespace XamlMath.Atoms
 {
     // Atom representing other atom vertically centered with respect to axis.
-    internal record VerticalCenteredAtom : Atom
+    internal sealed record VerticalCenteredAtom : Atom
     {
         public VerticalCenteredAtom(SourceSpan? source, Atom? atom)
             : base(source)

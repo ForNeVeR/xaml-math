@@ -3,7 +3,7 @@ using XamlMath.Boxes;
 namespace XamlMath.Atoms
 {
     // Atom representing other atom that is not rendered.
-    internal record PhantomAtom : Atom, IRow
+    internal sealed record PhantomAtom : Atom, IRow
     {
         private readonly bool useWidth;
         private readonly bool useHeight;

@@ -10,7 +10,7 @@ using SurroundingGap = System.Tuple<double, double>;
 namespace XamlMath.Atoms
 {
     /// <summary>An atom representing a tabular arrangement of atoms.</summary>
-    internal record MatrixAtom : Atom
+    internal sealed record MatrixAtom : Atom
     {
         /// <summary>Used for grouping of align statements into several columns.</summary>
         /// <remarks>

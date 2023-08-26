@@ -4,7 +4,7 @@ using XamlMath.Rendering;
 namespace XamlMath.Atoms;
 
 /// <summary>Atom specifying graphical style.</summary>
-internal record StyledAtom : Atom, IRow
+internal sealed record StyledAtom : Atom, IRow
 {
     public StyledAtom(
         SourceSpan? source,
