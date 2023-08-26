@@ -3,7 +3,7 @@ using XamlMath.Atoms;
 
 namespace XamlMath.Parsers.Matrices
 {
-    internal class MatrixInternalEnvironment : NonRecursiveEnvironment
+    internal sealed class MatrixInternalEnvironment : NonRecursiveEnvironment
     {
         private static IReadOnlyDictionary<string, ICommandParser> GetCommands(List<List<Atom>> rows)
         {

@@ -4,7 +4,7 @@ using XamlMath.Atoms;
 
 namespace XamlMath.Parsers.Matrices
 {
-    internal class NextRowCommand : ICommandParser
+    internal sealed class NextRowCommand : ICommandParser
     {
         private readonly List<List<Atom>> _rows;
 
