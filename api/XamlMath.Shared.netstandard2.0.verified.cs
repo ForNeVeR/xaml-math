@@ -25,7 +25,7 @@ namespace XamlMath
         public double Size { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute] set { } }
         public XamlMath.CharFont GetCharacterFont() { throw null; }
     }
-    public partial class DelimiterMappingNotFoundException : System.Exception
+    public sealed partial class DelimiterMappingNotFoundException : System.Exception
     {
         internal DelimiterMappingNotFoundException() { }
     }
@@ -37,7 +37,7 @@ namespace XamlMath
         public XamlMath.CharInfo? Repeat { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
         public XamlMath.CharInfo? Top { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
     }
-    public partial class FormulaNotFoundException : System.Exception
+    public sealed partial class FormulaNotFoundException : System.Exception
     {
         internal FormulaNotFoundException() { }
     }
@@ -63,11 +63,11 @@ namespace XamlMath
         public XamlMath.SourceSpan Segment(int start, int length) { throw null; }
         public override string ToString() { throw null; }
     }
-    public partial class SymbolMappingNotFoundException : System.Exception
+    public sealed partial class SymbolMappingNotFoundException : System.Exception
     {
         internal SymbolMappingNotFoundException() { }
     }
-    public partial class SymbolNotFoundException : System.Exception
+    public sealed partial class SymbolNotFoundException : System.Exception
     {
         internal SymbolNotFoundException() { }
     }
