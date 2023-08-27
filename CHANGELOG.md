@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [Unreleased] (2.1.1)
 ### Changed
 - The exception classes are now `sealed` (should not break anything, since there never was any sense in extending them in the user code).
+- Avalonia: `AvaloniaMathFontProvider::Instance` is now read-only.
 
 ## [2.1.0] - 2023-07-15
 ### Changed

@@ -34,7 +34,7 @@ namespace AvaloniaMath.Fonts
     public sealed partial class AvaloniaMathFontProvider : XamlMath.Fonts.IFontProvider
     {
         internal AvaloniaMathFontProvider() { }
-        public static AvaloniaMath.Fonts.AvaloniaMathFontProvider Instance;
+        public static readonly AvaloniaMath.Fonts.AvaloniaMathFontProvider Instance;
         public XamlMath.Fonts.IFontTypeface ReadFontFile(string fontFileName) { throw null; }
     }
 }
