@@ -3,7 +3,7 @@ using XamlMath.Boxes;
 namespace XamlMath.Atoms
 {
     // Atom representing other atom with custom left and right types.
-    internal record TypedAtom : Atom
+    internal sealed record TypedAtom : Atom
     {
         public TypedAtom(SourceSpan? source, Atom? atom, TexAtomType leftType, TexAtomType rightType)
             : base(source)

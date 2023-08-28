@@ -3,7 +3,7 @@ using XamlMath.Rendering;
 namespace XamlMath.Boxes
 {
     /// <summary>Box representing horizontal line.</summary>
-    internal class HorizontalRule : Box
+    internal sealed class HorizontalRule : Box
     {
         public HorizontalRule(TexEnvironment environment, double thickness, double width, double shift)
         {

@@ -3,7 +3,7 @@ using XamlMath.Boxes;
 namespace XamlMath.Atoms
 {
     // Atom representing fraction, with or without separation line.
-    internal record FractionAtom : Atom
+    internal sealed record FractionAtom : Atom
     {
         private static TexAlignment CheckAlignment(TexAlignment alignment)
         {
@@ -71,7 +71,7 @@ namespace XamlMath.Atoms
         {
         }
 
-        protected FractionAtom(
+        private FractionAtom(
             SourceSpan? source,
             Atom? numerator,
             Atom? denominator,

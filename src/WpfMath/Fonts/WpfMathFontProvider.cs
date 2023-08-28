@@ -11,7 +11,7 @@ internal sealed class WpfMathFontProvider : IFontProvider
 {
     private WpfMathFontProvider() {}
 
-    public static WpfMathFontProvider Instance = new();
+    public static readonly WpfMathFontProvider Instance = new();
 
     static WpfMathFontProvider()
     {

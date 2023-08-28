@@ -4,7 +4,7 @@ using XamlMath.Boxes;
 namespace XamlMath.Atoms
 {
     // Atom representing whitespace.
-    internal record SpaceAtom : Atom
+    internal sealed record SpaceAtom : Atom
     {
         // Collection of unit conversion functions.
         private static readonly UnitConversion[] unitConversions = new UnitConversion[]

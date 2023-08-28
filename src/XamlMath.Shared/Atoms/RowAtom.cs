@@ -7,7 +7,7 @@ using XamlMath.Boxes;
 namespace XamlMath.Atoms
 {
     // Atom representing horizontal row of other atoms, separated by glue.
-    internal record RowAtom : Atom, IRow
+    internal sealed record RowAtom : Atom, IRow
     {
         // Set of atom types that make previous atom of BinaryOperator type change to Ordinary type.
         private static readonly BitArray binaryOperatorChangeSet;

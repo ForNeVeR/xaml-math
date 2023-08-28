@@ -4,7 +4,7 @@ using XamlMath.Rendering.Transformations;
 namespace XamlMath.Boxes
 {
     // Box representing other box with delimiter and script box over or under it.
-    internal class OverUnderBox : Box
+    internal sealed class OverUnderBox : Box
     {
         public OverUnderBox(Box baseBox, Box delimiterBox, Box? scriptBox, double kern, bool over)
             : base()

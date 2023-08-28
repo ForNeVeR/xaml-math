@@ -3,7 +3,7 @@ using XamlMath.Boxes;
 namespace XamlMath.Atoms
 {
     // Atom representing other atom that is underlined.
-    internal record UnderlinedAtom : Atom
+    internal sealed record UnderlinedAtom : Atom
     {
         public UnderlinedAtom(SourceSpan? source, Atom? baseAtom)
             : base(source)

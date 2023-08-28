@@ -3,7 +3,7 @@ using XamlMath.Boxes;
 namespace XamlMath.Atoms
 {
     // Atom representing other atom with horizontal rule above it.
-    internal record OverlinedAtom : Atom
+    internal sealed record OverlinedAtom : Atom
     {
         public OverlinedAtom(SourceSpan? source, Atom? baseAtom)
             : base(source)

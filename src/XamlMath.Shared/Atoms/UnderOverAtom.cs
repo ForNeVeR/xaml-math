@@ -7,7 +7,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace XamlMath.Atoms
 {
     // Atom representing other atom with atoms optionally over and under it.
-    internal record UnderOverAtom : Atom
+    internal sealed record UnderOverAtom : Atom
     {
 #if !NET462 && !NETSTANDARD2_0
         [return: NotNullIfNotNull("box")]

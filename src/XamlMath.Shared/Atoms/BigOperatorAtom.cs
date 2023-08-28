@@ -5,7 +5,7 @@ namespace XamlMath.Atoms
 {
     /// <summary>Atom representing big operator with optional limits.</summary>
     /// <param name="UseVerticalLimits">True if limits should be drawn over and under the base atom; false if they should be drawn as scripts.</param>
-    internal record BigOperatorAtom(
+    internal sealed record BigOperatorAtom(
         SourceSpan? Source,
         Atom? BaseAtom,
         Atom? LowerLimitAtom,

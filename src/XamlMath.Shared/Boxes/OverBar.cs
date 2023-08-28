@@ -1,7 +1,7 @@
 namespace XamlMath.Boxes
 {
     // Box representing other box with horizontal rule above it.
-    internal class OverBar : VerticalBox
+    internal sealed class OverBar : VerticalBox
     {
         public OverBar(TexEnvironment environment, Box box, double kern, double thickness)
             : base()
