@@ -19,13 +19,13 @@
         <AvaloniaResource Include="Assets\*" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Avalonia.Desktop" Version="11.0.0" />
-        <PackageReference Include="Avalonia.Diagnostics" Version="11.0.0" Condition=" '$(Configuration)' == 'Debug' " />
-        <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.0" />
-        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.0" />
+        <PackageReference Include="Avalonia.Desktop" />
+        <PackageReference Include="Avalonia.Diagnostics" Condition=" '$(Configuration)' == 'Debug' " />
+        <PackageReference Include="Avalonia.ReactiveUI" />
+        <PackageReference Include="Avalonia.Themes.Fluent" />
     </ItemGroup>
     <ItemGroup Condition=" '$(TargetFrameworkIdentifier)' == '.NETFramework' ">
-        <PackageReference Include="Avalonia.Direct2D1" Version="11.0.0" />
+        <PackageReference Include="Avalonia.Direct2D1" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\AvaloniaMath\AvaloniaMath.csproj" />

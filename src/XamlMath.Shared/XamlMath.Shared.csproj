@@ -30,6 +30,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="ChangelogAutomation.MSBuild" Version="2.0.0" PrivateAssets="All" />
+        <PackageReference Include="ChangelogAutomation.MSBuild" PrivateAssets="All" />
     </ItemGroup>
 </Project>

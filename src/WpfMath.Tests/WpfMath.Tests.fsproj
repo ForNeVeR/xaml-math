@@ -5,24 +5,29 @@
         <UseWpf>true</UseWpf>
         <Deterministic>false</Deterministic>
         <EnableWindowsTargeting>true</EnableWindowsTargeting>
+        <LangVersion>preview</LangVersion>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="ApprovalTests" Version="4.2.2" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.1" />
-        <PackageReference Include="Foq" Version="1.8.0" />
-        <PackageReference Include="FSharp.Core.Fluent-4.0" Version="1.0.0.6" />
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-        <PackageReference Include="xunit" Version="2.4.1" />
-        <PackageReference Include="xunit.abstractions" Version="2.0.3" />
-        <PackageReference Include="xunit.assert" Version="2.4.1" />
-        <PackageReference Include="xunit.core" Version="2.4.1" />
-        <PackageReference Include="xunit.extensibility.core" Version="2.4.1" />
-        <PackageReference Include="xunit.extensibility.execution" Version="2.4.1" />
-        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
+        <PackageReference Include="ApprovalTests" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" />
+        <PackageReference Include="Foq" />
+        <PackageReference Include="FSharp.Core" />
+        <PackageReference Include="FSharp.Core.Fluent-4.0" />
+        <PackageReference Include="Newtonsoft.Json" />
+        <PackageReference Include="xunit" />
+        <PackageReference Include="xunit.abstractions" />
+        <PackageReference Include="xunit.assert" />
+        <PackageReference Include="xunit.core" />
+        <PackageReference Include="xunit.extensibility.core" />
+        <PackageReference Include="xunit.extensibility.execution" />
+        <PackageReference Include="xunit.runner.visualstudio">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <ProjectReference Include="../WpfMath/WpfMath.csproj" />
+    </ItemGroup>
+    <ItemGroup Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net470'))">
+        <PackageReference Include="System.ValueTuple" />
     </ItemGroup>
     <ItemGroup>
         <Compile Include="ApprovalTestUtils.fs" />
@@ -46,4 +51,5 @@
         <Compile Include="WpfBrushTests.fs" />
         <None Include="TestResults/*.txt" />
     </ItemGroup>
+
 </Project>

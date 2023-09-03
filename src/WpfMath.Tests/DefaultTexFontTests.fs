@@ -13,7 +13,7 @@ type DefaultTexFontTests() =
 
     [<Fact>]
     member _.``GetCharInfo(char, string, TexStyle) returns a CharInfo for existing character``() =
-        Assert.NotNull <| font.GetCharInfo('x', "text", TexStyle.Text)
+        Assert.NotNull(font.GetCharInfo('x', "text", TexStyle.Text))
 
     [<Fact>]
     member _.``GetCharInfo(char, string, TexStyle) throws a TextStyleMappingNotFoundException for unknown text style``() =
@@ -21,7 +21,7 @@ type DefaultTexFontTests() =
 
     [<Fact>]
     member _.``GetCharInfo(string, TexStyle) returns a CharInfo for existing symbol``() =
-        Assert.NotNull <| font.GetCharInfo("sqrt", TexStyle.Text)
+        Assert.NotNull(font.GetCharInfo("sqrt", TexStyle.Text))
 
     [<Fact>]
     member _.``GetCharInfo(string, TexStyle) throws a SymbolMappingNotFoundException for unknown symbol``() =
@@ -30,7 +30,7 @@ type DefaultTexFontTests() =
     [<Fact>]
     member _.``GetCharInfo(CharFont, TexStyle) returns a CharInfo for existing symbol``() =
         let char = CharFont('x', 1)
-        Assert.NotNull <| font.GetCharInfo(char, TexStyle.Text)
+        Assert.NotNull(font.GetCharInfo(char, TexStyle.Text))
 
     [<Fact>]
     member _.``GetCharInfo(CharFont, TexStyle) throws a TexCharacterMappingNotFoundException for unknown character``() =

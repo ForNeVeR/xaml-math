@@ -15,22 +15,22 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Resource Include="..\..\fonts\*.ttf" LinkBase="Fonts"/>
+        <Resource Include="..\..\fonts\*.ttf" LinkBase="Fonts" />
         <None Include="..\..\fonts\LICENSES.md" Pack="true" PackagePath="\FONT-LICENSES.md" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
-        <PackageReference Include="Nullable" Version="1.2.1" PrivateAssets="All"/>
-        <PackageReference Include="ChangelogAutomation.MSBuild" Version="2.0.0" PrivateAssets="All"/>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
+        <PackageReference Include="Nullable" PrivateAssets="All" />
+        <PackageReference Include="ChangelogAutomation.MSBuild" PrivateAssets="All" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\XamlMath.Shared\XamlMath.Shared.csproj"/>
+        <ProjectReference Include="..\XamlMath.Shared\XamlMath.Shared.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <InternalsVisibleTo Include="$(AssemblyName).Tests"/>
+        <InternalsVisibleTo Include="$(AssemblyName).Tests" />
     </ItemGroup>
 
 </Project>

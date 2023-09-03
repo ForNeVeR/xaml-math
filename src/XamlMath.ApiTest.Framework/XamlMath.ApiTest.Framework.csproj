@@ -8,7 +8,7 @@
     </PropertyGroup>
     
     <ItemGroup>
-        <PackageReference Include="Verify.Xunit" Version="19.7.1" />
+        <PackageReference Include="Verify.Xunit" />
     </ItemGroup>
 
 </Project>

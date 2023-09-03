@@ -1,0 +1,38 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>false</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="ApprovalTests" Version="4.2.2" />
+    <PackageVersion Include="Avalonia" Version="[11.0.0,12.0.0)" />
+    <PackageVersion Include="Avalonia.Desktop" Version="11.0.0" />
+    <PackageVersion Include="Avalonia.Diagnostics" Version="11.0.0" />
+    <PackageVersion Include="Avalonia.ReactiveUI" Version="11.0.0" />
+    <PackageVersion Include="Avalonia.Themes.Fluent" Version="11.0.0" />
+    <PackageVersion Include="ChangelogAutomation.MSBuild" Version="2.0.0" />
+    <PackageVersion Include="coverlet.collector" Version="3.1.2" />
+    <PackageVersion Include="Foq" Version="1.8.0" />
+    <PackageVersion Include="FSharp.Core" Version="$(FSCorePackageVersion)" />
+    <PackageVersion Include="FSharp.Core.Fluent-4.0" Version="1.0.0.6" />
+    <PackageVersion Include="Microsoft.DotNet.GenAPI" Version="7.0.0-beta.23060.4" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.4.1" />
+    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="1.0.0" />
+    <PackageVersion Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageVersion Include="Nullable" Version="1.2.1" />
+    <PackageVersion Include="System.Reactive" Version="6.0.0" />
+    <PackageVersion Include="Verify.Xunit" Version="21.0.0" />
+    <PackageVersion Include="xunit" Version="2.5.0" />
+    <PackageVersion Include="xunit.abstractions" Version="2.0.3" />
+    <PackageVersion Include="xunit.assert" Version="2.5.0" />
+    <PackageVersion Include="xunit.core" Version="2.5.0" />
+    <PackageVersion Include="xunit.extensibility.core" Version="2.5.0" />
+    <PackageVersion Include="xunit.extensibility.execution" Version="2.5.0" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="2.5.0" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFrameworkIdentifier)' == '.NETFramework' ">
+    <PackageVersion Include="Avalonia.Direct2D1" Version="11.0.0" />
+    <PackageVersion Include="System.ValueTuple" Version="4.4.0" />
+  </ItemGroup>
+</Project>
