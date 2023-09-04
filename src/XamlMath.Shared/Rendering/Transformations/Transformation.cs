@@ -1,44 +1,43 @@
-namespace XamlMath.Rendering.Transformations
+namespace XamlMath.Rendering.Transformations;
+
+/// <summary>Geometrical transformation.</summary>
+public abstract class Transformation
 {
-    /// <summary>Geometrical transformation.</summary>
-    public abstract class Transformation
+    private Transformation() {}
+
+    /// <summary>Kind of a transformation.</summary>
+    public abstract TransformationKind Kind { get; }
+
+    /// <summary>Scale of a transformation.</summary>
+    /// <param name="scale">Scale coefficient.</param>
+    /// <returns></returns>
+    public abstract Transformation Scale(double scale);
+
+    public class Rotate : Transformation
     {
-        private Transformation() {}
+        public override TransformationKind Kind => TransformationKind.Rotate;
 
-        /// <summary>Kind of a transformation.</summary>
-        public abstract TransformationKind Kind { get; }
+        public double RotationDegrees { get; }
 
-        /// <summary>Scale of a transformation.</summary>
-        /// <param name="scale">Scale coefficient.</param>
-        /// <returns></returns>
-        public abstract Transformation Scale(double scale);
+        public Rotate(double rotationDegrees) =>
+            RotationDegrees = rotationDegrees;
 
-        public class Rotate : Transformation
+        public override Transformation Scale(double scale) => this;
+    }
+
+    public class Translate : Transformation
+    {
+        public override TransformationKind Kind => TransformationKind.Translate;
+
+        public double X { get; }
+        public double Y { get; }
+
+        public Translate(double x, double y)
         {
-            public override TransformationKind Kind => TransformationKind.Rotate;
-
-            public double RotationDegrees { get; }
-
-            public Rotate(double rotationDegrees) =>
-                RotationDegrees = rotationDegrees;
-
-            public override Transformation Scale(double scale) => this;
+            X = x;
+            Y = y;
         }
 
-        public class Translate : Transformation
-        {
-            public override TransformationKind Kind => TransformationKind.Translate;
-
-            public double X { get; }
-            public double Y { get; }
-
-            public Translate(double x, double y)
-            {
-                X = x;
-                Y = y;
-            }
-
-            public override Transformation Scale(double scale) => new Translate(X * scale, Y * scale);
-        }
+        public override Transformation Scale(double scale) => new Translate(X * scale, Y * scale);
     }
 }

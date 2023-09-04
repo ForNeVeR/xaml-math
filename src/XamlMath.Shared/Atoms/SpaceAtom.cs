@@ -1,105 +1,104 @@
 using System;
 using XamlMath.Boxes;
 
-namespace XamlMath.Atoms
+namespace XamlMath.Atoms;
+
+// Atom representing whitespace.
+internal sealed record SpaceAtom : Atom
 {
-    // Atom representing whitespace.
-    internal sealed record SpaceAtom : Atom
+    // Collection of unit conversion functions.
+    private static readonly UnitConversion[] unitConversions = new UnitConversion[]
+            {
+                new UnitConversion(e => e.MathFont.GetXHeight(e.Style, e.LastFontId)),
+
+                new UnitConversion(e => e.MathFont.GetXHeight(e.Style, e.LastFontId)),
+
+                new UnitConversion(e => 1.0 / e.MathFont.Size),
+
+                new UnitConversion(e => TexFontUtilities.PixelsPerPoint / e.MathFont.Size),
+
+                new UnitConversion(e => (12 * TexFontUtilities.PixelsPerPoint) / e.MathFont.Size),
+
+                new UnitConversion(e =>
+                    {
+                        var texFont = e.MathFont;
+                        return texFont.GetQuad(texFont.GetMuFontId(), e.Style) / 18;
+                    }),
+            };
+
+    private delegate double UnitConversion(TexEnvironment environment);
+
+    public static void CheckUnit(TexUnit unit)
     {
-        // Collection of unit conversion functions.
-        private static readonly UnitConversion[] unitConversions = new UnitConversion[]
-                {
-                    new UnitConversion(e => e.MathFont.GetXHeight(e.Style, e.LastFontId)),
+        if ((int)unit < 0 || (int)unit >= unitConversions.Length)
+            throw new InvalidOperationException("No conversion for this unit exists.");
+    }
 
-                    new UnitConversion(e => e.MathFont.GetXHeight(e.Style, e.LastFontId)),
+    // True to represent hard space (actual space character).
+    private readonly bool isHardSpace;
 
-                    new UnitConversion(e => 1.0 / e.MathFont.Size),
+    private readonly double width;
+    private readonly double height;
+    private readonly double depth;
 
-                    new UnitConversion(e => TexFontUtilities.PixelsPerPoint / e.MathFont.Size),
+    private readonly TexUnit widthUnit;
+    private readonly TexUnit heightUnit;
+    private readonly TexUnit depthUnit;
 
-                    new UnitConversion(e => (12 * TexFontUtilities.PixelsPerPoint) / e.MathFont.Size),
+    public SpaceAtom(
+        SourceSpan? source,
+        TexUnit widthUnit,
+        double width,
+        TexUnit heightUnit,
+        double height,
+        TexUnit depthUnit,
+        double depth)
+        : base(source)
+    {
+        CheckUnit(widthUnit);
+        CheckUnit(heightUnit);
+        CheckUnit(depthUnit);
 
-                    new UnitConversion(e =>
-                        {
-                            var texFont = e.MathFont;
-                            return texFont.GetQuad(texFont.GetMuFontId(), e.Style) / 18;
-                        }),
-                };
+        this.isHardSpace = false;
+        this.widthUnit = widthUnit;
+        this.heightUnit = heightUnit;
+        this.depthUnit = depthUnit;
+        this.width = width;
+        this.height = height;
+        this.depth = depth;
+    }
 
-        private delegate double UnitConversion(TexEnvironment environment);
+    public SpaceAtom(SourceSpan? source, TexUnit unit, double width, double height, double depth)
+        : base(source)
+    {
+        CheckUnit(unit);
 
-        public static void CheckUnit(TexUnit unit)
-        {
-            if ((int)unit < 0 || (int)unit >= unitConversions.Length)
-                throw new InvalidOperationException("No conversion for this unit exists.");
-        }
+        this.isHardSpace = false;
+        this.widthUnit = unit;
+        this.heightUnit = unit;
+        this.depthUnit = unit;
+        this.width = width;
+        this.height = height;
+        this.depth = depth;
+    }
 
-        // True to represent hard space (actual space character).
-        private readonly bool isHardSpace;
+    public SpaceAtom(SourceSpan? source)
+        : base(source)
+    {
+        this.isHardSpace = true;
+    }
 
-        private readonly double width;
-        private readonly double height;
-        private readonly double depth;
+    protected override Box CreateBoxCore(TexEnvironment environment)
+    {
+        if (this.isHardSpace)
+            return new StrutBox(environment.MathFont.GetSpace(environment.Style), 0, 0, 0);
+        else
+            return new StrutBox(this.width * this.GetConversionFactor(this.widthUnit, environment), this.height * this.GetConversionFactor(
+                this.heightUnit, environment), this.depth * this.GetConversionFactor(this.depthUnit, environment), 0);
+    }
 
-        private readonly TexUnit widthUnit;
-        private readonly TexUnit heightUnit;
-        private readonly TexUnit depthUnit;
-
-        public SpaceAtom(
-            SourceSpan? source,
-            TexUnit widthUnit,
-            double width,
-            TexUnit heightUnit,
-            double height,
-            TexUnit depthUnit,
-            double depth)
-            : base(source)
-        {
-            CheckUnit(widthUnit);
-            CheckUnit(heightUnit);
-            CheckUnit(depthUnit);
-
-            this.isHardSpace = false;
-            this.widthUnit = widthUnit;
-            this.heightUnit = heightUnit;
-            this.depthUnit = depthUnit;
-            this.width = width;
-            this.height = height;
-            this.depth = depth;
-        }
-
-        public SpaceAtom(SourceSpan? source, TexUnit unit, double width, double height, double depth)
-            : base(source)
-        {
-            CheckUnit(unit);
-
-            this.isHardSpace = false;
-            this.widthUnit = unit;
-            this.heightUnit = unit;
-            this.depthUnit = unit;
-            this.width = width;
-            this.height = height;
-            this.depth = depth;
-        }
-
-        public SpaceAtom(SourceSpan? source)
-            : base(source)
-        {
-            this.isHardSpace = true;
-        }
-
-        protected override Box CreateBoxCore(TexEnvironment environment)
-        {
-            if (this.isHardSpace)
-                return new StrutBox(environment.MathFont.GetSpace(environment.Style), 0, 0, 0);
-            else
-                return new StrutBox(this.width * this.GetConversionFactor(this.widthUnit, environment), this.height * this.GetConversionFactor(
-                    this.heightUnit, environment), this.depth * this.GetConversionFactor(this.depthUnit, environment), 0);
-        }
-
-        private double GetConversionFactor(TexUnit unit, TexEnvironment environment)
-        {
-            return unitConversions[(int)unit](environment);
-        }
+    private double GetConversionFactor(TexUnit unit, TexEnvironment environment)
+    {
+        return unitConversions[(int)unit](environment);
     }
 }
