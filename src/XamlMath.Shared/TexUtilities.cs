@@ -1,11 +1,10 @@
-namespace XamlMath
+namespace XamlMath;
+
+internal static class TexUtilities
 {
-    internal static class TexUtilities
-    {
-        public const string ResourcesDataDirectory = "XamlMath.Data.";
+    public const string ResourcesDataDirectory = "XamlMath.Data.";
 
-        public const double FloatPrecision = 0.0000001;
+    public const double FloatPrecision = 0.0000001;
 
-        public const string TextStyleName = "text";
-    }
+    public const string TextStyleName = "text";
 }
