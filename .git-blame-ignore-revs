@@ -3,3 +3,6 @@ f8349a7480dd0eb464d9accd9851a46f6382d890
 
 # File-scoped namespaces for files in subfolders of `XamlMath.Shared`
 2a20ad68fb508a75b3639cad4194b4c2a0a4fb53
+
+# File-scoped namespace for `GeometryElementRenderer`
+4d065eb3a38797c236f5bfa6527f97b0b5ac4aa3
