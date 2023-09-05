@@ -1,49 +1,50 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
-using System.Text;
 using System.Windows.Media;
 
 namespace WpfMath.Converters;
 
 public class SVGConverter
 {
-    private int m_nestedLevel = 0;
+    //private int m_nestedLevel = 0;
 
     public string ConvertGeometry(Geometry geometry)
     {
-        StringBuilder svgOutput = new StringBuilder();
-        if (geometry is GeometryGroup group)
-        {
-            AddGeometry(svgOutput, group);
-        }
-        return svgOutput.ToString();
+        if (geometry is not GeometryGroup group) return string.Empty;
+        return string.Join(string.Empty, AddGeometry(group));
     }
 
-    private void AddGeometry(StringBuilder svgString, GeometryGroup group)
+    private static IEnumerable<string> AddGeometry(GeometryGroup group)
     {
-        m_nestedLevel++;
+        //m_nestedLevel++;
         if (!group.Transform.Value.IsIdentity)
         {
-            svgString.AppendFormat(CultureInfo.InvariantCulture, "<g transform=\"matrix({0} {1} {2} {3} {4} {5})\">"
-                , group.Transform.Value.M11, group.Transform.Value.M12
-                , group.Transform.Value.M21, group.Transform.Value.M22, group.Transform.Value.OffsetX, group.Transform.Value.OffsetY);
+            yield return string.Format(
+                CultureInfo.InvariantCulture,
+                "<g transform=\"matrix({0} {1} {2} {3} {4} {5})\">",
+                group.Transform.Value.M11, group.Transform.Value.M12,
+                group.Transform.Value.M21, group.Transform.Value.M22,
+                group.Transform.Value.OffsetX,
+                group.Transform.Value.OffsetY
+            );
         }
         foreach (Geometry geometry in group.Children)
         {
             switch (geometry)
             {
                 case GeometryGroup childGroup:
-                    AddGeometry(svgString, childGroup);
+                    foreach (string str in AddGeometry(childGroup)) yield return str;
                     break;
                 case LineGeometry lineGeometry:
-                    AddGeometry(svgString, lineGeometry);
+                    foreach (string str in AddGeometry(lineGeometry)) yield return str;
                     break;
                 case PathGeometry path:
-                    AddGeometry(svgString, path);
+                    foreach (string str in AddGeometry(path)) yield return str;
                     break;
                 case RectangleGeometry rectangle:
-                    AddGeometry(svgString, rectangle);
+                    foreach (string str in AddGeometry(rectangle)) yield return str;
                     break;
                 default:
                     Debug.Assert(false);
@@ -52,14 +53,16 @@ public class SVGConverter
         }
         if (!group.Transform.Value.IsIdentity)
         {
-            svgString.AppendLine("</g>");
-            svgString.AppendLine(Environment.NewLine);
+            yield return "</g>";
+            yield return Environment.NewLine;
+            yield return Environment.NewLine;
+            yield return Environment.NewLine;
         }
 
-        m_nestedLevel--;
+        //m_nestedLevel--;
     }
 
-    private void AddGeometry(StringBuilder svgString, LineGeometry line)
+    private static IEnumerable<string> AddGeometry(LineGeometry line)
     {
         var x1 = line.StartPoint.X.ToString(CultureInfo.InvariantCulture);
         var y1 = line.StartPoint.Y.ToString(CultureInfo.InvariantCulture);
@@ -67,18 +70,19 @@ public class SVGConverter
         var x2 = line.EndPoint.X.ToString(CultureInfo.InvariantCulture);
         var y2 = line.EndPoint.Y.ToString(CultureInfo.InvariantCulture);
 
-        svgString.AppendLine(@$"<line x1=""{x1}"" y1=""{y1}"" x2=""{x2}"" y2=""{y2}"" style=""stroke:black;stroke-width:1"" />");
+        yield return @$"<line x1=""{x1}"" y1=""{y1}"" x2=""{x2}"" y2=""{y2}"" style=""stroke:black;stroke-width:1"" />";
+        yield return Environment.NewLine;
     }
 
-    private void AddGeometry(StringBuilder svgString, PathGeometry path)
+    private static IEnumerable<string> AddGeometry(PathGeometry path)
     {
-        svgString.Append("<path d=\"");
+        yield return "<path d=\"";
 
         foreach (PathFigure pf in path.Figures)
         {
-            svgString.Append("M ");
-            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", pf.StartPoint.X);
-            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", pf.StartPoint.Y);
+            yield return "M ";
+            yield return string.Format(CultureInfo.InvariantCulture, "{0} ", pf.StartPoint.X);
+            yield return string.Format(CultureInfo.InvariantCulture, "{0} ", pf.StartPoint.Y);
 
             foreach (PathSegment ps in pf.Segments)
             {
@@ -88,9 +92,9 @@ public class SVGConverter
                         {
                             for (int i = 0; i < plSeg.Points.Count; ++i)
                             {
-                                svgString.Append("L ");
-                                svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", plSeg.Points[i].X);
-                                svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", plSeg.Points[i].Y);
+                                yield return "L ";
+                                yield return string.Format(CultureInfo.InvariantCulture, "{0} ", plSeg.Points[i].X);
+                                yield return string.Format(CultureInfo.InvariantCulture, "{0} ", plSeg.Points[i].Y);
                             }
                         }
                         break;
@@ -98,48 +102,48 @@ public class SVGConverter
                         {
                             for (int i = 0; i < pbSeg.Points.Count; i += 3)
                             {
-                                svgString.Append("C ");
-                                svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", pbSeg.Points[i].X);
-                                svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", pbSeg.Points[i].Y);
+                                yield return "C ";
+                                yield return string.Format(CultureInfo.InvariantCulture, "{0} ", pbSeg.Points[i].X);
+                                yield return string.Format(CultureInfo.InvariantCulture, "{0} ", pbSeg.Points[i].Y);
 
-                                svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", pbSeg.Points[i + 1].X);
-                                svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", pbSeg.Points[i + 1].Y);
+                                yield return string.Format(CultureInfo.InvariantCulture, "{0} ", pbSeg.Points[i + 1].X);
+                                yield return string.Format(CultureInfo.InvariantCulture, "{0} ", pbSeg.Points[i + 1].Y);
 
-                                svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", pbSeg.Points[i + 2].X);
-                                svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", pbSeg.Points[i + 2].Y);
+                                yield return string.Format(CultureInfo.InvariantCulture, "{0} ", pbSeg.Points[i + 2].X);
+                                yield return string.Format(CultureInfo.InvariantCulture, "{0} ", pbSeg.Points[i + 2].Y);
                             }
                         }
                         break;
                     case LineSegment lSeg:
                         {
-                            svgString.Append("L ");
-                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", lSeg.Point.X);
-                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", lSeg.Point.Y);
+                            yield return "L ";
+                            yield return string.Format(CultureInfo.InvariantCulture, "{0} ", lSeg.Point.X);
+                            yield return string.Format(CultureInfo.InvariantCulture, "{0} ", lSeg.Point.Y);
                         }
                         break;
                     case BezierSegment bSeg:
                         {
-                            svgString.Append("C ");
-                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", bSeg.Point1.X);
-                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", bSeg.Point1.Y);
+                            yield return "C ";
+                            yield return string.Format(CultureInfo.InvariantCulture, "{0} ", bSeg.Point1.X);
+                            yield return string.Format(CultureInfo.InvariantCulture, "{0} ", bSeg.Point1.Y);
 
-                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", bSeg.Point2.X);
-                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", bSeg.Point2.Y);
+                            yield return string.Format(CultureInfo.InvariantCulture, "{0} ", bSeg.Point2.X);
+                            yield return string.Format(CultureInfo.InvariantCulture, "{0} ", bSeg.Point2.Y);
 
-                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", bSeg.Point3.X);
-                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", bSeg.Point3.Y);
+                            yield return string.Format(CultureInfo.InvariantCulture, "{0} ", bSeg.Point3.X);
+                            yield return string.Format(CultureInfo.InvariantCulture, "{0} ", bSeg.Point3.Y);
                         }
                         break;
                     case QuadraticBezierSegment qbSeg:
                         {
                             //Untested: BuildGeometry converts quadratic bezier to cubic
 
-                            svgString.Append("Q ");
-                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", qbSeg.Point1.X);
-                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", qbSeg.Point1.Y);
+                            yield return "Q ";
+                            yield return string.Format(CultureInfo.InvariantCulture, "{0} ", qbSeg.Point1.X);
+                            yield return string.Format(CultureInfo.InvariantCulture, "{0} ", qbSeg.Point1.Y);
 
-                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", qbSeg.Point2.X);
-                            svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", qbSeg.Point2.Y);
+                            yield return string.Format(CultureInfo.InvariantCulture, "{0} ", qbSeg.Point2.X);
+                            yield return string.Format(CultureInfo.InvariantCulture, "{0} ", qbSeg.Point2.Y);
                         }
                         break;
                     case PolyQuadraticBezierSegment pqbSeg:
@@ -147,12 +151,12 @@ public class SVGConverter
                             //Untested: BuildGeometry converts quadratic bezier to cubic
                             for (int i = 0; i < pqbSeg.Points.Count; i += 2)
                             {
-                                svgString.Append("Q ");
-                                svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", pqbSeg.Points[i].X);
-                                svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", pqbSeg.Points[i].Y);
+                                yield return "Q ";
+                                yield return string.Format(CultureInfo.InvariantCulture, "{0} ", pqbSeg.Points[i].X);
+                                yield return string.Format(CultureInfo.InvariantCulture, "{0} ", pqbSeg.Points[i].Y);
 
-                                svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", pqbSeg.Points[i + 1].X);
-                                svgString.AppendFormat(CultureInfo.InvariantCulture, "{0} ", pqbSeg.Points[i + 1].Y);
+                                yield return string.Format(CultureInfo.InvariantCulture, "{0} ", pqbSeg.Points[i + 1].X);
+                                yield return string.Format(CultureInfo.InvariantCulture, "{0} ", pqbSeg.Points[i + 1].Y);
                             }
                         }
                         break;
@@ -165,16 +169,22 @@ public class SVGConverter
             }
 
             if (pf.IsClosed)
-                svgString.Append("Z ");
+                yield return "Z ";
         }
-        svgString.Append("\" fill = \"black\" />");
-        svgString.Append(Environment.NewLine);
+        yield return "\" fill = \"black\" />";
+        yield return Environment.NewLine;
     }
 
-    private void AddGeometry(StringBuilder svgString, RectangleGeometry rectangle)
+    private static IEnumerable<string> AddGeometry(RectangleGeometry rectangle)
     {
-        svgString.AppendFormat(CultureInfo.InvariantCulture, "<rect x=\"{0}\" y=\"{1}\" width=\"{2}\" height=\"{3}\" />"
-            , rectangle.Rect.Left, rectangle.Rect.Top, rectangle.Rect.Width, rectangle.Rect.Height);
-        svgString.Append(Environment.NewLine);
+        yield return string.Format(
+            CultureInfo.InvariantCulture,
+            "<rect x=\"{0}\" y=\"{1}\" width=\"{2}\" height=\"{3}\" />",
+            rectangle.Rect.Left,
+            rectangle.Rect.Top,
+            rectangle.Rect.Width,
+            rectangle.Rect.Height
+        );
+        yield return Environment.NewLine;
     }
 }
