@@ -8,8 +8,6 @@ namespace WpfMath.Converters;
 
 public class SVGConverter
 {
-    //private int m_nestedLevel = 0;
-
     public string ConvertGeometry(Geometry geometry)
     {
         if (geometry is not GeometryGroup group) return string.Empty;
@@ -18,7 +16,6 @@ public class SVGConverter
 
     private static IEnumerable<string> AddGeometry(GeometryGroup group)
     {
-        //m_nestedLevel++;
         if (!group.Transform.Value.IsIdentity)
         {
             yield return string.Format(
@@ -58,8 +55,6 @@ public class SVGConverter
             yield return Environment.NewLine;
             yield return Environment.NewLine;
         }
-
-        //m_nestedLevel--;
     }
 
     private static IEnumerable<string> AddGeometry(LineGeometry line)
