@@ -172,18 +172,18 @@ internal sealed class DefaultTexFontParser
 
     public IReadOnlyDictionary<string, object> GetGeneralSettings()
     {
-        var result = new Dictionary<string, object>();
-
         var generalSettings = rootElement.Element("GeneralSettings");
+
         if (generalSettings == null)
             throw new InvalidOperationException("Cannot find GeneralSettings element.");
 
-        result.Add("mufontid", generalSettings.AttributeInt32Value("mufontid"));
-        result.Add("spacefontid", generalSettings.AttributeInt32Value("spacefontid"));
-        result.Add("scriptfactor", generalSettings.AttributeDoubleValue("scriptfactor"));
-        result.Add("scriptscriptfactor", generalSettings.AttributeDoubleValue("scriptscriptfactor"));
-
-        return result;
+        return new Dictionary<string, object>
+        {
+            ["mufontid"] = generalSettings.AttributeInt32Value("mufontid"),
+            ["spacefontid"] = generalSettings.AttributeInt32Value("spacefontid"),
+            ["scriptfactor"] = generalSettings.AttributeDoubleValue("scriptfactor"),
+            ["scriptscriptfactor"] = generalSettings.AttributeDoubleValue("scriptscriptfactor"),
+        };
     }
 
     public IReadOnlyDictionary<string, IReadOnlyList<CharFont>> GetTextStyleMappings()
