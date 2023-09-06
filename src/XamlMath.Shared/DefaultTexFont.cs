@@ -7,14 +7,14 @@ using XamlMath.Utils;
 namespace XamlMath;
 
 /// <summary>Default implementation of ITeXFont that reads all font information from XML file.</summary>
-internal class DefaultTexFont : ITeXFont
+internal sealed class DefaultTexFont : ITeXFont
 {
-    private readonly IDictionary<string, double> parameters;
-    private readonly IDictionary<string, object> generalSettings;
-    private readonly IDictionary<string, CharFont[]> textStyleMappings;
-    private readonly IDictionary<string, CharFont> symbolMappings;
-    internal readonly IList<string> defaultTextStyleMappings;
-    private readonly IList<TexFontInfo> fontInfoList;
+    private readonly IReadOnlyDictionary<string, double> parameters;
+    private readonly IReadOnlyDictionary<string, object> generalSettings;
+    private readonly IReadOnlyDictionary<string, IReadOnlyList<CharFont>> textStyleMappings;
+    private readonly IReadOnlyDictionary<string, CharFont> symbolMappings;
+    internal readonly IReadOnlyList<string> defaultTextStyleMappings;
+    private readonly IReadOnlyList<TexFontInfo> fontInfoList;
 
     private double GetParameter(string name)
     {
@@ -121,7 +121,7 @@ internal class DefaultTexFont : ITeXFont
     public Result<CharInfo> GetDefaultCharInfo(char character, TexStyle style) =>
         this.GetCharInfo(character, GetDefaultTextStyleMapping(character), style);
 
-    private Result<CharInfo> GetCharInfo(char character, CharFont[] charFont, TexStyle style)
+    private Result<CharInfo> GetCharInfo(char character, IReadOnlyList<CharFont> charFont, TexStyle style)
     {
         TexCharKind charKind;
         int charIndexOffset;

@@ -9,42 +9,36 @@ using XamlMath.Utils;
 namespace XamlMath;
 
 // Parses information for DefaultTeXFont settings from XML file.
-internal class DefaultTexFontParser
+internal sealed class DefaultTexFontParser
 {
     private static readonly string resourceName = TexUtilities.ResourcesDataDirectory + "DefaultTexFont.xml";
 
     private const int fontIdCount = 5;
 
-    private static readonly IDictionary<string, int> rangeTypeMappings;
-    private static readonly IDictionary<string, ICharChildParser> charChildParsers;
+    private static readonly IReadOnlyDictionary<string, int> rangeTypeMappings;
+    private static readonly IReadOnlyDictionary<string, ICharChildParser> charChildParsers;
 
     private readonly IFontProvider _fontProvider;
 
     static DefaultTexFontParser()
     {
-        rangeTypeMappings = new Dictionary<string, int>();
-        charChildParsers = new Dictionary<string, ICharChildParser>();
+        rangeTypeMappings = new Dictionary<string, int>
+        {
+            ["numbers"] = (int)TexCharKind.Numbers,
+            ["capitals"] = (int)TexCharKind.Capitals,
+            ["small"] = (int)TexCharKind.Small,
+        };
 
-        SetRangeTypeMappings();
-        SetCharChildParsers();
+        charChildParsers = new Dictionary<string, ICharChildParser>
+        {
+            ["Kern"] = new KernParser(),
+            ["Lig"] = new LigParser(),
+            ["NextLarger"] = new NextLargerParser(),
+            ["Extension"] = new ExtensionParser(),
+        };
     }
 
-    private static void SetRangeTypeMappings()
-    {
-        rangeTypeMappings.Add("numbers", (int)TexCharKind.Numbers);
-        rangeTypeMappings.Add("capitals", (int)TexCharKind.Capitals);
-        rangeTypeMappings.Add("small", (int)TexCharKind.Small);
-    }
-
-    private static void SetCharChildParsers()
-    {
-        charChildParsers.Add("Kern", new KernParser());
-        charChildParsers.Add("Lig", new LigParser());
-        charChildParsers.Add("NextLarger", new NextLargerParser());
-        charChildParsers.Add("Extension", new ExtensionParser());
-    }
-
-    private readonly IDictionary<string, CharFont[]> parsedTextStyles;
+    private readonly IReadOnlyDictionary<string, IReadOnlyList<CharFont>> parsedTextStyles;
 
     private readonly XElement rootElement;
 
@@ -56,12 +50,10 @@ internal class DefaultTexFontParser
         var doc = XDocument.Load(resource);
         this.rootElement = doc.Root;
 
-        this.parsedTextStyles = new Dictionary<string, CharFont[]>();
-
-        ParseTextStyleMappings();
+        this.parsedTextStyles = CreateParseTextStyleMappings(doc.Root);
     }
 
-    public TexFontInfo[] GetFontDescriptions()
+    public IReadOnlyList<TexFontInfo> GetFontDescriptions()
     {
         var result = new TexFontInfo[fontIdCount];
 
@@ -114,7 +106,7 @@ internal class DefaultTexFontParser
         }
     }
 
-    public IDictionary<string, CharFont> GetSymbolMappings()
+    public IReadOnlyDictionary<string, CharFont> GetSymbolMappings()
     {
         var result = new Dictionary<string, CharFont>();
 
@@ -137,7 +129,7 @@ internal class DefaultTexFontParser
         return result;
     }
 
-    public IList<string> GetDefaultTextStyleMappings()
+    public IReadOnlyList<string> GetDefaultTextStyleMappings()
     {
         var result = new string[3];
 
@@ -162,7 +154,7 @@ internal class DefaultTexFontParser
         return result;
     }
 
-    public IDictionary<string, double> GetParameters()
+    public IReadOnlyDictionary<string, double> GetParameters()
     {
         var result = new Dictionary<string, double>();
 
@@ -178,7 +170,7 @@ internal class DefaultTexFontParser
         return result;
     }
 
-    public IDictionary<string, object> GetGeneralSettings()
+    public IReadOnlyDictionary<string, object> GetGeneralSettings()
     {
         var result = new Dictionary<string, object>();
 
@@ -194,17 +186,16 @@ internal class DefaultTexFontParser
         return result;
     }
 
-    public IDictionary<string, CharFont[]> GetTextStyleMappings()
+    public IReadOnlyDictionary<string, IReadOnlyList<CharFont>> GetTextStyleMappings()
     {
         return parsedTextStyles;
     }
 
-    private void ParseTextStyleMappings()
+    private static IReadOnlyDictionary<string, IReadOnlyList<CharFont>> CreateParseTextStyleMappings(XElement root)
     {
-        var textStyleMappings = rootElement.Element("TextStyleMappings");
-        if (textStyleMappings == null)
-            throw new InvalidOperationException("Cannot find TextStyleMappings element.");
-
+        var result = new Dictionary<string, IReadOnlyList<CharFont>>();
+        var textStyleMappings = root.Element("TextStyleMappings");
+        if (textStyleMappings == null) throw new InvalidOperationException("Cannot find TextStyleMappings element.");
         foreach (var mappingElement in textStyleMappings.Elements("TextStyleMapping"))
         {
             var textStyleName = mappingElement.AttributeValue("name");
@@ -218,8 +209,9 @@ internal class DefaultTexFontParser
 
                 charFonts[(int)codeMapping] = new CharFont((char)character, fontId);
             }
-            this.parsedTextStyles.Add(textStyleName, charFonts);
+            result.Add(textStyleName, charFonts);
         }
+        return result;
     }
 
     public class ExtensionParser : ICharChildParser
