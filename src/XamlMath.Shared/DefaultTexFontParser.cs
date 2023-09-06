@@ -216,10 +216,6 @@ internal sealed class DefaultTexFontParser
 
     public sealed class ExtensionParser : ICharChildParser
     {
-        public ExtensionParser()
-        {
-        }
-
         public void Parse(XElement element, char character, TexFontInfo fontInfo)
         {
             var extensionChars = new int[4];
@@ -237,10 +233,6 @@ internal sealed class DefaultTexFontParser
 
     public sealed class KernParser : ICharChildParser
     {
-        public KernParser()
-        {
-        }
-
         public void Parse(XElement element, char character, TexFontInfo fontInfo)
         {
             fontInfo.AddKern(character, (char)element.AttributeInt32Value("code"),
@@ -250,10 +242,6 @@ internal sealed class DefaultTexFontParser
 
     public sealed class LigParser : ICharChildParser
     {
-        public LigParser()
-        {
-        }
-
         public void Parse(XElement element, char character, TexFontInfo fontInfo)
         {
             fontInfo.AddLigature(character, (char)element.AttributeInt32Value("code"),
@@ -263,10 +251,6 @@ internal sealed class DefaultTexFontParser
 
     public sealed class NextLargerParser : ICharChildParser
     {
-        public NextLargerParser()
-        {
-        }
-
         public void Parse(XElement element, char character, TexFontInfo fontInfo)
         {
             fontInfo.SetNextLarger(character, (char)element.AttributeInt32Value("code"),
