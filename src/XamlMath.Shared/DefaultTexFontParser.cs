@@ -214,7 +214,7 @@ internal sealed class DefaultTexFontParser
         return result;
     }
 
-    public class ExtensionParser : ICharChildParser
+    public sealed class ExtensionParser : ICharChildParser
     {
         public ExtensionParser()
         {
@@ -235,7 +235,7 @@ internal sealed class DefaultTexFontParser
         }
     }
 
-    public class KernParser : ICharChildParser
+    public sealed class KernParser : ICharChildParser
     {
         public KernParser()
         {
@@ -248,7 +248,7 @@ internal sealed class DefaultTexFontParser
         }
     }
 
-    public class LigParser : ICharChildParser
+    public sealed class LigParser : ICharChildParser
     {
         public LigParser()
         {
@@ -261,7 +261,7 @@ internal sealed class DefaultTexFontParser
         }
     }
 
-    public class NextLargerParser : ICharChildParser
+    public sealed class NextLargerParser : ICharChildParser
     {
         public NextLargerParser()
         {
