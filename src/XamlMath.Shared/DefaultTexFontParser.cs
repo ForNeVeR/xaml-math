@@ -143,7 +143,6 @@ internal sealed class DefaultTexFontParser
             var codeMapping = rangeTypeMappings[code];
 
             var textStyleName = mappingElement.AttributeValue("textStyle");
-            var textStyleMapping = parsedTextStyles[textStyleName];
 
             var charFonts = parsedTextStyles[textStyleName];
             Debug.Assert(charFonts[codeMapping] != null);
