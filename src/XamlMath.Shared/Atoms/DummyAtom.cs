@@ -30,7 +30,7 @@ internal sealed record DummyAtom : Atom
     }
 
     public static DummyAtom CreateLigature(FixedCharAtom ligatureAtom) =>
-        new DummyAtom(TexAtomType.None, ligatureAtom, false);
+        new(TexAtomType.None, ligatureAtom, false);
 
     public Atom Atom { get; init; }
 

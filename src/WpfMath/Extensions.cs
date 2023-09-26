@@ -16,7 +16,7 @@ public static class Extensions
         var environment = WpfTeXEnvironment.Create(scale: scale, systemTextFontName: systemTextFontName);
         BitmapSource image = texForm.RenderToBitmap(environment, scale, x, y);
 
-        PngBitmapEncoder encoder = new PngBitmapEncoder();
+        PngBitmapEncoder encoder = new();
         encoder.Frames.Add(BitmapFrame.Create(image));
 
         using var ms = new MemoryStream();
