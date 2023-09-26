@@ -78,7 +78,7 @@ internal sealed class DefaultTexFontParser
                     ProcessCharElement(charElement, fontInfo);
 
                 if (result[fontId] != null)
-                    throw new InvalidOperationException(string.Format("Multiple entries for font with ID {0}.", fontId));
+                    throw new InvalidOperationException($"Multiple entries for font with ID {fontId}.");
                 result[fontId] = fontInfo;
             }
         }
@@ -143,7 +143,6 @@ internal sealed class DefaultTexFontParser
             var codeMapping = rangeTypeMappings[code];
 
             var textStyleName = mappingElement.AttributeValue("textStyle");
-            var textStyleMapping = parsedTextStyles[textStyleName];
 
             var charFonts = parsedTextStyles[textStyleName];
             Debug.Assert(charFonts[codeMapping] != null);
