@@ -24,7 +24,7 @@ internal sealed class WpfElementRenderer : IElementRenderer
     private readonly DrawingContext _targetContext;
     private readonly double _scale;
 
-    private readonly DrawingGroup _foregroundGroup = new DrawingGroup();
+    private readonly DrawingGroup _foregroundGroup = new();
     private readonly DrawingContext _foregroundContext;
 
     public WpfElementRenderer(DrawingContext targetContext, double scale)
@@ -107,10 +107,10 @@ internal sealed class WpfElementRenderer : IElementRenderer
         switch (transformation.Kind)
         {
             case TransformationKind.Translate:
-                var tt = (Transformation.Translate) transformation;
+                var tt = (Transformation.Translate)transformation;
                 return new TranslateTransform(tt.X, tt.Y);
             case TransformationKind.Rotate:
-                var rt = (Transformation.Rotate) transformation;
+                var rt = (Transformation.Rotate)transformation;
                 return new RotateTransform(rt.RotationDegrees);
             default:
                 throw new NotSupportedException($"Unknown {nameof(Transformation)} kind: {transformation.Kind}");
@@ -120,9 +120,9 @@ internal sealed class WpfElementRenderer : IElementRenderer
     /// <summary>
     /// Generates the guidelines for WPF render to snap the box boundaries onto the device pixel grid.
     /// </summary>
-    private GuidelineSet GenerateGuidelines(Box box, double x, double y) => new GuidelineSet
+    private GuidelineSet GenerateGuidelines(Box box, double x, double y) => new()
     {
-        GuidelinesX = {_scale * x, _scale * (x + box.TotalWidth)},
-        GuidelinesY = {_scale * y, _scale * (y + box.TotalHeight)}
+        GuidelinesX = { _scale * x, _scale * (x + box.TotalWidth) },
+        GuidelinesY = { _scale * y, _scale * (y + box.TotalHeight) }
     };
 }

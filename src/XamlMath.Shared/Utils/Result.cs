@@ -4,8 +4,8 @@ namespace XamlMath.Utils;
 
 public static class Result
 {
-    public static Result<TValue> Ok<TValue>(TValue value) => new Result<TValue>(value, null);
-    public static Result<TValue> Error<TValue>(Exception error) => new Result<TValue>(default!, error); // Nullable: CS8604; can't be avoided with generics without constraints
+    public static Result<TValue> Ok<TValue>(TValue value) => new(value, null);
+    public static Result<TValue> Error<TValue>(Exception error) => new(default!, error); // Nullable: CS8604; can't be avoided with generics without constraints
 }
 
 public readonly struct Result<TValue>

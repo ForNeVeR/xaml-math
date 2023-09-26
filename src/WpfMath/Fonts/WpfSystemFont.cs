@@ -21,7 +21,7 @@ internal sealed class WpfSystemFont : ITeXFont
         _typeface = new Lazy<Typeface>(InitializeTypeface);
     }
 
-    private Typeface InitializeTypeface() => new Typeface(this.fontFamily, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal);
+    private Typeface InitializeTypeface() => new(this.fontFamily, FontStyles.Normal, FontWeights.Normal, FontStretches.Normal);
 
     public bool SupportsMetrics => false;
 

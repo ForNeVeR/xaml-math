@@ -11,7 +11,7 @@ namespace XamlMath.Parsers.PredefinedFormulae;
 /// </summary>
 internal sealed class PredefinedFormulaContext
 {
-    private readonly Dictionary<string, TexFormula> _formulae = new Dictionary<string, TexFormula>();
+    private readonly Dictionary<string, TexFormula> _formulae = new();
     public void AddFormula(string name, TexFormula formula) => _formulae.Add(name, formula);
     public TexFormula this[string name] => _formulae[name];
 }
