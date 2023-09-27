@@ -110,14 +110,14 @@ public sealed class MainViewModel : INotifyPropertyChanged
 
     private void Export()
     {
-        // Choose file
-        var saveFileDialog = new SaveFileDialog { Filter = "SVG Files (*.svg)|*.svg|PNG Files (*.png)|*.png" };
-        var result = saveFileDialog.ShowDialog();
-        if (result is false)
-            return;
-
         try
         {
+            // Choose file
+            var saveFileDialog = new SaveFileDialog { Filter = "SVG Files (*.svg)|*.svg|PNG Files (*.png)|*.png" };
+            var result = saveFileDialog.ShowDialog();
+            if (result is false)
+                return;
+
             // Create formula object from input text.
             TexFormula formula = WpfTeXFormulaParser.Instance.Parse(Formula);
             var scale = Scale;
