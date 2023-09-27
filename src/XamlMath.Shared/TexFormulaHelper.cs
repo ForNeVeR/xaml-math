@@ -6,7 +6,7 @@ using XamlMath.Rendering;
 
 namespace XamlMath;
 
-internal class TexFormulaHelper
+internal sealed class TexFormulaHelper
 {
     private readonly TexFormulaParser _formulaParser;
     private readonly SourceSpan _source;
