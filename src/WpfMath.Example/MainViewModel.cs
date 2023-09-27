@@ -150,9 +150,6 @@ public sealed class MainViewModel : INotifyPropertyChanged
                     };
                     encoder.Save(stream);
                     break;
-
-                default:
-                    return;
             }
         }
         catch (TexParseException ex)
@@ -160,6 +157,10 @@ public sealed class MainViewModel : INotifyPropertyChanged
             MessageBox.Show("An error occurred while parsing the given input:" + Environment.NewLine +
                             Environment.NewLine + ex.Message, "WPF-Math Example",
                             MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("An unknown error occurred: " + ex.Message);
         }
     }
 
