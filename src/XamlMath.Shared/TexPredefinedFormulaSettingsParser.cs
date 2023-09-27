@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Xml.Linq;
 using XamlMath.Data;
 using XamlMath.Utils;
@@ -11,23 +12,6 @@ internal sealed class TexPredefinedFormulaSettingsParser
 {
     private static readonly string resourceName = TexUtilities.ResourcesDataDirectory + "TexFormulaSettings.xml";
 
-    static TexPredefinedFormulaSettingsParser()
-    {
-    }
-
-    private static void AddToMap(IEnumerable<XElement> mapList, string[] table)
-    {
-        foreach (var map in mapList)
-        {
-            var character = map.AttributeValue("char");
-            var symbol = map.AttributeValue("symbol");
-            Debug.Assert(character != null);
-            Debug.Assert(symbol != null);
-            Debug.Assert(character.Length == 1);
-            table[character[0]] = symbol;
-        }
-    }
-
     private readonly XElement rootElement;
 
     public TexPredefinedFormulaSettingsParser()
@@ -37,23 +21,36 @@ internal sealed class TexPredefinedFormulaSettingsParser
         this.rootElement = doc.Root;
     }
 
-    public IReadOnlyList<string> GetSymbolMappings()
+    private readonly record struct CharMappingPair(char Key, string Value);
+
+    private static CharMappingPair ExtractCharMappingPair(XElement mapTag)
+    {
+        var character = mapTag.AttributeValue("char");
+        var symbol = mapTag.AttributeValue("symbol");
+        Debug.Assert(character != null);
+        Debug.Assert(symbol != null);
+        Debug.Assert(character.Length == 1);
+        return new(character[0], symbol);
+    }
+
+    private IReadOnlyList<string> GetMappingsFromElement(XName elementName)
     {
         var mappings = new string[TexFontInfo.charCodesCount];
-        var charToSymbol = rootElement.Element("CharacterToSymbolMappings");
+        var charToSymbol = rootElement.Element(elementName);
         if (charToSymbol != null)
-            AddToMap(charToSymbol.Elements("Map"), mappings);
+        {
+            var additionsToMap = charToSymbol.Elements("Map").Select(ExtractCharMappingPair);
+            foreach (var addition in additionsToMap)
+            {
+                mappings[addition.Key] = addition.Value;
+            }
+        }
         return mappings;
     }
 
-    public IReadOnlyList<string> GetDelimiterMappings()
-    {
-        var mappings = new string[TexFontInfo.charCodesCount];
-        var charToDelimiter = rootElement.Element("CharacterToDelimiterMappings");
-        if (charToDelimiter != null)
-            AddToMap(charToDelimiter.Elements("Map"), mappings);
-        return mappings;
-    }
+    public IReadOnlyList<string> GetSymbolMappings() => GetMappingsFromElement("CharacterToSymbolMappings");
+
+    public IReadOnlyList<string> GetDelimiterMappings() => GetMappingsFromElement("CharacterToDelimiterMappings");
 
     public IEnumerable<string> GetTextStyles()
     {
