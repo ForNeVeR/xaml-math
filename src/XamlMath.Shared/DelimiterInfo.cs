@@ -5,7 +5,7 @@ namespace XamlMath;
 /// <summary>
 /// Information about the body between a pair of delimiters.
 /// </summary>
-internal class DelimiterInfo
+internal sealed class DelimiterInfo
 {
     public Atom Body { get; }
 

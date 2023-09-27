@@ -11,7 +11,7 @@ namespace AvaloniaMath.Rendering;
 
 /// <summary>A renderer that renders the elements to a provided <see cref="GeometryGroup"/> instance.</summary>
 // TODO[#357]: Make this work
-internal class GeometryElementRenderer : IElementRenderer
+internal sealed class GeometryElementRenderer : IElementRenderer
 {
     private readonly GeometryGroup _geometry;
     private readonly double _scale;

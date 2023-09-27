@@ -7,7 +7,7 @@ using XamlMath.Utils;
 
 namespace AvaloniaMath.Fonts;
 
-internal class AvaloniaSystemFont : ITeXFont
+internal sealed class AvaloniaSystemFont : ITeXFont
 {
     private readonly string _fontFamily;
 
