@@ -14,6 +14,7 @@ using WpfMath.Converters;
 using WpfMath.Parsers;
 using WpfMath.Rendering;
 using XamlMath;
+using XamlMath.Exceptions;
 
 namespace WpfMath.Example;
 
@@ -90,7 +91,7 @@ public sealed class MainViewModel : INotifyPropertyChanged
     }
 
     public ObservableCollection<Preset> Presets { get; }
-    
+
     public double Scale
     {
         get => _scale;
@@ -115,53 +116,50 @@ public sealed class MainViewModel : INotifyPropertyChanged
         if (result is false)
             return;
 
-        // Create formula object from input text.
-        TexFormula? formula = null;
         try
         {
-            formula = WpfTeXFormulaParser.Instance.Parse(Formula);
+            // Create formula object from input text.
+            TexFormula formula = WpfTeXFormulaParser.Instance.Parse(Formula);
+            var scale = Scale;
+            var environment = WpfTeXEnvironment.Create(scale: scale);
+
+            // Open stream
+            var filename = saveFileDialog.FileName;
+            using var stream = new FileStream(filename, FileMode.Create);
+            switch (saveFileDialog.FilterIndex)
+            {
+                case 1:
+                    var geometry = formula.RenderToGeometry(environment, scale: scale);
+                    var converter = new SVGConverter();
+                    var svgPathText = converter.ConvertGeometry(geometry);
+                    var svgBuilder = new StringBuilder();
+                    svgBuilder.AppendLine("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>")
+                              .AppendLine("<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" >")
+                              .AppendLine(svgPathText)
+                              .AppendLine("</svg>");
+                    var svgText = svgBuilder.ToString();
+                    using (var writer = new StreamWriter(stream))
+                        writer.WriteLine(svgText);
+                    break;
+
+                case 2:
+                    var bitmap = formula.RenderToBitmap(environment, scale, dpi: 300);
+                    var encoder = new PngBitmapEncoder
+                    {
+                        Frames = { BitmapFrame.Create(bitmap) }
+                    };
+                    encoder.Save(stream);
+                    break;
+
+                default:
+                    return;
+            }
         }
-        catch (Exception ex)
+        catch (TexParseException ex)
         {
             MessageBox.Show("An error occurred while parsing the given input:" + Environment.NewLine +
                             Environment.NewLine + ex.Message, "WPF-Math Example",
                             MessageBoxButton.OK, MessageBoxImage.Error);
-            return;
-        }
-
-        var scale = Scale;
-        var environment = WpfTeXEnvironment.Create(scale: scale);
-
-        // Open stream
-        var filename = saveFileDialog.FileName;
-        using var stream = new FileStream(filename, FileMode.Create);
-        switch (saveFileDialog.FilterIndex)
-        {
-            case 1:
-                var geometry = formula.RenderToGeometry(environment, scale: scale);
-                var converter = new SVGConverter();
-                var svgPathText = converter.ConvertGeometry(geometry);
-                var svgBuilder = new StringBuilder();
-                svgBuilder.AppendLine("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>")
-                          .AppendLine("<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" >")
-                          .AppendLine(svgPathText)
-                          .AppendLine("</svg>");
-                var svgText = svgBuilder.ToString();
-                using (var writer = new StreamWriter(stream))
-                    writer.WriteLine(svgText);
-                break;
-
-            case 2:
-                var bitmap = formula.RenderToBitmap(environment, scale, dpi: 300);
-                var encoder = new PngBitmapEncoder
-                {
-                    Frames = { BitmapFrame.Create(bitmap) }
-                };
-                encoder.Save(stream);
-                break;
-
-            default:
-                return;
         }
     }
 
