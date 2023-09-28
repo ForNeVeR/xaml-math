@@ -19,7 +19,7 @@ internal sealed record AccentedAtom : Atom
     public AccentedAtom(SourceSpan? source, Atom? baseAtom, TexFormula accent)
         : base(source)
     {
-        if (!(accent.RootAtom is SymbolAtom rootSymbol))
+        if (accent.RootAtom is not SymbolAtom rootSymbol)
             throw new ArgumentException("The formula for the accent is not a single symbol.", nameof(accent));
 
         this.BaseAtom = baseAtom;
