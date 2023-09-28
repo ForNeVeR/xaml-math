@@ -97,85 +97,56 @@ internal sealed record FractionAtom : Atom
 
     protected override Box CreateBoxCore(TexEnvironment environment)
     {
+        LineThicknessAndHeight lineStyle = GetEffectiveLineHeight(environment);
+        NumeratorDenominatorAtoms n_d_atoms = CreateNumeratorAndDenominatorAtoms(environment); // Of equal width
+        ShiftUpDown preliminaryShifts = CreatePreliminaryShiftUpDown(environment, lineStyle);
+        return CreateResultBox(environment, lineStyle, n_d_atoms, preliminaryShifts);
+    }
+
+    private static Box CreateResultBox(TexEnvironment environment, LineThicknessAndHeight lineStyle, NumeratorDenominatorAtoms n_d_atoms, ShiftUpDown preliminaryShifts)
+    {
         var texFont = environment.MathFont;
         var style = environment.Style;
-
-        // set thickness to default if default value should be used
-        double lineHeight;
-        var defaultLineThickness = texFont.GetDefaultLineThickness(style);
-        if (this.useDefaultThickness)
-            lineHeight = this.lineRelativeThickness.HasValue ? this.lineRelativeThickness.Value * defaultLineThickness :
-                defaultLineThickness;
-        else
-            lineHeight = new SpaceAtom(null, this.lineThicknessUnit, 0, this.lineThickness, 0)
-                .CreateBox(environment).Height;
-
-        // Create boxes for numerator and demoninator atoms, and make them of equal width.
-        var numeratorBox = this.Numerator == null ? StrutBox.Empty :
-            this.Numerator.CreateBox(environment.GetNumeratorStyle());
-        var denominatorBox = this.Denominator == null ? StrutBox.Empty :
-            this.Denominator.CreateBox(environment.GetDenominatorStyle());
-
-        if (numeratorBox.Width < denominatorBox.Width)
-            numeratorBox = new HorizontalBox(numeratorBox, denominatorBox.Width, this.numeratorAlignment);
-        else
-            denominatorBox = new HorizontalBox(denominatorBox, numeratorBox.Width, this.denominatorAlignment);
-
-        // Calculate preliminary shift-up and shift-down amounts.
-        double shiftUp, shiftDown;
-        if (style < TexStyle.Text)
-        {
-            shiftUp = texFont.GetNum1(style);
-            shiftDown = texFont.GetDenom1(style);
-        }
-        else
-        {
-            shiftDown = texFont.GetDenom2(style);
-            if (lineHeight > 0)
-                shiftUp = texFont.GetNum2(style);
-            else
-                shiftUp = texFont.GetNum3(style);
-        }
 
         // Create result box.
         var resultBox = new VerticalBox();
 
         // add box for numerator.
-        resultBox.Add(numeratorBox);
+        resultBox.Add(n_d_atoms.NumeratorBox);
 
         // Calculate clearance and adjust shift amounts.
         var axis = texFont.GetAxisHeight(style);
 
-        if (lineHeight > 0)
+        if (lineStyle.LineHeight > 0)
         {
             // Draw fraction line.
 
             // Calculate clearance amount.
             double clearance;
             if (style < TexStyle.Text)
-                clearance = 3 * lineHeight;
+                clearance = 3 * lineStyle.LineHeight;
             else
-                clearance = lineHeight;
+                clearance = lineStyle.LineHeight;
 
             // Adjust shift amounts.
-            var delta = lineHeight / 2;
-            var kern1 = shiftUp - numeratorBox.Depth - (axis + delta);
-            var kern2 = axis - delta - (denominatorBox.Height - shiftDown);
+            var delta = lineStyle.LineHeight / 2;
+            var kern1 = preliminaryShifts.ShiftUp - n_d_atoms.NumeratorBox.Depth - (axis + delta);
+            var kern2 = axis - delta - (n_d_atoms.DenominatorBox.Height - preliminaryShifts.ShiftDown);
             var delta1 = clearance - kern1;
             var delta2 = clearance - kern2;
             if (delta1 > 0)
             {
-                shiftUp += delta1;
+                preliminaryShifts = preliminaryShifts with { ShiftUp = preliminaryShifts.ShiftUp + delta1 };
                 kern1 += delta1;
             }
             if (delta2 > 0)
             {
-                shiftDown += delta2;
+                preliminaryShifts = preliminaryShifts with { ShiftDown = preliminaryShifts.ShiftDown + delta2 };
                 kern2 += delta2;
             }
 
             resultBox.Add(new StrutBox(0, kern1, 0, 0));
-            resultBox.Add(new HorizontalRule(environment, lineHeight, numeratorBox.Width, 0));
+            resultBox.Add(new HorizontalRule(environment, lineStyle.LineHeight, n_d_atoms.NumeratorBox.Width, 0));
             resultBox.Add(new StrutBox(0, kern2, 0, 0));
         }
         else
@@ -185,17 +156,17 @@ internal sealed record FractionAtom : Atom
             // Calculate clearance amount.
             double clearance;
             if (style < TexStyle.Text)
-                clearance = 7 * defaultLineThickness;
+                clearance = 7 * lineStyle.DefaultLineThickness;
             else
-                clearance = 3 * defaultLineThickness;
+                clearance = 3 * lineStyle.DefaultLineThickness;
 
             // Adjust shift amounts.
-            var kern = shiftUp - numeratorBox.Depth - (denominatorBox.Height - shiftDown);
+            var kern = preliminaryShifts.ShiftUp - n_d_atoms.NumeratorBox.Depth - (n_d_atoms.DenominatorBox.Height - preliminaryShifts.ShiftDown);
             var delta = (clearance - kern) / 2;
             if (delta > 0)
             {
-                shiftUp += delta;
-                shiftDown += delta;
+                preliminaryShifts = preliminaryShifts with { ShiftUp = preliminaryShifts.ShiftUp + delta };
+                preliminaryShifts = preliminaryShifts with { ShiftDown = preliminaryShifts.ShiftDown + delta };
                 kern += 2 * delta;
             }
 
@@ -203,12 +174,74 @@ internal sealed record FractionAtom : Atom
         }
 
         // add box for denominator.
-        resultBox.Add(denominatorBox);
+        resultBox.Add(n_d_atoms.DenominatorBox);
 
         // Adjust height and depth of result box.
-        resultBox.Height = shiftUp + numeratorBox.Height;
-        resultBox.Depth = shiftDown + denominatorBox.Depth;
+        resultBox.Height = preliminaryShifts.ShiftUp + n_d_atoms.NumeratorBox.Height;
+        resultBox.Depth = preliminaryShifts.ShiftDown + n_d_atoms.DenominatorBox.Depth;
 
         return resultBox;
+    }
+
+    private readonly record struct ShiftUpDown(double ShiftUp, double ShiftDown);
+    private ShiftUpDown CreatePreliminaryShiftUpDown(TexEnvironment environment, LineThicknessAndHeight lineStyle)
+    {
+        var texFont = environment.MathFont;
+        var style = environment.Style;
+        double shiftUp, shiftDown;
+        if (style < TexStyle.Text)
+        {
+            shiftUp = texFont.GetNum1(style);
+            shiftDown = texFont.GetDenom1(style);
+        }
+        else
+        {
+            shiftDown = texFont.GetDenom2(style);
+            if (lineStyle.LineHeight > 0)
+                shiftUp = texFont.GetNum2(style);
+            else
+                shiftUp = texFont.GetNum3(style);
+        }
+        return new(shiftUp, shiftDown);
+    }
+
+    private readonly record struct NumeratorDenominatorAtoms(Box NumeratorBox, Box DenominatorBox);
+    private NumeratorDenominatorAtoms CreateNumeratorAndDenominatorAtoms(TexEnvironment environment)
+    {
+        // Create boxes for numerator and demoninator atoms, and make them of equal width.
+        var numeratorBox = this.Numerator == null
+            ? StrutBox.Empty
+            : Numerator.CreateBox(environment.GetNumeratorStyle());
+        var denominatorBox = this.Denominator == null
+            ? StrutBox.Empty
+            : Denominator.CreateBox(environment.GetDenominatorStyle());
+
+        if (numeratorBox.Width < denominatorBox.Width)
+        {
+            numeratorBox = new HorizontalBox(numeratorBox, denominatorBox.Width, this.numeratorAlignment);
+        }
+        else
+        {
+            denominatorBox = new HorizontalBox(denominatorBox, numeratorBox.Width, this.denominatorAlignment);
+        }
+
+        return new(numeratorBox, denominatorBox);
+    }
+
+    private readonly record struct LineThicknessAndHeight(double DefaultLineThickness, double LineHeight);
+    private LineThicknessAndHeight GetEffectiveLineHeight(TexEnvironment environment)
+    {
+        // set thickness to default if default value should be used
+        var defaultLineThickness = environment.MathFont.GetDefaultLineThickness(environment.Style);
+        if (this.useDefaultThickness)
+        {
+            double lineHeight = lineRelativeThickness.HasValue ? lineRelativeThickness.Value * defaultLineThickness : defaultLineThickness;
+            return new(defaultLineThickness, lineHeight);
+        }
+        else
+        {
+            double lineHeight = (new SpaceAtom(null, this.lineThicknessUnit, 0, this.lineThickness, 0)).CreateBox(environment).Height;
+            return new(defaultLineThickness, lineHeight);
+        }
     }
 }
