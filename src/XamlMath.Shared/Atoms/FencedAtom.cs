@@ -53,14 +53,14 @@ internal sealed record FencedAtom : Atom
         }
 
         // add glueElement between left delimeter and base Atom, unless base Atom is whitespace.
-        if (!(this.BaseAtom is SpaceAtom))
+        if (this.BaseAtom is not SpaceAtom)
             resultBox.Add(Glue.CreateBox(TexAtomType.Opening, this.BaseAtom.GetLeftType(), environment));
 
         // add box for base Atom.
         resultBox.Add(baseBox);
 
         // add glueElement between right delimeter and base Atom, unless base Atom is whitespace.
-        if (!(this.BaseAtom is SpaceAtom))
+        if (this.BaseAtom is not SpaceAtom)
             resultBox.Add(Glue.CreateBox(this.BaseAtom.GetRightType(), TexAtomType.Closing, environment));
 
         // Create and add box for right delimeter.
