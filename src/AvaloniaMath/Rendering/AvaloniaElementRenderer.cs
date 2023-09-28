@@ -15,7 +15,7 @@ using IAvaloniaBrush = Avalonia.Media.IBrush;
 namespace AvaloniaMath.Rendering;
 
 /// <summary>The renderer that uses Avalonia drawing context.</summary>
-internal class AvaloniaElementRenderer : IElementRenderer
+internal sealed class AvaloniaElementRenderer : IElementRenderer
 {
     private readonly DrawingContext _foregroundContext;
     private readonly double _scale;
@@ -94,10 +94,10 @@ internal class AvaloniaElementRenderer : IElementRenderer
         switch (transformation.Kind)
         {
             case TransformationKind.Translate:
-                var tt = (Transformation.Translate) transformation;
+                var tt = (Transformation.Translate)transformation;
                 return new TranslateTransform(tt.X, tt.Y);
             case TransformationKind.Rotate:
-                var rt = (Transformation.Rotate) transformation;
+                var rt = (Transformation.Rotate)transformation;
                 return new RotateTransform(rt.RotationDegrees);
             default:
                 throw new NotSupportedException($"Unknown {nameof(Transformation)} kind: {transformation.Kind}");
