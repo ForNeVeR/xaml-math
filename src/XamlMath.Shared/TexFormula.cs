@@ -30,8 +30,8 @@ public sealed class TexFormula
         Debug.Assert(formula.RootAtom != null);
 
         this.Add(
-            formula.RootAtom is RowAtom
-                ? new RowAtom(source, formula.RootAtom)
+            formula.RootAtom is RowAtom rowAtom
+                ? new RowAtom(source, rowAtom)
                 : formula.RootAtom,
             source);
     }
@@ -51,7 +51,7 @@ public sealed class TexFormula
         else
         {
             var elements = (this.RootAtom is RowAtom r
-                ? (IEnumerable<Atom>) r.Elements
+                ? (IEnumerable<Atom>)r.Elements
                 : new[] { this.RootAtom }).ToList();
             elements.Add(atom);
             this.RootAtom = new RowAtom(rowSource, elements);
