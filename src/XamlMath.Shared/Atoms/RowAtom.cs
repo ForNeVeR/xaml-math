@@ -37,8 +37,8 @@ internal sealed record RowAtom : Atom, IRow
     public RowAtom(SourceSpan? source, Atom? baseAtom)
         : this(
             source,
-            baseAtom is RowAtom
-                ? (IEnumerable<Atom>) ((RowAtom) baseAtom).Elements
+            baseAtom is RowAtom rowAtom
+                ? (IEnumerable<Atom>)rowAtom.Elements
                 : new[] { baseAtom! }) // Nullable: Seems to require some sort of non-null assertion to make the analyzer happy
     {
     }
@@ -59,7 +59,7 @@ internal sealed record RowAtom : Atom, IRow
     internal RowAtom(SourceSpan? source, IEnumerable<Atom?> elements)
         : base(source) =>
         this.Elements = elements.Where(x => x != null).ToList().AsReadOnly()!;
-        // TODO[F]: Fix this with C# 8 migration: there shouldn't be nullable atoms in this collection
+    // TODO[F]: Fix this with C# 8 migration: there shouldn't be nullable atoms in this collection
 
     public DummyAtom? PreviousAtom { get; init; }
 
