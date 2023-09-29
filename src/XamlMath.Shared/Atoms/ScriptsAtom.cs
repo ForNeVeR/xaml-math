@@ -63,9 +63,9 @@ internal sealed record ScriptsAtom : Atom
             shiftUp = accentedBox.Height - texFont.GetSupDrop(superscriptStyle.Style);
             shiftDown = accentedBox.Depth + texFont.GetSubDrop(subscriptStyle.Style);
         }
-        else if (this.BaseAtom is SymbolAtom && this.BaseAtom.Type == TexAtomType.BigOperator)
+        else if (this.BaseAtom is SymbolAtom symbolAtom && this.BaseAtom.Type == TexAtomType.BigOperator)
         {
-            var charInfo = texFont.GetCharInfo(((SymbolAtom)this.BaseAtom).Name, style).Value;
+            var charInfo = texFont.GetCharInfo(symbolAtom.Name, style).Value;
             if (style < TexStyle.Text && texFont.HasNextLarger(charInfo))
                 charInfo = texFont.GetNextLargerCharInfo(charInfo, style);
             var charBox = new CharBox(environment, charInfo);
