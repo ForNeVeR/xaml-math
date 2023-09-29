@@ -114,10 +114,9 @@ internal sealed class TexPredefinedFormulaParser
         {
             if (!actionParsers.TryGetValue(element.Name.ToString(), out var parser))
                 continue;
-
             parser.Parse(source, element, context, allFormulas);
-            if (parser is ReturnParser)
-                return ((ReturnParser)parser).Result;
+            if (parser is ReturnParser returnParser)
+                return returnParser.Result;
         }
         return null;
     }
