@@ -123,13 +123,7 @@ internal sealed record BigOperatorAtom(
     }
     private BoxForBaseAtom CreateBoxForBaseAtom(TexEnvironment environment)
     {
-        if (BaseAtom is not SymbolAtom symbolAtom || BaseAtom.Type != TexAtomType.BigOperator)
-        {
-            Box baseBox = new HorizontalBox(BaseAtom == null ? StrutBox.Empty : BaseAtom.CreateBox(environment));
-            double delta = 0;
-            return new(baseBox, delta);
-        }
-        else
+        if (BaseAtom is SymbolAtom symbolAtom && BaseAtom.Type == TexAtomType.BigOperator)
         {
             var texFont = environment.MathFont;
             var style = environment.Style;
@@ -146,6 +140,12 @@ internal sealed record BigOperatorAtom(
             double delta = opChar.Metrics.Italic;
             if (delta > TexUtilities.FloatPrecision)
                 baseBox.Add(new StrutBox(delta, 0, 0, 0));
+            return new(baseBox, delta);
+        }
+        else
+        {
+            Box baseBox = new HorizontalBox(BaseAtom == null ? StrutBox.Empty : BaseAtom.CreateBox(environment));
+            double delta = 0;
             return new(baseBox, delta);
         }
 
