@@ -35,10 +35,12 @@ internal sealed class OverUnderBox : Box
     // True to draw delimeter and script over base; false to draw under base.
     public bool Over { get; }
 
-    public override void RenderTo(IElementRenderer renderer, double x, double y)
+    private record struct RenderChoices(
+        double TranslationX,
+        double TranslationY,
+        double YPosition);
+    private RenderChoices CreateRenderChoices(double x, double y)
     {
-        renderer.RenderElement(this.BaseBox, x, y);
-
         if (this.Over)
         {
             // Draw delimeter and script boxes over base box.
@@ -46,10 +48,14 @@ internal sealed class OverUnderBox : Box
             var translationX = x + this.DelimiterBox.Width / 2;
             var translationY = centerY + this.DelimiterBox.Width / 2;
 
-            RenderDelimiter(translationX, translationY);
+            return new(
 
-            // Draw script box as superscript.
-            RenderScriptBox(centerY - this.Kern - this.ScriptBox!.Depth); // Nullable TODO: This probably needs null checking
+                TranslationX: translationX,
+                TranslationY: translationY,
+
+                // Draw script box as superscript.
+                YPosition: centerY - this.Kern - this.ScriptBox!.Depth // Nullable TODO: This probably needs null checking
+            );
         }
         else
         {
@@ -58,11 +64,25 @@ internal sealed class OverUnderBox : Box
             var translationX = x + this.DelimiterBox.Width / 2;
             var translationY = centerY - this.DelimiterBox.Width / 2;
 
-            RenderDelimiter(translationX, translationY);
+            return new(
 
-            // Draw script box as subscript.
-            RenderScriptBox(centerY + this.Kern + this.ScriptBox!.Height); // Nullable TODO: This probably needs null checking
+                TranslationX: translationX,
+                TranslationY: translationY,
+
+                // Draw script box as subscript.
+                YPosition: centerY + this.Kern + this.ScriptBox!.Height // Nullable TODO: This probably needs null checking
+            );
         }
+    }
+
+    public override void RenderTo(IElementRenderer renderer, double x, double y)
+    {
+        var renderChoices = CreateRenderChoices(x, y);
+
+        renderer.RenderElement(this.BaseBox, x, y);
+
+        RenderDelimiter(renderChoices.TranslationX, renderChoices.TranslationY);
+        RenderScriptBox(renderChoices.YPosition);
 
         void RenderDelimiter(double translationX, double translationY)
         {
