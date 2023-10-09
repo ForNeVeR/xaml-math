@@ -401,7 +401,7 @@ public class TexFormulaParser
         return value.Segment(initialPosition, length);
     }
 
-    private SymbolAtom ParseDelimiter(SourceSpan value, int start, ref int position)
+    private static SymbolAtom ParseDelimiter(SourceSpan value, int start, ref int position)
     {
         var delimiter = ReadElement(value, ref position);
 
@@ -841,7 +841,7 @@ public class TexFormulaParser
     }
 
     /// <remarks>May return <c>null</c>.</remarks>
-    private Atom? ConvertCharacter(
+    private static Atom? ConvertCharacter(
         TexFormula formula,
         ref int position,
         SourceSpan source,

@@ -120,7 +120,7 @@ internal sealed class WpfSystemFont : ITeXFont
             $"Call of method {callerMethod} on {nameof(WpfSystemFont)} is not supported");
     }
 
-    private TeXFontMetrics GetFontMetrics(char c, Typeface typeface)
+    private static TeXFontMetrics GetFontMetrics(char c, Typeface typeface)
     {
         var formattedText = new FormattedText(c.ToString(),
             CultureInfo.CurrentUICulture,

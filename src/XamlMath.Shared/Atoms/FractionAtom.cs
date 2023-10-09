@@ -184,7 +184,7 @@ internal sealed record FractionAtom : Atom
     }
 
     private readonly record struct ShiftUpDown(double ShiftUp, double ShiftDown);
-    private ShiftUpDown CreatePreliminaryShiftUpDown(TexEnvironment environment, LineThicknessAndHeight lineStyle)
+    private static ShiftUpDown CreatePreliminaryShiftUpDown(TexEnvironment environment, LineThicknessAndHeight lineStyle)
     {
         var texFont = environment.MathFont;
         var style = environment.Style;

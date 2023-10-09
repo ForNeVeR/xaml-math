@@ -19,7 +19,7 @@ internal sealed class ProcessEnvironmentCommand : ICommandParser
         return new CommandProcessingResult(result.Atom, position, result.AppendMode);
     }
 
-    private EnvironmentContext GetEnvironmentContext(
+    private static EnvironmentContext GetEnvironmentContext(
         CommandContext commandContext,
         string environmentName,
         ref int position)

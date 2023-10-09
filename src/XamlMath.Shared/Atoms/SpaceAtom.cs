@@ -93,11 +93,11 @@ internal sealed record SpaceAtom : Atom
         if (this.isHardSpace)
             return new StrutBox(environment.MathFont.GetSpace(environment.Style), 0, 0, 0);
         else
-            return new StrutBox(this.width * this.GetConversionFactor(this.widthUnit, environment), this.height * this.GetConversionFactor(
-                this.heightUnit, environment), this.depth * this.GetConversionFactor(this.depthUnit, environment), 0);
+            return new StrutBox(this.width * GetConversionFactor(this.widthUnit, environment), this.height * GetConversionFactor(
+                this.heightUnit, environment), this.depth * GetConversionFactor(this.depthUnit, environment), 0);
     }
 
-    private double GetConversionFactor(TexUnit unit, TexEnvironment environment)
+    private static double GetConversionFactor(TexUnit unit, TexEnvironment environment)
     {
         return unitConversions[(int)unit](environment);
     }

@@ -107,7 +107,7 @@ internal sealed class AvaloniaSystemFont : ITeXFont
             $"Call of method {callerMethod} on {nameof(AvaloniaSystemFont)} is not supported");
     }
 
-    private TeXFontMetrics GetFontMetrics(char c, Typeface typeface)
+    private static TeXFontMetrics GetFontMetrics(char c, Typeface typeface)
     {
         var formattedText = new FormattedText(
             c.ToString(), CultureInfo.CurrentUICulture, FlowDirection.RightToLeft, typeface, 1.0, Brushes.Black);
