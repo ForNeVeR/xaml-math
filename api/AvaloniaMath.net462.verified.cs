@@ -42,7 +42,7 @@ namespace AvaloniaMath.Parsers
 {
     public static partial class AvaloniaTeXFormulaParser
     {
-        public static XamlMath.TexFormulaParser Instance { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
+        public static XamlMath.TexFormulaParser Instance { get { throw null; } }
     }
 }
 namespace AvaloniaMath.Rendering
@@ -50,7 +50,7 @@ namespace AvaloniaMath.Rendering
     public sealed partial class AvaloniaBrushFactory : XamlMath.Rendering.IBrushFactory
     {
         internal AvaloniaBrushFactory() { }
-        public static AvaloniaMath.Rendering.AvaloniaBrushFactory Instance { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
+        public static AvaloniaMath.Rendering.AvaloniaBrushFactory Instance { get { throw null; } }
         public XamlMath.Rendering.IBrush FromColor(XamlMath.Colors.RgbaColor color) { throw null; }
     }
     public static partial class AvaloniaExtensions

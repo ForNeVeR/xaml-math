@@ -37,12 +37,7 @@ namespace WpfMath.Controls
         public int SelectionLength { get { throw null; } set { } }
         public int SelectionStart { get { throw null; } set { } }
         public string SystemTextFontName { get { throw null; } set { } }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "7.0.11.0")]
-        [System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void InitializeComponent() { }
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "7.0.11.0")]
-        [System.ComponentModel.EditorBrowsableAttribute(1)]
-        [System.Diagnostics.DebuggerNonUserCodeAttribute]
         void System.Windows.Markup.IComponentConnector.Connect(int connectionId, object target) { }
     }
     public partial class VisualContainerElement : System.Windows.FrameworkElement
@@ -75,7 +70,7 @@ namespace WpfMath.Parsers
 {
     public static partial class WpfTeXFormulaParser
     {
-        public static XamlMath.TexFormulaParser Instance { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
+        public static XamlMath.TexFormulaParser Instance { get { throw null; } }
     }
 }
 namespace WpfMath.Rendering
@@ -93,26 +88,16 @@ namespace WpfMath.Rendering
     public sealed partial class WpfBrush : XamlMath.Rendering.GenericBrush<System.Windows.Media.Brush>, System.IEquatable<WpfMath.Rendering.WpfBrush>
     {
         internal WpfBrush() { }
-        [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
-        protected override System.Type EqualityContract { [System.Runtime.CompilerServices.CompilerGeneratedAttribute] get { throw null; } }
-        [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
+        protected override System.Type EqualityContract { get { throw null; } }
         public override bool Equals(object? obj) { throw null; }
-        [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public bool Equals(WpfMath.Rendering.WpfBrush? other) { throw null; }
-        [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public sealed override bool Equals(XamlMath.Rendering.GenericBrush<System.Windows.Media.Brush>? other) { throw null; }
         public static WpfMath.Rendering.WpfBrush FromBrush(System.Windows.Media.Brush value) { throw null; }
-        [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override int GetHashCode() { throw null; }
-        [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public static bool operator ==(WpfMath.Rendering.WpfBrush? left, WpfMath.Rendering.WpfBrush? right) { throw null; }
-        [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public static bool operator !=(WpfMath.Rendering.WpfBrush? left, WpfMath.Rendering.WpfBrush? right) { throw null; }
-        [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         protected override bool PrintMembers(System.Text.StringBuilder builder) { throw null; }
-        [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override string ToString() { throw null; }
-        [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
         public override XamlMath.Rendering.GenericBrush<System.Windows.Media.Brush> <Clone>$() { throw null; }
     }
     public sealed partial class WpfBrushFactory : XamlMath.Rendering.IBrushFactory

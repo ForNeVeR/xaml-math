@@ -23,19 +23,19 @@
     </ItemGroup>
 
     <ItemGroup>
-        <_InputAssembly Include="../WpfMath/bin/$(Configuration)/net462/WpfMath.dll" Framework="net462" />
-        <_InputAssembly Include="../WpfMath/bin/$(Configuration)/net6.0-windows/WpfMath.dll" Framework="net6.0" />
-        <_InputAssembly Include="../XamlMath.Shared/bin/$(Configuration)/net462/XamlMath.Shared.dll" Framework="net462" />
-        <_InputAssembly Include="../XamlMath.Shared/bin/$(Configuration)/netstandard2.0/XamlMath.Shared.dll" Framework="netstandard2.0" />
-        <_InputAssembly Include="../XamlMath.Shared/bin/$(Configuration)/net6.0/XamlMath.Shared.dll" Framework="net6.0" />
+        <InputAssembly Include="../WpfMath/bin/$(Configuration)/net462/WpfMath.dll" Framework="net462" />
+        <InputAssembly Include="../WpfMath/bin/$(Configuration)/net6.0-windows/WpfMath.dll" Framework="net6.0" />
+        <InputAssembly Include="../XamlMath.Shared/bin/$(Configuration)/net462/XamlMath.Shared.dll" Framework="net462" />
+        <InputAssembly Include="../XamlMath.Shared/bin/$(Configuration)/netstandard2.0/XamlMath.Shared.dll" Framework="netstandard2.0" />
+        <InputAssembly Include="../XamlMath.Shared/bin/$(Configuration)/net6.0/XamlMath.Shared.dll" Framework="net6.0" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\XamlMath.ApiTest.Framework\XamlMath.ApiTest.Framework.csproj" />
     </ItemGroup>
 
-    <Target Name="_GenerateApiListing" AfterTargets="CoreBuild" Inputs="@(_InputAssembly->'%(FullPath)')" Outputs="$(MSBuildProjectDirectory)\..\..\api\%(_InputAssembly.FileName).%(_InputAssembly.Framework).tmp.cs">
-        <Microsoft.DotNet.GenAPI.GenAPITask Assembly="@(_InputAssembly->'%(FullPath)')" OutputPath="$(MSBuildProjectDirectory)\..\..\api\%(_InputAssembly.FileName).%(_InputAssembly.Framework).tmp.cs" />
+    <Target Name="_GenerateApiListing" AfterTargets="CoreBuild" Inputs="@(InputAssembly->'%(FullPath)');..\..\api\ExludedAttributes.txt" Outputs="$(MSBuildProjectDirectory)\..\..\api\%(InputAssembly.FileName).%(InputAssembly.Framework).tmp.cs">
+        <Microsoft.DotNet.GenAPI.GenAPITask Assembly="@(InputAssembly->'%(FullPath)')" OutputPath="$(MSBuildProjectDirectory)\..\..\api\%(InputAssembly.FileName).%(InputAssembly.Framework).tmp.cs" ExcludeAttributesList="..\..\api\ExcludedAttributes.txt" />
     </Target>
 
 </Project>

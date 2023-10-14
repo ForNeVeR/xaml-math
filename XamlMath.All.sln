@@ -82,6 +82,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{3F2FED19-93A
 		api\AvaloniaMath.net462.verified.cs = api\AvaloniaMath.net462.verified.cs
 		api\XamlMath.Shared.net462.verified.cs = api\XamlMath.Shared.net462.verified.cs
 		api\XamlMath.Shared.net6.0.verified.cs = api\XamlMath.Shared.net6.0.verified.cs
+		api\ExcludedAttributes.txt = api\ExcludedAttributes.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tool.TTFMetrics", "src\Tool.TTFMetrics\Tool.TTFMetrics.csproj", "{A29B12C8-9AE6-4016-9AB8-702B67409C95}"
