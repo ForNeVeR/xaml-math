@@ -24,3 +24,7 @@ There're two matrix types supported:
 There's also a matrix-like construct:
 
 - `\cases`: for piecewise functions etc
+
+See also the documentation on [environments][].
+
+[environments]: environments.md
