@@ -2,7 +2,7 @@
 <!--
   PredefinedTexFormulas.xml
   =========================================================================
-  This file was originally a part of the JMathTeX Library - http://jmathtex.sourceforge.net
+  This file was originally a part of the JMathTeX Library - https://jmathtex.sourceforge.net
 
   Copyright (C) 2004-2007 Universiteit Gent
 
@@ -383,7 +383,7 @@
     </MethodInvocation>
     <Return name="f" />
   </Formula>
-  
+
   <Formula name="tanh" enabled="true">
     <CreateFormula name="f" />
     <MethodInvocation name="AddOperator" formula="f">

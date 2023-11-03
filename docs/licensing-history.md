@@ -75,4 +75,4 @@ Here's the reply of Prof. Coolsaet:
 
 If you need access to the actual email headers of these messages to verify their validity, please contact the maintainer of this project directly at friedrich@fornever.me, or Prof. Coolsaet himself (please find contacts on [JMathTeX site][jmathtex]).
 
-[jmathtex]: http://jmathtex.sourceforge.net/
+[jmathtex]: https://jmathtex.sourceforge.net/
