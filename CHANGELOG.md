@@ -231,7 +231,11 @@ Merged all the patches from the Launchpad repository (see #3 for a full list). T
 - Addition of SVG rendering functionality
 
 ## [0.1.0] - 2017-02-11
-This was the initially published version. It consisted entirely of the original code from the Launchpad project site.
+This was the initially published version. It consisted of the original code from the Launchpad project site (but only the version for .NET 4 was published).
+
+The features included more or less correspond to what was available in [JMathTex](https://jmathtex.sourceforge.net/), as the project started as a .NET port of that.
+
+Read more at [the licensing history](docs/licensing-history.md) document.
 
 [docs.colors]: docs/colors.md
 
