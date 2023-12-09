@@ -19,27 +19,6 @@ Start it, choose a `.ttf` file, and it will generate the data to paste into the 
 
 ## Manual Approach
 
-There are two helpful toolsets to work with our TTF files:
-
-1. To gather font metrics:
-   ```console
-   $ ttf2tfm filename.ttf -v filename.vpl
-   $ tftopl filename.tfm > filename.tpl
-   ```
-   That will generate `filename.tfm` (binary) and `filename.vpl`, `filename.tpl`
-   (text).
-
-   `ttf2tfm` and `tftopl` are parts of the standard TeX distribution (at least
-   TeX Live).
-2. It may be helpful to use the [ttx][] utility to get some additional
-   information about the font (e.g. mapping from characters to codes in the font
-   file):
-   ```console
-   $ ttx filename.ttf
-   ```
-
-   That will generate `filename.ttx` (XML).
-
 For example, there's the following in `DefaultTexFont.xml`:
 
 ```xml
@@ -50,59 +29,21 @@ For example, there's the following in `DefaultTexFont.xml`:
 </Font>
 ```
 
-To get these values from the `cmmi10.tpl` file, search for the following:
+1. Grab the original `.mf` and `.tfm` files from which the font was constructed (`.tfm` are supposed to be created from `.mf`, but they are already available for Computer Modern, so there's no reason to make it any harder).
+2. Remember the `skewchar` value. For example, for `cmmi10.mf` it seems to be `skewchar=oct"177"` from `mathit.mf`. Remember the oct value of `177`.
+3. Run `tftopl cmmi10.tfm > cmmi10.tpl` to get a `.tpl` file
+4. From now on, it's straightforward.
+   - Prepare the `<Font>` element:
+     - `name` is the name of the `.ttf` file
+     - `id` is the font id (just a sequential number)
+     - `space`: TODO!
+     - `xHeight` is `XHEIGHT` from the `FONTDIMEN` section of the `.tpl` file
+     - `skewChar` is the oct value of the `skewchar` from the `.mf` file, but converted into decimal
+     - `quad` is `QUAD` from the `FONTDIMEN` section of the `.tpl` file
+   - Prepare the `<Char>` elements sequentially:
+     - First two atoms after `(CHARACTER` are the character identifier, either written on octal `O <octal-number>` or as a real letter `C <letter>` (you are supposed to map it to the letter code in ASCII then). This identifier doesn't mean how the font character is actually used, and is just for identifying purposes (the characters may refer to each other in the kerning section).
+     - `CHARWD` is `width`, `CHARHT` is `height`, `CHARDP` is `depth`, and `CHARIC` is `italic`. The latter two may be omitted.
+     - `char` attribute should come from the font mapping // TODO: how to get it?
+     - The kerning section is filled by parsing the `COMMENT`: for example, `(KRN O 177 R 0.083336)` means we need the `char` from the character id `O 177`, and `val="0.083336"`.
 
-```
-(FONTDIMEN
-   (SLANT R 0.25)
-   (SPACE R 0.0)
-   (STRETCH R 0.0)
-   (SHRINK R 0.0)
-   (XHEIGHT R 0.430555)
-   (QUAD R 1.000003)
-   )
-
-…
-
-(CHARACTER C A
-   (CHARWD R 0.750002)
-   (CHARHT R 0.683332)
-   (COMMENT
-      (KRN O 177 R 0.138893)
-      )
-   )
-```
-
-Here, `CHARWD` corresponds to `width`, `CHARHT` corresponds to `height`,
-`CHARDP` corresponds to `depth`, and `CHARIC` corresponds to `italic`. Any of
-them could be omitted.
-
-The kerning section can also be reconstructed from the `*.tpl` file.
-
-How can we know that `O 177` is the same as `code="196"`? To do that, first look
-into `cmmi10.vpl` file: there's the following entry:
-
-```
-(CHARACTER O 177 (comment dieresis)
-   (CHARWD R 583)
-   (CHARHT R 705)
-   (CHARIC R 118)
-   (MAP
-      (SETCHAR O 151)
-      )
-   )
-```
-
-That means that `O 177` is named `dieresis`. Then, open [Adobe Glyph
-List][glyphlist] and search for the `dieresis` name:
-
-```
-dieresis;00A8
-```
-
-It means that `O 177` should be character `0xa8` or `168`, not `196`. The reason
-for that inconsistency is currently unknown.
-
-[glyphlist]: https://github.com/adobe-type-tools/agl-aglfn/blob/5de337bfa018e480bf15b77973e27ccdbada8e56/glyphlist.txt
 [tfm]: https://ctan.org/texarchive/fonts/cm/tfm
-[ttx]: https://github.com/fonttools/fonttools
