@@ -46,4 +46,8 @@ For example, there's the following in `DefaultTexFont.xml`:
      - `char` attribute should come from the font mapping // TODO: how to get it?
      - The kerning section is filled by parsing the `COMMENT`: for example, `(KRN O 177 R 0.083336)` means we need the `char` from the character id `O 177`, and `val="0.083336"`.
 
+TODO: How to reconstruct the `SymbolMapping` items having the original TeX sources?
+
+TODO: How to recreate `<NextLarger>` element from the original TeX sources?
+
 [tfm]: https://ctan.org/texarchive/fonts/cm/tfm
