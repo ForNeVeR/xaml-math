@@ -57,11 +57,10 @@ public class SourceSpan : IEquatable<SourceSpan>
     {
         unchecked
         {
-            var hashCode = Start;
-            hashCode = (hashCode * 397) ^ Length;
-            hashCode = (hashCode * 397) ^ (Source != null ? Source.GetHashCode() : 0);
-            hashCode = (hashCode * 397) ^ (SourceName != null ? SourceName.GetHashCode() : 0);
-            return hashCode;
+            var step1 = (Start * 397) ^ Length;
+            var step2 = (step1 * 397) ^ (Source != null ? Source.GetHashCode() : 0);
+            var step3 = (step2 * 397) ^ (SourceName != null ? SourceName.GetHashCode() : 0);
+            return step3;
         }
     }
 }
