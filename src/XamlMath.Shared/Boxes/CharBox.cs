@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using XamlMath.Rendering;
 
 namespace XamlMath.Boxes;
@@ -10,7 +11,12 @@ internal sealed class CharBox : Box
     {
         this.Character = charInfo;
         this.Width = charInfo.Metrics.Width;
-        this.Height = charInfo.Metrics.Height;
+
+        if (DefaultTexFont.OriginalHeights.ContainsKey(charInfo.Character) && charInfo.Metrics.Height == 1.1500000000000001)
+            this.Height = DefaultTexFont.OriginalHeights[charInfo.Character];
+        else
+            this.Height = charInfo.Metrics.Height;
+
         this.Depth = charInfo.Metrics.Depth;
         this.Italic = charInfo.Metrics.Italic;
     }

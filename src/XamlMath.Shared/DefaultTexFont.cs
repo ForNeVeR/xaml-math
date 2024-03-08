@@ -16,6 +16,8 @@ internal sealed class DefaultTexFont : ITeXFont
     internal readonly IReadOnlyList<string> defaultTextStyleMappings;
     private readonly IReadOnlyList<TexFontInfo> fontInfoList;
 
+    public static Dictionary<char, double> OriginalHeights { get; } = new();
+   
     private double GetParameter(string name)
     {
         return parameters[name];
@@ -40,7 +42,6 @@ internal sealed class DefaultTexFont : ITeXFont
         defaultTextStyleMappings = parser.GetDefaultTextStyleMappings();
         symbolMappings = parser.GetSymbolMappings();
         fontInfoList = parser.GetFontDescriptions();
-
         // Check that Mu font exists.
         var muFontId = (int)generalSettings["mufontid"];
         if (muFontId < 0 || muFontId >= fontInfoList.Count || fontInfoList[muFontId] == null)
