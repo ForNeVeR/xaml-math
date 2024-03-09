@@ -15,8 +15,6 @@ internal sealed class DefaultTexFont : ITeXFont
     private readonly IReadOnlyDictionary<string, CharFont> symbolMappings;
     internal readonly IReadOnlyList<string> defaultTextStyleMappings;
     private readonly IReadOnlyList<TexFontInfo> fontInfoList;
-
-    public static Dictionary<char, double> OriginalHeights { get; } = new();
    
     private double GetParameter(string name)
     {

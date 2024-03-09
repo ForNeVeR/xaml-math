@@ -11,12 +11,7 @@ internal sealed class CharBox : Box
     {
         this.Character = charInfo;
         this.Width = charInfo.Metrics.Width;
-
-        if (DefaultTexFont.OriginalHeights.ContainsKey(charInfo.Character) && charInfo.Metrics.Height == 1.1500000000000001)
-            this.Height = DefaultTexFont.OriginalHeights[charInfo.Character];
-        else
-            this.Height = charInfo.Metrics.Height;
-
+        this.Height = charInfo.Metrics.Height;
         this.Depth = charInfo.Metrics.Depth;
         this.Italic = charInfo.Metrics.Italic;
     }

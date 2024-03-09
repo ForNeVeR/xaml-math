@@ -97,9 +97,6 @@ internal sealed class DefaultTexFontParser
         metrics[TexFontUtilities.MetricsItalic] = charElement.AttributeDoubleValue("italic", 0d);
         fontInfo.SetMetrics(character, metrics);
 
-        if (!DefaultTexFont.OriginalHeights.ContainsKey(character))
-            DefaultTexFont.OriginalHeights.Add(character, metrics[TexFontUtilities.MetricsHeight]);
-
         foreach (var childElement in charElement.Elements())
         {
             var parser = charChildParsers[childElement.Name.ToString()];

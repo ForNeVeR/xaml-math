@@ -132,6 +132,18 @@ internal sealed class WpfSystemFont : ITeXFont
             , 1
 #endif
         );
-        return new TeXFontMetrics(formattedText.Width, formattedText.Height, 0.0, formattedText.Width, 1.0);
+        
+        var actualHeight = CalculateActualHeight(formattedText);
+
+        return new TeXFontMetrics(formattedText.Width, actualHeight, 0.0, formattedText.Width, 1.0);
+    }
+
+    private static double CalculateActualHeight(FormattedText formattedText)
+    {
+        var pointText = new Point(0, 0);
+        var geometry = formattedText.BuildGeometry(pointText);
+        var actualHeight = geometry.Bounds.Height;
+
+        return actualHeight;
     }
 }
