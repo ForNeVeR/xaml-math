@@ -132,18 +132,29 @@ internal sealed class WpfSystemFont : ITeXFont
             , 1
 #endif
         );
-        
-        var actualHeight = CalculateActualHeight(formattedText);
 
-        return new TeXFontMetrics(formattedText.Width, actualHeight, 0.0, formattedText.Width, 1.0);
-    }
+        // The formattedText object now describes a box that contains a drawn character. To extract the actual character
+        // metrics, some calculations are required. First of all, let's calculate the "depth" (see Box::Depth for the
+        // details on the box model we use here).
+        var depth =
+            formattedText.Height - formattedText.Baseline // this gets us the part under the baseline
+            + formattedText.OverhangAfter; // this is the part under the baseline plus the overhanging elements, if any
 
-    private static double CalculateActualHeight(FormattedText formattedText)
-    {
-        var pointText = new Point(0, 0);
-        var geometry = formattedText.BuildGeometry(pointText);
-        var actualHeight = geometry.Bounds.Height;
+        // Now, to get the character's height above the baseline, we also need to calculate the distance from the top of
+        // the box to the first character's pixel. This is a bit complex because the FormattedText only tells us the
+        // whole character's Extent (the whole span of pixels), and not its position inside the box — not directly, at
+        // least. But we can derive that from other properties.
+        var topFreeSpace = formattedText.Height + formattedText.OverhangAfter - formattedText.Extent;
 
-        return actualHeight;
+        // Now, our box model requires us to get the character's height above the baseline, plus the depth below the
+        // baseline. Its total drawn height, from the box model's point of view at least, is BaseHeight + Depth.
+        var height = formattedText.Baseline - topFreeSpace;
+
+        // NOTE: A scaling factor should be taken into account for whatever reason, see
+        // https://stackoverflow.com/a/45958639/2684760
+        var scalingFactor = typeface.FontFamily.LineSpacing / typeface.FontFamily.Baseline;
+        height /= scalingFactor;
+
+        return new TeXFontMetrics(formattedText.Width, height, depth, 0, 1.0);
     }
 }
