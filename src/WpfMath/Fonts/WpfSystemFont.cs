@@ -155,6 +155,6 @@ internal sealed class WpfSystemFont : ITeXFont
         var scalingFactor = typeface.FontFamily.LineSpacing / typeface.FontFamily.Baseline;
         height /= scalingFactor;
 
-        return new TeXFontMetrics(formattedText.Width, height, depth, 0, 1.0);
+        return new TeXFontMetrics(formattedText.Width, height, 0, 0, 1.0);
     }
 }
