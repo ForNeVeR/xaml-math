@@ -1,7 +1,7 @@
 using System.Reflection;
 using DiffEngine;
 
-namespace WpfMath.ApiText.Framework;
+namespace XamlMath.ApiTest.Framework;
 
 [UsesVerify]
 public class ApiDefinitionTestsBase

@@ -11,6 +11,7 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.DotNet.GenAPI" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" />
+        <PackageReference Include="Verify.Xunit" />
         <PackageReference Include="xunit" />
         <PackageReference Include="xunit.runner.visualstudio">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -23,12 +24,14 @@
     </ItemGroup>
 
     <ItemGroup>
-        <InputAssembly Include="../WpfMath/bin/$(Configuration)/net462/WpfMath.dll" Framework="net462" />
-        <InputAssembly Include="../WpfMath/bin/$(Configuration)/net6.0-windows/WpfMath.dll" Framework="net6.0" />
+        <InputAssembly Include="../XamlMath.Shared/bin/$(Configuration)/net462/XamlMath.Shared.dll" Framework="net462" />
+        <InputAssembly Include="../XamlMath.Shared/bin/$(Configuration)/netstandard2.0/XamlMath.Shared.dll" Framework="netstandard2.0" />
+        <InputAssembly Include="../XamlMath.Shared/bin/$(Configuration)/net6.0/XamlMath.Shared.dll" Framework="net6.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\XamlMath.ApiTest.Framework\XamlMath.ApiTest.Framework.csproj" />
+        <ProjectReference Include="..\src\XamlMath.ApiTest.Framework\XamlMath.ApiTest.Framework.csproj" />
+        <ProjectReference Include="..\XamlMath.ApiTest.Framework\XamlMath.ApiTest.Framework.csproj" />
     </ItemGroup>
 
     <Target Name="_GenerateApiListing" AfterTargets="CoreBuild" Inputs="@(InputAssembly->'%(FullPath)');..\..\api\ExludedAttributes.txt" Outputs="$(MSBuildProjectDirectory)\..\..\api\%(InputAssembly.FileName).%(InputAssembly.Framework).tmp.cs">

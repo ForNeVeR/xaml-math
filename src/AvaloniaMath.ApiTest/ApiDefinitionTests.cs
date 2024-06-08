@@ -1,4 +1,4 @@
-using WpfMath.ApiText.Framework;
+using XamlMath.ApiTest.Framework;
 
 namespace AvaloniaMath.ApiTest;
 
