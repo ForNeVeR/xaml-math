@@ -51,7 +51,7 @@ public class TexFormulaParser
     // TODO[#339]: Architectural solution to make this work faster.
     private readonly IReadOnlyDictionary<string, Func<SourceSpan, TexFormula?>> predefinedFormulas;
 
-    private static readonly IReadOnlyList<IReadOnlyList<string>> delimiterNames = new[] 
+    private static readonly IReadOnlyList<IReadOnlyList<string>> delimiterNames = new[]
     {
         new[] { "lbrace", "rbrace" },
         new[] { "(", ")" },
@@ -105,9 +105,7 @@ public class TexFormulaParser
     }
 
     private static bool IsWhiteSpace(char ch)
-    {
-        return ch == ' ' || ch == '\t' || ch == '\n' || ch == '\r';
-    }
+        => ch is ' ' or '\t' or '\n' or '\r';
 
     private static bool ShouldSkipWhiteSpace(string? style) => style != TexUtilities.TextStyleName;
 
@@ -146,7 +144,7 @@ public class TexFormulaParser
             defaultColorParser,
             brushFactory,
             predefinedFormulae)
-    {}
+    { }
 
     public TexFormulaParser(
         IBrushFactory brushFactory,
@@ -155,7 +153,7 @@ public class TexFormulaParser
         PredefinedColorParser.Instance,
         brushFactory,
         predefinedFormulae)
-    {}
+    { }
 
     public TexFormula Parse(string value, string? textStyle = null) =>
         Parse(new SourceSpan("User input", value, 0, value.Length), textStyle);
@@ -189,27 +187,35 @@ public class TexFormulaParser
         if (lastDelimiter == null || !lastDelimiter.IsDelimeter)
             throw new TexParseException($"Cannot find closing delimiter; got {lastDelimiter} instead");
 
-        Atom bodyAtom;
+        Atom bodyAtom = CreateForRow(bodyRow, source);
+
+        return new DelimiterInfo(bodyAtom, lastDelimiter);
+    }
+
+    private static Atom CreateForRow(RowAtom? bodyRow, SourceSpan? source)
+    {
         if (bodyRow == null)
         {
-            bodyAtom = new RowAtom(source);
+            return new RowAtom(source);
         }
         else if (bodyRow.Elements.Count > 2)
         {
-            var row = bodyRow.Elements.Take(bodyRow.Elements.Count - 1)
-                .Aggregate(new RowAtom(source), (r, atom) => r.Add(atom));
-            bodyAtom = row;
+            return
+                bodyRow.Elements
+                .Take(bodyRow.Elements.Count - 1)
+                .Aggregate(
+                    new RowAtom(source),
+                    (r, atom) => r.Add(atom)
+                );
         }
         else if (bodyRow.Elements.Count == 2)
         {
-            bodyAtom = bodyRow.Elements[0];
+            return bodyRow.Elements[0];
         }
         else
         {
             throw new NotSupportedException($"Cannot convert {bodyRow} to fenced atom body");
         }
-
-        return new DelimiterInfo(bodyAtom, lastDelimiter);
     }
 
     private TexFormula Parse(
@@ -318,40 +324,13 @@ public class TexFormulaParser
             var ch = value[position];
             var source = value.Segment(position, 1);
             var atom = IsWhiteSpace(ch)
-                ? (Atom) new SpaceAtom(source)
+                ? (Atom)new SpaceAtom(source)
                 : new CharAtom(source, ch, textStyle);
             position++;
             formula.Add(atom, value.Segment(initialPosition, position - initialPosition));
         }
 
         return formula;
-    }
-
-    internal static SourceSpan ReadElementGroup(SourceSpan value, ref int position, char openChar, char closeChar)
-    {
-        if (position == value.Length || value[position] != openChar)
-            throw new TexParseException("missing '" + openChar + "'!");
-
-        var group = 0;
-        position++;
-        var start = position;
-        while (position < value.Length && !(value[position] == closeChar && group == 0))
-        {
-            if (value[position] == openChar)
-                group++;
-            else if (value[position] == closeChar)
-                group--;
-            position++;
-        }
-
-        if (position == value.Length)
-        {
-            // Reached end of formula but group has not been closed.
-            throw new TexParseException("Illegal end,  missing '" + closeChar + "'!");
-        }
-
-        position++;
-        return value.Segment(start, position - start - 1);
     }
 
     /// <summary>Reads a char-delimited element group if it exists; returns <c>null</c> if it isn't.</summary>
@@ -361,44 +340,13 @@ public class TexFormulaParser
         char openChar,
         char closeChar)
     {
-        SkipWhiteSpace(value, ref position);
+        position = WithSkippedWhiteSpace(value, position);
         if (position == value.Length || value[position] != openChar)
             return null;
 
-        return ReadElementGroup(value, ref position, openChar, closeChar);
-    }
-
-    private static SourceSpan ReadEscapeSequence(SourceSpan value, ref int position)
-    {
-        var initialPosition = position;
-        if (value[initialPosition] != escapeChar)
-            throw new Exception($"Invalid state: {nameof(ReadEscapeSequence)} called for a value without escape character ({value})");
-
-        position++;
-        var start = position;
-        while (position < value.Length)
-        {
-            var ch = value[position];
-            var isEnd = position == value.Length - 1;
-            if (!char.IsLetter(ch) || isEnd)
-            {
-                // Escape sequence has ended
-                // Or it's a symbol. Assuming in this case it will only be a single char.
-                if ((isEnd && char.IsLetter(ch)) || position - start == 0)
-                {
-                    position++;
-                }
-                break;
-            }
-
-            position++;
-        }
-
-        var length = position - initialPosition;
-        if (length <= 1)
-            throw new TexParseException($"Unfinished escape sequence (value: \"{value}\", index {position})");
-
-        return value.Segment(initialPosition, length);
+        var afterGroupRead = ReadElementGroup(value, position, openChar, closeChar);
+        position = afterGroupRead.position;
+        return afterGroupRead.source;
     }
 
     private static SymbolAtom ParseDelimiter(SourceSpan value, int start, ref int position)
@@ -434,17 +382,24 @@ public class TexFormulaParser
     /// <exception cref="TexParseException">Will be thrown for ill-formed groups.</exception>
     internal static SourceSpan ReadElement(SourceSpan value, ref int position)
     {
-        SkipWhiteSpace(value, ref position);
+        position = WithSkippedWhiteSpace(value, position);
 
         if (position == value.Length)
             throw new TexParseException("An element is missing");
 
-        return value[position] switch
+        switch (value[position])
         {
-            leftGroupChar => ReadElementGroup(value, ref position, leftGroupChar, rightGroupChar),
-            escapeChar => ReadEscapeSequence(value, ref position),
-            _ => value.Segment(position++, 1)
-        };
+            case leftGroupChar:
+                var afterGroupRead = ReadElementGroup(value, position, leftGroupChar, rightGroupChar);
+                position = afterGroupRead.position;
+                return afterGroupRead.source;
+            case escapeChar:
+                var afterSequenceRead = ReadEscapeSequence(value, position);
+                position = afterSequenceRead.position;
+                return afterSequenceRead.source;
+            default:
+                return value.Segment(position++, 1);
+        }
     }
 
     private TexFormula ReadScript(
@@ -490,7 +445,7 @@ public class TexFormulaParser
                 }
             case "left":
                 {
-                    SkipWhiteSpace(value, ref position);
+                    position = WithSkippedWhiteSpace(value, position);
                     if (position == value.Length)
                         throw new TexParseException("`left` command should be passed a delimiter");
 
@@ -518,7 +473,7 @@ public class TexFormulaParser
                     if (!allowClosingDelimiter)
                         throw new TexParseException("`right` command is not allowed without `left`");
 
-                    SkipWhiteSpace(value, ref position);
+                    position = WithSkippedWhiteSpace(value, position);
                     if (position == value.Length)
                         throw new TexParseException("`right` command should be passed a delimiter");
 
@@ -530,14 +485,18 @@ public class TexFormulaParser
             case "sqrt":
                 {
                     // Command is radical.
-                    SkipWhiteSpace(value, ref position);
+                    position = WithSkippedWhiteSpace(value, position);
 
                     TexFormula? degreeFormula = null;
                     if (value.Length > position && value[position] == leftBracketChar)
                     {
                         // Degree of radical is specified.
+
+                        var afterGroupRead = ReadElementGroup(value, position, leftBracketChar, rightBracketChar);
+                        position = afterGroupRead.position;
+
                         degreeFormula = Parse(
-                            ReadElementGroup(value, ref position, leftBracketChar, rightBracketChar),
+                            afterGroupRead.source,
                             formula.TextStyle,
                             environment.CreateChildEnvironment());
                     }
@@ -553,29 +512,29 @@ public class TexFormulaParser
                         new Radical(source, sqrtFormula.RootAtom ?? new NullAtom(), degreeFormula?.RootAtom));
                 }
             case "color":
-            {
-                var color = ReadColorModelData(value, ref position);
+                {
+                    var color = ReadColorModelData(value, ref position);
 
-                var bodyValue = ReadElement(value, ref position);
-                var bodyFormula = Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
-                source = value.Segment(start, position - start);
+                    var bodyValue = ReadElement(value, ref position);
+                    var bodyFormula = Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
+                    source = value.Segment(start, position - start);
 
-                return new Tuple<AtomAppendMode, Atom?>(
-                    AtomAppendMode.Add,
-                    new StyledAtom(source, bodyFormula.RootAtom, null, _brushFactory.FromColor(color)));
-            }
+                    return new Tuple<AtomAppendMode, Atom?>(
+                        AtomAppendMode.Add,
+                        new StyledAtom(source, bodyFormula.RootAtom, null, _brushFactory.FromColor(color)));
+                }
             case "colorbox":
-            {
-                var color = ReadColorModelData(value, ref position);
+                {
+                    var color = ReadColorModelData(value, ref position);
 
-                var bodyValue = ReadElement(value, ref position);
-                var bodyFormula = Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
-                source = value.Segment(start, position - start);
+                    var bodyValue = ReadElement(value, ref position);
+                    var bodyFormula = Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
+                    source = value.Segment(start, position - start);
 
-                return new Tuple<AtomAppendMode, Atom?>(
-                    AtomAppendMode.Add,
-                    new StyledAtom(source, bodyFormula.RootAtom, _brushFactory.FromColor(color), null));
-            }
+                    return new Tuple<AtomAppendMode, Atom?>(
+                        AtomAppendMode.Add,
+                        new StyledAtom(source, bodyFormula.RootAtom, _brushFactory.FromColor(color), null));
+                }
         }
 
         if (environment.AvailableCommands.TryGetValue(command, out var parser)
@@ -629,7 +588,9 @@ public class TexFormulaParser
         ICommandEnvironment environment)
     {
         var initialSrcPosition = position;
-        var commandSpan = ReadEscapeSequence(value, ref position).Segment(1);
+        var afterEscapeRead = ReadEscapeSequence(value, position);
+        position = afterEscapeRead.position;
+        var commandSpan = afterEscapeRead.source.Segment(1);
         var command = commandSpan.ToString();
         var formulaSource = new SourceSpan(value.SourceName, value.Source, initialSrcPosition, commandSpan.End);
 
@@ -670,7 +631,7 @@ public class TexFormulaParser
         else if (textStyles.Contains(command))
         {
             // Text style was found.
-            SkipWhiteSpace(value, ref position);
+            position = WithSkippedWhiteSpace(value, position);
 
             var styledFormula = command == TexUtilities.TextStyleName
                 ? ConvertRawText(ReadElement(value, ref position), command)
@@ -740,7 +701,7 @@ public class TexFormulaParser
     {
         if (skipWhiteSpace)
         {
-            SkipWhiteSpace(value, ref position);
+            position = WithSkippedWhiteSpace(value, position);
         }
 
         var initialPosition = position;
@@ -785,7 +746,7 @@ public class TexFormulaParser
             position++;
             superscriptFormula = ReadScript(formula, value, ref position, environment);
 
-            SkipWhiteSpace(value, ref position);
+            position = WithSkippedWhiteSpace(value, position);
             if (position < value.Length && value[position] == subScriptChar)
             {
                 // Attach subscript also.
@@ -799,7 +760,7 @@ public class TexFormulaParser
             position++;
             subscriptFormula = ReadScript(formula, value, ref position, environment);
 
-            SkipWhiteSpace(value, ref position);
+            position = WithSkippedWhiteSpace(value, position);
             if (position < value.Length && value[position] == superScriptChar)
             {
                 // Attach superscript also.
@@ -879,9 +840,83 @@ public class TexFormulaParser
         }
     }
 
-    private static void SkipWhiteSpace(SourceSpan value, ref int position)
+    private readonly record struct AfterReadingInfo(SourceSpan source, int position);
+
+    private static AfterReadingInfo ReadEscapeSequence(SourceSpan value, int position)
+    {
+        var initialPosition = position;
+        if (value[initialPosition] != escapeChar)
+            throw new Exception($"Invalid state: {nameof(ReadEscapeSequence)} called for a value without escape character ({value})");
+
+        position++;
+        var start = position;
+        while (position < value.Length)
+        {
+            var ch = value[position];
+            var isEnd = position == value.Length - 1;
+            if (!char.IsLetter(ch) || isEnd)
+            {
+                // Escape sequence has ended
+                // Or it's a symbol. Assuming in this case it will only be a single char.
+                if ((isEnd && char.IsLetter(ch)) || position - start == 0)
+                {
+                    position++;
+                }
+                break;
+            }
+
+            position++;
+        }
+
+        var length = position - initialPosition;
+        if (length <= 1)
+            throw new TexParseException($"Unfinished escape sequence (value: \"{value}\", index {position})");
+
+        return new(
+            value.Segment(initialPosition, length),
+            position);
+    }
+
+    private static AfterReadingInfo ReadElementGroup(
+        SourceSpan value,
+        int position,
+        char openChar,
+        char closeChar)
+    {
+        if (position == value.Length || value[position] != openChar)
+            throw new TexParseException("missing '" + openChar + "'!");
+
+        var group = 0;
+        position++;
+        var start = position;
+        while (position < value.Length && !(value[position] == closeChar && group == 0))
+        {
+            if (value[position] == openChar)
+                group++;
+            else if (value[position] == closeChar)
+                group--;
+            position++;
+        }
+
+        if (position == value.Length)
+        {
+            // Reached end of formula but group has not been closed.
+            throw new TexParseException("Illegal end,  missing '" + closeChar + "'!");
+        }
+
+        position++;
+
+        return new(
+            value.Segment(start, position - start - 1),
+            position);
+    }
+
+    /// <returns>New position after space skipped</returns>
+    private static int WithSkippedWhiteSpace(SourceSpan value, int position)
     {
         while (position < value.Length && IsWhiteSpace(value[position]))
             position++;
+
+        return position;
     }
 }
