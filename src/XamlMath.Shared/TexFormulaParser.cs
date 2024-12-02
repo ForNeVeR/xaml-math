@@ -192,32 +192,6 @@ public class TexFormulaParser
         return new DelimiterInfo(bodyAtom, lastDelimiter);
     }
 
-    private static Atom CreateForRow(RowAtom? bodyRow, SourceSpan? source)
-    {
-        if (bodyRow == null)
-        {
-            return new RowAtom(source);
-        }
-        else if (bodyRow.Elements.Count > 2)
-        {
-            return
-                bodyRow.Elements
-                .Take(bodyRow.Elements.Count - 1)
-                .Aggregate(
-                    new RowAtom(source),
-                    (r, atom) => r.Add(atom)
-                );
-        }
-        else if (bodyRow.Elements.Count == 2)
-        {
-            return bodyRow.Elements[0];
-        }
-        else
-        {
-            throw new NotSupportedException($"Cannot convert {bodyRow} to fenced atom body");
-        }
-    }
-
     private TexFormula Parse(
         SourceSpan value,
         ref int position,
@@ -918,5 +892,31 @@ public class TexFormulaParser
             position++;
 
         return position;
+    }
+
+    private static Atom CreateForRow(RowAtom? bodyRow, SourceSpan? source)
+    {
+        if (bodyRow == null)
+        {
+            return new RowAtom(source);
+        }
+        else if (bodyRow.Elements.Count > 2)
+        {
+            return
+                bodyRow.Elements
+                .Take(bodyRow.Elements.Count - 1)
+                .Aggregate(
+                    new RowAtom(source),
+                    (r, atom) => r.Add(atom)
+                );
+        }
+        else if (bodyRow.Elements.Count == 2)
+        {
+            return bodyRow.Elements[0];
+        }
+        else
+        {
+            throw new NotSupportedException($"Cannot convert {bodyRow} to fenced atom body");
+        }
     }
 }
