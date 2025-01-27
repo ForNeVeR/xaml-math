@@ -8,7 +8,8 @@ Publish a New Version
 3. Set `<Version>` in the `Directory.Build.props` file.
 4. Update the copyright year in `Directory.Build.props`, if required.
 5. Merge the aforementioned changes via a pull request.
-6. Push a tag in form of `v<VERSION>`, e.g. `v0.0.1`. GitHub Actions will do the rest (push a NuGet package).
+6. Make sure the NuGet API key is still valid. If not, then see the section **Rotate NuGet Publishing Key**.
+7. Push a tag in form of `v<VERSION>`, e.g. `v0.0.1`. GitHub Actions will do the rest (push a NuGet package).
 
 Prepare NuGet Package Locally
 -----------------------------
