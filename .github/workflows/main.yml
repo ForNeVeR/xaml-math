@@ -18,10 +18,10 @@ jobs:
       matrix:
         config:
           - name: 'macos'
-            image: 'macos-12'
+            image: 'macos-14'
             testProject: 'src/AvaloniaMath.ApiTest'
           - name: 'linux'
-            image: 'ubuntu-22.04'
+            image: 'ubuntu-24.04'
             testProject: 'src/AvaloniaMath.ApiTest'
           - name: 'windows'
             image: 'windows-2022'
