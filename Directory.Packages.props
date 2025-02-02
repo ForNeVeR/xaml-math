@@ -18,7 +18,7 @@
     <PackageVersion Include="Microsoft.DotNet.GenAPI" Version="7.0.0-beta.24266.2" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.4.1" />
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="1.0.0" />
-    <PackageVersion Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+    <PackageVersion Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageVersion Include="Nullable" Version="1.2.1" />
     <PackageVersion Include="System.Reactive" Version="6.0.0" />
