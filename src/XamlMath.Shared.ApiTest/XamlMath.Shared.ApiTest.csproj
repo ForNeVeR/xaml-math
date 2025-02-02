@@ -30,7 +30,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\src\XamlMath.ApiTest.Framework\XamlMath.ApiTest.Framework.csproj" />
         <ProjectReference Include="..\XamlMath.ApiTest.Framework\XamlMath.ApiTest.Framework.csproj" />
     </ItemGroup>
 
