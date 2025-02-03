@@ -15,11 +15,6 @@
         <PackageReference Include="FSharp.Core.Fluent-4.0" />
         <PackageReference Include="Newtonsoft.Json" />
         <PackageReference Include="xunit" />
-        <PackageReference Include="xunit.abstractions" />
-        <PackageReference Include="xunit.assert" />
-        <PackageReference Include="xunit.core" />
-        <PackageReference Include="xunit.extensibility.core" />
-        <PackageReference Include="xunit.extensibility.execution" />
         <PackageReference Include="xunit.runner.visualstudio">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
