@@ -33,6 +33,6 @@
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFrameworkIdentifier)' == '.NETFramework' ">
     <PackageVersion Include="Avalonia.Direct2D1" Version="11.2.3" />
-    <PackageVersion Include="System.ValueTuple" Version="4.4.0" />
+    <PackageVersion Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
 </Project>
