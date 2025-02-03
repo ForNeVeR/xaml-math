@@ -2,5 +2,14 @@
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": [
         "config:recommended"
+    ],
+    "packageRules": [
+        {
+            "matchPackageNames": ["System.Reactive"],
+            "enabled": false,
+            "description": [
+                "Do not auto-update System.Reactive as it is a user-visible dependency of the AvaloniaMath package."
+            ]
+        }
     ]
 }
