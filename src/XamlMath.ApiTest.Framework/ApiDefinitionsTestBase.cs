@@ -3,7 +3,6 @@ using DiffEngine;
 
 namespace XamlMath.ApiTest.Framework;
 
-[UsesVerify]
 public class ApiDefinitionTestsBase
 {
     static ApiDefinitionTestsBase()

@@ -2,7 +2,6 @@ using XamlMath.ApiTest.Framework;
 
 namespace AvaloniaMath.ApiTest;
 
-[UsesVerify]
 public class ApiDefinitionTests : ApiDefinitionTestsBase
 {
     [Theory]
