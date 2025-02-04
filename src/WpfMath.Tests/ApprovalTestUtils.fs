@@ -124,7 +124,7 @@ let verifyParseResult (formulaText: string): unit =
     verifyObject formula
 
 let verifyParseResultScenario (scenario: string) (formulaText: string): unit =
-    use block = NamerFactory.AsEnvironmentSpecificTest(fun () -> $"(%s{scenario})")
+    use block = NamerFactory.AsEnvironmentSpecificTest $"(%s{scenario})"
     verifyParseResult formulaText
 
 let processSpecialChars (text: string): string =
