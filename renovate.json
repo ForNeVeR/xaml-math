@@ -10,6 +10,14 @@
             "description": [
                 "Do not auto-update System.Reactive as it is a user-visible dependency of the AvaloniaMath package."
             ]
+        },
+        {
+            "matchPackageNames": ["xunit.runner.visualstudio"],
+            "matchUpdateTypes": "major",
+            "enabled": false,
+            "description": [
+                "TODO[#517]: A major update of this package doesn't support .NET 4.6.2 needed for our tests."
+            ]
         }
     ]
 }
