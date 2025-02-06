@@ -275,7 +275,9 @@ public class TexFormulaParser
 
     private void ProcessLeftGroupChar(SourceSpan value, ref int position, string? textStyle, ICommandEnvironment environment, TexFormula formula, int initialPosition)
     {
-        var groupValue = ReadElement(value, ref position);
+        var afterGroup = ReadElement(value, position);
+        position = afterGroup.position;
+        var groupValue = afterGroup.source;
         var parsedGroup = Parse(groupValue, textStyle, environment.CreateChildEnvironment());
         var innerGroupAtom = parsedGroup.RootAtom ?? new RowAtom(groupValue);
         var groupAtom = new TypedAtom(
@@ -325,7 +327,9 @@ public class TexFormulaParser
 
     private static SymbolAtom ParseDelimiter(SourceSpan value, int start, ref int position)
     {
-        var delimiter = ReadElement(value, ref position);
+        var afterDelimiter = ReadElement(value, position);
+        position = afterDelimiter.position;
+        var delimiter = afterDelimiter.source;
 
         string delimiterName;
         if (delimiter.Length == 1)
@@ -354,7 +358,7 @@ public class TexFormulaParser
     /// prefixed by a backslash.
     /// </summary>
     /// <exception cref="TexParseException">Will be thrown for ill-formed groups.</exception>
-    internal static SourceSpan ReadElement(SourceSpan value, ref int position)
+    internal static AfterReadingInfo ReadElement(SourceSpan value, int position)
     {
         position = WithSkippedWhiteSpace(value, position);
 
@@ -366,13 +370,13 @@ public class TexFormulaParser
             case leftGroupChar:
                 var afterGroupRead = ReadElementGroup(value, position, leftGroupChar, rightGroupChar);
                 position = afterGroupRead.position;
-                return afterGroupRead.source;
+                return new(afterGroupRead.source, position);
             case escapeChar:
                 var afterSequenceRead = ReadEscapeSequence(value, position);
                 position = afterSequenceRead.position;
-                return afterSequenceRead.source;
+                return new(afterSequenceRead.source, position);
             default:
-                return value.Segment(position++, 1);
+                return new(value.Segment(position++, 1), position);
         }
     }
 
@@ -380,8 +384,12 @@ public class TexFormulaParser
         TexFormula formula,
         SourceSpan value,
         ref int position,
-        ICommandEnvironment environment) =>
-        Parse(ReadElement(value, ref position), formula.TextStyle, environment.CreateChildEnvironment());
+        ICommandEnvironment environment)
+    {
+        var afterScript = ReadElement(value, position);
+        position = afterScript.position;
+        return Parse(afterScript.source, formula.TextStyle, environment.CreateChildEnvironment());
+    }
 
     /// <remarks>May return <c>null</c> for commands that produce no atoms.</remarks>
     private Tuple<AtomAppendMode, Atom?> ProcessCommand(
@@ -400,12 +408,16 @@ public class TexFormulaParser
         {
             case "frac":
                 {
+                    var afterNumerator = ReadElement(value, position);
+                    position = afterNumerator.position;
                     var numeratorFormula = Parse(
-                        ReadElement(value, ref position),
+                        afterNumerator.source,
                         formula.TextStyle,
                         environment.CreateChildEnvironment());
+                    var afterDenominator = ReadElement(value, position);
+                    position = afterDenominator.position;
                     var denominatorFormula = Parse(
-                        ReadElement(value, ref position),
+                        afterDenominator.source,
                         formula.TextStyle,
                         environment.CreateChildEnvironment());
                     source = value.Segment(start, position - start);
@@ -433,8 +445,10 @@ public class TexFormulaParser
                 }
             case "overline":
                 {
+                    var afterOverline = ReadElement(value, position);
+                    position = afterOverline.position;
                     var overlineFormula = Parse(
-                        ReadElement(value, ref position),
+                        afterOverline.source,
                         formula.TextStyle,
                         environment.CreateChildEnvironment());
                     source = value.Segment(start, position - start);
@@ -475,8 +489,10 @@ public class TexFormulaParser
                             environment.CreateChildEnvironment());
                     }
 
+                    var afterSqrt = ReadElement(value, position);
+                    position = afterSqrt.position;
                     var sqrtFormula = this.Parse(
-                        ReadElement(value, ref position),
+                        afterSqrt.source,
                         formula.TextStyle,
                         environment.CreateChildEnvironment());
 
@@ -489,7 +505,9 @@ public class TexFormulaParser
                 {
                     var color = ReadColorModelData(value, ref position);
 
-                    var bodyValue = ReadElement(value, ref position);
+                    var afterValue = ReadElement(value, position);
+                    position = afterValue.position;
+                    var bodyValue = afterValue.source;
                     var bodyFormula = Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
                     source = value.Segment(start, position - start);
 
@@ -501,7 +519,9 @@ public class TexFormulaParser
                 {
                     var color = ReadColorModelData(value, ref position);
 
-                    var bodyValue = ReadElement(value, ref position);
+                    var afterValue = ReadElement(value, position);
+                    position = afterValue.position;
+                    var bodyValue = afterValue.source;
                     var bodyFormula = Parse(bodyValue, formula.TextStyle, environment.CreateChildEnvironment());
                     source = value.Segment(start, position - start);
 
@@ -537,7 +557,9 @@ public class TexFormulaParser
             ref position,
             leftBracketChar,
             rightBracketChar)?.ToString();
-        var colorDefinition = ReadElement(value, ref position).ToString();
+        var afterColor = ReadElement(value, position);
+        position = afterColor.position;
+        var colorDefinition = afterColor.source.ToString();
         var colorComponents = colorDefinition.Split(',').Select(c => c.Trim()).ToArray();
 
         var colorParser = string.IsNullOrEmpty(colorModelName)
@@ -607,9 +629,17 @@ public class TexFormulaParser
             // Text style was found.
             position = WithSkippedWhiteSpace(value, position);
 
-            var styledFormula = command == TexUtilities.TextStyleName
-                ? ConvertRawText(ReadElement(value, ref position), command)
-                : Parse(ReadElement(value, ref position), command, environment.CreateChildEnvironment());
+            var afterRead =
+                command == TexUtilities.TextStyleName
+                ? ReadElement(value, position)
+                : ReadElement(value, position);
+
+            position = afterRead.position;
+
+            TexFormula styledFormula =
+                command == TexUtilities.TextStyleName
+                ? ConvertRawText(afterRead.source, command)
+                : Parse(afterRead.source, command, environment.CreateChildEnvironment());
 
             var source = value.Segment(commandSpan.Start, position - commandSpan.Start);
             var atom = styledFormula.RootAtom ?? new NullAtom(source);
@@ -814,7 +844,7 @@ public class TexFormulaParser
         }
     }
 
-    private readonly record struct AfterReadingInfo(SourceSpan source, int position);
+    internal readonly record struct AfterReadingInfo(SourceSpan source, int position);
 
     private static AfterReadingInfo ReadEscapeSequence(SourceSpan value, int position)
     {

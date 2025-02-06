@@ -8,7 +8,9 @@ internal sealed class ProcessEnvironmentCommand : ICommandParser
     public CommandProcessingResult ProcessCommand(CommandContext context)
     {
         var position = context.ArgumentsStartPosition;
-        var environmentName = TexFormulaParser.ReadElement(context.CommandSource, ref position).ToString();
+        var afterElement = TexFormulaParser.ReadElement(context.CommandSource, position);
+        position = afterElement.position;
+        var environmentName = afterElement.source.ToString();
         if (environmentName == "") throw new TexParseException(@"Empty environment name for the \begin command.");
         if (!StandardCommands.Environments.TryGetValue(environmentName, out var environmentParser))
             throw new TexParseException(@$"Unknown environment name for the \begin command: ""{environmentName}"".");
@@ -32,7 +34,9 @@ internal sealed class ProcessEnvironmentCommand : ICommandParser
         {
             bodyEndPosition = position;
 
-            var element = TexFormulaParser.ReadElement(source, ref position);
+            var afterRead = TexFormulaParser.ReadElement(source, position);
+            position = afterRead.position;
+            var element = afterRead.source;
             switch (element.ToString())
             {
                 case @"\begin": ++nestingLevel; break;
@@ -45,7 +49,9 @@ internal sealed class ProcessEnvironmentCommand : ICommandParser
         if (nestingLevel != 0)
             throw new TexParseException(@$"No matching \end found for command ""\begin{{{environmentName}}}"".");
 
-        var endLabel = TexFormulaParser.ReadElement(source, ref position).ToString();
+        var afterEnd = TexFormulaParser.ReadElement(source, position);
+        position = afterEnd.position;
+        var endLabel = afterEnd.source.ToString();
         if (endLabel != environmentName)
             throw new TexParseException(
                 $@"""\end{{{endLabel}}}"" doesn't correspond to earlier ""\begin{{{environmentName}}}"".");
