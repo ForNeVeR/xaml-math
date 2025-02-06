@@ -35,7 +35,9 @@ internal sealed class MatrixCommandParser : ICommandParser, IEnvironmentParser
         if (position == source.Length)
             throw new TexParseException("illegal end!");
 
-        var cellsSource = TexFormulaParser.ReadElement(source, ref position);
+        var afterCells = TexFormulaParser.ReadElement(source, position);
+        position = afterCells.position;
+        var cellsSource = afterCells.source;
         var matrixSource = context.CommandSource.Segment(
             context.CommandNameStartPosition,
             position - context.CommandNameStartPosition);
