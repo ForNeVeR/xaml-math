@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO.Pipes;
 using XamlMath.Atoms;
 using XamlMath.Boxes;
 using XamlMath.Parsers.Matrices;
@@ -13,8 +14,10 @@ internal static class StandardCommands
         {
             var source = context.CommandSource;
             var position = context.ArgumentsStartPosition;
+            var afterFormula = TexFormulaParser.ReadElement(source, position);
+            position = afterFormula.position;
             var underlineFormula = context.Parser.Parse(
-                TexFormulaParser.ReadElement(source, ref position),
+                afterFormula.source,
                 context.Formula.TextStyle,
                 context.Environment);
             var start = context.CommandNameStartPosition;
@@ -30,12 +33,16 @@ internal static class StandardCommands
         {
             var source = context.CommandSource;
             var position = context.ArgumentsStartPosition;
+            var afterTop = TexFormulaParser.ReadElement(source, position);
+            position = afterTop.position;
             var topFormula = context.Parser.Parse(
-                        TexFormulaParser.ReadElement(source, ref position),
+                        afterTop.source,
                         context.Formula.TextStyle,
                         context.Environment.CreateChildEnvironment());
+            var afterBottom = TexFormulaParser.ReadElement(source, position);
+            position = afterBottom.position;
             var bottomFormula = context.Parser.Parse(
-                        TexFormulaParser.ReadElement(source, ref position),
+                        afterBottom.source,
                         context.Formula.TextStyle,
                         context.Environment.CreateChildEnvironment());
             var start = context.CommandNameStartPosition;
@@ -68,7 +75,9 @@ internal static class StandardCommands
         {
             var source = context.CommandSource;
             var position = context.ArgumentsStartPosition;
-            var contentFormula = context.Parser.Parse(TexFormulaParser.ReadElement(source, ref position),
+            var afterFormula = TexFormulaParser.ReadElement(source, position);
+            position = afterFormula.position;
+            var contentFormula = context.Parser.Parse(afterFormula.source,
                                                       context.Formula.TextStyle,
                                                       context.Environment.CreateChildEnvironment());
 
