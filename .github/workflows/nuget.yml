@@ -14,7 +14,7 @@ on:
 
 jobs:
   nuget-push:
-    runs-on: 'windows-2022'
+    runs-on: 'windows-2025'
     env:
       DOTNET_NOLOGO: 1
       DOTNET_CLI_TELEMETRY_OPTOUT: 1
