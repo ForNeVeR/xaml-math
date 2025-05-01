@@ -6,10 +6,10 @@
   <ItemGroup>
     <PackageVersion Include="ApprovalTests" Version="6.0.0" />
     <PackageVersion Include="Avalonia" Version="[11.0.0,12.0.0)" />
-    <PackageVersion Include="Avalonia.Desktop" Version="11.2.8" />
-    <PackageVersion Include="Avalonia.Diagnostics" Version="11.2.8" />
-    <PackageVersion Include="Avalonia.ReactiveUI" Version="11.2.8" />
-    <PackageVersion Include="Avalonia.Themes.Fluent" Version="11.2.8" />
+    <PackageVersion Include="Avalonia.Desktop" Version="11.3.0" />
+    <PackageVersion Include="Avalonia.Diagnostics" Version="11.3.0" />
+    <PackageVersion Include="Avalonia.ReactiveUI" Version="11.3.0" />
+    <PackageVersion Include="Avalonia.Themes.Fluent" Version="11.3.0" />
     <PackageVersion Include="ChangelogAutomation.MSBuild" Version="3.0.0" />
     <PackageVersion Include="Foq" Version="1.8.0" />
     <PackageVersion Include="FSharp.Core" Version="$(FSCorePackageVersion)" />
@@ -29,7 +29,7 @@
     </PackageVersion>
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFrameworkIdentifier)' == '.NETFramework' ">
-    <PackageVersion Include="Avalonia.Direct2D1" Version="11.2.8" />
+    <PackageVersion Include="Avalonia.Direct2D1" Version="11.3.0" />
     <PackageVersion Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
 </Project>
