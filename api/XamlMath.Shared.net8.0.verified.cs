@@ -15,6 +15,8 @@ namespace XamlMath
         public char Character { get { throw null; } }
         public int FontId { get { throw null; } }
     }
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public partial class CharInfo
     {
         public CharInfo(char character, XamlMath.Fonts.IFontTypeface font, double size, int fontId, XamlMath.TeXFontMetrics metrics) { }
@@ -29,6 +31,8 @@ namespace XamlMath
     {
         internal DelimiterMappingNotFoundException() { }
     }
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)]
     public partial class ExtensionChar
     {
         public ExtensionChar(XamlMath.CharInfo? top, XamlMath.CharInfo? middle, XamlMath.CharInfo? bottom, XamlMath.CharInfo? repeat) { }
@@ -47,6 +51,8 @@ namespace XamlMath
         Center = 1,
         Aligned = 2,
     }
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public partial class SourceSpan : System.IEquatable<XamlMath.SourceSpan>
     {
         public SourceSpan(string sourceName, string source, int start, int length) { }
@@ -56,7 +62,9 @@ namespace XamlMath
         public string Source { get { throw null; } }
         public string SourceName { get { throw null; } }
         public int Start { get { throw null; } }
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)]
         public override bool Equals(object? obj) { throw null; }
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)]
         public bool Equals(XamlMath.SourceSpan? other) { throw null; }
         public override int GetHashCode() { throw null; }
         public XamlMath.SourceSpan Segment(int start) { throw null; }
@@ -111,19 +119,27 @@ namespace XamlMath
         SingleLine = 9,
         DoubleLine = 10,
     }
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public sealed partial class TexEnvironment : System.IEquatable<XamlMath.TexEnvironment>
     {
-        public TexEnvironment(XamlMath.TexStyle Style, XamlMath.Fonts.ITeXFont MathFont, XamlMath.Fonts.ITeXFont TextFont, XamlMath.Rendering.IBrush? Background = null, XamlMath.Rendering.IBrush? Foreground = null) { }
-        public XamlMath.Rendering.IBrush? Background { get { throw null; } set { } }
-        public XamlMath.Rendering.IBrush? Foreground { get { throw null; } set { } }
+        public TexEnvironment(XamlMath.TexStyle Style, XamlMath.Fonts.ITeXFont MathFont, XamlMath.Fonts.ITeXFont TextFont, [System.Runtime.CompilerServices.NullableAttribute((byte)2)] XamlMath.Rendering.IBrush? Background = null, [System.Runtime.CompilerServices.NullableAttribute((byte)2)] XamlMath.Rendering.IBrush? Foreground = null) { }
+        [System.Runtime.CompilerServices.NullableAttribute((byte)2)]
+        public XamlMath.Rendering.IBrush? Background { [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)] get { throw null; } [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)] set { } }
+        [System.Runtime.CompilerServices.NullableAttribute((byte)2)]
+        public XamlMath.Rendering.IBrush? Foreground { [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)] get { throw null; } [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)] set { } }
         public XamlMath.Fonts.ITeXFont MathFont { get { throw null; } set { } }
         public XamlMath.TexStyle Style { get { throw null; } set { } }
         public XamlMath.Fonts.ITeXFont TextFont { get { throw null; } set { } }
-        public void Deconstruct(out XamlMath.TexStyle Style, out XamlMath.Fonts.ITeXFont MathFont, out XamlMath.Fonts.ITeXFont TextFont, out XamlMath.Rendering.IBrush? Background, out XamlMath.Rendering.IBrush? Foreground) { throw null; }
+        public void Deconstruct(out XamlMath.TexStyle Style, out XamlMath.Fonts.ITeXFont MathFont, out XamlMath.Fonts.ITeXFont TextFont, [System.Runtime.CompilerServices.NullableAttribute((byte)2)] out XamlMath.Rendering.IBrush? Background, [System.Runtime.CompilerServices.NullableAttribute((byte)2)] out XamlMath.Rendering.IBrush? Foreground) { throw null; }
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)]
         public override bool Equals(object? obj) { throw null; }
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)]
         public bool Equals(XamlMath.TexEnvironment? other) { throw null; }
         public override int GetHashCode() { throw null; }
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)]
         public static bool operator ==(XamlMath.TexEnvironment? left, XamlMath.TexEnvironment? right) { throw null; }
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)]
         public static bool operator !=(XamlMath.TexEnvironment? left, XamlMath.TexEnvironment? right) { throw null; }
         public override string ToString() { throw null; }
         public XamlMath.TexEnvironment <Clone>$() { throw null; }
@@ -136,21 +152,28 @@ namespace XamlMath
         public double Italic { get { throw null; } set { } }
         public double Width { get { throw null; } set { } }
     }
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)]
     public sealed partial class TexFormula
     {
         public TexFormula() { }
         public XamlMath.SourceSpan? Source { get { throw null; } set { } }
         public string? TextStyle { get { throw null; } set { } }
-        public void Add(XamlMath.TexFormula formula, XamlMath.SourceSpan? source = null) { }
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
+        public void Add(XamlMath.TexFormula formula, [System.Runtime.CompilerServices.NullableAttribute((byte)2)] XamlMath.SourceSpan? source = null) { }
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
         public void SetBackground(XamlMath.Rendering.IBrush brush) { }
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
         public void SetForeground(XamlMath.Rendering.IBrush brush) { }
     }
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public partial class TexFormulaParser
     {
-        public TexFormulaParser(System.Collections.Generic.IReadOnlyDictionary<string, XamlMath.Colors.IColorParser> colorModelParsers, XamlMath.Colors.IColorParser defaultColorParser, XamlMath.Rendering.IBrushFactory brushFactory, System.Collections.Generic.IReadOnlyDictionary<string, System.Func<XamlMath.SourceSpan, XamlMath.TexFormula?>> predefinedFormulae) { }
-        public TexFormulaParser(XamlMath.Rendering.IBrushFactory brushFactory, System.Collections.Generic.IReadOnlyDictionary<string, System.Func<XamlMath.SourceSpan, XamlMath.TexFormula?>> predefinedFormulae) { }
-        public XamlMath.TexFormula Parse(string value, string? textStyle = null) { throw null; }
-        public XamlMath.TexFormula Parse(XamlMath.SourceSpan value, string? textStyle = null) { throw null; }
+        public TexFormulaParser(System.Collections.Generic.IReadOnlyDictionary<string, XamlMath.Colors.IColorParser> colorModelParsers, XamlMath.Colors.IColorParser defaultColorParser, XamlMath.Rendering.IBrushFactory brushFactory, [System.Runtime.CompilerServices.NullableAttribute(new byte[]{ (byte)1, (byte)1, (byte)1, (byte)1, (byte)2})] System.Collections.Generic.IReadOnlyDictionary<string, System.Func<XamlMath.SourceSpan, XamlMath.TexFormula?>> predefinedFormulae) { }
+        public TexFormulaParser(XamlMath.Rendering.IBrushFactory brushFactory, [System.Runtime.CompilerServices.NullableAttribute(new byte[]{ (byte)1, (byte)1, (byte)1, (byte)1, (byte)2})] System.Collections.Generic.IReadOnlyDictionary<string, System.Func<XamlMath.SourceSpan, XamlMath.TexFormula?>> predefinedFormulae) { }
+        public XamlMath.TexFormula Parse(string value, [System.Runtime.CompilerServices.NullableAttribute((byte)2)] string? textStyle = null) { throw null; }
+        public XamlMath.TexFormula Parse(XamlMath.SourceSpan value, [System.Runtime.CompilerServices.NullableAttribute((byte)2)] string? textStyle = null) { throw null; }
     }
     public enum TexStyle
     {
@@ -171,12 +194,15 @@ namespace XamlMath
 }
 namespace XamlMath.Boxes
 {
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)]
     public abstract partial class Box
     {
         protected Box() { }
         protected Box(XamlMath.Rendering.IBrush? foreground, XamlMath.Rendering.IBrush? background) { }
         public XamlMath.Rendering.IBrush? Background { get { throw null; } set { } }
-        public System.Collections.ObjectModel.ReadOnlyCollection<XamlMath.Boxes.Box> Children { get { throw null; } }
+        [System.Runtime.CompilerServices.NullableAttribute((byte)1)]
+        public System.Collections.ObjectModel.ReadOnlyCollection<XamlMath.Boxes.Box> Children { [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)] get { throw null; } }
         public double Depth { get { throw null; } set { } }
         public XamlMath.Rendering.IBrush? Foreground { get { throw null; } set { } }
         public double Height { get { throw null; } set { } }
@@ -186,9 +212,12 @@ namespace XamlMath.Boxes
         public double TotalHeight { get { throw null; } }
         public double TotalWidth { get { throw null; } }
         public double Width { get { throw null; } set { } }
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
         public virtual void Add(int position, XamlMath.Boxes.Box box) { }
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
         public virtual void Add(XamlMath.Boxes.Box box) { }
         public abstract int GetLastFontId();
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
         public abstract void RenderTo(XamlMath.Rendering.IElementRenderer renderer, double x, double y);
     }
 }
@@ -197,13 +226,18 @@ namespace XamlMath.Colors
     public abstract partial class FixedComponentCountColorParser : XamlMath.Colors.IColorParser
     {
         protected FixedComponentCountColorParser(int componentCount) { }
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
         public XamlMath.Colors.RgbaColor? Parse(System.Collections.Generic.IReadOnlyList<string> components) { throw null; }
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
         protected abstract XamlMath.Colors.RgbaColor? ParseComponents(System.Collections.Generic.IReadOnlyList<string> components);
     }
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public partial interface IColorParser
     {
         XamlMath.Colors.RgbaColor? Parse(System.Collections.Generic.IReadOnlyList<string> components);
     }
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public sealed partial class PredefinedColorParser : XamlMath.Colors.IColorParser
     {
         internal PredefinedColorParser() { }
@@ -232,6 +266,7 @@ namespace XamlMath.Colors
     }
     public static partial class StandardColorParsers
     {
+        [System.Runtime.CompilerServices.NullableAttribute((byte)1)]
         public static readonly System.Collections.Generic.IReadOnlyDictionary<string, XamlMath.Colors.IColorParser> Dictionary;
     }
 }
@@ -239,8 +274,11 @@ namespace XamlMath.Exceptions
 {
     public sealed partial class TexCharacterMappingNotFoundException : XamlMath.Exceptions.TexException
     {
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
         public TexCharacterMappingNotFoundException(string message) { }
     }
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public abstract partial class TexException : System.Exception
     {
         public TexException() { }
@@ -249,8 +287,11 @@ namespace XamlMath.Exceptions
     }
     public sealed partial class TexNotSupportedException : XamlMath.Exceptions.TexException
     {
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
         public TexNotSupportedException(string message) { }
     }
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public sealed partial class TexParseException : XamlMath.Exceptions.TexException
     {
         internal TexParseException() { }
@@ -261,11 +302,13 @@ namespace XamlMath.Exceptions
     }
     public sealed partial class TypeFaceNotFoundException : XamlMath.Exceptions.TexException
     {
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
         public TypeFaceNotFoundException(string message) { }
     }
 }
 namespace XamlMath.Fonts
 {
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public partial interface IFontProvider
     {
         XamlMath.Fonts.IFontTypeface ReadFontFile(string fontFileName);
@@ -273,6 +316,7 @@ namespace XamlMath.Fonts
     public partial interface IFontTypeface
     {
     }
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public partial interface ITeXFont
     {
         double Size { get; }
@@ -283,15 +327,20 @@ namespace XamlMath.Fonts
         double GetBigOpSpacing3(XamlMath.TexStyle style);
         double GetBigOpSpacing4(XamlMath.TexStyle style);
         double GetBigOpSpacing5(XamlMath.TexStyle style);
+        [return: System.Runtime.CompilerServices.NullableAttribute(new byte[]{ (byte)0, (byte)1})]
         XamlMath.Utils.Result<XamlMath.CharInfo> GetCharInfo(char character, string textStyle, XamlMath.TexStyle style);
+        [return: System.Runtime.CompilerServices.NullableAttribute(new byte[]{ (byte)0, (byte)1})]
         XamlMath.Utils.Result<XamlMath.CharInfo> GetCharInfo(string name, XamlMath.TexStyle style);
+        [return: System.Runtime.CompilerServices.NullableAttribute(new byte[]{ (byte)0, (byte)1})]
         XamlMath.Utils.Result<XamlMath.CharInfo> GetCharInfo(XamlMath.CharFont charFont, XamlMath.TexStyle style);
+        [return: System.Runtime.CompilerServices.NullableAttribute(new byte[]{ (byte)0, (byte)1})]
         XamlMath.Utils.Result<XamlMath.CharInfo> GetDefaultCharInfo(char character, XamlMath.TexStyle style);
         double GetDefaultLineThickness(XamlMath.TexStyle style);
         double GetDenom1(XamlMath.TexStyle style);
         double GetDenom2(XamlMath.TexStyle style);
         XamlMath.ExtensionChar GetExtension(XamlMath.CharInfo charInfo, XamlMath.TexStyle style);
         double GetKern(XamlMath.CharFont leftChar, XamlMath.CharFont rightChar, XamlMath.TexStyle style);
+        [return: System.Runtime.CompilerServices.NullableAttribute((byte)2)]
         XamlMath.CharFont? GetLigature(XamlMath.CharFont leftChar, XamlMath.CharFont rightChar);
         int GetMuFontId();
         XamlMath.CharInfo GetNextLargerCharInfo(XamlMath.CharInfo charInfo, XamlMath.TexStyle style);
@@ -316,35 +365,43 @@ namespace XamlMath.Fonts
 }
 namespace XamlMath.Rendering
 {
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public partial class GenericBrush<TBrush> : System.IEquatable<XamlMath.Rendering.GenericBrush<TBrush>>, XamlMath.Rendering.IBrush
     {
-        protected GenericBrush(XamlMath.Rendering.GenericBrush<TBrush> original) { }
+        protected GenericBrush([System.Runtime.CompilerServices.NullableAttribute(new byte[]{ (byte)1, (byte)0})] XamlMath.Rendering.GenericBrush<TBrush> original) { }
         public GenericBrush(TBrush Value) { }
         protected virtual System.Type EqualityContract { get { throw null; } }
         public TBrush Value { get { throw null; } set { } }
         public void Deconstruct(out TBrush Value) { throw null; }
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)]
         public override bool Equals(object? obj) { throw null; }
-        public virtual bool Equals(XamlMath.Rendering.GenericBrush<TBrush>? other) { throw null; }
+        public virtual bool Equals([System.Runtime.CompilerServices.NullableAttribute(new byte[]{ (byte)2, (byte)0})] XamlMath.Rendering.GenericBrush<TBrush>? other) { throw null; }
         public override int GetHashCode() { throw null; }
-        public static bool operator ==(XamlMath.Rendering.GenericBrush<TBrush>? left, XamlMath.Rendering.GenericBrush<TBrush>? right) { throw null; }
-        public static bool operator !=(XamlMath.Rendering.GenericBrush<TBrush>? left, XamlMath.Rendering.GenericBrush<TBrush>? right) { throw null; }
+        public static bool operator ==([System.Runtime.CompilerServices.NullableAttribute(new byte[]{ (byte)2, (byte)0})] XamlMath.Rendering.GenericBrush<TBrush>? left, [System.Runtime.CompilerServices.NullableAttribute(new byte[]{ (byte)2, (byte)0})] XamlMath.Rendering.GenericBrush<TBrush>? right) { throw null; }
+        public static bool operator !=([System.Runtime.CompilerServices.NullableAttribute(new byte[]{ (byte)2, (byte)0})] XamlMath.Rendering.GenericBrush<TBrush>? left, [System.Runtime.CompilerServices.NullableAttribute(new byte[]{ (byte)2, (byte)0})] XamlMath.Rendering.GenericBrush<TBrush>? right) { throw null; }
         protected virtual bool PrintMembers(System.Text.StringBuilder builder) { throw null; }
         public override string ToString() { throw null; }
+        [return: System.Runtime.CompilerServices.NullableAttribute(new byte[]{ (byte)1, (byte)0})]
         public virtual XamlMath.Rendering.GenericBrush<TBrush> <Clone>$() { throw null; }
     }
     public partial interface IBrush
     {
     }
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public partial interface IBrushFactory
     {
         XamlMath.Rendering.IBrush FromColor(XamlMath.Colors.RgbaColor color);
     }
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public partial interface IElementRenderer
     {
         void FinishRendering();
-        void RenderCharacter(XamlMath.CharInfo info, double x, double y, XamlMath.Rendering.IBrush? foreground);
+        void RenderCharacter(XamlMath.CharInfo info, double x, double y, [System.Runtime.CompilerServices.NullableAttribute((byte)2)] XamlMath.Rendering.IBrush? foreground);
         void RenderElement(XamlMath.Boxes.Box box, double x, double y);
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)]
         void RenderLine(XamlMath.Rendering.Point point0, XamlMath.Rendering.Point point1, XamlMath.Rendering.IBrush? foreground);
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)]
         void RenderRectangle(XamlMath.Rendering.Rectangle rectangle, XamlMath.Rendering.IBrush? foreground);
         void RenderTransformed(XamlMath.Boxes.Box box, System.Collections.Generic.IEnumerable<XamlMath.Rendering.Transformations.Transformation> transforms, double x, double y);
     }
@@ -401,6 +458,8 @@ namespace XamlMath.Rendering
         public static bool operator !=(XamlMath.Rendering.Size left, XamlMath.Rendering.Size right) { throw null; }
         public override string ToString() { throw null; }
     }
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public static partial class TeXFormulaExtensions
     {
         public static void RenderTo(this XamlMath.TexFormula formula, XamlMath.Rendering.IElementRenderer renderer, XamlMath.TexEnvironment environment, double x, double y) { }
@@ -412,12 +471,14 @@ namespace XamlMath.Rendering.Transformations
     {
         internal Transformation() { }
         public abstract XamlMath.Rendering.Transformations.TransformationKind Kind { get; }
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
         public abstract XamlMath.Rendering.Transformations.Transformation Scale(double scale);
         public partial class Rotate : XamlMath.Rendering.Transformations.Transformation
         {
             public Rotate(double rotationDegrees) { }
             public override XamlMath.Rendering.Transformations.TransformationKind Kind { get { throw null; } }
             public double RotationDegrees { get { throw null; } }
+            [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
             public override XamlMath.Rendering.Transformations.Transformation Scale(double scale) { throw null; }
         }
         public partial class Translate : XamlMath.Rendering.Transformations.Transformation
@@ -426,6 +487,7 @@ namespace XamlMath.Rendering.Transformations
             public override XamlMath.Rendering.Transformations.TransformationKind Kind { get { throw null; } }
             public double X { get { throw null; } }
             public double Y { get { throw null; } }
+            [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
             public override XamlMath.Rendering.Transformations.Transformation Scale(double scale) { throw null; }
         }
     }
@@ -437,21 +499,29 @@ namespace XamlMath.Rendering.Transformations
 }
 namespace XamlMath.Utils
 {
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public static partial class Result
     {
+        [return: System.Runtime.CompilerServices.NullableAttribute(new byte[]{ (byte)0, (byte)1})]
         public static XamlMath.Utils.Result<TValue> Error<TValue>(System.Exception error) { throw null; }
+        [return: System.Runtime.CompilerServices.NullableAttribute(new byte[]{ (byte)0, (byte)1})]
         public static XamlMath.Utils.Result<TValue> Ok<TValue>(TValue value) { throw null; }
     }
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public readonly partial struct Result<TValue>
     {
         private readonly TValue value;
         private readonly object _dummy;
         private readonly int _dummyPrimitive;
-        public Result(TValue value, System.Exception? error) { throw null; }
-        public System.Exception? Error { get { throw null; } }
+        public Result(TValue value, [System.Runtime.CompilerServices.NullableAttribute((byte)2)] System.Exception? error) { throw null; }
+        [System.Runtime.CompilerServices.NullableAttribute((byte)2)]
+        public System.Exception? Error { [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)] get { throw null; } }
         public bool IsSuccess { get { throw null; } }
         public TValue Value { get { throw null; } }
+        [return: System.Runtime.CompilerServices.NullableAttribute(new byte[]{ (byte)0, (byte)1})]
         public XamlMath.Utils.Result<TProduct> Map<TProduct>(System.Func<TValue, TProduct> mapper) { throw null; }
     }
 }

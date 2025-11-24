@@ -22,7 +22,7 @@
     <ItemGroup>
         <InputAssembly Include="../XamlMath.Shared/bin/$(Configuration)/net462/XamlMath.Shared.dll" Framework="net462" />
         <InputAssembly Include="../XamlMath.Shared/bin/$(Configuration)/netstandard2.0/XamlMath.Shared.dll" Framework="netstandard2.0" />
-        <InputAssembly Include="../XamlMath.Shared/bin/$(Configuration)/net6.0/XamlMath.Shared.dll" Framework="net6.0" />
+        <InputAssembly Include="../XamlMath.Shared/bin/$(Configuration)/net8.0/XamlMath.Shared.dll" Framework="net8.0" />
     </ItemGroup>
 
     <ItemGroup>
