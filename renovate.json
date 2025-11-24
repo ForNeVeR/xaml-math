@@ -3,6 +3,7 @@
     "extends": [
         "config:recommended"
     ],
+    "automerge": true,
     "packageRules": [
         {
             "matchPackageNames": ["System.Reactive"],
