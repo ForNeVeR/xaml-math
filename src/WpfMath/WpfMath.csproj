@@ -22,7 +22,7 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
         <PackageReference Include="Nullable" PrivateAssets="All" />
-        <PackageReference Include="ChangelogAutomation.MSBuild" PrivateAssets="All" />
+        <PackageReference Include="ChangelogAutomation.MSBuild" PrivateAssets="All" ExcludeAssets="compile;runtime" />
     </ItemGroup>
 
     <ItemGroup>

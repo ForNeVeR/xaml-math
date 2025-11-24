@@ -33,7 +33,7 @@
     <ItemGroup>
         <PackageReference Include="Avalonia" />
         <PackageReference Include="Nullable" PrivateAssets="All" />
-        <PackageReference Include="ChangelogAutomation.MSBuild" PrivateAssets="All" />
+        <PackageReference Include="ChangelogAutomation.MSBuild" PrivateAssets="All" ExcludeAssets="compile;runtime" />
         <PackageReference Include="System.Reactive" />
     </ItemGroup>
     <ItemGroup>
