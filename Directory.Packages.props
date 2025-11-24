@@ -15,7 +15,7 @@
     <PackageVersion Include="FSharp.Core" Version="$(FSCorePackageVersion)" />
     <PackageVersion Include="FSharp.Core.Fluent-4.0" Version="1.0.0.6" />
     <PackageVersion Include="Microsoft.DotNet.GenAPI" Version="7.0.0-beta.24266.2" />
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.4" />
