@@ -8,12 +8,12 @@ XAML-Math
 
 WPF-Math supports the following .NET variants:
 - .NET Framework 4.6.2 or later
-- .NET 6 or later
+- .NET 8 or later
 
 Avalonia-Math supports:
 - .NET Framework 4.6.2 or later
 - .NET Standard 2.0 or later
-- .NET 6 or later
+- .NET 8 or later
 
 A part of XAML-Math independent of the UI frameworks is published on NuGet as [XAML-Math Shared Code][nuget-xaml]: [![NuGet][badge-nuget-xaml]][nuget-xaml]
 
@@ -126,7 +126,7 @@ Documentation
 Build and Maintenance Instructions
 ----------------------------------
 
-Build the project using [.NET SDK 7.0][dotnet-sdk] or later. Here's the build and test script:
+Build the project using [.NET SDK 8.0][dotnet-sdk] or later. Here's the build and test script:
 
 ```console
 $ dotnet build XamlMath.All.sln --configuration Release

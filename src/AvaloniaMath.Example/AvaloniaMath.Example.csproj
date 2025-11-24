@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>net462;net6.0</TargetFrameworks>
+        <TargetFrameworks>net462;net8.0</TargetFrameworks>
         <IsPackable>false</IsPackable>
         <PlatformTarget Condition="'$(TargetFramework)' == 'net462'">x64</PlatformTarget>
         <ApplicationManifest>app.manifest</ApplicationManifest>

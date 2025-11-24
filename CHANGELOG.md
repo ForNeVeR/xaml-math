@@ -3,7 +3,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] (2.1.1)
+## [Unreleased] (3.0.0)
+### Removed
+- **(Breaking change!)** Support for .NET 6 and 7. The new list of supported frameworks:
+  - for **WPF-Math**: **.NET Framework 4.6.2** or later, **.NET 8** or later;
+  - for **Avalonia-Math**: **.NET Framework 4.6.2** or later, **.NET Standard 2.0** or later, **.NET 8** or later.
+
 ### Changed
 - The exception classes are now `sealed` (should not break anything, since there never was any sense in extending them in the user code).
 - Avalonia: `AvaloniaMathFontProvider::Instance` is now read-only.
