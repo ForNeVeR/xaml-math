@@ -12,7 +12,10 @@
             ]
         },
         {
-            "matchPackageNames": ["xunit.runner.visualstudio"],
+            "matchPackageNames": [
+                "ApprovalTests",
+                "xunit.runner.visualstudio"
+            ],
             "matchUpdateTypes": "major",
             "enabled": false,
             "description": [
