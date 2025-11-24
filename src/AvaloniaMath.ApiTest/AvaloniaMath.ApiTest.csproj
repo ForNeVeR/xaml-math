@@ -22,7 +22,7 @@
     <ItemGroup>
         <InputAssembly Include="../AvaloniaMath/bin/$(Configuration)/net462/AvaloniaMath.dll" Framework="net462" />
         <InputAssembly Include="../AvaloniaMath/bin/$(Configuration)/netstandard2.0/AvaloniaMath.dll" Framework="netstandard2.0" />
-        <InputAssembly Include="../AvaloniaMath/bin/$(Configuration)/net6.0/AvaloniaMath.dll" Framework="net6.0" />
+        <InputAssembly Include="../AvaloniaMath/bin/$(Configuration)/net8.0/AvaloniaMath.dll" Framework="net8.0" />
     </ItemGroup>
 
     <ItemGroup>

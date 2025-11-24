@@ -9,6 +9,8 @@
 //------------------------------------------------------------------------------
 namespace AvaloniaMath.Controls
 {
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public partial class FormulaBlock : Avalonia.Controls.Primitives.TemplatedControl
     {
         public static readonly Avalonia.StyledProperty<System.Collections.ObjectModel.ObservableCollection<System.Exception>> ErrorsProperty;
@@ -34,12 +36,16 @@ namespace AvaloniaMath.Fonts
     public sealed partial class AvaloniaMathFontProvider : XamlMath.Fonts.IFontProvider
     {
         internal AvaloniaMathFontProvider() { }
+        [System.Runtime.CompilerServices.NullableAttribute((byte)1)]
         public static readonly AvaloniaMath.Fonts.AvaloniaMathFontProvider Instance;
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
         public XamlMath.Fonts.IFontTypeface ReadFontFile(string fontFileName) { throw null; }
     }
 }
 namespace AvaloniaMath.Parsers
 {
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public static partial class AvaloniaTeXFormulaParser
     {
         public static XamlMath.TexFormulaParser Instance { get { throw null; } }
@@ -47,12 +53,16 @@ namespace AvaloniaMath.Parsers
 }
 namespace AvaloniaMath.Rendering
 {
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public sealed partial class AvaloniaBrushFactory : XamlMath.Rendering.IBrushFactory
     {
         internal AvaloniaBrushFactory() { }
         public static AvaloniaMath.Rendering.AvaloniaBrushFactory Instance { get { throw null; } }
         public XamlMath.Rendering.IBrush FromColor(XamlMath.Colors.RgbaColor color) { throw null; }
     }
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)]
     public static partial class AvaloniaExtensions
     {
         [return: System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute("brush")]
@@ -61,8 +71,10 @@ namespace AvaloniaMath.Rendering
         [return: System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute("brush")]
         public static XamlMath.Rendering.IBrush? ToPlatform(this Avalonia.Media.Brush? brush) { throw null; }
     }
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public static partial class AvaloniaTeXEnvironment
     {
-        public static XamlMath.TexEnvironment Create(XamlMath.TexStyle style = 0, double scale = 20, string systemTextFontName = "Arial", Avalonia.Media.Brush? foreground = null, Avalonia.Media.Brush? background = null) { throw null; }
+        public static XamlMath.TexEnvironment Create(XamlMath.TexStyle style = 0, double scale = 20, string systemTextFontName = "Arial", [System.Runtime.CompilerServices.NullableAttribute((byte)2)] Avalonia.Media.Brush? foreground = null, [System.Runtime.CompilerServices.NullableAttribute((byte)2)] Avalonia.Media.Brush? background = null) { throw null; }
     }
 }

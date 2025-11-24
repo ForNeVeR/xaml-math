@@ -11,11 +11,14 @@ namespace WpfMath
 {
     public static partial class Extensions
     {
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
         public static byte[] RenderToPng(this XamlMath.TexFormula texForm, double scale, double x, double y, string systemTextFontName) { throw null; }
     }
 }
 namespace WpfMath.Controls
 {
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public partial class FormulaControl : System.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
     {
         public static readonly System.Windows.DependencyProperty ErrorsProperty;
@@ -33,13 +36,17 @@ namespace WpfMath.Controls
         public string Formula { get { throw null; } set { } }
         public bool HasError { get { throw null; } }
         public double Scale { get { throw null; } set { } }
-        public System.Windows.Media.Brush? SelectionBrush { get { throw null; } set { } }
+        [System.Runtime.CompilerServices.NullableAttribute((byte)2)]
+        public System.Windows.Media.Brush? SelectionBrush { [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)] get { throw null; } [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)] set { } }
         public int SelectionLength { get { throw null; } set { } }
         public int SelectionStart { get { throw null; } set { } }
         public string SystemTextFontName { get { throw null; } set { } }
         public void InitializeComponent() { }
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)0)]
         void System.Windows.Markup.IComponentConnector.Connect(int connectionId, object target) { }
     }
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)]
     public partial class VisualContainerElement : System.Windows.FrameworkElement
     {
         public VisualContainerElement() { }
@@ -48,11 +55,14 @@ namespace WpfMath.Controls
         protected override System.Windows.Size ArrangeOverride(System.Windows.Size finalSize) { throw null; }
         protected override System.Windows.Media.Visual? GetVisualChild(int index) { throw null; }
         protected override System.Windows.Size MeasureOverride(System.Windows.Size availableSize) { throw null; }
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
         protected override void OnVisualChildrenChanged(System.Windows.DependencyObject visualAdded, System.Windows.DependencyObject visualRemoved) { }
     }
 }
 namespace WpfMath.Converters
 {
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public partial class SVGConverter
     {
         public SVGConverter() { }
@@ -63,11 +73,14 @@ namespace WpfMath.Fonts
 {
     public static partial class WpfCharInfoEx
     {
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
         public static System.Windows.Media.GlyphRun GetGlyphRun(this XamlMath.CharInfo info, double x, double y, double scale) { throw null; }
     }
 }
 namespace WpfMath.Parsers
 {
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public static partial class WpfTeXFormulaParser
     {
         public static XamlMath.TexFormulaParser Instance { get { throw null; } }
@@ -75,26 +88,36 @@ namespace WpfMath.Parsers
 }
 namespace WpfMath.Rendering
 {
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public partial class GeometryElementRenderer : XamlMath.Rendering.IElementRenderer
     {
         public GeometryElementRenderer(System.Windows.Media.GeometryGroup geometry, double scale) { }
         public void FinishRendering() { }
-        public void RenderCharacter(XamlMath.CharInfo info, double x, double y, XamlMath.Rendering.IBrush? foreground) { }
+        public void RenderCharacter(XamlMath.CharInfo info, double x, double y, [System.Runtime.CompilerServices.NullableAttribute((byte)2)] XamlMath.Rendering.IBrush? foreground) { }
         public void RenderElement(XamlMath.Boxes.Box box, double x, double y) { }
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)]
         public void RenderLine(XamlMath.Rendering.Point point0, XamlMath.Rendering.Point point1, XamlMath.Rendering.IBrush? foreground) { }
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)]
         public void RenderRectangle(XamlMath.Rendering.Rectangle rectangle, XamlMath.Rendering.IBrush? foreground) { }
         public void RenderTransformed(XamlMath.Boxes.Box box, System.Collections.Generic.IEnumerable<XamlMath.Rendering.Transformations.Transformation> transforms, double x, double y) { }
     }
+    [System.Runtime.CompilerServices.NullableAttribute(new byte[]{ (byte)0, (byte)1})]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public sealed partial class WpfBrush : XamlMath.Rendering.GenericBrush<System.Windows.Media.Brush>, System.IEquatable<WpfMath.Rendering.WpfBrush>
     {
         internal WpfBrush() { }
         protected override System.Type EqualityContract { get { throw null; } }
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)]
         public override bool Equals(object? obj) { throw null; }
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)]
         public bool Equals(WpfMath.Rendering.WpfBrush? other) { throw null; }
-        public sealed override bool Equals(XamlMath.Rendering.GenericBrush<System.Windows.Media.Brush>? other) { throw null; }
+        public sealed override bool Equals([System.Runtime.CompilerServices.NullableAttribute(new byte[]{ (byte)2, (byte)1})] XamlMath.Rendering.GenericBrush<System.Windows.Media.Brush>? other) { throw null; }
         public static WpfMath.Rendering.WpfBrush FromBrush(System.Windows.Media.Brush value) { throw null; }
         public override int GetHashCode() { throw null; }
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)]
         public static bool operator ==(WpfMath.Rendering.WpfBrush? left, WpfMath.Rendering.WpfBrush? right) { throw null; }
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)]
         public static bool operator !=(WpfMath.Rendering.WpfBrush? left, WpfMath.Rendering.WpfBrush? right) { throw null; }
         protected override bool PrintMembers(System.Text.StringBuilder builder) { throw null; }
         public override string ToString() { throw null; }
@@ -104,9 +127,13 @@ namespace WpfMath.Rendering
     public sealed partial class WpfBrushFactory : XamlMath.Rendering.IBrushFactory
     {
         internal WpfBrushFactory() { }
+        [System.Runtime.CompilerServices.NullableAttribute((byte)1)]
         public static readonly WpfMath.Rendering.WpfBrushFactory Instance;
+        [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
         public XamlMath.Rendering.IBrush FromColor(XamlMath.Colors.RgbaColor color) { throw null; }
     }
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)2)]
     public static partial class WpfExtensions
     {
         [return: System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute("brush")]
@@ -115,10 +142,14 @@ namespace WpfMath.Rendering
         public static System.Windows.Media.Brush? ToWpf(this XamlMath.Rendering.IBrush? brush) { throw null; }
         public static System.Windows.Point ToWpf(this XamlMath.Rendering.Point point) { throw null; }
     }
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public static partial class WpfTeXEnvironment
     {
-        public static XamlMath.TexEnvironment Create(XamlMath.TexStyle style = 0, double scale = 20, string systemTextFontName = "Arial", System.Windows.Media.Brush? foreground = null, System.Windows.Media.Brush? background = null) { throw null; }
+        public static XamlMath.TexEnvironment Create(XamlMath.TexStyle style = 0, double scale = 20, string systemTextFontName = "Arial", [System.Runtime.CompilerServices.NullableAttribute((byte)2)] System.Windows.Media.Brush? foreground = null, [System.Runtime.CompilerServices.NullableAttribute((byte)2)] System.Windows.Media.Brush? background = null) { throw null; }
     }
+    [System.Runtime.CompilerServices.NullableAttribute((byte)0)]
+    [System.Runtime.CompilerServices.NullableContextAttribute((byte)1)]
     public static partial class WpfTeXFormulaExtensions
     {
         public static void RenderTo(this XamlMath.TexFormula formula, System.Windows.Media.DrawingContext drawingContext, XamlMath.TexEnvironment environment, double scale = 20, double x = 0, double y = 0) { }

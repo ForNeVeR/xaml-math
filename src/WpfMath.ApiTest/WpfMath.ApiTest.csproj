@@ -20,7 +20,7 @@
 
     <ItemGroup>
         <InputAssembly Include="../WpfMath/bin/$(Configuration)/net462/WpfMath.dll" Framework="net462" />
-        <InputAssembly Include="../WpfMath/bin/$(Configuration)/net6.0-windows/WpfMath.dll" Framework="net6.0" />
+        <InputAssembly Include="../WpfMath/bin/$(Configuration)/net8.0-windows/WpfMath.dll" Framework="net8.0" />
     </ItemGroup>
 
     <ItemGroup>
