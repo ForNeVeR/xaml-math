@@ -44,7 +44,7 @@ jobs:
         run: ./scripts/verify-encoding.ps1
 
       - name: NuGet cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ${{ env.NUGET_PACKAGES }}
           key: ${{ runner.os }}.nuget.${{ hashFiles('**/*.csproj', '**/*.fsproj') }}
