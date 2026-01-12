@@ -4,6 +4,7 @@
         "config:recommended"
     ],
     "automerge": true,
+    "automergeType": "branch",
     "packageRules": [
         {
             "matchPackageNames": ["System.Reactive"],
