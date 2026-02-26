@@ -50,7 +50,7 @@ jobs:
           output: ./release-notes.md
 
       - name: 'Upload workflow artifacts'
-        uses: 'actions/upload-artifact@v6'
+        uses: 'actions/upload-artifact@v7'
         with:
           name: 'XAML-Math v${{ steps.version.outputs.version }}'
           path: |
