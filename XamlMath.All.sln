@@ -1,7 +1,6 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2050
+# Visual Studio Version 18
+VisualStudioVersion = 18.6.11819.183 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfMath.Example", "src\WpfMath.Example\WpfMath.Example.csproj", "{FB56A927-25E4-4EC9-BA36-3A843C606B34}"
 EndProject
@@ -10,16 +9,16 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D9341AA3-BF7C-4CC1-8E11-82258967B82F}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		.git-blame-ignore-revs = .git-blame-ignore-revs
+		.gitattributes = .gitattributes
 		.gitignore = .gitignore
-		LICENSE.md = LICENSE.md
-		README.md = README.md
 		CHANGELOG.md = CHANGELOG.md
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+		LICENSE.md = LICENSE.md
 		MAINTAINERSHIP.md = MAINTAINERSHIP.md
 		NuGet.Config = NuGet.Config
-		Directory.Build.props = Directory.Build.props
-		.gitattributes = .gitattributes
-		Directory.Packages.props = Directory.Packages.props
-		.git-blame-ignore-revs = .git-blame-ignore-revs
+		README.md = README.md
 		renovate.json = renovate.json
 	EndProjectSection
 EndProject
@@ -27,23 +26,23 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "WpfMath.Tests", "src\WpfMat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{39669369-C4F6-4AC6-9D35-B4B6086FF172}"
 	ProjectSection(SolutionItems) = preProject
-		docs\colors.md = docs\colors.md
-		docs\licensing-history.md = docs\licensing-history.md
 		docs\blurred-text-issue.md = docs\blurred-text-issue.md
 		docs\cleartype.png = docs\cleartype.png
+		docs\colors.md = docs\colors.md
 		docs\default.png = docs\default.png
-		docs\matrices.md = docs\matrices.md
-		docs\prepare-font.md = docs\prepare-font.md
 		docs\environments.md = docs\environments.md
 		docs\example-screenshot.png = docs\example-screenshot.png
+		docs\licensing-history.md = docs\licensing-history.md
+		docs\matrices.md = docs\matrices.md
+		docs\prepare-font.md = docs\prepare-font.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{BE4BA1DB-B8BC-4718-AA9D-23B0191C9323}"
-ProjectSection(SolutionItems) = preProject
-	scripts\approve-all.ps1 = scripts\approve-all.ps1
-	scripts\verify-encoding.ps1 = scripts\verify-encoding.ps1
-	scripts\Get-Version.ps1 = scripts\Get-Version.ps1
-EndProjectSection
+	ProjectSection(SolutionItems) = preProject
+		scripts\approve-all.ps1 = scripts\approve-all.ps1
+		scripts\Get-Version.ps1 = scripts\Get-Version.ps1
+		scripts\verify-encoding.ps1 = scripts\verify-encoding.ps1
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaMath", "src\AvaloniaMath\AvaloniaMath.csproj", "{945C8E20-AE99-493E-8A0D-D5880272050B}"
 EndProject
@@ -52,10 +51,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaMath.Example", "src\AvaloniaMath.Example\AvaloniaMath.Example.csproj", "{4D9FD5DA-DA8C-4513-8783-413924A76D62}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{B296A539-C985-43AB-B740-7FBE8F85CCFF}"
-ProjectSection(SolutionItems) = preProject
-	.github\workflows\main.yml = .github\workflows\main.yml
-	.github\workflows\nuget.yml = .github\workflows\nuget.yml
-EndProjectSection
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\main.yml = .github\workflows\main.yml
+		.github\workflows\nuget.yml = .github\workflows\nuget.yml
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamlMath.Shared", "src\XamlMath.Shared\XamlMath.Shared.csproj", "{C9B5E02E-04FB-405F-9BEB-6CF4736939EB}"
 EndProject
@@ -73,24 +72,24 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaMath.ApiTest", "src
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{3F2FED19-93A5-440C-B036-FE4A2FBCC49A}"
 	ProjectSection(SolutionItems) = preProject
-		api\AvaloniaMath.netstandard2.0.verified.cs = api\AvaloniaMath.netstandard2.0.verified.cs
-		api\XamlMath.Shared.netstandard2.0.verified.cs = api\XamlMath.Shared.netstandard2.0.verified.cs
-		api\WpfMath.net462.verified.cs = api\WpfMath.net462.verified.cs
 		api\AvaloniaMath.net462.verified.cs = api\AvaloniaMath.net462.verified.cs
-		api\XamlMath.Shared.net462.verified.cs = api\XamlMath.Shared.net462.verified.cs
-		api\ExcludedAttributes.txt = api\ExcludedAttributes.txt
-		api\WpfMath.net8.0.verified.cs = api\WpfMath.net8.0.verified.cs
 		api\AvaloniaMath.net8.0.verified.cs = api\AvaloniaMath.net8.0.verified.cs
+		api\AvaloniaMath.netstandard2.0.verified.cs = api\AvaloniaMath.netstandard2.0.verified.cs
+		api\ExcludedAttributes.txt = api\ExcludedAttributes.txt
+		api\WpfMath.net462.verified.cs = api\WpfMath.net462.verified.cs
+		api\WpfMath.net8.0.verified.cs = api\WpfMath.net8.0.verified.cs
+		api\XamlMath.Shared.net462.verified.cs = api\XamlMath.Shared.net462.verified.cs
 		api\XamlMath.Shared.net8.0.verified.cs = api\XamlMath.Shared.net8.0.verified.cs
+		api\XamlMath.Shared.netstandard2.0.verified.cs = api\XamlMath.Shared.netstandard2.0.verified.cs
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tool.TTFMetrics", "src\Tool.TTFMetrics\Tool.TTFMetrics.csproj", "{A29B12C8-9AE6-4016-9AB8-702B67409C95}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "fonts", "fonts", "{766B0CFB-741E-4ACB-963C-FA76133927D3}"
 	ProjectSection(SolutionItems) = preProject
-		fonts\cmr10.ttf = fonts\cmr10.ttf
 		fonts\cmex10.ttf = fonts\cmex10.ttf
 		fonts\cmmi10.ttf = fonts\cmmi10.ttf
+		fonts\cmr10.ttf = fonts\cmr10.ttf
 		fonts\cmsy10.ttf = fonts\cmsy10.ttf
 		fonts\jlm_msam10.ttf = fonts\jlm_msam10.ttf
 		fonts\LICENSES.md = fonts\LICENSES.md
@@ -100,6 +99,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamlMath.Shared.ApiTest", "
 	ProjectSection(ProjectDependencies) = postProject
 		{C9B5E02E-04FB-405F-9BEB-6CF4736939EB} = {C9B5E02E-04FB-405F-9BEB-6CF4736939EB}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinUIMath", "src\WinUIMath\WinUIMath.csproj", "{3F03950D-F8D0-4F9E-AEE7-B2356BB7F21A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinUIMath.Example", "WinUIMath.Example\WinUIMath.Example.csproj", "{C42BCDD6-B2FA-4CB3-B645-DAF73A1BCCC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -119,14 +122,6 @@ Global
 		{F19E5FB1-EE6B-4A48-A522-41F30676BE41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F19E5FB1-EE6B-4A48-A522-41F30676BE41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F19E5FB1-EE6B-4A48-A522-41F30676BE41}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C9B5E02E-04FB-405F-9BEB-6CF4736939EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C9B5E02E-04FB-405F-9BEB-6CF4736939EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C9B5E02E-04FB-405F-9BEB-6CF4736939EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C9B5E02E-04FB-405F-9BEB-6CF4736939EB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3FC6007E-5400-42FB-AD7A-727ADFAB6469}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3FC6007E-5400-42FB-AD7A-727ADFAB6469}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3FC6007E-5400-42FB-AD7A-727ADFAB6469}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3FC6007E-5400-42FB-AD7A-727ADFAB6469}.Release|Any CPU.Build.0 = Release|Any CPU
 		{945C8E20-AE99-493E-8A0D-D5880272050B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{945C8E20-AE99-493E-8A0D-D5880272050B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{945C8E20-AE99-493E-8A0D-D5880272050B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -135,6 +130,14 @@ Global
 		{4D9FD5DA-DA8C-4513-8783-413924A76D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D9FD5DA-DA8C-4513-8783-413924A76D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D9FD5DA-DA8C-4513-8783-413924A76D62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9B5E02E-04FB-405F-9BEB-6CF4736939EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9B5E02E-04FB-405F-9BEB-6CF4736939EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9B5E02E-04FB-405F-9BEB-6CF4736939EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9B5E02E-04FB-405F-9BEB-6CF4736939EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FC6007E-5400-42FB-AD7A-727ADFAB6469}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FC6007E-5400-42FB-AD7A-727ADFAB6469}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FC6007E-5400-42FB-AD7A-727ADFAB6469}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FC6007E-5400-42FB-AD7A-727ADFAB6469}.Release|Any CPU.Build.0 = Release|Any CPU
 		{204E2BD3-05C6-41E0-998F-0E0AC1530DCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{204E2BD3-05C6-41E0-998F-0E0AC1530DCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{204E2BD3-05C6-41E0-998F-0E0AC1530DCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -151,6 +154,16 @@ Global
 		{61B897BB-B64C-4E63-8FD4-F083A22EF58C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61B897BB-B64C-4E63-8FD4-F083A22EF58C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61B897BB-B64C-4E63-8FD4-F083A22EF58C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F03950D-F8D0-4F9E-AEE7-B2356BB7F21A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F03950D-F8D0-4F9E-AEE7-B2356BB7F21A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F03950D-F8D0-4F9E-AEE7-B2356BB7F21A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F03950D-F8D0-4F9E-AEE7-B2356BB7F21A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C42BCDD6-B2FA-4CB3-B645-DAF73A1BCCC6}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{C42BCDD6-B2FA-4CB3-B645-DAF73A1BCCC6}.Debug|Any CPU.Build.0 = Debug|x64
+		{C42BCDD6-B2FA-4CB3-B645-DAF73A1BCCC6}.Debug|Any CPU.Deploy.0 = Debug|x64
+		{C42BCDD6-B2FA-4CB3-B645-DAF73A1BCCC6}.Release|Any CPU.ActiveCfg = Release|x64
+		{C42BCDD6-B2FA-4CB3-B645-DAF73A1BCCC6}.Release|Any CPU.Build.0 = Release|x64
+		{C42BCDD6-B2FA-4CB3-B645-DAF73A1BCCC6}.Release|Any CPU.Deploy.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
