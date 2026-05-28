@@ -102,7 +102,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamlMath.Shared.ApiTest", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinUIMath", "src\WinUIMath\WinUIMath.csproj", "{3F03950D-F8D0-4F9E-AEE7-B2356BB7F21A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinUIMath.Example", "WinUIMath.Example\WinUIMath.Example.csproj", "{C42BCDD6-B2FA-4CB3-B645-DAF73A1BCCC6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinUIMath.Example", "src\WinUIMath.Example\WinUIMath.Example.csproj", "{C42BCDD6-B2FA-4CB3-B645-DAF73A1BCCC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

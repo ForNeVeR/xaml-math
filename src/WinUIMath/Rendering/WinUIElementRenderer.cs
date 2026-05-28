@@ -24,11 +24,11 @@ internal class WinUIElementRenderer : IElementRenderer
     public WinUIElementRenderer(CanvasDrawingSession drawingSession)
     {
         _drawingSession = drawingSession;
-        _brushFactory = Win2DBrushFactory.Instance;
+        _brushFactory = WinUIBrushFactory.Instance;
     }
 
     private readonly CanvasDrawingSession _drawingSession;
-    private readonly Win2DBrushFactory _brushFactory;
+    private readonly WinUIBrushFactory _brushFactory;
 
     public double Scale { get; set; }
 

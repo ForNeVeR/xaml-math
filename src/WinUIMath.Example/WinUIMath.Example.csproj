@@ -47,7 +47,7 @@
     <PackageReference Include="Microsoft.WindowsAppSDK" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\src\WinUIMath\WinUIMath.csproj" />
+    <ProjectReference Include="..\WinUIMath\WinUIMath.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\FormulaPresetView.xaml">
