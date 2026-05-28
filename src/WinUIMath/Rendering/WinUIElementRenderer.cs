@@ -17,6 +17,8 @@ using XamlMath.Boxes;
 using XamlMath.Rendering;
 using XamlMath.Rendering.Transformations;
 
+using WinUIRect = Windows.Foundation.Rect;
+
 namespace WinUIMath.Rendering;
 
 internal class WinUIElementRenderer : IElementRenderer
@@ -44,6 +46,10 @@ internal class WinUIElementRenderer : IElementRenderer
 
     public void RenderElement(Box box, double x, double y)
     {
+        if (box.Background is not null)
+        {
+            _drawingSession.FillRectangle(new WinUIRect(Scale * x, Scale * (y - box.Height), Scale * box.TotalWidth, Scale * box.TotalHeight), GetWin2DBrush(box.Background));
+        }
         box.RenderTo(this, x, y);
     }
 
@@ -84,7 +90,7 @@ internal class WinUIElementRenderer : IElementRenderer
         brush ??= Application.Current.Resources.TryGetValue("TextFillColorPrimary", out object? fallback) && fallback is Color color ?
             _brushFactory.FromColor(color.ToPlatform()) :
             _brushFactory.FromColor(Colors.Black.ToPlatform());
-        WinUIBrush winUIBrush = (WinUIBrush) brush;
+        WinUIBrush winUIBrush = (WinUIBrush)brush;
         return winUIBrush.Value.ToWin2DBrush(_drawingSession);
     }
 
@@ -93,11 +99,11 @@ internal class WinUIElementRenderer : IElementRenderer
         switch (transformation.Kind)
         {
             case TransformationKind.Translate:
-                var tt = (Transformation.Translate) transformation;
-                return Matrix3x2.CreateTranslation((float) tt.X, (float) tt.Y);
+                var tt = (Transformation.Translate)transformation;
+                return Matrix3x2.CreateTranslation((float)tt.X, (float)tt.Y);
             case TransformationKind.Rotate:
-                var rt = (Transformation.Rotate) transformation;
-                return Matrix3x2.CreateRotation((float) rt.RotationDegrees * MathF.PI / 180);
+                var rt = (Transformation.Rotate)transformation;
+                return Matrix3x2.CreateRotation((float)rt.RotationDegrees * MathF.PI / 180);
             default:
                 throw new NotSupportedException($"Unknown {nameof(Transformation)} kind: {transformation.Kind}");
         }

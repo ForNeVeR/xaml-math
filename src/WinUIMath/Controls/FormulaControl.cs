@@ -1,8 +1,12 @@
 using Microsoft.Graphics.Canvas;
+using Microsoft.Graphics.Canvas.Brushes;
 using Microsoft.Graphics.Canvas.UI.Xaml;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+
+using System;
+using System.Collections.Generic;
 
 using Windows.Foundation;
 
@@ -59,8 +63,13 @@ public sealed partial class FormulaControl : Control
         nameof(SelectionStart),
         typeof(int),
         typeof(FormulaControl),
-        new PropertyMetadata(default(int))
+        new PropertyMetadata(default(int), (d, e) => ((FormulaControl)d).OnSelectionStartChanged(e))
     );
+
+    private void OnSelectionStartChanged(DependencyPropertyChangedEventArgs e)
+    {
+        Render();
+    }
 
     public int SelectionLength
     {
@@ -72,8 +81,13 @@ public sealed partial class FormulaControl : Control
         nameof(SelectionLength),
         typeof(int),
         typeof(FormulaControl),
-        new PropertyMetadata(default(int))
+        new PropertyMetadata(default(int), (d, e) => ((FormulaControl)d).OnSelectionLengthChanged(e))
     );
+
+    private void OnSelectionLengthChanged(DependencyPropertyChangedEventArgs e)
+    {
+        Render();
+    }
 
     public Brush? SelectionBrush
     {
@@ -85,8 +99,13 @@ public sealed partial class FormulaControl : Control
         nameof(SelectionBrush),
         typeof(Brush),
         typeof(FormulaControl),
-        new PropertyMetadata(default(Brush))
+        new PropertyMetadata(default(Brush), (d, e) => ((FormulaControl)d).OnSelectionBrushChanged(e))
     );
+
+    private void OnSelectionBrushChanged(DependencyPropertyChangedEventArgs e)
+    {
+        Render();
+    }
 
     private static readonly TexFormulaParser _formulaParser = Win2DTeXFormulaParser.Instance;
     private TexFormula? _texFormula;
@@ -122,6 +141,7 @@ public sealed partial class FormulaControl : Control
 
     private void OnCanvasDraw(CanvasControl sender, CanvasDrawEventArgs args)
     {
+        _formulaBox ??= GetBoxToRender();
         if (_formulaBox is null)
             return;
 
@@ -129,6 +149,7 @@ public sealed partial class FormulaControl : Control
         WinUIElementRenderer renderer = new(session) { Scale = FontSize };
         renderer.RenderElement(_formulaBox, 0, _formulaBox.Height);
         renderer.FinishRendering();
+        _formulaBox = null;
     }
 
     private Box GetBoxToRender()
@@ -139,43 +160,41 @@ public sealed partial class FormulaControl : Control
             systemTextFontName: FontFamily.XamlAutoFontFamily.Source,
             foreground: Foreground);
 
-        //var formulaSource = _texFormula!.Source;
+        var formulaSource = _texFormula!.Source;
         var formulaBox = _texFormula!.CreateBox(environment);
 
-        //ProcessBox(formulaSource, formulaBox);
+        ProcessBox(formulaSource, formulaBox);
 
         return formulaBox;
     }
 
-    //private void ProcessBox(SourceSpan? formulaSource, Box formulaBox)
-    //{
-    //    if (formulaSource == null)
-    //        return;
+    private void ProcessBox(SourceSpan? formulaSource, Box formulaBox)
+    {
+        if (formulaSource == null)
+            return;
 
-    //    var selectionBrush = SelectionBrush;
+        if (SelectionBrush == null)
+            return;
 
-    //    if (selectionBrush == null)
-    //        return;
+        var allBoxes = new List<Box> { formulaBox };
+        var selectionStart = SelectionStart;
+        var selectionEnd = selectionStart + SelectionLength;
+        for (var idx = 0; idx < allBoxes.Count; idx++)
+        {
+            var box = allBoxes[idx];
+            allBoxes.AddRange(box.Children);
+            var source = box.Source;
+            if (source == null ||
+                !source.SourceName.Equals(formulaSource.SourceName, StringComparison.Ordinal) ||
+                !source.Source.Equals(formulaSource.Source, StringComparison.Ordinal))
+                continue;
 
-    //    var allBoxes = new List<Box> { formulaBox };
-    //    var selectionStart = SelectionStart;
-    //    var selectionEnd = selectionStart + SelectionLength;
-    //    for (var idx = 0; idx < allBoxes.Count; idx++)
-    //    {
-    //        var box = allBoxes[idx];
-    //        allBoxes.AddRange(box.Children);
-    //        var source = box.Source;
-    //        if (source == null ||
-    //            !source.SourceName.Equals(formulaSource.SourceName, StringComparison.Ordinal) ||
-    //            !source.Source.Equals(formulaSource.Source, StringComparison.Ordinal))
-    //            continue;
-
-    //        if (selectionStart < source.Start + source.Length
-    //            && source.Start < selectionEnd
-    //            && box is CharBox)
-    //        {
-    //            box.Background = Win2DBrush.FromBrush(selectionBrush.ToWin2DBrush());
-    //        }
-    //    }
-    //}
+            if (selectionStart < source.Start + source.Length
+                && source.Start < selectionEnd
+                && box is CharBox)
+            {
+                box.Background = SelectionBrush.ToPlatform();
+            }
+        }
+    }
 }

@@ -3,13 +3,12 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 
 using System;
-using System.ComponentModel;
 
 using WinUIMath.Example.ViewModels;
 
 namespace WinUIMath.Example.Views;
 
-public sealed partial class FormulaPresetView : UserControl, INotifyPropertyChanged
+public sealed partial class FormulaPresetView : UserControl
 {
     public FormulaPresetView()
     {
@@ -29,13 +28,18 @@ public sealed partial class FormulaPresetView : UserControl, INotifyPropertyChan
         new PropertyMetadata(default(PresetViewModel))
     );
 
-    public event PropertyChangedEventHandler? PropertyChanged;
-
     private void OnSliderValueChanged(object sender, RangeBaseValueChangedEventArgs e)
     {
         double fontSize = e.NewValue;
         fontSize = Math.Max(4, fontSize);
         fontSize = Math.Min(96, fontSize);
         PART_FormulaControl.FontSize = fontSize;
+    }
+
+    private void OnTextBoxSelectionChanged(object sender, RoutedEventArgs e)
+    {
+        TextBox textBox = (TextBox)sender;
+        PART_FormulaControl.SelectionStart = textBox.SelectionStart;
+        PART_FormulaControl.SelectionLength = textBox.SelectionLength;
     }
 }

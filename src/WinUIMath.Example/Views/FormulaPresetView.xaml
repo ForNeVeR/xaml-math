@@ -25,7 +25,8 @@
 				HorizontalAlignment="Left"
 				VerticalAlignment="Top"
 				FontSize="24"
-				Formula="{x:Bind Preset.Formula, Mode=OneWay}" />
+				Formula="{x:Bind Preset.Formula, Mode=OneWay}"
+				SelectionBrush="{ThemeResource ButtonPointerOverBackgroundThemeBrush}" />
 		</ScrollViewer>
 
 		<Slider
@@ -42,6 +43,7 @@
 			VerticalAlignment="Stretch"
 			AcceptsReturn="True"
 			FontFamily="Consolas"
+			SelectionChanged="OnTextBoxSelectionChanged"
 			Text="{x:Bind Preset.Formula, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 			TextWrapping="Wrap" />
 	</Grid>
