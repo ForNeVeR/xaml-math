@@ -16,13 +16,17 @@
 			<RowDefinition Height="1*" />
 		</Grid.RowDefinitions>
 
-		<controls:FormulaControl
-			x:Name="PART_FormulaControl"
+		<ScrollViewer
 			Grid.Row="0"
-			HorizontalAlignment="Left"
-			VerticalAlignment="Top"
-			FontSize="24"
-			Formula="{x:Bind Preset.Formula, Mode=OneWay}" />
+			HorizontalScrollBarVisibility="Auto"
+			VerticalScrollBarVisibility="Auto">
+			<controls:FormulaControl
+				x:Name="PART_FormulaControl"
+				HorizontalAlignment="Left"
+				VerticalAlignment="Top"
+				FontSize="24"
+				Formula="{x:Bind Preset.Formula, Mode=OneWay}" />
+		</ScrollViewer>
 
 		<Slider
 			Grid.Row="1"
@@ -37,6 +41,7 @@
 			HorizontalAlignment="Stretch"
 			VerticalAlignment="Stretch"
 			AcceptsReturn="True"
+			FontFamily="Consolas"
 			Text="{x:Bind Preset.Formula, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 			TextWrapping="Wrap" />
 	</Grid>
