@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "WinUIMath.Example (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "WinUIMath.Example (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
