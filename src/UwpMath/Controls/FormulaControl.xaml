@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:UwpMath.Controls"
+	xmlns:win2d="using:Microsoft.Graphics.Canvas.UI.Xaml">
+
+	<Style TargetType="local:FormulaControl">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="local:FormulaControl">
+					<Border
+						Background="{TemplateBinding Background}"
+						BorderBrush="{TemplateBinding BorderBrush}"
+						BorderThickness="{TemplateBinding BorderThickness}">
+						<win2d:CanvasControl x:Name="PART_CanvasWin2D" Margin="{TemplateBinding Padding}" />
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+</ResourceDictionary>

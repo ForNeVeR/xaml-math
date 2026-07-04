@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "UwpMath.Example": {
+      "commandName": "MsixPackage"
+    }
+  }
+}
