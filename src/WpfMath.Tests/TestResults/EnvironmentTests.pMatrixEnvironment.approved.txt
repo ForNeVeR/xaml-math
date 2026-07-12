@@ -206,7 +206,7 @@
       "[AtomType]": "SymbolAtom",
       "IsDelimeter": true,
       "IsTextSymbol": false,
-      "Name": "lbrack",
+      "Name": "(",
       "Source": null,
       "Type": "Opening"
     },
@@ -214,7 +214,7 @@
       "[AtomType]": "SymbolAtom",
       "IsDelimeter": true,
       "IsTextSymbol": false,
-      "Name": "rbrack",
+      "Name": ")",
       "Source": null,
       "Type": "Closing"
     },

@@ -112,6 +112,22 @@ let wideItemInMatrixBox() =
     verifyBox @"x = \pmatrix{0 & -r & 0 \\ 0 & 0 & -r sin^2(\theta)}"
 
 [<Fact>]
+let bMatrixBox() =
+    verifyBox @"\bmatrix{2 & 2 \\ 2 & 2}"
+
+[<Fact>]
+let bbMatrixBox() =
+    verifyBox @"\Bmatrix{2 & 2 \\ 2 & 2}"
+
+[<Fact>]
+let vMatrixBox() =
+    verifyBox @"\vmatrix{2 & 2 \\ 2 & 2}"
+
+[<Fact>]
+let vvMatrixBox() =
+    verifyBox @"\Vmatrix{2 & 2 \\ 2 & 2}"
+
+[<Fact>]
 let emptyCellMatrix() =
     verifyBox @"\matrix{A & B \\ A & B \\ & B}"
 
