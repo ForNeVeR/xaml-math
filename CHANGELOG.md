@@ -13,6 +13,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - The exception classes are now `sealed` (should not break anything, since there never was any sense in extending them in the user code).
 - Avalonia: `AvaloniaMathFontProvider::Instance` is now read-only.
 
+### Fixed
+- Matrix cells of differing heights within a row now share a common baseline instead of each being vertically centred, so short glyphs (e.g. `a`) no longer float above taller ones (e.g. `b`). Affects `\matrix`/`\pmatrix`/`\cases`/`align` and the matrix-based commands.
+
 ## [2.1.0] - 2023-07-15
 ### Changed
 - AvaloniaMath is now based on (and thus compatible with) Avalonia 11.

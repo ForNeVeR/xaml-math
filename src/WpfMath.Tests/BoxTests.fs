@@ -111,6 +111,12 @@ let nestedMatrixBox() =
 let wideItemInMatrixBox() =
     verifyBox @"x = \pmatrix{0 & -r & 0 \\ 0 & 0 & -r sin^2(\theta)}"
 
+// Cells of differing heights within a row must share a baseline: the short "a"/"c" and the
+// taller "b"/"d" sit on the same line rather than the short glyphs floating up.
+[<Fact>]
+let mixedHeightCellsShareBaseline() =
+    verifyBox @"\matrix{a & b \\ c & d}"
+
 [<Fact>]
 let emptyCellMatrix() =
     verifyBox @"\matrix{A & B \\ A & B \\ & B}"
