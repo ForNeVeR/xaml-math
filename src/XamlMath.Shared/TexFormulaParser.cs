@@ -35,13 +35,26 @@ public class TexFormulaParser
     /// </summary>
     private static readonly HashSet<string> embeddedCommands = new()
     {
+        "boxed",
         "color",
         "colorbox",
+        "displaystyle",
         "frac",
+        "hphantom",
         "left",
         "overline",
+        "overset",
+        "phantom",
         "right",
-        "sqrt"
+        "scriptscriptstyle",
+        "scriptstyle",
+        "smash",
+        "stackrel",
+        "sqrt",
+        "textstyle",
+        "underline",
+        "underset",
+        "vphantom",
     };
 
     private static readonly IReadOnlyList<string> symbols;
@@ -528,6 +541,144 @@ public class TexFormulaParser
                     return new Tuple<AtomAppendMode, Atom?>(
                         AtomAppendMode.Add,
                         new StyledAtom(source, bodyFormula.RootAtom, _brushFactory.FromColor(color), null));
+                }
+            case "overset":
+            case "underset":
+            case "stackrel":
+                {
+                    // All three read two elements: the annotation and the base.
+                    var isOverset = command == "overset";
+                    var isUnderset = command == "underset";
+                    var isStackrel = command == "stackrel";
+
+                    var afterAnnotation = ReadElement(value, position);
+                    position = afterAnnotation.position;
+                    var annotationFormula = Parse(
+                        afterAnnotation.source,
+                        formula.TextStyle,
+                        environment.CreateChildEnvironment());
+
+                    var afterBase = ReadElement(value, position);
+                    position = afterBase.position;
+                    var baseFormula = Parse(
+                        afterBase.source,
+                        formula.TextStyle,
+                        environment.CreateChildEnvironment());
+
+                    source = value.Segment(start, position - start);
+
+                    if (isStackrel)
+                    {
+                        // \stackrel{annotation}{base} — annotation over base, smaller
+                        return new Tuple<AtomAppendMode, Atom?>(
+                            AtomAppendMode.Add,
+                            new UnderOverAtom(
+                                source,
+                                baseFormula.RootAtom,
+                                null, // under
+                                TexUnit.Mu, 0, false,
+                                annotationFormula.RootAtom, // over
+                                TexUnit.Mu, 3, true));
+                    }
+                    else if (isOverset)
+                    {
+                        return new Tuple<AtomAppendMode, Atom?>(
+                            AtomAppendMode.Add,
+                            new UnderOverAtom(
+                                source,
+                                baseFormula.RootAtom,
+                                null, // under
+                                TexUnit.Mu, 0, false,
+                                annotationFormula.RootAtom, // over
+                                TexUnit.Mu, 3, true));
+                    }
+                    else // underset
+                    {
+                        return new Tuple<AtomAppendMode, Atom?>(
+                            AtomAppendMode.Add,
+                            new UnderOverAtom(
+                                source,
+                                baseFormula.RootAtom,
+                                annotationFormula.RootAtom, // under
+                                TexUnit.Mu, 3, true,
+                                null, // over
+                                TexUnit.Mu, 0, false));
+                    }
+                }
+            case "phantom":
+            case "hphantom":
+            case "vphantom":
+                {
+                    var afterContent = ReadElement(value, position);
+                    position = afterContent.position;
+                    var contentFormula = Parse(
+                        afterContent.source,
+                        formula.TextStyle,
+                        environment.CreateChildEnvironment());
+                    source = value.Segment(start, position - start);
+
+                    var useWidth = command != "vphantom";
+                    var useHeight = command != "hphantom";
+                    var useDepth = command != "hphantom";
+
+                    return new Tuple<AtomAppendMode, Atom?>(
+                        AtomAppendMode.Add,
+                        new PhantomAtom(source, contentFormula.RootAtom, useWidth, useHeight, useDepth));
+                }
+            case "smash":
+                {
+                    var afterContent = ReadElement(value, position);
+                    position = afterContent.position;
+                    var contentFormula = Parse(
+                        afterContent.source,
+                        formula.TextStyle,
+                        environment.CreateChildEnvironment());
+                    source = value.Segment(start, position - start);
+
+                    return new Tuple<AtomAppendMode, Atom?>(
+                        AtomAppendMode.Add,
+                        new PhantomAtom(source, contentFormula.RootAtom, true, false, false));
+                }
+            case "displaystyle":
+            case "textstyle":
+            case "scriptstyle":
+            case "scriptscriptstyle":
+                {
+                    var afterContent = ReadElement(value, position);
+                    position = afterContent.position;
+                    source = value.Segment(start, position - start);
+
+                    var targetStyle = command switch
+                    {
+                        "displaystyle" => TexStyle.Display,
+                        "textstyle" => TexStyle.Text,
+                        "scriptstyle" => TexStyle.Script,
+                        "scriptscriptstyle" => TexStyle.ScriptScript,
+                        _ => throw new TexParseException($"Invalid style command: {command}")
+                    };
+
+                    var contentFormula = Parse(
+                        afterContent.source,
+                        formula.TextStyle,
+                        environment.CreateChildEnvironment());
+
+                    return new Tuple<AtomAppendMode, Atom?>(
+                        AtomAppendMode.Add,
+                        new StyleAtom(source, contentFormula.RootAtom, targetStyle));
+                }
+            case "boxed":
+                {
+                    var afterContent = ReadElement(value, position);
+                    position = afterContent.position;
+                    var contentFormula = Parse(
+                        afterContent.source,
+                        formula.TextStyle,
+                        environment.CreateChildEnvironment());
+                    source = value.Segment(start, position - start);
+
+                    return new Tuple<AtomAppendMode, Atom?>(
+                        AtomAppendMode.Add,
+                        new BoxedAtom(source, contentFormula.RootAtom));
                 }
         }
 

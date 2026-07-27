@@ -12,6 +12,10 @@ internal sealed class MatrixCommandParser : ICommandParser, IEnvironmentParser
     internal static readonly MatrixCommandParser Cases = new("lbrace", null, MatrixCellAlignment.Left);
     internal static readonly MatrixCommandParser Matrix = new(null, null, MatrixCellAlignment.Center);
     internal static readonly MatrixCommandParser PMatrix = new("lbrack", "rbrack", MatrixCellAlignment.Center);
+    internal static readonly MatrixCommandParser BMatrix = new("lbrack", "rbrack", MatrixCellAlignment.Center);
+    internal static readonly MatrixCommandParser BMatrixBraces = new("lbrace", "rbrace", MatrixCellAlignment.Center);
+    internal static readonly MatrixCommandParser VMatrix = new("vert", "vert", MatrixCellAlignment.Center);
+    internal static readonly MatrixCommandParser VMatrixDouble = new("Vert", "Vert", MatrixCellAlignment.Center);
 
     private readonly string? _leftDelimiterSymbolName;
     private readonly string? _rightDelimiterSymbolName;

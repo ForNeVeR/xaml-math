@@ -36,6 +36,7 @@
         <Compile Include="GeometryElementRendererTests.fs" />
         <Compile Include="HorizontalBoxTests.fs" />
         <Compile Include="HorizontalRuleTests.fs" />
+        <Compile Include="NewCommandTests.fs" />
         <Compile Include="OverUnderBoxTests.fs" />
         <Compile Include="ParserTests.fs" />
         <Compile Include="ParserExceptionTests.fs" />
