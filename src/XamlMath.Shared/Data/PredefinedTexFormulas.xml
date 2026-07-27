@@ -649,6 +649,30 @@
     <Return name="f" />
   </Formula>
 
+  <!-- bmod: binary mod operator -->
+
+  <Formula name="bmod" enabled="true">
+    <CreateFormula name="f" />
+    <MethodInvocation name="AddOperator" formula="f">
+      <Argument type="string" value="\mathrm{mod}" />
+      <Argument type="bool" value="false" />
+    </MethodInvocation>
+    <MethodInvocation name="SetFixedTypes" formula="f">
+      <Argument type="AtomType" value="BinaryOperator" />
+      <Argument type="AtomType" value="BinaryOperator" />
+    </MethodInvocation>
+    <Return name="f" />
+  </Formula>
+
+  <!-- dots: generic ellipsis (same as ldots) -->
+
+  <Formula name="dots" enabled="true">
+    <CreateFormula name="f">
+      <Argument type="string" value="\ldots" />
+    </CreateFormula>
+    <Return name="f" />
+  </Formula>
+
   <!-- AMS abbreviations -->
 
   <Formula name="implies" enabled="true">

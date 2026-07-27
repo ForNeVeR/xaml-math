@@ -45,6 +45,7 @@ public class TexFormulaParser
         "overline",
         "overset",
         "phantom",
+        "pmod",
         "right",
         "scriptscriptstyle",
         "scriptstyle",
@@ -679,6 +680,36 @@ public class TexFormulaParser
                     return new Tuple<AtomAppendMode, Atom?>(
                         AtomAppendMode.Add,
                         new BoxedAtom(source, contentFormula.RootAtom));
+                }
+            case "pmod":
+                {
+                    // \pmod{n} renders as " (mod n)"
+                    var afterArg = ReadElement(value, position);
+                    position = afterArg.position;
+                    var argFormula = Parse(
+                        afterArg.source,
+                        formula.TextStyle,
+                        environment.CreateChildEnvironment());
+                    source = value.Segment(start, position - start);
+
+                    // Build " mod " prefix by parsing inline
+                    var modPrefixFormula = Parse(
+                        new SourceSpan(value.SourceName, @"\;\mathrm{mod}\;", 0, 14),
+                        formula.TextStyle,
+                        environment.CreateChildEnvironment());
+                    var modAtom = modPrefixFormula.RootAtom ?? new NullAtom(source);
+
+                    // Create a parenthesized atom: ( mod arg )
+                    var row = new RowAtom(null);
+                    row = row.Add(new SymbolAtom(source, "(", TexAtomType.Opening, true));
+                    row = row.Add(modAtom);
+                    if (argFormula.RootAtom != null)
+                        row = row.Add(argFormula.RootAtom);
+                    row = row.Add(new SymbolAtom(source, ")", TexAtomType.Closing, true));
+
+                    return new Tuple<AtomAppendMode, Atom?>(
+                        AtomAppendMode.Add,
+                        row);
                 }
         }
 

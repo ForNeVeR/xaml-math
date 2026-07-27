@@ -244,6 +244,33 @@ let ``Matrix with boxed cell``() =
     Assert.NotNull atom
 
 // ──────────────────────────────────────────────────
+// 11. Additional standard LaTeX commands
+// ──────────────────────────────────────────────────
+
+[<Theory>]
+[<InlineData(@"\bmod")>]
+[<InlineData(@"\pmod{n}")>]
+[<InlineData(@"\dots")>]
+let ``Additional standard commands parse successfully``(formula: string) =
+    let atom = parse formula
+    Assert.NotNull atom
+
+[<Fact>]
+let ``Bmod is binary mod operator``() =
+    let f = parser.Parse @"a \bmod b"
+    Assert.NotNull f.RootAtom
+
+[<Fact>]
+let ``Pmod with argument``() =
+    let f = parser.Parse @"\pmod{n}"
+    Assert.NotNull f.RootAtom
+
+[<Fact>]
+let ``Dots equals ldots``() =
+    let atom = parse @"\dots"
+    Assert.NotNull atom
+
+// ──────────────────────────────────────────────────
 // 10. Approval-style rendering snapshot tests
 //    (verify JSON serialization of the atom tree)
 // ──────────────────────────────────────────────────
