@@ -149,6 +149,11 @@ internal static class StandardCommands
             ["begin"] = new ProcessEnvironmentCommand(),
             ["xrightarrow"] = new ExtensibleArrowCommand(ExtensibleArrowDirection.Right),
             ["xleftarrow"] = new ExtensibleArrowCommand(ExtensibleArrowDirection.Left),
+            ["xmapsto"] = new ExtensibleArrowCommand(ExtensibleArrowDirection.Right),
+            ["xhookrightarrow"] = new ExtensibleArrowCommand(ExtensibleArrowDirection.Right),
+            ["xRightarrow"] = new ExtensibleArrowCommand(ExtensibleArrowDirection.Right),
+            ["xLeftarrow"] = new ExtensibleArrowCommand(ExtensibleArrowDirection.Left),
+            ["xhookleftarrow"] = new ExtensibleArrowCommand(ExtensibleArrowDirection.Left),
         };
 
     internal static readonly IReadOnlyDictionary<string, IEnvironmentParser> Environments =
@@ -162,5 +167,7 @@ internal static class StandardCommands
             ["vmatrix"] = MatrixCommandParser.VMatrix,
             ["Vmatrix"] = MatrixCommandParser.VMatrixDouble,
             ["aligned"] = MatrixCommandParser.Align,
+            ["gathered"] = MatrixCommandParser.Gathered,
+            ["smallmatrix"] = MatrixCommandParser.SmallMatrix,
         };
 }

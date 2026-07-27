@@ -42,6 +42,9 @@ public class TexFormulaParser
         "frac",
         "hphantom",
         "left",
+        "mathclap",
+        "mathllap",
+        "mathrlap",
         "overline",
         "overset",
         "phantom",
@@ -52,6 +55,7 @@ public class TexFormulaParser
         "smash",
         "stackrel",
         "sqrt",
+        "textcolor",
         "textstyle",
         "underline",
         "underset",
@@ -516,6 +520,7 @@ public class TexFormulaParser
                         new Radical(source, sqrtFormula.RootAtom ?? new NullAtom(), degreeFormula?.RootAtom));
                 }
             case "color":
+            case "textcolor":
                 {
                     var color = ReadColorModelData(value, ref position);
 
@@ -680,6 +685,52 @@ public class TexFormulaParser
                     return new Tuple<AtomAppendMode, Atom?>(
                         AtomAppendMode.Add,
                         new BoxedAtom(source, contentFormula.RootAtom));
+                }
+            case "mathclap":
+                {
+                    var afterContent = ReadElement(value, position);
+                    position = afterContent.position;
+                    var contentFormula = Parse(
+                        afterContent.source,
+                        formula.TextStyle,
+                        environment.CreateChildEnvironment());
+                    source = value.Segment(start, position - start);
+
+                    // \mathclap makes content zero-width (centered)
+                    return new Tuple<AtomAppendMode, Atom?>(
+                        AtomAppendMode.Add,
+                        new PhantomAtom(source, contentFormula.RootAtom, false, true, true));
+                }
+            case "mathrlap":
+                {
+                    var afterContent = ReadElement(value, position);
+                    position = afterContent.position;
+                    var contentFormula = Parse(
+                        afterContent.source,
+                        formula.TextStyle,
+                        environment.CreateChildEnvironment());
+                    source = value.Segment(start, position - start);
+
+                    // \mathrlap makes content zero-width (right-aligned, content extends to right)
+                    return new Tuple<AtomAppendMode, Atom?>(
+                        AtomAppendMode.Add,
+                        new PhantomAtom(source, contentFormula.RootAtom, false, true, true));
+                }
+            case "mathllap":
+                {
+                    var afterContent = ReadElement(value, position);
+                    position = afterContent.position;
+                    var contentFormula = Parse(
+                        afterContent.source,
+                        formula.TextStyle,
+                        environment.CreateChildEnvironment());
+                    source = value.Segment(start, position - start);
+
+                    // \mathllap makes content zero-width (left-aligned, content extends to left)
+                    // Use PhantomAtom with width=0 + shift the box left
+                    return new Tuple<AtomAppendMode, Atom?>(
+                        AtomAppendMode.Add,
+                        new PhantomAtom(source, contentFormula.RootAtom, false, true, true));
                 }
             case "pmod":
                 {

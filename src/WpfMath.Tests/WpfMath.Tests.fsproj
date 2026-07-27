@@ -27,6 +27,7 @@
     <ItemGroup>
         <Compile Include="ApprovalTestUtils.fs" />
         <Compile Include="Utils.fs" />
+        <Compile Include="AdditionalCommandTests.fs" />
         <Compile Include="BoxTests.fs" />
         <Compile Include="PredefinedColorParserTests.fs" />
         <Compile Include="CharBoxTests.fs" />
