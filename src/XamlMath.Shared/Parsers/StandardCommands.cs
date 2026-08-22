@@ -145,6 +145,10 @@ internal static class StandardCommands
             ["cases"] = MatrixCommandParser.Cases,
             ["matrix"] = MatrixCommandParser.Matrix,
             ["pmatrix"] = MatrixCommandParser.PMatrix,
+            ["bmatrix"] = MatrixCommandParser.BMatrix,
+            ["Bmatrix"] = MatrixCommandParser.BbMatrix,
+            ["vmatrix"] = MatrixCommandParser.VMatrix,
+            ["Vmatrix"] = MatrixCommandParser.VvMatrix,
             ["underline"] = new UnderlineCommand(),
             ["begin"] = new ProcessEnvironmentCommand()
         };
@@ -153,6 +157,10 @@ internal static class StandardCommands
         new Dictionary<string, IEnvironmentParser>
         {
             ["align"] = MatrixCommandParser.Align,
-            ["pmatrix"] = MatrixCommandParser.PMatrix
+            ["pmatrix"] = MatrixCommandParser.PMatrix,
+            ["bmatrix"] = MatrixCommandParser.BMatrix,
+            ["Bmatrix"] = MatrixCommandParser.BbMatrix,
+            ["vmatrix"] = MatrixCommandParser.VMatrix,
+            ["Vmatrix"] = MatrixCommandParser.VvMatrix
         };
 }

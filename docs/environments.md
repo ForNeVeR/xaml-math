@@ -6,7 +6,7 @@ XAML-Math supports _environments_: ability to introduce certain context for the 
 
 List of currently supported environment names:
 
-- `pmatrix`: works the same as the [corresponding matrix command][docs.matrices].
+- `pmatrix`, `bmatrix`, `Bmatrix`, `vmatrix`, `Vmatrix`: each works the same as the [corresponding matrix command][docs.matrices], differing only in the delimiters that surround the matrix.
 
   Examples:
   ```tex
