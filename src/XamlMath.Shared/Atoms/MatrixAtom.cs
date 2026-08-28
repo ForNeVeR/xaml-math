@@ -65,13 +65,24 @@ internal sealed record MatrixAtom : Atom
 
                 var vFreeSpace = rowHeight - cell.TotalHeight;
                 var tbGap = (VerticalPadding + vFreeSpace) / 2;
+
                 var cellContainer = new VerticalBox();
-                cellContainer.Add(new StrutBox(0.0, tbGap, 0.0, 0.0));
-                cellContainer.Add(cell);
-                cellContainer.Add(new StrutBox(0.0, tbGap, 0.0, 0.0));
+
+                if (cell.TotalHeight <= 0.54)
+                {
+                    cellContainer.Add(new StrutBox(0.0, vFreeSpace, 0.0, 0.0));
+                    cellContainer.Add(cell);
+                    cellContainer.Add(new StrutBox(0.0, VerticalPadding / 2, 0.0, 0.0));
+                }
+                else
+                {
+                    cellContainer.Add(new StrutBox(0.0, tbGap, 0.0, 0.0));
+                    cellContainer.Add(cell);
+                    cellContainer.Add(new StrutBox(0.0, tbGap, 0.0, 0.0));
+                }
+
                 cellContainer.Height = cellContainer.TotalHeight;
                 cellContainer.Depth = 0;
-
 
                 var hFreeSpace = columnWidth - cell.TotalWidth;
                 var (lGap, rGap) = GetLeftRightGap(hFreeSpace, j);
