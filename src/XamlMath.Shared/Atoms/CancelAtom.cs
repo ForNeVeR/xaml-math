@@ -16,7 +16,7 @@ internal sealed record CancelAtom : Atom
     protected override Box CreateBoxCore(TexEnvironment environment)
     {
         var contentBox = _contentAtom is null ? StrutBox.Empty : _contentAtom.CreateBox(environment);
-        var lineBox = new StrokeBox(_strokeBoxMode)
+        var lineBox = new StrokeBox(environment, _strokeBoxMode)
         {
             Height = contentBox.Height,
             Depth = contentBox.Depth,

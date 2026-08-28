@@ -7,7 +7,8 @@ internal sealed class StrokeBox : Box
 {
     private readonly StrokeBoxMode _mode;
 
-    public StrokeBox(StrokeBoxMode mode)
+    public StrokeBox(TexEnvironment environment, StrokeBoxMode mode)
+        : base(environment)
     {
         _mode = mode;
     }
