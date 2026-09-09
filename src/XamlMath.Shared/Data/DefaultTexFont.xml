@@ -64,6 +64,57 @@
     <TextStyleMapping name="mathcal">
       <MapRange code="capitals" fontId="3" start="65"/>
     </TextStyleMapping>
+    <TextStyleMapping name="mathbf">
+      <MapRange code="numbers" fontId="1" start="48"/>
+      <MapRange code="capitals" fontId="1" start="65"/>
+      <MapRange code="small" fontId="1" start="97"/>
+    </TextStyleMapping>
+    <TextStyleMapping name="mathbb">
+      <MapRange code="numbers" fontId="1" start="48"/>
+      <MapRange code="capitals" fontId="1" start="65"/>
+      <MapRange code="small" fontId="1" start="97"/>
+    </TextStyleMapping>
+    <TextStyleMapping name="mathsf">
+      <MapRange code="numbers" fontId="1" start="48"/>
+      <MapRange code="capitals" fontId="1" start="65"/>
+      <MapRange code="small" fontId="1" start="97"/>
+    </TextStyleMapping>
+    <TextStyleMapping name="mathtt">
+      <MapRange code="numbers" fontId="1" start="48"/>
+      <MapRange code="capitals" fontId="1" start="65"/>
+      <MapRange code="small" fontId="1" start="97"/>
+    </TextStyleMapping>
+    <TextStyleMapping name="mathfrak">
+      <MapRange code="numbers" fontId="1" start="48"/>
+      <MapRange code="capitals" fontId="1" start="65"/>
+      <MapRange code="small" fontId="1" start="97"/>
+    </TextStyleMapping>
+    <TextStyleMapping name="mathscr">
+      <MapRange code="capitals" fontId="3" start="65"/>
+    </TextStyleMapping>
+    <TextStyleMapping name="textbf">
+      <MapRange code="numbers" fontId="1" start="48"/>
+      <MapRange code="capitals" fontId="1" start="65"/>
+      <MapRange code="small" fontId="1" start="97"/>
+    </TextStyleMapping>
+    <TextStyleMapping name="textit">
+      <MapRange code="numbers" fontId="0" start="48"/>
+      <MapRange code="capitals" fontId="0" start="65"/>
+      <MapRange code="small" fontId="0" start="97"/>
+    </TextStyleMapping>
+    <TextStyleMapping name="textsf">
+      <MapRange code="numbers" fontId="1" start="48"/>
+      <MapRange code="capitals" fontId="1" start="65"/>
+      <MapRange code="small" fontId="1" start="97"/>
+    </TextStyleMapping>
+    <TextStyleMapping name="texttt">
+      <MapRange code="numbers" fontId="1" start="48"/>
+      <MapRange code="capitals" fontId="1" start="65"/>
+      <MapRange code="small" fontId="1" start="97"/>
+    </TextStyleMapping>
+    <TextStyleMapping name="textsc">
+      <MapRange code="capitals" fontId="1" start="65"/>
+    </TextStyleMapping>
   </TextStyleMappings>
 
   <!-- the default text style mappings, used when no text style is specified or when a specific mapping
