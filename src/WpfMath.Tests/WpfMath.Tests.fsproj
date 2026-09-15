@@ -27,6 +27,7 @@
     <ItemGroup>
         <Compile Include="ApprovalTestUtils.fs" />
         <Compile Include="Utils.fs" />
+        <Compile Include="AdditionalCommandTests.fs" />
         <Compile Include="BoxTests.fs" />
         <Compile Include="PredefinedColorParserTests.fs" />
         <Compile Include="CharBoxTests.fs" />
@@ -36,6 +37,7 @@
         <Compile Include="GeometryElementRendererTests.fs" />
         <Compile Include="HorizontalBoxTests.fs" />
         <Compile Include="HorizontalRuleTests.fs" />
+        <Compile Include="NewCommandTests.fs" />
         <Compile Include="OverUnderBoxTests.fs" />
         <Compile Include="ParserTests.fs" />
         <Compile Include="ParserExceptionTests.fs" />

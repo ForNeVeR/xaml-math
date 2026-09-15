@@ -40,6 +40,17 @@
     <TextStyle name="mathrm"/>
     <TextStyle name="mathit"/>
     <TextStyle name="mathcal"/>
+    <TextStyle name="mathbf"/>
+    <TextStyle name="mathbb"/>
+    <TextStyle name="mathsf"/>
+    <TextStyle name="mathtt"/>
+    <TextStyle name="mathfrak"/>
+    <TextStyle name="mathscr"/>
+    <TextStyle name="textbf"/>
+    <TextStyle name="textit"/>
+    <TextStyle name="textsf"/>
+    <TextStyle name="texttt"/>
+    <TextStyle name="textsc"/>
   </TextStyles>
 
   <!-- non-alphanumeric character-to-symbol-mappings -->
