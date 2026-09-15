@@ -19,6 +19,22 @@ let pMatrixEnvironment(): unit =
     verifyParseResult @"\begin{pmatrix}{line 1}\\line 2\end{pmatrix}"
 
 [<Fact>]
+let bMatrixEnvironment(): unit =
+    verifyParseResult @"\begin{bmatrix}a & b \\ c & d\end{bmatrix}"
+
+[<Fact>]
+let bbMatrixEnvironment(): unit =
+    verifyParseResult @"\begin{Bmatrix}a & b \\ c & d\end{Bmatrix}"
+
+[<Fact>]
+let vMatrixEnvironment(): unit =
+    verifyParseResult @"\begin{vmatrix}a & b \\ c & d\end{vmatrix}"
+
+[<Fact>]
+let vvMatrixEnvironment(): unit =
+    verifyParseResult @"\begin{Vmatrix}a & b \\ c & d\end{Vmatrix}"
+
+[<Fact>]
 let nestedEnvironment(): unit =
     verifyParseResult @"\begin{pmatrix}line 1\\\begin{pmatrix}line x\end{pmatrix}\end{pmatrix}"
 

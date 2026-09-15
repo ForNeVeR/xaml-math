@@ -3,28 +3,92 @@
   "Children": [
     {
       "Background": null,
-      "Character": {
-        "Character": "³",
-        "Font": "pack://application:,,,/WpfMath;component/Fonts/cmex10.ttf",
-        "FontId": 2,
-        "Metrics": {
-          "Depth": 1.760019,
-          "Height": 0.039999,
+      "Children": [
+        {
+          "Background": null,
+          "Character": {
+            "Character": "¯",
+            "Font": "pack://application:,,,/WpfMath;component/Fonts/cmex10.ttf",
+            "FontId": 2,
+            "Metrics": {
+              "Depth": 0.600006,
+              "Height": 0.0,
+              "Italic": 0.0,
+              "Width": 0.333334
+            },
+            "Size": 1.0
+          },
+          "Children": [],
+          "Depth": 0.600006,
+          "Foreground": null,
+          "Height": 0.0,
           "Italic": 0.0,
-          "Width": 0.597224
+          "Shift": 0.0,
+          "Source": null,
+          "TotalHeight": 0.600006,
+          "TotalWidth": 0.333334,
+          "Width": 0.333334
         },
-        "Size": 1.0
-      },
-      "Children": [],
-      "Depth": 1.760019,
+        {
+          "Background": null,
+          "Character": {
+            "Character": "¯",
+            "Font": "pack://application:,,,/WpfMath;component/Fonts/cmex10.ttf",
+            "FontId": 2,
+            "Metrics": {
+              "Depth": 0.600006,
+              "Height": 0.0,
+              "Italic": 0.0,
+              "Width": 0.333334
+            },
+            "Size": 1.0
+          },
+          "Children": [],
+          "Depth": 0.600006,
+          "Foreground": null,
+          "Height": 0.0,
+          "Italic": 0.0,
+          "Shift": 0.0,
+          "Source": null,
+          "TotalHeight": 0.600006,
+          "TotalWidth": 0.333334,
+          "Width": 0.333334
+        },
+        {
+          "Background": null,
+          "Character": {
+            "Character": "¯",
+            "Font": "pack://application:,,,/WpfMath;component/Fonts/cmex10.ttf",
+            "FontId": 2,
+            "Metrics": {
+              "Depth": 0.600006,
+              "Height": 0.0,
+              "Italic": 0.0,
+              "Width": 0.333334
+            },
+            "Size": 1.0
+          },
+          "Children": [],
+          "Depth": 0.600006,
+          "Foreground": null,
+          "Height": 0.0,
+          "Italic": 0.0,
+          "Shift": 0.0,
+          "Source": null,
+          "TotalHeight": 0.600006,
+          "TotalWidth": 0.333334,
+          "Width": 0.333334
+        }
+      ],
+      "Depth": 1.800018,
       "Foreground": null,
-      "Height": 0.039999,
+      "Height": 0.0,
       "Italic": 0.0,
-      "Shift": -1.11001,
+      "Shift": -1.150009,
       "Source": null,
       "TotalHeight": 1.800018,
-      "TotalWidth": 0.597224,
-      "Width": 0.597224
+      "TotalWidth": 0.333334,
+      "Width": 0.333334
     },
     {
       "Background": null,
@@ -99,7 +163,7 @@
                   "Source": {
                     "End": 10,
                     "Length": 1,
-                    "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}",
+                    "Source": "\\vmatrix{2 & 2 \\\\ 2 & 2}",
                     "SourceName": "User input",
                     "Start": 9
                   },
@@ -196,7 +260,7 @@
                   "Source": {
                     "End": 14,
                     "Length": 1,
-                    "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}",
+                    "Source": "\\vmatrix{2 & 2 \\\\ 2 & 2}",
                     "SourceName": "User input",
                     "Start": 13
                   },
@@ -307,7 +371,7 @@
                   "Source": {
                     "End": 19,
                     "Length": 1,
-                    "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}",
+                    "Source": "\\vmatrix{2 & 2 \\\\ 2 & 2}",
                     "SourceName": "User input",
                     "Start": 18
                   },
@@ -404,7 +468,7 @@
                   "Source": {
                     "End": 23,
                     "Length": 1,
-                    "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}",
+                    "Source": "\\vmatrix{2 & 2 \\\\ 2 & 2}",
                     "SourceName": "User input",
                     "Start": 22
                   },
@@ -469,7 +533,7 @@
       "Source": {
         "End": 24,
         "Length": 23,
-        "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}",
+        "Source": "\\vmatrix{2 & 2 \\\\ 2 & 2}",
         "SourceName": "User input",
         "Start": 1
       },
@@ -494,28 +558,92 @@
     },
     {
       "Background": null,
-      "Character": {
-        "Character": "´",
-        "Font": "pack://application:,,,/WpfMath;component/Fonts/cmex10.ttf",
-        "FontId": 2,
-        "Metrics": {
-          "Depth": 1.760019,
-          "Height": 0.039999,
+      "Children": [
+        {
+          "Background": null,
+          "Character": {
+            "Character": "¯",
+            "Font": "pack://application:,,,/WpfMath;component/Fonts/cmex10.ttf",
+            "FontId": 2,
+            "Metrics": {
+              "Depth": 0.600006,
+              "Height": 0.0,
+              "Italic": 0.0,
+              "Width": 0.333334
+            },
+            "Size": 1.0
+          },
+          "Children": [],
+          "Depth": 0.600006,
+          "Foreground": null,
+          "Height": 0.0,
           "Italic": 0.0,
-          "Width": 0.597224
+          "Shift": 0.0,
+          "Source": null,
+          "TotalHeight": 0.600006,
+          "TotalWidth": 0.333334,
+          "Width": 0.333334
         },
-        "Size": 1.0
-      },
-      "Children": [],
-      "Depth": 1.760019,
+        {
+          "Background": null,
+          "Character": {
+            "Character": "¯",
+            "Font": "pack://application:,,,/WpfMath;component/Fonts/cmex10.ttf",
+            "FontId": 2,
+            "Metrics": {
+              "Depth": 0.600006,
+              "Height": 0.0,
+              "Italic": 0.0,
+              "Width": 0.333334
+            },
+            "Size": 1.0
+          },
+          "Children": [],
+          "Depth": 0.600006,
+          "Foreground": null,
+          "Height": 0.0,
+          "Italic": 0.0,
+          "Shift": 0.0,
+          "Source": null,
+          "TotalHeight": 0.600006,
+          "TotalWidth": 0.333334,
+          "Width": 0.333334
+        },
+        {
+          "Background": null,
+          "Character": {
+            "Character": "¯",
+            "Font": "pack://application:,,,/WpfMath;component/Fonts/cmex10.ttf",
+            "FontId": 2,
+            "Metrics": {
+              "Depth": 0.600006,
+              "Height": 0.0,
+              "Italic": 0.0,
+              "Width": 0.333334
+            },
+            "Size": 1.0
+          },
+          "Children": [],
+          "Depth": 0.600006,
+          "Foreground": null,
+          "Height": 0.0,
+          "Italic": 0.0,
+          "Shift": 0.0,
+          "Source": null,
+          "TotalHeight": 0.600006,
+          "TotalWidth": 0.333334,
+          "Width": 0.333334
+        }
+      ],
+      "Depth": 1.800018,
       "Foreground": null,
-      "Height": 0.039999,
+      "Height": 0.0,
       "Italic": 0.0,
-      "Shift": -1.11001,
+      "Shift": -1.150009,
       "Source": null,
       "TotalHeight": 1.800018,
-      "TotalWidth": 0.597224,
-      "Width": 0.597224
+      "TotalWidth": 0.333334,
+      "Width": 0.333334
     }
   ],
   "Depth": 0.744444,
@@ -526,11 +654,11 @@
   "Source": {
     "End": 24,
     "Length": 23,
-    "Source": "\\pmatrix{2 & 2 \\\\ 2 & 2}",
+    "Source": "\\vmatrix{2 & 2 \\\\ 2 & 2}",
     "SourceName": "User input",
     "Start": 1
   },
   "TotalHeight": 1.988888,
-  "TotalWidth": 2.894452,
-  "Width": 2.894452
+  "TotalWidth": 2.366672,
+  "Width": 2.366672
 }

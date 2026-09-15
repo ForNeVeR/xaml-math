@@ -1,0 +1,113 @@
+{
+  "RootAtom": {
+    "[AtomType]": "FencedAtom",
+    "BaseAtom": {
+      "[AtomType]": "MatrixAtom",
+      "HorizontalPadding": 0.35,
+      "MatrixCellAlignment": "Center",
+      "MatrixCells": [
+        [
+          {
+            "[AtomType]": "CharAtom",
+            "Character": "a",
+            "IsTextSymbol": false,
+            "Source": {
+              "End": 16,
+              "Length": 1,
+              "Source": "\\begin{bmatrix}a & b \\\\ c & d\\end{bmatrix}",
+              "SourceName": "User input",
+              "Start": 15
+            },
+            "TextStyle": null,
+            "Type": "Ordinary"
+          },
+          {
+            "[AtomType]": "CharAtom",
+            "Character": "b",
+            "IsTextSymbol": false,
+            "Source": {
+              "End": 20,
+              "Length": 1,
+              "Source": "\\begin{bmatrix}a & b \\\\ c & d\\end{bmatrix}",
+              "SourceName": "User input",
+              "Start": 19
+            },
+            "TextStyle": null,
+            "Type": "Ordinary"
+          }
+        ],
+        [
+          {
+            "[AtomType]": "CharAtom",
+            "Character": "c",
+            "IsTextSymbol": false,
+            "Source": {
+              "End": 25,
+              "Length": 1,
+              "Source": "\\begin{bmatrix}a & b \\\\ c & d\\end{bmatrix}",
+              "SourceName": "User input",
+              "Start": 24
+            },
+            "TextStyle": null,
+            "Type": "Ordinary"
+          },
+          {
+            "[AtomType]": "CharAtom",
+            "Character": "d",
+            "IsTextSymbol": false,
+            "Source": {
+              "End": 29,
+              "Length": 1,
+              "Source": "\\begin{bmatrix}a & b \\\\ c & d\\end{bmatrix}",
+              "SourceName": "User input",
+              "Start": 28
+            },
+            "TextStyle": null,
+            "Type": "Ordinary"
+          }
+        ]
+      ],
+      "Source": {
+        "End": 42,
+        "Length": 41,
+        "Source": "\\begin{bmatrix}a & b \\\\ c & d\\end{bmatrix}",
+        "SourceName": "User input",
+        "Start": 1
+      },
+      "Type": "Ordinary",
+      "VerticalPadding": 0.35
+    },
+    "LeftDelimeter": {
+      "[AtomType]": "SymbolAtom",
+      "IsDelimeter": true,
+      "IsTextSymbol": false,
+      "Name": "lbrack",
+      "Source": null,
+      "Type": "Opening"
+    },
+    "RightDelimeter": {
+      "[AtomType]": "SymbolAtom",
+      "IsDelimeter": true,
+      "IsTextSymbol": false,
+      "Name": "rbrack",
+      "Source": null,
+      "Type": "Closing"
+    },
+    "Source": {
+      "End": 42,
+      "Length": 41,
+      "Source": "\\begin{bmatrix}a & b \\\\ c & d\\end{bmatrix}",
+      "SourceName": "User input",
+      "Start": 1
+    },
+    "Type": "Ordinary"
+  },
+  "Source": {
+    "End": 42,
+    "Length": 42,
+    "Source": "\\begin{bmatrix}a & b \\\\ c & d\\end{bmatrix}",
+    "SourceName": "User input",
+    "Start": 0
+  },
+  "TextStyle": null
+}
