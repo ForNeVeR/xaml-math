@@ -56,19 +56,25 @@ internal sealed record MatrixAtom : Atom
         foreach (var row in cells)
         {
             var rowContainer = new HorizontalBox();
-            var rowHeight = row.Length > 0 ? row.Max(cell => cell.TotalHeight) : 0.0;
+            // Align cells on a common baseline within the row (LaTeX behaviour): the row is made
+            // tall enough for the largest ascent and deepest descent it contains, but every cell
+            // sits on the same baseline rather than being vertically centred (which would raise
+            // short glyphs like "a" above taller ones like "b").
+            var rowAscent = row.Length > 0 ? row.Max(cell => cell.Height) : 0.0;
+            var rowDescent = row.Length > 0 ? row.Max(cell => cell.Depth) : 0.0;
+            var halfVPadding = VerticalPadding / 2;
 
             for (var j = 0; j < columnCount; ++j)
             {
                 var cell = row[j];
                 var columnWidth = columnWidths[j];
 
-                var vFreeSpace = rowHeight - cell.TotalHeight;
-                var tbGap = (VerticalPadding + vFreeSpace) / 2;
+                var topGap = rowAscent - cell.Height + halfVPadding;
+                var bottomGap = rowDescent - cell.Depth + halfVPadding;
                 var cellContainer = new VerticalBox();
-                cellContainer.Add(new StrutBox(0.0, tbGap, 0.0, 0.0));
+                cellContainer.Add(new StrutBox(0.0, topGap, 0.0, 0.0));
                 cellContainer.Add(cell);
-                cellContainer.Add(new StrutBox(0.0, tbGap, 0.0, 0.0));
+                cellContainer.Add(new StrutBox(0.0, bottomGap, 0.0, 0.0));
                 cellContainer.Height = cellContainer.TotalHeight;
                 cellContainer.Depth = 0;
 
