@@ -8,10 +8,12 @@ internal sealed class MatrixInternalEnvironment : NonRecursiveEnvironment
     private static IReadOnlyDictionary<string, ICommandParser> GetCommands(List<List<Atom>> rows)
     {
         var nextRowCommand = new NextRowCommand(rows);
+        var intertextCommand = new IntertextCommand(rows);
         return new Dictionary<string, ICommandParser>
         {
             [@"\"] = nextRowCommand,
-            ["cr"] = nextRowCommand
+            ["cr"] = nextRowCommand,
+            ["intertext"] = intertextCommand,
         };
     }
 
