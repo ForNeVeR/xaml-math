@@ -146,13 +146,28 @@ internal static class StandardCommands
             ["matrix"] = MatrixCommandParser.Matrix,
             ["pmatrix"] = MatrixCommandParser.PMatrix,
             ["underline"] = new UnderlineCommand(),
-            ["begin"] = new ProcessEnvironmentCommand()
+            ["begin"] = new ProcessEnvironmentCommand(),
+            ["xrightarrow"] = new ExtensibleArrowCommand(ExtensibleArrowDirection.Right),
+            ["xleftarrow"] = new ExtensibleArrowCommand(ExtensibleArrowDirection.Left),
+            ["xmapsto"] = new ExtensibleArrowCommand(ExtensibleArrowDirection.Right),
+            ["xhookrightarrow"] = new ExtensibleArrowCommand(ExtensibleArrowDirection.Right),
+            ["xRightarrow"] = new ExtensibleArrowCommand(ExtensibleArrowDirection.Right),
+            ["xLeftarrow"] = new ExtensibleArrowCommand(ExtensibleArrowDirection.Left),
+            ["xhookleftarrow"] = new ExtensibleArrowCommand(ExtensibleArrowDirection.Left),
         };
 
     internal static readonly IReadOnlyDictionary<string, IEnvironmentParser> Environments =
         new Dictionary<string, IEnvironmentParser>
         {
             ["align"] = MatrixCommandParser.Align,
-            ["pmatrix"] = MatrixCommandParser.PMatrix
+            ["pmatrix"] = MatrixCommandParser.PMatrix,
+            ["matrix"] = MatrixCommandParser.Matrix,
+            ["bmatrix"] = MatrixCommandParser.BMatrix,
+            ["Bmatrix"] = MatrixCommandParser.BMatrixBraces,
+            ["vmatrix"] = MatrixCommandParser.VMatrix,
+            ["Vmatrix"] = MatrixCommandParser.VMatrixDouble,
+            ["aligned"] = MatrixCommandParser.Align,
+            ["gathered"] = MatrixCommandParser.Gathered,
+            ["smallmatrix"] = MatrixCommandParser.SmallMatrix,
         };
 }
