@@ -441,11 +441,11 @@
               "Children": [],
               "Depth": 0.0,
               "Foreground": null,
-              "Height": 0.516666,
+              "Height": 0.858332,
               "Italic": 0.0,
               "Shift": 0.0,
               "Source": null,
-              "TotalHeight": 0.516666,
+              "TotalHeight": 0.858332,
               "TotalWidth": 0.0,
               "Width": 0.0
             },
@@ -467,11 +467,11 @@
               "Children": [],
               "Depth": 0.0,
               "Foreground": null,
-              "Height": 0.516666,
+              "Height": 0.175,
               "Italic": 0.0,
               "Shift": 0.0,
               "Source": null,
-              "TotalHeight": 0.516666,
+              "TotalHeight": 0.175,
               "TotalWidth": 0.0,
               "Width": 0.0
             }
