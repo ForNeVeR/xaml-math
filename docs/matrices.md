@@ -16,10 +16,14 @@ For example, the following command creates a matrix with 2 rows and 3 columns:
 \matrix{1 & 2 & 3 \\ 4 & 5 & 6}
 ```
 
-There're two matrix types supported:
+The following matrix types are supported (each named after its delimiters, following LaTeX/amsmath):
 
-- `\matrix`: a matrix without brackets
-- `\pmatrix`: a matrix within square brackets
+- `\matrix`: a matrix without delimiters
+- `\pmatrix`: a matrix within parentheses `( )`
+- `\bmatrix`: a matrix within square brackets `[ ]`
+- `\Bmatrix`: a matrix within curly braces `{ }`
+- `\vmatrix`: a matrix within single vertical bars `| |`
+- `\Vmatrix`: a matrix within double vertical bars `‖ ‖`
 
 There's also a matrix-like construct:
 

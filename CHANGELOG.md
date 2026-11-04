@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning v2.0.0](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased] (3.0.0)
+### Added
+- New matrix delimiter environments `bmatrix` (`[ ]`), `Bmatrix` (`{ }`), `vmatrix` (`| |`), and `Vmatrix` (`‖ ‖`), each usable both as a command (e.g. `\bmatrix{…}`) and as an environment (e.g. `\begin{bmatrix}…\end{bmatrix}`).
+
 ### Removed
 - **(Breaking change!)** Support for .NET 6 and 7. The new list of supported frameworks:
   - for **WPF-Math**: **.NET Framework 4.6.2** or later, **.NET 8** or later;
@@ -12,6 +15,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 - The exception classes are now `sealed` (should not break anything, since there never was any sense in extending them in the user code).
 - Avalonia: `AvaloniaMathFontProvider::Instance` is now read-only.
+
+### Fixed
+- `pmatrix` now renders with parentheses `( )` instead of square brackets `[ ]`, matching LaTeX (the square-bracket variant is `bmatrix`).
 
 ## [2.1.0] - 2023-07-15
 ### Changed

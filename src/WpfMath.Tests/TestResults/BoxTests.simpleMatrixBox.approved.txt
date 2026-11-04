@@ -4,14 +4,14 @@
     {
       "Background": null,
       "Character": {
-        "Character": "h",
+        "Character": "³",
         "Font": "pack://application:,,,/WpfMath;component/Fonts/cmex10.ttf",
         "FontId": 2,
         "Metrics": {
           "Depth": 1.760019,
           "Height": 0.039999,
           "Italic": 0.0,
-          "Width": 0.472224
+          "Width": 0.597224
         },
         "Size": 1.0
       },
@@ -23,8 +23,8 @@
       "Shift": -1.11001,
       "Source": null,
       "TotalHeight": 1.800018,
-      "TotalWidth": 0.472224,
-      "Width": 0.472224
+      "TotalWidth": 0.597224,
+      "Width": 0.597224
     },
     {
       "Background": null,
@@ -495,14 +495,14 @@
     {
       "Background": null,
       "Character": {
-        "Character": "i",
+        "Character": "´",
         "Font": "pack://application:,,,/WpfMath;component/Fonts/cmex10.ttf",
         "FontId": 2,
         "Metrics": {
           "Depth": 1.760019,
           "Height": 0.039999,
           "Italic": 0.0,
-          "Width": 0.472224
+          "Width": 0.597224
         },
         "Size": 1.0
       },
@@ -514,8 +514,8 @@
       "Shift": -1.11001,
       "Source": null,
       "TotalHeight": 1.800018,
-      "TotalWidth": 0.472224,
-      "Width": 0.472224
+      "TotalWidth": 0.597224,
+      "Width": 0.597224
     }
   ],
   "Depth": 0.744444,
@@ -531,6 +531,6 @@
     "Start": 1
   },
   "TotalHeight": 1.988888,
-  "TotalWidth": 2.644452,
-  "Width": 2.644452
+  "TotalWidth": 2.894452,
+  "Width": 2.894452
 }
